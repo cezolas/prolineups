@@ -38,14 +38,37 @@
   <aside class="side" id="side" aria-label="Navegação">
     <nav>
       <a href="/pt/"><span>Início</span></a>
-      <div class="nav-h">Granadas</div>
-<a href="/pt/smokes/"><span>Smokes</span><span class="n">47</span></a><a href="/pt/flashes/"><span>Flashes</span><span class="n">24</span></a><a href="/pt/molotovs/"><span>Molotovs</span><span class="n">19</span></a><a href="/pt/hes/"><span>HEs</span><span class="n">9</span></a>      <div class="nav-h"><a href="/pt/mapas/">Mapas</a></div>
-<a href="/pt/anubis/"><span>Anubis</span><span class="n">20</span></a><a href="/pt/cache/"><span>Cache</span><span class="n">19</span></a><a href="/pt/dust2/"><span>Dust2</span><span class="n">28</span></a><a href="/pt/inferno/"><span>Inferno</span><span class="n">7</span></a><a href="/pt/mirage/"><span>Mirage</span><span class="n">25</span></a>      <div class="nav-h"><a href="/pt/jogadores/">Jogadores</a></div>
-<a href="/pt/jogador/apex/" aria-current="page"><span>apEX</span></a><a href="/pt/jogador/fallen/"><span>FalleN</span></a><a href="/pt/jogador/flamez/"><span>flameZ</span></a><a href="/pt/jogador/heavygod/"><span>HeavyGod</span></a><a href="/pt/jogador/hunter/"><span>huNter</span></a><a href="/pt/jogador/karrigan/"><span>karrigan</span></a><a href="/pt/jogador/kscerato/"><span>KSCERATO</span></a><a href="/pt/jogador/kyousuke/"><span>kyousuke</span></a><a href="/pt/jogador/m0nesy/"><span>m0NESY</span></a><a href="/pt/jogador/matys/"><span>MATYS</span></a><a href="/pt/jogador/mezii/"><span>mezii</span></a><a href="/pt/jogador/molodoy/"><span>molodoy</span></a><a class="more" href="/pt/jogadores/">ver todos (25)</a>      <div class="nav-h"><a href="/pt/times/">Times</a></div>
-<a href="/pt/time/falcons/"><span>Falcons</span></a><a href="/pt/time/furia/"><span>FURIA</span></a><a href="/pt/time/g2/"><span>G2</span></a><a href="/pt/time/mouz/"><span>MOUZ</span></a><a href="/pt/time/vitality/"><span>Vitality</span></a>      <div class="nav-h"><a href="/pt/torneios/">Torneios</a></div>
-<a href="/pt/torneio/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      <div class="nav-sep"></div>
+      <details class="nav-g" data-k="types" open>
+        <summary class="nav-h"><span>Granadas</span></summary>
+<a href="/pt/smokes/"><span>Smokes</span><span class="n">47</span></a><a href="/pt/flashes/"><span>Flashes</span><span class="n">24</span></a><a href="/pt/molotovs/"><span>Molotovs</span><span class="n">19</span></a><a href="/pt/hes/"><span>HEs</span><span class="n">9</span></a>      </details>
+      <details class="nav-g" data-k="maps" open>
+        <summary class="nav-h"><a href="/pt/mapas/">Mapas</a></summary>
+<a href="/pt/anubis/"><span>Anubis</span><span class="n">20</span></a><a href="/pt/cache/"><span>Cache</span><span class="n">19</span></a><a href="/pt/dust2/"><span>Dust2</span><span class="n">28</span></a><a href="/pt/inferno/"><span>Inferno</span><span class="n">7</span></a><a href="/pt/mirage/"><span>Mirage</span><span class="n">25</span></a>      </details>
+      <details class="nav-g" data-k="players" open>
+        <summary class="nav-h"><a href="/pt/jogadores/">Jogadores</a></summary>
+<a href="/pt/jogador/apex/" aria-current="page"><span>apEX</span></a><a href="/pt/jogador/fallen/"><span>FalleN</span></a><a href="/pt/jogador/flamez/"><span>flameZ</span></a><a href="/pt/jogador/heavygod/"><span>HeavyGod</span></a><a href="/pt/jogador/hunter/"><span>huNter</span></a><a href="/pt/jogador/karrigan/"><span>karrigan</span></a><a href="/pt/jogador/kscerato/"><span>KSCERATO</span></a><a href="/pt/jogador/kyousuke/"><span>kyousuke</span></a><a href="/pt/jogador/m0nesy/"><span>m0NESY</span></a><a href="/pt/jogador/matys/"><span>MATYS</span></a><a href="/pt/jogador/mezii/"><span>mezii</span></a><a href="/pt/jogador/molodoy/"><span>molodoy</span></a><a class="more" href="/pt/jogadores/">ver todos (25)</a>      </details>
+      <details class="nav-g" data-k="teams" open>
+        <summary class="nav-h"><a href="/pt/times/">Times</a></summary>
+<a href="/pt/time/falcons/"><span>Falcons</span></a><a href="/pt/time/furia/"><span>FURIA</span></a><a href="/pt/time/g2/"><span>G2</span></a><a href="/pt/time/mouz/"><span>MOUZ</span></a><a href="/pt/time/vitality/"><span>Vitality</span></a>      </details>
+      <details class="nav-g" data-k="events" open>
+        <summary class="nav-h"><a href="/pt/torneios/">Torneios</a></summary>
+<a href="/pt/torneio/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      </details>
+      <div class="nav-sep"></div>
       <a href="/pt/sobre/"><span>Sobre</span></a>
     </nav>
+    <script>
+      /* collapsed sections are remembered in this browser; applied before paint */
+      (function () {
+        var c = []; try { c = JSON.parse(localStorage.getItem("navClosed") || "[]"); } catch (e) {}
+        document.querySelectorAll(".nav-g").forEach(function (d) {
+          if (c.indexOf(d.dataset.k) >= 0 && !d.querySelector("[aria-current]")) d.open = false;
+          d.addEventListener("toggle", function () {
+            var s = []; document.querySelectorAll(".nav-g").forEach(function (x) { if (!x.open) s.push(x.dataset.k); });
+            try { localStorage.setItem("navClosed", JSON.stringify(s)); } catch (e) {}
+          });
+        });
+      })();
+    </script>
   </aside>
   <div class="scrim" id="scrim" hidden></div>
   <main class="content">

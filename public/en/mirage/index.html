@@ -38,14 +38,37 @@
   <aside class="side" id="side" aria-label="Navigation">
     <nav>
       <a href="/en/"><span>Home</span></a>
-      <div class="nav-h">Grenades</div>
-<a href="/en/smokes/"><span>Smokes</span><span class="n">47</span></a><a href="/en/flashes/"><span>Flashes</span><span class="n">24</span></a><a href="/en/molotovs/"><span>Molotovs</span><span class="n">19</span></a><a href="/en/hes/"><span>HEs</span><span class="n">9</span></a>      <div class="nav-h"><a href="/en/maps/">Maps</a></div>
-<a href="/en/anubis/"><span>Anubis</span><span class="n">20</span></a><a href="/en/cache/"><span>Cache</span><span class="n">19</span></a><a href="/en/dust2/"><span>Dust2</span><span class="n">28</span></a><a href="/en/inferno/"><span>Inferno</span><span class="n">7</span></a><a href="/en/mirage/" aria-current="page"><span>Mirage</span><span class="n">25</span></a>      <div class="nav-h"><a href="/en/players/">Players</a></div>
-<a href="/en/player/apex/"><span>apEX</span></a><a href="/en/player/fallen/"><span>FalleN</span></a><a href="/en/player/flamez/"><span>flameZ</span></a><a href="/en/player/heavygod/"><span>HeavyGod</span></a><a href="/en/player/hunter/"><span>huNter</span></a><a href="/en/player/karrigan/"><span>karrigan</span></a><a href="/en/player/kscerato/"><span>KSCERATO</span></a><a href="/en/player/kyousuke/"><span>kyousuke</span></a><a href="/en/player/m0nesy/"><span>m0NESY</span></a><a href="/en/player/matys/"><span>MATYS</span></a><a href="/en/player/mezii/"><span>mezii</span></a><a href="/en/player/molodoy/"><span>molodoy</span></a><a class="more" href="/en/players/">see all (25)</a>      <div class="nav-h"><a href="/en/teams/">Teams</a></div>
-<a href="/en/team/falcons/"><span>Falcons</span></a><a href="/en/team/furia/"><span>FURIA</span></a><a href="/en/team/g2/"><span>G2</span></a><a href="/en/team/mouz/"><span>MOUZ</span></a><a href="/en/team/vitality/"><span>Vitality</span></a>      <div class="nav-h"><a href="/en/tournaments/">Tournaments</a></div>
-<a href="/en/tournament/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      <div class="nav-sep"></div>
+      <details class="nav-g" data-k="types" open>
+        <summary class="nav-h"><span>Grenades</span></summary>
+<a href="/en/smokes/"><span>Smokes</span><span class="n">47</span></a><a href="/en/flashes/"><span>Flashes</span><span class="n">24</span></a><a href="/en/molotovs/"><span>Molotovs</span><span class="n">19</span></a><a href="/en/hes/"><span>HEs</span><span class="n">9</span></a>      </details>
+      <details class="nav-g" data-k="maps" open>
+        <summary class="nav-h"><a href="/en/maps/">Maps</a></summary>
+<a href="/en/anubis/"><span>Anubis</span><span class="n">20</span></a><a href="/en/cache/"><span>Cache</span><span class="n">19</span></a><a href="/en/dust2/"><span>Dust2</span><span class="n">28</span></a><a href="/en/inferno/"><span>Inferno</span><span class="n">7</span></a><a href="/en/mirage/" aria-current="page"><span>Mirage</span><span class="n">25</span></a>      </details>
+      <details class="nav-g" data-k="players" open>
+        <summary class="nav-h"><a href="/en/players/">Players</a></summary>
+<a href="/en/player/apex/"><span>apEX</span></a><a href="/en/player/fallen/"><span>FalleN</span></a><a href="/en/player/flamez/"><span>flameZ</span></a><a href="/en/player/heavygod/"><span>HeavyGod</span></a><a href="/en/player/hunter/"><span>huNter</span></a><a href="/en/player/karrigan/"><span>karrigan</span></a><a href="/en/player/kscerato/"><span>KSCERATO</span></a><a href="/en/player/kyousuke/"><span>kyousuke</span></a><a href="/en/player/m0nesy/"><span>m0NESY</span></a><a href="/en/player/matys/"><span>MATYS</span></a><a href="/en/player/mezii/"><span>mezii</span></a><a href="/en/player/molodoy/"><span>molodoy</span></a><a class="more" href="/en/players/">see all (25)</a>      </details>
+      <details class="nav-g" data-k="teams" open>
+        <summary class="nav-h"><a href="/en/teams/">Teams</a></summary>
+<a href="/en/team/falcons/"><span>Falcons</span></a><a href="/en/team/furia/"><span>FURIA</span></a><a href="/en/team/g2/"><span>G2</span></a><a href="/en/team/mouz/"><span>MOUZ</span></a><a href="/en/team/vitality/"><span>Vitality</span></a>      </details>
+      <details class="nav-g" data-k="events" open>
+        <summary class="nav-h"><a href="/en/tournaments/">Tournaments</a></summary>
+<a href="/en/tournament/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      </details>
+      <div class="nav-sep"></div>
       <a href="/en/about/"><span>About</span></a>
     </nav>
+    <script>
+      /* collapsed sections are remembered in this browser; applied before paint */
+      (function () {
+        var c = []; try { c = JSON.parse(localStorage.getItem("navClosed") || "[]"); } catch (e) {}
+        document.querySelectorAll(".nav-g").forEach(function (d) {
+          if (c.indexOf(d.dataset.k) >= 0 && !d.querySelector("[aria-current]")) d.open = false;
+          d.addEventListener("toggle", function () {
+            var s = []; document.querySelectorAll(".nav-g").forEach(function (x) { if (!x.open) s.push(x.dataset.k); });
+            try { localStorage.setItem("navClosed", JSON.stringify(s)); } catch (e) {}
+          });
+        });
+      })();
+    </script>
   </aside>
   <div class="scrim" id="scrim" hidden></div>
   <main class="content">
@@ -123,6 +146,38 @@
           <span class="badge diff-3">Hard</span>
           <span class="muted small">7 uses · jump throw · running · left click</span>
         </a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+<section class="execs" id="execucoes">
+  <h2>Pro executes</h2>
+  <p class="muted">Grenades the same team throws together in one round, in the order and timing they go out. Detected automatically from the matches.</p>
+  <div class="exec-list">
+    <div class="exec">
+      <div class="exec-head">
+        <span class="badge side-T">T</span>
+        <b>Execute: Stairs + CT Spawn</b>
+      </div>
+      <div class="muted small">seen 3 times · round won 0% ·
+Vitality (3)</div>
+      <ol class="exec-parts">
+        <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/en/mirage/smoke-stairs-from-t-spawn-t/">Smoke Stairs (from T Spawn)</a></li>
+        <li><span class="exec-t">+0.5s</span><span class="badge type-smoke">Smoke</span><a href="/en/mirage/smoke-ct-spawn-from-palace-alley-t/">Smoke CT Spawn (from Palace Alley)</a></li>
+        <li><span class="exec-t">+2.5s</span><span class="badge type-smoke">Smoke</span><a href="/en/mirage/smoke-a-site-from-t-spawn-t/">Smoke A Site (from T Spawn)</a></li>
+      </ol>
+    </div>
+    <div class="exec">
+      <div class="exec-head">
+        <span class="badge side-T">T</span>
+        <b>Execute: B Site</b>
+      </div>
+      <div class="muted small">seen 2 times · round won 50% ·
+Vitality (2)</div>
+      <ol class="exec-parts">
+        <li><span class="exec-t">+0.0s</span><span class="badge type-flash">Flash</span><a href="/en/mirage/flash-b-site-from-back-alley-t/">Flash B Site (from Back Alley)</a></li>
+        <li><span class="exec-t">+1.9s</span><span class="badge type-molotov">Molotov</span><a href="/en/mirage/molotov-b-site-from-apartments-t/">Molotov B Site (from Apartments)</a></li>
+        <li><span class="exec-t">+4.3s</span><span class="badge type-flash">Flash</span><a href="/en/mirage/flash-b-site-from-apartments-t/">Flash B Site (from Apartments)</a></li>
       </ol>
     </div>
   </div>
