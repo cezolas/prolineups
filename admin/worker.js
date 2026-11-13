@@ -36,47 +36,58 @@ function b64urlToBytes(s) {
 }
 const b64urlToJson = s => JSON.parse(new TextDecoder().decode(b64urlToBytes(s)));
 
-async function accessKeys(env) {
+async function accessKeys(cfg) {
   if (Date.now() - certsCache.at < 3600_000 && certsCache.keys.length) return certsCache.keys;
-  const r = await fetch(`https://${env.ACCESS_TEAM_DOMAIN}/cdn-cgi/access/certs`);
+  const r = await fetch(`https://${cfg.team}/cdn-cgi/access/certs`);
   if (!r.ok) throw new Error("não consegui ler as chaves do Cloudflare Access");
   certsCache = { at: Date.now(), keys: (await r.json()).keys || [] };
   return certsCache.keys;
 }
 
-// Returns the verified Access identity ({ email } for people, { common_name } for service tokens) or null.
-async function verifyAccess(request, env) {
+// Dashboard values are often pasted with spaces, quotes or "https://": normalise them.
+function settings(env) {
+  const clean = v => String(v ?? "").trim().replace(/^["']|["']$/g, "").trim();
+  return {
+    team: clean(env.ACCESS_TEAM_DOMAIN).replace(/^https?:\/\//, "").replace(/\/+$/, ""),
+    aud: clean(env.ACCESS_AUD),
+    admins: clean(env.ADMIN_EMAILS).toLowerCase().split(/[,;\s]+/).filter(Boolean),
+    syncId: clean(env.SYNC_CLIENT_ID),
+  };
+}
+
+// Checks the Cloudflare Access JWT. Returns { identity } or { reason } (why access is denied; never grants anything).
+async function verifyAccess(request, cfg) {
   const token = request.headers.get("Cf-Access-Jwt-Assertion");
-  if (!token || !env.ACCESS_TEAM_DOMAIN) return null;
+  if (!cfg.team) return { reason: "a variável ACCESS_TEAM_DOMAIN não está configurada no Worker." };
+  if (!token) return { reason: "não chegou nenhum login do Cloudflare Access. O Access não está protegendo este endereço: " +
+                                "no Worker, aba Access, escolha \"All traffic\" e uma regra com o seu e-mail." };
   const parts = token.split(".");
-  if (parts.length !== 3) return null;
+  if (parts.length !== 3) return { reason: "login em formato inválido." };
   let header, payload;
-  try { header = b64urlToJson(parts[0]); payload = b64urlToJson(parts[1]); } catch { return null; }
-  if (header.alg !== "RS256") return null;
-  let keys = await accessKeys(env);
+  try { header = b64urlToJson(parts[0]); payload = b64urlToJson(parts[1]); } catch { return { reason: "login ilegível." }; }
+  if (header.alg !== "RS256") return { reason: "login com algoritmo inesperado." };
+  let keys = await accessKeys(cfg);
   let jwk = keys.find(k => k.kid === header.kid);
-  if (!jwk) { certsCache.at = 0; keys = await accessKeys(env); jwk = keys.find(k => k.kid === header.kid); }
-  if (!jwk) return null;
+  if (!jwk) { certsCache.at = 0; keys = await accessKeys(cfg); jwk = keys.find(k => k.kid === header.kid); }
+  if (!jwk) return { reason: "o login não foi assinado pelo seu time do Cloudflare (confira ACCESS_TEAM_DOMAIN)." };
   const key = await crypto.subtle.importKey("jwk", jwk, { name: "RSASSA-PKCS1-v1_5", hash: "SHA-256" }, false, ["verify"]);
   const ok = await crypto.subtle.verify("RSASSA-PKCS1-v1_5", key, b64urlToBytes(parts[2]),
                                         new TextEncoder().encode(`${parts[0]}.${parts[1]}`));
-  if (!ok) return null;
+  if (!ok) return { reason: "assinatura do login inválida." };
   const now = Math.floor(Date.now() / 1000);
-  if (typeof payload.exp !== "number" || payload.exp < now) return null;
-  if (payload.iss !== `https://${env.ACCESS_TEAM_DOMAIN}`) return null;
-  const aud = Array.isArray(payload.aud) ? payload.aud : [payload.aud];
-  // Setup helper: with no ACCESS_AUD yet, a token correctly signed by YOUR team only reveals its audience, so the
-  // owner can copy it into the Worker variables. It never grants access.
-  if (!env.ACCESS_AUD) return { setup_aud: aud.filter(Boolean).join(", ") };
-  if (!aud.includes(env.ACCESS_AUD)) return null;
-  return payload;
+  if (typeof payload.exp !== "number" || payload.exp < now) return { reason: "login expirado; entre de novo." };
+  if (payload.iss !== `https://${cfg.team}`) return { reason: "login emitido por outro time (confira ACCESS_TEAM_DOMAIN)." };
+  const aud = (Array.isArray(payload.aud) ? payload.aud : [payload.aud]).filter(Boolean);
+  // Setup helper: with no ACCESS_AUD yet, a token correctly signed by YOUR team only reveals its audience.
+  if (!cfg.aud) return { setup_aud: aud.join(", ") };
+  if (!aud.includes(cfg.aud)) return { reason: "o AUD deste login (" + aud.join(", ") + ") é diferente da variável ACCESS_AUD." };
+  return { identity: payload };
 }
 
-function role(identity, env) {
+function role(identity, cfg) {
   if (!identity) return null;
-  const admins = String(env.ADMIN_EMAILS || "").toLowerCase().split(/[,\s]+/).filter(Boolean);
-  if (identity.email && admins.includes(String(identity.email).toLowerCase())) return "admin";
-  if (identity.common_name && env.SYNC_CLIENT_ID && identity.common_name === env.SYNC_CLIENT_ID) return "sync";
+  if (identity.email && cfg.admins.includes(String(identity.email).toLowerCase())) return "admin";
+  if (identity.common_name && cfg.syncId && identity.common_name === cfg.syncId) return "sync";
   return null;
 }
 
@@ -95,18 +106,26 @@ async function readJSON(env, key, fallback) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    let identity;
-    try { identity = await verifyAccess(request, env); } catch (e) { return json({ error: String(e.message || e) }, 503); }
-    if (identity && identity.setup_aud) {
+    const cfg = settings(env);
+    let check;
+    try { check = await verifyAccess(request, cfg); } catch (e) { return json({ error: String(e.message || e) }, 503); }
+    const identity = check.identity || null;
+    if (check.setup_aud) {
       return new Response(
         "Configuração do Admin quase pronta.\n\nNo Cloudflare, abra o Worker prolineups-admin > Settings > Variables and Secrets " +
         "e crie a variável:\n\n  ACCESS_AUD = " + identity.setup_aud + "\n\nDepois recarregue esta página.",
         { status: 403, headers: { "content-type": "text/plain; charset=utf-8", "cache-control": "no-store" } });
     }
-    const who = role(identity, env);
+    const who = role(identity, cfg);
     if (!who) {
-      return new Response("Acesso negado. Entre com um e-mail autorizado (Cloudflare Access).", {
-        status: 403, headers: { "content-type": "text/plain; charset=utf-8" } });
+      let why = check.reason;
+      if (!why && identity) {
+        why = identity.email
+          ? `o e-mail ${identity.email} não está na variável ADMIN_EMAILS.`
+          : `o token de serviço ${identity.common_name || "(sem nome)"} não é o da variável SYNC_CLIENT_ID.`;
+      }
+      return new Response("Acesso negado. Motivo: " + (why || "desconhecido."), {
+        status: 403, headers: { "content-type": "text/plain; charset=utf-8", "cache-control": "no-store" } });
     }
 
     if (!url.pathname.startsWith("/api/")) {
