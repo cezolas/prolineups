@@ -14,7 +14,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Lineups Pro">
-<meta name="theme-color" content="#0f1115">
+<meta name="theme-color" content="#0b0f15">
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light"; } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/static/style.css">
 <script>window.I18N = {"copied": "Copiado!", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "throws_in": "lan\u00e7a em {s}s"}; window.LANG = "pt";</script>
@@ -30,6 +31,7 @@
     </div>
     <nav class="langs" aria-label="Idioma">
 <a href="/pt/anubis/flash-connector-from-b-site-ct/" hreflang="pt" lang="pt" aria-current="true" title="Português">PT</a><a href="/en/anubis/flash-connector-from-b-site-ct/" hreflang="en" lang="en" title="English">EN</a>    </nav>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="Alternar modo claro/escuro" title="Alternar modo claro/escuro"><span class="i-moon" aria-hidden="true">☾</span><span class="i-sun" aria-hidden="true">☀</span></button>
   </div>
 </header>
 <div class="layout">

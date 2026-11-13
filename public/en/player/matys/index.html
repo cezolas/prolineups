@@ -14,7 +14,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Lineups Pro">
-<meta name="theme-color" content="#0f1115">
+<meta name="theme-color" content="#0b0f15">
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light"; } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/static/style.css">
 <script>window.I18N = {"copied": "Copied!", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "throws_in": "throws in {s}s"}; window.LANG = "en";</script>
@@ -30,6 +31,7 @@
     </div>
     <nav class="langs" aria-label="Language">
 <a href="/pt/jogador/matys/" hreflang="pt" lang="pt" title="Português">PT</a><a href="/en/player/matys/" hreflang="en" lang="en" aria-current="true" title="English">EN</a>    </nav>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="Toggle light/dark mode" title="Toggle light/dark mode"><span class="i-moon" aria-hidden="true">☾</span><span class="i-sun" aria-hidden="true">☀</span></button>
   </div>
 </header>
 <div class="layout">

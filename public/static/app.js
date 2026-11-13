@@ -96,3 +96,18 @@
     const old = b.textContent; b.textContent = T.copied || "Copiado!"; setTimeout(() => b.textContent = old, 1500);
   });
 })();
+
+// light / dark toggle (choice kept in this browser; default dark)
+(function () {
+  const b = document.getElementById("themeBtn"); if (!b) return;
+  const meta = document.querySelector('meta[name="theme-color"]');
+  const sync = () => { const light = document.documentElement.dataset.theme === "light";
+    b.setAttribute("aria-pressed", String(light)); if (meta) meta.content = light ? "#ffffff" : "#0b0f15"; };
+  b.addEventListener("click", () => {
+    const light = document.documentElement.dataset.theme !== "light";
+    if (light) document.documentElement.dataset.theme = "light"; else delete document.documentElement.dataset.theme;
+    try { localStorage.setItem("theme", light ? "light" : "dark"); } catch (e) {}
+    sync();
+  });
+  sync();
+})();
