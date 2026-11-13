@@ -50,7 +50,8 @@ function settings(env) {
   return {
     team: clean(env.ACCESS_TEAM_DOMAIN).replace(/^https?:\/\//, "").replace(/\/+$/, ""),
     aud: clean(env.ACCESS_AUD),
-    admins: clean(env.ADMIN_EMAILS).toLowerCase().split(/[,;\s]+/).filter(Boolean),
+    // ADMIN_EMAILS (preferred) or ADMIN_EMAIL; both may hold several e-mails separated by commas
+    admins: [clean(env.ADMIN_EMAILS), clean(env.ADMIN_EMAIL)].join(",").toLowerCase().split(/[,;\s]+/).filter(Boolean),
     syncId: clean(env.SYNC_CLIENT_ID),
   };
 }
