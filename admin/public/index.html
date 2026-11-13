@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin Lineups Pro</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root { --bg: #0f1115; --panel: #171a21; --panel2: #1e222b; --line: #2a2f3a; --text: #e6e8ec; --muted: #8b93a3; --accent: #f5b83d; --ok: #4ade80; --bad: #f87171; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.45 system-ui, Segoe UI, sans-serif; }
+  .shell { display: grid; grid-template-columns: 220px minmax(0, 1fr); min-height: 100vh; }
+  .menu { border-right: 1px solid var(--line); padding: 16px 10px; background: var(--panel); }
+  .menu h1 { font-size: 15px; margin: 0 10px 4px; }
+  .menu .who { margin: 0 10px 16px; font-size: 12px; color: var(--muted); }
+  .menu a { display: block; padding: 7px 10px; border-radius: 8px; color: #c9cdd6; text-decoration: none; }
+  .menu a:hover { background: var(--panel2); color: var(--text); }
+  .menu a.on { background: var(--panel2); color: var(--text); box-shadow: inset 3px 0 0 var(--accent); }
+  .menu .h { margin: 16px 10px 4px; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  main { padding: 18px 22px; min-width: 0; }
+  h2 { margin: 0 0 4px; font-size: 20px; }
+  .muted { color: var(--muted); }
+  .bar { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0; }
+  select, input, button { background: var(--panel2); color: var(--text); border: 1px solid var(--line); border-radius: 6px; padding: 6px 9px; font: inherit; }
+  button { cursor: pointer; } button:hover { border-color: var(--muted); }
+  .grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, 560px); gap: 18px; align-items: start; }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+  th { color: var(--muted); font-weight: 500; font-size: 12px; position: sticky; top: 0; background: var(--bg); }
+  tr.sel td { background: #1c2230; }
+  td.place { font-family: ui-monospace, Consolas, monospace; font-size: 12.5px; color: #c9cdd6; cursor: pointer; }
+  td input { width: 100%; }
+  td input.changed { border-color: var(--accent); }
+  .num { color: var(--muted); font-size: 12px; white-space: nowrap; }
+  .merge { font-size: 11px; color: var(--accent); }
+  .saved { color: var(--ok); font-size: 12px; }
+  .err { color: var(--bad); font-size: 12px; }
+  .mapbox { position: sticky; top: 14px; }
+  canvas { width: 100%; aspect-ratio: 1; background: #14161b; border-radius: 10px; display: block; }
+  .tablewrap { max-height: calc(100vh - 170px); overflow: auto; }
+  .hint { font-size: 12px; margin-top: 8px; }
+  @media (max-width: 900px) { .shell { grid-template-columns: 1fr; } .grid { grid-template-columns: 1fr; } .mapbox { position: static; } }
+</style>
+</head>
+<body>
+<div class="shell">
+  <nav class="menu" aria-label="Admin">
+    <h1>Admin</h1>
+    <div class="who" id="who">Lineups Pro · online</div>
+    <div class="h">Conteúdo</div>
+    <a class="on" href="/">De-Para de lugares</a>
+    <div class="h">Histórico</div>
+    <a href="#" id="auditLink">Últimas alterações</a>
+    <div class="h">Site</div>
+    <a href="https://prolineups.cezolas.workers.dev" target="_blank" rel="noopener">Abrir o site</a>
+  </nav>
+  <main>
+    <h2>De-Para de lugares</h2>
+    <div class="muted">Cada lugar do jogo (nome interno da Valve) aparece no site com o nome da coluna do idioma da página: nos nomes das lineups, nos filtros "onde cai" e no mapa 2D.
+      Dê o mesmo nome a dois lugares para juntá-los (ex.: TopofMid e Middle → "Mid"). Deixe vazio para voltar ao padrão.</div>
+    <div class="bar">
+      <select id="mapSel" aria-label="Mapa"></select>
+      <input id="filter" type="search" placeholder="Filtrar lugares…" aria-label="Filtrar">
+      <label class="muted">Mapa 2D em <select id="mapLang" aria-label="Idioma do mapa"></select></label>
+      <span id="status" class="muted"></span>
+    </div>
+    <div class="grid">
+      <div class="tablewrap">
+        <table>
+          <thead><tr id="headRow"><th>Lugar no jogo</th><th title="lineups jogadas de / que caem em (publicadas)">Lineups de · para</th><th></th></tr></thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+      <div class="mapbox">
+        <canvas id="cv" width="1024" height="1024" aria-label="Mapa com os nomes dos lugares"></canvas>
+        <div class="hint muted">Clique num nome no mapa ou na tabela para destacar. As mudanças ficam salvas aqui na hora e entram
+          no site na próxima execução do piloto automático. Atenção: renomear muda o endereço (URL) das lineups daquele lugar.</div>
+        <div id="audit" class="hint" hidden></div>
+      </div>
+    </div>
+  </main>
+</div>
+<script>
+const $ = id => document.getElementById(id);
+const S = { map: null, data: null, img: null, sel: null };
+const cv = $("cv"), ctx = cv.getContext("2d");
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+async function api(path, body) {
+  const r = await fetch(path, body ? { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) } : {});
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(j.error || `HTTP ${r.status}`);
+  return j;
+}
+
+async function init() {
+  const me = await api("/api/me").catch(() => null);
+  if (me && me.email) $("who").textContent = `Logado como ${me.email}`;
+  const { maps } = await (await fetch("/lugares/index.json", { cache: "no-store" })).json();
+  $("mapSel").innerHTML = maps.map(m => `<option value="${m}">${m.replace("de_", "")}</option>`).join("");
+  $("mapSel").onchange = () => load($("mapSel").value);
+  $("filter").oninput = render;
+  $("auditLink").onclick = async e => { e.preventDefault(); await showAudit(); };
+  await load(new URLSearchParams(location.search).get("mapa") || maps[0]);
+}
+
+async function load(map) {
+  $("mapSel").value = map;
+  S.map = map; S.sel = null;
+  const base = await (await fetch(`/lugares/${map}.json`, { cache: "no-store" })).json();
+  const { overrides } = await api(`/api/places/${encodeURIComponent(map)}`);
+  for (const p of base.places) {
+    const o = overrides[p.place] || {};
+    const perLang = o.display !== undefined ? { pt: o } : o; // old single-language entries were Portuguese
+    for (const [lg, e] of Object.entries(perLang)) {
+      if (!base.langs.includes(lg)) continue;
+      p.names[lg] = e.display || p.defaults[lg];
+      (p.by ??= {})[lg] = e.by; (p.at ??= {})[lg] = e.at;
+    }
+  }
+  S.data = base;
+  S.img = await new Promise(res => { const i = new Image(); i.onload = () => res(i); i.onerror = () => res(null); i.src = `/radars/${map.replace("de_", "")}.webp`; });
+  render();
+}
+
+async function showAudit() {
+  const { items } = await api("/api/audit");
+  const box = $("audit"); box.hidden = false;
+  box.innerHTML = "<b>Últimas alterações</b><br>" + (items.slice(0, 40).map(a =>
+    `${esc(a.at.slice(0, 16).replace("T", " "))} · ${esc(a.by)} · ${esc(a.map.replace("de_", ""))} · ${esc(a.place)} [${esc((a.lang || "pt").toUpperCase())}] → ${esc(a.display || "(padrão)")}`).join("<br>") || "nenhuma");
+}
+
+function render() {
+  const q = $("filter").value.trim().toLowerCase();
+  const langs = S.data.langs;
+  $("headRow").innerHTML = `<th>Lugar no jogo</th>${langs.map(lg => `<th>Nome (${lg.toUpperCase()})</th>`).join("")}<th title="lineups jogadas de / que caem em (publicadas)">Lineups de · para</th><th></th>`;
+  if ($("mapLang").options.length !== langs.length) {
+    $("mapLang").innerHTML = langs.map(lg => `<option value="${lg}">${lg.toUpperCase()}</option>`).join("");
+    $("mapLang").onchange = draw;
+  }
+  const byName = {};
+  S.data.places.forEach(p => langs.forEach(lg => (byName[lg + "|" + p.names[lg].toLowerCase()] ??= []).push(p.place)));
+  const rows = S.data.places.filter(p => !q || p.place.toLowerCase().includes(q) || langs.some(lg => p.names[lg].toLowerCase().includes(q)));
+  $("rows").innerHTML = rows.map(p => `<tr data-place="${esc(p.place)}" class="${S.sel === p.place ? "sel" : ""}">
+      <td class="place">${esc(p.place)}</td>
+      ${langs.map(lg => {
+        const merged = byName[lg + "|" + p.names[lg].toLowerCase()].filter(x => x !== p.place);
+        return `<td><input data-lang="${lg}" value="${esc(p.names[lg])}" placeholder="${esc(p.defaults[lg])}" data-orig="${esc(p.names[lg])}" aria-label="${esc(p.place)} (${lg})">
+          ${merged.length ? `<div class="merge">junto com ${merged.map(esc).join(", ")}</div>` : ""}${p.by && p.by[lg] ? `<div class="num" title="${esc(p.at[lg])}">por ${esc(p.by[lg].split("@")[0])}</div>` : ""}<div class="msg" data-msg="${lg}"></div></td>`;
+      }).join("")}
+      <td class="num">${p.from_pub} · ${p.to_pub} <span title="todas, incluindo não publicadas">(${p.from} · ${p.to})</span></td>
+      <td><button data-reset title="Voltar aos nomes padrão">padrão</button></td></tr>`).join("");
+  $("status").textContent = `${S.data.places.length} lugares · ${langs.map(x => x.toUpperCase()).join(" / ")}`;
+  draw();
+}
+
+$("rows").addEventListener("click", e => {
+  const tr = e.target.closest("tr"); if (!tr) return;
+  if (e.target.matches("[data-reset]")) { S.data.langs.forEach(lg => save(tr, "", lg)); return; }
+  if (e.target.closest("td.place")) { S.sel = tr.dataset.place; render(); }
+});
+$("rows").addEventListener("input", e => { if (e.target.matches("input")) e.target.classList.toggle("changed", e.target.value !== e.target.dataset.orig); });
+$("rows").addEventListener("keydown", e => { if (e.target.matches("input") && e.key === "Enter") { e.preventDefault(); e.target.blur(); } });
+$("rows").addEventListener("focusin", e => { const tr = e.target.closest("tr"); if (tr && S.sel !== tr.dataset.place) { S.sel = tr.dataset.place; document.querySelectorAll("#rows tr").forEach(r => r.classList.toggle("sel", r === tr)); draw(); } });
+$("rows").addEventListener("focusout", e => {
+  if (!e.target.matches("input")) return;
+  if (e.target.value.trim() !== e.target.dataset.orig) save(e.target.closest("tr"), e.target.value, e.target.dataset.lang);
+});
+
+async function save(tr, value, lang) {
+  const place = tr.dataset.place, msg = tr.querySelector(`[data-msg="${lang}"]`);
+  try {
+    const r = await api("/api/places", { map: S.map, place, lang, display: value });
+    const row = S.data.places.find(p => p.place === place);
+    const shown = r.entry ? (r.entry.display || row.defaults[lang]) : r.display;
+    row.names[lang] = shown;
+    if (r.entry) { (row.by ??= {})[lang] = r.entry.by; (row.at ??= {})[lang] = r.entry.at; }
+    S.sel = place; render();
+    const m = document.querySelector(`#rows tr[data-place="${CSS.escape(place)}"] [data-msg="${lang}"]`);
+    if (m) { m.className = "msg saved"; m.textContent = "salvo ✓"; }
+  } catch (err) { if (msg) { msg.className = "msg err"; msg.textContent = err.message; } }
+}
+
+function draw() {
+  ctx.clearRect(0, 0, 1024, 1024);
+  if (S.img) ctx.drawImage(S.img, 0, 0, 1024, 1024);
+  ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.lineJoin = "round";
+  const seen = new Set();
+  const lg = $("mapLang").value || S.data.langs[0];
+  const order = [...S.data.places].sort((a, b) => (a.place === S.sel) - (b.place === S.sel) || b.samples - a.samples);
+  for (const p of order) {
+    const sel = p.place === S.sel, label = p.names[lg], key = label.toLowerCase();
+    if (seen.has(key) && !sel) continue; // merged places: one label
+    seen.add(key);
+    if (sel) { ctx.fillStyle = "rgba(245,184,61,.25)"; ctx.beginPath(); ctx.arc(p.x, p.y, 34, 0, 7); ctx.fill(); }
+    ctx.font = `${sel ? 700 : 600} ${sel ? 24 : 18}px system-ui`;
+    ctx.lineWidth = 6; ctx.strokeStyle = "rgba(11,13,17,.92)"; ctx.strokeText(label, p.x, p.y);
+    ctx.fillStyle = sel ? "#f5b83d" : "rgba(233,236,241,.9)"; ctx.fillText(label, p.x, p.y);
+  }
+}
+
+cv.addEventListener("click", e => {
+  const r = cv.getBoundingClientRect(), k = 1024 / r.width, x = (e.clientX - r.left) * k, y = (e.clientY - r.top) * k;
+  let best = null, bd = 60;
+  for (const p of S.data.places) { const d = Math.hypot(p.x - x, p.y - y); if (d < bd) { bd = d; best = p; } }
+  if (!best) return;
+  S.sel = best.place; render();
+  const tr = document.querySelector(`#rows tr[data-place="${CSS.escape(best.place)}"]`);
+  tr?.scrollIntoView({ block: "center" }); tr?.querySelector(`input[data-lang="${$("mapLang").value}"]`)?.focus();
+});
+
+init().catch(e => document.body.insertAdjacentHTML("afterbegin", `<pre style="color:#f87171;padding:16px">${esc(e.message)}</pre>`));
+</script>
+</body>
+</html>

@@ -2,6 +2,7 @@
 (() => {
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const T = window.I18N || {}, LANG = window.LANG || "pt";
   const norm = s => (s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 
   // ---------------------------------------------------------------- search
@@ -9,11 +10,11 @@
   let index = null, sel = -1;
   async function loadIndex() {
     if (index) return index;
-    try { index = await (await fetch("/dados/busca.json")).json(); } catch { index = []; }
+    try { index = await (await fetch(`/dados/busca-${LANG}.json`)).json(); } catch { index = []; }
     index.forEach(it => it._k = norm(it.k + " " + it.n));
     return index;
   }
-  const KIND = { lineup: "lineup", jogador: "jogador", time: "time", torneio: "torneio", mapa: "mapa" };
+  const KIND = T.kinds || { lineup: "lineup", jogador: "jogador", time: "time", torneio: "torneio", mapa: "mapa" };
   const ORDER = { mapa: 0, jogador: 1, time: 2, torneio: 3, lineup: 4 };
   async function search() {
     const terms = norm(q.value).split(/\s+/).filter(Boolean);
@@ -23,7 +24,7 @@
       .sort((a, b) => ORDER[a.t] - ORDER[b.t]).slice(0, 12);
     sel = -1;
     box.innerHTML = hits.map(h => `<a href="${h.u}"><span class="k">${KIND[h.t]}</span><span>${h.n.replace(/</g, "&lt;")}</span></a>`).join("")
-      || `<div class="muted" style="padding:10px 12px">Nada encontrado.</div>`;
+      || `<div class="muted" style="padding:10px 12px">${T.no_results || "Nada encontrado."}</div>`;
     box.hidden = false;
   }
   if (q) {
@@ -45,31 +46,44 @@
   // ---------------------------------------------------------------- map filters
   const filters = $("#filters");
   if (filters) {
-    const state = { type: "", side: "", area: "", teams: "", players: "" };
+    const state = { type: "", side: "", area: "", teams: "", players: "", map: "" };
+    const names = { type: "tipo", side: "lado", area: "onde", teams: "time", players: "jogador", map: "mapa" };
     const params = new URLSearchParams(location.search);
-    for (const k of Object.keys(state)) state[k] = params.get(k === "teams" ? "time" : k === "players" ? "jogador" : k === "type" ? "tipo" : k === "side" ? "lado" : "onde") || "";
+    for (const k of Object.keys(state)) state[k] = params.get(names[k]) || "";
     const cards = $$("#cards .card");
     function apply() {
       let shown = 0;
       for (const c of cards) {
         const ok = (!state.type || c.dataset.type === state.type) && (!state.side || c.dataset.side === state.side) &&
-          (!state.area || c.dataset.area === state.area) &&
+          (!state.area || c.dataset.area === state.area) && (!state.map || c.dataset.map === state.map) &&
           (!state.teams || c.dataset.teams.split(" ").includes(state.teams)) &&
           (!state.players || c.dataset.players.split(" ").includes(state.players));
         c.hidden = !ok; if (ok) shown++;
       }
-      $("#shown").textContent = `${shown} lineup${shown === 1 ? "" : "s"}`;
+      $("#shown").textContent = `${shown} ${shown === 1 ? (T.lineup_1 || "lineup") : (T.lineup_n || "lineups")}`;
       $("#empty").hidden = shown > 0;
       $$("button[data-f]", filters).forEach(b => b.classList.toggle("on", state[b.dataset.f] === b.dataset.v));
       $$("select[data-f]", filters).forEach(s => s.value = state[s.dataset.f]);
       const p = new URLSearchParams();
-      const names = { type: "tipo", side: "lado", area: "onde", teams: "time", players: "jogador" };
       for (const [k, v] of Object.entries(state)) if (v) p.set(names[k], v);
       history.replaceState(null, "", p.toString() ? "?" + p : location.pathname);
     }
     filters.addEventListener("click", e => { const b = e.target.closest("button[data-f]"); if (b) { state[b.dataset.f] = b.dataset.v; apply(); } });
     filters.addEventListener("change", e => { const s = e.target.closest("select[data-f]"); if (s) { state[s.dataset.f] = s.value; apply(); } });
     apply();
+  }
+
+  // ---------------------------------------------------------------- mobile menu (drawer)
+  const side = $("#side"), scrim = $("#scrim"), menuBtn = $("#menuBtn");
+  function menu(open) {
+    side.classList.toggle("open", open); scrim.hidden = !open;
+    menuBtn.setAttribute("aria-expanded", String(open)); document.body.style.overflow = open ? "hidden" : "";
+  }
+  if (menuBtn) {
+    menuBtn.addEventListener("click", () => menu(!side.classList.contains("open")));
+    scrim.addEventListener("click", () => menu(false));
+    document.addEventListener("keydown", e => { if (e.key === "Escape") menu(false); });
+    side.querySelector("[aria-current]")?.scrollIntoView({ block: "center" });
   }
 
   // ---------------------------------------------------------------- copy buttons
@@ -79,6 +93,6 @@
     try { await navigator.clipboard.writeText(text); } catch {
       const r = document.createRange(); r.selectNodeContents($(b.dataset.copy)); getSelection().removeAllRanges(); getSelection().addRange(r);
     }
-    const old = b.textContent; b.textContent = "Copiado!"; setTimeout(() => b.textContent = old, 1500);
+    const old = b.textContent; b.textContent = T.copied || "Copiado!"; setTimeout(() => b.textContent = old, 1500);
   });
 })();

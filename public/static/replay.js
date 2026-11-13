@@ -5,6 +5,7 @@
   const range = root.querySelector("input[type=range]"), playBtn = root.querySelector("[data-act=play]");
   const out = root.querySelector("[data-out=time]");
   const M = JSON.parse(root.dataset.mapdef), uses = JSON.parse(root.dataset.uses);
+  const LABELS = JSON.parse(root.dataset.labels || "[]"); // [[name, radarX, radarY]]
   const css = n => getComputedStyle(document.documentElement).getPropertyValue("--" + n).trim();
   const C = { smoke: css("smoke"), flash: css("flash"), molotov: css("molotov"), he: css("he"), decoy: css("decoy"), T: css("t"), CT: css("ct") };
   const EFF = { smoke: [144, 18], molotov: [120, 7], flash: [60, .35], he: [100, .35], decoy: [30, 2] };
@@ -41,6 +42,13 @@
     ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, cv.width, cv.height);
     ctx.setTransform(s, 0, 0, s, -vx * s, -vy * s);
     if (radar.complete) ctx.drawImage(radar, 0, 0, 1024, 1024);
+    // place names (De-Para), drawn under players and grenades
+    ctx.font = `600 ${12 * (1 / s) * 1.2}px system-ui`; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+    ctx.lineJoin = "round"; ctx.lineWidth = 3.5 / s; ctx.strokeStyle = "rgba(11,13,17,.9)"; ctx.fillStyle = "rgba(233,236,241,.8)";
+    for (const [name, x, y] of LABELS) {
+      if (x < vx || x > vx + vs || y < vy || y > vy + vs) continue;
+      ctx.strokeText(name, x, y); ctx.fillText(name, x, y);
+    }
     if (!D) return;
     const lw = 1 / s;
     for (const n of D.nades) {
@@ -70,7 +78,8 @@
       ctx.fillStyle = "#fff"; ctx.fillText(D.players[p[0]] || "", x, y - r * 1.7);
     }
     const sec = (t - D.throw) / 64;
-    out.textContent = sec < 0 ? `lança em ${(-sec).toFixed(1)}s` : `+${sec.toFixed(1)}s`;
+    const T = window.I18N || {};
+    out.textContent = sec < 0 ? (T.throws_in || "lança em {s}s").replace("{s}", (-sec).toFixed(1)) : `+${sec.toFixed(1)}s`;
   }
 
   function loop(ts) {
