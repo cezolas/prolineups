@@ -38,6 +38,18 @@
   .mapbox { position: sticky; top: 14px; }
   canvas { width: 100%; aspect-ratio: 1; background: #14161b; border-radius: 10px; display: block; }
   .tablewrap { max-height: calc(100vh - 170px); overflow: auto; }
+  .rm-form { display: flex; flex-direction: column; gap: 8px; margin: 14px 0 18px; max-width: 760px; }
+  .rm-form textarea { resize: vertical; font: inherit; background: var(--panel2); color: var(--text); border: 1px solid var(--line); border-radius: 6px; padding: 6px 9px; }
+  .rm-board { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; align-items: start; }
+  .rm-col { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; }
+  .rm-col h3 { margin: 0; padding: 8px 10px; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; border-bottom: 1px solid var(--line); color: #c9d6e6; }
+  .rm-item { margin: 8px; padding: 8px 10px; background: var(--panel2); border-radius: 6px; border-left: 3px solid var(--line); }
+  .rm-item.p1 { border-left-color: var(--bad); } .rm-item.p2 { border-left-color: var(--accent); } .rm-item.p3 { border-left-color: #4b5563; }
+  .rm-item .t { font-weight: 600; } .rm-item .d { white-space: pre-wrap; font-size: 13px; color: #c3c9d3; margin: 4px 0; }
+  .rm-item .m { font-size: 11px; color: var(--muted); }
+  .rm-item .acts { display: flex; gap: 6px; margin-top: 6px; flex-wrap: wrap; }
+  .rm-item .acts select, .rm-item .acts button { font-size: 12px; padding: 3px 6px; }
+  .rm-note { font-size: 12px; margin-top: 6px; padding: 6px 8px; background: #1b2028; border-radius: 4px; white-space: pre-wrap; }
   .hint { font-size: 12px; margin-top: 8px; }
   @media (max-width: 900px) { .shell { grid-template-columns: 1fr; } .grid { grid-template-columns: 1fr; } .mapbox { position: static; } }
 </style>
@@ -48,13 +60,30 @@
     <h1>Admin</h1>
     <div class="who" id="who">Lineups Pro · online</div>
     <div class="h">Conteúdo</div>
-    <a class="on" href="/">De-Para de lugares</a>
+    <a class="on" href="#de-para" data-view="depara">De-Para de lugares</a>
+    <a href="#roadmap" data-view="roadmap">Roadmap</a>
     <div class="h">Histórico</div>
     <a href="#" id="auditLink">Últimas alterações</a>
     <div class="h">Site</div>
     <a href="https://prolineups.cezolas.workers.dev" target="_blank" rel="noopener">Abrir o site</a>
   </nav>
   <main>
+  <section id="view-roadmap" hidden>
+    <h2>Roadmap</h2>
+    <div class="muted">Ideias para o site. O Claude trabalha nos itens <b>Aprovados</b>: implementa, testa e devolve como
+      <b>Pronto para revisão</b> com uma nota do que fez. Você confere e move para <b>Feito</b>.</div>
+    <form id="rmForm" class="rm-form">
+      <input id="rmTitle" placeholder="Título da ideia (ex.: página de times com logo)" maxlength="140" aria-label="Título">
+      <textarea id="rmDesc" rows="3" placeholder="Detalhes: o que, por quê, exemplo de como deveria ficar…" maxlength="4000" aria-label="Descrição"></textarea>
+      <div class="bar" style="margin:0">
+        <label class="muted">Prioridade <select id="rmPrio"><option value="1">Alta</option><option value="2" selected>Média</option><option value="3">Baixa</option></select></label>
+        <button type="submit">Adicionar ideia</button>
+        <span id="rmMsg" class="muted"></span>
+      </div>
+    </form>
+    <div id="rmBoard" class="rm-board"></div>
+  </section>
+  <section id="view-depara">
     <h2>De-Para de lugares</h2>
     <div class="muted">Cada lugar do jogo (nome interno da Valve) aparece no site com o nome da coluna do idioma da página: nos nomes das lineups, nos filtros "onde cai" e no mapa 2D.
       Dê o mesmo nome a dois lugares para juntá-los (ex.: TopofMid e Middle → "Mid"). Deixe vazio para voltar ao padrão.</div>
@@ -78,6 +107,7 @@
         <div id="audit" class="hint" hidden></div>
       </div>
     </div>
+  </section>
   </main>
 </div>
 <script>
@@ -209,6 +239,63 @@ cv.addEventListener("click", e => {
   tr?.scrollIntoView({ block: "center" }); tr?.querySelector(`input[data-lang="${$("mapLang").value}"]`)?.focus();
 });
 
+// ---------------------------------------------------------------- views
+function showView() {
+  const v = location.hash === "#roadmap" ? "roadmap" : "depara";
+  $("view-roadmap").hidden = v !== "roadmap"; $("view-depara").hidden = v !== "depara";
+  document.querySelectorAll(".menu a[data-view]").forEach(a => a.classList.toggle("on", a.dataset.view === v));
+  if (v === "roadmap") loadRoadmap();
+}
+window.addEventListener("hashchange", showView);
+
+// ---------------------------------------------------------------- roadmap
+const RM_LABEL = { ideia: "Ideia", aprovado: "Aprovado (Claude faz)", em_andamento: "Em andamento", revisao: "Pronto para revisão", feito: "Feito", descartado: "Descartado" };
+const PRIO = { 1: "alta", 2: "média", 3: "baixa" };
+async function loadRoadmap() {
+  const { items, statuses } = await api("/api/roadmap");
+  $("rmBoard").innerHTML = statuses.map(st => {
+    const col = items.filter(i => i.status === st).sort((a, b) => (a.priority || 2) - (b.priority || 2) || b.updated_at.localeCompare(a.updated_at));
+    return `<div class="rm-col"><h3>${RM_LABEL[st]} · ${col.length}</h3>${col.map(i => `
+      <div class="rm-item p${i.priority || 2}" data-id="${esc(i.id)}">
+        <div class="t">${esc(i.title)}</div>
+        ${i.description ? `<div class="d">${esc(i.description)}</div>` : ""}
+        <div class="m">prioridade ${PRIO[i.priority || 2]} · por ${esc((i.by || "").split("@")[0])} · ${esc((i.updated_at || "").slice(0, 16).replace("T", " "))}</div>
+        ${(i.notes || []).slice(-3).map(n => `<div class="rm-note"><b>${esc((n.by || "").split("@")[0])}</b> · ${esc((n.at || "").slice(0, 16).replace("T", " "))}\n${esc(n.text)}</div>`).join("")}
+        <div class="acts">
+          <select data-act="status" aria-label="Status">${statuses.map(s => `<option value="${s}"${s === i.status ? " selected" : ""}>${RM_LABEL[s]}</option>`).join("")}</select>
+          <button data-act="note">Comentar</button>
+          <button data-act="del" title="Apagar">Apagar</button>
+        </div>
+      </div>`).join("")}</div>`;
+  }).join("");
+}
+$("rmForm").onsubmit = async e => {
+  e.preventDefault();
+  try {
+    await api("/api/roadmap", { title: $("rmTitle").value, description: $("rmDesc").value, priority: +$("rmPrio").value });
+    $("rmTitle").value = ""; $("rmDesc").value = ""; $("rmMsg").textContent = "ideia adicionada ✓";
+    loadRoadmap();
+  } catch (err) { $("rmMsg").textContent = err.message; }
+};
+$("rmBoard").addEventListener("change", async e => {
+  const sel = e.target.closest("[data-act=status]"); if (!sel) return;
+  await api(`/api/roadmap/${sel.closest(".rm-item").dataset.id}`, { status: sel.value }).catch(err => alert(err.message));
+  loadRoadmap();
+});
+$("rmBoard").addEventListener("click", async e => {
+  const b = e.target.closest("button[data-act]"); if (!b) return;
+  const id = b.closest(".rm-item").dataset.id;
+  if (b.dataset.act === "note") {
+    const text = prompt("Comentário:"); if (!text) return;
+    await api(`/api/roadmap/${id}`, { note: text }).catch(err => alert(err.message));
+  } else if (b.dataset.act === "del") {
+    if (!confirm("Apagar esta ideia?")) return;
+    await api(`/api/roadmap/${id}`, { delete: true }).catch(err => alert(err.message));
+  }
+  loadRoadmap();
+});
+
+showView();
 init().catch(e => document.body.insertAdjacentHTML("afterbegin", `<pre style="color:#f87171;padding:16px">${esc(e.message)}</pre>`));
 </script>
 </body>

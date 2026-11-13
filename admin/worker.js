@@ -12,11 +12,13 @@
 //   GET  /api/places/<map>      -> De-Para overrides of one map
 //   POST /api/places            -> { map, place, lang, display }   (empty display = back to default)
 //   GET  /api/audit             -> recent changes
+//   GET/POST /api/roadmap, POST /api/roadmap/<id>  -> ideas board (status, notes, priority, delete)
 //   GET  /api/export            -> all overrides (used by pipeline/admin_sync.py on the studio PC)
 // Everything else is served from ./public (the admin page, radars, place lists).
 
 const MAP_RE = /^[a-z0-9_]{2,40}$/;
 const PLACE_RE = /^[A-Za-z0-9_]{1,60}$/;
+const ROADMAP_STATUSES = ["ideia", "aprovado", "em_andamento", "revisao", "feito", "descartado"];
 let certsCache = { at: 0, keys: [] };
 
 function json(data, status = 200) {
@@ -145,6 +147,48 @@ export default {
     if (url.pathname === "/api/me") return json({ email: identity.email });
 
     if (url.pathname === "/api/audit") return json({ items: await readJSON(env, "audit", []) });
+
+    // ---- roadmap: ideas board (KV key "roadmap"); Claude reads/updates it from the studio via the Cloudflare API
+    if (url.pathname === "/api/roadmap" && request.method === "GET") {
+      return json({ items: await readJSON(env, "roadmap", []), statuses: ROADMAP_STATUSES });
+    }
+    if (url.pathname === "/api/roadmap" && request.method === "POST") {
+      let body;
+      try { body = await request.json(); } catch { return json({ error: "JSON inválido" }, 400); }
+      const title = String(body.title || "").trim().slice(0, 140);
+      const description = String(body.description || "").trim().slice(0, 4000);
+      if (!title) return json({ error: "dê um título para a ideia" }, 400);
+      const items = await readJSON(env, "roadmap", []);
+      const now = new Date().toISOString();
+      const item = { id: crypto.randomUUID().slice(0, 8), title, description, status: "ideia", priority: Number(body.priority) || 2,
+                     by: identity.email, at: now, updated_at: now, notes: [] };
+      items.unshift(item);
+      await env.ADMIN.put("roadmap", JSON.stringify(items.slice(0, 500)));
+      return json({ ok: true, item });
+    }
+    const rm = url.pathname.match(/^\/api\/roadmap\/([a-z0-9-]{4,40})$/);
+    if (rm && request.method === "POST") {
+      let body;
+      try { body = await request.json(); } catch { return json({ error: "JSON inválido" }, 400); }
+      const items = await readJSON(env, "roadmap", []);
+      const item = items.find(x => x.id === rm[1]);
+      if (!item) return json({ error: "item não encontrado" }, 404);
+      if (body.delete === true) {
+        await env.ADMIN.put("roadmap", JSON.stringify(items.filter(x => x.id !== item.id)));
+        return json({ ok: true, deleted: item.id });
+      }
+      if (body.status !== undefined) {
+        if (!ROADMAP_STATUSES.includes(body.status)) return json({ error: "status inválido" }, 400);
+        item.status = body.status;
+      }
+      if (body.title !== undefined) item.title = String(body.title).trim().slice(0, 140) || item.title;
+      if (body.description !== undefined) item.description = String(body.description).trim().slice(0, 4000);
+      if (body.priority !== undefined) item.priority = Math.min(3, Math.max(1, Number(body.priority) || 2));
+      if (body.note) item.notes = [...(item.notes || []), { by: identity.email, at: new Date().toISOString(), text: String(body.note).slice(0, 2000) }];
+      item.updated_at = new Date().toISOString();
+      await env.ADMIN.put("roadmap", JSON.stringify(items));
+      return json({ ok: true, item });
+    }
 
     const m = url.pathname.match(/^\/api\/places\/([a-z0-9_]+)$/);
     if (m && request.method === "GET") {
