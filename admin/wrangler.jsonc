@@ -18,7 +18,7 @@
   "vars": {
     "ACCESS_TEAM_DOMAIN": "bitter-poetry-eecd.cloudflareaccess.com",
     "ACCESS_AUD": "f52631b7985f99a5a334b617ebf95c2aeab6d3d82b1cff796e06b8104262ea11",
-    "SYNC_CLIENT_ID": "074a8664c3d84a6dd5fc5d2b532305fa.access"
+    "SYNC_CLIENT_ID": "5f6aae9c081b368e3f48d6612d65be8b.access"
   },
   "keep_vars": true,
   "workers_dev": true,
