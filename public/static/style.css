@@ -179,3 +179,10 @@ table.uses { width: 100%; border-collapse: collapse; font-size: 14px; }
 .langs a { font-size: 12px; font-weight: 700; letter-spacing: .04em; padding: 6px 8px; border-radius: 6px; color: var(--muted); text-decoration: none; border: 1px solid transparent; }
 .langs a:hover { color: var(--text); border-color: var(--line); }
 .langs a[aria-current] { color: var(--accent-ink); background: var(--accent); }
+
+/* variations of a category */
+.variants { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+.variant { display: grid; grid-template-columns: 96px 1fr; gap: 10px; align-items: center; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 8px; }
+.variant .radar { width: 96px; height: 96px; border-radius: 6px; background: #12141a; }
+.variant-body { display: flex; flex-direction: column; gap: 3px; font-size: 14px; }
+.variant-body .btn { align-self: flex-start; margin-top: 4px; }
