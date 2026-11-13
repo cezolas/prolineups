@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://lineups-pro.pages.dev/sitemap.xml
