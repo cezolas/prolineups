@@ -322,3 +322,22 @@ table.uses { font-size: 13px; }
 :root[data-theme="light"] .badge.video { border-color: #e2c27a; color: #9a6a00; }
 :root[data-theme="light"] .card:hover, :root[data-theme="light"] .row-link:hover { border-color: var(--link); }
 :root[data-theme="light"] .preview-bar { background: #fff1cc; color: #6b4a00; }
+
+/* "Start here" block on map pages + difficulty badges */
+.start-here h3 { margin: 0 0 6px; font-size: 14px; display: flex; align-items: center; gap: 6px; }
+.start-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; }
+.start-col { background: var(--panel2); border: 1px solid var(--line); border-radius: var(--radius); padding: 10px 12px; }
+.start-list { margin: 0; padding-left: 22px; }
+.start-list li { margin: 0; padding: 5px 0; border-bottom: 1px solid var(--side-line); }
+.start-list li:last-child { border-bottom: 0; }
+.start-list a { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; text-decoration: none; color: var(--text); }
+.start-list a:hover .start-name { color: var(--link); }
+.start-name { font-weight: 600; }
+.start-list .small { flex-basis: 100%; font-size: 12px; }
+.badge.diff-1 { color: var(--good); border-color: color-mix(in srgb, var(--good) 45%, transparent); }
+.badge.diff-2 { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 45%, transparent); }
+.badge.diff-3 { color: var(--bad); border-color: color-mix(in srgb, var(--bad) 45%, transparent); }
+
+/* map-version warning on lineup pages */
+.warn-box { margin: 6px 0 10px; padding: 9px 12px; border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  background: color-mix(in srgb, var(--accent) 12%, var(--panel)); border-radius: var(--radius); font-size: 14px; }
