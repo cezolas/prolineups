@@ -47,7 +47,7 @@ async function accessKeys(env) {
 // Returns the verified Access identity ({ email } for people, { common_name } for service tokens) or null.
 async function verifyAccess(request, env) {
   const token = request.headers.get("Cf-Access-Jwt-Assertion");
-  if (!token || !env.ACCESS_TEAM_DOMAIN || !env.ACCESS_AUD) return null;
+  if (!token || !env.ACCESS_TEAM_DOMAIN) return null;
   const parts = token.split(".");
   if (parts.length !== 3) return null;
   let header, payload;
@@ -65,6 +65,9 @@ async function verifyAccess(request, env) {
   if (typeof payload.exp !== "number" || payload.exp < now) return null;
   if (payload.iss !== `https://${env.ACCESS_TEAM_DOMAIN}`) return null;
   const aud = Array.isArray(payload.aud) ? payload.aud : [payload.aud];
+  // Setup helper: with no ACCESS_AUD yet, a token correctly signed by YOUR team only reveals its audience, so the
+  // owner can copy it into the Worker variables. It never grants access.
+  if (!env.ACCESS_AUD) return { setup_aud: aud.filter(Boolean).join(", ") };
   if (!aud.includes(env.ACCESS_AUD)) return null;
   return payload;
 }
@@ -94,6 +97,12 @@ export default {
     const url = new URL(request.url);
     let identity;
     try { identity = await verifyAccess(request, env); } catch (e) { return json({ error: String(e.message || e) }, 503); }
+    if (identity && identity.setup_aud) {
+      return new Response(
+        "Configuração do Admin quase pronta.\n\nNo Cloudflare, abra o Worker prolineups-admin > Settings > Variables and Secrets " +
+        "e crie a variável:\n\n  ACCESS_AUD = " + identity.setup_aud + "\n\nDepois recarregue esta página.",
+        { status: 403, headers: { "content-type": "text/plain; charset=utf-8", "cache-control": "no-store" } });
+    }
     const who = role(identity, env);
     if (!who) {
       return new Response("Acesso negado. Entre com um e-mail autorizado (Cloudflare Access).", {
