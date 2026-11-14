@@ -393,3 +393,19 @@ table.uses { font-size: 13px; }
 .play-pov { margin: 0; border-bottom: 1px solid var(--line); }
 .play-pov video { width: 100%; aspect-ratio: 16 / 9; display: block; background: #000; }
 .play-pov figcaption { padding: 5px 10px; }
+
+.card .eff { margin: 2px 0 0; font-size: 12.5px; color: var(--good); }
+
+.map-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.cfg-help { flex-basis: 100%; font-size: 13.5px; color: var(--muted); }
+.cfg-help summary { cursor: pointer; color: var(--link); width: max-content; }
+.cfg-help ol { margin: 6px 0 0; padding-left: 20px; }
+.cfg-help code { background: var(--panel2); padding: 1px 5px; border-radius: 3px; color: var(--text); }
+
+/* favourites */
+.fav-btn { margin-left: auto; }
+.fav-btn.on { color: var(--accent); border-color: var(--accent); }
+.lp-hero .card-badges { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+a.card.is-fav { box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--accent) 60%, transparent); }
+a.card.is-fav h3::before { content: "★ "; color: var(--accent); }
+.fav-row a.row-name { color: var(--text); text-decoration: none; } .fav-row a.row-name:hover { color: var(--link); }

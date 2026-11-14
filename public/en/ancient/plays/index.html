@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Team plays on Ancient · Lineups Pro</title>
+<meta name="description" content="How pro teams hit each bombsite on Ancient: full-round 2D replay with the grenades and the plant.">
+<link rel="canonical" href="https://prolineups.cezolas.workers.dev/en/ancient/plays/">
+<link rel="alternate" hreflang="pt" href="https://prolineups.cezolas.workers.dev/pt/ancient/jogadas/">
+<link rel="alternate" hreflang="en" href="https://prolineups.cezolas.workers.dev/en/ancient/plays/">
+<link rel="alternate" hreflang="x-default" href="https://prolineups.cezolas.workers.dev/pt/ancient/jogadas/">
+<meta property="og:title" content="Team plays on Ancient">
+<meta property="og:description" content="How pro teams hit each bombsite on Ancient: full-round 2D replay with the grenades and the plant.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://prolineups.cezolas.workers.dev/static/og-en.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Lineups Pro">
+<meta name="theme-color" content="#0b0f15">
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light"; } catch (e) {}</script>
+<link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/static/style.css">
+<script>window.I18N = {"copied": "Copied!", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s"}; window.LANG = "en";</script>
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-controls="side" aria-expanded="false">☰</button>
+    <a class="logo" href="/en/"><span class="logo-mark">◎</span> Lineups Pro</a>
+    <div class="search">
+      <input id="q" type="search" placeholder="Search map, player, team, smoke…" autocomplete="off" aria-label="Search">
+      <div id="results" class="results" hidden></div>
+    </div>
+    <nav class="langs" aria-label="Language">
+<a href="/pt/ancient/jogadas/" hreflang="pt" lang="pt" title="Português">PT</a><a href="/en/ancient/plays/" hreflang="en" lang="en" aria-current="true" title="English">EN</a>    </nav>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="Toggle light/dark mode" title="Toggle light/dark mode"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.6"/><g stroke-width="2.2" stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></g></svg></button>
+  </div>
+</header>
+<div class="layout">
+  <aside class="side" id="side" aria-label="Navigation">
+    <nav>
+      <a href="/en/"><span>Home</span></a>
+      <a href="/en/my-list/"><span>★ My list</span><span class="n" id="favCount"></span></a>
+      <details class="nav-g" data-k="types" open>
+        <summary class="nav-h"><span>Grenades</span></summary>
+<a href="/en/smokes/"><span>Smokes</span><span class="n">104</span></a><a href="/en/flashes/"><span>Flashes</span><span class="n">53</span></a><a href="/en/molotovs/"><span>Molotovs</span><span class="n">53</span></a><a href="/en/hes/"><span>HEs</span><span class="n">30</span></a>      </details>
+      <details class="nav-g" data-k="maps" open>
+        <summary class="nav-h"><a href="/en/maps/">Maps</a></summary>
+<a href="/en/ancient/" aria-current="page"><span>Ancient</span><span class="n">30</span></a><a href="/en/anubis/"><span>Anubis</span><span class="n">20</span></a><a href="/en/cache/"><span>Cache</span><span class="n">39</span></a><a href="/en/dust2/"><span>Dust2</span><span class="n">39</span></a><a href="/en/inferno/"><span>Inferno</span><span class="n">22</span></a><a href="/en/mirage/"><span>Mirage</span><span class="n">57</span></a><a href="/en/nuke/"><span>Nuke</span><span class="n">33</span></a>      </details>
+      <details class="nav-g" data-k="players" open>
+        <summary class="nav-h"><a href="/en/players/">Players</a></summary>
+<a href="/en/player/apex/"><span>apEX</span></a><a href="/en/player/art/"><span>art</span></a><a href="/en/player/coolio/"><span>coolio</span></a><a href="/en/player/dem0n/"><span>dem0n</span></a><a href="/en/player/donk/"><span>donk</span></a><a href="/en/player/dumau/"><span>dumau</span></a><a href="/en/player/dziugss/"><span>dziugss</span></a><a href="/en/player/fallen/"><span>FalleN</span></a><a href="/en/player/flamez/"><span>flameZ</span></a><a href="/en/player/heavygod/"><span>HeavyGod</span></a><a href="/en/player/hunter/"><span>huNter</span></a><a href="/en/player/karrigan/"><span>karrigan</span></a><a class="more" href="/en/players/">see all (40)</a>      </details>
+      <details class="nav-g" data-k="teams" open>
+        <summary class="nav-h"><a href="/en/teams/">Teams</a></summary>
+<a href="/en/team/falcons/"><span>Falcons</span></a><a href="/en/team/furia/"><span>FURIA</span></a><a href="/en/team/fut/"><span>FUT</span></a><a href="/en/team/g2/"><span>G2</span></a><a href="/en/team/legacy/"><span>Legacy</span></a><a href="/en/team/mouz/"><span>MOUZ</span></a><a href="/en/team/spirit/"><span>Spirit</span></a><a href="/en/team/vitality/"><span>Vitality</span></a>      </details>
+      <details class="nav-g" data-k="events" open>
+        <summary class="nav-h"><a href="/en/tournaments/">Tournaments</a></summary>
+<a href="/en/tournament/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      </details>
+      <div class="nav-sep"></div>
+      <a href="/en/about/"><span>About</span></a>
+    </nav>
+    <script>
+      /* collapsed sections are remembered in this browser; applied before paint */
+      (function () {
+        var c = []; try { c = JSON.parse(localStorage.getItem("navClosed") || "[]"); } catch (e) {}
+        document.querySelectorAll(".nav-g").forEach(function (d) {
+          if (c.indexOf(d.dataset.k) >= 0 && !d.querySelector("[aria-current]")) d.open = false;
+          d.addEventListener("toggle", function () {
+            var s = []; document.querySelectorAll(".nav-g").forEach(function (x) { if (!x.open) s.push(x.dataset.k); });
+            try { localStorage.setItem("navClosed", JSON.stringify(s)); } catch (e) {}
+          });
+        });
+      })();
+    </script>
+  </aside>
+  <div class="scrim" id="scrim" hidden></div>
+  <main class="content">
+<nav class="crumbs"><a href="/en/">Home</a> › <a href="/en/ancient/">Ancient</a> › Plays</nav>
+<h1>Team plays on Ancient</h1>
+<p class="muted">Each play is a T round that ended in a plant. Open one to watch the whole round in 2D: all 10 players, grenades, kills and the plant.</p>
+<section>
+  <h2>A site</h2>
+  <div class="rows">
+    <a class="row-link" href="/en/ancient/plays/g2-a/">
+      <span class="row-name">G2 A entry</span>
+      <span class="row-sub muted">round won 89% · median plant at 1:17 · via Side Hall, House</span>
+      <span class="row-n">9 rounds</span>
+    </a>
+    <a class="row-link" href="/en/ancient/plays/mouz-a/">
+      <span class="row-name">MOUZ A entry</span>
+      <span class="row-sub muted">round won 86% · median plant at 0:48 · via Side Hall, T Upper</span>
+      <span class="row-n">7 rounds</span>
+    </a>
+    <a class="row-link" href="/en/ancient/plays/spirit-a/">
+      <span class="row-name">Spirit A entry</span>
+      <span class="row-sub muted">round won 83% · median plant at 1:06 · via Side Hall, Outside</span>
+      <span class="row-n">6 rounds</span>
+    </a>
+    <a class="row-link" href="/en/ancient/plays/fut-a/">
+      <span class="row-name">FUT A entry</span>
+      <span class="row-sub muted">round won 100% · median plant at 1:43 · via Mid</span>
+      <span class="row-n">1 round</span>
+    </a>
+  </div>
+</section>
+<section>
+  <h2>B site</h2>
+  <div class="rows">
+    <a class="row-link" href="/en/ancient/plays/g2-b/">
+      <span class="row-name">G2 B entry</span>
+      <span class="row-sub muted">round won 67% · median plant at 1:21 · via Side Entrance, Ramp</span>
+      <span class="row-n">6 rounds</span>
+    </a>
+    <a class="row-link" href="/en/ancient/plays/spirit-b/">
+      <span class="row-name">Spirit B entry</span>
+      <span class="row-sub muted">round won 100% · median plant at 1:10 · via Ramp, Side Entrance</span>
+      <span class="row-n">4 rounds</span>
+    </a>
+    <a class="row-link" href="/en/ancient/plays/mouz-b/">
+      <span class="row-name">MOUZ B entry</span>
+      <span class="row-sub muted">round won 50% · median plant at 1:05 · via Ramp, Side Entrance</span>
+      <span class="row-n">2 rounds</span>
+    </a>
+    <a class="row-link" href="/en/ancient/plays/fut-b/">
+      <span class="row-name">FUT B entry</span>
+      <span class="row-sub muted">round won 100% · median plant at 1:39 · via House</span>
+      <span class="row-n">1 round</span>
+    </a>
+  </div>
+</section>
+  </main>
+</div>
+<footer class="foot">
+  <div class="foot-in">
+    <p>Data extracted from official match demos. Demos: <a href="https://www.hltv.org/" rel="noopener" target="_blank">HLTV.org</a>.</p>
+    <p>Free fan project. Not affiliated with Valve, HLTV, the teams or tournament organizers. Counter-Strike is a trademark of Valve Corporation.</p>
+    <p><a href="/en/about/">About and credits</a> · updated 2026-11-13</p>
+  </div>
+</footer>
+<script src="/static/app.js" defer></script>
+</body>
+</html>

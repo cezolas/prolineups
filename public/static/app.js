@@ -46,20 +46,27 @@
   // ---------------------------------------------------------------- map filters
   const filters = $("#filters");
   if (filters) {
-    const state = { type: "", side: "", area: "", teams: "", players: "", map: "" };
-    const names = { type: "tipo", side: "lado", area: "onde", teams: "time", players: "jogador", map: "mapa" };
+    const state = { type: "", side: "", area: "", teams: "", players: "", map: "", diff: "", sort: "" };
+    const names = { type: "tipo", side: "lado", area: "onde", teams: "time", players: "jogador", map: "mapa", diff: "dificuldade", sort: "ordem" };
     const params = new URLSearchParams(location.search);
     for (const k of Object.keys(state)) state[k] = params.get(names[k]) || "";
-    const cards = $$("#cards .card");
+    const cards = $$("#cards .card"), box = $("#cards");
+    const original = cards.slice();
+    const SORT = {
+      eff: (a, b) => (+b.dataset.eff) - (+a.dataset.eff) || (+b.dataset.count) - (+a.dataset.count),
+      easy: (a, b) => (+a.dataset.diff) - (+b.dataset.diff) || (+b.dataset.count) - (+a.dataset.count),
+    };
     function apply() {
       let shown = 0;
       for (const c of cards) {
         const ok = (!state.type || c.dataset.type === state.type) && (!state.side || c.dataset.side === state.side) &&
           (!state.area || c.dataset.area === state.area) && (!state.map || c.dataset.map === state.map) &&
           (!state.teams || c.dataset.teams.split(" ").includes(state.teams)) &&
-          (!state.players || c.dataset.players.split(" ").includes(state.players));
+          (!state.players || c.dataset.players.split(" ").includes(state.players)) &&
+          (!state.diff || c.dataset.diff === state.diff);
         c.hidden = !ok; if (ok) shown++;
       }
+      if (box) (state.sort && SORT[state.sort] ? original.slice().sort(SORT[state.sort]) : original).forEach(c => box.appendChild(c));
       $("#shown").textContent = `${shown} ${shown === 1 ? (T.lineup_1 || "lineup") : (T.lineup_n || "lineups")}`;
       $("#empty").hidden = shown > 0;
       $$("button[data-f]", filters).forEach(b => b.classList.toggle("on", state[b.dataset.f] === b.dataset.v));
@@ -110,4 +117,47 @@
     sync();
   });
   sync();
+})();
+
+// favourites ("my list"): kept in this browser only, no account
+(function () {
+  const KEY = "favs";
+  const read = () => { try { return JSON.parse(localStorage.getItem(KEY) || "[]"); } catch (e) { return []; } };
+  const write = v => { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) {} };
+  const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  // links are per language: /pt/mirage/x/ and /en/mirage/x/ are the same lineup
+  const key = url => url.replace(/^\/[a-z]{2}\//, "/");
+  function paint() {
+    const favs = read(), set = new Set(favs.map(f => key(f.url)));
+    const n = document.getElementById("favCount"); if (n) n.textContent = favs.length || "";
+    document.querySelectorAll("a.card").forEach(c => c.classList.toggle("is-fav", set.has(key(c.getAttribute("href")))));
+    const b = document.getElementById("favBtn");
+    if (b) {
+      const on = set.has(key(JSON.parse(b.dataset.fav).url));
+      b.setAttribute("aria-pressed", String(on)); b.classList.toggle("on", on);
+      b.textContent = (on ? "★ " : "☆ ") + (on ? b.dataset.on : b.dataset.off);
+    }
+    const list = document.getElementById("favList");
+    if (list) {
+      const L = "/" + (window.LANG || "pt");
+      list.innerHTML = favs.map(f => {
+        const url = L + key(f.url);
+        return `<div class="row-link fav-row"><a class="row-name" href="${esc(url)}">${esc(f.name)}</a>
+          <span class="row-sub muted">${esc(f.map)} · ${esc(f.side)} · ${esc(f.type)}</span>
+          <button class="btn small row-n" data-unfav="${esc(f.url)}" aria-label="remove">✕</button></div>`;
+      }).join("");
+      document.getElementById("favEmpty").hidden = favs.length > 0;
+    }
+  }
+  document.addEventListener("click", e => {
+    const b = e.target.closest("#favBtn");
+    if (b) {
+      const f = JSON.parse(b.dataset.fav), favs = read(), i = favs.findIndex(x => key(x.url) === key(f.url));
+      if (i >= 0) favs.splice(i, 1); else favs.unshift(f);
+      write(favs); paint(); return;
+    }
+    const u = e.target.closest("[data-unfav]");
+    if (u) { write(read().filter(x => key(x.url) !== key(u.dataset.unfav))); paint(); }
+  });
+  paint();
 })();
