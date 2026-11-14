@@ -19,15 +19,16 @@
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Lineups Pro">
 <meta name="theme-color" content="#0b0f15">
-<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light"; } catch (e) {}</script>
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
+  if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/static/style.css">
-<script>window.I18N = {"copied": "Copiado!", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "throws_in": "lan\u00e7a em {s}s"}; window.LANG = "pt";</script>
+<script>window.I18N = {"copied": "Copiado!", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "open": "Abrir", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "throws_in": "lan\u00e7a em {s}s"}; window.LANG = "pt";</script>
 </head>
 <body>
 <header class="top">
   <div class="top-in">
-    <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-controls="side" aria-expanded="false">☰</button>
+    <button class="menu-btn" id="menuBtn" aria-label="Mostrar ou ocultar o menu" aria-controls="side" aria-expanded="false">☰</button>
     <a class="logo" href="/pt/"><span class="logo-mark">◎</span> Lineups Pro</a>
     <div class="search">
       <input id="q" type="search" placeholder="Buscar mapa, jogador, time, smoke…" autocomplete="off" aria-label="Buscar">
@@ -58,7 +59,7 @@
 <a href="/pt/jogador/apex/"><span>apEX</span></a><a href="/pt/jogador/art/"><span>art</span></a><a href="/pt/jogador/coolio/"><span>coolio</span></a><a href="/pt/jogador/dem0n/"><span>dem0n</span></a><a href="/pt/jogador/donk/"><span>donk</span></a><a href="/pt/jogador/dumau/"><span>dumau</span></a><a href="/pt/jogador/dziugss/"><span>dziugss</span></a><a href="/pt/jogador/fallen/"><span>FalleN</span></a><a href="/pt/jogador/flamez/"><span>flameZ</span></a><a href="/pt/jogador/heavygod/"><span>HeavyGod</span></a><a href="/pt/jogador/hunter/"><span>huNter</span></a><a href="/pt/jogador/karrigan/"><span>karrigan</span></a><a class="more" href="/pt/jogadores/">ver todos (40)</a>      </details>
       <details class="nav-g" data-k="teams" open>
         <summary class="nav-h"><a href="/pt/times/">Times</a></summary>
-<a href="/pt/time/falcons/"><span>Falcons</span></a><a href="/pt/time/furia/"><span>FURIA</span></a><a href="/pt/time/fut/"><span>FUT</span></a><a href="/pt/time/g2/"><span>G2</span></a><a href="/pt/time/legacy/"><span>Legacy</span></a><a href="/pt/time/mouz/"><span>MOUZ</span></a><a href="/pt/time/spirit/"><span>Spirit</span></a><a href="/pt/time/vitality/"><span>Vitality</span></a>      </details>
+<a href="/pt/time/falcons/"><span><img class="flag" src="/static/flags/sa.svg" alt="Arábia Saudita" title="Arábia Saudita" width="16" height="12">Falcons</span></a><a href="/pt/time/furia/"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">FURIA</span></a><a href="/pt/time/fut/"><span><img class="flag" src="/static/flags/tr.svg" alt="Turquia" title="Turquia" width="16" height="12">FUT</span></a><a href="/pt/time/g2/"><span><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12">G2</span></a><a href="/pt/time/legacy/"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">Legacy</span></a><a href="/pt/time/mouz/"><span><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12">MOUZ</span></a><a href="/pt/time/spirit/"><span><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12">Spirit</span></a><a href="/pt/time/vitality/"><span><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12">Vitality</span></a>      </details>
       <details class="nav-g" data-k="events" open>
         <summary class="nav-h"><a href="/pt/torneios/">Torneios</a></summary>
 <a href="/pt/torneio/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      </details>
@@ -91,15 +92,15 @@
       <span><b>Ancient</b><br><span class="muted small">36 rounds · 8 entradas · 9 execuções</span></span>
     </a>
     <ul class="tac-list">
-      <li><a href="/pt/ancient/jogadas/g2-a/">▶ Entrada A da G2</a>
+      <li><a href="/pt/ancient/jogadas/g2-a/">▶ <img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"> Entrada A da G2</a>
         <span class="muted small">9 rounds · round ganho em 89%</span></li>
-      <li><a href="/pt/ancient/jogadas/mouz-a/">▶ Entrada A da MOUZ</a>
+      <li><a href="/pt/ancient/jogadas/mouz-a/">▶ <img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"> Entrada A da MOUZ</a>
         <span class="muted small">7 rounds · round ganho em 86%</span></li>
-      <li><a href="/pt/ancient/jogadas/g2-b/">▶ Entrada B da G2</a>
+      <li><a href="/pt/ancient/jogadas/g2-b/">▶ <img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"> Entrada B da G2</a>
         <span class="muted small">6 rounds · round ganho em 67%</span></li>
-      <li><a href="/pt/ancient/jogadas/spirit-a/">▶ Entrada A da Spirit</a>
+      <li><a href="/pt/ancient/jogadas/spirit-a/">▶ <img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12"> Entrada A da Spirit</a>
         <span class="muted small">6 rounds · round ganho em 83%</span></li>
-      <li><a href="/pt/ancient/jogadas/spirit-b/">▶ Entrada B da Spirit</a>
+      <li><a href="/pt/ancient/jogadas/spirit-b/">▶ <img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12"> Entrada B da Spirit</a>
         <span class="muted small">4 rounds · round ganho em 100%</span></li>
     </ul>
     <div class="tac-more">
@@ -111,13 +112,13 @@
       <span><b>Anubis</b><br><span class="muted small">13 rounds · 4 entradas</span></span>
     </a>
     <ul class="tac-list">
-      <li><a href="/pt/anubis/jogadas/falcons-a/">▶ Entrada A da Falcons</a>
+      <li><a href="/pt/anubis/jogadas/falcons-a/">▶ <img class="flag" src="/static/flags/sa.svg" alt="Arábia Saudita" title="Arábia Saudita" width="16" height="12"> Entrada A da Falcons</a>
         <span class="muted small">4 rounds · round ganho em 100%</span></li>
-      <li><a href="/pt/anubis/jogadas/g2-b/">▶ Entrada B da G2</a>
+      <li><a href="/pt/anubis/jogadas/g2-b/">▶ <img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"> Entrada B da G2</a>
         <span class="muted small">4 rounds · round ganho em 100%</span></li>
-      <li><a href="/pt/anubis/jogadas/falcons-b/">▶ Entrada B da Falcons</a>
+      <li><a href="/pt/anubis/jogadas/falcons-b/">▶ <img class="flag" src="/static/flags/sa.svg" alt="Arábia Saudita" title="Arábia Saudita" width="16" height="12"> Entrada B da Falcons</a>
         <span class="muted small">3 rounds · round ganho em 100%</span></li>
-      <li><a href="/pt/anubis/jogadas/g2-a/">▶ Entrada A da G2</a>
+      <li><a href="/pt/anubis/jogadas/g2-a/">▶ <img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"> Entrada A da G2</a>
         <span class="muted small">2 rounds · round ganho em 100%</span></li>
     </ul>
     <div class="tac-more">
@@ -129,15 +130,15 @@
       <span><b>Cache</b><br><span class="muted small">37 rounds · 8 entradas · 4 execuções</span></span>
     </a>
     <ul class="tac-list">
-      <li><a href="/pt/cache/jogadas/mouz-a/">▶ Entrada A da MOUZ</a>
+      <li><a href="/pt/cache/jogadas/mouz-a/">▶ <img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"> Entrada A da MOUZ</a>
         <span class="muted small">9 rounds · round ganho em 67%</span></li>
-      <li><a href="/pt/cache/jogadas/mouz-b/">▶ Entrada B da MOUZ</a>
+      <li><a href="/pt/cache/jogadas/mouz-b/">▶ <img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"> Entrada B da MOUZ</a>
         <span class="muted small">7 rounds · round ganho em 71%</span></li>
-      <li><a href="/pt/cache/jogadas/fut-b/">▶ Entrada B da FUT</a>
+      <li><a href="/pt/cache/jogadas/fut-b/">▶ <img class="flag" src="/static/flags/tr.svg" alt="Turquia" title="Turquia" width="16" height="12"> Entrada B da FUT</a>
         <span class="muted small">6 rounds · round ganho em 83%</span></li>
-      <li><a href="/pt/cache/jogadas/fut-a/">▶ Entrada A da FUT</a>
+      <li><a href="/pt/cache/jogadas/fut-a/">▶ <img class="flag" src="/static/flags/tr.svg" alt="Turquia" title="Turquia" width="16" height="12"> Entrada A da FUT</a>
         <span class="muted small">5 rounds · round ganho em 100%</span></li>
-      <li><a href="/pt/cache/jogadas/spirit-a/">▶ Entrada A da Spirit</a>
+      <li><a href="/pt/cache/jogadas/spirit-a/">▶ <img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12"> Entrada A da Spirit</a>
         <span class="muted small">3 rounds · round ganho em 67%</span></li>
     </ul>
     <div class="tac-more">
@@ -149,15 +150,15 @@
       <span><b>Dust2</b><br><span class="muted small">40 rounds · 10 entradas · 2 execuções</span></span>
     </a>
     <ul class="tac-list">
-      <li><a href="/pt/dust2/jogadas/falcons-b/">▶ Entrada B da Falcons</a>
+      <li><a href="/pt/dust2/jogadas/falcons-b/">▶ <img class="flag" src="/static/flags/sa.svg" alt="Arábia Saudita" title="Arábia Saudita" width="16" height="12"> Entrada B da Falcons</a>
         <span class="muted small">7 rounds · round ganho em 86%</span></li>
-      <li><a href="/pt/dust2/jogadas/falcons-a/">▶ Entrada A da Falcons</a>
+      <li><a href="/pt/dust2/jogadas/falcons-a/">▶ <img class="flag" src="/static/flags/sa.svg" alt="Arábia Saudita" title="Arábia Saudita" width="16" height="12"> Entrada A da Falcons</a>
         <span class="muted small">6 rounds · round ganho em 100%</span></li>
-      <li><a href="/pt/dust2/jogadas/vitality-a/">▶ Entrada A da Vitality</a>
+      <li><a href="/pt/dust2/jogadas/vitality-a/">▶ <img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12"> Entrada A da Vitality</a>
         <span class="muted small">6 rounds · round ganho em 50%</span></li>
-      <li><a href="/pt/dust2/jogadas/g2-a/">▶ Entrada A da G2</a>
+      <li><a href="/pt/dust2/jogadas/g2-a/">▶ <img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"> Entrada A da G2</a>
         <span class="muted small">5 rounds · round ganho em 80%</span></li>
-      <li><a href="/pt/dust2/jogadas/furia-a/">▶ Entrada A da FURIA</a>
+      <li><a href="/pt/dust2/jogadas/furia-a/">▶ <img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"> Entrada A da FURIA</a>
         <span class="muted small">3 rounds · round ganho em 67%</span></li>
     </ul>
     <div class="tac-more">
@@ -169,15 +170,15 @@
       <span><b>Inferno</b><br><span class="muted small">17 rounds · 7 entradas · 1 execução</span></span>
     </a>
     <ul class="tac-list">
-      <li><a href="/pt/inferno/jogadas/g2-b/">▶ Entrada B da G2</a>
+      <li><a href="/pt/inferno/jogadas/g2-b/">▶ <img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"> Entrada B da G2</a>
         <span class="muted small">4 rounds · round ganho em 100%</span></li>
-      <li><a href="/pt/inferno/jogadas/furia-b/">▶ Entrada B da FURIA</a>
+      <li><a href="/pt/inferno/jogadas/furia-b/">▶ <img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"> Entrada B da FURIA</a>
         <span class="muted small">3 rounds · round ganho em 33%</span></li>
-      <li><a href="/pt/inferno/jogadas/g2-a/">▶ Entrada A da G2</a>
+      <li><a href="/pt/inferno/jogadas/g2-a/">▶ <img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"> Entrada A da G2</a>
         <span class="muted small">3 rounds · round ganho em 100%</span></li>
-      <li><a href="/pt/inferno/jogadas/mouz-a/">▶ Entrada A da MOUZ</a>
+      <li><a href="/pt/inferno/jogadas/mouz-a/">▶ <img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"> Entrada A da MOUZ</a>
         <span class="muted small">3 rounds · round ganho em 67%</span></li>
-      <li><a href="/pt/inferno/jogadas/mouz-b/">▶ Entrada B da MOUZ</a>
+      <li><a href="/pt/inferno/jogadas/mouz-b/">▶ <img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"> Entrada B da MOUZ</a>
         <span class="muted small">2 rounds · round ganho em 0%</span></li>
     </ul>
     <div class="tac-more">
@@ -189,15 +190,15 @@
       <span><b>Mirage</b><br><span class="muted small">44 rounds · 14 entradas · 5 execuções</span></span>
     </a>
     <ul class="tac-list">
-      <li><a href="/pt/mirage/jogadas/mouz-a/">▶ Entrada A da MOUZ</a>
+      <li><a href="/pt/mirage/jogadas/mouz-a/">▶ <img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"> Entrada A da MOUZ</a>
         <span class="muted small">11 rounds · round ganho em 64%</span></li>
-      <li><a href="/pt/mirage/jogadas/g2-b/">▶ Entrada B da G2</a>
+      <li><a href="/pt/mirage/jogadas/g2-b/">▶ <img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"> Entrada B da G2</a>
         <span class="muted small">4 rounds · round ganho em 100%</span></li>
-      <li><a href="/pt/mirage/jogadas/legacy-a/">▶ Entrada A da Legacy</a>
+      <li><a href="/pt/mirage/jogadas/legacy-a/">▶ <img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"> Entrada A da Legacy</a>
         <span class="muted small">4 rounds · round ganho em 75%</span></li>
-      <li><a href="/pt/mirage/jogadas/vitality-a/">▶ Entrada A da Vitality</a>
+      <li><a href="/pt/mirage/jogadas/vitality-a/">▶ <img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12"> Entrada A da Vitality</a>
         <span class="muted small">4 rounds · round ganho em 0%</span></li>
-      <li><a href="/pt/mirage/jogadas/fut-b/">▶ Entrada B da FUT</a>
+      <li><a href="/pt/mirage/jogadas/fut-b/">▶ <img class="flag" src="/static/flags/tr.svg" alt="Turquia" title="Turquia" width="16" height="12"> Entrada B da FUT</a>
         <span class="muted small">3 rounds · round ganho em 33%</span></li>
     </ul>
     <div class="tac-more">
@@ -209,15 +210,15 @@
       <span><b>Nuke</b><br><span class="muted small">32 rounds · 8 entradas · 1 execução</span></span>
     </a>
     <ul class="tac-list">
-      <li><a href="/pt/nuke/jogadas/mouz-b/">▶ Entrada B da MOUZ</a>
+      <li><a href="/pt/nuke/jogadas/mouz-b/">▶ <img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"> Entrada B da MOUZ</a>
         <span class="muted small">13 rounds · round ganho em 92%</span></li>
-      <li><a href="/pt/nuke/jogadas/spirit-a/">▶ Entrada A da Spirit</a>
+      <li><a href="/pt/nuke/jogadas/spirit-a/">▶ <img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12"> Entrada A da Spirit</a>
         <span class="muted small">5 rounds · round ganho em 100%</span></li>
-      <li><a href="/pt/nuke/jogadas/spirit-b/">▶ Entrada B da Spirit</a>
+      <li><a href="/pt/nuke/jogadas/spirit-b/">▶ <img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12"> Entrada B da Spirit</a>
         <span class="muted small">4 rounds · round ganho em 50%</span></li>
-      <li><a href="/pt/nuke/jogadas/g2-b/">▶ Entrada B da G2</a>
+      <li><a href="/pt/nuke/jogadas/g2-b/">▶ <img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"> Entrada B da G2</a>
         <span class="muted small">3 rounds · round ganho em 67%</span></li>
-      <li><a href="/pt/nuke/jogadas/mouz-a/">▶ Entrada A da MOUZ</a>
+      <li><a href="/pt/nuke/jogadas/mouz-a/">▶ <img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"> Entrada A da MOUZ</a>
         <span class="muted small">3 rounds · round ganho em 100%</span></li>
     </ul>
     <div class="tac-more">

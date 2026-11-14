@@ -21,15 +21,16 @@
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Lineups Pro">
 <meta name="theme-color" content="#0b0f15">
-<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light"; } catch (e) {}</script>
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
+  if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/static/style.css">
-<script>window.I18N = {"copied": "Copiado!", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "throws_in": "lan\u00e7a em {s}s"}; window.LANG = "pt";</script>
+<script>window.I18N = {"copied": "Copiado!", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "open": "Abrir", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "throws_in": "lan\u00e7a em {s}s"}; window.LANG = "pt";</script>
 </head>
 <body>
 <header class="top">
   <div class="top-in">
-    <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-controls="side" aria-expanded="false">☰</button>
+    <button class="menu-btn" id="menuBtn" aria-label="Mostrar ou ocultar o menu" aria-controls="side" aria-expanded="false">☰</button>
     <a class="logo" href="/pt/"><span class="logo-mark">◎</span> Lineups Pro</a>
     <div class="search">
       <input id="q" type="search" placeholder="Buscar mapa, jogador, time, smoke…" autocomplete="off" aria-label="Buscar">
@@ -60,7 +61,7 @@
 <a href="/pt/jogador/apex/"><span>apEX</span></a><a href="/pt/jogador/art/"><span>art</span></a><a href="/pt/jogador/coolio/"><span>coolio</span></a><a href="/pt/jogador/dem0n/"><span>dem0n</span></a><a href="/pt/jogador/donk/"><span>donk</span></a><a href="/pt/jogador/dumau/"><span>dumau</span></a><a href="/pt/jogador/dziugss/"><span>dziugss</span></a><a href="/pt/jogador/fallen/"><span>FalleN</span></a><a href="/pt/jogador/flamez/"><span>flameZ</span></a><a href="/pt/jogador/heavygod/"><span>HeavyGod</span></a><a href="/pt/jogador/hunter/"><span>huNter</span></a><a href="/pt/jogador/karrigan/"><span>karrigan</span></a><a class="more" href="/pt/jogadores/">ver todos (40)</a>      </details>
       <details class="nav-g" data-k="teams" open>
         <summary class="nav-h"><a href="/pt/times/">Times</a></summary>
-<a href="/pt/time/falcons/"><span>Falcons</span></a><a href="/pt/time/furia/"><span>FURIA</span></a><a href="/pt/time/fut/"><span>FUT</span></a><a href="/pt/time/g2/"><span>G2</span></a><a href="/pt/time/legacy/"><span>Legacy</span></a><a href="/pt/time/mouz/"><span>MOUZ</span></a><a href="/pt/time/spirit/"><span>Spirit</span></a><a href="/pt/time/vitality/"><span>Vitality</span></a>      </details>
+<a href="/pt/time/falcons/"><span><img class="flag" src="/static/flags/sa.svg" alt="Arábia Saudita" title="Arábia Saudita" width="16" height="12">Falcons</span></a><a href="/pt/time/furia/"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">FURIA</span></a><a href="/pt/time/fut/"><span><img class="flag" src="/static/flags/tr.svg" alt="Turquia" title="Turquia" width="16" height="12">FUT</span></a><a href="/pt/time/g2/"><span><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12">G2</span></a><a href="/pt/time/legacy/"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">Legacy</span></a><a href="/pt/time/mouz/"><span><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12">MOUZ</span></a><a href="/pt/time/spirit/"><span><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12">Spirit</span></a><a href="/pt/time/vitality/"><span><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12">Vitality</span></a>      </details>
       <details class="nav-g" data-k="events" open>
         <summary class="nav-h"><a href="/pt/torneios/">Torneios</a></summary>
 <a href="/pt/torneio/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      </details>
@@ -168,7 +169,7 @@
     <tbody>
       <tr>
         <td><a href="/pt/jogador/apex/">apEX</a></td>
-        <td><a href="/pt/time/vitality/">Vitality</a></td>
+        <td><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12"> <a href="/pt/time/vitality/">Vitality</a></td>
         <td><a href="/pt/torneio/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>5</td>
         <td>perdeu</td>
@@ -177,7 +178,7 @@
       </tr>
       <tr>
         <td><a href="/pt/jogador/flamez/">flameZ</a></td>
-        <td><a href="/pt/time/vitality/">Vitality</a></td>
+        <td><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12"> <a href="/pt/time/vitality/">Vitality</a></td>
         <td><a href="/pt/torneio/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>6</td>
         <td>venceu</td>
@@ -186,7 +187,7 @@
       </tr>
       <tr>
         <td><a href="/pt/jogador/apex/">apEX</a></td>
-        <td><a href="/pt/time/vitality/">Vitality</a></td>
+        <td><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12"> <a href="/pt/time/vitality/">Vitality</a></td>
         <td><a href="/pt/torneio/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>6</td>
         <td>venceu</td>
@@ -195,7 +196,7 @@
       </tr>
       <tr>
         <td><a href="/pt/jogador/apex/">apEX</a></td>
-        <td><a href="/pt/time/vitality/">Vitality</a></td>
+        <td><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12"> <a href="/pt/time/vitality/">Vitality</a></td>
         <td><a href="/pt/torneio/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>11</td>
         <td>perdeu</td>
@@ -204,7 +205,7 @@
       </tr>
       <tr>
         <td><a href="/pt/jogador/molodoy/">molodoy</a></td>
-        <td><a href="/pt/time/furia/">FURIA</a></td>
+        <td><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"> <a href="/pt/time/furia/">FURIA</a></td>
         <td><a href="/pt/torneio/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>16</td>
         <td>perdeu</td>
@@ -213,7 +214,7 @@
       </tr>
       <tr>
         <td><a href="/pt/jogador/fallen/">FalleN</a></td>
-        <td><a href="/pt/time/furia/">FURIA</a></td>
+        <td><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"> <a href="/pt/time/furia/">FURIA</a></td>
         <td><a href="/pt/torneio/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>18</td>
         <td>perdeu</td>
@@ -222,7 +223,7 @@
       </tr>
       <tr>
         <td><a href="/pt/jogador/fallen/">FalleN</a></td>
-        <td><a href="/pt/time/furia/">FURIA</a></td>
+        <td><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"> <a href="/pt/time/furia/">FURIA</a></td>
         <td><a href="/pt/torneio/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>20</td>
         <td>perdeu</td>
@@ -231,7 +232,7 @@
       </tr>
       <tr>
         <td><a href="/pt/jogador/yuurih/">yuurih</a></td>
-        <td><a href="/pt/time/furia/">FURIA</a></td>
+        <td><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"> <a href="/pt/time/furia/">FURIA</a></td>
         <td><a href="/pt/torneio/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>20</td>
         <td>perdeu</td>
@@ -240,7 +241,7 @@
       </tr>
       <tr>
         <td><a href="/pt/jogador/yekindar/">YEKINDAR</a></td>
-        <td><a href="/pt/time/furia/">FURIA</a></td>
+        <td><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"> <a href="/pt/time/furia/">FURIA</a></td>
         <td><a href="/pt/torneio/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>21</td>
         <td>venceu</td>
@@ -249,7 +250,7 @@
       </tr>
       <tr>
         <td><a href="/pt/jogador/kscerato/">KSCERATO</a></td>
-        <td><a href="/pt/time/furia/">FURIA</a></td>
+        <td><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"> <a href="/pt/time/furia/">FURIA</a></td>
         <td><a href="/pt/torneio/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>23</td>
         <td>venceu</td>
@@ -258,7 +259,7 @@
       </tr>
       <tr>
         <td><a href="/pt/jogador/karrigan/">karrigan</a></td>
-        <td><a href="/pt/time/falcons/">Falcons</a></td>
+        <td><img class="flag" src="/static/flags/sa.svg" alt="Arábia Saudita" title="Arábia Saudita" width="16" height="12"> <a href="/pt/time/falcons/">Falcons</a></td>
         <td><a href="/pt/torneio/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>5</td>
         <td>venceu</td>
@@ -267,7 +268,7 @@
       </tr>
       <tr>
         <td><a href="/pt/jogador/kyousuke/">kyousuke</a></td>
-        <td><a href="/pt/time/falcons/">Falcons</a></td>
+        <td><img class="flag" src="/static/flags/sa.svg" alt="Arábia Saudita" title="Arábia Saudita" width="16" height="12"> <a href="/pt/time/falcons/">Falcons</a></td>
         <td><a href="/pt/torneio/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>8</td>
         <td>perdeu</td>
@@ -276,7 +277,7 @@
       </tr>
       <tr>
         <td><a href="/pt/jogador/niko/">NiKo</a></td>
-        <td><a href="/pt/time/falcons/">Falcons</a></td>
+        <td><img class="flag" src="/static/flags/sa.svg" alt="Arábia Saudita" title="Arábia Saudita" width="16" height="12"> <a href="/pt/time/falcons/">Falcons</a></td>
         <td><a href="/pt/torneio/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>11</td>
         <td>venceu</td>
@@ -285,7 +286,7 @@
       </tr>
       <tr>
         <td><a href="/pt/jogador/niko/">NiKo</a></td>
-        <td><a href="/pt/time/falcons/">Falcons</a></td>
+        <td><img class="flag" src="/static/flags/sa.svg" alt="Arábia Saudita" title="Arábia Saudita" width="16" height="12"> <a href="/pt/time/falcons/">Falcons</a></td>
         <td><a href="/pt/torneio/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>12</td>
         <td>venceu</td>
@@ -294,7 +295,7 @@
       </tr>
       <tr>
         <td><a href="/pt/jogador/niko/">NiKo</a></td>
-        <td><a href="/pt/time/falcons/">Falcons</a></td>
+        <td><img class="flag" src="/static/flags/sa.svg" alt="Arábia Saudita" title="Arábia Saudita" width="16" height="12"> <a href="/pt/time/falcons/">Falcons</a></td>
         <td><a href="/pt/torneio/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>3</td>
         <td>venceu</td>
@@ -303,7 +304,7 @@
       </tr>
       <tr>
         <td><a href="/pt/jogador/m0nesy/">m0NESY</a></td>
-        <td><a href="/pt/time/falcons/">Falcons</a></td>
+        <td><img class="flag" src="/static/flags/sa.svg" alt="Arábia Saudita" title="Arábia Saudita" width="16" height="12"> <a href="/pt/time/falcons/">Falcons</a></td>
         <td><a href="/pt/torneio/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>8</td>
         <td>perdeu</td>
@@ -312,7 +313,7 @@
       </tr>
       <tr>
         <td><a href="/pt/jogador/kyousuke/">kyousuke</a></td>
-        <td><a href="/pt/time/falcons/">Falcons</a></td>
+        <td><img class="flag" src="/static/flags/sa.svg" alt="Arábia Saudita" title="Arábia Saudita" width="16" height="12"> <a href="/pt/time/falcons/">Falcons</a></td>
         <td><a href="/pt/torneio/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>10</td>
         <td>perdeu</td>
@@ -321,7 +322,7 @@
       </tr>
       <tr>
         <td><a href="/pt/jogador/art/">art</a></td>
-        <td><a href="/pt/time/legacy/">Legacy</a></td>
+        <td><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"> <a href="/pt/time/legacy/">Legacy</a></td>
         <td><a href="/pt/torneio/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>15</td>
         <td>perdeu</td>
@@ -330,7 +331,7 @@
       </tr>
       <tr>
         <td><a href="/pt/jogador/art/">art</a></td>
-        <td><a href="/pt/time/legacy/">Legacy</a></td>
+        <td><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"> <a href="/pt/time/legacy/">Legacy</a></td>
         <td><a href="/pt/torneio/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>21</td>
         <td>perdeu</td>
@@ -345,7 +346,7 @@
 
 <section>
   <h2>Lineups parecidas</h2>
-  <div class="cards"><a class="card" href="/pt/dust2/smoke-ct-spawn-from-mid-doors-t/"
+  <div class="cards"><a class="card" href="/pt/dust2/smoke-ct-spawn-from-mid-doors-t/" data-id="smoke-ct-spawn-from-mid-doors-t"
    data-type="smoke" data-side="T" data-area="CTSpawn" data-map="dust2"
    data-teams="falcons furia vitality" data-players="fallen flamez karrigan mezii"
    data-diff="1" data-count="5" data-eff="-1">
@@ -362,7 +363,7 @@
     <h3>Smoke Base CT (de Portas do Meio)</h3>
     <p class="muted">5 usos · 3 times · round ganho 40%</p>
   </div>
-</a><a class="card" href="/pt/dust2/smoke-ct-spawn-from-outside-tunnels-t/"
+</a><a class="card" href="/pt/dust2/smoke-ct-spawn-from-outside-tunnels-t/" data-id="smoke-ct-spawn-from-outside-tunnels-t"
    data-type="smoke" data-side="T" data-area="CTSpawn" data-map="dust2"
    data-teams="falcons furia g2 legacy" data-players="art matys niko yuurih"
    data-diff="3" data-count="4" data-eff="-1">
@@ -379,7 +380,7 @@
     <h3>Smoke Base CT (de Fora do Escuro)</h3>
     <p class="muted">4 usos · 4 times · round ganho 75%</p>
   </div>
-</a><a class="card" href="/pt/dust2/smoke-ct-spawn-from-catwalk-t/"
+</a><a class="card" href="/pt/dust2/smoke-ct-spawn-from-catwalk-t/" data-id="smoke-ct-spawn-from-catwalk-t"
    data-type="smoke" data-side="T" data-area="CTSpawn" data-map="dust2"
    data-teams="furia g2" data-players="fallen heavygod r1nkle"
    data-diff="2" data-count="3" data-eff="-1">

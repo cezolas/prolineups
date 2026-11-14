@@ -19,15 +19,16 @@
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Lineups Pro">
 <meta name="theme-color" content="#0b0f15">
-<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light"; } catch (e) {}</script>
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
+  if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/static/style.css">
-<script>window.I18N = {"copied": "Copiado!", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "throws_in": "lan\u00e7a em {s}s"}; window.LANG = "pt";</script>
+<script>window.I18N = {"copied": "Copiado!", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "open": "Abrir", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "throws_in": "lan\u00e7a em {s}s"}; window.LANG = "pt";</script>
 </head>
 <body>
 <header class="top">
   <div class="top-in">
-    <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-controls="side" aria-expanded="false">☰</button>
+    <button class="menu-btn" id="menuBtn" aria-label="Mostrar ou ocultar o menu" aria-controls="side" aria-expanded="false">☰</button>
     <a class="logo" href="/pt/"><span class="logo-mark">◎</span> Lineups Pro</a>
     <div class="search">
       <input id="q" type="search" placeholder="Buscar mapa, jogador, time, smoke…" autocomplete="off" aria-label="Buscar">
@@ -58,7 +59,7 @@
 <a href="/pt/jogador/apex/"><span>apEX</span></a><a href="/pt/jogador/art/"><span>art</span></a><a href="/pt/jogador/coolio/"><span>coolio</span></a><a href="/pt/jogador/dem0n/"><span>dem0n</span></a><a href="/pt/jogador/donk/"><span>donk</span></a><a href="/pt/jogador/dumau/"><span>dumau</span></a><a href="/pt/jogador/dziugss/"><span>dziugss</span></a><a href="/pt/jogador/fallen/"><span>FalleN</span></a><a href="/pt/jogador/flamez/"><span>flameZ</span></a><a href="/pt/jogador/heavygod/"><span>HeavyGod</span></a><a href="/pt/jogador/hunter/"><span>huNter</span></a><a href="/pt/jogador/karrigan/"><span>karrigan</span></a><a class="more" href="/pt/jogadores/">ver todos (40)</a>      </details>
       <details class="nav-g" data-k="teams" open>
         <summary class="nav-h"><a href="/pt/times/">Times</a></summary>
-<a href="/pt/time/falcons/"><span>Falcons</span></a><a href="/pt/time/furia/"><span>FURIA</span></a><a href="/pt/time/fut/"><span>FUT</span></a><a href="/pt/time/g2/"><span>G2</span></a><a href="/pt/time/legacy/"><span>Legacy</span></a><a href="/pt/time/mouz/"><span>MOUZ</span></a><a href="/pt/time/spirit/"><span>Spirit</span></a><a href="/pt/time/vitality/"><span>Vitality</span></a>      </details>
+<a href="/pt/time/falcons/"><span><img class="flag" src="/static/flags/sa.svg" alt="Arábia Saudita" title="Arábia Saudita" width="16" height="12">Falcons</span></a><a href="/pt/time/furia/"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">FURIA</span></a><a href="/pt/time/fut/"><span><img class="flag" src="/static/flags/tr.svg" alt="Turquia" title="Turquia" width="16" height="12">FUT</span></a><a href="/pt/time/g2/"><span><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12">G2</span></a><a href="/pt/time/legacy/"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">Legacy</span></a><a href="/pt/time/mouz/"><span><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12">MOUZ</span></a><a href="/pt/time/spirit/"><span><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12">Spirit</span></a><a href="/pt/time/vitality/"><span><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12">Vitality</span></a>      </details>
       <details class="nav-g" data-k="events" open>
         <summary class="nav-h"><a href="/pt/torneios/">Torneios</a></summary>
 <a href="/pt/torneio/blast-rivals-2026-season-2/" aria-current="page"><span>BLAST Rivals 2026 Season 2</span></a>      </details>
@@ -89,7 +90,7 @@
 
 <section>
   <h2 class="sec"><a href="/pt/ancient/">Ancient</a> <span class="muted">· 30 lineups</span></h2>
-  <div class="cards"><a class="card" href="/pt/ancient/smoke-outside-from-ct-spawn-ct/"
+  <div class="cards"><a class="card" href="/pt/ancient/smoke-outside-from-ct-spawn-ct/" data-id="smoke-outside-from-ct-spawn-ct"
    data-type="smoke" data-side="CT" data-area="Outside" data-map="ancient"
    data-teams="fut g2 mouz spirit" data-players="dziugss heavygod r1nkle sh1ro sunpayus torzsi zont1x"
    data-diff="3" data-count="50" data-eff="-1">
@@ -106,7 +107,7 @@
     <h3>Smoke Outside (de CT Spawn)</h3>
     <p class="muted">50 usos</p>
   </div>
-</a><a class="card" href="/pt/ancient/smoke-top-mid-from-t-spawn-t/"
+</a><a class="card" href="/pt/ancient/smoke-top-mid-from-t-spawn-t/" data-id="smoke-top-mid-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="TopofMid" data-map="ancient"
    data-teams="fut g2 mouz spirit" data-players="dziugss heavygod hunter r1nkle sh1ro sunpayus tn1r torzsi"
    data-diff="3" data-count="31" data-eff="-1">
@@ -123,7 +124,7 @@
     <h3>Smoke Top Mid (de T Spawn)</h3>
     <p class="muted">31 usos</p>
   </div>
-</a><a class="card" href="/pt/ancient/molotov-tside-lower-from-alley-ct/"
+</a><a class="card" href="/pt/ancient/molotov-tside-lower-from-alley-ct/" data-id="molotov-tside-lower-from-alley-ct"
    data-type="molotov" data-side="CT" data-area="TSideLower" data-map="ancient"
    data-teams="fut g2 mouz spirit" data-players="coolio magixx matys pr spinx"
    data-diff="3" data-count="27" data-eff="0.0">
@@ -140,7 +141,7 @@
     <h3>Molotov TSide Lower (de Alley)</h3>
     <p class="muted">27 usos</p>
   </div>
-</a><a class="card" href="/pt/ancient/smoke-t-upper-from-t-spawn-t/"
+</a><a class="card" href="/pt/ancient/smoke-t-upper-from-t-spawn-t/" data-id="smoke-t-upper-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="TSideUpper" data-map="ancient"
    data-teams="fut g2 mouz spirit" data-players="coolio heavygod hunter magixx r1nkle tn1r torzsi xelex xertion"
    data-diff="2" data-count="27" data-eff="-1">
@@ -157,7 +158,7 @@
     <h3>Smoke TR Superior (de T Spawn)</h3>
     <p class="muted">27 usos</p>
   </div>
-</a><a class="card" href="/pt/ancient/smoke-house-from-t-spawn-t/"
+</a><a class="card" href="/pt/ancient/smoke-house-from-t-spawn-t/" data-id="smoke-house-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="House" data-map="ancient"
    data-teams="fut g2 mouz spirit" data-players="dziugss heavygod hunter r1nkle sh1ro sunpayus torzsi"
    data-diff="3" data-count="22" data-eff="-1">
@@ -174,7 +175,7 @@
     <h3>Smoke House (de T Spawn)</h3>
     <p class="muted">22 usos</p>
   </div>
-</a><a class="card" href="/pt/ancient/smoke-mid-from-t-spawn-t/"
+</a><a class="card" href="/pt/ancient/smoke-mid-from-t-spawn-t/" data-id="smoke-mid-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="Middle" data-map="ancient"
    data-teams="fut g2 spirit" data-players="coolio dziugss magixx r1nkle sh1ro zont1x"
    data-diff="3" data-count="19" data-eff="-1">
@@ -191,7 +192,7 @@
     <h3>Smoke Mid (de T Spawn)</h3>
     <p class="muted">19 usos</p>
   </div>
-</a><a class="card" href="/pt/ancient/smoke-ruins-from-ct-spawn-ct/"
+</a><a class="card" href="/pt/ancient/smoke-ruins-from-ct-spawn-ct/" data-id="smoke-ruins-from-ct-spawn-ct"
    data-type="smoke" data-side="CT" data-area="Ruins" data-map="ancient"
    data-teams="g2 mouz spirit" data-players="heavygod matys spinx tn1r"
    data-diff="3" data-count="14" data-eff="-1">
@@ -208,7 +209,7 @@
     <h3>Smoke Ruins (de CT Spawn)</h3>
     <p class="muted">14 usos</p>
   </div>
-</a><a class="card" href="/pt/ancient/he-tside-lower-from-b-site-ct/"
+</a><a class="card" href="/pt/ancient/he-tside-lower-from-b-site-ct/" data-id="he-tside-lower-from-b-site-ct"
    data-type="he" data-side="CT" data-area="TSideLower" data-map="ancient"
    data-teams="mouz spirit" data-players="magixx pr spinx"
    data-diff="3" data-count="13" data-eff="0.0">
@@ -225,7 +226,7 @@
     <h3>HE TSide Lower (de Bomb B)</h3>
     <p class="muted">13 usos</p>
   </div>
-</a><a class="card" href="/pt/ancient/molotov-b-site-from-ruins-t/"
+</a><a class="card" href="/pt/ancient/molotov-b-site-from-ruins-t/" data-id="molotov-b-site-from-ruins-t"
    data-type="molotov" data-side="T" data-area="BombsiteB" data-map="ancient"
    data-teams="g2 spirit" data-players="donk heavygod hunter r1nkle tn1r"
    data-diff="3" data-count="13" data-eff="0.0">
@@ -242,7 +243,7 @@
     <h3>Molotov Bomb B (de Ruins)</h3>
     <p class="muted">13 usos</p>
   </div>
-</a><a class="card" href="/pt/ancient/molotov-b-site-from-tside-lower-t/"
+</a><a class="card" href="/pt/ancient/molotov-b-site-from-tside-lower-t/" data-id="molotov-b-site-from-tside-lower-t"
    data-type="molotov" data-side="T" data-area="BombsiteB" data-map="ancient"
    data-teams="g2 mouz spirit" data-players="magixx r1nkle sh1ro tn1r torzsi xelex zont1x"
    data-diff="1" data-count="11" data-eff="0.0">
@@ -259,7 +260,7 @@
     <h3>Molotov Bomb B (de TSide Lower)</h3>
     <p class="muted">11 usos</p>
   </div>
-</a><a class="card" href="/pt/ancient/flash-mid-from-house-ct/"
+</a><a class="card" href="/pt/ancient/flash-mid-from-house-ct/" data-id="flash-mid-from-house-ct"
    data-type="flash" data-side="CT" data-area="Middle" data-map="ancient"
    data-teams="fut g2 mouz spirit" data-players="dziugss hunter r1nkle sunpayus xelex zont1x"
    data-diff="1" data-count="11" data-eff="1.0">
@@ -277,7 +278,7 @@
 <p class="eff">cega 1,0 inimigo(s) por 2,2s em média</p>
     <p class="muted">11 usos</p>
   </div>
-</a><a class="card" href="/pt/ancient/smoke-alley-from-ruins-t/"
+</a><a class="card" href="/pt/ancient/smoke-alley-from-ruins-t/" data-id="smoke-alley-from-ruins-t"
    data-type="smoke" data-side="T" data-area="Alley" data-map="ancient"
    data-teams="g2 spirit" data-players="r1nkle sh1ro"
    data-diff="2" data-count="8" data-eff="-1">
@@ -294,7 +295,7 @@
     <h3>Smoke Alley (de Ruins)</h3>
     <p class="muted">8 usos</p>
   </div>
-</a><a class="card" href="/pt/ancient/flash-b-site-from-ruins-t/"
+</a><a class="card" href="/pt/ancient/flash-b-site-from-ruins-t/" data-id="flash-b-site-from-ruins-t"
    data-type="flash" data-side="T" data-area="BombsiteB" data-map="ancient"
    data-teams="g2 spirit" data-players="heavygod magixx"
    data-diff="3" data-count="8" data-eff="1.62">
@@ -312,7 +313,7 @@
 <p class="eff">cega 1,6 inimigo(s) por 3,9s em média</p>
     <p class="muted">8 usos</p>
   </div>
-</a><a class="card" href="/pt/ancient/smoke-b-site-from-ruins-t/"
+</a><a class="card" href="/pt/ancient/smoke-b-site-from-ruins-t/" data-id="smoke-b-site-from-ruins-t"
    data-type="smoke" data-side="T" data-area="BombsiteB" data-map="ancient"
    data-teams="g2 spirit" data-players="magixx r1nkle sh1ro"
    data-diff="2" data-count="7" data-eff="-1">
@@ -329,7 +330,7 @@
     <h3>Smoke Bomb B (de Ruins)</h3>
     <p class="muted">7 usos</p>
   </div>
-</a><a class="card" href="/pt/ancient/molotov-mid-from-house-ct/"
+</a><a class="card" href="/pt/ancient/molotov-mid-from-house-ct/" data-id="molotov-mid-from-house-ct"
    data-type="molotov" data-side="CT" data-area="Middle" data-map="ancient"
    data-teams="g2 spirit" data-players="donk nertz"
    data-diff="3" data-count="7" data-eff="0.0">
@@ -346,7 +347,7 @@
     <h3>Molotov Mid (de House)</h3>
     <p class="muted">7 usos</p>
   </div>
-</a><a class="card" href="/pt/ancient/flash-mid-from-t-spawn-t/"
+</a><a class="card" href="/pt/ancient/flash-mid-from-t-spawn-t/" data-id="flash-mid-from-t-spawn-t"
    data-type="flash" data-side="T" data-area="Middle" data-map="ancient"
    data-teams="fut g2" data-players="heavygod hunter sunpayus"
    data-diff="2" data-count="6" data-eff="2.0">
@@ -364,7 +365,7 @@
 <p class="eff">cega 2,0 inimigo(s) por 6,5s em média</p>
     <p class="muted">6 usos</p>
   </div>
-</a><a class="card" href="/pt/ancient/smoke-side-entrance-from-water-t/"
+</a><a class="card" href="/pt/ancient/smoke-side-entrance-from-water-t/" data-id="smoke-side-entrance-from-water-t"
    data-type="smoke" data-side="T" data-area="SideEntrance" data-map="ancient"
    data-teams="g2 mouz spirit" data-players="donk hunter r1nkle sh1ro torzsi"
    data-diff="2" data-count="6" data-eff="-1">
@@ -381,7 +382,7 @@
     <h3>Smoke Side Entrance (de Water)</h3>
     <p class="muted">6 usos</p>
   </div>
-</a><a class="card" href="/pt/ancient/smoke-b-site-from-tside-lower-t/"
+</a><a class="card" href="/pt/ancient/smoke-b-site-from-tside-lower-t/" data-id="smoke-b-site-from-tside-lower-t"
    data-type="smoke" data-side="T" data-area="BombsiteB" data-map="ancient"
    data-teams="g2 mouz spirit" data-players="heavygod r1nkle sh1ro torzsi"
    data-diff="1" data-count="5" data-eff="-1">
@@ -398,7 +399,7 @@
     <h3>Smoke Bomb B (de TSide Lower)</h3>
     <p class="muted">5 usos</p>
   </div>
-</a><a class="card" href="/pt/ancient/he-mid-from-outside-t/"
+</a><a class="card" href="/pt/ancient/he-mid-from-outside-t/" data-id="he-mid-from-outside-t"
    data-type="he" data-side="T" data-area="Middle" data-map="ancient"
    data-teams="g2 spirit" data-players="hunter magixx zont1x"
    data-diff="3" data-count="4" data-eff="0.0">
@@ -415,7 +416,7 @@
     <h3>HE Mid (de Outside)</h3>
     <p class="muted">4 usos</p>
   </div>
-</a><a class="card" href="/pt/ancient/molotov-ramp-from-alley-ct/"
+</a><a class="card" href="/pt/ancient/molotov-ramp-from-alley-ct/" data-id="molotov-ramp-from-alley-ct"
    data-type="molotov" data-side="CT" data-area="Ramp" data-map="ancient"
    data-teams="spirit" data-players="sh1ro tn1r"
    data-diff="2" data-count="4" data-eff="0.0">
@@ -432,7 +433,7 @@
     <h3>Molotov Ramp (de Alley)</h3>
     <p class="muted">4 usos</p>
   </div>
-</a><a class="card" href="/pt/ancient/molotov-a-site-from-main-hall-t/"
+</a><a class="card" href="/pt/ancient/molotov-a-site-from-main-hall-t/" data-id="molotov-a-site-from-main-hall-t"
    data-type="molotov" data-side="T" data-area="BombsiteA" data-map="ancient"
    data-teams="g2 spirit" data-players="heavygod sh1ro"
    data-diff="3" data-count="4" data-eff="0.0">
@@ -449,7 +450,7 @@
     <h3>Molotov Bomb A (de Main Hall)</h3>
     <p class="muted">4 usos</p>
   </div>
-</a><a class="card" href="/pt/ancient/smoke-a-site-from-outside-t/"
+</a><a class="card" href="/pt/ancient/smoke-a-site-from-outside-t/" data-id="smoke-a-site-from-outside-t"
    data-type="smoke" data-side="T" data-area="BombsiteA" data-map="ancient"
    data-teams="g2 spirit" data-players="hunter magixx"
    data-diff="2" data-count="4" data-eff="-1">
@@ -466,7 +467,7 @@
     <h3>Smoke Bomb A (de Outside)</h3>
     <p class="muted">4 usos</p>
   </div>
-</a><a class="card" href="/pt/ancient/smoke-side-entrance-from-t-spawn-t/"
+</a><a class="card" href="/pt/ancient/smoke-side-entrance-from-t-spawn-t/" data-id="smoke-side-entrance-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="SideEntrance" data-map="ancient"
    data-teams="fut mouz spirit" data-players="sh1ro sunpayus torzsi"
    data-diff="2" data-count="4" data-eff="-1">
@@ -483,7 +484,7 @@
     <h3>Smoke Side Entrance (de T Spawn)</h3>
     <p class="muted">4 usos</p>
   </div>
-</a><a class="card" href="/pt/ancient/flash-ramp-from-ruins-t/"
+</a><a class="card" href="/pt/ancient/flash-ramp-from-ruins-t/" data-id="flash-ramp-from-ruins-t"
    data-type="flash" data-side="T" data-area="Ramp" data-map="ancient"
    data-teams="fut spirit" data-players="sh1ro sunpayus"
    data-diff="2" data-count="3" data-eff="0.0">
@@ -500,7 +501,7 @@
     <h3>Flash Ramp (de Ruins)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/ancient/flash-b-site-from-tside-lower-t/"
+</a><a class="card" href="/pt/ancient/flash-b-site-from-tside-lower-t/" data-id="flash-b-site-from-tside-lower-t"
    data-type="flash" data-side="T" data-area="BombsiteB" data-map="ancient"
    data-teams="g2" data-players="hunter"
    data-diff="3" data-count="3" data-eff="1.33">
@@ -518,7 +519,7 @@
 <p class="eff">cega 1,3 inimigo(s) por 2,0s em média</p>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/ancient/he-mid-from-top-mid-ct/"
+</a><a class="card" href="/pt/ancient/he-mid-from-top-mid-ct/" data-id="he-mid-from-top-mid-ct"
    data-type="he" data-side="CT" data-area="Middle" data-map="ancient"
    data-teams="spirit" data-players="donk"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -535,7 +536,7 @@
     <h3>HE Mid (de Top Mid)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/ancient/he-mid-from-house-ct/"
+</a><a class="card" href="/pt/ancient/he-mid-from-house-ct/" data-id="he-mid-from-house-ct"
    data-type="he" data-side="CT" data-area="Middle" data-map="ancient"
    data-teams="fut g2" data-players="hunter r1nkle sunpayus"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -552,7 +553,7 @@
     <h3>HE Mid (de House)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/ancient/he-ramp-from-alley-ct/"
+</a><a class="card" href="/pt/ancient/he-ramp-from-alley-ct/" data-id="he-ramp-from-alley-ct"
    data-type="he" data-side="CT" data-area="Ramp" data-map="ancient"
    data-teams="g2 mouz" data-players="heavygod spinx"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -569,7 +570,7 @@
     <h3>HE Ramp (de Alley)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/ancient/smoke-a-site-ct/"
+</a><a class="card" href="/pt/ancient/smoke-a-site-ct/" data-id="smoke-a-site-ct"
    data-type="smoke" data-side="CT" data-area="BombsiteA" data-map="ancient"
    data-teams="mouz spirit" data-players="donk xelex"
    data-diff="3" data-count="3" data-eff="-1">
@@ -586,7 +587,7 @@
     <h3>Smoke Bomb A</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/ancient/smoke-side-hall-from-outside-t/"
+</a><a class="card" href="/pt/ancient/smoke-side-hall-from-outside-t/" data-id="smoke-side-hall-from-outside-t"
    data-type="smoke" data-side="T" data-area="SideHall" data-map="ancient"
    data-teams="g2 spirit" data-players="hunter magixx"
    data-diff="3" data-count="3" data-eff="-1">
@@ -607,7 +608,7 @@
 </section>
 <section>
   <h2 class="sec"><a href="/pt/anubis/">Anubis</a> <span class="muted">· 20 lineups</span></h2>
-  <div class="cards"><a class="card" href="/pt/anubis/molotov-canal-from-b-site-ct/"
+  <div class="cards"><a class="card" href="/pt/anubis/molotov-canal-from-b-site-ct/" data-id="molotov-canal-from-b-site-ct"
    data-type="molotov" data-side="CT" data-area="Canal" data-map="anubis"
    data-teams="falcons g2" data-players="kyousuke matys"
    data-diff="2" data-count="6" data-eff="0.0">
@@ -624,7 +625,7 @@
     <h3>Molotov Agua (de Bomb B)</h3>
     <p class="muted">6 usos</p>
   </div>
-</a><a class="card" href="/pt/anubis/smoke-canal-from-b-site-ct/"
+</a><a class="card" href="/pt/anubis/smoke-canal-from-b-site-ct/" data-id="smoke-canal-from-b-site-ct"
    data-type="smoke" data-side="CT" data-area="Canal" data-map="anubis"
    data-teams="g2" data-players="heavygod matys"
    data-diff="2" data-count="5" data-eff="-1">
@@ -641,7 +642,7 @@
     <h3>Smoke Agua (de Bomb B)</h3>
     <p class="muted">5 usos</p>
   </div>
-</a><a class="card" href="/pt/anubis/flash-a-site-from-canal-t/"
+</a><a class="card" href="/pt/anubis/flash-a-site-from-canal-t/" data-id="flash-a-site-from-canal-t"
    data-type="flash" data-side="T" data-area="BombsiteA" data-map="anubis"
    data-teams="g2" data-players="r1nkle"
    data-diff="2" data-count="4" data-eff="2.0">
@@ -659,7 +660,7 @@
 <p class="eff">cega 2,0 inimigo(s) por 4,6s em média</p>
     <p class="muted">4 usos</p>
   </div>
-</a><a class="card" href="/pt/anubis/smoke-main-from-street-t/"
+</a><a class="card" href="/pt/anubis/smoke-main-from-street-t/" data-id="smoke-main-from-street-t"
    data-type="smoke" data-side="T" data-area="Main" data-map="anubis"
    data-teams="falcons g2" data-players="hunter niko"
    data-diff="2" data-count="4" data-eff="-1">
@@ -676,7 +677,7 @@
     <h3>Smoke Mercado (de Rua)</h3>
     <p class="muted">4 usos</p>
   </div>
-</a><a class="card" href="/pt/anubis/flash-canal-from-a-site-ct/"
+</a><a class="card" href="/pt/anubis/flash-canal-from-a-site-ct/" data-id="flash-canal-from-a-site-ct"
    data-type="flash" data-side="CT" data-area="Canal" data-map="anubis"
    data-teams="falcons" data-players="m0nesy"
    data-diff="2" data-count="3" data-eff="1.67">
@@ -694,7 +695,7 @@
 <p class="eff">cega 1,7 inimigo(s) por 5,8s em média</p>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/anubis/flash-outside-long-from-back-of-b-ct/"
+</a><a class="card" href="/pt/anubis/flash-outside-long-from-back-of-b-ct/" data-id="flash-outside-long-from-back-of-b-ct"
    data-type="flash" data-side="CT" data-area="OutsideLong" data-map="anubis"
    data-teams="falcons g2" data-players="heavygod karrigan kyousuke"
    data-diff="2" data-count="3" data-eff="0.33">
@@ -712,7 +713,7 @@
 <p class="eff">cega 0,3 inimigo(s) por 1,2s em média</p>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/anubis/flash-connector-from-b-site-ct/"
+</a><a class="card" href="/pt/anubis/flash-connector-from-b-site-ct/" data-id="flash-connector-from-b-site-ct"
    data-type="flash" data-side="CT" data-area="Connector" data-map="anubis"
    data-teams="g2" data-players="matys"
    data-diff="2" data-count="3" data-eff="0.0">
@@ -729,7 +730,7 @@
     <h3>Flash Rato (de Bomb B)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/anubis/flash-canal-t/"
+</a><a class="card" href="/pt/anubis/flash-canal-t/" data-id="flash-canal-t"
    data-type="flash" data-side="T" data-area="Canal" data-map="anubis"
    data-teams="g2" data-players="hunter r1nkle"
    data-diff="3" data-count="3" data-eff="1.33">
@@ -747,7 +748,7 @@
 <p class="eff">cega 1,3 inimigo(s) por 2,6s em média</p>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/anubis/flash-bridge-t/"
+</a><a class="card" href="/pt/anubis/flash-bridge-t/" data-id="flash-bridge-t"
    data-type="flash" data-side="T" data-area="Bridge" data-map="anubis"
    data-teams="falcons g2" data-players="karrigan matys nertz"
    data-diff="1" data-count="3" data-eff="0.33">
@@ -765,7 +766,7 @@
 <p class="eff">cega 0,3 inimigo(s) por 0,6s em média</p>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/anubis/he-connector-from-b-site-ct/"
+</a><a class="card" href="/pt/anubis/he-connector-from-b-site-ct/" data-id="he-connector-from-b-site-ct"
    data-type="he" data-side="CT" data-area="Connector" data-map="anubis"
    data-teams="falcons g2" data-players="heavygod karrigan matys"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -782,7 +783,7 @@
     <h3>HE Rato (de Bomb B)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/anubis/he-back-of-b-from-connector-t/"
+</a><a class="card" href="/pt/anubis/he-back-of-b-from-connector-t/" data-id="he-back-of-b-from-connector-t"
    data-type="he" data-side="T" data-area="BackofB" data-map="anubis"
    data-teams="falcons g2" data-players="hunter karrigan nertz"
    data-diff="2" data-count="3" data-eff="0.33">
@@ -799,7 +800,7 @@
     <h3>HE Insani/Altar (de Rato)</h3>
 <p class="eff">1 kill com a granada</p>    <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/anubis/molotov-connector-from-b-site-ct/"
+</a><a class="card" href="/pt/anubis/molotov-connector-from-b-site-ct/" data-id="molotov-connector-from-b-site-ct"
    data-type="molotov" data-side="CT" data-area="Connector" data-map="anubis"
    data-teams="falcons g2" data-players="heavygod karrigan"
    data-diff="1" data-count="3" data-eff="0.0">
@@ -816,7 +817,7 @@
     <h3>Molotov Rato (de Bomb B)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/anubis/molotov-main-from-canal-t/"
+</a><a class="card" href="/pt/anubis/molotov-main-from-canal-t/" data-id="molotov-main-from-canal-t"
    data-type="molotov" data-side="T" data-area="Main" data-map="anubis"
    data-teams="g2" data-players="heavygod"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -833,7 +834,7 @@
     <h3>Molotov Mercado (de Agua)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/anubis/molotov-connector-from-canal-t/"
+</a><a class="card" href="/pt/anubis/molotov-connector-from-canal-t/" data-id="molotov-connector-from-canal-t"
    data-type="molotov" data-side="T" data-area="Connector" data-map="anubis"
    data-teams="falcons" data-players="karrigan kyousuke"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -850,7 +851,7 @@
     <h3>Molotov Rato (de Agua)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/anubis/molotov-mid-doors-from-ruins-t/"
+</a><a class="card" href="/pt/anubis/molotov-mid-doors-from-ruins-t/" data-id="molotov-mid-doors-from-ruins-t"
    data-type="molotov" data-side="T" data-area="MidDoors" data-map="anubis"
    data-teams="g2" data-players="matys"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -867,7 +868,7 @@
     <h3>Molotov Portas do Meio (de Ruínas)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/anubis/smoke-bridge-from-mid-ct/"
+</a><a class="card" href="/pt/anubis/smoke-bridge-from-mid-ct/" data-id="smoke-bridge-from-mid-ct"
    data-type="smoke" data-side="CT" data-area="Bridge" data-map="anubis"
    data-teams="falcons g2" data-players="hunter niko"
    data-diff="1" data-count="3" data-eff="-1">
@@ -884,7 +885,7 @@
     <h3>Smoke Meio TR (de Meio/Liga)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/anubis/smoke-mid-doors-from-t-spawn-t/"
+</a><a class="card" href="/pt/anubis/smoke-mid-doors-from-t-spawn-t/" data-id="smoke-mid-doors-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="MidDoors" data-map="anubis"
    data-teams="g2" data-players="hunter matys"
    data-diff="2" data-count="3" data-eff="-1">
@@ -901,7 +902,7 @@
     <h3>Smoke Portas do Meio (de Base TR)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/anubis/smoke-mid-from-ruins-t/"
+</a><a class="card" href="/pt/anubis/smoke-mid-from-ruins-t/" data-id="smoke-mid-from-ruins-t"
    data-type="smoke" data-side="T" data-area="Middle" data-map="anubis"
    data-teams="falcons g2" data-players="karrigan nertz"
    data-diff="2" data-count="3" data-eff="-1">
@@ -918,7 +919,7 @@
     <h3>Smoke Meio/Liga (de Ruínas)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/anubis/smoke-connector-from-t-spawn-t/"
+</a><a class="card" href="/pt/anubis/smoke-connector-from-t-spawn-t/" data-id="smoke-connector-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="Connector" data-map="anubis"
    data-teams="g2" data-players="r1nkle"
    data-diff="2" data-count="3" data-eff="-1">
@@ -935,7 +936,7 @@
     <h3>Smoke Rato (de Base TR)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/anubis/smoke-bricks-from-canal-t/"
+</a><a class="card" href="/pt/anubis/smoke-bricks-from-canal-t/" data-id="smoke-bricks-from-canal-t"
    data-type="smoke" data-side="T" data-area="Bricks" data-map="anubis"
    data-teams="g2" data-players="hunter r1nkle"
    data-diff="2" data-count="3" data-eff="-1">
@@ -956,7 +957,7 @@
 </section>
 <section>
   <h2 class="sec"><a href="/pt/cache/">Cache</a> <span class="muted">· 39 lineups</span></h2>
-  <div class="cards"><a class="card" href="/pt/cache/smoke-catwalk-from-outside-a-t/"
+  <div class="cards"><a class="card" href="/pt/cache/smoke-catwalk-from-outside-a-t/" data-id="smoke-catwalk-from-outside-a-t"
    data-type="smoke" data-side="T" data-area="Catwalk" data-map="cache"
    data-teams="fut mouz spirit vitality" data-players="apex dem0n dziugss magixx pr sh1ro sunpayus torzsi xfl0ud"
    data-diff="2" data-count="24" data-eff="-1">
@@ -973,7 +974,7 @@
     <h3>Smoke Metal (de Outside A)</h3>
     <p class="muted">24 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/smoke-garage-from-bus-stop-ct/"
+</a><a class="card" href="/pt/cache/smoke-garage-from-bus-stop-ct/" data-id="smoke-garage-from-bus-stop-ct"
    data-type="smoke" data-side="CT" data-area="Garage" data-map="cache"
    data-teams="fut mouz" data-players="dem0n spinx"
    data-diff="3" data-count="24" data-eff="-1">
@@ -990,7 +991,7 @@
     <h3>Smoke Garagem do meio (de Ônibus)</h3>
     <p class="muted">24 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/molotov-bmain-from-b-site-ct/"
+</a><a class="card" href="/pt/cache/molotov-bmain-from-b-site-ct/" data-id="molotov-bmain-from-b-site-ct"
    data-type="molotov" data-side="CT" data-area="BMain" data-map="cache"
    data-teams="fut mouz spirit vitality" data-players="magixx mezii torzsi xelex xertion xfl0ud zont1x"
    data-diff="3" data-count="16" data-eff="0.0">
@@ -1007,7 +1008,7 @@
     <h3>Molotov Garagem da B (de Bomb B)</h3>
     <p class="muted">16 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/smoke-b-site-from-sun-room-t/"
+</a><a class="card" href="/pt/cache/smoke-b-site-from-sun-room-t/" data-id="smoke-b-site-from-sun-room-t"
    data-type="smoke" data-side="T" data-area="BombsiteB" data-map="cache"
    data-teams="fut mouz spirit vitality" data-players="coolio flamez sh1ro sunpayus torzsi zywoo"
    data-diff="3" data-count="15" data-eff="-1">
@@ -1024,7 +1025,7 @@
     <h3>Smoke Bomb B (de Tóxico)</h3>
     <p class="muted">15 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/molotov-boost-from-mid-ct/"
+</a><a class="card" href="/pt/cache/molotov-boost-from-mid-ct/" data-id="molotov-boost-from-mid-ct"
    data-type="molotov" data-side="CT" data-area="Boost" data-map="cache"
    data-teams="mouz spirit vitality" data-players="apex donk mezii spinx"
    data-diff="2" data-count="15" data-eff="0.0">
@@ -1041,7 +1042,7 @@
     <h3>Molotov Pézinho Lona (de Meio)</h3>
     <p class="muted">15 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/smoke-bmain-from-rafters-ct/"
+</a><a class="card" href="/pt/cache/smoke-bmain-from-rafters-ct/" data-id="smoke-bmain-from-rafters-ct"
    data-type="smoke" data-side="CT" data-area="BMain" data-map="cache"
    data-teams="fut mouz spirit vitality" data-players="coolio ropz xelex xfl0ud zont1x"
    data-diff="3" data-count="14" data-eff="-1">
@@ -1058,7 +1059,7 @@
     <h3>Smoke Garagem da B (de Simple)</h3>
     <p class="muted">14 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/smoke-a-site-from-long-a-t/"
+</a><a class="card" href="/pt/cache/smoke-a-site-from-long-a-t/" data-id="smoke-a-site-from-long-a-t"
    data-type="smoke" data-side="T" data-area="BombsiteA" data-map="cache"
    data-teams="fut mouz" data-players="coolio pr torzsi"
    data-diff="1" data-count="13" data-eff="-1">
@@ -1075,7 +1076,7 @@
     <h3>Smoke Bomb A (de Long A)</h3>
     <p class="muted">13 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/smoke-catwalk-from-long-a-t/"
+</a><a class="card" href="/pt/cache/smoke-catwalk-from-long-a-t/" data-id="smoke-catwalk-from-long-a-t"
    data-type="smoke" data-side="T" data-area="Catwalk" data-map="cache"
    data-teams="fut mouz" data-players="coolio pr torzsi"
    data-diff="1" data-count="13" data-eff="-1">
@@ -1092,7 +1093,7 @@
     <h3>Smoke Metal (de Long A)</h3>
     <p class="muted">13 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/flash-b-site-from-sun-room-t/"
+</a><a class="card" href="/pt/cache/flash-b-site-from-sun-room-t/" data-id="flash-b-site-from-sun-room-t"
    data-type="flash" data-side="T" data-area="BombsiteB" data-map="cache"
    data-teams="fut mouz vitality" data-players="sunpayus torzsi zywoo"
    data-diff="2" data-count="10" data-eff="1.1">
@@ -1110,7 +1111,7 @@
 <p class="eff">cega 1,1 inimigo(s) por 2,6s em média</p>
     <p class="muted">10 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/smoke-b-site-from-t-spawn-t/"
+</a><a class="card" href="/pt/cache/smoke-b-site-from-t-spawn-t/" data-id="smoke-b-site-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="BombsiteB" data-map="cache"
    data-teams="mouz spirit vitality" data-players="ropz spinx zont1x"
    data-diff="3" data-count="10" data-eff="-1">
@@ -1127,7 +1128,7 @@
     <h3>Smoke Bomb B (de Base TR)</h3>
     <p class="muted">10 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/he-bmain-from-b-site-ct/"
+</a><a class="card" href="/pt/cache/he-bmain-from-b-site-ct/" data-id="he-bmain-from-b-site-ct"
    data-type="he" data-side="CT" data-area="BMain" data-map="cache"
    data-teams="fut mouz spirit" data-players="donk xertion xfl0ud"
    data-diff="3" data-count="8" data-eff="0.0">
@@ -1144,7 +1145,7 @@
     <h3>HE Garagem da B (de Bomb B)</h3>
     <p class="muted">8 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/smoke-b-site-from-bhalls-t/"
+</a><a class="card" href="/pt/cache/smoke-b-site-from-bhalls-t/" data-id="smoke-b-site-from-bhalls-t"
    data-type="smoke" data-side="T" data-area="BombsiteB" data-map="cache"
    data-teams="mouz spirit" data-players="spinx zont1x"
    data-diff="3" data-count="6" data-eff="-1">
@@ -1161,7 +1162,7 @@
     <h3>Smoke Bomb B (de Saguão B)</h3>
     <p class="muted">6 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/molotov-a-site-from-truck-ct/"
+</a><a class="card" href="/pt/cache/molotov-a-site-from-truck-ct/" data-id="molotov-a-site-from-truck-ct"
    data-type="molotov" data-side="CT" data-area="BombsiteA" data-map="cache"
    data-teams="fut mouz vitality" data-players="dem0n ropz xelex xfl0ud"
    data-diff="2" data-count="6" data-eff="0.17">
@@ -1178,7 +1179,7 @@
     <h3>Molotov Bomb A (de Toyota)</h3>
 <p class="eff">1 kill com a granada</p>    <p class="muted">6 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/molotov-sandbags-from-outside-a-t/"
+</a><a class="card" href="/pt/cache/molotov-sandbags-from-outside-a-t/" data-id="molotov-sandbags-from-outside-a-t"
    data-type="molotov" data-side="T" data-area="Sandbags" data-map="cache"
    data-teams="fut mouz spirit" data-players="coolio tn1r xertion xfl0ud"
    data-diff="3" data-count="6" data-eff="0.0">
@@ -1195,7 +1196,7 @@
     <h3>Molotov Areia (de Outside A)</h3>
     <p class="muted">6 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/flash-garage-from-connector-ct/"
+</a><a class="card" href="/pt/cache/flash-garage-from-connector-ct/" data-id="flash-garage-from-connector-ct"
    data-type="flash" data-side="CT" data-area="Garage" data-map="cache"
    data-teams="fut mouz" data-players="dem0n spinx"
    data-diff="3" data-count="5" data-eff="0.4">
@@ -1213,7 +1214,7 @@
 <p class="eff">cega 0,4 inimigo(s) por 2,0s em média</p>
     <p class="muted">5 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/flash-amain-from-truck-ct/"
+</a><a class="card" href="/pt/cache/flash-amain-from-truck-ct/" data-id="flash-amain-from-truck-ct"
    data-type="flash" data-side="CT" data-area="AMain" data-map="cache"
    data-teams="fut mouz" data-players="dziugss sunpayus torzsi"
    data-diff="1" data-count="5" data-eff="0.0">
@@ -1230,7 +1231,7 @@
     <h3>Flash Garagem (de Toyota)</h3>
     <p class="muted">5 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/he-amain-from-a-site-ct/"
+</a><a class="card" href="/pt/cache/he-amain-from-a-site-ct/" data-id="he-amain-from-a-site-ct"
    data-type="he" data-side="CT" data-area="AMain" data-map="cache"
    data-teams="mouz" data-players="pr"
    data-diff="3" data-count="5" data-eff="0.0">
@@ -1247,7 +1248,7 @@
     <h3>HE Garagem (de Bomb A)</h3>
     <p class="muted">5 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/molotov-fork-lift-from-truck-ct/"
+</a><a class="card" href="/pt/cache/molotov-fork-lift-from-truck-ct/" data-id="molotov-fork-lift-from-truck-ct"
    data-type="molotov" data-side="CT" data-area="ForkLift" data-map="cache"
    data-teams="fut mouz vitality" data-players="coolio dem0n mezii torzsi xertion"
    data-diff="3" data-count="5" data-eff="0.0">
@@ -1264,7 +1265,7 @@
     <h3>Molotov Empilhadeira (de Toyota)</h3>
     <p class="muted">5 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/smoke-garage-from-connector-ct/"
+</a><a class="card" href="/pt/cache/smoke-garage-from-connector-ct/" data-id="smoke-garage-from-connector-ct"
    data-type="smoke" data-side="CT" data-area="Garage" data-map="cache"
    data-teams="fut spirit vitality" data-players="donk flamez xfl0ud"
    data-diff="3" data-count="5" data-eff="-1">
@@ -1281,7 +1282,7 @@
     <h3>Smoke Garagem do meio (de Liga/Janela)</h3>
     <p class="muted">5 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/flash-bmain-from-tree-room-ct/"
+</a><a class="card" href="/pt/cache/flash-bmain-from-tree-room-ct/" data-id="flash-bmain-from-tree-room-ct"
    data-type="flash" data-side="CT" data-area="BMain" data-map="cache"
    data-teams="fut spirit vitality" data-players="apex magixx xfl0ud"
    data-diff="2" data-count="4" data-eff="0.0">
@@ -1298,7 +1299,7 @@
     <h3>Flash Garagem da B (de CT da A)</h3>
     <p class="muted">4 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/flash-catwalk-from-long-a-t/"
+</a><a class="card" href="/pt/cache/flash-catwalk-from-long-a-t/" data-id="flash-catwalk-from-long-a-t"
    data-type="flash" data-side="T" data-area="Catwalk" data-map="cache"
    data-teams="mouz" data-players="torzsi"
    data-diff="3" data-count="4" data-eff="1.0">
@@ -1316,7 +1317,7 @@
 <p class="eff">cega 1,0 inimigo(s) por 2,3s em média</p>
     <p class="muted">4 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/flash-a-site-from-long-a-t/"
+</a><a class="card" href="/pt/cache/flash-a-site-from-long-a-t/" data-id="flash-a-site-from-long-a-t"
    data-type="flash" data-side="T" data-area="BombsiteA" data-map="cache"
    data-teams="mouz vitality" data-players="apex spinx"
    data-diff="2" data-count="4" data-eff="1.25">
@@ -1334,7 +1335,7 @@
 <p class="eff">cega 1,2 inimigo(s) por 3,5s em média</p>
     <p class="muted">4 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/he-outside-a-from-mid-ct/"
+</a><a class="card" href="/pt/cache/he-outside-a-from-mid-ct/" data-id="he-outside-a-from-mid-ct"
    data-type="he" data-side="CT" data-area="OutsideA" data-map="cache"
    data-teams="mouz" data-players="spinx"
    data-diff="3" data-count="4" data-eff="0.0">
@@ -1351,7 +1352,7 @@
     <h3>HE Outside A (de Meio)</h3>
     <p class="muted">4 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/smoke-mid-from-highway-ct/"
+</a><a class="card" href="/pt/cache/smoke-mid-from-highway-ct/" data-id="smoke-mid-from-highway-ct"
    data-type="smoke" data-side="CT" data-area="Mid" data-map="cache"
    data-teams="fut mouz vitality" data-players="dziugss flamez torzsi"
    data-diff="1" data-count="4" data-eff="-1">
@@ -1368,7 +1369,7 @@
     <h3>Smoke Meio (de Rua)</h3>
     <p class="muted">4 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/smoke-bmain-from-bhalls-t/"
+</a><a class="card" href="/pt/cache/smoke-bmain-from-bhalls-t/" data-id="smoke-bmain-from-bhalls-t"
    data-type="smoke" data-side="T" data-area="BMain" data-map="cache"
    data-teams="fut" data-players="dziugss"
    data-diff="3" data-count="4" data-eff="-1">
@@ -1385,7 +1386,7 @@
     <h3>Smoke Garagem da B (de Saguão B)</h3>
     <p class="muted">4 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/smoke-connector-from-long-a-t/"
+</a><a class="card" href="/pt/cache/smoke-connector-from-long-a-t/" data-id="smoke-connector-from-long-a-t"
    data-type="smoke" data-side="T" data-area="Connector" data-map="cache"
    data-teams="fut" data-players="xfl0ud"
    data-diff="2" data-count="4" data-eff="-1">
@@ -1402,7 +1403,7 @@
     <h3>Smoke Liga/Janela (de Long A)</h3>
     <p class="muted">4 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/flash-highway-from-mid-t/"
+</a><a class="card" href="/pt/cache/flash-highway-from-mid-t/" data-id="flash-highway-from-mid-t"
    data-type="flash" data-side="T" data-area="Highway" data-map="cache"
    data-teams="mouz vitality" data-players="mezii xertion zywoo"
    data-diff="1" data-count="3" data-eff="1.0">
@@ -1420,7 +1421,7 @@
 <p class="eff">cega 1,0 inimigo(s) por 3,0s em média</p>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/flash-mid-from-outside-a-t/"
+</a><a class="card" href="/pt/cache/flash-mid-from-outside-a-t/" data-id="flash-mid-from-outside-a-t"
    data-type="flash" data-side="T" data-area="Mid" data-map="cache"
    data-teams="mouz" data-players="torzsi"
    data-diff="3" data-count="3" data-eff="1.33">
@@ -1438,7 +1439,7 @@
 <p class="eff">cega 1,3 inimigo(s) por 2,8s em média</p>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/molotov-boost-from-connector-ct/"
+</a><a class="card" href="/pt/cache/molotov-boost-from-connector-ct/" data-id="molotov-boost-from-connector-ct"
    data-type="molotov" data-side="CT" data-area="Boost" data-map="cache"
    data-teams="fut" data-players="dem0n sunpayus"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -1455,7 +1456,7 @@
     <h3>Molotov Pézinho Lona (de Liga/Janela)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/molotov-bmain-from-rafters-ct/"
+</a><a class="card" href="/pt/cache/molotov-bmain-from-rafters-ct/" data-id="molotov-bmain-from-rafters-ct"
    data-type="molotov" data-side="CT" data-area="BMain" data-map="cache"
    data-teams="vitality" data-players="mezii ropz"
    data-diff="1" data-count="3" data-eff="0.0">
@@ -1472,7 +1473,7 @@
     <h3>Molotov Garagem da B (de Simple)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/molotov-quad-from-amain-t/"
+</a><a class="card" href="/pt/cache/molotov-quad-from-amain-t/" data-id="molotov-quad-from-amain-t"
    data-type="molotov" data-side="T" data-area="Quad" data-map="cache"
    data-teams="fut mouz" data-players="dem0n xelex xertion"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -1489,7 +1490,7 @@
     <h3>Molotov Quad (de Garagem)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/molotov-heaven-from-bmain-t/"
+</a><a class="card" href="/pt/cache/molotov-heaven-from-bmain-t/" data-id="molotov-heaven-from-bmain-t"
    data-type="molotov" data-side="T" data-area="Heaven" data-map="cache"
    data-teams="fut mouz spirit" data-players="magixx torzsi xfl0ud"
    data-diff="1" data-count="3" data-eff="0.0">
@@ -1506,7 +1507,7 @@
     <h3>Molotov Heaven (de Garagem da B)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/molotov-corner-from-amain-t/"
+</a><a class="card" href="/pt/cache/molotov-corner-from-amain-t/" data-id="molotov-corner-from-amain-t"
    data-type="molotov" data-side="T" data-area="Corner" data-map="cache"
    data-teams="fut spirit" data-players="dziugss sh1ro zont1x"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -1523,7 +1524,7 @@
     <h3>Molotov Escanteio (de Garagem)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/molotov-b-site-from-sun-room-t/"
+</a><a class="card" href="/pt/cache/molotov-b-site-from-sun-room-t/" data-id="molotov-b-site-from-sun-room-t"
    data-type="molotov" data-side="T" data-area="BombsiteB" data-map="cache"
    data-teams="fut mouz" data-players="coolio torzsi"
    data-diff="2" data-count="3" data-eff="0.0">
@@ -1540,7 +1541,7 @@
     <h3>Molotov Bomb B (de Tóxico)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/molotov-mid-from-outside-a-t/"
+</a><a class="card" href="/pt/cache/molotov-mid-from-outside-a-t/" data-id="molotov-mid-from-outside-a-t"
    data-type="molotov" data-side="T" data-area="Mid" data-map="cache"
    data-teams="mouz vitality" data-players="mezii torzsi"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -1557,7 +1558,7 @@
     <h3>Molotov Meio (de Outside A)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/smoke-bmain-from-t-spawn-t/"
+</a><a class="card" href="/pt/cache/smoke-bmain-from-t-spawn-t/" data-id="smoke-bmain-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="BMain" data-map="cache"
    data-teams="mouz" data-players="spinx"
    data-diff="3" data-count="3" data-eff="-1">
@@ -1574,7 +1575,7 @@
     <h3>Smoke Garagem da B (de Base TR)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/smoke-a-site-from-tyard-t/"
+</a><a class="card" href="/pt/cache/smoke-a-site-from-tyard-t/" data-id="smoke-a-site-from-tyard-t"
    data-type="smoke" data-side="T" data-area="BombsiteA" data-map="cache"
    data-teams="fut mouz" data-players="coolio xertion"
    data-diff="3" data-count="3" data-eff="-1">
@@ -1591,7 +1592,7 @@
     <h3>Smoke Bomb A (de TYard)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/smoke-connector-from-t-spawn-t/"
+</a><a class="card" href="/pt/cache/smoke-connector-from-t-spawn-t/" data-id="smoke-connector-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="Connector" data-map="cache"
    data-teams="fut" data-players="dem0n xfl0ud"
    data-diff="3" data-count="3" data-eff="-1">
@@ -1608,7 +1609,7 @@
     <h3>Smoke Liga/Janela (de Base TR)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/smoke-b-site-from-long-a-t/"
+</a><a class="card" href="/pt/cache/smoke-b-site-from-long-a-t/" data-id="smoke-b-site-from-long-a-t"
    data-type="smoke" data-side="T" data-area="BombsiteB" data-map="cache"
    data-teams="mouz" data-players="pr"
    data-diff="3" data-count="3" data-eff="-1">
@@ -1629,7 +1630,7 @@
 </section>
 <section>
   <h2 class="sec"><a href="/pt/dust2/">Dust2</a> <span class="muted">· 39 lineups</span></h2>
-  <div class="cards"><a class="card" href="/pt/dust2/smoke-long-doors-from-under-a-ct/"
+  <div class="cards"><a class="card" href="/pt/dust2/smoke-long-doors-from-under-a-ct/" data-id="smoke-long-doors-from-under-a-ct"
    data-type="smoke" data-side="CT" data-area="LongDoors" data-map="dust2"
    data-teams="falcons furia g2 legacy vitality" data-players="apex art hunter karrigan kscerato m0nesy molodoy niko r1nkle try"
    data-diff="2" data-count="25" data-eff="-1">
@@ -1646,7 +1647,7 @@
     <h3>Smoke Portas do Fundo (de Rampa do CT)</h3>
     <p class="muted">25 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/flash-long-a-ct/"
+</a><a class="card" href="/pt/dust2/flash-long-a-ct/" data-id="flash-long-a-ct"
    data-type="flash" data-side="CT" data-area="LongA" data-map="dust2"
    data-teams="falcons furia g2 legacy vitality" data-players="apex fallen flamez hunter karrigan latto m0nesy molodoy r1nkle try yekindar zywoo"
    data-diff="1" data-count="23" data-eff="0.57">
@@ -1664,7 +1665,7 @@
 <p class="eff">cega 0,6 inimigo(s) por 1,3s em média</p>
     <p class="muted">23 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/smoke-mid-doors-from-t-spawn-t/"
+</a><a class="card" href="/pt/dust2/smoke-mid-doors-from-t-spawn-t/" data-id="smoke-mid-doors-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="MidDoors" data-map="dust2"
    data-teams="falcons g2 legacy vitality" data-players="art heavygod latto nertz teses try zywoo"
    data-diff="2" data-count="21" data-eff="-1">
@@ -1681,7 +1682,7 @@
     <h3>Smoke Portas do Meio (de Base TR)</h3>
     <p class="muted">21 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/smoke-ct-spawn-from-mid-t/"
+</a><a class="card" href="/pt/dust2/smoke-ct-spawn-from-mid-t/" data-id="smoke-ct-spawn-from-mid-t"
    data-type="smoke" data-side="T" data-area="CTSpawn" data-map="dust2"
    data-teams="falcons furia legacy vitality" data-players="apex art fallen flamez karrigan kscerato kyousuke m0nesy molodoy niko yekindar yuurih"
    data-diff="2" data-count="19" data-eff="-1">
@@ -1698,7 +1699,7 @@
     <h3>Smoke Base CT (de Meio)</h3>
     <p class="muted">19 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/molotov-long-doors-from-long-a-ct/"
+</a><a class="card" href="/pt/dust2/molotov-long-doors-from-long-a-ct/" data-id="molotov-long-doors-from-long-a-ct"
    data-type="molotov" data-side="CT" data-area="LongDoors" data-map="dust2"
    data-teams="falcons furia g2 legacy vitality" data-players="art dumau fallen flamez heavygod hunter karrigan kyousuke matys molodoy niko zywoo"
    data-diff="3" data-count="18" data-eff="0.0">
@@ -1715,7 +1716,7 @@
     <h3>Molotov Portas do Fundo (de Fundo)</h3>
     <p class="muted">18 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/smoke-b-site-from-upper-tunnels-t/"
+</a><a class="card" href="/pt/dust2/smoke-b-site-from-upper-tunnels-t/" data-id="smoke-b-site-from-upper-tunnels-t"
    data-type="smoke" data-side="T" data-area="BombsiteB" data-map="dust2"
    data-teams="falcons furia g2 legacy vitality" data-players="heavygod hunter ksloks matys niko ropz yekindar yuurih zywoo"
    data-diff="1" data-count="17" data-eff="-1">
@@ -1732,7 +1733,7 @@
     <h3>Smoke Bomb B (de Escuro Alto)</h3>
     <p class="muted">17 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/molotov-catwalk-from-top-mid-t/"
+</a><a class="card" href="/pt/dust2/molotov-catwalk-from-top-mid-t/" data-id="molotov-catwalk-from-top-mid-t"
    data-type="molotov" data-side="T" data-area="Catwalk" data-map="dust2"
    data-teams="falcons furia g2 legacy vitality" data-players="apex art fallen heavygod hunter karrigan m0nesy molodoy try"
    data-diff="3" data-count="16" data-eff="0.0">
@@ -1749,7 +1750,7 @@
     <h3>Molotov Varanda (de Coqueiro)</h3>
     <p class="muted">16 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/flash-b-site-from-upper-tunnels-t/"
+</a><a class="card" href="/pt/dust2/flash-b-site-from-upper-tunnels-t/" data-id="flash-b-site-from-upper-tunnels-t"
    data-type="flash" data-side="T" data-area="BombsiteB" data-map="dust2"
    data-teams="falcons furia g2 legacy vitality" data-players="art flamez hunter kscerato m0nesy niko yekindar"
    data-diff="2" data-count="16" data-eff="1.25">
@@ -1767,7 +1768,7 @@
 <p class="eff">cega 1,2 inimigo(s) por 2,3s em média</p>
     <p class="muted">16 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/smoke-long-doors-from-long-a-ct/"
+</a><a class="card" href="/pt/dust2/smoke-long-doors-from-long-a-ct/" data-id="smoke-long-doors-from-long-a-ct"
    data-type="smoke" data-side="CT" data-area="LongDoors" data-map="dust2"
    data-teams="falcons furia g2 legacy vitality" data-players="dumau fallen flamez heavygod karrigan kyousuke m0nesy molodoy"
    data-diff="3" data-count="14" data-eff="-1">
@@ -1784,7 +1785,7 @@
     <h3>Smoke Portas do Fundo (de Fundo)</h3>
     <p class="muted">14 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/smoke-mid-doors-from-top-mid-t/"
+</a><a class="card" href="/pt/dust2/smoke-mid-doors-from-top-mid-t/" data-id="smoke-mid-doors-from-top-mid-t"
    data-type="smoke" data-side="T" data-area="MidDoors" data-map="dust2"
    data-teams="falcons furia g2 legacy" data-players="art fallen heavygod hunter karrigan m0nesy molodoy nertz teses"
    data-diff="1" data-count="12" data-eff="-1">
@@ -1801,7 +1802,7 @@
     <h3>Smoke Portas do Meio (de Coqueiro)</h3>
     <p class="muted">12 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/flash-lower-tunnels-t/"
+</a><a class="card" href="/pt/dust2/flash-lower-tunnels-t/" data-id="flash-lower-tunnels-t"
    data-type="flash" data-side="T" data-area="LowerTunnel" data-map="dust2"
    data-teams="falcons furia g2 vitality" data-players="flamez kscerato nertz niko"
    data-diff="1" data-count="10" data-eff="0.2">
@@ -1819,7 +1820,7 @@
 <p class="eff">cega 0,2 inimigo(s) por 0,3s em média</p>
     <p class="muted">10 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/smoke-mid-doors-from-outside-long-t/"
+</a><a class="card" href="/pt/dust2/smoke-mid-doors-from-outside-long-t/" data-id="smoke-mid-doors-from-outside-long-t"
    data-type="smoke" data-side="T" data-area="MidDoors" data-map="dust2"
    data-teams="furia legacy vitality" data-players="fallen latto mezii yekindar"
    data-diff="2" data-count="10" data-eff="-1">
@@ -1836,7 +1837,7 @@
     <h3>Smoke Portas do Meio (de Fora do Fundo)</h3>
     <p class="muted">10 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/smoke-under-a-from-long-doors-t/"
+</a><a class="card" href="/pt/dust2/smoke-under-a-from-long-doors-t/" data-id="smoke-under-a-from-long-doors-t"
    data-type="smoke" data-side="T" data-area="UnderA" data-map="dust2"
    data-teams="falcons furia g2 vitality" data-players="apex m0nesy mezii r1nkle teses yuurih"
    data-diff="2" data-count="10" data-eff="-1">
@@ -1853,7 +1854,7 @@
     <h3>Smoke Rampa do CT (de Portas do Fundo)</h3>
     <p class="muted">10 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/flash-long-doors-from-outside-long-t/"
+</a><a class="card" href="/pt/dust2/flash-long-doors-from-outside-long-t/" data-id="flash-long-doors-from-outside-long-t"
    data-type="flash" data-side="T" data-area="LongDoors" data-map="dust2"
    data-teams="falcons g2 vitality" data-players="hunter m0nesy r1nkle zywoo"
    data-diff="2" data-count="9" data-eff="0.56">
@@ -1871,7 +1872,7 @@
 <p class="eff">cega 0,6 inimigo(s) por 1,8s em média</p>
     <p class="muted">9 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/smoke-upper-tunnels-from-b-site-ct/"
+</a><a class="card" href="/pt/dust2/smoke-upper-tunnels-from-b-site-ct/" data-id="smoke-upper-tunnels-from-b-site-ct"
    data-type="smoke" data-side="CT" data-area="UpperTunnel" data-map="dust2"
    data-teams="falcons furia legacy vitality" data-players="ksloks mezii teses yuurih"
    data-diff="3" data-count="9" data-eff="-1">
@@ -1888,7 +1889,7 @@
     <h3>Smoke Escuro Alto (de Bomb B)</h3>
     <p class="muted">9 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/smoke-b-doors-from-outside-tunnels-t/"
+</a><a class="card" href="/pt/dust2/smoke-b-doors-from-outside-tunnels-t/" data-id="smoke-b-doors-from-outside-tunnels-t"
    data-type="smoke" data-side="T" data-area="BDoors" data-map="dust2"
    data-teams="falcons legacy" data-players="karrigan teses try"
    data-diff="3" data-count="7" data-eff="-1">
@@ -1905,7 +1906,7 @@
     <h3>Smoke Portas do B (de Fora do Escuro)</h3>
     <p class="muted">7 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/smoke-mid-doors-from-lower-tunnels-t/"
+</a><a class="card" href="/pt/dust2/smoke-mid-doors-from-lower-tunnels-t/" data-id="smoke-mid-doors-from-lower-tunnels-t"
    data-type="smoke" data-side="T" data-area="MidDoors" data-map="dust2"
    data-teams="falcons g2" data-players="hunter karrigan niko"
    data-diff="1" data-count="7" data-eff="-1">
@@ -1922,7 +1923,7 @@
     <h3>Smoke Portas do Meio (de Escuro Baixo)</h3>
     <p class="muted">7 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/molotov-upper-tunnels-from-b-doors-ct/"
+</a><a class="card" href="/pt/dust2/molotov-upper-tunnels-from-b-doors-ct/" data-id="molotov-upper-tunnels-from-b-doors-ct"
    data-type="molotov" data-side="CT" data-area="UpperTunnel" data-map="dust2"
    data-teams="falcons furia legacy vitality" data-players="ksloks mezii teses yuurih"
    data-diff="3" data-count="7" data-eff="0.0">
@@ -1939,7 +1940,7 @@
     <h3>Molotov Escuro Alto (de Portas do B)</h3>
     <p class="muted">7 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/molotov-catwalk-from-short-stairs-ct/"
+</a><a class="card" href="/pt/dust2/molotov-catwalk-from-short-stairs-ct/" data-id="molotov-catwalk-from-short-stairs-ct"
    data-type="molotov" data-side="CT" data-area="Catwalk" data-map="dust2"
    data-teams="falcons furia" data-players="kscerato niko"
    data-diff="1" data-count="7" data-eff="0.0">
@@ -1956,7 +1957,7 @@
     <h3>Molotov Varanda (de Escada da Varanda)</h3>
     <p class="muted">7 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/smoke-under-a-from-short-stairs-t/"
+</a><a class="card" href="/pt/dust2/smoke-under-a-from-short-stairs-t/" data-id="smoke-under-a-from-short-stairs-t"
    data-type="smoke" data-side="T" data-area="UnderA" data-map="dust2"
    data-teams="falcons g2 legacy vitality" data-players="art flamez ksloks kyousuke nertz"
    data-diff="1" data-count="7" data-eff="-1">
@@ -1973,7 +1974,7 @@
     <h3>Smoke Rampa do CT (de Escada da Varanda)</h3>
     <p class="muted">7 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/smoke-mid-from-t-spawn-t/"
+</a><a class="card" href="/pt/dust2/smoke-mid-from-t-spawn-t/" data-id="smoke-mid-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="Middle" data-map="dust2"
    data-teams="falcons legacy" data-players="teses try"
    data-diff="2" data-count="6" data-eff="-1">
@@ -1990,7 +1991,7 @@
     <h3>Smoke Meio (de Base TR)</h3>
     <p class="muted">6 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/flash-mid-doors-from-top-mid-t/"
+</a><a class="card" href="/pt/dust2/flash-mid-doors-from-top-mid-t/" data-id="flash-mid-doors-from-top-mid-t"
    data-type="flash" data-side="T" data-area="MidDoors" data-map="dust2"
    data-teams="falcons g2 legacy" data-players="dumau heavygod hunter karrigan nertz"
    data-diff="3" data-count="5" data-eff="0.4">
@@ -2008,7 +2009,7 @@
 <p class="eff">cega 0,4 inimigo(s) por 1,8s em média</p>
     <p class="muted">5 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/smoke-mid-doors-from-b-doors-ct/"
+</a><a class="card" href="/pt/dust2/smoke-mid-doors-from-b-doors-ct/" data-id="smoke-mid-doors-from-b-doors-ct"
    data-type="smoke" data-side="CT" data-area="MidDoors" data-map="dust2"
    data-teams="furia vitality" data-players="mezii yekindar"
    data-diff="1" data-count="5" data-eff="-1">
@@ -2025,7 +2026,7 @@
     <h3>Smoke Portas do Meio (de Portas do B)</h3>
     <p class="muted">5 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/smoke-ct-spawn-from-mid-doors-t/"
+</a><a class="card" href="/pt/dust2/smoke-ct-spawn-from-mid-doors-t/" data-id="smoke-ct-spawn-from-mid-doors-t"
    data-type="smoke" data-side="T" data-area="CTSpawn" data-map="dust2"
    data-teams="falcons furia vitality" data-players="fallen flamez karrigan mezii"
    data-diff="1" data-count="5" data-eff="-1">
@@ -2042,7 +2043,7 @@
     <h3>Smoke Base CT (de Portas do Meio)</h3>
     <p class="muted">5 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/flash-catwalk-from-top-mid-t/"
+</a><a class="card" href="/pt/dust2/flash-catwalk-from-top-mid-t/" data-id="flash-catwalk-from-top-mid-t"
    data-type="flash" data-side="T" data-area="Catwalk" data-map="dust2"
    data-teams="falcons g2 legacy vitality" data-players="apex hunter karrigan try"
    data-diff="1" data-count="4" data-eff="0.0">
@@ -2059,7 +2060,7 @@
     <h3>Flash Varanda (de Coqueiro)</h3>
     <p class="muted">4 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/he-mid-doors-ct/"
+</a><a class="card" href="/pt/dust2/he-mid-doors-ct/" data-id="he-mid-doors-ct"
    data-type="he" data-side="CT" data-area="MidDoors" data-map="dust2"
    data-teams="falcons legacy vitality" data-players="kyousuke mezii try"
    data-diff="2" data-count="4" data-eff="0.0">
@@ -2076,7 +2077,7 @@
     <h3>HE Portas do Meio</h3>
     <p class="muted">4 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/he-catwalk-from-a-extended-ct/"
+</a><a class="card" href="/pt/dust2/he-catwalk-from-a-extended-ct/" data-id="he-catwalk-from-a-extended-ct"
    data-type="he" data-side="CT" data-area="Catwalk" data-map="dust2"
    data-teams="falcons vitality" data-players="apex m0nesy niko"
    data-diff="3" data-count="4" data-eff="0.0">
@@ -2093,7 +2094,7 @@
     <h3>HE Varanda (de RKZ)</h3>
     <p class="muted">4 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/molotov-short-stairs-from-catwalk-t/"
+</a><a class="card" href="/pt/dust2/molotov-short-stairs-from-catwalk-t/" data-id="molotov-short-stairs-from-catwalk-t"
    data-type="molotov" data-side="T" data-area="ShortStairs" data-map="dust2"
    data-teams="g2 legacy" data-players="art hunter"
    data-diff="2" data-count="4" data-eff="0.0">
@@ -2110,7 +2111,7 @@
     <h3>Molotov Escada da Varanda (de Varanda)</h3>
     <p class="muted">4 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/smoke-ct-spawn-from-outside-tunnels-t/"
+</a><a class="card" href="/pt/dust2/smoke-ct-spawn-from-outside-tunnels-t/" data-id="smoke-ct-spawn-from-outside-tunnels-t"
    data-type="smoke" data-side="T" data-area="CTSpawn" data-map="dust2"
    data-teams="falcons furia g2 legacy" data-players="art matys niko yuurih"
    data-diff="3" data-count="4" data-eff="-1">
@@ -2127,7 +2128,7 @@
     <h3>Smoke Base CT (de Fora do Escuro)</h3>
     <p class="muted">4 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/smoke-b-doors-from-upper-tunnels-t/"
+</a><a class="card" href="/pt/dust2/smoke-b-doors-from-upper-tunnels-t/" data-id="smoke-b-doors-from-upper-tunnels-t"
    data-type="smoke" data-side="T" data-area="BDoors" data-map="dust2"
    data-teams="furia g2" data-players="hunter kscerato molodoy r1nkle"
    data-diff="3" data-count="4" data-eff="-1">
@@ -2144,7 +2145,7 @@
     <h3>Smoke Portas do B (de Escuro Alto)</h3>
     <p class="muted">4 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/flash-mid-from-outside-long-t/"
+</a><a class="card" href="/pt/dust2/flash-mid-from-outside-long-t/" data-id="flash-mid-from-outside-long-t"
    data-type="flash" data-side="T" data-area="Middle" data-map="dust2"
    data-teams="vitality" data-players="mezii"
    data-diff="3" data-count="3" data-eff="0.33">
@@ -2162,7 +2163,7 @@
 <p class="eff">cega 0,3 inimigo(s) por 0,8s em média</p>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/flash-under-a-from-catwalk-t/"
+</a><a class="card" href="/pt/dust2/flash-under-a-from-catwalk-t/" data-id="flash-under-a-from-catwalk-t"
    data-type="flash" data-side="T" data-area="UnderA" data-map="dust2"
    data-teams="furia" data-players="molodoy"
    data-diff="3" data-count="3" data-eff="2.33">
@@ -2180,7 +2181,7 @@
 <p class="eff">cega 2,3 inimigo(s) por 4,2s em média</p>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/he-long-doors-from-long-a-ct/"
+</a><a class="card" href="/pt/dust2/he-long-doors-from-long-a-ct/" data-id="he-long-doors-from-long-a-ct"
    data-type="he" data-side="CT" data-area="LongDoors" data-map="dust2"
    data-teams="falcons legacy" data-players="dumau kyousuke niko"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -2197,7 +2198,7 @@
     <h3>HE Portas do Fundo (de Fundo)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/he-b-site-from-upper-tunnels-t/"
+</a><a class="card" href="/pt/dust2/he-b-site-from-upper-tunnels-t/" data-id="he-b-site-from-upper-tunnels-t"
    data-type="he" data-side="T" data-area="BombsiteB" data-map="dust2"
    data-teams="falcons vitality" data-players="niko ropz"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -2214,7 +2215,7 @@
     <h3>HE Bomb B (de Escuro Alto)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/molotov-short-stairs-from-lower-tunnels-t/"
+</a><a class="card" href="/pt/dust2/molotov-short-stairs-from-lower-tunnels-t/" data-id="molotov-short-stairs-from-lower-tunnels-t"
    data-type="molotov" data-side="T" data-area="ShortStairs" data-map="dust2"
    data-teams="falcons furia g2" data-players="kscerato kyousuke nertz"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -2231,7 +2232,7 @@
     <h3>Molotov Escada da Varanda (de Escuro Baixo)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/smoke-long-a-from-under-a-ct/"
+</a><a class="card" href="/pt/dust2/smoke-long-a-from-under-a-ct/" data-id="smoke-long-a-from-under-a-ct"
    data-type="smoke" data-side="CT" data-area="LongA" data-map="dust2"
    data-teams="falcons furia g2" data-players="hunter karrigan yekindar"
    data-diff="1" data-count="3" data-eff="-1">
@@ -2248,7 +2249,7 @@
     <h3>Smoke Fundo (de Rampa do CT)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/smoke-short-stairs-from-a-ramp-ct/"
+</a><a class="card" href="/pt/dust2/smoke-short-stairs-from-a-ramp-ct/" data-id="smoke-short-stairs-from-a-ramp-ct"
    data-type="smoke" data-side="CT" data-area="ShortStairs" data-map="dust2"
    data-teams="falcons legacy" data-players="art m0nesy"
    data-diff="1" data-count="3" data-eff="-1">
@@ -2265,7 +2266,7 @@
     <h3>Smoke Escada da Varanda (de Rampa A)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/smoke-ct-spawn-from-catwalk-t/"
+</a><a class="card" href="/pt/dust2/smoke-ct-spawn-from-catwalk-t/" data-id="smoke-ct-spawn-from-catwalk-t"
    data-type="smoke" data-side="T" data-area="CTSpawn" data-map="dust2"
    data-teams="furia g2" data-players="fallen heavygod r1nkle"
    data-diff="2" data-count="3" data-eff="-1">
@@ -2282,7 +2283,7 @@
     <h3>Smoke Base CT (de Varanda)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/smoke-long-a-from-t-spawn-t/"
+</a><a class="card" href="/pt/dust2/smoke-long-a-from-t-spawn-t/" data-id="smoke-long-a-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="LongA" data-map="dust2"
    data-teams="falcons vitality" data-players="teses zywoo"
    data-diff="2" data-count="3" data-eff="-1">
@@ -2303,7 +2304,7 @@
 </section>
 <section>
   <h2 class="sec"><a href="/pt/inferno/">Inferno</a> <span class="muted">· 22 lineups</span></h2>
-  <div class="cards"><a class="card" href="/pt/inferno/smoke-banana-from-ct-spawn-ct/"
+  <div class="cards"><a class="card" href="/pt/inferno/smoke-banana-from-ct-spawn-ct/" data-id="smoke-banana-from-ct-spawn-ct"
    data-type="smoke" data-side="CT" data-area="Banana" data-map="inferno"
    data-teams="furia g2 mouz vitality" data-players="fallen heavygod hunter kscerato mezii r1nkle spinx torzsi xelex"
    data-diff="2" data-count="26" data-eff="-1">
@@ -2320,7 +2321,7 @@
     <h3>Smoke Banana (de Base CT)</h3>
     <p class="muted">26 usos</p>
   </div>
-</a><a class="card" href="/pt/inferno/flash-banana-from-b-site-ct/"
+</a><a class="card" href="/pt/inferno/flash-banana-from-b-site-ct/" data-id="flash-banana-from-b-site-ct"
    data-type="flash" data-side="CT" data-area="Banana" data-map="inferno"
    data-teams="furia g2 mouz vitality" data-players="apex hunter kscerato mezii pr spinx xertion"
    data-diff="1" data-count="16" data-eff="1.19">
@@ -2338,7 +2339,7 @@
 <p class="eff">cega 1,2 inimigo(s) por 3,3s em média</p>
     <p class="muted">16 usos</p>
   </div>
-</a><a class="card" href="/pt/inferno/molotov-b-site-from-banana-t/"
+</a><a class="card" href="/pt/inferno/molotov-b-site-from-banana-t/" data-id="molotov-b-site-from-banana-t"
    data-type="molotov" data-side="T" data-area="BombsiteB" data-map="inferno"
    data-teams="furia g2 mouz vitality" data-players="apex hunter matys mezii spinx torzsi yuurih"
    data-diff="2" data-count="11" data-eff="0.0">
@@ -2355,7 +2356,7 @@
     <h3>Molotov Bomb B (de Banana)</h3>
     <p class="muted">11 usos</p>
   </div>
-</a><a class="card" href="/pt/inferno/flash-b-site-from-banana-t/"
+</a><a class="card" href="/pt/inferno/flash-b-site-from-banana-t/" data-id="flash-b-site-from-banana-t"
    data-type="flash" data-side="T" data-area="BombsiteB" data-map="inferno"
    data-teams="furia g2 mouz" data-players="fallen r1nkle torzsi xertion"
    data-diff="2" data-count="11" data-eff="0.91">
@@ -2373,7 +2374,7 @@
 <p class="eff">cega 0,9 inimigo(s) por 2,3s em média</p>
     <p class="muted">11 usos</p>
   </div>
-</a><a class="card" href="/pt/inferno/flash-banana-from-lower-mid-t/"
+</a><a class="card" href="/pt/inferno/flash-banana-from-lower-mid-t/" data-id="flash-banana-from-lower-mid-t"
    data-type="flash" data-side="T" data-area="Banana" data-map="inferno"
    data-teams="furia g2 mouz vitality" data-players="mezii r1nkle torzsi yekindar"
    data-diff="2" data-count="10" data-eff="0.6">
@@ -2391,7 +2392,7 @@
 <p class="eff">cega 0,6 inimigo(s) por 2,0s em média</p>
     <p class="muted">10 usos</p>
   </div>
-</a><a class="card" href="/pt/inferno/smoke-banana-from-t-spawn-t/"
+</a><a class="card" href="/pt/inferno/smoke-banana-from-t-spawn-t/" data-id="smoke-banana-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="Banana" data-map="inferno"
    data-teams="furia g2 mouz vitality" data-players="apex fallen r1nkle torzsi"
    data-diff="3" data-count="9" data-eff="-1">
@@ -2408,7 +2409,7 @@
     <h3>Smoke Banana (de Base TR)</h3>
     <p class="muted">9 usos</p>
   </div>
-</a><a class="card" href="/pt/inferno/smoke-banana-from-b-site-ct/"
+</a><a class="card" href="/pt/inferno/smoke-banana-from-b-site-ct/" data-id="smoke-banana-from-b-site-ct"
    data-type="smoke" data-side="CT" data-area="Banana" data-map="inferno"
    data-teams="mouz vitality" data-players="flamez pr xertion"
    data-diff="3" data-count="9" data-eff="-1">
@@ -2425,7 +2426,7 @@
     <h3>Smoke Banana (de Bomb B)</h3>
     <p class="muted">9 usos</p>
   </div>
-</a><a class="card" href="/pt/inferno/smoke-top-mid-from-t-spawn-t/"
+</a><a class="card" href="/pt/inferno/smoke-top-mid-from-t-spawn-t/" data-id="smoke-top-mid-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="TopofMid" data-map="inferno"
    data-teams="furia g2 mouz vitality" data-players="flamez matys xelex yuurih"
    data-diff="3" data-count="8" data-eff="-1">
@@ -2442,7 +2443,7 @@
     <h3>Smoke NIP (de Base TR)</h3>
     <p class="muted">8 usos</p>
   </div>
-</a><a class="card" href="/pt/inferno/molotov-banana-from-b-site-ct/"
+</a><a class="card" href="/pt/inferno/molotov-banana-from-b-site-ct/" data-id="molotov-banana-from-b-site-ct"
    data-type="molotov" data-side="CT" data-area="Banana" data-map="inferno"
    data-teams="furia g2 mouz vitality" data-players="apex flamez hunter kscerato pr"
    data-diff="2" data-count="8" data-eff="0.0">
@@ -2459,7 +2460,7 @@
     <h3>Molotov Banana (de Bomb B)</h3>
     <p class="muted">8 usos</p>
   </div>
-</a><a class="card" href="/pt/inferno/smoke-ruins-from-banana-t/"
+</a><a class="card" href="/pt/inferno/smoke-ruins-from-banana-t/" data-id="smoke-ruins-from-banana-t"
    data-type="smoke" data-side="T" data-area="Ruins" data-map="inferno"
    data-teams="g2 mouz vitality" data-players="mezii nertz r1nkle xertion"
    data-diff="3" data-count="7" data-eff="-1">
@@ -2476,7 +2477,7 @@
     <h3>Smoke Igreja (de Banana)</h3>
     <p class="muted">7 usos</p>
   </div>
-</a><a class="card" href="/pt/inferno/he-apartments-ct/"
+</a><a class="card" href="/pt/inferno/he-apartments-ct/" data-id="he-apartments-ct"
    data-type="he" data-side="CT" data-area="Apartments" data-map="inferno"
    data-teams="g2 mouz" data-players="heavygod spinx xelex"
    data-diff="1" data-count="5" data-eff="0.0">
@@ -2493,7 +2494,7 @@
     <h3>HE Apartamento</h3>
     <p class="muted">5 usos</p>
   </div>
-</a><a class="card" href="/pt/inferno/flash-arch-from-second-mid-t/"
+</a><a class="card" href="/pt/inferno/flash-arch-from-second-mid-t/" data-id="flash-arch-from-second-mid-t"
    data-type="flash" data-side="T" data-area="Arch" data-map="inferno"
    data-teams="furia" data-players="kscerato"
    data-diff="2" data-count="4" data-eff="0.25">
@@ -2511,7 +2512,7 @@
 <p class="eff">cega 0,2 inimigo(s) por 1,0s em média</p>
     <p class="muted">4 usos</p>
   </div>
-</a><a class="card" href="/pt/inferno/smoke-top-mid-from-second-mid-t/"
+</a><a class="card" href="/pt/inferno/smoke-top-mid-from-second-mid-t/" data-id="smoke-top-mid-from-second-mid-t"
    data-type="smoke" data-side="T" data-area="TopofMid" data-map="inferno"
    data-teams="furia g2" data-players="heavygod yuurih"
    data-diff="1" data-count="4" data-eff="-1">
@@ -2528,7 +2529,7 @@
     <h3>Smoke NIP (de Meio Falso)</h3>
     <p class="muted">4 usos</p>
   </div>
-</a><a class="card" href="/pt/inferno/smoke-banana-from-lower-mid-t/"
+</a><a class="card" href="/pt/inferno/smoke-banana-from-lower-mid-t/" data-id="smoke-banana-from-lower-mid-t"
    data-type="smoke" data-side="T" data-area="Banana" data-map="inferno"
    data-teams="g2 vitality" data-players="flamez hunter r1nkle"
    data-diff="2" data-count="4" data-eff="-1">
@@ -2545,7 +2546,7 @@
     <h3>Smoke Banana (de Meio Baixo)</h3>
     <p class="muted">4 usos</p>
   </div>
-</a><a class="card" href="/pt/inferno/flash-banana-t/"
+</a><a class="card" href="/pt/inferno/flash-banana-t/" data-id="flash-banana-t"
    data-type="flash" data-side="T" data-area="Banana" data-map="inferno"
    data-teams="mouz" data-players="torzsi"
    data-diff="1" data-count="3" data-eff="0.0">
@@ -2562,7 +2563,7 @@
     <h3>Flash Banana</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/inferno/he-mid-from-arch-ct/"
+</a><a class="card" href="/pt/inferno/he-mid-from-arch-ct/" data-id="he-mid-from-arch-ct"
    data-type="he" data-side="CT" data-area="Middle" data-map="inferno"
    data-teams="g2 vitality" data-players="heavygod mezii"
    data-diff="2" data-count="3" data-eff="0.0">
@@ -2579,7 +2580,7 @@
     <h3>HE Meio (de Arco do NIP)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/inferno/he-banana-from-t-ramp-t/"
+</a><a class="card" href="/pt/inferno/he-banana-from-t-ramp-t/" data-id="he-banana-from-t-ramp-t"
    data-type="he" data-side="T" data-area="Banana" data-map="inferno"
    data-teams="g2 vitality" data-players="hunter mezii"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -2596,7 +2597,7 @@
     <h3>HE Banana (de Caverna)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/inferno/molotov-b-site-t/"
+</a><a class="card" href="/pt/inferno/molotov-b-site-t/" data-id="molotov-b-site-t"
    data-type="molotov" data-side="T" data-area="BombsiteB" data-map="inferno"
    data-teams="furia g2 mouz" data-players="heavygod kscerato xelex"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -2613,7 +2614,7 @@
     <h3>Molotov Bomb B</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/inferno/molotov-quad-from-apartments-t/"
+</a><a class="card" href="/pt/inferno/molotov-quad-from-apartments-t/" data-id="molotov-quad-from-apartments-t"
    data-type="molotov" data-side="T" data-area="Quad" data-map="inferno"
    data-teams="furia" data-players="fallen kscerato yuurih"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -2630,7 +2631,7 @@
     <h3>Molotov Xuxa (de Apartamento)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/inferno/smoke-mid-from-arch-ct/"
+</a><a class="card" href="/pt/inferno/smoke-mid-from-arch-ct/" data-id="smoke-mid-from-arch-ct"
    data-type="smoke" data-side="CT" data-area="Middle" data-map="inferno"
    data-teams="furia mouz vitality" data-players="molodoy ropz torzsi"
    data-diff="2" data-count="3" data-eff="-1">
@@ -2647,7 +2648,7 @@
     <h3>Smoke Meio (de Arco do NIP)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/inferno/smoke-a-site-from-mid-t/"
+</a><a class="card" href="/pt/inferno/smoke-a-site-from-mid-t/" data-id="smoke-a-site-from-mid-t"
    data-type="smoke" data-side="T" data-area="BombsiteA" data-map="inferno"
    data-teams="furia g2" data-players="kscerato r1nkle"
    data-diff="3" data-count="3" data-eff="-1">
@@ -2664,7 +2665,7 @@
     <h3>Smoke Bomb A (de Meio)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/inferno/smoke-b-site-from-mid-t/"
+</a><a class="card" href="/pt/inferno/smoke-b-site-from-mid-t/" data-id="smoke-b-site-from-mid-t"
    data-type="smoke" data-side="T" data-area="BombsiteB" data-map="inferno"
    data-teams="g2" data-players="hunter r1nkle"
    data-diff="3" data-count="3" data-eff="-1">
@@ -2685,7 +2686,7 @@
 </section>
 <section>
   <h2 class="sec"><a href="/pt/mirage/">Mirage</a> <span class="muted">· 57 lineups</span></h2>
-  <div class="cards"><a class="card" href="/pt/mirage/smoke-sniper-s-nest-from-t-spawn-t/"
+  <div class="cards"><a class="card" href="/pt/mirage/smoke-sniper-s-nest-from-t-spawn-t/" data-id="smoke-sniper-s-nest-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="SnipersNest" data-map="mirage"
    data-teams="falcons furia fut g2 legacy mouz spirit vitality" data-players="apex art coolio dem0n donk dumau dziugss flamez heavygod hunter karrigan ksloks kyousuke latto m0nesy magixx matys mezii nertz niko pr r1nkle ropz sh1ro spinx sunpayus torzsi try xelex xertion xfl0ud yekindar zont1x zywoo"
    data-diff="3" data-count="99" data-eff="-1">
@@ -2702,7 +2703,7 @@
     <h3>Smoke Janela (de Base TR)</h3>
     <p class="muted">99 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/smoke-catwalk-from-t-spawn-t/"
+</a><a class="card" href="/pt/mirage/smoke-catwalk-from-t-spawn-t/" data-id="smoke-catwalk-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="Catwalk" data-map="mirage"
    data-teams="falcons fut g2 legacy mouz spirit vitality" data-players="dem0n dumau dziugss flamez heavygod ksloks kyousuke latto magixx mezii nertz pr r1nkle spinx torzsi try xelex xertion zywoo"
    data-diff="2" data-count="33" data-eff="-1">
@@ -2719,7 +2720,7 @@
     <h3>Smoke L (de Base TR)</h3>
     <p class="muted">33 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/molotov-t-ramp-from-ct-spawn-ct/"
+</a><a class="card" href="/pt/mirage/molotov-t-ramp-from-ct-spawn-ct/" data-id="molotov-t-ramp-from-ct-spawn-ct"
    data-type="molotov" data-side="CT" data-area="TRamp" data-map="mirage"
    data-teams="falcons furia fut legacy mouz spirit" data-players="donk dziugss latto m0nesy teses tn1r xelex xfl0ud yekindar yuurih"
    data-diff="3" data-count="26" data-eff="0.0">
@@ -2736,7 +2737,7 @@
     <h3>Molotov Caverna (de Base CT)</h3>
     <p class="muted">26 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/smoke-top-mid-from-t-spawn-t/"
+</a><a class="card" href="/pt/mirage/smoke-top-mid-from-t-spawn-t/" data-id="smoke-top-mid-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="TopofMid" data-map="mirage"
    data-teams="fut g2 legacy mouz spirit vitality" data-players="dziugss heavygod ksloks magixx mezii pr r1nkle sh1ro spinx tn1r torzsi xelex xertion"
    data-diff="1" data-count="26" data-eff="-1">
@@ -2753,7 +2754,7 @@
     <h3>Smoke Top Mid (de Base TR)</h3>
     <p class="muted">26 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-b-site-from-apartments-t/"
+</a><a class="card" href="/pt/mirage/flash-b-site-from-apartments-t/" data-id="flash-b-site-from-apartments-t"
    data-type="flash" data-side="T" data-area="BombsiteB" data-map="mirage"
    data-teams="fut g2 legacy mouz spirit vitality" data-players="dziugss ksloks magixx pr r1nkle ropz try xfl0ud"
    data-diff="1" data-count="22" data-eff="1.36">
@@ -2771,7 +2772,7 @@
 <p class="eff">cega 1,4 inimigo(s) por 3,8s em média</p>
     <p class="muted">22 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/smoke-sniper-s-nest-from-top-mid-t/"
+</a><a class="card" href="/pt/mirage/smoke-sniper-s-nest-from-top-mid-t/" data-id="smoke-sniper-s-nest-from-top-mid-t"
    data-type="smoke" data-side="T" data-area="SnipersNest" data-map="mirage"
    data-teams="falcons fut g2 legacy mouz spirit" data-players="art coolio hunter m0nesy r1nkle sh1ro try xelex xertion"
    data-diff="1" data-count="21" data-eff="-1">
@@ -2788,7 +2789,7 @@
     <h3>Smoke Janela (de Top Mid)</h3>
     <p class="muted">21 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/smoke-connector-from-top-mid-t/"
+</a><a class="card" href="/pt/mirage/smoke-connector-from-top-mid-t/" data-id="smoke-connector-from-top-mid-t"
    data-type="smoke" data-side="T" data-area="Connector" data-map="mirage"
    data-teams="falcons fut g2 legacy mouz spirit vitality" data-players="apex dumau flamez heavygod hunter karrigan magixx nertz niko sunpayus tn1r xertion"
    data-diff="1" data-count="20" data-eff="-1">
@@ -2805,7 +2806,7 @@
     <h3>Smoke Ligação (de Top Mid)</h3>
     <p class="muted">20 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/smoke-a-site-from-palace-alley-t/"
+</a><a class="card" href="/pt/mirage/smoke-a-site-from-palace-alley-t/" data-id="smoke-a-site-from-palace-alley-t"
    data-type="smoke" data-side="T" data-area="BombsiteA" data-map="mirage"
    data-teams="falcons furia fut g2 legacy mouz spirit vitality" data-players="dziugss heavygod hunter kscerato mezii ropz sh1ro spinx teses torzsi try"
    data-diff="2" data-count="14" data-eff="-1">
@@ -2822,7 +2823,7 @@
     <h3>Smoke Bomb A (de Entrada da Caverna)</h3>
     <p class="muted">14 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/smoke-palace-from-a-site-ct/"
+</a><a class="card" href="/pt/mirage/smoke-palace-from-a-site-ct/" data-id="smoke-palace-from-a-site-ct"
    data-type="smoke" data-side="CT" data-area="PalaceInterior" data-map="mirage"
    data-teams="falcons furia mouz vitality" data-players="apex teses xelex yekindar yuurih"
    data-diff="1" data-count="13" data-eff="-1">
@@ -2839,7 +2840,7 @@
     <h3>Smoke Palacio (de Bomb A)</h3>
     <p class="muted">13 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/smoke-apartments-from-b-site-ct/"
+</a><a class="card" href="/pt/mirage/smoke-apartments-from-b-site-ct/" data-id="smoke-apartments-from-b-site-ct"
    data-type="smoke" data-side="CT" data-area="Apartments" data-map="mirage"
    data-teams="falcons fut g2 mouz spirit vitality" data-players="hunter karrigan mezii pr sunpayus zont1x"
    data-diff="3" data-count="13" data-eff="-1">
@@ -2856,7 +2857,7 @@
     <h3>Smoke Tapete (de Bomb B)</h3>
     <p class="muted">13 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/smoke-a-site-from-t-spawn-t/"
+</a><a class="card" href="/pt/mirage/smoke-a-site-from-t-spawn-t/" data-id="smoke-a-site-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="BombsiteA" data-map="mirage"
    data-teams="fut g2 mouz spirit vitality" data-players="coolio dziugss hunter magixx mezii sunpayus torzsi zont1x"
    data-diff="3" data-count="12" data-eff="-1">
@@ -2873,7 +2874,7 @@
     <h3>Smoke Bomb A (de Base TR)</h3>
     <p class="muted">12 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/smoke-stairs-from-t-spawn-t/"
+</a><a class="card" href="/pt/mirage/smoke-stairs-from-t-spawn-t/" data-id="smoke-stairs-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="Stairs" data-map="mirage"
    data-teams="fut g2 legacy mouz spirit vitality" data-players="hunter latto magixx mezii sunpayus torzsi"
    data-diff="2" data-count="10" data-eff="-1">
@@ -2890,7 +2891,7 @@
     <h3>Smoke Cabecinha (de Base TR)</h3>
     <p class="muted">10 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/he-sniper-s-nest-ct/"
+</a><a class="card" href="/pt/mirage/he-sniper-s-nest-ct/" data-id="he-sniper-s-nest-ct"
    data-type="he" data-side="CT" data-area="SnipersNest" data-map="mirage"
    data-teams="falcons furia fut legacy" data-players="dem0n dumau kscerato kyousuke niko sunpayus"
    data-diff="1" data-count="9" data-eff="0.0">
@@ -2907,7 +2908,7 @@
     <h3>HE Janela</h3>
     <p class="muted">9 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/smoke-a-site-from-t-ramp-t/"
+</a><a class="card" href="/pt/mirage/smoke-a-site-from-t-ramp-t/" data-id="smoke-a-site-from-t-ramp-t"
    data-type="smoke" data-side="T" data-area="BombsiteA" data-map="mirage"
    data-teams="fut g2 legacy mouz spirit vitality" data-players="dem0n hunter latto magixx mezii sh1ro sunpayus torzsi"
    data-diff="1" data-count="9" data-eff="-1">
@@ -2924,7 +2925,7 @@
     <h3>Smoke Bomb A (de Caverna)</h3>
     <p class="muted">9 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/molotov-stairs-from-t-ramp-t/"
+</a><a class="card" href="/pt/mirage/molotov-stairs-from-t-ramp-t/" data-id="molotov-stairs-from-t-ramp-t"
    data-type="molotov" data-side="T" data-area="Stairs" data-map="mirage"
    data-teams="g2 legacy mouz spirit vitality" data-players="hunter latto magixx mezii sh1ro tn1r torzsi"
    data-diff="1" data-count="8" data-eff="0.0">
@@ -2941,7 +2942,7 @@
     <h3>Molotov Cabecinha (de Caverna)</h3>
     <p class="muted">8 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/smoke-palace-from-ct-spawn-ct/"
+</a><a class="card" href="/pt/mirage/smoke-palace-from-ct-spawn-ct/" data-id="smoke-palace-from-ct-spawn-ct"
    data-type="smoke" data-side="CT" data-area="PalaceInterior" data-map="mirage"
    data-teams="falcons furia fut g2" data-players="dem0n fallen heavygod hunter m0nesy yekindar"
    data-diff="2" data-count="8" data-eff="-1">
@@ -2958,7 +2959,7 @@
     <h3>Smoke Palacio (de Base CT)</h3>
     <p class="muted">8 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-mid-from-ct-spawn-ct/"
+</a><a class="card" href="/pt/mirage/flash-mid-from-ct-spawn-ct/" data-id="flash-mid-from-ct-spawn-ct"
    data-type="flash" data-side="CT" data-area="Middle" data-map="mirage"
    data-teams="falcons furia fut g2 mouz" data-players="coolio kscerato m0nesy nertz xertion xfl0ud"
    data-diff="2" data-count="7" data-eff="1.0">
@@ -2976,7 +2977,7 @@
 <p class="eff">cega 1,0 inimigo(s) por 2,6s em média</p>
     <p class="muted">7 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/he-underpass-from-ct-spawn-ct/"
+</a><a class="card" href="/pt/mirage/he-underpass-from-ct-spawn-ct/" data-id="he-underpass-from-ct-spawn-ct"
    data-type="he" data-side="CT" data-area="Underpass" data-map="mirage"
    data-teams="mouz" data-players="xertion"
    data-diff="2" data-count="7" data-eff="0.0">
@@ -2993,7 +2994,7 @@
     <h3>HE Rato (de Base CT)</h3>
     <p class="muted">7 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/molotov-stairs-from-palace-alley-t/"
+</a><a class="card" href="/pt/mirage/molotov-stairs-from-palace-alley-t/" data-id="molotov-stairs-from-palace-alley-t"
    data-type="molotov" data-side="T" data-area="Stairs" data-map="mirage"
    data-teams="falcons furia legacy mouz" data-players="kscerato spinx teses torzsi try"
    data-diff="3" data-count="7" data-eff="0.0">
@@ -3010,7 +3011,7 @@
     <h3>Molotov Cabecinha (de Entrada da Caverna)</h3>
     <p class="muted">7 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/smoke-apartments-from-truck-ct/"
+</a><a class="card" href="/pt/mirage/smoke-apartments-from-truck-ct/" data-id="smoke-apartments-from-truck-ct"
    data-type="smoke" data-side="CT" data-area="Apartments" data-map="mirage"
    data-teams="falcons legacy mouz spirit vitality" data-players="karrigan ksloks magixx mezii pr"
    data-diff="1" data-count="7" data-eff="-1">
@@ -3027,7 +3028,7 @@
     <h3>Smoke Tapete (de Van)</h3>
     <p class="muted">7 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-mid-from-jungle-ct/"
+</a><a class="card" href="/pt/mirage/flash-mid-from-jungle-ct/" data-id="flash-mid-from-jungle-ct"
    data-type="flash" data-side="CT" data-area="Middle" data-map="mirage"
    data-teams="fut mouz vitality" data-players="coolio dziugss torzsi zywoo"
    data-diff="1" data-count="7" data-eff="1.57">
@@ -3045,7 +3046,7 @@
 <p class="eff">cega 1,6 inimigo(s) por 4,1s em média</p>
     <p class="muted">7 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/smoke-a-site-from-top-mid-t/"
+</a><a class="card" href="/pt/mirage/smoke-a-site-from-top-mid-t/" data-id="smoke-a-site-from-top-mid-t"
    data-type="smoke" data-side="T" data-area="BombsiteA" data-map="mirage"
    data-teams="falcons g2 mouz" data-players="hunter r1nkle teses torzsi"
    data-diff="1" data-count="7" data-eff="-1">
@@ -3062,7 +3063,7 @@
     <h3>Smoke Bomb A (de Top Mid)</h3>
     <p class="muted">7 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-mid-from-side-alley-t/"
+</a><a class="card" href="/pt/mirage/flash-mid-from-side-alley-t/" data-id="flash-mid-from-side-alley-t"
    data-type="flash" data-side="T" data-area="Middle" data-map="mirage"
    data-teams="mouz spirit vitality" data-players="donk flamez magixx xertion"
    data-diff="3" data-count="6" data-eff="0.83">
@@ -3080,7 +3081,7 @@
 <p class="eff">cega 0,8 inimigo(s) por 2,0s em média</p>
     <p class="muted">6 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/molotov-underpass-from-connector-ct/"
+</a><a class="card" href="/pt/mirage/molotov-underpass-from-connector-ct/" data-id="molotov-underpass-from-connector-ct"
    data-type="molotov" data-side="CT" data-area="Underpass" data-map="mirage"
    data-teams="falcons fut legacy mouz" data-players="art coolio niko xertion"
    data-diff="2" data-count="6" data-eff="0.0">
@@ -3097,7 +3098,7 @@
     <h3>Molotov Rato (de Ligação)</h3>
     <p class="muted">6 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/molotov-top-mid-from-sniper-s-nest-ct/"
+</a><a class="card" href="/pt/mirage/molotov-top-mid-from-sniper-s-nest-ct/" data-id="molotov-top-mid-from-sniper-s-nest-ct"
    data-type="molotov" data-side="CT" data-area="TopofMid" data-map="mirage"
    data-teams="falcons fut mouz spirit" data-players="coolio m0nesy sh1ro sunpayus torzsi"
    data-diff="3" data-count="6" data-eff="0.0">
@@ -3114,7 +3115,7 @@
     <h3>Molotov Top Mid (de Janela)</h3>
     <p class="muted">6 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/smoke-t-ramp-from-ct-spawn-ct/"
+</a><a class="card" href="/pt/mirage/smoke-t-ramp-from-ct-spawn-ct/" data-id="smoke-t-ramp-from-ct-spawn-ct"
    data-type="smoke" data-side="CT" data-area="TRamp" data-map="mirage"
    data-teams="fut g2 spirit vitality" data-players="coolio r1nkle sh1ro sunpayus zywoo"
    data-diff="1" data-count="6" data-eff="-1">
@@ -3131,7 +3132,7 @@
     <h3>Smoke Caverna (de Base CT)</h3>
     <p class="muted">6 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/smoke-ct-spawn-from-palace-alley-t/"
+</a><a class="card" href="/pt/mirage/smoke-ct-spawn-from-palace-alley-t/" data-id="smoke-ct-spawn-from-palace-alley-t"
    data-type="smoke" data-side="T" data-area="CTSpawn" data-map="mirage"
    data-teams="fut g2 vitality" data-players="r1nkle sunpayus zywoo"
    data-diff="2" data-count="6" data-eff="-1">
@@ -3148,7 +3149,7 @@
     <h3>Smoke Base CT (de Entrada da Caverna)</h3>
     <p class="muted">6 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-stairs-from-palace-alley-t/"
+</a><a class="card" href="/pt/mirage/flash-stairs-from-palace-alley-t/" data-id="flash-stairs-from-palace-alley-t"
    data-type="flash" data-side="T" data-area="Stairs" data-map="mirage"
    data-teams="g2 mouz" data-players="r1nkle spinx"
    data-diff="3" data-count="6" data-eff="1.83">
@@ -3166,7 +3167,7 @@
 <p class="eff">cega 1,8 inimigo(s) por 2,8s em média</p>
     <p class="muted">6 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/he-top-mid-from-connector-ct/"
+</a><a class="card" href="/pt/mirage/he-top-mid-from-connector-ct/" data-id="he-top-mid-from-connector-ct"
    data-type="he" data-side="CT" data-area="TopofMid" data-map="mirage"
    data-teams="falcons g2 mouz vitality" data-players="apex heavygod m0nesy niko xertion"
    data-diff="3" data-count="6" data-eff="0.0">
@@ -3183,7 +3184,7 @@
     <h3>HE Top Mid (de Ligação)</h3>
     <p class="muted">6 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-t-ramp-from-t-spawn-t/"
+</a><a class="card" href="/pt/mirage/flash-t-ramp-from-t-spawn-t/" data-id="flash-t-ramp-from-t-spawn-t"
    data-type="flash" data-side="T" data-area="TRamp" data-map="mirage"
    data-teams="vitality" data-players="apex mezii"
    data-diff="1" data-count="5" data-eff="0.4">
@@ -3201,7 +3202,7 @@
 <p class="eff">cega 0,4 inimigo(s) por 1,7s em média</p>
     <p class="muted">5 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/molotov-stairs-from-t-spawn-t/"
+</a><a class="card" href="/pt/mirage/molotov-stairs-from-t-spawn-t/" data-id="molotov-stairs-from-t-spawn-t"
    data-type="molotov" data-side="T" data-area="Stairs" data-map="mirage"
    data-teams="fut g2 vitality" data-players="dziugss hunter mezii ropz"
    data-diff="3" data-count="5" data-eff="0.0">
@@ -3218,7 +3219,7 @@
     <h3>Molotov Cabecinha (de Base TR)</h3>
     <p class="muted">5 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/smoke-mid-from-a-site-ct/"
+</a><a class="card" href="/pt/mirage/smoke-mid-from-a-site-ct/" data-id="smoke-mid-from-a-site-ct"
    data-type="smoke" data-side="CT" data-area="Middle" data-map="mirage"
    data-teams="falcons furia spirit" data-players="donk kscerato m0nesy"
    data-diff="1" data-count="5" data-eff="-1">
@@ -3235,7 +3236,7 @@
     <h3>Smoke Meio (de Bomb A)</h3>
     <p class="muted">5 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/he-top-mid-from-sniper-s-nest-ct/"
+</a><a class="card" href="/pt/mirage/he-top-mid-from-sniper-s-nest-ct/" data-id="he-top-mid-from-sniper-s-nest-ct"
    data-type="he" data-side="CT" data-area="TopofMid" data-map="mirage"
    data-teams="falcons mouz vitality" data-players="apex niko xertion"
    data-diff="3" data-count="4" data-eff="0.0">
@@ -3252,7 +3253,7 @@
     <h3>HE Top Mid (de Janela)</h3>
     <p class="muted">4 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/molotov-sniper-s-nest-from-top-mid-t/"
+</a><a class="card" href="/pt/mirage/molotov-sniper-s-nest-from-top-mid-t/" data-id="molotov-sniper-s-nest-from-top-mid-t"
    data-type="molotov" data-side="T" data-area="SnipersNest" data-map="mirage"
    data-teams="g2" data-players="hunter"
    data-diff="3" data-count="4" data-eff="0.0">
@@ -3269,7 +3270,7 @@
     <h3>Molotov Janela (de Top Mid)</h3>
     <p class="muted">4 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/smoke-apartments-ct/"
+</a><a class="card" href="/pt/mirage/smoke-apartments-ct/" data-id="smoke-apartments-ct"
    data-type="smoke" data-side="CT" data-area="Apartments" data-map="mirage"
    data-teams="mouz spirit" data-players="magixx pr"
    data-diff="2" data-count="4" data-eff="-1">
@@ -3286,7 +3287,7 @@
     <h3>Smoke Tapete</h3>
     <p class="muted">4 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/smoke-palace-from-stairs-ct/"
+</a><a class="card" href="/pt/mirage/smoke-palace-from-stairs-ct/" data-id="smoke-palace-from-stairs-ct"
    data-type="smoke" data-side="CT" data-area="PalaceInterior" data-map="mirage"
    data-teams="furia legacy mouz spirit" data-players="molodoy tn1r torzsi try"
    data-diff="2" data-count="4" data-eff="-1">
@@ -3303,7 +3304,7 @@
     <h3>Smoke Palacio (de Cabecinha)</h3>
     <p class="muted">4 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/smoke-t-ramp-from-a-site-ct/"
+</a><a class="card" href="/pt/mirage/smoke-t-ramp-from-a-site-ct/" data-id="smoke-t-ramp-from-a-site-ct"
    data-type="smoke" data-side="CT" data-area="TRamp" data-map="mirage"
    data-teams="furia mouz" data-players="torzsi yuurih"
    data-diff="1" data-count="4" data-eff="-1">
@@ -3320,7 +3321,7 @@
     <h3>Smoke Caverna (de Bomb A)</h3>
     <p class="muted">4 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-jungle-from-shop-ct/"
+</a><a class="card" href="/pt/mirage/flash-jungle-from-shop-ct/" data-id="flash-jungle-from-shop-ct"
    data-type="flash" data-side="CT" data-area="Jungle" data-map="mirage"
    data-teams="falcons g2 vitality" data-players="karrigan matys zywoo"
    data-diff="3" data-count="3" data-eff="1.33">
@@ -3338,7 +3339,7 @@
 <p class="eff">cega 1,3 inimigo(s) por 4,3s em média</p>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-a-site-from-ct-spawn-ct/"
+</a><a class="card" href="/pt/mirage/flash-a-site-from-ct-spawn-ct/" data-id="flash-a-site-from-ct-spawn-ct"
    data-type="flash" data-side="CT" data-area="BombsiteA" data-map="mirage"
    data-teams="falcons g2" data-players="m0nesy matys niko"
    data-diff="3" data-count="3" data-eff="1.67">
@@ -3356,7 +3357,7 @@
 <p class="eff">cega 1,7 inimigo(s) por 4,1s em média</p>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-catwalk-ct/"
+</a><a class="card" href="/pt/mirage/flash-catwalk-ct/" data-id="flash-catwalk-ct"
    data-type="flash" data-side="CT" data-area="Catwalk" data-map="mirage"
    data-teams="falcons legacy" data-players="kyousuke try"
    data-diff="3" data-count="3" data-eff="1.33">
@@ -3374,7 +3375,7 @@
 <p class="eff">cega 1,3 inimigo(s) por 4,2s em média</p>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-b-site-from-shop-ct/"
+</a><a class="card" href="/pt/mirage/flash-b-site-from-shop-ct/" data-id="flash-b-site-from-shop-ct"
    data-type="flash" data-side="CT" data-area="BombsiteB" data-map="mirage"
    data-teams="furia fut mouz" data-players="sunpayus xertion yekindar"
    data-diff="2" data-count="3" data-eff="1.33">
@@ -3392,7 +3393,7 @@
 <p class="eff">cega 1,3 inimigo(s) por 5,9s em média</p>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-apartments-from-truck-ct/"
+</a><a class="card" href="/pt/mirage/flash-apartments-from-truck-ct/" data-id="flash-apartments-from-truck-ct"
    data-type="flash" data-side="CT" data-area="Apartments" data-map="mirage"
    data-teams="legacy vitality" data-players="ksloks mezii"
    data-diff="2" data-count="3" data-eff="0.0">
@@ -3409,7 +3410,7 @@
     <h3>Flash Tapete (de Van)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-mid-from-top-mid-t/"
+</a><a class="card" href="/pt/mirage/flash-mid-from-top-mid-t/" data-id="flash-mid-from-top-mid-t"
    data-type="flash" data-side="T" data-area="Middle" data-map="mirage"
    data-teams="fut vitality" data-players="apex coolio xfl0ud"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -3426,7 +3427,7 @@
     <h3>Flash Meio (de Top Mid)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-ct-spawn-from-a-site-t/"
+</a><a class="card" href="/pt/mirage/flash-ct-spawn-from-a-site-t/" data-id="flash-ct-spawn-from-a-site-t"
    data-type="flash" data-side="T" data-area="CTSpawn" data-map="mirage"
    data-teams="g2 mouz" data-players="pr r1nkle"
    data-diff="2" data-count="3" data-eff="1.33">
@@ -3444,7 +3445,7 @@
 <p class="eff">cega 1,3 inimigo(s) por 2,4s em média</p>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-a-site-from-palace-t/"
+</a><a class="card" href="/pt/mirage/flash-a-site-from-palace-t/" data-id="flash-a-site-from-palace-t"
    data-type="flash" data-side="T" data-area="BombsiteA" data-map="mirage"
    data-teams="fut vitality" data-players="apex dziugss"
    data-diff="1" data-count="3" data-eff="0.0">
@@ -3461,7 +3462,7 @@
     <h3>Flash Bomb A (de Palacio)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-apartments-from-back-alley-t/"
+</a><a class="card" href="/pt/mirage/flash-apartments-from-back-alley-t/" data-id="flash-apartments-from-back-alley-t"
    data-type="flash" data-side="T" data-area="Apartments" data-map="mirage"
    data-teams="fut legacy" data-players="sunpayus try"
    data-diff="2" data-count="3" data-eff="1.0">
@@ -3479,7 +3480,7 @@
 <p class="eff">cega 1,0 inimigo(s) por 1,8s em média</p>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-b-site-from-back-alley-t/"
+</a><a class="card" href="/pt/mirage/flash-b-site-from-back-alley-t/" data-id="flash-b-site-from-back-alley-t"
    data-type="flash" data-side="T" data-area="BombsiteB" data-map="mirage"
    data-teams="vitality" data-players="zywoo"
    data-diff="3" data-count="3" data-eff="0.33">
@@ -3497,7 +3498,7 @@
 <p class="eff">cega 0,3 inimigo(s) por 1,3s em média</p>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/he-palace-alley-from-jungle-ct/"
+</a><a class="card" href="/pt/mirage/he-palace-alley-from-jungle-ct/" data-id="he-palace-alley-from-jungle-ct"
    data-type="he" data-side="CT" data-area="PalaceAlley" data-map="mirage"
    data-teams="falcons mouz" data-players="niko xertion"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -3514,7 +3515,7 @@
     <h3>HE Entrada da Caverna (de Jungle)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/he-palace-alley-from-a-site-ct/"
+</a><a class="card" href="/pt/mirage/he-palace-alley-from-a-site-ct/" data-id="he-palace-alley-from-a-site-ct"
    data-type="he" data-side="CT" data-area="PalaceAlley" data-map="mirage"
    data-teams="fut mouz spirit" data-players="tn1r xelex xfl0ud"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -3531,7 +3532,7 @@
     <h3>HE Entrada da Caverna (de Bomb A)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/he-apartments-from-b-site-ct/"
+</a><a class="card" href="/pt/mirage/he-apartments-from-b-site-ct/" data-id="he-apartments-from-b-site-ct"
    data-type="he" data-side="CT" data-area="Apartments" data-map="mirage"
    data-teams="fut vitality" data-players="mezii xfl0ud"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -3548,7 +3549,7 @@
     <h3>HE Tapete (de Bomb B)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/molotov-a-site-from-palace-alley-t/"
+</a><a class="card" href="/pt/mirage/molotov-a-site-from-palace-alley-t/" data-id="molotov-a-site-from-palace-alley-t"
    data-type="molotov" data-side="T" data-area="BombsiteA" data-map="mirage"
    data-teams="fut spirit" data-players="coolio magixx"
    data-diff="1" data-count="3" data-eff="0.0">
@@ -3565,7 +3566,7 @@
     <h3>Molotov Bomb A (de Entrada da Caverna)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/molotov-catwalk-from-top-mid-t/"
+</a><a class="card" href="/pt/mirage/molotov-catwalk-from-top-mid-t/" data-id="molotov-catwalk-from-top-mid-t"
    data-type="molotov" data-side="T" data-area="Catwalk" data-map="mirage"
    data-teams="fut vitality" data-players="flamez sunpayus"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -3582,7 +3583,7 @@
     <h3>Molotov L (de Top Mid)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/molotov-mid-from-top-mid-t/"
+</a><a class="card" href="/pt/mirage/molotov-mid-from-top-mid-t/" data-id="molotov-mid-from-top-mid-t"
    data-type="molotov" data-side="T" data-area="Middle" data-map="mirage"
    data-teams="fut mouz spirit" data-players="magixx sunpayus xertion"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -3599,7 +3600,7 @@
     <h3>Molotov Meio (de Top Mid)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/molotov-b-site-from-apartments-t/"
+</a><a class="card" href="/pt/mirage/molotov-b-site-from-apartments-t/" data-id="molotov-b-site-from-apartments-t"
    data-type="molotov" data-side="T" data-area="BombsiteB" data-map="mirage"
    data-teams="vitality" data-players="ropz"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -3616,7 +3617,7 @@
     <h3>Molotov Bomb B (de Tapete)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/smoke-mid-from-connector-ct/"
+</a><a class="card" href="/pt/mirage/smoke-mid-from-connector-ct/" data-id="smoke-mid-from-connector-ct"
    data-type="smoke" data-side="CT" data-area="Middle" data-map="mirage"
    data-teams="falcons fut g2" data-players="nertz niko sunpayus"
    data-diff="2" data-count="3" data-eff="-1">
@@ -3633,7 +3634,7 @@
     <h3>Smoke Meio (de Ligação)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/smoke-underpass-from-connector-ct/"
+</a><a class="card" href="/pt/mirage/smoke-underpass-from-connector-ct/" data-id="smoke-underpass-from-connector-ct"
    data-type="smoke" data-side="CT" data-area="Underpass" data-map="mirage"
    data-teams="falcons mouz vitality" data-players="apex niko xertion"
    data-diff="1" data-count="3" data-eff="-1">
@@ -3650,7 +3651,7 @@
     <h3>Smoke Rato (de Ligação)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/smoke-catwalk-from-house-t/"
+</a><a class="card" href="/pt/mirage/smoke-catwalk-from-house-t/" data-id="smoke-catwalk-from-house-t"
    data-type="smoke" data-side="T" data-area="Catwalk" data-map="mirage"
    data-teams="legacy vitality" data-players="apex art"
    data-diff="2" data-count="3" data-eff="-1">
@@ -3671,7 +3672,7 @@
 </section>
 <section>
   <h2 class="sec"><a href="/pt/nuke/">Nuke</a> <span class="muted">· 33 lineups</span></h2>
-  <div class="cards"><a class="card" href="/pt/nuke/smoke-outside-t/"
+  <div class="cards"><a class="card" href="/pt/nuke/smoke-outside-t/" data-id="smoke-outside-t"
    data-type="smoke" data-side="T" data-area="Outside" data-map="nuke"
    data-teams="fut g2 mouz spirit" data-players="donk hunter magixx matys nertz pr sh1ro torzsi xelex xertion xfl0ud"
    data-diff="2" data-count="98" data-eff="-1">
@@ -3688,7 +3689,7 @@
     <h3>Smoke Outside</h3>
     <p class="muted">98 usos</p>
   </div>
-</a><a class="card" href="/pt/nuke/smoke-outside-from-t-spawn-t/"
+</a><a class="card" href="/pt/nuke/smoke-outside-from-t-spawn-t/" data-id="smoke-outside-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="Outside" data-map="nuke"
    data-teams="fut g2 mouz spirit" data-players="hunter magixx nertz sh1ro xertion xfl0ud"
    data-diff="2" data-count="35" data-eff="-1">
@@ -3705,7 +3706,7 @@
     <h3>Smoke Outside (de T Spawn)</h3>
     <p class="muted">35 usos</p>
   </div>
-</a><a class="card" href="/pt/nuke/smoke-a-site-from-outside-t/"
+</a><a class="card" href="/pt/nuke/smoke-a-site-from-outside-t/" data-id="smoke-a-site-from-outside-t"
    data-type="smoke" data-side="T" data-area="BombsiteA" data-map="nuke"
    data-teams="g2 spirit" data-players="heavygod r1nkle zont1x"
    data-diff="2" data-count="11" data-eff="-1">
@@ -3722,7 +3723,7 @@
     <h3>Smoke Bomb A (de Outside)</h3>
     <p class="muted">11 usos</p>
   </div>
-</a><a class="card" href="/pt/nuke/flash-rafters-from-roof-t/"
+</a><a class="card" href="/pt/nuke/flash-rafters-from-roof-t/" data-id="flash-rafters-from-roof-t"
    data-type="flash" data-side="T" data-area="Rafters" data-map="nuke"
    data-teams="g2 mouz spirit" data-players="magixx r1nkle sh1ro torzsi"
    data-diff="2" data-count="9" data-eff="1.33">
@@ -3740,7 +3741,7 @@
 <p class="eff">cega 1,3 inimigo(s) por 1,7s em média</p>
     <p class="muted">9 usos</p>
   </div>
-</a><a class="card" href="/pt/nuke/flash-ramp-from-trophy-t/"
+</a><a class="card" href="/pt/nuke/flash-ramp-from-trophy-t/" data-id="flash-ramp-from-trophy-t"
    data-type="flash" data-side="T" data-area="Ramp" data-map="nuke"
    data-teams="mouz spirit" data-players="magixx pr torzsi"
    data-diff="1" data-count="7" data-eff="1.14">
@@ -3758,7 +3759,7 @@
 <p class="eff">cega 1,1 inimigo(s) por 2,0s em média</p>
     <p class="muted">7 usos</p>
   </div>
-</a><a class="card" href="/pt/nuke/molotov-mini-from-lobby-t/"
+</a><a class="card" href="/pt/nuke/molotov-mini-from-lobby-t/" data-id="molotov-mini-from-lobby-t"
    data-type="molotov" data-side="T" data-area="Mini" data-map="nuke"
    data-teams="fut mouz spirit" data-players="dziugss spinx zont1x"
    data-diff="3" data-count="7" data-eff="0.0">
@@ -3775,7 +3776,7 @@
     <h3>Molotov Mini (de Lobby)</h3>
     <p class="muted">7 usos</p>
   </div>
-</a><a class="card" href="/pt/nuke/smoke-mini-from-lobby-t/"
+</a><a class="card" href="/pt/nuke/smoke-mini-from-lobby-t/" data-id="smoke-mini-from-lobby-t"
    data-type="smoke" data-side="T" data-area="Mini" data-map="nuke"
    data-teams="fut g2 spirit" data-players="dem0n heavygod nertz sh1ro zont1x"
    data-diff="3" data-count="6" data-eff="-1">
@@ -3792,7 +3793,7 @@
     <h3>Smoke Mini (de Lobby)</h3>
     <p class="muted">6 usos</p>
   </div>
-</a><a class="card" href="/pt/nuke/he-silo-from-outside-ct/"
+</a><a class="card" href="/pt/nuke/he-silo-from-outside-ct/" data-id="he-silo-from-outside-ct"
    data-type="he" data-side="CT" data-area="Silo" data-map="nuke"
    data-teams="fut g2 mouz spirit" data-players="donk hunter spinx sunpayus"
    data-diff="1" data-count="5" data-eff="0.0">
@@ -3809,7 +3810,7 @@
     <h3>HE Silo (de Outside)</h3>
     <p class="muted">5 usos</p>
   </div>
-</a><a class="card" href="/pt/nuke/smoke-squeaky-from-a-site-ct/"
+</a><a class="card" href="/pt/nuke/smoke-squeaky-from-a-site-ct/" data-id="smoke-squeaky-from-a-site-ct"
    data-type="smoke" data-side="CT" data-area="Squeaky" data-map="nuke"
    data-teams="fut g2 spirit" data-players="dziugss nertz tn1r"
    data-diff="3" data-count="5" data-eff="-1">
@@ -3826,7 +3827,7 @@
     <h3>Smoke Squeaky (de Bomb A)</h3>
     <p class="muted">5 usos</p>
   </div>
-</a><a class="card" href="/pt/nuke/smoke-a-site-from-lobby-t/"
+</a><a class="card" href="/pt/nuke/smoke-a-site-from-lobby-t/" data-id="smoke-a-site-from-lobby-t"
    data-type="smoke" data-side="T" data-area="BombsiteA" data-map="nuke"
    data-teams="fut g2 mouz spirit" data-players="dziugss heavygod spinx zont1x"
    data-diff="3" data-count="5" data-eff="-1">
@@ -3843,7 +3844,7 @@
     <h3>Smoke Bomb A (de Lobby)</h3>
     <p class="muted">5 usos</p>
   </div>
-</a><a class="card" href="/pt/nuke/flash-a-site-from-lobby-t/"
+</a><a class="card" href="/pt/nuke/flash-a-site-from-lobby-t/" data-id="flash-a-site-from-lobby-t"
    data-type="flash" data-side="T" data-area="BombsiteA" data-map="nuke"
    data-teams="mouz spirit" data-players="magixx pr"
    data-diff="2" data-count="4" data-eff="1.25">
@@ -3861,7 +3862,7 @@
 <p class="eff">cega 1,2 inimigo(s) por 3,2s em média</p>
     <p class="muted">4 usos</p>
   </div>
-</a><a class="card" href="/pt/nuke/molotov-ramp-from-trophy-t/"
+</a><a class="card" href="/pt/nuke/molotov-ramp-from-trophy-t/" data-id="molotov-ramp-from-trophy-t"
    data-type="molotov" data-side="T" data-area="Ramp" data-map="nuke"
    data-teams="fut mouz spirit" data-players="magixx pr torzsi xfl0ud"
    data-diff="1" data-count="4" data-eff="0.0">
@@ -3878,7 +3879,7 @@
     <h3>Molotov Ramp (de Trophy)</h3>
     <p class="muted">4 usos</p>
   </div>
-</a><a class="card" href="/pt/nuke/molotov-a-site-from-roof-t/"
+</a><a class="card" href="/pt/nuke/molotov-a-site-from-roof-t/" data-id="molotov-a-site-from-roof-t"
    data-type="molotov" data-side="T" data-area="BombsiteA" data-map="nuke"
    data-teams="g2 mouz spirit" data-players="r1nkle sh1ro torzsi"
    data-diff="2" data-count="4" data-eff="0.0">
@@ -3895,7 +3896,7 @@
     <h3>Molotov Bomb A (de Roof)</h3>
     <p class="muted">4 usos</p>
   </div>
-</a><a class="card" href="/pt/nuke/molotov-outside-t/"
+</a><a class="card" href="/pt/nuke/molotov-outside-t/" data-id="molotov-outside-t"
    data-type="molotov" data-side="T" data-area="Outside" data-map="nuke"
    data-teams="fut spirit" data-players="magixx sunpayus"
    data-diff="2" data-count="4" data-eff="0.0">
@@ -3912,7 +3913,7 @@
     <h3>Molotov Outside</h3>
     <p class="muted">4 usos</p>
   </div>
-</a><a class="card" href="/pt/nuke/smoke-a-site-ct/"
+</a><a class="card" href="/pt/nuke/smoke-a-site-ct/" data-id="smoke-a-site-ct"
    data-type="smoke" data-side="CT" data-area="BombsiteA" data-map="nuke"
    data-teams="fut" data-players="dem0n"
    data-diff="1" data-count="4" data-eff="-1">
@@ -3929,7 +3930,7 @@
     <h3>Smoke Bomb A</h3>
     <p class="muted">4 usos</p>
   </div>
-</a><a class="card" href="/pt/nuke/smoke-control-from-ramp-ct/"
+</a><a class="card" href="/pt/nuke/smoke-control-from-ramp-ct/" data-id="smoke-control-from-ramp-ct"
    data-type="smoke" data-side="CT" data-area="Control" data-map="nuke"
    data-teams="fut" data-players="xfl0ud"
    data-diff="1" data-count="4" data-eff="-1">
@@ -3946,7 +3947,7 @@
     <h3>Smoke Control (de Ramp)</h3>
     <p class="muted">4 usos</p>
   </div>
-</a><a class="card" href="/pt/nuke/flash-outside-ct/"
+</a><a class="card" href="/pt/nuke/flash-outside-ct/" data-id="flash-outside-ct"
    data-type="flash" data-side="CT" data-area="Outside" data-map="nuke"
    data-teams="fut spirit" data-players="coolio donk"
    data-diff="3" data-count="3" data-eff="2.33">
@@ -3964,7 +3965,7 @@
 <p class="eff">cega 2,3 inimigo(s) por 5,7s em média</p>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/nuke/flash-control-from-ramp-ct/"
+</a><a class="card" href="/pt/nuke/flash-control-from-ramp-ct/" data-id="flash-control-from-ramp-ct"
    data-type="flash" data-side="CT" data-area="Control" data-map="nuke"
    data-teams="g2" data-players="heavygod"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -3981,7 +3982,7 @@
     <h3>Flash Control (de Ramp)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/nuke/he-trophy-from-ramp-ct/"
+</a><a class="card" href="/pt/nuke/he-trophy-from-ramp-ct/" data-id="he-trophy-from-ramp-ct"
    data-type="he" data-side="CT" data-area="Trophy" data-map="nuke"
    data-teams="fut" data-players="xfl0ud"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -3998,7 +3999,7 @@
     <h3>HE Trophy (de Ramp)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/nuke/he-lobby-from-a-site-ct/"
+</a><a class="card" href="/pt/nuke/he-lobby-from-a-site-ct/" data-id="he-lobby-from-a-site-ct"
    data-type="he" data-side="CT" data-area="Lobby" data-map="nuke"
    data-teams="fut g2 mouz" data-players="dem0n matys xelex"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -4015,7 +4016,7 @@
     <h3>HE Lobby (de Bomb A)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/nuke/he-control-from-ramp-ct/"
+</a><a class="card" href="/pt/nuke/he-control-from-ramp-ct/" data-id="he-control-from-ramp-ct"
    data-type="he" data-side="CT" data-area="Control" data-map="nuke"
    data-teams="fut g2" data-players="r1nkle sunpayus"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -4032,7 +4033,7 @@
     <h3>HE Control (de Ramp)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/nuke/he-hut-from-rafters-ct/"
+</a><a class="card" href="/pt/nuke/he-hut-from-rafters-ct/" data-id="he-hut-from-rafters-ct"
    data-type="he" data-side="CT" data-area="Hut" data-map="nuke"
    data-teams="g2" data-players="matys"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -4049,7 +4050,7 @@
     <h3>HE Hut (de Rafters)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/nuke/he-a-site-from-roof-t/"
+</a><a class="card" href="/pt/nuke/he-a-site-from-roof-t/" data-id="he-a-site-from-roof-t"
    data-type="he" data-side="T" data-area="BombsiteA" data-map="nuke"
    data-teams="fut spirit" data-players="dem0n tn1r"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -4066,7 +4067,7 @@
     <h3>HE Bomb A (de Roof)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/nuke/molotov-lobby-from-a-site-ct/"
+</a><a class="card" href="/pt/nuke/molotov-lobby-from-a-site-ct/" data-id="molotov-lobby-from-a-site-ct"
    data-type="molotov" data-side="CT" data-area="Lobby" data-map="nuke"
    data-teams="fut" data-players="dem0n"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -4083,7 +4084,7 @@
     <h3>Molotov Lobby (de Bomb A)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/nuke/molotov-hut-from-a-site-ct/"
+</a><a class="card" href="/pt/nuke/molotov-hut-from-a-site-ct/" data-id="molotov-hut-from-a-site-ct"
    data-type="molotov" data-side="CT" data-area="Hut" data-map="nuke"
    data-teams="fut g2" data-players="dem0n matys"
    data-diff="2" data-count="3" data-eff="0.0">
@@ -4100,7 +4101,7 @@
     <h3>Molotov Hut (de Bomb A)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/nuke/molotov-hut-roof-from-roof-t/"
+</a><a class="card" href="/pt/nuke/molotov-hut-roof-from-roof-t/" data-id="molotov-hut-roof-from-roof-t"
    data-type="molotov" data-side="T" data-area="HutRoof" data-map="nuke"
    data-teams="g2 spirit" data-players="hunter sh1ro"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -4117,7 +4118,7 @@
     <h3>Molotov Hut Roof (de Roof)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/nuke/molotov-admin-from-control-t/"
+</a><a class="card" href="/pt/nuke/molotov-admin-from-control-t/" data-id="molotov-admin-from-control-t"
    data-type="molotov" data-side="T" data-area="Admin" data-map="nuke"
    data-teams="g2 mouz spirit" data-players="r1nkle xertion zont1x"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -4134,7 +4135,7 @@
     <h3>Molotov Admin (de Control)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/nuke/molotov-a-site-from-squeaky-t/"
+</a><a class="card" href="/pt/nuke/molotov-a-site-from-squeaky-t/" data-id="molotov-a-site-from-squeaky-t"
    data-type="molotov" data-side="T" data-area="BombsiteA" data-map="nuke"
    data-teams="spirit" data-players="zont1x"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -4151,7 +4152,7 @@
     <h3>Molotov Bomb A (de Squeaky)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/nuke/smoke-squeaky-from-outside-ct/"
+</a><a class="card" href="/pt/nuke/smoke-squeaky-from-outside-ct/" data-id="smoke-squeaky-from-outside-ct"
    data-type="smoke" data-side="CT" data-area="Squeaky" data-map="nuke"
    data-teams="g2 mouz" data-players="nertz spinx"
    data-diff="2" data-count="3" data-eff="-1">
@@ -4168,7 +4169,7 @@
     <h3>Smoke Squeaky (de Outside)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/nuke/smoke-trophy-from-ramp-ct/"
+</a><a class="card" href="/pt/nuke/smoke-trophy-from-ramp-ct/" data-id="smoke-trophy-from-ramp-ct"
    data-type="smoke" data-side="CT" data-area="Trophy" data-map="nuke"
    data-teams="fut g2" data-players="heavygod xfl0ud"
    data-diff="3" data-count="3" data-eff="-1">
@@ -4185,7 +4186,7 @@
     <h3>Smoke Trophy (de Ramp)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/nuke/smoke-a-site-from-heaven-ct/"
+</a><a class="card" href="/pt/nuke/smoke-a-site-from-heaven-ct/" data-id="smoke-a-site-from-heaven-ct"
    data-type="smoke" data-side="CT" data-area="BombsiteA" data-map="nuke"
    data-teams="g2 mouz" data-players="matys nertz xertion"
    data-diff="3" data-count="3" data-eff="-1">
@@ -4202,7 +4203,7 @@
     <h3>Smoke Bomb A (de Heaven)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/nuke/smoke-tunnels-from-vents-ct/"
+</a><a class="card" href="/pt/nuke/smoke-tunnels-from-vents-ct/" data-id="smoke-tunnels-from-vents-ct"
    data-type="smoke" data-side="CT" data-area="Tunnels" data-map="nuke"
    data-teams="fut g2" data-players="coolio hunter"
    data-diff="2" data-count="3" data-eff="-1">
@@ -4219,7 +4220,7 @@
     <h3>Smoke Tunnels (de Vents)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/nuke/smoke-squeaky-from-hut-roof-ct/"
+</a><a class="card" href="/pt/nuke/smoke-squeaky-from-hut-roof-ct/" data-id="smoke-squeaky-from-hut-roof-ct"
    data-type="smoke" data-side="CT" data-area="Squeaky" data-map="nuke"
    data-teams="fut" data-players="dziugss"
    data-diff="1" data-count="3" data-eff="-1">

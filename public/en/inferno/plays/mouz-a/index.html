@@ -19,15 +19,16 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Lineups Pro">
 <meta name="theme-color" content="#0b0f15">
-<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light"; } catch (e) {}</script>
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
+  if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/static/style.css">
-<script>window.I18N = {"copied": "Copied!", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s"}; window.LANG = "en";</script>
+<script>window.I18N = {"copied": "Copied!", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "open": "Open", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s"}; window.LANG = "en";</script>
 </head>
 <body>
 <header class="top">
   <div class="top-in">
-    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-controls="side" aria-expanded="false">☰</button>
+    <button class="menu-btn" id="menuBtn" aria-label="Show or hide the menu" aria-controls="side" aria-expanded="false">☰</button>
     <a class="logo" href="/en/"><span class="logo-mark">◎</span> Lineups Pro</a>
     <div class="search">
       <input id="q" type="search" placeholder="Search map, player, team, smoke…" autocomplete="off" aria-label="Search">
@@ -58,7 +59,7 @@
 <a href="/en/player/apex/"><span>apEX</span></a><a href="/en/player/art/"><span>art</span></a><a href="/en/player/coolio/"><span>coolio</span></a><a href="/en/player/dem0n/"><span>dem0n</span></a><a href="/en/player/donk/"><span>donk</span></a><a href="/en/player/dumau/"><span>dumau</span></a><a href="/en/player/dziugss/"><span>dziugss</span></a><a href="/en/player/fallen/"><span>FalleN</span></a><a href="/en/player/flamez/"><span>flameZ</span></a><a href="/en/player/heavygod/"><span>HeavyGod</span></a><a href="/en/player/hunter/"><span>huNter</span></a><a href="/en/player/karrigan/"><span>karrigan</span></a><a class="more" href="/en/players/">see all (40)</a>      </details>
       <details class="nav-g" data-k="teams" open>
         <summary class="nav-h"><a href="/en/teams/">Teams</a></summary>
-<a href="/en/team/falcons/"><span>Falcons</span></a><a href="/en/team/furia/"><span>FURIA</span></a><a href="/en/team/fut/"><span>FUT</span></a><a href="/en/team/g2/"><span>G2</span></a><a href="/en/team/legacy/"><span>Legacy</span></a><a href="/en/team/mouz/"><span>MOUZ</span></a><a href="/en/team/spirit/"><span>Spirit</span></a><a href="/en/team/vitality/"><span>Vitality</span></a>      </details>
+<a href="/en/team/falcons/"><span><img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12">Falcons</span></a><a href="/en/team/furia/"><span><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12">FURIA</span></a><a href="/en/team/fut/"><span><img class="flag" src="/static/flags/tr.svg" alt="Turkey" title="Turkey" width="16" height="12">FUT</span></a><a href="/en/team/g2/"><span><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12">G2</span></a><a href="/en/team/legacy/"><span><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12">Legacy</span></a><a href="/en/team/mouz/"><span><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12">MOUZ</span></a><a href="/en/team/spirit/"><span><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12">Spirit</span></a><a href="/en/team/vitality/"><span><img class="flag" src="/static/flags/fr.svg" alt="France" title="France" width="16" height="12">Vitality</span></a>      </details>
       <details class="nav-g" data-k="events" open>
         <summary class="nav-h"><a href="/en/tournaments/">Tournaments</a></summary>
 <a href="/en/tournament/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      </details>
@@ -83,7 +84,7 @@
   <main class="content">
 <nav class="crumbs"><a href="/en/">Home</a> › <a href="/en/inferno/">Inferno</a> ›
   <a href="/en/inferno/plays/">Plays</a> › MOUZ A entry</nav>
-<h1>MOUZ A entry <span class="muted h-sub">· Inferno</span></h1>
+<h1><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12"> MOUZ A entry <span class="muted h-sub">· Inferno</span></h1>
 <p class="muted">3 rounds · round won 67% · median plant at 1:02
  · <a href="/en/team/mouz/">MOUZ</a></p>
 
@@ -115,19 +116,19 @@
     <h2>Rounds</h2>
     <div class="round-list">
       <button class="round-item" data-play="mouz-vs-g2-m3-inferno-r13" data-clip="/media/mouz-vs-g2-m3-inferno/entry-r13.mp4" data-poster="/media/mouz-vs-g2-m3-inferno/entry-r13.jpg" data-pov="PR">
-        <span class="ri-top"><b>vs G2</b> · Round 13
+        <span class="ri-top"><b>vs <img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12"> G2</b> · Round 13
           <span class="badge loss">lost</span><span class="badge video">▶ video</span></span>
         <span class="muted small">plant at 1:12 into the round · 2026-11-11</span>
         <span class="ri-util"><span class="dot-nade type-flash" title="torzsi · flash"></span><span class="dot-nade type-flash" title="torzsi · flash"></span></span>
       </button>
       <button class="round-item" data-play="mouz-vs-g2-m3-inferno-r16" data-clip="/media/mouz-vs-g2-m3-inferno/entry-r16.mp4" data-poster="/media/mouz-vs-g2-m3-inferno/entry-r16.jpg" data-pov="xelex">
-        <span class="ri-top"><b>vs G2</b> · Round 16
+        <span class="ri-top"><b>vs <img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12"> G2</b> · Round 16
           <span class="badge win">won</span><span class="badge video">▶ video</span></span>
         <span class="muted small">plant at 0:31 into the round · 2026-11-11</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="xelex · smoke"></span><span class="dot-nade type-smoke" title="torzsi · smoke"></span><span class="dot-nade type-molotov" title="PR · molotov"></span><span class="dot-nade type-flash" title="torzsi · flash"></span><span class="dot-nade type-flash" title="torzsi · flash"></span><span class="dot-nade type-flash" title="torzsi · flash"></span><span class="dot-nade type-smoke" title="Spinx · smoke"></span><span class="dot-nade type-smoke" title="xertioN · smoke"></span></span>
       </button>
       <button class="round-item" data-play="mouz-vs-g2-m3-inferno-r17" data-clip="/media/mouz-vs-g2-m3-inferno/entry-r17.mp4" data-poster="/media/mouz-vs-g2-m3-inferno/entry-r17.jpg" data-pov="xelex">
-        <span class="ri-top"><b>vs G2</b> · Round 17
+        <span class="ri-top"><b>vs <img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12"> G2</b> · Round 17
           <span class="badge win">won</span><span class="badge video">▶ video</span></span>
         <span class="muted small">plant at 1:02 into the round · 2026-11-11</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="torzsi · smoke"></span><span class="dot-nade type-molotov" title="Spinx · molotov"></span><span class="dot-nade type-molotov" title="PR · molotov"></span><span class="dot-nade type-molotov" title="xertioN · molotov"></span><span class="dot-nade type-he" title="xertioN · he"></span><span class="dot-nade type-he" title="PR · he"></span><span class="dot-nade type-flash" title="xertioN · flash"></span><span class="dot-nade type-flash" title="PR · flash"></span><span class="dot-nade type-flash" title="Spinx · flash"></span><span class="dot-nade type-flash" title="Spinx · flash"></span><span class="dot-nade type-smoke" title="xertioN · smoke"></span><span class="dot-nade type-molotov" title="xelex · molotov"></span><span class="dot-nade type-smoke" title="PR · smoke"></span></span>
@@ -145,7 +146,7 @@
 <section>
   <h2>Grenades used in these entries</h2>
   <p class="muted">Published lineups the team threw before the plant in these rounds.</p>
-  <div class="cards"><a class="card" href="/en/inferno/flash-b-site-from-banana-t/"
+  <div class="cards"><a class="card" href="/en/inferno/flash-b-site-from-banana-t/" data-id="flash-b-site-from-banana-t"
    data-type="flash" data-side="T" data-area="BombsiteB" data-map="inferno"
    data-teams="furia g2 mouz" data-players="fallen r1nkle torzsi xertion"
    data-diff="2" data-count="11" data-eff="0.91">
@@ -163,7 +164,7 @@
 <p class="eff">blinds 0.9 enemy(ies) for 2.3s on average</p>
     <p class="muted">11 uses · 3 teams · 36% rounds won</p>
   </div>
-</a><a class="card" href="/en/inferno/smoke-banana-from-t-spawn-t/"
+</a><a class="card" href="/en/inferno/smoke-banana-from-t-spawn-t/" data-id="smoke-banana-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="Banana" data-map="inferno"
    data-teams="furia g2 mouz vitality" data-players="apex fallen r1nkle torzsi"
    data-diff="3" data-count="9" data-eff="-1">
@@ -180,7 +181,7 @@
     <h3>Smoke Banana (from T Spawn)</h3>
     <p class="muted">9 uses · 4 teams · 33% rounds won</p>
   </div>
-</a><a class="card" href="/en/inferno/smoke-top-mid-from-t-spawn-t/"
+</a><a class="card" href="/en/inferno/smoke-top-mid-from-t-spawn-t/" data-id="smoke-top-mid-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="TopofMid" data-map="inferno"
    data-teams="furia g2 mouz vitality" data-players="flamez matys xelex yuurih"
    data-diff="3" data-count="8" data-eff="-1">

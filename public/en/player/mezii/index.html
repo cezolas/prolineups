@@ -19,15 +19,16 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Lineups Pro">
 <meta name="theme-color" content="#0b0f15">
-<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light"; } catch (e) {}</script>
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
+  if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/static/style.css">
-<script>window.I18N = {"copied": "Copied!", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s"}; window.LANG = "en";</script>
+<script>window.I18N = {"copied": "Copied!", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "open": "Open", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s"}; window.LANG = "en";</script>
 </head>
 <body>
 <header class="top">
   <div class="top-in">
-    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-controls="side" aria-expanded="false">☰</button>
+    <button class="menu-btn" id="menuBtn" aria-label="Show or hide the menu" aria-controls="side" aria-expanded="false">☰</button>
     <a class="logo" href="/en/"><span class="logo-mark">◎</span> Lineups Pro</a>
     <div class="search">
       <input id="q" type="search" placeholder="Search map, player, team, smoke…" autocomplete="off" aria-label="Search">
@@ -58,7 +59,7 @@
 <a href="/en/player/apex/"><span>apEX</span></a><a href="/en/player/art/"><span>art</span></a><a href="/en/player/coolio/"><span>coolio</span></a><a href="/en/player/dem0n/"><span>dem0n</span></a><a href="/en/player/donk/"><span>donk</span></a><a href="/en/player/dumau/"><span>dumau</span></a><a href="/en/player/dziugss/"><span>dziugss</span></a><a href="/en/player/fallen/"><span>FalleN</span></a><a href="/en/player/flamez/"><span>flameZ</span></a><a href="/en/player/heavygod/"><span>HeavyGod</span></a><a href="/en/player/hunter/"><span>huNter</span></a><a href="/en/player/karrigan/"><span>karrigan</span></a><a class="more" href="/en/players/">see all (40)</a>      </details>
       <details class="nav-g" data-k="teams" open>
         <summary class="nav-h"><a href="/en/teams/">Teams</a></summary>
-<a href="/en/team/falcons/"><span>Falcons</span></a><a href="/en/team/furia/"><span>FURIA</span></a><a href="/en/team/fut/"><span>FUT</span></a><a href="/en/team/g2/"><span>G2</span></a><a href="/en/team/legacy/"><span>Legacy</span></a><a href="/en/team/mouz/"><span>MOUZ</span></a><a href="/en/team/spirit/"><span>Spirit</span></a><a href="/en/team/vitality/"><span>Vitality</span></a>      </details>
+<a href="/en/team/falcons/"><span><img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12">Falcons</span></a><a href="/en/team/furia/"><span><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12">FURIA</span></a><a href="/en/team/fut/"><span><img class="flag" src="/static/flags/tr.svg" alt="Turkey" title="Turkey" width="16" height="12">FUT</span></a><a href="/en/team/g2/"><span><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12">G2</span></a><a href="/en/team/legacy/"><span><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12">Legacy</span></a><a href="/en/team/mouz/"><span><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12">MOUZ</span></a><a href="/en/team/spirit/"><span><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12">Spirit</span></a><a href="/en/team/vitality/"><span><img class="flag" src="/static/flags/fr.svg" alt="France" title="France" width="16" height="12">Vitality</span></a>      </details>
       <details class="nav-g" data-k="events" open>
         <summary class="nav-h"><a href="/en/tournaments/">Tournaments</a></summary>
 <a href="/en/tournament/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      </details>
@@ -84,11 +85,10 @@
 <nav class="crumbs"><a href="/en/">Home</a> › <a href="/en/players/">Players</a> › mezii</nav>
 <h1>Grenades by mezii</h1>
 <p class="muted">
-Vitality · 72 grenades on 4 maps
+<img class="flag" src="/static/flags/fr.svg" alt="France" title="France" width="16" height="12"> Vitality · 72 grenades on 4 maps
 </p>
 <section class="sig" id="assinatura">
-  <h2>Utility signature</h2>
-  <p class="muted">Every grenade he threw in the matches (not only the published lineups), per map and side, compared with the average player on the same map and side. ▲/▼ = 15% above/below average.</p>
+  <h2>Utility signature</h2>  <p class="muted">Every grenade he threw in the matches (not only the published lineups), per map and side, compared with the average player on the same map and side. ▲/▼ = 15% above/below average.</p>
   <div class="seg sig-maps" role="tablist"><button role="tab" data-sig="mirage" class="on">Mirage</button><button role="tab" data-sig="cache">Cache</button><button role="tab" data-sig="dust2">Dust2</button><button role="tab" data-sig="inferno">Inferno</button></div>
   <div class="sig-map" data-sig-panel="mirage">
     <div class="sig-cols">
@@ -307,8 +307,7 @@ Vitality · 72 grenades on 4 maps
     </div>
   </div>
   <div class="heat-toggles small">Show on map: <label><input type="checkbox" data-heat="0" checked> Smokes</label><label><input type="checkbox" data-heat="1" checked> Flashes</label><label><input type="checkbox" data-heat="2" checked> Molotovs</label><label><input type="checkbox" data-heat="3" checked> HEs</label></div>
-</section>
-<script>
+</section><script>
 (function () {
   var sec = document.getElementById("assinatura"); if (!sec) return;
   sec.addEventListener("click", function (e) {
@@ -325,7 +324,7 @@ Vitality · 72 grenades on 4 maps
 
 <section>
   <h2 class="sec"><a href="/en/cache/">Cache</a> <span class="muted">· 6 lineups</span></h2>
-  <div class="cards"><a class="card" href="/en/cache/molotov-bmain-from-b-site-ct/"
+  <div class="cards"><a class="card" href="/en/cache/molotov-bmain-from-b-site-ct/" data-id="molotov-bmain-from-b-site-ct"
    data-type="molotov" data-side="CT" data-area="BMain" data-map="cache"
    data-teams="fut mouz spirit vitality" data-players="magixx mezii torzsi xelex xertion xfl0ud zont1x"
    data-diff="3" data-count="16" data-eff="0.0">
@@ -342,7 +341,7 @@ Vitality · 72 grenades on 4 maps
     <h3>Molotov BMain (from B Site)</h3>
     <p class="muted">2 uses</p>
   </div>
-</a><a class="card" href="/en/cache/molotov-mid-from-outside-a-t/"
+</a><a class="card" href="/en/cache/molotov-mid-from-outside-a-t/" data-id="molotov-mid-from-outside-a-t"
    data-type="molotov" data-side="T" data-area="Mid" data-map="cache"
    data-teams="mouz vitality" data-players="mezii torzsi"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -359,7 +358,7 @@ Vitality · 72 grenades on 4 maps
     <h3>Molotov Mid (from Outside A)</h3>
     <p class="muted">2 uses</p>
   </div>
-</a><a class="card" href="/en/cache/molotov-boost-from-mid-ct/"
+</a><a class="card" href="/en/cache/molotov-boost-from-mid-ct/" data-id="molotov-boost-from-mid-ct"
    data-type="molotov" data-side="CT" data-area="Boost" data-map="cache"
    data-teams="mouz spirit vitality" data-players="apex donk mezii spinx"
    data-diff="2" data-count="15" data-eff="0.0">
@@ -376,7 +375,7 @@ Vitality · 72 grenades on 4 maps
     <h3>Molotov Boost (from Mid)</h3>
     <p class="muted">1 use</p>
   </div>
-</a><a class="card" href="/en/cache/molotov-fork-lift-from-truck-ct/"
+</a><a class="card" href="/en/cache/molotov-fork-lift-from-truck-ct/" data-id="molotov-fork-lift-from-truck-ct"
    data-type="molotov" data-side="CT" data-area="ForkLift" data-map="cache"
    data-teams="fut mouz vitality" data-players="coolio dem0n mezii torzsi xertion"
    data-diff="3" data-count="5" data-eff="0.0">
@@ -393,7 +392,7 @@ Vitality · 72 grenades on 4 maps
     <h3>Molotov Fork Lift (from Truck)</h3>
     <p class="muted">1 use</p>
   </div>
-</a><a class="card" href="/en/cache/flash-highway-from-mid-t/"
+</a><a class="card" href="/en/cache/flash-highway-from-mid-t/" data-id="flash-highway-from-mid-t"
    data-type="flash" data-side="T" data-area="Highway" data-map="cache"
    data-teams="mouz vitality" data-players="mezii xertion zywoo"
    data-diff="1" data-count="3" data-eff="1.0">
@@ -411,7 +410,7 @@ Vitality · 72 grenades on 4 maps
 <p class="eff">blinds 1.0 enemy(ies) for 3.0s on average</p>
     <p class="muted">1 use</p>
   </div>
-</a><a class="card" href="/en/cache/molotov-bmain-from-rafters-ct/"
+</a><a class="card" href="/en/cache/molotov-bmain-from-rafters-ct/" data-id="molotov-bmain-from-rafters-ct"
    data-type="molotov" data-side="CT" data-area="BMain" data-map="cache"
    data-teams="vitality" data-players="mezii ropz"
    data-diff="1" data-count="3" data-eff="0.0">
@@ -432,7 +431,7 @@ Vitality · 72 grenades on 4 maps
 </section>
 <section>
   <h2 class="sec"><a href="/en/dust2/">Dust2</a> <span class="muted">· 8 lineups</span></h2>
-  <div class="cards"><a class="card" href="/en/dust2/smoke-mid-doors-from-outside-long-t/"
+  <div class="cards"><a class="card" href="/en/dust2/smoke-mid-doors-from-outside-long-t/" data-id="smoke-mid-doors-from-outside-long-t"
    data-type="smoke" data-side="T" data-area="MidDoors" data-map="dust2"
    data-teams="furia legacy vitality" data-players="fallen latto mezii yekindar"
    data-diff="2" data-count="10" data-eff="-1">
@@ -449,7 +448,7 @@ Vitality · 72 grenades on 4 maps
     <h3>Smoke Mid Doors (from Outside Long)</h3>
     <p class="muted">5 uses</p>
   </div>
-</a><a class="card" href="/en/dust2/smoke-mid-doors-from-b-doors-ct/"
+</a><a class="card" href="/en/dust2/smoke-mid-doors-from-b-doors-ct/" data-id="smoke-mid-doors-from-b-doors-ct"
    data-type="smoke" data-side="CT" data-area="MidDoors" data-map="dust2"
    data-teams="furia vitality" data-players="mezii yekindar"
    data-diff="1" data-count="5" data-eff="-1">
@@ -466,7 +465,7 @@ Vitality · 72 grenades on 4 maps
     <h3>Smoke Mid Doors (from B Doors)</h3>
     <p class="muted">3 uses</p>
   </div>
-</a><a class="card" href="/en/dust2/flash-mid-from-outside-long-t/"
+</a><a class="card" href="/en/dust2/flash-mid-from-outside-long-t/" data-id="flash-mid-from-outside-long-t"
    data-type="flash" data-side="T" data-area="Middle" data-map="dust2"
    data-teams="vitality" data-players="mezii"
    data-diff="3" data-count="3" data-eff="0.33">
@@ -484,7 +483,7 @@ Vitality · 72 grenades on 4 maps
 <p class="eff">blinds 0.3 enemy(ies) for 0.8s on average</p>
     <p class="muted">3 uses</p>
   </div>
-</a><a class="card" href="/en/dust2/he-mid-doors-ct/"
+</a><a class="card" href="/en/dust2/he-mid-doors-ct/" data-id="he-mid-doors-ct"
    data-type="he" data-side="CT" data-area="MidDoors" data-map="dust2"
    data-teams="falcons legacy vitality" data-players="kyousuke mezii try"
    data-diff="2" data-count="4" data-eff="0.0">
@@ -501,7 +500,7 @@ Vitality · 72 grenades on 4 maps
     <h3>HE Mid Doors</h3>
     <p class="muted">2 uses</p>
   </div>
-</a><a class="card" href="/en/dust2/molotov-upper-tunnels-from-b-doors-ct/"
+</a><a class="card" href="/en/dust2/molotov-upper-tunnels-from-b-doors-ct/" data-id="molotov-upper-tunnels-from-b-doors-ct"
    data-type="molotov" data-side="CT" data-area="UpperTunnel" data-map="dust2"
    data-teams="falcons furia legacy vitality" data-players="ksloks mezii teses yuurih"
    data-diff="3" data-count="7" data-eff="0.0">
@@ -518,7 +517,7 @@ Vitality · 72 grenades on 4 maps
     <h3>Molotov Upper Tunnels (from B Doors)</h3>
     <p class="muted">2 uses</p>
   </div>
-</a><a class="card" href="/en/dust2/smoke-under-a-from-long-doors-t/"
+</a><a class="card" href="/en/dust2/smoke-under-a-from-long-doors-t/" data-id="smoke-under-a-from-long-doors-t"
    data-type="smoke" data-side="T" data-area="UnderA" data-map="dust2"
    data-teams="falcons furia g2 vitality" data-players="apex m0nesy mezii r1nkle teses yuurih"
    data-diff="2" data-count="10" data-eff="-1">
@@ -535,7 +534,7 @@ Vitality · 72 grenades on 4 maps
     <h3>Smoke Under A (from Long Doors)</h3>
     <p class="muted">1 use</p>
   </div>
-</a><a class="card" href="/en/dust2/smoke-ct-spawn-from-mid-doors-t/"
+</a><a class="card" href="/en/dust2/smoke-ct-spawn-from-mid-doors-t/" data-id="smoke-ct-spawn-from-mid-doors-t"
    data-type="smoke" data-side="T" data-area="CTSpawn" data-map="dust2"
    data-teams="falcons furia vitality" data-players="fallen flamez karrigan mezii"
    data-diff="1" data-count="5" data-eff="-1">
@@ -552,7 +551,7 @@ Vitality · 72 grenades on 4 maps
     <h3>Smoke CT Spawn (from Mid Doors)</h3>
     <p class="muted">1 use</p>
   </div>
-</a><a class="card" href="/en/dust2/smoke-upper-tunnels-from-b-site-ct/"
+</a><a class="card" href="/en/dust2/smoke-upper-tunnels-from-b-site-ct/" data-id="smoke-upper-tunnels-from-b-site-ct"
    data-type="smoke" data-side="CT" data-area="UpperTunnel" data-map="dust2"
    data-teams="falcons furia legacy vitality" data-players="ksloks mezii teses yuurih"
    data-diff="3" data-count="9" data-eff="-1">
@@ -573,7 +572,7 @@ Vitality · 72 grenades on 4 maps
 </section>
 <section>
   <h2 class="sec"><a href="/en/inferno/">Inferno</a> <span class="muted">· 7 lineups</span></h2>
-  <div class="cards"><a class="card" href="/en/inferno/smoke-banana-from-ct-spawn-ct/"
+  <div class="cards"><a class="card" href="/en/inferno/smoke-banana-from-ct-spawn-ct/" data-id="smoke-banana-from-ct-spawn-ct"
    data-type="smoke" data-side="CT" data-area="Banana" data-map="inferno"
    data-teams="furia g2 mouz vitality" data-players="fallen heavygod hunter kscerato mezii r1nkle spinx torzsi xelex"
    data-diff="2" data-count="26" data-eff="-1">
@@ -590,7 +589,7 @@ Vitality · 72 grenades on 4 maps
     <h3>Smoke Banana (from CT Spawn)</h3>
     <p class="muted">9 uses</p>
   </div>
-</a><a class="card" href="/en/inferno/smoke-ruins-from-banana-t/"
+</a><a class="card" href="/en/inferno/smoke-ruins-from-banana-t/" data-id="smoke-ruins-from-banana-t"
    data-type="smoke" data-side="T" data-area="Ruins" data-map="inferno"
    data-teams="g2 mouz vitality" data-players="mezii nertz r1nkle xertion"
    data-diff="3" data-count="7" data-eff="-1">
@@ -607,7 +606,7 @@ Vitality · 72 grenades on 4 maps
     <h3>Smoke Ruins (from Banana)</h3>
     <p class="muted">2 uses</p>
   </div>
-</a><a class="card" href="/en/inferno/molotov-b-site-from-banana-t/"
+</a><a class="card" href="/en/inferno/molotov-b-site-from-banana-t/" data-id="molotov-b-site-from-banana-t"
    data-type="molotov" data-side="T" data-area="BombsiteB" data-map="inferno"
    data-teams="furia g2 mouz vitality" data-players="apex hunter matys mezii spinx torzsi yuurih"
    data-diff="2" data-count="11" data-eff="0.0">
@@ -624,7 +623,7 @@ Vitality · 72 grenades on 4 maps
     <h3>Molotov B Site (from Banana)</h3>
     <p class="muted">2 uses</p>
   </div>
-</a><a class="card" href="/en/inferno/he-mid-from-arch-ct/"
+</a><a class="card" href="/en/inferno/he-mid-from-arch-ct/" data-id="he-mid-from-arch-ct"
    data-type="he" data-side="CT" data-area="Middle" data-map="inferno"
    data-teams="g2 vitality" data-players="heavygod mezii"
    data-diff="2" data-count="3" data-eff="0.0">
@@ -641,7 +640,7 @@ Vitality · 72 grenades on 4 maps
     <h3>HE Mid (from Arch)</h3>
     <p class="muted">2 uses</p>
   </div>
-</a><a class="card" href="/en/inferno/flash-banana-from-b-site-ct/"
+</a><a class="card" href="/en/inferno/flash-banana-from-b-site-ct/" data-id="flash-banana-from-b-site-ct"
    data-type="flash" data-side="CT" data-area="Banana" data-map="inferno"
    data-teams="furia g2 mouz vitality" data-players="apex hunter kscerato mezii pr spinx xertion"
    data-diff="1" data-count="16" data-eff="1.19">
@@ -659,7 +658,7 @@ Vitality · 72 grenades on 4 maps
 <p class="eff">blinds 1.2 enemy(ies) for 3.3s on average</p>
     <p class="muted">1 use</p>
   </div>
-</a><a class="card" href="/en/inferno/flash-banana-from-lower-mid-t/"
+</a><a class="card" href="/en/inferno/flash-banana-from-lower-mid-t/" data-id="flash-banana-from-lower-mid-t"
    data-type="flash" data-side="T" data-area="Banana" data-map="inferno"
    data-teams="furia g2 mouz vitality" data-players="mezii r1nkle torzsi yekindar"
    data-diff="2" data-count="10" data-eff="0.6">
@@ -677,7 +676,7 @@ Vitality · 72 grenades on 4 maps
 <p class="eff">blinds 0.6 enemy(ies) for 2.0s on average</p>
     <p class="muted">1 use</p>
   </div>
-</a><a class="card" href="/en/inferno/he-banana-from-t-ramp-t/"
+</a><a class="card" href="/en/inferno/he-banana-from-t-ramp-t/" data-id="he-banana-from-t-ramp-t"
    data-type="he" data-side="T" data-area="Banana" data-map="inferno"
    data-teams="g2 vitality" data-players="hunter mezii"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -698,7 +697,7 @@ Vitality · 72 grenades on 4 maps
 </section>
 <section>
   <h2 class="sec"><a href="/en/mirage/">Mirage</a> <span class="muted">· 14 lineups</span></h2>
-  <div class="cards"><a class="card" href="/en/mirage/smoke-top-mid-from-t-spawn-t/"
+  <div class="cards"><a class="card" href="/en/mirage/smoke-top-mid-from-t-spawn-t/" data-id="smoke-top-mid-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="TopofMid" data-map="mirage"
    data-teams="fut g2 legacy mouz spirit vitality" data-players="dziugss heavygod ksloks magixx mezii pr r1nkle sh1ro spinx tn1r torzsi xelex xertion"
    data-diff="1" data-count="26" data-eff="-1">
@@ -715,7 +714,7 @@ Vitality · 72 grenades on 4 maps
     <h3>Smoke Top Mid (from T Spawn)</h3>
     <p class="muted">5 uses</p>
   </div>
-</a><a class="card" href="/en/mirage/smoke-stairs-from-t-spawn-t/"
+</a><a class="card" href="/en/mirage/smoke-stairs-from-t-spawn-t/" data-id="smoke-stairs-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="Stairs" data-map="mirage"
    data-teams="fut g2 legacy mouz spirit vitality" data-players="hunter latto magixx mezii sunpayus torzsi"
    data-diff="2" data-count="10" data-eff="-1">
@@ -732,7 +731,7 @@ Vitality · 72 grenades on 4 maps
     <h3>Smoke Stairs (from T Spawn)</h3>
     <p class="muted">3 uses</p>
   </div>
-</a><a class="card" href="/en/mirage/smoke-a-site-from-t-spawn-t/"
+</a><a class="card" href="/en/mirage/smoke-a-site-from-t-spawn-t/" data-id="smoke-a-site-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="BombsiteA" data-map="mirage"
    data-teams="fut g2 mouz spirit vitality" data-players="coolio dziugss hunter magixx mezii sunpayus torzsi zont1x"
    data-diff="3" data-count="12" data-eff="-1">
@@ -749,7 +748,7 @@ Vitality · 72 grenades on 4 maps
     <h3>Smoke A Site (from T Spawn)</h3>
     <p class="muted">3 uses</p>
   </div>
-</a><a class="card" href="/en/mirage/flash-t-ramp-from-t-spawn-t/"
+</a><a class="card" href="/en/mirage/flash-t-ramp-from-t-spawn-t/" data-id="flash-t-ramp-from-t-spawn-t"
    data-type="flash" data-side="T" data-area="TRamp" data-map="mirage"
    data-teams="vitality" data-players="apex mezii"
    data-diff="1" data-count="5" data-eff="0.4">
@@ -767,7 +766,7 @@ Vitality · 72 grenades on 4 maps
 <p class="eff">blinds 0.4 enemy(ies) for 1.7s on average</p>
     <p class="muted">3 uses</p>
   </div>
-</a><a class="card" href="/en/mirage/smoke-sniper-s-nest-from-t-spawn-t/"
+</a><a class="card" href="/en/mirage/smoke-sniper-s-nest-from-t-spawn-t/" data-id="smoke-sniper-s-nest-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="SnipersNest" data-map="mirage"
    data-teams="falcons furia fut g2 legacy mouz spirit vitality" data-players="apex art coolio dem0n donk dumau dziugss flamez heavygod hunter karrigan ksloks kyousuke latto m0nesy magixx matys mezii nertz niko pr r1nkle ropz sh1ro spinx sunpayus torzsi try xelex xertion xfl0ud yekindar zont1x zywoo"
    data-diff="3" data-count="99" data-eff="-1">
@@ -784,7 +783,7 @@ Vitality · 72 grenades on 4 maps
     <h3>Smoke Sniper&#39;s Nest (from T Spawn)</h3>
     <p class="muted">2 uses</p>
   </div>
-</a><a class="card" href="/en/mirage/smoke-catwalk-from-t-spawn-t/"
+</a><a class="card" href="/en/mirage/smoke-catwalk-from-t-spawn-t/" data-id="smoke-catwalk-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="Catwalk" data-map="mirage"
    data-teams="falcons fut g2 legacy mouz spirit vitality" data-players="dem0n dumau dziugss flamez heavygod ksloks kyousuke latto magixx mezii nertz pr r1nkle spinx torzsi try xelex xertion zywoo"
    data-diff="2" data-count="33" data-eff="-1">
@@ -801,7 +800,7 @@ Vitality · 72 grenades on 4 maps
     <h3>Smoke Catwalk (from T Spawn)</h3>
     <p class="muted">2 uses</p>
   </div>
-</a><a class="card" href="/en/mirage/flash-apartments-from-truck-ct/"
+</a><a class="card" href="/en/mirage/flash-apartments-from-truck-ct/" data-id="flash-apartments-from-truck-ct"
    data-type="flash" data-side="CT" data-area="Apartments" data-map="mirage"
    data-teams="legacy vitality" data-players="ksloks mezii"
    data-diff="2" data-count="3" data-eff="0.0">
@@ -818,7 +817,7 @@ Vitality · 72 grenades on 4 maps
     <h3>Flash Apartments (from Truck)</h3>
     <p class="muted">2 uses</p>
   </div>
-</a><a class="card" href="/en/mirage/he-apartments-from-b-site-ct/"
+</a><a class="card" href="/en/mirage/he-apartments-from-b-site-ct/" data-id="he-apartments-from-b-site-ct"
    data-type="he" data-side="CT" data-area="Apartments" data-map="mirage"
    data-teams="fut vitality" data-players="mezii xfl0ud"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -835,7 +834,7 @@ Vitality · 72 grenades on 4 maps
     <h3>HE Apartments (from B Site)</h3>
     <p class="muted">2 uses</p>
   </div>
-</a><a class="card" href="/en/mirage/smoke-a-site-from-t-ramp-t/"
+</a><a class="card" href="/en/mirage/smoke-a-site-from-t-ramp-t/" data-id="smoke-a-site-from-t-ramp-t"
    data-type="smoke" data-side="T" data-area="BombsiteA" data-map="mirage"
    data-teams="fut g2 legacy mouz spirit vitality" data-players="dem0n hunter latto magixx mezii sh1ro sunpayus torzsi"
    data-diff="1" data-count="9" data-eff="-1">
@@ -852,7 +851,7 @@ Vitality · 72 grenades on 4 maps
     <h3>Smoke A Site (from T Ramp)</h3>
     <p class="muted">1 use</p>
   </div>
-</a><a class="card" href="/en/mirage/molotov-stairs-from-t-ramp-t/"
+</a><a class="card" href="/en/mirage/molotov-stairs-from-t-ramp-t/" data-id="molotov-stairs-from-t-ramp-t"
    data-type="molotov" data-side="T" data-area="Stairs" data-map="mirage"
    data-teams="g2 legacy mouz spirit vitality" data-players="hunter latto magixx mezii sh1ro tn1r torzsi"
    data-diff="1" data-count="8" data-eff="0.0">
@@ -869,7 +868,7 @@ Vitality · 72 grenades on 4 maps
     <h3>Molotov Stairs (from T Ramp)</h3>
     <p class="muted">1 use</p>
   </div>
-</a><a class="card" href="/en/mirage/smoke-apartments-from-truck-ct/"
+</a><a class="card" href="/en/mirage/smoke-apartments-from-truck-ct/" data-id="smoke-apartments-from-truck-ct"
    data-type="smoke" data-side="CT" data-area="Apartments" data-map="mirage"
    data-teams="falcons legacy mouz spirit vitality" data-players="karrigan ksloks magixx mezii pr"
    data-diff="1" data-count="7" data-eff="-1">
@@ -886,7 +885,7 @@ Vitality · 72 grenades on 4 maps
     <h3>Smoke Apartments (from Truck)</h3>
     <p class="muted">1 use</p>
   </div>
-</a><a class="card" href="/en/mirage/smoke-a-site-from-palace-alley-t/"
+</a><a class="card" href="/en/mirage/smoke-a-site-from-palace-alley-t/" data-id="smoke-a-site-from-palace-alley-t"
    data-type="smoke" data-side="T" data-area="BombsiteA" data-map="mirage"
    data-teams="falcons furia fut g2 legacy mouz spirit vitality" data-players="dziugss heavygod hunter kscerato mezii ropz sh1ro spinx teses torzsi try"
    data-diff="2" data-count="14" data-eff="-1">
@@ -903,7 +902,7 @@ Vitality · 72 grenades on 4 maps
     <h3>Smoke A Site (from Palace Alley)</h3>
     <p class="muted">1 use</p>
   </div>
-</a><a class="card" href="/en/mirage/smoke-apartments-from-b-site-ct/"
+</a><a class="card" href="/en/mirage/smoke-apartments-from-b-site-ct/" data-id="smoke-apartments-from-b-site-ct"
    data-type="smoke" data-side="CT" data-area="Apartments" data-map="mirage"
    data-teams="falcons fut g2 mouz spirit vitality" data-players="hunter karrigan mezii pr sunpayus zont1x"
    data-diff="3" data-count="13" data-eff="-1">
@@ -920,7 +919,7 @@ Vitality · 72 grenades on 4 maps
     <h3>Smoke Apartments (from B Site)</h3>
     <p class="muted">1 use</p>
   </div>
-</a><a class="card" href="/en/mirage/molotov-stairs-from-t-spawn-t/"
+</a><a class="card" href="/en/mirage/molotov-stairs-from-t-spawn-t/" data-id="molotov-stairs-from-t-spawn-t"
    data-type="molotov" data-side="T" data-area="Stairs" data-map="mirage"
    data-teams="fut g2 vitality" data-players="dziugss hunter mezii ropz"
    data-diff="3" data-count="5" data-eff="0.0">

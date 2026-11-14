@@ -19,15 +19,16 @@
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Lineups Pro">
 <meta name="theme-color" content="#0b0f15">
-<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light"; } catch (e) {}</script>
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
+  if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/static/style.css">
-<script>window.I18N = {"copied": "Copiado!", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "throws_in": "lan\u00e7a em {s}s"}; window.LANG = "pt";</script>
+<script>window.I18N = {"copied": "Copiado!", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "open": "Abrir", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "throws_in": "lan\u00e7a em {s}s"}; window.LANG = "pt";</script>
 </head>
 <body>
 <header class="top">
   <div class="top-in">
-    <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-controls="side" aria-expanded="false">☰</button>
+    <button class="menu-btn" id="menuBtn" aria-label="Mostrar ou ocultar o menu" aria-controls="side" aria-expanded="false">☰</button>
     <a class="logo" href="/pt/"><span class="logo-mark">◎</span> Lineups Pro</a>
     <div class="search">
       <input id="q" type="search" placeholder="Buscar mapa, jogador, time, smoke…" autocomplete="off" aria-label="Buscar">
@@ -58,7 +59,7 @@
 <a href="/pt/jogador/apex/"><span>apEX</span></a><a href="/pt/jogador/art/"><span>art</span></a><a href="/pt/jogador/coolio/"><span>coolio</span></a><a href="/pt/jogador/dem0n/"><span>dem0n</span></a><a href="/pt/jogador/donk/"><span>donk</span></a><a href="/pt/jogador/dumau/"><span>dumau</span></a><a href="/pt/jogador/dziugss/"><span>dziugss</span></a><a href="/pt/jogador/fallen/"><span>FalleN</span></a><a href="/pt/jogador/flamez/"><span>flameZ</span></a><a href="/pt/jogador/heavygod/"><span>HeavyGod</span></a><a href="/pt/jogador/hunter/"><span>huNter</span></a><a href="/pt/jogador/karrigan/"><span>karrigan</span></a><a class="more" href="/pt/jogadores/">ver todos (40)</a>      </details>
       <details class="nav-g" data-k="teams" open>
         <summary class="nav-h"><a href="/pt/times/">Times</a></summary>
-<a href="/pt/time/falcons/"><span>Falcons</span></a><a href="/pt/time/furia/"><span>FURIA</span></a><a href="/pt/time/fut/"><span>FUT</span></a><a href="/pt/time/g2/"><span>G2</span></a><a href="/pt/time/legacy/"><span>Legacy</span></a><a href="/pt/time/mouz/"><span>MOUZ</span></a><a href="/pt/time/spirit/"><span>Spirit</span></a><a href="/pt/time/vitality/"><span>Vitality</span></a>      </details>
+<a href="/pt/time/falcons/"><span><img class="flag" src="/static/flags/sa.svg" alt="Arábia Saudita" title="Arábia Saudita" width="16" height="12">Falcons</span></a><a href="/pt/time/furia/"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">FURIA</span></a><a href="/pt/time/fut/"><span><img class="flag" src="/static/flags/tr.svg" alt="Turquia" title="Turquia" width="16" height="12">FUT</span></a><a href="/pt/time/g2/"><span><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12">G2</span></a><a href="/pt/time/legacy/"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">Legacy</span></a><a href="/pt/time/mouz/"><span><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12">MOUZ</span></a><a href="/pt/time/spirit/"><span><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12">Spirit</span></a><a href="/pt/time/vitality/"><span><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12">Vitality</span></a>      </details>
       <details class="nav-g" data-k="events" open>
         <summary class="nav-h"><a href="/pt/torneios/">Torneios</a></summary>
 <a href="/pt/torneio/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      </details>
@@ -110,7 +111,7 @@
   <span class="muted" id="shown"></span>
 </div>
 <div class="cards" id="cards">
-<a class="card" href="/pt/ancient/molotov-tside-lower-from-alley-ct/"
+<a class="card" href="/pt/ancient/molotov-tside-lower-from-alley-ct/" data-id="molotov-tside-lower-from-alley-ct"
    data-type="molotov" data-side="CT" data-area="TSideLower" data-map="ancient"
    data-teams="fut g2 mouz spirit" data-players="coolio magixx matys pr spinx"
    data-diff="3" data-count="27" data-eff="0.0">
@@ -127,7 +128,7 @@
     <h3>Molotov TSide Lower (de Alley)</h3>
     <p class="muted">27 usos · 4 times · round ganho 59%</p>
   </div>
-</a><a class="card" href="/pt/mirage/molotov-t-ramp-from-ct-spawn-ct/"
+</a><a class="card" href="/pt/mirage/molotov-t-ramp-from-ct-spawn-ct/" data-id="molotov-t-ramp-from-ct-spawn-ct"
    data-type="molotov" data-side="CT" data-area="TRamp" data-map="mirage"
    data-teams="falcons furia fut legacy mouz spirit" data-players="donk dziugss latto m0nesy teses tn1r xelex xfl0ud yekindar yuurih"
    data-diff="3" data-count="26" data-eff="0.0">
@@ -144,7 +145,7 @@
     <h3>Molotov Caverna (de Base CT)</h3>
     <p class="muted">26 usos · 6 times · round ganho 85%</p>
   </div>
-</a><a class="card" href="/pt/dust2/molotov-long-doors-from-long-a-ct/"
+</a><a class="card" href="/pt/dust2/molotov-long-doors-from-long-a-ct/" data-id="molotov-long-doors-from-long-a-ct"
    data-type="molotov" data-side="CT" data-area="LongDoors" data-map="dust2"
    data-teams="falcons furia g2 legacy vitality" data-players="art dumau fallen flamez heavygod hunter karrigan kyousuke matys molodoy niko zywoo"
    data-diff="3" data-count="18" data-eff="0.0">
@@ -161,7 +162,7 @@
     <h3>Molotov Portas do Fundo (de Fundo)</h3>
     <p class="muted">18 usos · 5 times · round ganho 61%</p>
   </div>
-</a><a class="card" href="/pt/cache/molotov-bmain-from-b-site-ct/"
+</a><a class="card" href="/pt/cache/molotov-bmain-from-b-site-ct/" data-id="molotov-bmain-from-b-site-ct"
    data-type="molotov" data-side="CT" data-area="BMain" data-map="cache"
    data-teams="fut mouz spirit vitality" data-players="magixx mezii torzsi xelex xertion xfl0ud zont1x"
    data-diff="3" data-count="16" data-eff="0.0">
@@ -178,7 +179,7 @@
     <h3>Molotov Garagem da B (de Bomb B)</h3>
     <p class="muted">16 usos · 4 times · round ganho 44%</p>
   </div>
-</a><a class="card" href="/pt/dust2/molotov-catwalk-from-top-mid-t/"
+</a><a class="card" href="/pt/dust2/molotov-catwalk-from-top-mid-t/" data-id="molotov-catwalk-from-top-mid-t"
    data-type="molotov" data-side="T" data-area="Catwalk" data-map="dust2"
    data-teams="falcons furia g2 legacy vitality" data-players="apex art fallen heavygod hunter karrigan m0nesy molodoy try"
    data-diff="3" data-count="16" data-eff="0.0">
@@ -195,7 +196,7 @@
     <h3>Molotov Varanda (de Coqueiro)</h3>
     <p class="muted">16 usos · 5 times · round ganho 50%</p>
   </div>
-</a><a class="card" href="/pt/cache/molotov-boost-from-mid-ct/"
+</a><a class="card" href="/pt/cache/molotov-boost-from-mid-ct/" data-id="molotov-boost-from-mid-ct"
    data-type="molotov" data-side="CT" data-area="Boost" data-map="cache"
    data-teams="mouz spirit vitality" data-players="apex donk mezii spinx"
    data-diff="2" data-count="15" data-eff="0.0">
@@ -212,7 +213,7 @@
     <h3>Molotov Pézinho Lona (de Meio)</h3>
     <p class="muted">15 usos · 3 times · round ganho 53%</p>
   </div>
-</a><a class="card" href="/pt/ancient/molotov-b-site-from-ruins-t/"
+</a><a class="card" href="/pt/ancient/molotov-b-site-from-ruins-t/" data-id="molotov-b-site-from-ruins-t"
    data-type="molotov" data-side="T" data-area="BombsiteB" data-map="ancient"
    data-teams="g2 spirit" data-players="donk heavygod hunter r1nkle tn1r"
    data-diff="3" data-count="13" data-eff="0.0">
@@ -229,7 +230,7 @@
     <h3>Molotov Bomb B (de Ruins)</h3>
     <p class="muted">13 usos · 2 times · round ganho 46%</p>
   </div>
-</a><a class="card" href="/pt/ancient/molotov-b-site-from-tside-lower-t/"
+</a><a class="card" href="/pt/ancient/molotov-b-site-from-tside-lower-t/" data-id="molotov-b-site-from-tside-lower-t"
    data-type="molotov" data-side="T" data-area="BombsiteB" data-map="ancient"
    data-teams="g2 mouz spirit" data-players="magixx r1nkle sh1ro tn1r torzsi xelex zont1x"
    data-diff="1" data-count="11" data-eff="0.0">
@@ -246,7 +247,7 @@
     <h3>Molotov Bomb B (de TSide Lower)</h3>
     <p class="muted">11 usos · 3 times · round ganho 64%</p>
   </div>
-</a><a class="card" href="/pt/inferno/molotov-b-site-from-banana-t/"
+</a><a class="card" href="/pt/inferno/molotov-b-site-from-banana-t/" data-id="molotov-b-site-from-banana-t"
    data-type="molotov" data-side="T" data-area="BombsiteB" data-map="inferno"
    data-teams="furia g2 mouz vitality" data-players="apex hunter matys mezii spinx torzsi yuurih"
    data-diff="2" data-count="11" data-eff="0.0">
@@ -263,7 +264,7 @@
     <h3>Molotov Bomb B (de Banana)</h3>
     <p class="muted">11 usos · 4 times · round ganho 36%</p>
   </div>
-</a><a class="card" href="/pt/inferno/molotov-banana-from-b-site-ct/"
+</a><a class="card" href="/pt/inferno/molotov-banana-from-b-site-ct/" data-id="molotov-banana-from-b-site-ct"
    data-type="molotov" data-side="CT" data-area="Banana" data-map="inferno"
    data-teams="furia g2 mouz vitality" data-players="apex flamez hunter kscerato pr"
    data-diff="2" data-count="8" data-eff="0.0">
@@ -280,7 +281,7 @@
     <h3>Molotov Banana (de Bomb B)</h3>
     <p class="muted">8 usos · 4 times · round ganho 62%</p>
   </div>
-</a><a class="card" href="/pt/mirage/molotov-stairs-from-t-ramp-t/"
+</a><a class="card" href="/pt/mirage/molotov-stairs-from-t-ramp-t/" data-id="molotov-stairs-from-t-ramp-t"
    data-type="molotov" data-side="T" data-area="Stairs" data-map="mirage"
    data-teams="g2 legacy mouz spirit vitality" data-players="hunter latto magixx mezii sh1ro tn1r torzsi"
    data-diff="1" data-count="8" data-eff="0.0">
@@ -297,7 +298,7 @@
     <h3>Molotov Cabecinha (de Caverna)</h3>
     <p class="muted">8 usos · 5 times · round ganho 62%</p>
   </div>
-</a><a class="card" href="/pt/ancient/molotov-mid-from-house-ct/"
+</a><a class="card" href="/pt/ancient/molotov-mid-from-house-ct/" data-id="molotov-mid-from-house-ct"
    data-type="molotov" data-side="CT" data-area="Middle" data-map="ancient"
    data-teams="g2 spirit" data-players="donk nertz"
    data-diff="3" data-count="7" data-eff="0.0">
@@ -314,7 +315,7 @@
     <h3>Molotov Mid (de House)</h3>
     <p class="muted">7 usos · 2 times · round ganho 71%</p>
   </div>
-</a><a class="card" href="/pt/dust2/molotov-upper-tunnels-from-b-doors-ct/"
+</a><a class="card" href="/pt/dust2/molotov-upper-tunnels-from-b-doors-ct/" data-id="molotov-upper-tunnels-from-b-doors-ct"
    data-type="molotov" data-side="CT" data-area="UpperTunnel" data-map="dust2"
    data-teams="falcons furia legacy vitality" data-players="ksloks mezii teses yuurih"
    data-diff="3" data-count="7" data-eff="0.0">
@@ -331,7 +332,7 @@
     <h3>Molotov Escuro Alto (de Portas do B)</h3>
     <p class="muted">7 usos · 4 times · round ganho 86%</p>
   </div>
-</a><a class="card" href="/pt/dust2/molotov-catwalk-from-short-stairs-ct/"
+</a><a class="card" href="/pt/dust2/molotov-catwalk-from-short-stairs-ct/" data-id="molotov-catwalk-from-short-stairs-ct"
    data-type="molotov" data-side="CT" data-area="Catwalk" data-map="dust2"
    data-teams="falcons furia" data-players="kscerato niko"
    data-diff="1" data-count="7" data-eff="0.0">
@@ -348,7 +349,7 @@
     <h3>Molotov Varanda (de Escada da Varanda)</h3>
     <p class="muted">7 usos · 2 times · round ganho 71%</p>
   </div>
-</a><a class="card" href="/pt/mirage/molotov-stairs-from-palace-alley-t/"
+</a><a class="card" href="/pt/mirage/molotov-stairs-from-palace-alley-t/" data-id="molotov-stairs-from-palace-alley-t"
    data-type="molotov" data-side="T" data-area="Stairs" data-map="mirage"
    data-teams="falcons furia legacy mouz" data-players="kscerato spinx teses torzsi try"
    data-diff="3" data-count="7" data-eff="0.0">
@@ -365,7 +366,7 @@
     <h3>Molotov Cabecinha (de Entrada da Caverna)</h3>
     <p class="muted">7 usos · 4 times · round ganho 71%</p>
   </div>
-</a><a class="card" href="/pt/nuke/molotov-mini-from-lobby-t/"
+</a><a class="card" href="/pt/nuke/molotov-mini-from-lobby-t/" data-id="molotov-mini-from-lobby-t"
    data-type="molotov" data-side="T" data-area="Mini" data-map="nuke"
    data-teams="fut mouz spirit" data-players="dziugss spinx zont1x"
    data-diff="3" data-count="7" data-eff="0.0">
@@ -382,7 +383,7 @@
     <h3>Molotov Mini (de Lobby)</h3>
     <p class="muted">7 usos · 3 times · round ganho 71%</p>
   </div>
-</a><a class="card" href="/pt/anubis/molotov-canal-from-b-site-ct/"
+</a><a class="card" href="/pt/anubis/molotov-canal-from-b-site-ct/" data-id="molotov-canal-from-b-site-ct"
    data-type="molotov" data-side="CT" data-area="Canal" data-map="anubis"
    data-teams="falcons g2" data-players="kyousuke matys"
    data-diff="2" data-count="6" data-eff="0.0">
@@ -399,7 +400,7 @@
     <h3>Molotov Agua (de Bomb B)</h3>
     <p class="muted">6 usos · 2 times · round ganho 50%</p>
   </div>
-</a><a class="card" href="/pt/cache/molotov-a-site-from-truck-ct/"
+</a><a class="card" href="/pt/cache/molotov-a-site-from-truck-ct/" data-id="molotov-a-site-from-truck-ct"
    data-type="molotov" data-side="CT" data-area="BombsiteA" data-map="cache"
    data-teams="fut mouz vitality" data-players="dem0n ropz xelex xfl0ud"
    data-diff="2" data-count="6" data-eff="0.17">
@@ -416,7 +417,7 @@
     <h3>Molotov Bomb A (de Toyota)</h3>
 <p class="eff">1 kill com a granada</p>    <p class="muted">6 usos · 3 times · round ganho 83%</p>
   </div>
-</a><a class="card" href="/pt/cache/molotov-sandbags-from-outside-a-t/"
+</a><a class="card" href="/pt/cache/molotov-sandbags-from-outside-a-t/" data-id="molotov-sandbags-from-outside-a-t"
    data-type="molotov" data-side="T" data-area="Sandbags" data-map="cache"
    data-teams="fut mouz spirit" data-players="coolio tn1r xertion xfl0ud"
    data-diff="3" data-count="6" data-eff="0.0">
@@ -433,7 +434,7 @@
     <h3>Molotov Areia (de Outside A)</h3>
     <p class="muted">6 usos · 3 times · round ganho 50%</p>
   </div>
-</a><a class="card" href="/pt/mirage/molotov-underpass-from-connector-ct/"
+</a><a class="card" href="/pt/mirage/molotov-underpass-from-connector-ct/" data-id="molotov-underpass-from-connector-ct"
    data-type="molotov" data-side="CT" data-area="Underpass" data-map="mirage"
    data-teams="falcons fut legacy mouz" data-players="art coolio niko xertion"
    data-diff="2" data-count="6" data-eff="0.0">
@@ -450,7 +451,7 @@
     <h3>Molotov Rato (de Ligação)</h3>
     <p class="muted">6 usos · 4 times · round ganho 67%</p>
   </div>
-</a><a class="card" href="/pt/mirage/molotov-top-mid-from-sniper-s-nest-ct/"
+</a><a class="card" href="/pt/mirage/molotov-top-mid-from-sniper-s-nest-ct/" data-id="molotov-top-mid-from-sniper-s-nest-ct"
    data-type="molotov" data-side="CT" data-area="TopofMid" data-map="mirage"
    data-teams="falcons fut mouz spirit" data-players="coolio m0nesy sh1ro sunpayus torzsi"
    data-diff="3" data-count="6" data-eff="0.0">
@@ -467,7 +468,7 @@
     <h3>Molotov Top Mid (de Janela)</h3>
     <p class="muted">6 usos · 4 times · round ganho 50%</p>
   </div>
-</a><a class="card" href="/pt/cache/molotov-fork-lift-from-truck-ct/"
+</a><a class="card" href="/pt/cache/molotov-fork-lift-from-truck-ct/" data-id="molotov-fork-lift-from-truck-ct"
    data-type="molotov" data-side="CT" data-area="ForkLift" data-map="cache"
    data-teams="fut mouz vitality" data-players="coolio dem0n mezii torzsi xertion"
    data-diff="3" data-count="5" data-eff="0.0">
@@ -484,7 +485,7 @@
     <h3>Molotov Empilhadeira (de Toyota)</h3>
     <p class="muted">5 usos · 3 times · round ganho 40%</p>
   </div>
-</a><a class="card" href="/pt/mirage/molotov-stairs-from-t-spawn-t/"
+</a><a class="card" href="/pt/mirage/molotov-stairs-from-t-spawn-t/" data-id="molotov-stairs-from-t-spawn-t"
    data-type="molotov" data-side="T" data-area="Stairs" data-map="mirage"
    data-teams="fut g2 vitality" data-players="dziugss hunter mezii ropz"
    data-diff="3" data-count="5" data-eff="0.0">
@@ -501,7 +502,7 @@
     <h3>Molotov Cabecinha (de Base TR)</h3>
     <p class="muted">5 usos · 3 times · round ganho 0%</p>
   </div>
-</a><a class="card" href="/pt/ancient/molotov-ramp-from-alley-ct/"
+</a><a class="card" href="/pt/ancient/molotov-ramp-from-alley-ct/" data-id="molotov-ramp-from-alley-ct"
    data-type="molotov" data-side="CT" data-area="Ramp" data-map="ancient"
    data-teams="spirit" data-players="sh1ro tn1r"
    data-diff="2" data-count="4" data-eff="0.0">
@@ -518,7 +519,7 @@
     <h3>Molotov Ramp (de Alley)</h3>
     <p class="muted">4 usos · 1 time · round ganho 25%</p>
   </div>
-</a><a class="card" href="/pt/ancient/molotov-a-site-from-main-hall-t/"
+</a><a class="card" href="/pt/ancient/molotov-a-site-from-main-hall-t/" data-id="molotov-a-site-from-main-hall-t"
    data-type="molotov" data-side="T" data-area="BombsiteA" data-map="ancient"
    data-teams="g2 spirit" data-players="heavygod sh1ro"
    data-diff="3" data-count="4" data-eff="0.0">
@@ -535,7 +536,7 @@
     <h3>Molotov Bomb A (de Main Hall)</h3>
     <p class="muted">4 usos · 2 times · round ganho 75%</p>
   </div>
-</a><a class="card" href="/pt/dust2/molotov-short-stairs-from-catwalk-t/"
+</a><a class="card" href="/pt/dust2/molotov-short-stairs-from-catwalk-t/" data-id="molotov-short-stairs-from-catwalk-t"
    data-type="molotov" data-side="T" data-area="ShortStairs" data-map="dust2"
    data-teams="g2 legacy" data-players="art hunter"
    data-diff="2" data-count="4" data-eff="0.0">
@@ -552,7 +553,7 @@
     <h3>Molotov Escada da Varanda (de Varanda)</h3>
     <p class="muted">4 usos · 2 times · round ganho 75%</p>
   </div>
-</a><a class="card" href="/pt/mirage/molotov-sniper-s-nest-from-top-mid-t/"
+</a><a class="card" href="/pt/mirage/molotov-sniper-s-nest-from-top-mid-t/" data-id="molotov-sniper-s-nest-from-top-mid-t"
    data-type="molotov" data-side="T" data-area="SnipersNest" data-map="mirage"
    data-teams="g2" data-players="hunter"
    data-diff="3" data-count="4" data-eff="0.0">
@@ -569,7 +570,7 @@
     <h3>Molotov Janela (de Top Mid)</h3>
     <p class="muted">4 usos · 1 time · round ganho 50%</p>
   </div>
-</a><a class="card" href="/pt/nuke/molotov-ramp-from-trophy-t/"
+</a><a class="card" href="/pt/nuke/molotov-ramp-from-trophy-t/" data-id="molotov-ramp-from-trophy-t"
    data-type="molotov" data-side="T" data-area="Ramp" data-map="nuke"
    data-teams="fut mouz spirit" data-players="magixx pr torzsi xfl0ud"
    data-diff="1" data-count="4" data-eff="0.0">
@@ -586,7 +587,7 @@
     <h3>Molotov Ramp (de Trophy)</h3>
     <p class="muted">4 usos · 3 times · round ganho 100%</p>
   </div>
-</a><a class="card" href="/pt/nuke/molotov-a-site-from-roof-t/"
+</a><a class="card" href="/pt/nuke/molotov-a-site-from-roof-t/" data-id="molotov-a-site-from-roof-t"
    data-type="molotov" data-side="T" data-area="BombsiteA" data-map="nuke"
    data-teams="g2 mouz spirit" data-players="r1nkle sh1ro torzsi"
    data-diff="2" data-count="4" data-eff="0.0">
@@ -603,7 +604,7 @@
     <h3>Molotov Bomb A (de Roof)</h3>
     <p class="muted">4 usos · 3 times · round ganho 25%</p>
   </div>
-</a><a class="card" href="/pt/nuke/molotov-outside-t/"
+</a><a class="card" href="/pt/nuke/molotov-outside-t/" data-id="molotov-outside-t"
    data-type="molotov" data-side="T" data-area="Outside" data-map="nuke"
    data-teams="fut spirit" data-players="magixx sunpayus"
    data-diff="2" data-count="4" data-eff="0.0">
@@ -620,7 +621,7 @@
     <h3>Molotov Outside</h3>
     <p class="muted">4 usos · 2 times · round ganho 50%</p>
   </div>
-</a><a class="card" href="/pt/anubis/molotov-connector-from-b-site-ct/"
+</a><a class="card" href="/pt/anubis/molotov-connector-from-b-site-ct/" data-id="molotov-connector-from-b-site-ct"
    data-type="molotov" data-side="CT" data-area="Connector" data-map="anubis"
    data-teams="falcons g2" data-players="heavygod karrigan"
    data-diff="1" data-count="3" data-eff="0.0">
@@ -637,7 +638,7 @@
     <h3>Molotov Rato (de Bomb B)</h3>
     <p class="muted">3 usos · 2 times · round ganho 33%</p>
   </div>
-</a><a class="card" href="/pt/anubis/molotov-main-from-canal-t/"
+</a><a class="card" href="/pt/anubis/molotov-main-from-canal-t/" data-id="molotov-main-from-canal-t"
    data-type="molotov" data-side="T" data-area="Main" data-map="anubis"
    data-teams="g2" data-players="heavygod"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -654,7 +655,7 @@
     <h3>Molotov Mercado (de Agua)</h3>
     <p class="muted">3 usos · 1 time · round ganho 67%</p>
   </div>
-</a><a class="card" href="/pt/anubis/molotov-connector-from-canal-t/"
+</a><a class="card" href="/pt/anubis/molotov-connector-from-canal-t/" data-id="molotov-connector-from-canal-t"
    data-type="molotov" data-side="T" data-area="Connector" data-map="anubis"
    data-teams="falcons" data-players="karrigan kyousuke"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -671,7 +672,7 @@
     <h3>Molotov Rato (de Agua)</h3>
     <p class="muted">3 usos · 1 time · round ganho 67%</p>
   </div>
-</a><a class="card" href="/pt/anubis/molotov-mid-doors-from-ruins-t/"
+</a><a class="card" href="/pt/anubis/molotov-mid-doors-from-ruins-t/" data-id="molotov-mid-doors-from-ruins-t"
    data-type="molotov" data-side="T" data-area="MidDoors" data-map="anubis"
    data-teams="g2" data-players="matys"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -688,7 +689,7 @@
     <h3>Molotov Portas do Meio (de Ruínas)</h3>
     <p class="muted">3 usos · 1 time · round ganho 33%</p>
   </div>
-</a><a class="card" href="/pt/cache/molotov-boost-from-connector-ct/"
+</a><a class="card" href="/pt/cache/molotov-boost-from-connector-ct/" data-id="molotov-boost-from-connector-ct"
    data-type="molotov" data-side="CT" data-area="Boost" data-map="cache"
    data-teams="fut" data-players="dem0n sunpayus"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -705,7 +706,7 @@
     <h3>Molotov Pézinho Lona (de Liga/Janela)</h3>
     <p class="muted">3 usos · 1 time · round ganho 67%</p>
   </div>
-</a><a class="card" href="/pt/cache/molotov-bmain-from-rafters-ct/"
+</a><a class="card" href="/pt/cache/molotov-bmain-from-rafters-ct/" data-id="molotov-bmain-from-rafters-ct"
    data-type="molotov" data-side="CT" data-area="BMain" data-map="cache"
    data-teams="vitality" data-players="mezii ropz"
    data-diff="1" data-count="3" data-eff="0.0">
@@ -722,7 +723,7 @@
     <h3>Molotov Garagem da B (de Simple)</h3>
     <p class="muted">3 usos · 1 time · round ganho 100%</p>
   </div>
-</a><a class="card" href="/pt/cache/molotov-quad-from-amain-t/"
+</a><a class="card" href="/pt/cache/molotov-quad-from-amain-t/" data-id="molotov-quad-from-amain-t"
    data-type="molotov" data-side="T" data-area="Quad" data-map="cache"
    data-teams="fut mouz" data-players="dem0n xelex xertion"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -739,7 +740,7 @@
     <h3>Molotov Quad (de Garagem)</h3>
     <p class="muted">3 usos · 2 times · round ganho 0%</p>
   </div>
-</a><a class="card" href="/pt/cache/molotov-heaven-from-bmain-t/"
+</a><a class="card" href="/pt/cache/molotov-heaven-from-bmain-t/" data-id="molotov-heaven-from-bmain-t"
    data-type="molotov" data-side="T" data-area="Heaven" data-map="cache"
    data-teams="fut mouz spirit" data-players="magixx torzsi xfl0ud"
    data-diff="1" data-count="3" data-eff="0.0">
@@ -756,7 +757,7 @@
     <h3>Molotov Heaven (de Garagem da B)</h3>
     <p class="muted">3 usos · 3 times · round ganho 67%</p>
   </div>
-</a><a class="card" href="/pt/cache/molotov-corner-from-amain-t/"
+</a><a class="card" href="/pt/cache/molotov-corner-from-amain-t/" data-id="molotov-corner-from-amain-t"
    data-type="molotov" data-side="T" data-area="Corner" data-map="cache"
    data-teams="fut spirit" data-players="dziugss sh1ro zont1x"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -773,7 +774,7 @@
     <h3>Molotov Escanteio (de Garagem)</h3>
     <p class="muted">3 usos · 2 times · round ganho 100%</p>
   </div>
-</a><a class="card" href="/pt/cache/molotov-b-site-from-sun-room-t/"
+</a><a class="card" href="/pt/cache/molotov-b-site-from-sun-room-t/" data-id="molotov-b-site-from-sun-room-t"
    data-type="molotov" data-side="T" data-area="BombsiteB" data-map="cache"
    data-teams="fut mouz" data-players="coolio torzsi"
    data-diff="2" data-count="3" data-eff="0.0">
@@ -790,7 +791,7 @@
     <h3>Molotov Bomb B (de Tóxico)</h3>
     <p class="muted">3 usos · 2 times · round ganho 67%</p>
   </div>
-</a><a class="card" href="/pt/cache/molotov-mid-from-outside-a-t/"
+</a><a class="card" href="/pt/cache/molotov-mid-from-outside-a-t/" data-id="molotov-mid-from-outside-a-t"
    data-type="molotov" data-side="T" data-area="Mid" data-map="cache"
    data-teams="mouz vitality" data-players="mezii torzsi"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -807,7 +808,7 @@
     <h3>Molotov Meio (de Outside A)</h3>
     <p class="muted">3 usos · 2 times · round ganho 67%</p>
   </div>
-</a><a class="card" href="/pt/dust2/molotov-short-stairs-from-lower-tunnels-t/"
+</a><a class="card" href="/pt/dust2/molotov-short-stairs-from-lower-tunnels-t/" data-id="molotov-short-stairs-from-lower-tunnels-t"
    data-type="molotov" data-side="T" data-area="ShortStairs" data-map="dust2"
    data-teams="falcons furia g2" data-players="kscerato kyousuke nertz"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -824,7 +825,7 @@
     <h3>Molotov Escada da Varanda (de Escuro Baixo)</h3>
     <p class="muted">3 usos · 3 times · round ganho 0%</p>
   </div>
-</a><a class="card" href="/pt/inferno/molotov-b-site-t/"
+</a><a class="card" href="/pt/inferno/molotov-b-site-t/" data-id="molotov-b-site-t"
    data-type="molotov" data-side="T" data-area="BombsiteB" data-map="inferno"
    data-teams="furia g2 mouz" data-players="heavygod kscerato xelex"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -841,7 +842,7 @@
     <h3>Molotov Bomb B</h3>
     <p class="muted">3 usos · 3 times · round ganho 33%</p>
   </div>
-</a><a class="card" href="/pt/inferno/molotov-quad-from-apartments-t/"
+</a><a class="card" href="/pt/inferno/molotov-quad-from-apartments-t/" data-id="molotov-quad-from-apartments-t"
    data-type="molotov" data-side="T" data-area="Quad" data-map="inferno"
    data-teams="furia" data-players="fallen kscerato yuurih"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -858,7 +859,7 @@
     <h3>Molotov Xuxa (de Apartamento)</h3>
     <p class="muted">3 usos · 1 time · round ganho 0%</p>
   </div>
-</a><a class="card" href="/pt/mirage/molotov-a-site-from-palace-alley-t/"
+</a><a class="card" href="/pt/mirage/molotov-a-site-from-palace-alley-t/" data-id="molotov-a-site-from-palace-alley-t"
    data-type="molotov" data-side="T" data-area="BombsiteA" data-map="mirage"
    data-teams="fut spirit" data-players="coolio magixx"
    data-diff="1" data-count="3" data-eff="0.0">
@@ -875,7 +876,7 @@
     <h3>Molotov Bomb A (de Entrada da Caverna)</h3>
     <p class="muted">3 usos · 2 times · round ganho 33%</p>
   </div>
-</a><a class="card" href="/pt/mirage/molotov-catwalk-from-top-mid-t/"
+</a><a class="card" href="/pt/mirage/molotov-catwalk-from-top-mid-t/" data-id="molotov-catwalk-from-top-mid-t"
    data-type="molotov" data-side="T" data-area="Catwalk" data-map="mirage"
    data-teams="fut vitality" data-players="flamez sunpayus"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -892,7 +893,7 @@
     <h3>Molotov L (de Top Mid)</h3>
     <p class="muted">3 usos · 2 times · round ganho 33%</p>
   </div>
-</a><a class="card" href="/pt/mirage/molotov-mid-from-top-mid-t/"
+</a><a class="card" href="/pt/mirage/molotov-mid-from-top-mid-t/" data-id="molotov-mid-from-top-mid-t"
    data-type="molotov" data-side="T" data-area="Middle" data-map="mirage"
    data-teams="fut mouz spirit" data-players="magixx sunpayus xertion"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -909,7 +910,7 @@
     <h3>Molotov Meio (de Top Mid)</h3>
     <p class="muted">3 usos · 3 times · round ganho 33%</p>
   </div>
-</a><a class="card" href="/pt/mirage/molotov-b-site-from-apartments-t/"
+</a><a class="card" href="/pt/mirage/molotov-b-site-from-apartments-t/" data-id="molotov-b-site-from-apartments-t"
    data-type="molotov" data-side="T" data-area="BombsiteB" data-map="mirage"
    data-teams="vitality" data-players="ropz"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -926,7 +927,7 @@
     <h3>Molotov Bomb B (de Tapete)</h3>
     <p class="muted">3 usos · 1 time · round ganho 33%</p>
   </div>
-</a><a class="card" href="/pt/nuke/molotov-lobby-from-a-site-ct/"
+</a><a class="card" href="/pt/nuke/molotov-lobby-from-a-site-ct/" data-id="molotov-lobby-from-a-site-ct"
    data-type="molotov" data-side="CT" data-area="Lobby" data-map="nuke"
    data-teams="fut" data-players="dem0n"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -943,7 +944,7 @@
     <h3>Molotov Lobby (de Bomb A)</h3>
     <p class="muted">3 usos · 1 time · round ganho 67%</p>
   </div>
-</a><a class="card" href="/pt/nuke/molotov-hut-from-a-site-ct/"
+</a><a class="card" href="/pt/nuke/molotov-hut-from-a-site-ct/" data-id="molotov-hut-from-a-site-ct"
    data-type="molotov" data-side="CT" data-area="Hut" data-map="nuke"
    data-teams="fut g2" data-players="dem0n matys"
    data-diff="2" data-count="3" data-eff="0.0">
@@ -960,7 +961,7 @@
     <h3>Molotov Hut (de Bomb A)</h3>
     <p class="muted">3 usos · 2 times · round ganho 67%</p>
   </div>
-</a><a class="card" href="/pt/nuke/molotov-hut-roof-from-roof-t/"
+</a><a class="card" href="/pt/nuke/molotov-hut-roof-from-roof-t/" data-id="molotov-hut-roof-from-roof-t"
    data-type="molotov" data-side="T" data-area="HutRoof" data-map="nuke"
    data-teams="g2 spirit" data-players="hunter sh1ro"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -977,7 +978,7 @@
     <h3>Molotov Hut Roof (de Roof)</h3>
     <p class="muted">3 usos · 2 times · round ganho 0%</p>
   </div>
-</a><a class="card" href="/pt/nuke/molotov-admin-from-control-t/"
+</a><a class="card" href="/pt/nuke/molotov-admin-from-control-t/" data-id="molotov-admin-from-control-t"
    data-type="molotov" data-side="T" data-area="Admin" data-map="nuke"
    data-teams="g2 mouz spirit" data-players="r1nkle xertion zont1x"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -994,7 +995,7 @@
     <h3>Molotov Admin (de Control)</h3>
     <p class="muted">3 usos · 3 times · round ganho 67%</p>
   </div>
-</a><a class="card" href="/pt/nuke/molotov-a-site-from-squeaky-t/"
+</a><a class="card" href="/pt/nuke/molotov-a-site-from-squeaky-t/" data-id="molotov-a-site-from-squeaky-t"
    data-type="molotov" data-side="T" data-area="BombsiteA" data-map="nuke"
    data-teams="spirit" data-players="zont1x"
    data-diff="3" data-count="3" data-eff="0.0">

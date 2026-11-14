@@ -168,7 +168,8 @@
       const fk = l.filter(r => r[C.fk] != null), fkMine = fk.filter(r => (r[C.t] === i && r[C.fk] === 0) || (r[C.ct] === i && r[C.fk] === 1)).length;
       const pis = l.filter(r => r[C.buy_t] === 0 || r[C.buy_ct] === 0), pisW = pis.filter(r => (r[C.t] === i && r[C.win] === 0) || (r[C.ct] === i && r[C.win] === 1)).length;
       const util = l.reduce((s, r) => s + (r[C.t] === i ? r[C.u_t] : r[C.u_ct]).reduce((x, y) => x + y, 0), 0) / l.length;
-      return [l.length, [`<a href="#" data-set="team=${i}">${esc(tm.name)}</a>`, l.length, fmtPct(pct(win, l.length)),
+      const fl = tm.flag ? `<img class="flag" src="/static/flags/${tm.flag}.svg" alt="" width="16" height="12"> ` : "";
+      return [l.length, [`${fl}<a href="#" data-set="team=${i}">${esc(tm.name)}</a>`, l.length, fmtPct(pct(win, l.length)),
         fmtPct(pct(asT.filter(r => r[C.win] === 0).length, asT.length)), fmtPct(pct(asC.filter(r => r[C.win] === 1).length, asC.length)),
         fmtPct(pct(pisW, pis.length)), fmtPct(pct(pl.length, asT.length)), pl.length ? `${pct(a, pl.length)}% / ${100 - pct(a, pl.length)}%` : "–",
         fmtPct(pct(fkMine, fk.length)), dec(util)]];

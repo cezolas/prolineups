@@ -19,15 +19,16 @@
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Lineups Pro">
 <meta name="theme-color" content="#0b0f15">
-<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light"; } catch (e) {}</script>
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
+  if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/static/style.css">
-<script>window.I18N = {"copied": "Copiado!", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "throws_in": "lan\u00e7a em {s}s"}; window.LANG = "pt";</script>
+<script>window.I18N = {"copied": "Copiado!", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "open": "Abrir", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "throws_in": "lan\u00e7a em {s}s"}; window.LANG = "pt";</script>
 </head>
 <body>
 <header class="top">
   <div class="top-in">
-    <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-controls="side" aria-expanded="false">☰</button>
+    <button class="menu-btn" id="menuBtn" aria-label="Mostrar ou ocultar o menu" aria-controls="side" aria-expanded="false">☰</button>
     <a class="logo" href="/pt/"><span class="logo-mark">◎</span> Lineups Pro</a>
     <div class="search">
       <input id="q" type="search" placeholder="Buscar mapa, jogador, time, smoke…" autocomplete="off" aria-label="Buscar">
@@ -58,7 +59,7 @@
 <a href="/pt/jogador/apex/"><span>apEX</span></a><a href="/pt/jogador/art/"><span>art</span></a><a href="/pt/jogador/coolio/"><span>coolio</span></a><a href="/pt/jogador/dem0n/"><span>dem0n</span></a><a href="/pt/jogador/donk/"><span>donk</span></a><a href="/pt/jogador/dumau/"><span>dumau</span></a><a href="/pt/jogador/dziugss/"><span>dziugss</span></a><a href="/pt/jogador/fallen/"><span>FalleN</span></a><a href="/pt/jogador/flamez/"><span>flameZ</span></a><a href="/pt/jogador/heavygod/"><span>HeavyGod</span></a><a href="/pt/jogador/hunter/"><span>huNter</span></a><a href="/pt/jogador/karrigan/"><span>karrigan</span></a><a class="more" href="/pt/jogadores/">ver todos (40)</a>      </details>
       <details class="nav-g" data-k="teams" open>
         <summary class="nav-h"><a href="/pt/times/">Times</a></summary>
-<a href="/pt/time/falcons/"><span>Falcons</span></a><a href="/pt/time/furia/"><span>FURIA</span></a><a href="/pt/time/fut/"><span>FUT</span></a><a href="/pt/time/g2/"><span>G2</span></a><a href="/pt/time/legacy/"><span>Legacy</span></a><a href="/pt/time/mouz/"><span>MOUZ</span></a><a href="/pt/time/spirit/"><span>Spirit</span></a><a href="/pt/time/vitality/"><span>Vitality</span></a>      </details>
+<a href="/pt/time/falcons/"><span><img class="flag" src="/static/flags/sa.svg" alt="Arábia Saudita" title="Arábia Saudita" width="16" height="12">Falcons</span></a><a href="/pt/time/furia/"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">FURIA</span></a><a href="/pt/time/fut/"><span><img class="flag" src="/static/flags/tr.svg" alt="Turquia" title="Turquia" width="16" height="12">FUT</span></a><a href="/pt/time/g2/"><span><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12">G2</span></a><a href="/pt/time/legacy/"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">Legacy</span></a><a href="/pt/time/mouz/"><span><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12">MOUZ</span></a><a href="/pt/time/spirit/"><span><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12">Spirit</span></a><a href="/pt/time/vitality/"><span><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12">Vitality</span></a>      </details>
       <details class="nav-g" data-k="events" open>
         <summary class="nav-h"><a href="/pt/torneios/">Torneios</a></summary>
 <a href="/pt/torneio/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      </details>
@@ -83,7 +84,7 @@
   <main class="content">
 <nav class="crumbs"><a href="/pt/">Início</a> › <a href="/pt/cache/">Cache</a> ›
   <a href="/pt/cache/jogadas/">Jogadas</a> › Entrada B da FUT</nav>
-<h1>Entrada B da FUT <span class="muted h-sub">· Cache</span></h1>
+<h1><img class="flag" src="/static/flags/tr.svg" alt="Turquia" title="Turquia" width="16" height="12"> Entrada B da FUT <span class="muted h-sub">· Cache</span></h1>
 <p class="muted">6 rounds · round ganho em 83% · plant em média aos 1:15
  · <a href="/pt/time/fut/">FUT</a></p>
 
@@ -115,37 +116,37 @@
     <h2>Rounds</h2>
     <div class="round-list">
       <button class="round-item" data-play="spirit-vs-fut-m1-cache-r6" data-clip="/media/spirit-vs-fut-m1-cache/entry-r6.mp4" data-poster="/media/spirit-vs-fut-m1-cache/entry-r6.jpg" data-pov="xfl0ud">
-        <span class="ri-top"><b>vs Spirit</b> · Round 6
+        <span class="ri-top"><b>vs <img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12"> Spirit</b> · Round 6
           <span class="badge win">venceu</span><span class="badge video">▶ vídeo</span></span>
         <span class="muted small">plant aos 0:58 de round · 11/11/2026</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="dem0n · smoke"></span><span class="dot-nade type-smoke" title="coolio · smoke"></span><span class="dot-nade type-flash" title="SunPayus · flash"></span><span class="dot-nade type-smoke" title="dziugss · smoke"></span><span class="dot-nade type-molotov" title="dem0n · molotov"></span><span class="dot-nade type-flash" title="coolio · flash"></span><span class="dot-nade type-flash" title="SunPayus · flash"></span><span class="dot-nade type-flash" title="dem0n · flash"></span><span class="dot-nade type-molotov" title="dziugss · molotov"></span><span class="dot-nade type-smoke" title="SunPayus · smoke"></span><span class="dot-nade type-smoke" title="SunPayus · smoke"></span></span>
       </button>
       <button class="round-item" data-play="spirit-vs-fut-m1-cache-r8" data-clip="/media/spirit-vs-fut-m1-cache/entry-r8.mp4" data-poster="/media/spirit-vs-fut-m1-cache/entry-r8.jpg" data-pov="dziugss">
-        <span class="ri-top"><b>vs Spirit</b> · Round 8
+        <span class="ri-top"><b>vs <img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12"> Spirit</b> · Round 8
           <span class="badge win">venceu</span><span class="badge video">▶ vídeo</span></span>
         <span class="muted small">plant aos 1:29 de round · 11/11/2026</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="coolio · smoke"></span><span class="dot-nade type-flash" title="xfl0ud · flash"></span><span class="dot-nade type-he" title="SunPayus · he"></span><span class="dot-nade type-smoke" title="dziugss · smoke"></span><span class="dot-nade type-smoke" title="xfl0ud · smoke"></span><span class="dot-nade type-flash" title="SunPayus · flash"></span><span class="dot-nade type-smoke" title="xfl0ud · smoke"></span><span class="dot-nade type-molotov" title="dziugss · molotov"></span><span class="dot-nade type-flash" title="xfl0ud · flash"></span></span>
       </button>
       <button class="round-item" data-play="fut-vs-mouz-m1-cache-r7" data-clip="/media/fut-vs-mouz-m1-cache/entry-r7.mp4" data-poster="/media/fut-vs-mouz-m1-cache/entry-r7.jpg" data-pov="dziugss">
-        <span class="ri-top"><b>vs MOUZ</b> · Round 7
+        <span class="ri-top"><b>vs <img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"> MOUZ</b> · Round 7
           <span class="badge win">venceu</span><span class="badge video">▶ vídeo</span></span>
         <span class="muted small">plant aos 1:15 de round · 12/11/2026</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="dem0n · smoke"></span><span class="dot-nade type-flash" title="xfl0ud · flash"></span><span class="dot-nade type-smoke" title="xfl0ud · smoke"></span><span class="dot-nade type-molotov" title="dziugss · molotov"></span><span class="dot-nade type-smoke" title="xfl0ud · smoke"></span><span class="dot-nade type-molotov" title="xfl0ud · molotov"></span><span class="dot-nade type-flash" title="xfl0ud · flash"></span><span class="dot-nade type-flash" title="coolio · flash"></span><span class="dot-nade type-smoke" title="SunPayus · smoke"></span><span class="dot-nade type-molotov" title="SunPayus · molotov"></span><span class="dot-nade type-flash" title="coolio · flash"></span><span class="dot-nade type-flash" title="SunPayus · flash"></span><span class="dot-nade type-flash" title="SunPayus · flash"></span><span class="dot-nade type-molotov" title="dem0n · molotov"></span></span>
       </button>
       <button class="round-item" data-play="fut-vs-mouz-m1-cache-r8" data-clip="/media/fut-vs-mouz-m1-cache/entry-r8.mp4" data-poster="/media/fut-vs-mouz-m1-cache/entry-r8.jpg" data-pov="dziugss">
-        <span class="ri-top"><b>vs MOUZ</b> · Round 8
+        <span class="ri-top"><b>vs <img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"> MOUZ</b> · Round 8
           <span class="badge loss">perdeu</span><span class="badge video">▶ vídeo</span></span>
         <span class="muted small">plant aos 1:44 de round · 12/11/2026</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="dem0n · smoke"></span><span class="dot-nade type-he" title="SunPayus · he"></span><span class="dot-nade type-flash" title="xfl0ud · flash"></span><span class="dot-nade type-he" title="dem0n · he"></span><span class="dot-nade type-molotov" title="dziugss · molotov"></span><span class="dot-nade type-smoke" title="SunPayus · smoke"></span><span class="dot-nade type-molotov" title="dem0n · molotov"></span><span class="dot-nade type-smoke" title="xfl0ud · smoke"></span><span class="dot-nade type-molotov" title="xfl0ud · molotov"></span><span class="dot-nade type-flash" title="xfl0ud · flash"></span><span class="dot-nade type-molotov" title="coolio · molotov"></span><span class="dot-nade type-flash" title="coolio · flash"></span><span class="dot-nade type-smoke" title="dziugss · smoke"></span><span class="dot-nade type-molotov" title="SunPayus · molotov"></span><span class="dot-nade type-flash" title="SunPayus · flash"></span></span>
       </button>
       <button class="round-item" data-play="fut-vs-mouz-m1-cache-r11" data-clip="/media/fut-vs-mouz-m1-cache/entry-r11.mp4" data-poster="/media/fut-vs-mouz-m1-cache/entry-r11.jpg" data-pov="xfl0ud">
-        <span class="ri-top"><b>vs MOUZ</b> · Round 11
+        <span class="ri-top"><b>vs <img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"> MOUZ</b> · Round 11
           <span class="badge win">venceu</span><span class="badge video">▶ vídeo</span></span>
         <span class="muted small">plant aos 0:50 de round · 12/11/2026</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="SunPayus · smoke"></span><span class="dot-nade type-smoke" title="dziugss · smoke"></span><span class="dot-nade type-flash" title="dziugss · flash"></span><span class="dot-nade type-molotov" title="xfl0ud · molotov"></span><span class="dot-nade type-flash" title="SunPayus · flash"></span><span class="dot-nade type-molotov" title="coolio · molotov"></span><span class="dot-nade type-flash" title="coolio · flash"></span><span class="dot-nade type-flash" title="xfl0ud · flash"></span><span class="dot-nade type-smoke" title="SunPayus · smoke"></span><span class="dot-nade type-molotov" title="SunPayus · molotov"></span><span class="dot-nade type-smoke" title="coolio · smoke"></span><span class="dot-nade type-smoke" title="xfl0ud · smoke"></span><span class="dot-nade type-flash" title="xfl0ud · flash"></span></span>
       </button>
       <button class="round-item" data-play="fut-vs-mouz-m1-cache-r31" data-clip="/media/fut-vs-mouz-m1-cache/entry-r31.mp4" data-poster="/media/fut-vs-mouz-m1-cache/entry-r31.jpg" data-pov="SunPayus">
-        <span class="ri-top"><b>vs MOUZ</b> · Round 31
+        <span class="ri-top"><b>vs <img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"> MOUZ</b> · Round 31
           <span class="badge win">venceu</span><span class="badge video">▶ vídeo</span></span>
         <span class="muted small">plant aos 0:34 de round · 12/11/2026</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="dem0n · smoke"></span><span class="dot-nade type-flash" title="coolio · flash"></span><span class="dot-nade type-molotov" title="coolio · molotov"></span><span class="dot-nade type-smoke" title="SunPayus · smoke"></span><span class="dot-nade type-flash" title="SunPayus · flash"></span><span class="dot-nade type-molotov" title="dem0n · molotov"></span><span class="dot-nade type-molotov" title="SunPayus · molotov"></span><span class="dot-nade type-he" title="SunPayus · he"></span></span>
@@ -163,7 +164,7 @@
 <section>
   <h2>Granadas usadas nessas entradas</h2>
   <p class="muted">Lineups publicadas que o time jogou antes do plant nesses rounds.</p>
-  <div class="cards"><a class="card" href="/pt/cache/smoke-b-site-from-sun-room-t/"
+  <div class="cards"><a class="card" href="/pt/cache/smoke-b-site-from-sun-room-t/" data-id="smoke-b-site-from-sun-room-t"
    data-type="smoke" data-side="T" data-area="BombsiteB" data-map="cache"
    data-teams="fut mouz spirit vitality" data-players="coolio flamez sh1ro sunpayus torzsi zywoo"
    data-diff="3" data-count="15" data-eff="-1">
@@ -180,7 +181,7 @@
     <h3>Smoke Bomb B (de Tóxico)</h3>
     <p class="muted">15 usos · 4 times · round ganho 33%</p>
   </div>
-</a><a class="card" href="/pt/cache/smoke-catwalk-from-outside-a-t/"
+</a><a class="card" href="/pt/cache/smoke-catwalk-from-outside-a-t/" data-id="smoke-catwalk-from-outside-a-t"
    data-type="smoke" data-side="T" data-area="Catwalk" data-map="cache"
    data-teams="fut mouz spirit vitality" data-players="apex dem0n dziugss magixx pr sh1ro sunpayus torzsi xfl0ud"
    data-diff="2" data-count="24" data-eff="-1">
@@ -197,7 +198,7 @@
     <h3>Smoke Metal (de Outside A)</h3>
     <p class="muted">24 usos · 4 times · round ganho 50%</p>
   </div>
-</a><a class="card" href="/pt/cache/smoke-connector-from-long-a-t/"
+</a><a class="card" href="/pt/cache/smoke-connector-from-long-a-t/" data-id="smoke-connector-from-long-a-t"
    data-type="smoke" data-side="T" data-area="Connector" data-map="cache"
    data-teams="fut" data-players="xfl0ud"
    data-diff="2" data-count="4" data-eff="-1">
@@ -214,7 +215,7 @@
     <h3>Smoke Liga/Janela (de Long A)</h3>
     <p class="muted">4 usos · 1 time · round ganho 50%</p>
   </div>
-</a><a class="card" href="/pt/cache/flash-b-site-from-sun-room-t/"
+</a><a class="card" href="/pt/cache/flash-b-site-from-sun-room-t/" data-id="flash-b-site-from-sun-room-t"
    data-type="flash" data-side="T" data-area="BombsiteB" data-map="cache"
    data-teams="fut mouz vitality" data-players="sunpayus torzsi zywoo"
    data-diff="2" data-count="10" data-eff="1.1">
@@ -232,7 +233,7 @@
 <p class="eff">cega 1,1 inimigo(s) por 2,6s em média</p>
     <p class="muted">10 usos · 3 times · round ganho 40%</p>
   </div>
-</a><a class="card" href="/pt/cache/molotov-sandbags-from-outside-a-t/"
+</a><a class="card" href="/pt/cache/molotov-sandbags-from-outside-a-t/" data-id="molotov-sandbags-from-outside-a-t"
    data-type="molotov" data-side="T" data-area="Sandbags" data-map="cache"
    data-teams="fut mouz spirit" data-players="coolio tn1r xertion xfl0ud"
    data-diff="3" data-count="6" data-eff="0.0">
@@ -249,7 +250,7 @@
     <h3>Molotov Areia (de Outside A)</h3>
     <p class="muted">6 usos · 3 times · round ganho 50%</p>
   </div>
-</a><a class="card" href="/pt/cache/smoke-bmain-from-bhalls-t/"
+</a><a class="card" href="/pt/cache/smoke-bmain-from-bhalls-t/" data-id="smoke-bmain-from-bhalls-t"
    data-type="smoke" data-side="T" data-area="BMain" data-map="cache"
    data-teams="fut" data-players="dziugss"
    data-diff="3" data-count="4" data-eff="-1">
@@ -266,7 +267,7 @@
     <h3>Smoke Garagem da B (de Saguão B)</h3>
     <p class="muted">4 usos · 1 time · round ganho 50%</p>
   </div>
-</a><a class="card" href="/pt/cache/smoke-connector-from-t-spawn-t/"
+</a><a class="card" href="/pt/cache/smoke-connector-from-t-spawn-t/" data-id="smoke-connector-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="Connector" data-map="cache"
    data-teams="fut" data-players="dem0n xfl0ud"
    data-diff="3" data-count="3" data-eff="-1">

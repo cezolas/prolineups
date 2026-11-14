@@ -19,15 +19,16 @@
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Lineups Pro">
 <meta name="theme-color" content="#0b0f15">
-<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light"; } catch (e) {}</script>
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
+  if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/static/style.css">
-<script>window.I18N = {"copied": "Copiado!", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "throws_in": "lan\u00e7a em {s}s"}; window.LANG = "pt";</script>
+<script>window.I18N = {"copied": "Copiado!", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "open": "Abrir", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "throws_in": "lan\u00e7a em {s}s"}; window.LANG = "pt";</script>
 </head>
 <body>
 <header class="top">
   <div class="top-in">
-    <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-controls="side" aria-expanded="false">☰</button>
+    <button class="menu-btn" id="menuBtn" aria-label="Mostrar ou ocultar o menu" aria-controls="side" aria-expanded="false">☰</button>
     <a class="logo" href="/pt/"><span class="logo-mark">◎</span> Lineups Pro</a>
     <div class="search">
       <input id="q" type="search" placeholder="Buscar mapa, jogador, time, smoke…" autocomplete="off" aria-label="Buscar">
@@ -58,7 +59,7 @@
 <a href="/pt/jogador/apex/"><span>apEX</span></a><a href="/pt/jogador/art/"><span>art</span></a><a href="/pt/jogador/coolio/"><span>coolio</span></a><a href="/pt/jogador/dem0n/"><span>dem0n</span></a><a href="/pt/jogador/donk/"><span>donk</span></a><a href="/pt/jogador/dumau/"><span>dumau</span></a><a href="/pt/jogador/dziugss/"><span>dziugss</span></a><a href="/pt/jogador/fallen/"><span>FalleN</span></a><a href="/pt/jogador/flamez/"><span>flameZ</span></a><a href="/pt/jogador/heavygod/"><span>HeavyGod</span></a><a href="/pt/jogador/hunter/"><span>huNter</span></a><a href="/pt/jogador/karrigan/"><span>karrigan</span></a><a class="more" href="/pt/jogadores/">ver todos (40)</a>      </details>
       <details class="nav-g" data-k="teams" open>
         <summary class="nav-h"><a href="/pt/times/">Times</a></summary>
-<a href="/pt/time/falcons/"><span>Falcons</span></a><a href="/pt/time/furia/"><span>FURIA</span></a><a href="/pt/time/fut/"><span>FUT</span></a><a href="/pt/time/g2/"><span>G2</span></a><a href="/pt/time/legacy/"><span>Legacy</span></a><a href="/pt/time/mouz/"><span>MOUZ</span></a><a href="/pt/time/spirit/"><span>Spirit</span></a><a href="/pt/time/vitality/"><span>Vitality</span></a>      </details>
+<a href="/pt/time/falcons/"><span><img class="flag" src="/static/flags/sa.svg" alt="Arábia Saudita" title="Arábia Saudita" width="16" height="12">Falcons</span></a><a href="/pt/time/furia/"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">FURIA</span></a><a href="/pt/time/fut/"><span><img class="flag" src="/static/flags/tr.svg" alt="Turquia" title="Turquia" width="16" height="12">FUT</span></a><a href="/pt/time/g2/"><span><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12">G2</span></a><a href="/pt/time/legacy/"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">Legacy</span></a><a href="/pt/time/mouz/"><span><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12">MOUZ</span></a><a href="/pt/time/spirit/"><span><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12">Spirit</span></a><a href="/pt/time/vitality/"><span><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12">Vitality</span></a>      </details>
       <details class="nav-g" data-k="events" open>
         <summary class="nav-h"><a href="/pt/torneios/">Torneios</a></summary>
 <a href="/pt/torneio/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      </details>
@@ -110,7 +111,7 @@
   <span class="muted" id="shown"></span>
 </div>
 <div class="cards" id="cards">
-<a class="card" href="/pt/dust2/flash-long-a-ct/"
+<a class="card" href="/pt/dust2/flash-long-a-ct/" data-id="flash-long-a-ct"
    data-type="flash" data-side="CT" data-area="LongA" data-map="dust2"
    data-teams="falcons furia g2 legacy vitality" data-players="apex fallen flamez hunter karrigan latto m0nesy molodoy r1nkle try yekindar zywoo"
    data-diff="1" data-count="23" data-eff="0.57">
@@ -128,7 +129,7 @@
 <p class="eff">cega 0,6 inimigo(s) por 1,3s em média</p>
     <p class="muted">23 usos · 5 times · round ganho 56%</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-b-site-from-apartments-t/"
+</a><a class="card" href="/pt/mirage/flash-b-site-from-apartments-t/" data-id="flash-b-site-from-apartments-t"
    data-type="flash" data-side="T" data-area="BombsiteB" data-map="mirage"
    data-teams="fut g2 legacy mouz spirit vitality" data-players="dziugss ksloks magixx pr r1nkle ropz try xfl0ud"
    data-diff="1" data-count="22" data-eff="1.36">
@@ -146,7 +147,7 @@
 <p class="eff">cega 1,4 inimigo(s) por 3,8s em média</p>
     <p class="muted">22 usos · 6 times · round ganho 18%</p>
   </div>
-</a><a class="card" href="/pt/dust2/flash-b-site-from-upper-tunnels-t/"
+</a><a class="card" href="/pt/dust2/flash-b-site-from-upper-tunnels-t/" data-id="flash-b-site-from-upper-tunnels-t"
    data-type="flash" data-side="T" data-area="BombsiteB" data-map="dust2"
    data-teams="falcons furia g2 legacy vitality" data-players="art flamez hunter kscerato m0nesy niko yekindar"
    data-diff="2" data-count="16" data-eff="1.25">
@@ -164,7 +165,7 @@
 <p class="eff">cega 1,2 inimigo(s) por 2,3s em média</p>
     <p class="muted">16 usos · 5 times · round ganho 25%</p>
   </div>
-</a><a class="card" href="/pt/inferno/flash-banana-from-b-site-ct/"
+</a><a class="card" href="/pt/inferno/flash-banana-from-b-site-ct/" data-id="flash-banana-from-b-site-ct"
    data-type="flash" data-side="CT" data-area="Banana" data-map="inferno"
    data-teams="furia g2 mouz vitality" data-players="apex hunter kscerato mezii pr spinx xertion"
    data-diff="1" data-count="16" data-eff="1.19">
@@ -182,7 +183,7 @@
 <p class="eff">cega 1,2 inimigo(s) por 3,3s em média</p>
     <p class="muted">16 usos · 4 times · round ganho 62%</p>
   </div>
-</a><a class="card" href="/pt/ancient/flash-mid-from-house-ct/"
+</a><a class="card" href="/pt/ancient/flash-mid-from-house-ct/" data-id="flash-mid-from-house-ct"
    data-type="flash" data-side="CT" data-area="Middle" data-map="ancient"
    data-teams="fut g2 mouz spirit" data-players="dziugss hunter r1nkle sunpayus xelex zont1x"
    data-diff="1" data-count="11" data-eff="1.0">
@@ -200,7 +201,7 @@
 <p class="eff">cega 1,0 inimigo(s) por 2,2s em média</p>
     <p class="muted">11 usos · 4 times · round ganho 46%</p>
   </div>
-</a><a class="card" href="/pt/inferno/flash-b-site-from-banana-t/"
+</a><a class="card" href="/pt/inferno/flash-b-site-from-banana-t/" data-id="flash-b-site-from-banana-t"
    data-type="flash" data-side="T" data-area="BombsiteB" data-map="inferno"
    data-teams="furia g2 mouz" data-players="fallen r1nkle torzsi xertion"
    data-diff="2" data-count="11" data-eff="0.91">
@@ -218,7 +219,7 @@
 <p class="eff">cega 0,9 inimigo(s) por 2,3s em média</p>
     <p class="muted">11 usos · 3 times · round ganho 36%</p>
   </div>
-</a><a class="card" href="/pt/cache/flash-b-site-from-sun-room-t/"
+</a><a class="card" href="/pt/cache/flash-b-site-from-sun-room-t/" data-id="flash-b-site-from-sun-room-t"
    data-type="flash" data-side="T" data-area="BombsiteB" data-map="cache"
    data-teams="fut mouz vitality" data-players="sunpayus torzsi zywoo"
    data-diff="2" data-count="10" data-eff="1.1">
@@ -236,7 +237,7 @@
 <p class="eff">cega 1,1 inimigo(s) por 2,6s em média</p>
     <p class="muted">10 usos · 3 times · round ganho 40%</p>
   </div>
-</a><a class="card" href="/pt/dust2/flash-lower-tunnels-t/"
+</a><a class="card" href="/pt/dust2/flash-lower-tunnels-t/" data-id="flash-lower-tunnels-t"
    data-type="flash" data-side="T" data-area="LowerTunnel" data-map="dust2"
    data-teams="falcons furia g2 vitality" data-players="flamez kscerato nertz niko"
    data-diff="1" data-count="10" data-eff="0.2">
@@ -254,7 +255,7 @@
 <p class="eff">cega 0,2 inimigo(s) por 0,3s em média</p>
     <p class="muted">10 usos · 4 times · round ganho 60%</p>
   </div>
-</a><a class="card" href="/pt/inferno/flash-banana-from-lower-mid-t/"
+</a><a class="card" href="/pt/inferno/flash-banana-from-lower-mid-t/" data-id="flash-banana-from-lower-mid-t"
    data-type="flash" data-side="T" data-area="Banana" data-map="inferno"
    data-teams="furia g2 mouz vitality" data-players="mezii r1nkle torzsi yekindar"
    data-diff="2" data-count="10" data-eff="0.6">
@@ -272,7 +273,7 @@
 <p class="eff">cega 0,6 inimigo(s) por 2,0s em média</p>
     <p class="muted">10 usos · 4 times · round ganho 10%</p>
   </div>
-</a><a class="card" href="/pt/dust2/flash-long-doors-from-outside-long-t/"
+</a><a class="card" href="/pt/dust2/flash-long-doors-from-outside-long-t/" data-id="flash-long-doors-from-outside-long-t"
    data-type="flash" data-side="T" data-area="LongDoors" data-map="dust2"
    data-teams="falcons g2 vitality" data-players="hunter m0nesy r1nkle zywoo"
    data-diff="2" data-count="9" data-eff="0.56">
@@ -290,7 +291,7 @@
 <p class="eff">cega 0,6 inimigo(s) por 1,8s em média</p>
     <p class="muted">9 usos · 3 times · round ganho 11%</p>
   </div>
-</a><a class="card" href="/pt/nuke/flash-rafters-from-roof-t/"
+</a><a class="card" href="/pt/nuke/flash-rafters-from-roof-t/" data-id="flash-rafters-from-roof-t"
    data-type="flash" data-side="T" data-area="Rafters" data-map="nuke"
    data-teams="g2 mouz spirit" data-players="magixx r1nkle sh1ro torzsi"
    data-diff="2" data-count="9" data-eff="1.33">
@@ -308,7 +309,7 @@
 <p class="eff">cega 1,3 inimigo(s) por 1,7s em média</p>
     <p class="muted">9 usos · 3 times · round ganho 22%</p>
   </div>
-</a><a class="card" href="/pt/ancient/flash-b-site-from-ruins-t/"
+</a><a class="card" href="/pt/ancient/flash-b-site-from-ruins-t/" data-id="flash-b-site-from-ruins-t"
    data-type="flash" data-side="T" data-area="BombsiteB" data-map="ancient"
    data-teams="g2 spirit" data-players="heavygod magixx"
    data-diff="3" data-count="8" data-eff="1.62">
@@ -326,7 +327,7 @@
 <p class="eff">cega 1,6 inimigo(s) por 3,9s em média</p>
     <p class="muted">8 usos · 2 times · round ganho 50%</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-mid-from-ct-spawn-ct/"
+</a><a class="card" href="/pt/mirage/flash-mid-from-ct-spawn-ct/" data-id="flash-mid-from-ct-spawn-ct"
    data-type="flash" data-side="CT" data-area="Middle" data-map="mirage"
    data-teams="falcons furia fut g2 mouz" data-players="coolio kscerato m0nesy nertz xertion xfl0ud"
    data-diff="2" data-count="7" data-eff="1.0">
@@ -344,7 +345,7 @@
 <p class="eff">cega 1,0 inimigo(s) por 2,6s em média</p>
     <p class="muted">7 usos · 5 times · round ganho 86%</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-mid-from-jungle-ct/"
+</a><a class="card" href="/pt/mirage/flash-mid-from-jungle-ct/" data-id="flash-mid-from-jungle-ct"
    data-type="flash" data-side="CT" data-area="Middle" data-map="mirage"
    data-teams="fut mouz vitality" data-players="coolio dziugss torzsi zywoo"
    data-diff="1" data-count="7" data-eff="1.57">
@@ -362,7 +363,7 @@
 <p class="eff">cega 1,6 inimigo(s) por 4,1s em média</p>
     <p class="muted">7 usos · 3 times · round ganho 43%</p>
   </div>
-</a><a class="card" href="/pt/nuke/flash-ramp-from-trophy-t/"
+</a><a class="card" href="/pt/nuke/flash-ramp-from-trophy-t/" data-id="flash-ramp-from-trophy-t"
    data-type="flash" data-side="T" data-area="Ramp" data-map="nuke"
    data-teams="mouz spirit" data-players="magixx pr torzsi"
    data-diff="1" data-count="7" data-eff="1.14">
@@ -380,7 +381,7 @@
 <p class="eff">cega 1,1 inimigo(s) por 2,0s em média</p>
     <p class="muted">7 usos · 2 times · round ganho 86%</p>
   </div>
-</a><a class="card" href="/pt/ancient/flash-mid-from-t-spawn-t/"
+</a><a class="card" href="/pt/ancient/flash-mid-from-t-spawn-t/" data-id="flash-mid-from-t-spawn-t"
    data-type="flash" data-side="T" data-area="Middle" data-map="ancient"
    data-teams="fut g2" data-players="heavygod hunter sunpayus"
    data-diff="2" data-count="6" data-eff="2.0">
@@ -398,7 +399,7 @@
 <p class="eff">cega 2,0 inimigo(s) por 6,5s em média</p>
     <p class="muted">6 usos · 2 times · round ganho 33%</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-mid-from-side-alley-t/"
+</a><a class="card" href="/pt/mirage/flash-mid-from-side-alley-t/" data-id="flash-mid-from-side-alley-t"
    data-type="flash" data-side="T" data-area="Middle" data-map="mirage"
    data-teams="mouz spirit vitality" data-players="donk flamez magixx xertion"
    data-diff="3" data-count="6" data-eff="0.83">
@@ -416,7 +417,7 @@
 <p class="eff">cega 0,8 inimigo(s) por 2,0s em média</p>
     <p class="muted">6 usos · 3 times · round ganho 33%</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-stairs-from-palace-alley-t/"
+</a><a class="card" href="/pt/mirage/flash-stairs-from-palace-alley-t/" data-id="flash-stairs-from-palace-alley-t"
    data-type="flash" data-side="T" data-area="Stairs" data-map="mirage"
    data-teams="g2 mouz" data-players="r1nkle spinx"
    data-diff="3" data-count="6" data-eff="1.83">
@@ -434,7 +435,7 @@
 <p class="eff">cega 1,8 inimigo(s) por 2,8s em média</p>
     <p class="muted">6 usos · 2 times · round ganho 50%</p>
   </div>
-</a><a class="card" href="/pt/cache/flash-garage-from-connector-ct/"
+</a><a class="card" href="/pt/cache/flash-garage-from-connector-ct/" data-id="flash-garage-from-connector-ct"
    data-type="flash" data-side="CT" data-area="Garage" data-map="cache"
    data-teams="fut mouz" data-players="dem0n spinx"
    data-diff="3" data-count="5" data-eff="0.4">
@@ -452,7 +453,7 @@
 <p class="eff">cega 0,4 inimigo(s) por 2,0s em média</p>
     <p class="muted">5 usos · 2 times · round ganho 20%</p>
   </div>
-</a><a class="card" href="/pt/cache/flash-amain-from-truck-ct/"
+</a><a class="card" href="/pt/cache/flash-amain-from-truck-ct/" data-id="flash-amain-from-truck-ct"
    data-type="flash" data-side="CT" data-area="AMain" data-map="cache"
    data-teams="fut mouz" data-players="dziugss sunpayus torzsi"
    data-diff="1" data-count="5" data-eff="0.0">
@@ -469,7 +470,7 @@
     <h3>Flash Garagem (de Toyota)</h3>
     <p class="muted">5 usos · 2 times · round ganho 60%</p>
   </div>
-</a><a class="card" href="/pt/dust2/flash-mid-doors-from-top-mid-t/"
+</a><a class="card" href="/pt/dust2/flash-mid-doors-from-top-mid-t/" data-id="flash-mid-doors-from-top-mid-t"
    data-type="flash" data-side="T" data-area="MidDoors" data-map="dust2"
    data-teams="falcons g2 legacy" data-players="dumau heavygod hunter karrigan nertz"
    data-diff="3" data-count="5" data-eff="0.4">
@@ -487,7 +488,7 @@
 <p class="eff">cega 0,4 inimigo(s) por 1,8s em média</p>
     <p class="muted">5 usos · 3 times · round ganho 20%</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-t-ramp-from-t-spawn-t/"
+</a><a class="card" href="/pt/mirage/flash-t-ramp-from-t-spawn-t/" data-id="flash-t-ramp-from-t-spawn-t"
    data-type="flash" data-side="T" data-area="TRamp" data-map="mirage"
    data-teams="vitality" data-players="apex mezii"
    data-diff="1" data-count="5" data-eff="0.4">
@@ -505,7 +506,7 @@
 <p class="eff">cega 0,4 inimigo(s) por 1,7s em média</p>
     <p class="muted">5 usos · 1 time · round ganho 0%</p>
   </div>
-</a><a class="card" href="/pt/anubis/flash-a-site-from-canal-t/"
+</a><a class="card" href="/pt/anubis/flash-a-site-from-canal-t/" data-id="flash-a-site-from-canal-t"
    data-type="flash" data-side="T" data-area="BombsiteA" data-map="anubis"
    data-teams="g2" data-players="r1nkle"
    data-diff="2" data-count="4" data-eff="2.0">
@@ -523,7 +524,7 @@
 <p class="eff">cega 2,0 inimigo(s) por 4,6s em média</p>
     <p class="muted">4 usos · 1 time · round ganho 50%</p>
   </div>
-</a><a class="card" href="/pt/cache/flash-bmain-from-tree-room-ct/"
+</a><a class="card" href="/pt/cache/flash-bmain-from-tree-room-ct/" data-id="flash-bmain-from-tree-room-ct"
    data-type="flash" data-side="CT" data-area="BMain" data-map="cache"
    data-teams="fut spirit vitality" data-players="apex magixx xfl0ud"
    data-diff="2" data-count="4" data-eff="0.0">
@@ -540,7 +541,7 @@
     <h3>Flash Garagem da B (de CT da A)</h3>
     <p class="muted">4 usos · 3 times · round ganho 100%</p>
   </div>
-</a><a class="card" href="/pt/cache/flash-catwalk-from-long-a-t/"
+</a><a class="card" href="/pt/cache/flash-catwalk-from-long-a-t/" data-id="flash-catwalk-from-long-a-t"
    data-type="flash" data-side="T" data-area="Catwalk" data-map="cache"
    data-teams="mouz" data-players="torzsi"
    data-diff="3" data-count="4" data-eff="1.0">
@@ -558,7 +559,7 @@
 <p class="eff">cega 1,0 inimigo(s) por 2,3s em média</p>
     <p class="muted">4 usos · 1 time · round ganho 50%</p>
   </div>
-</a><a class="card" href="/pt/cache/flash-a-site-from-long-a-t/"
+</a><a class="card" href="/pt/cache/flash-a-site-from-long-a-t/" data-id="flash-a-site-from-long-a-t"
    data-type="flash" data-side="T" data-area="BombsiteA" data-map="cache"
    data-teams="mouz vitality" data-players="apex spinx"
    data-diff="2" data-count="4" data-eff="1.25">
@@ -576,7 +577,7 @@
 <p class="eff">cega 1,2 inimigo(s) por 3,5s em média</p>
     <p class="muted">4 usos · 2 times · round ganho 50%</p>
   </div>
-</a><a class="card" href="/pt/dust2/flash-catwalk-from-top-mid-t/"
+</a><a class="card" href="/pt/dust2/flash-catwalk-from-top-mid-t/" data-id="flash-catwalk-from-top-mid-t"
    data-type="flash" data-side="T" data-area="Catwalk" data-map="dust2"
    data-teams="falcons g2 legacy vitality" data-players="apex hunter karrigan try"
    data-diff="1" data-count="4" data-eff="0.0">
@@ -593,7 +594,7 @@
     <h3>Flash Varanda (de Coqueiro)</h3>
     <p class="muted">4 usos · 4 times · round ganho 75%</p>
   </div>
-</a><a class="card" href="/pt/inferno/flash-arch-from-second-mid-t/"
+</a><a class="card" href="/pt/inferno/flash-arch-from-second-mid-t/" data-id="flash-arch-from-second-mid-t"
    data-type="flash" data-side="T" data-area="Arch" data-map="inferno"
    data-teams="furia" data-players="kscerato"
    data-diff="2" data-count="4" data-eff="0.25">
@@ -611,7 +612,7 @@
 <p class="eff">cega 0,2 inimigo(s) por 1,0s em média</p>
     <p class="muted">4 usos · 1 time · round ganho 0%</p>
   </div>
-</a><a class="card" href="/pt/nuke/flash-a-site-from-lobby-t/"
+</a><a class="card" href="/pt/nuke/flash-a-site-from-lobby-t/" data-id="flash-a-site-from-lobby-t"
    data-type="flash" data-side="T" data-area="BombsiteA" data-map="nuke"
    data-teams="mouz spirit" data-players="magixx pr"
    data-diff="2" data-count="4" data-eff="1.25">
@@ -629,7 +630,7 @@
 <p class="eff">cega 1,2 inimigo(s) por 3,2s em média</p>
     <p class="muted">4 usos · 2 times · round ganho 0%</p>
   </div>
-</a><a class="card" href="/pt/ancient/flash-ramp-from-ruins-t/"
+</a><a class="card" href="/pt/ancient/flash-ramp-from-ruins-t/" data-id="flash-ramp-from-ruins-t"
    data-type="flash" data-side="T" data-area="Ramp" data-map="ancient"
    data-teams="fut spirit" data-players="sh1ro sunpayus"
    data-diff="2" data-count="3" data-eff="0.0">
@@ -646,7 +647,7 @@
     <h3>Flash Ramp (de Ruins)</h3>
     <p class="muted">3 usos · 2 times · round ganho 67%</p>
   </div>
-</a><a class="card" href="/pt/ancient/flash-b-site-from-tside-lower-t/"
+</a><a class="card" href="/pt/ancient/flash-b-site-from-tside-lower-t/" data-id="flash-b-site-from-tside-lower-t"
    data-type="flash" data-side="T" data-area="BombsiteB" data-map="ancient"
    data-teams="g2" data-players="hunter"
    data-diff="3" data-count="3" data-eff="1.33">
@@ -664,7 +665,7 @@
 <p class="eff">cega 1,3 inimigo(s) por 2,0s em média</p>
     <p class="muted">3 usos · 1 time · round ganho 0%</p>
   </div>
-</a><a class="card" href="/pt/anubis/flash-canal-from-a-site-ct/"
+</a><a class="card" href="/pt/anubis/flash-canal-from-a-site-ct/" data-id="flash-canal-from-a-site-ct"
    data-type="flash" data-side="CT" data-area="Canal" data-map="anubis"
    data-teams="falcons" data-players="m0nesy"
    data-diff="2" data-count="3" data-eff="1.67">
@@ -682,7 +683,7 @@
 <p class="eff">cega 1,7 inimigo(s) por 5,8s em média</p>
     <p class="muted">3 usos · 1 time · round ganho 0%</p>
   </div>
-</a><a class="card" href="/pt/anubis/flash-outside-long-from-back-of-b-ct/"
+</a><a class="card" href="/pt/anubis/flash-outside-long-from-back-of-b-ct/" data-id="flash-outside-long-from-back-of-b-ct"
    data-type="flash" data-side="CT" data-area="OutsideLong" data-map="anubis"
    data-teams="falcons g2" data-players="heavygod karrigan kyousuke"
    data-diff="2" data-count="3" data-eff="0.33">
@@ -700,7 +701,7 @@
 <p class="eff">cega 0,3 inimigo(s) por 1,2s em média</p>
     <p class="muted">3 usos · 2 times · round ganho 0%</p>
   </div>
-</a><a class="card" href="/pt/anubis/flash-connector-from-b-site-ct/"
+</a><a class="card" href="/pt/anubis/flash-connector-from-b-site-ct/" data-id="flash-connector-from-b-site-ct"
    data-type="flash" data-side="CT" data-area="Connector" data-map="anubis"
    data-teams="g2" data-players="matys"
    data-diff="2" data-count="3" data-eff="0.0">
@@ -717,7 +718,7 @@
     <h3>Flash Rato (de Bomb B)</h3>
     <p class="muted">3 usos · 1 time · round ganho 67%</p>
   </div>
-</a><a class="card" href="/pt/anubis/flash-canal-t/"
+</a><a class="card" href="/pt/anubis/flash-canal-t/" data-id="flash-canal-t"
    data-type="flash" data-side="T" data-area="Canal" data-map="anubis"
    data-teams="g2" data-players="hunter r1nkle"
    data-diff="3" data-count="3" data-eff="1.33">
@@ -735,7 +736,7 @@
 <p class="eff">cega 1,3 inimigo(s) por 2,6s em média</p>
     <p class="muted">3 usos · 1 time · round ganho 33%</p>
   </div>
-</a><a class="card" href="/pt/anubis/flash-bridge-t/"
+</a><a class="card" href="/pt/anubis/flash-bridge-t/" data-id="flash-bridge-t"
    data-type="flash" data-side="T" data-area="Bridge" data-map="anubis"
    data-teams="falcons g2" data-players="karrigan matys nertz"
    data-diff="1" data-count="3" data-eff="0.33">
@@ -753,7 +754,7 @@
 <p class="eff">cega 0,3 inimigo(s) por 0,6s em média</p>
     <p class="muted">3 usos · 2 times · round ganho 33%</p>
   </div>
-</a><a class="card" href="/pt/cache/flash-highway-from-mid-t/"
+</a><a class="card" href="/pt/cache/flash-highway-from-mid-t/" data-id="flash-highway-from-mid-t"
    data-type="flash" data-side="T" data-area="Highway" data-map="cache"
    data-teams="mouz vitality" data-players="mezii xertion zywoo"
    data-diff="1" data-count="3" data-eff="1.0">
@@ -771,7 +772,7 @@
 <p class="eff">cega 1,0 inimigo(s) por 3,0s em média</p>
     <p class="muted">3 usos · 2 times · round ganho 67%</p>
   </div>
-</a><a class="card" href="/pt/cache/flash-mid-from-outside-a-t/"
+</a><a class="card" href="/pt/cache/flash-mid-from-outside-a-t/" data-id="flash-mid-from-outside-a-t"
    data-type="flash" data-side="T" data-area="Mid" data-map="cache"
    data-teams="mouz" data-players="torzsi"
    data-diff="3" data-count="3" data-eff="1.33">
@@ -789,7 +790,7 @@
 <p class="eff">cega 1,3 inimigo(s) por 2,8s em média</p>
     <p class="muted">3 usos · 1 time · round ganho 100%</p>
   </div>
-</a><a class="card" href="/pt/dust2/flash-mid-from-outside-long-t/"
+</a><a class="card" href="/pt/dust2/flash-mid-from-outside-long-t/" data-id="flash-mid-from-outside-long-t"
    data-type="flash" data-side="T" data-area="Middle" data-map="dust2"
    data-teams="vitality" data-players="mezii"
    data-diff="3" data-count="3" data-eff="0.33">
@@ -807,7 +808,7 @@
 <p class="eff">cega 0,3 inimigo(s) por 0,8s em média</p>
     <p class="muted">3 usos · 1 time · round ganho 67%</p>
   </div>
-</a><a class="card" href="/pt/dust2/flash-under-a-from-catwalk-t/"
+</a><a class="card" href="/pt/dust2/flash-under-a-from-catwalk-t/" data-id="flash-under-a-from-catwalk-t"
    data-type="flash" data-side="T" data-area="UnderA" data-map="dust2"
    data-teams="furia" data-players="molodoy"
    data-diff="3" data-count="3" data-eff="2.33">
@@ -825,7 +826,7 @@
 <p class="eff">cega 2,3 inimigo(s) por 4,2s em média</p>
     <p class="muted">3 usos · 1 time · round ganho 33%</p>
   </div>
-</a><a class="card" href="/pt/inferno/flash-banana-t/"
+</a><a class="card" href="/pt/inferno/flash-banana-t/" data-id="flash-banana-t"
    data-type="flash" data-side="T" data-area="Banana" data-map="inferno"
    data-teams="mouz" data-players="torzsi"
    data-diff="1" data-count="3" data-eff="0.0">
@@ -842,7 +843,7 @@
     <h3>Flash Banana</h3>
     <p class="muted">3 usos · 1 time · round ganho 0%</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-jungle-from-shop-ct/"
+</a><a class="card" href="/pt/mirage/flash-jungle-from-shop-ct/" data-id="flash-jungle-from-shop-ct"
    data-type="flash" data-side="CT" data-area="Jungle" data-map="mirage"
    data-teams="falcons g2 vitality" data-players="karrigan matys zywoo"
    data-diff="3" data-count="3" data-eff="1.33">
@@ -860,7 +861,7 @@
 <p class="eff">cega 1,3 inimigo(s) por 4,3s em média</p>
     <p class="muted">3 usos · 3 times · round ganho 67%</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-a-site-from-ct-spawn-ct/"
+</a><a class="card" href="/pt/mirage/flash-a-site-from-ct-spawn-ct/" data-id="flash-a-site-from-ct-spawn-ct"
    data-type="flash" data-side="CT" data-area="BombsiteA" data-map="mirage"
    data-teams="falcons g2" data-players="m0nesy matys niko"
    data-diff="3" data-count="3" data-eff="1.67">
@@ -878,7 +879,7 @@
 <p class="eff">cega 1,7 inimigo(s) por 4,1s em média</p>
     <p class="muted">3 usos · 2 times · round ganho 67%</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-catwalk-ct/"
+</a><a class="card" href="/pt/mirage/flash-catwalk-ct/" data-id="flash-catwalk-ct"
    data-type="flash" data-side="CT" data-area="Catwalk" data-map="mirage"
    data-teams="falcons legacy" data-players="kyousuke try"
    data-diff="3" data-count="3" data-eff="1.33">
@@ -896,7 +897,7 @@
 <p class="eff">cega 1,3 inimigo(s) por 4,2s em média</p>
     <p class="muted">3 usos · 2 times · round ganho 67%</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-b-site-from-shop-ct/"
+</a><a class="card" href="/pt/mirage/flash-b-site-from-shop-ct/" data-id="flash-b-site-from-shop-ct"
    data-type="flash" data-side="CT" data-area="BombsiteB" data-map="mirage"
    data-teams="furia fut mouz" data-players="sunpayus xertion yekindar"
    data-diff="2" data-count="3" data-eff="1.33">
@@ -914,7 +915,7 @@
 <p class="eff">cega 1,3 inimigo(s) por 5,9s em média</p>
     <p class="muted">3 usos · 3 times · round ganho 100%</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-apartments-from-truck-ct/"
+</a><a class="card" href="/pt/mirage/flash-apartments-from-truck-ct/" data-id="flash-apartments-from-truck-ct"
    data-type="flash" data-side="CT" data-area="Apartments" data-map="mirage"
    data-teams="legacy vitality" data-players="ksloks mezii"
    data-diff="2" data-count="3" data-eff="0.0">
@@ -931,7 +932,7 @@
     <h3>Flash Tapete (de Van)</h3>
     <p class="muted">3 usos · 2 times · round ganho 67%</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-mid-from-top-mid-t/"
+</a><a class="card" href="/pt/mirage/flash-mid-from-top-mid-t/" data-id="flash-mid-from-top-mid-t"
    data-type="flash" data-side="T" data-area="Middle" data-map="mirage"
    data-teams="fut vitality" data-players="apex coolio xfl0ud"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -948,7 +949,7 @@
     <h3>Flash Meio (de Top Mid)</h3>
     <p class="muted">3 usos · 2 times · round ganho 67%</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-ct-spawn-from-a-site-t/"
+</a><a class="card" href="/pt/mirage/flash-ct-spawn-from-a-site-t/" data-id="flash-ct-spawn-from-a-site-t"
    data-type="flash" data-side="T" data-area="CTSpawn" data-map="mirage"
    data-teams="g2 mouz" data-players="pr r1nkle"
    data-diff="2" data-count="3" data-eff="1.33">
@@ -966,7 +967,7 @@
 <p class="eff">cega 1,3 inimigo(s) por 2,4s em média</p>
     <p class="muted">3 usos · 2 times · round ganho 33%</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-a-site-from-palace-t/"
+</a><a class="card" href="/pt/mirage/flash-a-site-from-palace-t/" data-id="flash-a-site-from-palace-t"
    data-type="flash" data-side="T" data-area="BombsiteA" data-map="mirage"
    data-teams="fut vitality" data-players="apex dziugss"
    data-diff="1" data-count="3" data-eff="0.0">
@@ -983,7 +984,7 @@
     <h3>Flash Bomb A (de Palacio)</h3>
     <p class="muted">3 usos · 2 times · round ganho 33%</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-apartments-from-back-alley-t/"
+</a><a class="card" href="/pt/mirage/flash-apartments-from-back-alley-t/" data-id="flash-apartments-from-back-alley-t"
    data-type="flash" data-side="T" data-area="Apartments" data-map="mirage"
    data-teams="fut legacy" data-players="sunpayus try"
    data-diff="2" data-count="3" data-eff="1.0">
@@ -1001,7 +1002,7 @@
 <p class="eff">cega 1,0 inimigo(s) por 1,8s em média</p>
     <p class="muted">3 usos · 2 times · round ganho 67%</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-b-site-from-back-alley-t/"
+</a><a class="card" href="/pt/mirage/flash-b-site-from-back-alley-t/" data-id="flash-b-site-from-back-alley-t"
    data-type="flash" data-side="T" data-area="BombsiteB" data-map="mirage"
    data-teams="vitality" data-players="zywoo"
    data-diff="3" data-count="3" data-eff="0.33">
@@ -1019,7 +1020,7 @@
 <p class="eff">cega 0,3 inimigo(s) por 1,3s em média</p>
     <p class="muted">3 usos · 1 time · round ganho 33%</p>
   </div>
-</a><a class="card" href="/pt/nuke/flash-outside-ct/"
+</a><a class="card" href="/pt/nuke/flash-outside-ct/" data-id="flash-outside-ct"
    data-type="flash" data-side="CT" data-area="Outside" data-map="nuke"
    data-teams="fut spirit" data-players="coolio donk"
    data-diff="3" data-count="3" data-eff="2.33">
@@ -1037,7 +1038,7 @@
 <p class="eff">cega 2,3 inimigo(s) por 5,7s em média</p>
     <p class="muted">3 usos · 2 times · round ganho 67%</p>
   </div>
-</a><a class="card" href="/pt/nuke/flash-control-from-ramp-ct/"
+</a><a class="card" href="/pt/nuke/flash-control-from-ramp-ct/" data-id="flash-control-from-ramp-ct"
    data-type="flash" data-side="CT" data-area="Control" data-map="nuke"
    data-teams="g2" data-players="heavygod"
    data-diff="3" data-count="3" data-eff="0.0">

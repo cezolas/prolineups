@@ -19,15 +19,16 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Lineups Pro">
 <meta name="theme-color" content="#0b0f15">
-<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light"; } catch (e) {}</script>
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
+  if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/static/style.css">
-<script>window.I18N = {"copied": "Copied!", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s"}; window.LANG = "en";</script>
+<script>window.I18N = {"copied": "Copied!", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "open": "Open", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s"}; window.LANG = "en";</script>
 </head>
 <body>
 <header class="top">
   <div class="top-in">
-    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-controls="side" aria-expanded="false">☰</button>
+    <button class="menu-btn" id="menuBtn" aria-label="Show or hide the menu" aria-controls="side" aria-expanded="false">☰</button>
     <a class="logo" href="/en/"><span class="logo-mark">◎</span> Lineups Pro</a>
     <div class="search">
       <input id="q" type="search" placeholder="Search map, player, team, smoke…" autocomplete="off" aria-label="Search">
@@ -58,7 +59,7 @@
 <a href="/en/player/apex/"><span>apEX</span></a><a href="/en/player/art/"><span>art</span></a><a href="/en/player/coolio/"><span>coolio</span></a><a href="/en/player/dem0n/"><span>dem0n</span></a><a href="/en/player/donk/"><span>donk</span></a><a href="/en/player/dumau/"><span>dumau</span></a><a href="/en/player/dziugss/"><span>dziugss</span></a><a href="/en/player/fallen/"><span>FalleN</span></a><a href="/en/player/flamez/"><span>flameZ</span></a><a href="/en/player/heavygod/"><span>HeavyGod</span></a><a href="/en/player/hunter/"><span>huNter</span></a><a href="/en/player/karrigan/"><span>karrigan</span></a><a class="more" href="/en/players/">see all (40)</a>      </details>
       <details class="nav-g" data-k="teams" open>
         <summary class="nav-h"><a href="/en/teams/">Teams</a></summary>
-<a href="/en/team/falcons/"><span>Falcons</span></a><a href="/en/team/furia/"><span>FURIA</span></a><a href="/en/team/fut/"><span>FUT</span></a><a href="/en/team/g2/"><span>G2</span></a><a href="/en/team/legacy/"><span>Legacy</span></a><a href="/en/team/mouz/"><span>MOUZ</span></a><a href="/en/team/spirit/"><span>Spirit</span></a><a href="/en/team/vitality/"><span>Vitality</span></a>      </details>
+<a href="/en/team/falcons/"><span><img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12">Falcons</span></a><a href="/en/team/furia/"><span><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12">FURIA</span></a><a href="/en/team/fut/"><span><img class="flag" src="/static/flags/tr.svg" alt="Turkey" title="Turkey" width="16" height="12">FUT</span></a><a href="/en/team/g2/"><span><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12">G2</span></a><a href="/en/team/legacy/"><span><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12">Legacy</span></a><a href="/en/team/mouz/"><span><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12">MOUZ</span></a><a href="/en/team/spirit/"><span><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12">Spirit</span></a><a href="/en/team/vitality/"><span><img class="flag" src="/static/flags/fr.svg" alt="France" title="France" width="16" height="12">Vitality</span></a>      </details>
       <details class="nav-g" data-k="events" open>
         <summary class="nav-h"><a href="/en/tournaments/">Tournaments</a></summary>
 <a href="/en/tournament/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      </details>
@@ -83,7 +84,7 @@
   <main class="content">
 <nav class="crumbs"><a href="/en/">Home</a> › <a href="/en/ancient/">Ancient</a> ›
   <a href="/en/ancient/plays/">Plays</a> › G2 A entry</nav>
-<h1>G2 A entry <span class="muted h-sub">· Ancient</span></h1>
+<h1><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12"> G2 A entry <span class="muted h-sub">· Ancient</span></h1>
 <p class="muted">9 rounds · round won 89% · median plant at 1:17
  · <a href="/en/team/g2/">G2</a></p>
 
@@ -115,55 +116,55 @@
     <h2>Rounds</h2>
     <div class="round-list">
       <button class="round-item" data-play="mouz-vs-g2-m2-ancient-r1" data-clip="/media/mouz-vs-g2-m2-ancient/entry-r1.mp4" data-poster="/media/mouz-vs-g2-m2-ancient/entry-r1.jpg" data-pov="HeavyGod">
-        <span class="ri-top"><b>vs MOUZ</b> · Round 1
+        <span class="ri-top"><b>vs <img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12"> MOUZ</b> · Round 1
           <span class="badge win">won</span><span class="badge video">▶ video</span></span>
         <span class="muted small">plant at 0:32 into the round · 2026-11-11</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="HeavyGod · smoke"></span><span class="dot-nade type-flash" title="MATYS · flash"></span><span class="dot-nade type-smoke" title="huNter · smoke"></span><span class="dot-nade type-molotov" title="HeavyGod · molotov"></span></span>
       </button>
       <button class="round-item" data-play="mouz-vs-g2-m2-ancient-r2" data-clip="/media/mouz-vs-g2-m2-ancient/entry-r2.mp4" data-poster="/media/mouz-vs-g2-m2-ancient/entry-r2.jpg" data-pov="NertZ">
-        <span class="ri-top"><b>vs MOUZ</b> · Round 2
+        <span class="ri-top"><b>vs <img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12"> MOUZ</b> · Round 2
           <span class="badge win">won</span><span class="badge video">▶ video</span></span>
         <span class="muted small">plant at 1:44 into the round · 2026-11-11</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="r1nkle · smoke"></span><span class="dot-nade type-smoke" title="r1nkle · smoke"></span><span class="dot-nade type-flash" title="HeavyGod · flash"></span><span class="dot-nade type-he" title="NertZ · he"></span><span class="dot-nade type-flash" title="r1nkle · flash"></span><span class="dot-nade type-flash" title="r1nkle · flash"></span><span class="dot-nade type-molotov" title="MATYS · molotov"></span><span class="dot-nade type-flash" title="MATYS · flash"></span><span class="dot-nade type-he" title="huNter · he"></span><span class="dot-nade type-molotov" title="r1nkle · molotov"></span><span class="dot-nade type-molotov" title="huNter · molotov"></span><span class="dot-nade type-smoke" title="r1nkle · smoke"></span><span class="dot-nade type-flash" title="NertZ · flash"></span><span class="dot-nade type-smoke" title="r1nkle · smoke"></span><span class="dot-nade type-smoke" title="HeavyGod · smoke"></span><span class="dot-nade type-flash" title="HeavyGod · flash"></span></span>
       </button>
       <button class="round-item" data-play="mouz-vs-g2-m2-ancient-r5" data-clip="/media/mouz-vs-g2-m2-ancient/entry-r5.mp4" data-poster="/media/mouz-vs-g2-m2-ancient/entry-r5.jpg" data-pov="HeavyGod">
-        <span class="ri-top"><b>vs MOUZ</b> · Round 5
+        <span class="ri-top"><b>vs <img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12"> MOUZ</b> · Round 5
           <span class="badge win">won</span><span class="badge video">▶ video</span></span>
         <span class="muted small">plant at 0:37 into the round · 2026-11-11</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="HeavyGod · smoke"></span><span class="dot-nade type-smoke" title="r1nkle · smoke"></span><span class="dot-nade type-molotov" title="huNter · molotov"></span><span class="dot-nade type-smoke" title="huNter · smoke"></span><span class="dot-nade type-molotov" title="r1nkle · molotov"></span><span class="dot-nade type-molotov" title="MATYS · molotov"></span><span class="dot-nade type-molotov" title="HeavyGod · molotov"></span><span class="dot-nade type-flash" title="r1nkle · flash"></span><span class="dot-nade type-smoke" title="NertZ · smoke"></span><span class="dot-nade type-molotov" title="r1nkle · molotov"></span><span class="dot-nade type-flash" title="HeavyGod · flash"></span></span>
       </button>
       <button class="round-item" data-play="mouz-vs-g2-m2-ancient-r7" data-clip="/media/mouz-vs-g2-m2-ancient/entry-r7.mp4" data-poster="/media/mouz-vs-g2-m2-ancient/entry-r7.jpg" data-pov="MATYS">
-        <span class="ri-top"><b>vs MOUZ</b> · Round 7
+        <span class="ri-top"><b>vs <img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12"> MOUZ</b> · Round 7
           <span class="badge loss">lost</span><span class="badge video">▶ video</span></span>
         <span class="muted small">plant at 1:17 into the round · 2026-11-11</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="HeavyGod · smoke"></span><span class="dot-nade type-smoke" title="r1nkle · smoke"></span><span class="dot-nade type-he" title="huNter · he"></span><span class="dot-nade type-molotov" title="NertZ · molotov"></span><span class="dot-nade type-flash" title="MATYS · flash"></span><span class="dot-nade type-he" title="NertZ · he"></span><span class="dot-nade type-molotov" title="huNter · molotov"></span><span class="dot-nade type-flash" title="huNter · flash"></span><span class="dot-nade type-smoke" title="huNter · smoke"></span><span class="dot-nade type-flash" title="NertZ · flash"></span><span class="dot-nade type-flash" title="MATYS · flash"></span><span class="dot-nade type-smoke" title="NertZ · smoke"></span><span class="dot-nade type-molotov" title="HeavyGod · molotov"></span><span class="dot-nade type-molotov" title="MATYS · molotov"></span><span class="dot-nade type-flash" title="HeavyGod · flash"></span></span>
       </button>
       <button class="round-item" data-play="mouz-vs-g2-m2-ancient-r12" data-clip="/media/mouz-vs-g2-m2-ancient/entry-r12.mp4" data-poster="/media/mouz-vs-g2-m2-ancient/entry-r12.jpg" data-pov="HeavyGod">
-        <span class="ri-top"><b>vs MOUZ</b> · Round 12
+        <span class="ri-top"><b>vs <img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12"> MOUZ</b> · Round 12
           <span class="badge win">won</span><span class="badge video">▶ video</span></span>
         <span class="muted small">plant at 1:10 into the round · 2026-11-11</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="HeavyGod · smoke"></span><span class="dot-nade type-smoke" title="r1nkle · smoke"></span><span class="dot-nade type-molotov" title="NertZ · molotov"></span><span class="dot-nade type-flash" title="huNter · flash"></span><span class="dot-nade type-smoke" title="NertZ · smoke"></span><span class="dot-nade type-flash" title="r1nkle · flash"></span><span class="dot-nade type-flash" title="huNter · flash"></span><span class="dot-nade type-flash" title="r1nkle · flash"></span><span class="dot-nade type-smoke" title="huNter · smoke"></span><span class="dot-nade type-smoke" title="huNter · smoke"></span><span class="dot-nade type-flash" title="r1nkle · flash"></span><span class="dot-nade type-flash" title="HeavyGod · flash"></span><span class="dot-nade type-flash" title="r1nkle · flash"></span><span class="dot-nade type-molotov" title="r1nkle · molotov"></span><span class="dot-nade type-he" title="r1nkle · he"></span><span class="dot-nade type-he" title="NertZ · he"></span><span class="dot-nade type-molotov" title="NertZ · molotov"></span></span>
       </button>
       <button class="round-item" data-play="mouz-vs-g2-m2-ancient-r29" data-clip="/media/mouz-vs-g2-m2-ancient/entry-r29.mp4" data-poster="/media/mouz-vs-g2-m2-ancient/entry-r29.jpg" data-pov="MATYS">
-        <span class="ri-top"><b>vs MOUZ</b> · Round 29
+        <span class="ri-top"><b>vs <img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12"> MOUZ</b> · Round 29
           <span class="badge win">won</span><span class="badge video">▶ video</span></span>
         <span class="muted small">plant at 1:29 into the round · 2026-11-11</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="r1nkle · smoke"></span><span class="dot-nade type-smoke" title="r1nkle · smoke"></span><span class="dot-nade type-he" title="huNter · he"></span><span class="dot-nade type-molotov" title="NertZ · molotov"></span><span class="dot-nade type-flash" title="NertZ · flash"></span><span class="dot-nade type-molotov" title="huNter · molotov"></span><span class="dot-nade type-flash" title="MATYS · flash"></span><span class="dot-nade type-he" title="NertZ · he"></span><span class="dot-nade type-smoke" title="huNter · smoke"></span><span class="dot-nade type-flash" title="huNter · flash"></span><span class="dot-nade type-flash" title="MATYS · flash"></span><span class="dot-nade type-smoke" title="NertZ · smoke"></span><span class="dot-nade type-molotov" title="HeavyGod · molotov"></span><span class="dot-nade type-molotov" title="MATYS · molotov"></span><span class="dot-nade type-flash" title="r1nkle · flash"></span><span class="dot-nade type-molotov" title="r1nkle · molotov"></span><span class="dot-nade type-flash" title="HeavyGod · flash"></span><span class="dot-nade type-flash" title="r1nkle · flash"></span><span class="dot-nade type-flash" title="HeavyGod · flash"></span><span class="dot-nade type-smoke" title="huNter · smoke"></span></span>
       </button>
       <button class="round-item" data-play="mouz-vs-g2-m2-ancient-r30" data-clip="/media/mouz-vs-g2-m2-ancient/entry-r30.mp4" data-poster="/media/mouz-vs-g2-m2-ancient/entry-r30.jpg" data-pov="HeavyGod">
-        <span class="ri-top"><b>vs MOUZ</b> · Round 30
+        <span class="ri-top"><b>vs <img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12"> MOUZ</b> · Round 30
           <span class="badge win">won</span><span class="badge video">▶ video</span></span>
         <span class="muted small">plant at 1:00 into the round · 2026-11-11</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="HeavyGod · smoke"></span><span class="dot-nade type-smoke" title="HeavyGod · smoke"></span><span class="dot-nade type-he" title="MATYS · he"></span><span class="dot-nade type-flash" title="HeavyGod · flash"></span><span class="dot-nade type-he" title="NertZ · he"></span><span class="dot-nade type-flash" title="HeavyGod · flash"></span><span class="dot-nade type-molotov" title="MATYS · molotov"></span><span class="dot-nade type-he" title="NertZ · he"></span><span class="dot-nade type-smoke" title="MATYS · smoke"></span><span class="dot-nade type-molotov" title="NertZ · molotov"></span><span class="dot-nade type-smoke" title="NertZ · smoke"></span><span class="dot-nade type-flash" title="NertZ · flash"></span><span class="dot-nade type-molotov" title="HeavyGod · molotov"></span></span>
       </button>
       <button class="round-item" data-play="spirit-vs-g2-m3-ancient-r5" data-clip="/media/spirit-vs-g2-m3-ancient/entry-r5.mp4" data-poster="/media/spirit-vs-g2-m3-ancient/entry-r5.jpg" data-pov="NertZ">
-        <span class="ri-top"><b>vs Spirit</b> · Round 5
+        <span class="ri-top"><b>vs <img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12"> Spirit</b> · Round 5
           <span class="badge win">won</span><span class="badge video">▶ video</span></span>
         <span class="muted small">plant at 1:22 into the round · 2026-11-12</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="HeavyGod · smoke"></span><span class="dot-nade type-he" title="MATYS · he"></span><span class="dot-nade type-flash" title="HeavyGod · flash"></span><span class="dot-nade type-molotov" title="MATYS · molotov"></span><span class="dot-nade type-smoke" title="MATYS · smoke"></span><span class="dot-nade type-flash" title="MATYS · flash"></span><span class="dot-nade type-he" title="huNter · he"></span><span class="dot-nade type-smoke" title="huNter · smoke"></span><span class="dot-nade type-flash" title="MATYS · flash"></span></span>
       </button>
       <button class="round-item" data-play="spirit-vs-g2-m3-ancient-r6" data-clip="/media/spirit-vs-g2-m3-ancient/entry-r6.mp4" data-poster="/media/spirit-vs-g2-m3-ancient/entry-r6.jpg" data-pov="NertZ">
-        <span class="ri-top"><b>vs Spirit</b> · Round 6
+        <span class="ri-top"><b>vs <img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12"> Spirit</b> · Round 6
           <span class="badge win">won</span><span class="badge video">▶ video</span></span>
         <span class="muted small">plant at 1:33 into the round · 2026-11-12</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="huNter · smoke"></span><span class="dot-nade type-smoke" title="r1nkle · smoke"></span><span class="dot-nade type-smoke" title="r1nkle · smoke"></span><span class="dot-nade type-molotov" title="NertZ · molotov"></span><span class="dot-nade type-molotov" title="HeavyGod · molotov"></span><span class="dot-nade type-flash" title="huNter · flash"></span><span class="dot-nade type-smoke" title="NertZ · smoke"></span><span class="dot-nade type-flash" title="r1nkle · flash"></span><span class="dot-nade type-molotov" title="MATYS · molotov"></span><span class="dot-nade type-flash" title="huNter · flash"></span><span class="dot-nade type-flash" title="r1nkle · flash"></span><span class="dot-nade type-flash" title="MATYS · flash"></span><span class="dot-nade type-flash" title="r1nkle · flash"></span><span class="dot-nade type-he" title="NertZ · he"></span><span class="dot-nade type-he" title="MATYS · he"></span><span class="dot-nade type-smoke" title="huNter · smoke"></span><span class="dot-nade type-molotov" title="huNter · molotov"></span><span class="dot-nade type-molotov" title="r1nkle · molotov"></span></span>
@@ -181,7 +182,7 @@
 <section>
   <h2>Grenades used in these entries</h2>
   <p class="muted">Published lineups the team threw before the plant in these rounds.</p>
-  <div class="cards"><a class="card" href="/en/ancient/smoke-top-mid-from-t-spawn-t/"
+  <div class="cards"><a class="card" href="/en/ancient/smoke-top-mid-from-t-spawn-t/" data-id="smoke-top-mid-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="TopofMid" data-map="ancient"
    data-teams="fut g2 mouz spirit" data-players="dziugss heavygod hunter r1nkle sh1ro sunpayus tn1r torzsi"
    data-diff="3" data-count="31" data-eff="-1">
@@ -198,7 +199,7 @@
     <h3>Smoke Top Mid (from T Spawn)</h3>
     <p class="muted">31 uses · 4 teams · 58% rounds won</p>
   </div>
-</a><a class="card" href="/en/ancient/smoke-t-upper-from-t-spawn-t/"
+</a><a class="card" href="/en/ancient/smoke-t-upper-from-t-spawn-t/" data-id="smoke-t-upper-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="TSideUpper" data-map="ancient"
    data-teams="fut g2 mouz spirit" data-players="coolio heavygod hunter magixx r1nkle tn1r torzsi xelex xertion"
    data-diff="2" data-count="27" data-eff="-1">
@@ -215,7 +216,7 @@
     <h3>Smoke T Upper (from T Spawn)</h3>
     <p class="muted">27 uses · 4 teams · 37% rounds won</p>
   </div>
-</a><a class="card" href="/en/ancient/smoke-house-from-t-spawn-t/"
+</a><a class="card" href="/en/ancient/smoke-house-from-t-spawn-t/" data-id="smoke-house-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="House" data-map="ancient"
    data-teams="fut g2 mouz spirit" data-players="dziugss heavygod hunter r1nkle sh1ro sunpayus torzsi"
    data-diff="3" data-count="22" data-eff="-1">
@@ -232,7 +233,7 @@
     <h3>Smoke House (from T Spawn)</h3>
     <p class="muted">22 uses · 4 teams · 50% rounds won</p>
   </div>
-</a><a class="card" href="/en/ancient/smoke-mid-from-t-spawn-t/"
+</a><a class="card" href="/en/ancient/smoke-mid-from-t-spawn-t/" data-id="smoke-mid-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="Middle" data-map="ancient"
    data-teams="fut g2 spirit" data-players="coolio dziugss magixx r1nkle sh1ro zont1x"
    data-diff="3" data-count="19" data-eff="-1">
@@ -249,7 +250,7 @@
     <h3>Smoke Mid (from T Spawn)</h3>
     <p class="muted">19 uses · 3 teams · 53% rounds won</p>
   </div>
-</a><a class="card" href="/en/ancient/molotov-a-site-from-main-hall-t/"
+</a><a class="card" href="/en/ancient/molotov-a-site-from-main-hall-t/" data-id="molotov-a-site-from-main-hall-t"
    data-type="molotov" data-side="T" data-area="BombsiteA" data-map="ancient"
    data-teams="g2 spirit" data-players="heavygod sh1ro"
    data-diff="3" data-count="4" data-eff="0.0">
@@ -266,7 +267,7 @@
     <h3>Molotov A Site (from Main Hall)</h3>
     <p class="muted">4 uses · 2 teams · 75% rounds won</p>
   </div>
-</a><a class="card" href="/en/ancient/molotov-b-site-from-ruins-t/"
+</a><a class="card" href="/en/ancient/molotov-b-site-from-ruins-t/" data-id="molotov-b-site-from-ruins-t"
    data-type="molotov" data-side="T" data-area="BombsiteB" data-map="ancient"
    data-teams="g2 spirit" data-players="donk heavygod hunter r1nkle tn1r"
    data-diff="3" data-count="13" data-eff="0.0">
@@ -283,7 +284,7 @@
     <h3>Molotov B Site (from Ruins)</h3>
     <p class="muted">13 uses · 2 teams · 46% rounds won</p>
   </div>
-</a><a class="card" href="/en/ancient/smoke-alley-from-ruins-t/"
+</a><a class="card" href="/en/ancient/smoke-alley-from-ruins-t/" data-id="smoke-alley-from-ruins-t"
    data-type="smoke" data-side="T" data-area="Alley" data-map="ancient"
    data-teams="g2 spirit" data-players="r1nkle sh1ro"
    data-diff="2" data-count="8" data-eff="-1">
@@ -300,7 +301,7 @@
     <h3>Smoke Alley (from Ruins)</h3>
     <p class="muted">8 uses · 2 teams · 62% rounds won</p>
   </div>
-</a><a class="card" href="/en/ancient/smoke-b-site-from-ruins-t/"
+</a><a class="card" href="/en/ancient/smoke-b-site-from-ruins-t/" data-id="smoke-b-site-from-ruins-t"
    data-type="smoke" data-side="T" data-area="BombsiteB" data-map="ancient"
    data-teams="g2 spirit" data-players="magixx r1nkle sh1ro"
    data-diff="2" data-count="7" data-eff="-1">

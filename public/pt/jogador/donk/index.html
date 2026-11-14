@@ -19,15 +19,16 @@
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Lineups Pro">
 <meta name="theme-color" content="#0b0f15">
-<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light"; } catch (e) {}</script>
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
+  if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/static/style.css">
-<script>window.I18N = {"copied": "Copiado!", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "throws_in": "lan\u00e7a em {s}s"}; window.LANG = "pt";</script>
+<script>window.I18N = {"copied": "Copiado!", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "open": "Abrir", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "throws_in": "lan\u00e7a em {s}s"}; window.LANG = "pt";</script>
 </head>
 <body>
 <header class="top">
   <div class="top-in">
-    <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-controls="side" aria-expanded="false">☰</button>
+    <button class="menu-btn" id="menuBtn" aria-label="Mostrar ou ocultar o menu" aria-controls="side" aria-expanded="false">☰</button>
     <a class="logo" href="/pt/"><span class="logo-mark">◎</span> Lineups Pro</a>
     <div class="search">
       <input id="q" type="search" placeholder="Buscar mapa, jogador, time, smoke…" autocomplete="off" aria-label="Buscar">
@@ -58,7 +59,7 @@
 <a href="/pt/jogador/apex/"><span>apEX</span></a><a href="/pt/jogador/art/"><span>art</span></a><a href="/pt/jogador/coolio/"><span>coolio</span></a><a href="/pt/jogador/dem0n/"><span>dem0n</span></a><a href="/pt/jogador/donk/" aria-current="page"><span>donk</span></a><a href="/pt/jogador/dumau/"><span>dumau</span></a><a href="/pt/jogador/dziugss/"><span>dziugss</span></a><a href="/pt/jogador/fallen/"><span>FalleN</span></a><a href="/pt/jogador/flamez/"><span>flameZ</span></a><a href="/pt/jogador/heavygod/"><span>HeavyGod</span></a><a href="/pt/jogador/hunter/"><span>huNter</span></a><a href="/pt/jogador/karrigan/"><span>karrigan</span></a><a class="more" href="/pt/jogadores/">ver todos (40)</a>      </details>
       <details class="nav-g" data-k="teams" open>
         <summary class="nav-h"><a href="/pt/times/">Times</a></summary>
-<a href="/pt/time/falcons/"><span>Falcons</span></a><a href="/pt/time/furia/"><span>FURIA</span></a><a href="/pt/time/fut/"><span>FUT</span></a><a href="/pt/time/g2/"><span>G2</span></a><a href="/pt/time/legacy/"><span>Legacy</span></a><a href="/pt/time/mouz/"><span>MOUZ</span></a><a href="/pt/time/spirit/"><span>Spirit</span></a><a href="/pt/time/vitality/"><span>Vitality</span></a>      </details>
+<a href="/pt/time/falcons/"><span><img class="flag" src="/static/flags/sa.svg" alt="Arábia Saudita" title="Arábia Saudita" width="16" height="12">Falcons</span></a><a href="/pt/time/furia/"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">FURIA</span></a><a href="/pt/time/fut/"><span><img class="flag" src="/static/flags/tr.svg" alt="Turquia" title="Turquia" width="16" height="12">FUT</span></a><a href="/pt/time/g2/"><span><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12">G2</span></a><a href="/pt/time/legacy/"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">Legacy</span></a><a href="/pt/time/mouz/"><span><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12">MOUZ</span></a><a href="/pt/time/spirit/"><span><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12">Spirit</span></a><a href="/pt/time/vitality/"><span><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12">Vitality</span></a>      </details>
       <details class="nav-g" data-k="events" open>
         <summary class="nav-h"><a href="/pt/torneios/">Torneios</a></summary>
 <a href="/pt/torneio/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      </details>
@@ -84,11 +85,10 @@
 <nav class="crumbs"><a href="/pt/">Início</a> › <a href="/pt/jogadores/">Jogadores</a> › donk</nav>
 <h1>Granadas de donk</h1>
 <p class="muted">
-Spirit · 33 granadas em 4 mapas
+<img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12"> Spirit · 33 granadas em 4 mapas
 </p>
 <section class="sig" id="assinatura">
-  <h2>Assinatura de utilitária</h2>
-  <p class="muted">Todas as granadas que ele jogou nas partidas (não só as lineups publicadas), por mapa e lado, comparadas com a média dos jogadores no mesmo mapa e lado. ▲/▼ = 15% acima/abaixo da média.</p>
+  <h2>Assinatura de utilitária</h2>  <p class="muted">Todas as granadas que ele jogou nas partidas (não só as lineups publicadas), por mapa e lado, comparadas com a média dos jogadores no mesmo mapa e lado. ▲/▼ = 15% acima/abaixo da média.</p>
   <div class="seg sig-maps" role="tablist"><button role="tab" data-sig="ancient" class="on">Ancient</button><button role="tab" data-sig="nuke">Nuke</button><button role="tab" data-sig="cache">Cache</button><button role="tab" data-sig="mirage">Mirage</button></div>
   <div class="sig-map" data-sig-panel="ancient">
     <div class="sig-cols">
@@ -307,8 +307,7 @@ Spirit · 33 granadas em 4 mapas
     </div>
   </div>
   <div class="heat-toggles small">Mostrar no mapa: <label><input type="checkbox" data-heat="0" checked> Smokes</label><label><input type="checkbox" data-heat="1" checked> Flashes</label><label><input type="checkbox" data-heat="2" checked> Molotovs</label><label><input type="checkbox" data-heat="3" checked> HEs</label></div>
-</section>
-<script>
+</section><script>
 (function () {
   var sec = document.getElementById("assinatura"); if (!sec) return;
   sec.addEventListener("click", function (e) {
@@ -325,7 +324,7 @@ Spirit · 33 granadas em 4 mapas
 
 <section>
   <h2 class="sec"><a href="/pt/ancient/">Ancient</a> <span class="muted">· 5 lineups</span></h2>
-  <div class="cards"><a class="card" href="/pt/ancient/molotov-mid-from-house-ct/"
+  <div class="cards"><a class="card" href="/pt/ancient/molotov-mid-from-house-ct/" data-id="molotov-mid-from-house-ct"
    data-type="molotov" data-side="CT" data-area="Middle" data-map="ancient"
    data-teams="g2 spirit" data-players="donk nertz"
    data-diff="3" data-count="7" data-eff="0.0">
@@ -342,7 +341,7 @@ Spirit · 33 granadas em 4 mapas
     <h3>Molotov Mid (de House)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/ancient/he-mid-from-top-mid-ct/"
+</a><a class="card" href="/pt/ancient/he-mid-from-top-mid-ct/" data-id="he-mid-from-top-mid-ct"
    data-type="he" data-side="CT" data-area="Middle" data-map="ancient"
    data-teams="spirit" data-players="donk"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -359,7 +358,7 @@ Spirit · 33 granadas em 4 mapas
     <h3>HE Mid (de Top Mid)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/ancient/smoke-a-site-ct/"
+</a><a class="card" href="/pt/ancient/smoke-a-site-ct/" data-id="smoke-a-site-ct"
    data-type="smoke" data-side="CT" data-area="BombsiteA" data-map="ancient"
    data-teams="mouz spirit" data-players="donk xelex"
    data-diff="3" data-count="3" data-eff="-1">
@@ -376,7 +375,7 @@ Spirit · 33 granadas em 4 mapas
     <h3>Smoke Bomb A</h3>
     <p class="muted">2 usos</p>
   </div>
-</a><a class="card" href="/pt/ancient/molotov-b-site-from-ruins-t/"
+</a><a class="card" href="/pt/ancient/molotov-b-site-from-ruins-t/" data-id="molotov-b-site-from-ruins-t"
    data-type="molotov" data-side="T" data-area="BombsiteB" data-map="ancient"
    data-teams="g2 spirit" data-players="donk heavygod hunter r1nkle tn1r"
    data-diff="3" data-count="13" data-eff="0.0">
@@ -393,7 +392,7 @@ Spirit · 33 granadas em 4 mapas
     <h3>Molotov Bomb B (de Ruins)</h3>
     <p class="muted">1 uso</p>
   </div>
-</a><a class="card" href="/pt/ancient/smoke-side-entrance-from-water-t/"
+</a><a class="card" href="/pt/ancient/smoke-side-entrance-from-water-t/" data-id="smoke-side-entrance-from-water-t"
    data-type="smoke" data-side="T" data-area="SideEntrance" data-map="ancient"
    data-teams="g2 mouz spirit" data-players="donk hunter r1nkle sh1ro torzsi"
    data-diff="2" data-count="6" data-eff="-1">
@@ -414,7 +413,7 @@ Spirit · 33 granadas em 4 mapas
 </section>
 <section>
   <h2 class="sec"><a href="/pt/cache/">Cache</a> <span class="muted">· 3 lineups</span></h2>
-  <div class="cards"><a class="card" href="/pt/cache/molotov-boost-from-mid-ct/"
+  <div class="cards"><a class="card" href="/pt/cache/molotov-boost-from-mid-ct/" data-id="molotov-boost-from-mid-ct"
    data-type="molotov" data-side="CT" data-area="Boost" data-map="cache"
    data-teams="mouz spirit vitality" data-players="apex donk mezii spinx"
    data-diff="2" data-count="15" data-eff="0.0">
@@ -431,7 +430,7 @@ Spirit · 33 granadas em 4 mapas
     <h3>Molotov Pézinho Lona (de Meio)</h3>
     <p class="muted">6 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/smoke-garage-from-connector-ct/"
+</a><a class="card" href="/pt/cache/smoke-garage-from-connector-ct/" data-id="smoke-garage-from-connector-ct"
    data-type="smoke" data-side="CT" data-area="Garage" data-map="cache"
    data-teams="fut spirit vitality" data-players="donk flamez xfl0ud"
    data-diff="3" data-count="5" data-eff="-1">
@@ -448,7 +447,7 @@ Spirit · 33 granadas em 4 mapas
     <h3>Smoke Garagem do meio (de Liga/Janela)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/he-bmain-from-b-site-ct/"
+</a><a class="card" href="/pt/cache/he-bmain-from-b-site-ct/" data-id="he-bmain-from-b-site-ct"
    data-type="he" data-side="CT" data-area="BMain" data-map="cache"
    data-teams="fut mouz spirit" data-players="donk xertion xfl0ud"
    data-diff="3" data-count="8" data-eff="0.0">
@@ -469,7 +468,7 @@ Spirit · 33 granadas em 4 mapas
 </section>
 <section>
   <h2 class="sec"><a href="/pt/mirage/">Mirage</a> <span class="muted">· 4 lineups</span></h2>
-  <div class="cards"><a class="card" href="/pt/mirage/smoke-sniper-s-nest-from-t-spawn-t/"
+  <div class="cards"><a class="card" href="/pt/mirage/smoke-sniper-s-nest-from-t-spawn-t/" data-id="smoke-sniper-s-nest-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="SnipersNest" data-map="mirage"
    data-teams="falcons furia fut g2 legacy mouz spirit vitality" data-players="apex art coolio dem0n donk dumau dziugss flamez heavygod hunter karrigan ksloks kyousuke latto m0nesy magixx matys mezii nertz niko pr r1nkle ropz sh1ro spinx sunpayus torzsi try xelex xertion xfl0ud yekindar zont1x zywoo"
    data-diff="3" data-count="99" data-eff="-1">
@@ -486,7 +485,7 @@ Spirit · 33 granadas em 4 mapas
     <h3>Smoke Janela (de Base TR)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/molotov-t-ramp-from-ct-spawn-ct/"
+</a><a class="card" href="/pt/mirage/molotov-t-ramp-from-ct-spawn-ct/" data-id="molotov-t-ramp-from-ct-spawn-ct"
    data-type="molotov" data-side="CT" data-area="TRamp" data-map="mirage"
    data-teams="falcons furia fut legacy mouz spirit" data-players="donk dziugss latto m0nesy teses tn1r xelex xfl0ud yekindar yuurih"
    data-diff="3" data-count="26" data-eff="0.0">
@@ -503,7 +502,7 @@ Spirit · 33 granadas em 4 mapas
     <h3>Molotov Caverna (de Base CT)</h3>
     <p class="muted">1 uso</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-mid-from-side-alley-t/"
+</a><a class="card" href="/pt/mirage/flash-mid-from-side-alley-t/" data-id="flash-mid-from-side-alley-t"
    data-type="flash" data-side="T" data-area="Middle" data-map="mirage"
    data-teams="mouz spirit vitality" data-players="donk flamez magixx xertion"
    data-diff="3" data-count="6" data-eff="0.83">
@@ -521,7 +520,7 @@ Spirit · 33 granadas em 4 mapas
 <p class="eff">cega 0,8 inimigo(s) por 2,0s em média</p>
     <p class="muted">1 uso</p>
   </div>
-</a><a class="card" href="/pt/mirage/smoke-mid-from-a-site-ct/"
+</a><a class="card" href="/pt/mirage/smoke-mid-from-a-site-ct/" data-id="smoke-mid-from-a-site-ct"
    data-type="smoke" data-side="CT" data-area="Middle" data-map="mirage"
    data-teams="falcons furia spirit" data-players="donk kscerato m0nesy"
    data-diff="1" data-count="5" data-eff="-1">
@@ -542,7 +541,7 @@ Spirit · 33 granadas em 4 mapas
 </section>
 <section>
   <h2 class="sec"><a href="/pt/nuke/">Nuke</a> <span class="muted">· 3 lineups</span></h2>
-  <div class="cards"><a class="card" href="/pt/nuke/smoke-outside-t/"
+  <div class="cards"><a class="card" href="/pt/nuke/smoke-outside-t/" data-id="smoke-outside-t"
    data-type="smoke" data-side="T" data-area="Outside" data-map="nuke"
    data-teams="fut g2 mouz spirit" data-players="donk hunter magixx matys nertz pr sh1ro torzsi xelex xertion xfl0ud"
    data-diff="2" data-count="98" data-eff="-1">
@@ -559,7 +558,7 @@ Spirit · 33 granadas em 4 mapas
     <h3>Smoke Outside</h3>
     <p class="muted">5 usos</p>
   </div>
-</a><a class="card" href="/pt/nuke/he-silo-from-outside-ct/"
+</a><a class="card" href="/pt/nuke/he-silo-from-outside-ct/" data-id="he-silo-from-outside-ct"
    data-type="he" data-side="CT" data-area="Silo" data-map="nuke"
    data-teams="fut g2 mouz spirit" data-players="donk hunter spinx sunpayus"
    data-diff="1" data-count="5" data-eff="0.0">
@@ -576,7 +575,7 @@ Spirit · 33 granadas em 4 mapas
     <h3>HE Silo (de Outside)</h3>
     <p class="muted">1 uso</p>
   </div>
-</a><a class="card" href="/pt/nuke/flash-outside-ct/"
+</a><a class="card" href="/pt/nuke/flash-outside-ct/" data-id="flash-outside-ct"
    data-type="flash" data-side="CT" data-area="Outside" data-map="nuke"
    data-teams="fut spirit" data-players="coolio donk"
    data-diff="3" data-count="3" data-eff="2.33">

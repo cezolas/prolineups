@@ -19,15 +19,16 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Lineups Pro">
 <meta name="theme-color" content="#0b0f15">
-<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light"; } catch (e) {}</script>
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
+  if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/static/style.css">
-<script>window.I18N = {"copied": "Copied!", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s"}; window.LANG = "en";</script>
+<script>window.I18N = {"copied": "Copied!", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "open": "Open", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s"}; window.LANG = "en";</script>
 </head>
 <body>
 <header class="top">
   <div class="top-in">
-    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-controls="side" aria-expanded="false">☰</button>
+    <button class="menu-btn" id="menuBtn" aria-label="Show or hide the menu" aria-controls="side" aria-expanded="false">☰</button>
     <a class="logo" href="/en/"><span class="logo-mark">◎</span> Lineups Pro</a>
     <div class="search">
       <input id="q" type="search" placeholder="Search map, player, team, smoke…" autocomplete="off" aria-label="Search">
@@ -58,7 +59,7 @@
 <a href="/en/player/apex/"><span>apEX</span></a><a href="/en/player/art/"><span>art</span></a><a href="/en/player/coolio/"><span>coolio</span></a><a href="/en/player/dem0n/"><span>dem0n</span></a><a href="/en/player/donk/"><span>donk</span></a><a href="/en/player/dumau/"><span>dumau</span></a><a href="/en/player/dziugss/"><span>dziugss</span></a><a href="/en/player/fallen/"><span>FalleN</span></a><a href="/en/player/flamez/"><span>flameZ</span></a><a href="/en/player/heavygod/"><span>HeavyGod</span></a><a href="/en/player/hunter/"><span>huNter</span></a><a href="/en/player/karrigan/"><span>karrigan</span></a><a class="more" href="/en/players/">see all (40)</a>      </details>
       <details class="nav-g" data-k="teams" open>
         <summary class="nav-h"><a href="/en/teams/">Teams</a></summary>
-<a href="/en/team/falcons/"><span>Falcons</span></a><a href="/en/team/furia/"><span>FURIA</span></a><a href="/en/team/fut/"><span>FUT</span></a><a href="/en/team/g2/"><span>G2</span></a><a href="/en/team/legacy/"><span>Legacy</span></a><a href="/en/team/mouz/"><span>MOUZ</span></a><a href="/en/team/spirit/"><span>Spirit</span></a><a href="/en/team/vitality/"><span>Vitality</span></a>      </details>
+<a href="/en/team/falcons/"><span><img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12">Falcons</span></a><a href="/en/team/furia/"><span><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12">FURIA</span></a><a href="/en/team/fut/"><span><img class="flag" src="/static/flags/tr.svg" alt="Turkey" title="Turkey" width="16" height="12">FUT</span></a><a href="/en/team/g2/"><span><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12">G2</span></a><a href="/en/team/legacy/"><span><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12">Legacy</span></a><a href="/en/team/mouz/"><span><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12">MOUZ</span></a><a href="/en/team/spirit/"><span><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12">Spirit</span></a><a href="/en/team/vitality/"><span><img class="flag" src="/static/flags/fr.svg" alt="France" title="France" width="16" height="12">Vitality</span></a>      </details>
       <details class="nav-g" data-k="events" open>
         <summary class="nav-h"><a href="/en/tournaments/">Tournaments</a></summary>
 <a href="/en/tournament/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      </details>
@@ -84,11 +85,10 @@
 <nav class="crumbs"><a href="/en/">Home</a> › <a href="/en/players/">Players</a> › NiKo</nav>
 <h1>Grenades by NiKo</h1>
 <p class="muted">
-Falcons · 52 grenades on 3 maps
+<img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12"> Falcons · 52 grenades on 3 maps
 </p>
 <section class="sig" id="assinatura">
-  <h2>Utility signature</h2>
-  <p class="muted">Every grenade he threw in the matches (not only the published lineups), per map and side, compared with the average player on the same map and side. ▲/▼ = 15% above/below average.</p>
+  <h2>Utility signature</h2>  <p class="muted">Every grenade he threw in the matches (not only the published lineups), per map and side, compared with the average player on the same map and side. ▲/▼ = 15% above/below average.</p>
   <div class="seg sig-maps" role="tablist"><button role="tab" data-sig="dust2" class="on">Dust2</button><button role="tab" data-sig="mirage">Mirage</button><button role="tab" data-sig="anubis">Anubis</button></div>
   <div class="sig-map" data-sig-panel="dust2">
     <div class="sig-cols">
@@ -253,8 +253,7 @@ Falcons · 52 grenades on 3 maps
     </div>
   </div>
   <div class="heat-toggles small">Show on map: <label><input type="checkbox" data-heat="0" checked> Smokes</label><label><input type="checkbox" data-heat="1" checked> Flashes</label><label><input type="checkbox" data-heat="2" checked> Molotovs</label><label><input type="checkbox" data-heat="3" checked> HEs</label></div>
-</section>
-<script>
+</section><script>
 (function () {
   var sec = document.getElementById("assinatura"); if (!sec) return;
   sec.addEventListener("click", function (e) {
@@ -271,7 +270,7 @@ Falcons · 52 grenades on 3 maps
 
 <section>
   <h2 class="sec"><a href="/en/anubis/">Anubis</a> <span class="muted">· 2 lineups</span></h2>
-  <div class="cards"><a class="card" href="/en/anubis/smoke-bridge-from-mid-ct/"
+  <div class="cards"><a class="card" href="/en/anubis/smoke-bridge-from-mid-ct/" data-id="smoke-bridge-from-mid-ct"
    data-type="smoke" data-side="CT" data-area="Bridge" data-map="anubis"
    data-teams="falcons g2" data-players="hunter niko"
    data-diff="1" data-count="3" data-eff="-1">
@@ -288,7 +287,7 @@ Falcons · 52 grenades on 3 maps
     <h3>Smoke Bridge (from Mid)</h3>
     <p class="muted">2 uses</p>
   </div>
-</a><a class="card" href="/en/anubis/smoke-main-from-street-t/"
+</a><a class="card" href="/en/anubis/smoke-main-from-street-t/" data-id="smoke-main-from-street-t"
    data-type="smoke" data-side="T" data-area="Main" data-map="anubis"
    data-teams="falcons g2" data-players="hunter niko"
    data-diff="2" data-count="4" data-eff="-1">
@@ -309,7 +308,7 @@ Falcons · 52 grenades on 3 maps
 </section>
 <section>
   <h2 class="sec"><a href="/en/dust2/">Dust2</a> <span class="muted">· 12 lineups</span></h2>
-  <div class="cards"><a class="card" href="/en/dust2/smoke-long-doors-from-under-a-ct/"
+  <div class="cards"><a class="card" href="/en/dust2/smoke-long-doors-from-under-a-ct/" data-id="smoke-long-doors-from-under-a-ct"
    data-type="smoke" data-side="CT" data-area="LongDoors" data-map="dust2"
    data-teams="falcons furia g2 legacy vitality" data-players="apex art hunter karrigan kscerato m0nesy molodoy niko r1nkle try"
    data-diff="2" data-count="25" data-eff="-1">
@@ -326,7 +325,7 @@ Falcons · 52 grenades on 3 maps
     <h3>Smoke Long Doors (from Under A)</h3>
     <p class="muted">7 uses</p>
   </div>
-</a><a class="card" href="/en/dust2/molotov-catwalk-from-short-stairs-ct/"
+</a><a class="card" href="/en/dust2/molotov-catwalk-from-short-stairs-ct/" data-id="molotov-catwalk-from-short-stairs-ct"
    data-type="molotov" data-side="CT" data-area="Catwalk" data-map="dust2"
    data-teams="falcons furia" data-players="kscerato niko"
    data-diff="1" data-count="7" data-eff="0.0">
@@ -343,7 +342,7 @@ Falcons · 52 grenades on 3 maps
     <h3>Molotov Catwalk (from Short Stairs)</h3>
     <p class="muted">5 uses</p>
   </div>
-</a><a class="card" href="/en/dust2/smoke-b-site-from-upper-tunnels-t/"
+</a><a class="card" href="/en/dust2/smoke-b-site-from-upper-tunnels-t/" data-id="smoke-b-site-from-upper-tunnels-t"
    data-type="smoke" data-side="T" data-area="BombsiteB" data-map="dust2"
    data-teams="falcons furia g2 legacy vitality" data-players="heavygod hunter ksloks matys niko ropz yekindar yuurih zywoo"
    data-diff="1" data-count="17" data-eff="-1">
@@ -360,7 +359,7 @@ Falcons · 52 grenades on 3 maps
     <h3>Smoke B Site (from Upper Tunnels)</h3>
     <p class="muted">4 uses</p>
   </div>
-</a><a class="card" href="/en/dust2/smoke-ct-spawn-from-mid-t/"
+</a><a class="card" href="/en/dust2/smoke-ct-spawn-from-mid-t/" data-id="smoke-ct-spawn-from-mid-t"
    data-type="smoke" data-side="T" data-area="CTSpawn" data-map="dust2"
    data-teams="falcons furia legacy vitality" data-players="apex art fallen flamez karrigan kscerato kyousuke m0nesy molodoy niko yekindar yuurih"
    data-diff="2" data-count="19" data-eff="-1">
@@ -377,7 +376,7 @@ Falcons · 52 grenades on 3 maps
     <h3>Smoke CT Spawn (from Mid)</h3>
     <p class="muted">3 uses</p>
   </div>
-</a><a class="card" href="/en/dust2/flash-b-site-from-upper-tunnels-t/"
+</a><a class="card" href="/en/dust2/flash-b-site-from-upper-tunnels-t/" data-id="flash-b-site-from-upper-tunnels-t"
    data-type="flash" data-side="T" data-area="BombsiteB" data-map="dust2"
    data-teams="falcons furia g2 legacy vitality" data-players="art flamez hunter kscerato m0nesy niko yekindar"
    data-diff="2" data-count="16" data-eff="1.25">
@@ -395,7 +394,7 @@ Falcons · 52 grenades on 3 maps
 <p class="eff">blinds 1.2 enemy(ies) for 2.3s on average</p>
     <p class="muted">2 uses</p>
   </div>
-</a><a class="card" href="/en/dust2/smoke-mid-doors-from-lower-tunnels-t/"
+</a><a class="card" href="/en/dust2/smoke-mid-doors-from-lower-tunnels-t/" data-id="smoke-mid-doors-from-lower-tunnels-t"
    data-type="smoke" data-side="T" data-area="MidDoors" data-map="dust2"
    data-teams="falcons g2" data-players="hunter karrigan niko"
    data-diff="1" data-count="7" data-eff="-1">
@@ -412,7 +411,7 @@ Falcons · 52 grenades on 3 maps
     <h3>Smoke Mid Doors (from Lower Tunnels)</h3>
     <p class="muted">2 uses</p>
   </div>
-</a><a class="card" href="/en/dust2/he-catwalk-from-a-extended-ct/"
+</a><a class="card" href="/en/dust2/he-catwalk-from-a-extended-ct/" data-id="he-catwalk-from-a-extended-ct"
    data-type="he" data-side="CT" data-area="Catwalk" data-map="dust2"
    data-teams="falcons vitality" data-players="apex m0nesy niko"
    data-diff="3" data-count="4" data-eff="0.0">
@@ -429,7 +428,7 @@ Falcons · 52 grenades on 3 maps
     <h3>HE Catwalk (from A Extended)</h3>
     <p class="muted">2 uses</p>
   </div>
-</a><a class="card" href="/en/dust2/molotov-long-doors-from-long-a-ct/"
+</a><a class="card" href="/en/dust2/molotov-long-doors-from-long-a-ct/" data-id="molotov-long-doors-from-long-a-ct"
    data-type="molotov" data-side="CT" data-area="LongDoors" data-map="dust2"
    data-teams="falcons furia g2 legacy vitality" data-players="art dumau fallen flamez heavygod hunter karrigan kyousuke matys molodoy niko zywoo"
    data-diff="3" data-count="18" data-eff="0.0">
@@ -446,7 +445,7 @@ Falcons · 52 grenades on 3 maps
     <h3>Molotov Long Doors (from Long A)</h3>
     <p class="muted">2 uses</p>
   </div>
-</a><a class="card" href="/en/dust2/he-b-site-from-upper-tunnels-t/"
+</a><a class="card" href="/en/dust2/he-b-site-from-upper-tunnels-t/" data-id="he-b-site-from-upper-tunnels-t"
    data-type="he" data-side="T" data-area="BombsiteB" data-map="dust2"
    data-teams="falcons vitality" data-players="niko ropz"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -463,7 +462,7 @@ Falcons · 52 grenades on 3 maps
     <h3>HE B Site (from Upper Tunnels)</h3>
     <p class="muted">2 uses</p>
   </div>
-</a><a class="card" href="/en/dust2/flash-lower-tunnels-t/"
+</a><a class="card" href="/en/dust2/flash-lower-tunnels-t/" data-id="flash-lower-tunnels-t"
    data-type="flash" data-side="T" data-area="LowerTunnel" data-map="dust2"
    data-teams="falcons furia g2 vitality" data-players="flamez kscerato nertz niko"
    data-diff="1" data-count="10" data-eff="0.2">
@@ -481,7 +480,7 @@ Falcons · 52 grenades on 3 maps
 <p class="eff">blinds 0.2 enemy(ies) for 0.3s on average</p>
     <p class="muted">1 use</p>
   </div>
-</a><a class="card" href="/en/dust2/smoke-ct-spawn-from-outside-tunnels-t/"
+</a><a class="card" href="/en/dust2/smoke-ct-spawn-from-outside-tunnels-t/" data-id="smoke-ct-spawn-from-outside-tunnels-t"
    data-type="smoke" data-side="T" data-area="CTSpawn" data-map="dust2"
    data-teams="falcons furia g2 legacy" data-players="art matys niko yuurih"
    data-diff="3" data-count="4" data-eff="-1">
@@ -498,7 +497,7 @@ Falcons · 52 grenades on 3 maps
     <h3>Smoke CT Spawn (from Outside Tunnels)</h3>
     <p class="muted">1 use</p>
   </div>
-</a><a class="card" href="/en/dust2/he-long-doors-from-long-a-ct/"
+</a><a class="card" href="/en/dust2/he-long-doors-from-long-a-ct/" data-id="he-long-doors-from-long-a-ct"
    data-type="he" data-side="CT" data-area="LongDoors" data-map="dust2"
    data-teams="falcons legacy" data-players="dumau kyousuke niko"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -519,7 +518,7 @@ Falcons · 52 grenades on 3 maps
 </section>
 <section>
   <h2 class="sec"><a href="/en/mirage/">Mirage</a> <span class="muted">· 10 lineups</span></h2>
-  <div class="cards"><a class="card" href="/en/mirage/smoke-sniper-s-nest-from-t-spawn-t/"
+  <div class="cards"><a class="card" href="/en/mirage/smoke-sniper-s-nest-from-t-spawn-t/" data-id="smoke-sniper-s-nest-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="SnipersNest" data-map="mirage"
    data-teams="falcons furia fut g2 legacy mouz spirit vitality" data-players="apex art coolio dem0n donk dumau dziugss flamez heavygod hunter karrigan ksloks kyousuke latto m0nesy magixx matys mezii nertz niko pr r1nkle ropz sh1ro spinx sunpayus torzsi try xelex xertion xfl0ud yekindar zont1x zywoo"
    data-diff="3" data-count="99" data-eff="-1">
@@ -536,7 +535,7 @@ Falcons · 52 grenades on 3 maps
     <h3>Smoke Sniper&#39;s Nest (from T Spawn)</h3>
     <p class="muted">5 uses</p>
   </div>
-</a><a class="card" href="/en/mirage/molotov-underpass-from-connector-ct/"
+</a><a class="card" href="/en/mirage/molotov-underpass-from-connector-ct/" data-id="molotov-underpass-from-connector-ct"
    data-type="molotov" data-side="CT" data-area="Underpass" data-map="mirage"
    data-teams="falcons fut legacy mouz" data-players="art coolio niko xertion"
    data-diff="2" data-count="6" data-eff="0.0">
@@ -553,7 +552,7 @@ Falcons · 52 grenades on 3 maps
     <h3>Molotov Underpass (from Connector)</h3>
     <p class="muted">2 uses</p>
   </div>
-</a><a class="card" href="/en/mirage/he-top-mid-from-sniper-s-nest-ct/"
+</a><a class="card" href="/en/mirage/he-top-mid-from-sniper-s-nest-ct/" data-id="he-top-mid-from-sniper-s-nest-ct"
    data-type="he" data-side="CT" data-area="TopofMid" data-map="mirage"
    data-teams="falcons mouz vitality" data-players="apex niko xertion"
    data-diff="3" data-count="4" data-eff="0.0">
@@ -570,7 +569,7 @@ Falcons · 52 grenades on 3 maps
     <h3>HE Top Mid (from Sniper&#39;s Nest)</h3>
     <p class="muted">2 uses</p>
   </div>
-</a><a class="card" href="/en/mirage/he-top-mid-from-connector-ct/"
+</a><a class="card" href="/en/mirage/he-top-mid-from-connector-ct/" data-id="he-top-mid-from-connector-ct"
    data-type="he" data-side="CT" data-area="TopofMid" data-map="mirage"
    data-teams="falcons g2 mouz vitality" data-players="apex heavygod m0nesy niko xertion"
    data-diff="3" data-count="6" data-eff="0.0">
@@ -587,7 +586,7 @@ Falcons · 52 grenades on 3 maps
     <h3>HE Top Mid (from Connector)</h3>
     <p class="muted">2 uses</p>
   </div>
-</a><a class="card" href="/en/mirage/smoke-connector-from-top-mid-t/"
+</a><a class="card" href="/en/mirage/smoke-connector-from-top-mid-t/" data-id="smoke-connector-from-top-mid-t"
    data-type="smoke" data-side="T" data-area="Connector" data-map="mirage"
    data-teams="falcons fut g2 legacy mouz spirit vitality" data-players="apex dumau flamez heavygod hunter karrigan magixx nertz niko sunpayus tn1r xertion"
    data-diff="1" data-count="20" data-eff="-1">
@@ -604,7 +603,7 @@ Falcons · 52 grenades on 3 maps
     <h3>Smoke Connector (from Top Mid)</h3>
     <p class="muted">1 use</p>
   </div>
-</a><a class="card" href="/en/mirage/he-sniper-s-nest-ct/"
+</a><a class="card" href="/en/mirage/he-sniper-s-nest-ct/" data-id="he-sniper-s-nest-ct"
    data-type="he" data-side="CT" data-area="SnipersNest" data-map="mirage"
    data-teams="falcons furia fut legacy" data-players="dem0n dumau kscerato kyousuke niko sunpayus"
    data-diff="1" data-count="9" data-eff="0.0">
@@ -621,7 +620,7 @@ Falcons · 52 grenades on 3 maps
     <h3>HE Sniper&#39;s Nest</h3>
     <p class="muted">1 use</p>
   </div>
-</a><a class="card" href="/en/mirage/flash-a-site-from-ct-spawn-ct/"
+</a><a class="card" href="/en/mirage/flash-a-site-from-ct-spawn-ct/" data-id="flash-a-site-from-ct-spawn-ct"
    data-type="flash" data-side="CT" data-area="BombsiteA" data-map="mirage"
    data-teams="falcons g2" data-players="m0nesy matys niko"
    data-diff="3" data-count="3" data-eff="1.67">
@@ -639,7 +638,7 @@ Falcons · 52 grenades on 3 maps
 <p class="eff">blinds 1.7 enemy(ies) for 4.1s on average</p>
     <p class="muted">1 use</p>
   </div>
-</a><a class="card" href="/en/mirage/he-palace-alley-from-jungle-ct/"
+</a><a class="card" href="/en/mirage/he-palace-alley-from-jungle-ct/" data-id="he-palace-alley-from-jungle-ct"
    data-type="he" data-side="CT" data-area="PalaceAlley" data-map="mirage"
    data-teams="falcons mouz" data-players="niko xertion"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -656,7 +655,7 @@ Falcons · 52 grenades on 3 maps
     <h3>HE Palace Alley (from Jungle)</h3>
     <p class="muted">1 use</p>
   </div>
-</a><a class="card" href="/en/mirage/smoke-mid-from-connector-ct/"
+</a><a class="card" href="/en/mirage/smoke-mid-from-connector-ct/" data-id="smoke-mid-from-connector-ct"
    data-type="smoke" data-side="CT" data-area="Middle" data-map="mirage"
    data-teams="falcons fut g2" data-players="nertz niko sunpayus"
    data-diff="2" data-count="3" data-eff="-1">
@@ -673,7 +672,7 @@ Falcons · 52 grenades on 3 maps
     <h3>Smoke Mid (from Connector)</h3>
     <p class="muted">1 use</p>
   </div>
-</a><a class="card" href="/en/mirage/smoke-underpass-from-connector-ct/"
+</a><a class="card" href="/en/mirage/smoke-underpass-from-connector-ct/" data-id="smoke-underpass-from-connector-ct"
    data-type="smoke" data-side="CT" data-area="Underpass" data-map="mirage"
    data-teams="falcons mouz vitality" data-players="apex niko xertion"
    data-diff="1" data-count="3" data-eff="-1">

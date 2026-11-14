@@ -19,15 +19,16 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Lineups Pro">
 <meta name="theme-color" content="#0b0f15">
-<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light"; } catch (e) {}</script>
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
+  if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/static/style.css">
-<script>window.I18N = {"copied": "Copied!", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s"}; window.LANG = "en";</script>
+<script>window.I18N = {"copied": "Copied!", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "open": "Open", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s"}; window.LANG = "en";</script>
 </head>
 <body>
 <header class="top">
   <div class="top-in">
-    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-controls="side" aria-expanded="false">☰</button>
+    <button class="menu-btn" id="menuBtn" aria-label="Show or hide the menu" aria-controls="side" aria-expanded="false">☰</button>
     <a class="logo" href="/en/"><span class="logo-mark">◎</span> Lineups Pro</a>
     <div class="search">
       <input id="q" type="search" placeholder="Search map, player, team, smoke…" autocomplete="off" aria-label="Search">
@@ -58,7 +59,7 @@
 <a href="/en/player/apex/"><span>apEX</span></a><a href="/en/player/art/"><span>art</span></a><a href="/en/player/coolio/"><span>coolio</span></a><a href="/en/player/dem0n/"><span>dem0n</span></a><a href="/en/player/donk/"><span>donk</span></a><a href="/en/player/dumau/"><span>dumau</span></a><a href="/en/player/dziugss/"><span>dziugss</span></a><a href="/en/player/fallen/"><span>FalleN</span></a><a href="/en/player/flamez/"><span>flameZ</span></a><a href="/en/player/heavygod/"><span>HeavyGod</span></a><a href="/en/player/hunter/"><span>huNter</span></a><a href="/en/player/karrigan/"><span>karrigan</span></a><a class="more" href="/en/players/">see all (40)</a>      </details>
       <details class="nav-g" data-k="teams" open>
         <summary class="nav-h"><a href="/en/teams/">Teams</a></summary>
-<a href="/en/team/falcons/"><span>Falcons</span></a><a href="/en/team/furia/"><span>FURIA</span></a><a href="/en/team/fut/"><span>FUT</span></a><a href="/en/team/g2/"><span>G2</span></a><a href="/en/team/legacy/"><span>Legacy</span></a><a href="/en/team/mouz/"><span>MOUZ</span></a><a href="/en/team/spirit/"><span>Spirit</span></a><a href="/en/team/vitality/"><span>Vitality</span></a>      </details>
+<a href="/en/team/falcons/"><span><img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12">Falcons</span></a><a href="/en/team/furia/"><span><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12">FURIA</span></a><a href="/en/team/fut/"><span><img class="flag" src="/static/flags/tr.svg" alt="Turkey" title="Turkey" width="16" height="12">FUT</span></a><a href="/en/team/g2/"><span><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12">G2</span></a><a href="/en/team/legacy/"><span><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12">Legacy</span></a><a href="/en/team/mouz/"><span><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12">MOUZ</span></a><a href="/en/team/spirit/"><span><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12">Spirit</span></a><a href="/en/team/vitality/"><span><img class="flag" src="/static/flags/fr.svg" alt="France" title="France" width="16" height="12">Vitality</span></a>      </details>
       <details class="nav-g" data-k="events" open>
         <summary class="nav-h"><a href="/en/tournaments/">Tournaments</a></summary>
 <a href="/en/tournament/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      </details>
@@ -110,7 +111,7 @@
   <span class="muted" id="shown"></span>
 </div>
 <div class="cards" id="cards">
-<a class="card" href="/en/mirage/smoke-sniper-s-nest-from-t-spawn-t/"
+<a class="card" href="/en/mirage/smoke-sniper-s-nest-from-t-spawn-t/" data-id="smoke-sniper-s-nest-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="SnipersNest" data-map="mirage"
    data-teams="falcons furia fut g2 legacy mouz spirit vitality" data-players="apex art coolio dem0n donk dumau dziugss flamez heavygod hunter karrigan ksloks kyousuke latto m0nesy magixx matys mezii nertz niko pr r1nkle ropz sh1ro spinx sunpayus torzsi try xelex xertion xfl0ud yekindar zont1x zywoo"
    data-diff="3" data-count="99" data-eff="-1">
@@ -127,7 +128,7 @@
     <h3>Smoke Sniper&#39;s Nest (from T Spawn)</h3>
     <p class="muted">99 uses · 8 teams · 31% rounds won</p>
   </div>
-</a><a class="card" href="/en/nuke/smoke-outside-t/"
+</a><a class="card" href="/en/nuke/smoke-outside-t/" data-id="smoke-outside-t"
    data-type="smoke" data-side="T" data-area="Outside" data-map="nuke"
    data-teams="fut g2 mouz spirit" data-players="donk hunter magixx matys nertz pr sh1ro torzsi xelex xertion xfl0ud"
    data-diff="2" data-count="98" data-eff="-1">
@@ -144,7 +145,7 @@
     <h3>Smoke Outside</h3>
     <p class="muted">98 uses · 4 teams · 46% rounds won</p>
   </div>
-</a><a class="card" href="/en/ancient/smoke-outside-from-ct-spawn-ct/"
+</a><a class="card" href="/en/ancient/smoke-outside-from-ct-spawn-ct/" data-id="smoke-outside-from-ct-spawn-ct"
    data-type="smoke" data-side="CT" data-area="Outside" data-map="ancient"
    data-teams="fut g2 mouz spirit" data-players="dziugss heavygod r1nkle sh1ro sunpayus torzsi zont1x"
    data-diff="3" data-count="50" data-eff="-1">
@@ -161,7 +162,7 @@
     <h3>Smoke Outside (from CT Spawn)</h3>
     <p class="muted">50 uses · 4 teams · 52% rounds won</p>
   </div>
-</a><a class="card" href="/en/nuke/smoke-outside-from-t-spawn-t/"
+</a><a class="card" href="/en/nuke/smoke-outside-from-t-spawn-t/" data-id="smoke-outside-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="Outside" data-map="nuke"
    data-teams="fut g2 mouz spirit" data-players="hunter magixx nertz sh1ro xertion xfl0ud"
    data-diff="2" data-count="35" data-eff="-1">
@@ -178,7 +179,7 @@
     <h3>Smoke Outside (from T Spawn)</h3>
     <p class="muted">35 uses · 4 teams · 40% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/smoke-catwalk-from-t-spawn-t/"
+</a><a class="card" href="/en/mirage/smoke-catwalk-from-t-spawn-t/" data-id="smoke-catwalk-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="Catwalk" data-map="mirage"
    data-teams="falcons fut g2 legacy mouz spirit vitality" data-players="dem0n dumau dziugss flamez heavygod ksloks kyousuke latto magixx mezii nertz pr r1nkle spinx torzsi try xelex xertion zywoo"
    data-diff="2" data-count="33" data-eff="-1">
@@ -195,7 +196,7 @@
     <h3>Smoke Catwalk (from T Spawn)</h3>
     <p class="muted">33 uses · 7 teams · 36% rounds won</p>
   </div>
-</a><a class="card" href="/en/ancient/smoke-top-mid-from-t-spawn-t/"
+</a><a class="card" href="/en/ancient/smoke-top-mid-from-t-spawn-t/" data-id="smoke-top-mid-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="TopofMid" data-map="ancient"
    data-teams="fut g2 mouz spirit" data-players="dziugss heavygod hunter r1nkle sh1ro sunpayus tn1r torzsi"
    data-diff="3" data-count="31" data-eff="-1">
@@ -212,7 +213,7 @@
     <h3>Smoke Top Mid (from T Spawn)</h3>
     <p class="muted">31 uses · 4 teams · 58% rounds won</p>
   </div>
-</a><a class="card" href="/en/ancient/smoke-t-upper-from-t-spawn-t/"
+</a><a class="card" href="/en/ancient/smoke-t-upper-from-t-spawn-t/" data-id="smoke-t-upper-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="TSideUpper" data-map="ancient"
    data-teams="fut g2 mouz spirit" data-players="coolio heavygod hunter magixx r1nkle tn1r torzsi xelex xertion"
    data-diff="2" data-count="27" data-eff="-1">
@@ -229,7 +230,7 @@
     <h3>Smoke T Upper (from T Spawn)</h3>
     <p class="muted">27 uses · 4 teams · 37% rounds won</p>
   </div>
-</a><a class="card" href="/en/inferno/smoke-banana-from-ct-spawn-ct/"
+</a><a class="card" href="/en/inferno/smoke-banana-from-ct-spawn-ct/" data-id="smoke-banana-from-ct-spawn-ct"
    data-type="smoke" data-side="CT" data-area="Banana" data-map="inferno"
    data-teams="furia g2 mouz vitality" data-players="fallen heavygod hunter kscerato mezii r1nkle spinx torzsi xelex"
    data-diff="2" data-count="26" data-eff="-1">
@@ -246,7 +247,7 @@
     <h3>Smoke Banana (from CT Spawn)</h3>
     <p class="muted">26 uses · 4 teams · 73% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/smoke-top-mid-from-t-spawn-t/"
+</a><a class="card" href="/en/mirage/smoke-top-mid-from-t-spawn-t/" data-id="smoke-top-mid-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="TopofMid" data-map="mirage"
    data-teams="fut g2 legacy mouz spirit vitality" data-players="dziugss heavygod ksloks magixx mezii pr r1nkle sh1ro spinx tn1r torzsi xelex xertion"
    data-diff="1" data-count="26" data-eff="-1">
@@ -263,7 +264,7 @@
     <h3>Smoke Top Mid (from T Spawn)</h3>
     <p class="muted">26 uses · 6 teams · 23% rounds won</p>
   </div>
-</a><a class="card" href="/en/dust2/smoke-long-doors-from-under-a-ct/"
+</a><a class="card" href="/en/dust2/smoke-long-doors-from-under-a-ct/" data-id="smoke-long-doors-from-under-a-ct"
    data-type="smoke" data-side="CT" data-area="LongDoors" data-map="dust2"
    data-teams="falcons furia g2 legacy vitality" data-players="apex art hunter karrigan kscerato m0nesy molodoy niko r1nkle try"
    data-diff="2" data-count="25" data-eff="-1">
@@ -280,7 +281,7 @@
     <h3>Smoke Long Doors (from Under A)</h3>
     <p class="muted">25 uses · 5 teams · 60% rounds won</p>
   </div>
-</a><a class="card" href="/en/cache/smoke-catwalk-from-outside-a-t/"
+</a><a class="card" href="/en/cache/smoke-catwalk-from-outside-a-t/" data-id="smoke-catwalk-from-outside-a-t"
    data-type="smoke" data-side="T" data-area="Catwalk" data-map="cache"
    data-teams="fut mouz spirit vitality" data-players="apex dem0n dziugss magixx pr sh1ro sunpayus torzsi xfl0ud"
    data-diff="2" data-count="24" data-eff="-1">
@@ -297,7 +298,7 @@
     <h3>Smoke Catwalk (from Outside A)</h3>
     <p class="muted">24 uses · 4 teams · 50% rounds won</p>
   </div>
-</a><a class="card" href="/en/cache/smoke-garage-from-bus-stop-ct/"
+</a><a class="card" href="/en/cache/smoke-garage-from-bus-stop-ct/" data-id="smoke-garage-from-bus-stop-ct"
    data-type="smoke" data-side="CT" data-area="Garage" data-map="cache"
    data-teams="fut mouz" data-players="dem0n spinx"
    data-diff="3" data-count="24" data-eff="-1">
@@ -314,7 +315,7 @@
     <h3>Smoke Garage (from Bus Stop)</h3>
     <p class="muted">24 uses · 2 teams · 58% rounds won</p>
   </div>
-</a><a class="card" href="/en/ancient/smoke-house-from-t-spawn-t/"
+</a><a class="card" href="/en/ancient/smoke-house-from-t-spawn-t/" data-id="smoke-house-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="House" data-map="ancient"
    data-teams="fut g2 mouz spirit" data-players="dziugss heavygod hunter r1nkle sh1ro sunpayus torzsi"
    data-diff="3" data-count="22" data-eff="-1">
@@ -331,7 +332,7 @@
     <h3>Smoke House (from T Spawn)</h3>
     <p class="muted">22 uses · 4 teams · 50% rounds won</p>
   </div>
-</a><a class="card" href="/en/dust2/smoke-mid-doors-from-t-spawn-t/"
+</a><a class="card" href="/en/dust2/smoke-mid-doors-from-t-spawn-t/" data-id="smoke-mid-doors-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="MidDoors" data-map="dust2"
    data-teams="falcons g2 legacy vitality" data-players="art heavygod latto nertz teses try zywoo"
    data-diff="2" data-count="21" data-eff="-1">
@@ -348,7 +349,7 @@
     <h3>Smoke Mid Doors (from T Spawn)</h3>
     <p class="muted">21 uses · 4 teams · 48% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/smoke-sniper-s-nest-from-top-mid-t/"
+</a><a class="card" href="/en/mirage/smoke-sniper-s-nest-from-top-mid-t/" data-id="smoke-sniper-s-nest-from-top-mid-t"
    data-type="smoke" data-side="T" data-area="SnipersNest" data-map="mirage"
    data-teams="falcons fut g2 legacy mouz spirit" data-players="art coolio hunter m0nesy r1nkle sh1ro try xelex xertion"
    data-diff="1" data-count="21" data-eff="-1">
@@ -365,7 +366,7 @@
     <h3>Smoke Sniper&#39;s Nest (from Top Mid)</h3>
     <p class="muted">21 uses · 6 teams · 38% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/smoke-connector-from-top-mid-t/"
+</a><a class="card" href="/en/mirage/smoke-connector-from-top-mid-t/" data-id="smoke-connector-from-top-mid-t"
    data-type="smoke" data-side="T" data-area="Connector" data-map="mirage"
    data-teams="falcons fut g2 legacy mouz spirit vitality" data-players="apex dumau flamez heavygod hunter karrigan magixx nertz niko sunpayus tn1r xertion"
    data-diff="1" data-count="20" data-eff="-1">
@@ -382,7 +383,7 @@
     <h3>Smoke Connector (from Top Mid)</h3>
     <p class="muted">20 uses · 7 teams · 35% rounds won</p>
   </div>
-</a><a class="card" href="/en/ancient/smoke-mid-from-t-spawn-t/"
+</a><a class="card" href="/en/ancient/smoke-mid-from-t-spawn-t/" data-id="smoke-mid-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="Middle" data-map="ancient"
    data-teams="fut g2 spirit" data-players="coolio dziugss magixx r1nkle sh1ro zont1x"
    data-diff="3" data-count="19" data-eff="-1">
@@ -399,7 +400,7 @@
     <h3>Smoke Mid (from T Spawn)</h3>
     <p class="muted">19 uses · 3 teams · 53% rounds won</p>
   </div>
-</a><a class="card" href="/en/dust2/smoke-ct-spawn-from-mid-t/"
+</a><a class="card" href="/en/dust2/smoke-ct-spawn-from-mid-t/" data-id="smoke-ct-spawn-from-mid-t"
    data-type="smoke" data-side="T" data-area="CTSpawn" data-map="dust2"
    data-teams="falcons furia legacy vitality" data-players="apex art fallen flamez karrigan kscerato kyousuke m0nesy molodoy niko yekindar yuurih"
    data-diff="2" data-count="19" data-eff="-1">
@@ -416,7 +417,7 @@
     <h3>Smoke CT Spawn (from Mid)</h3>
     <p class="muted">19 uses · 4 teams · 42% rounds won</p>
   </div>
-</a><a class="card" href="/en/dust2/smoke-b-site-from-upper-tunnels-t/"
+</a><a class="card" href="/en/dust2/smoke-b-site-from-upper-tunnels-t/" data-id="smoke-b-site-from-upper-tunnels-t"
    data-type="smoke" data-side="T" data-area="BombsiteB" data-map="dust2"
    data-teams="falcons furia g2 legacy vitality" data-players="heavygod hunter ksloks matys niko ropz yekindar yuurih zywoo"
    data-diff="1" data-count="17" data-eff="-1">
@@ -433,7 +434,7 @@
     <h3>Smoke B Site (from Upper Tunnels)</h3>
     <p class="muted">17 uses · 5 teams · 53% rounds won</p>
   </div>
-</a><a class="card" href="/en/cache/smoke-b-site-from-sun-room-t/"
+</a><a class="card" href="/en/cache/smoke-b-site-from-sun-room-t/" data-id="smoke-b-site-from-sun-room-t"
    data-type="smoke" data-side="T" data-area="BombsiteB" data-map="cache"
    data-teams="fut mouz spirit vitality" data-players="coolio flamez sh1ro sunpayus torzsi zywoo"
    data-diff="3" data-count="15" data-eff="-1">
@@ -450,7 +451,7 @@
     <h3>Smoke B Site (from Sun Room)</h3>
     <p class="muted">15 uses · 4 teams · 33% rounds won</p>
   </div>
-</a><a class="card" href="/en/ancient/smoke-ruins-from-ct-spawn-ct/"
+</a><a class="card" href="/en/ancient/smoke-ruins-from-ct-spawn-ct/" data-id="smoke-ruins-from-ct-spawn-ct"
    data-type="smoke" data-side="CT" data-area="Ruins" data-map="ancient"
    data-teams="g2 mouz spirit" data-players="heavygod matys spinx tn1r"
    data-diff="3" data-count="14" data-eff="-1">
@@ -467,7 +468,7 @@
     <h3>Smoke Ruins (from CT Spawn)</h3>
     <p class="muted">14 uses · 3 teams · 64% rounds won</p>
   </div>
-</a><a class="card" href="/en/cache/smoke-bmain-from-rafters-ct/"
+</a><a class="card" href="/en/cache/smoke-bmain-from-rafters-ct/" data-id="smoke-bmain-from-rafters-ct"
    data-type="smoke" data-side="CT" data-area="BMain" data-map="cache"
    data-teams="fut mouz spirit vitality" data-players="coolio ropz xelex xfl0ud zont1x"
    data-diff="3" data-count="14" data-eff="-1">
@@ -484,7 +485,7 @@
     <h3>Smoke BMain (from Rafters)</h3>
     <p class="muted">14 uses · 4 teams · 71% rounds won</p>
   </div>
-</a><a class="card" href="/en/dust2/smoke-long-doors-from-long-a-ct/"
+</a><a class="card" href="/en/dust2/smoke-long-doors-from-long-a-ct/" data-id="smoke-long-doors-from-long-a-ct"
    data-type="smoke" data-side="CT" data-area="LongDoors" data-map="dust2"
    data-teams="falcons furia g2 legacy vitality" data-players="dumau fallen flamez heavygod karrigan kyousuke m0nesy molodoy"
    data-diff="3" data-count="14" data-eff="-1">
@@ -501,7 +502,7 @@
     <h3>Smoke Long Doors (from Long A)</h3>
     <p class="muted">14 uses · 5 teams · 50% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/smoke-a-site-from-palace-alley-t/"
+</a><a class="card" href="/en/mirage/smoke-a-site-from-palace-alley-t/" data-id="smoke-a-site-from-palace-alley-t"
    data-type="smoke" data-side="T" data-area="BombsiteA" data-map="mirage"
    data-teams="falcons furia fut g2 legacy mouz spirit vitality" data-players="dziugss heavygod hunter kscerato mezii ropz sh1ro spinx teses torzsi try"
    data-diff="2" data-count="14" data-eff="-1">
@@ -518,7 +519,7 @@
     <h3>Smoke A Site (from Palace Alley)</h3>
     <p class="muted">14 uses · 8 teams · 43% rounds won</p>
   </div>
-</a><a class="card" href="/en/cache/smoke-a-site-from-long-a-t/"
+</a><a class="card" href="/en/cache/smoke-a-site-from-long-a-t/" data-id="smoke-a-site-from-long-a-t"
    data-type="smoke" data-side="T" data-area="BombsiteA" data-map="cache"
    data-teams="fut mouz" data-players="coolio pr torzsi"
    data-diff="1" data-count="13" data-eff="-1">
@@ -535,7 +536,7 @@
     <h3>Smoke A Site (from Long A)</h3>
     <p class="muted">13 uses · 2 teams · 23% rounds won</p>
   </div>
-</a><a class="card" href="/en/cache/smoke-catwalk-from-long-a-t/"
+</a><a class="card" href="/en/cache/smoke-catwalk-from-long-a-t/" data-id="smoke-catwalk-from-long-a-t"
    data-type="smoke" data-side="T" data-area="Catwalk" data-map="cache"
    data-teams="fut mouz" data-players="coolio pr torzsi"
    data-diff="1" data-count="13" data-eff="-1">
@@ -552,7 +553,7 @@
     <h3>Smoke Catwalk (from Long A)</h3>
     <p class="muted">13 uses · 2 teams · 23% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/smoke-palace-from-a-site-ct/"
+</a><a class="card" href="/en/mirage/smoke-palace-from-a-site-ct/" data-id="smoke-palace-from-a-site-ct"
    data-type="smoke" data-side="CT" data-area="PalaceInterior" data-map="mirage"
    data-teams="falcons furia mouz vitality" data-players="apex teses xelex yekindar yuurih"
    data-diff="1" data-count="13" data-eff="-1">
@@ -569,7 +570,7 @@
     <h3>Smoke Palace (from A Site)</h3>
     <p class="muted">13 uses · 4 teams · 92% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/smoke-apartments-from-b-site-ct/"
+</a><a class="card" href="/en/mirage/smoke-apartments-from-b-site-ct/" data-id="smoke-apartments-from-b-site-ct"
    data-type="smoke" data-side="CT" data-area="Apartments" data-map="mirage"
    data-teams="falcons fut g2 mouz spirit vitality" data-players="hunter karrigan mezii pr sunpayus zont1x"
    data-diff="3" data-count="13" data-eff="-1">
@@ -586,7 +587,7 @@
     <h3>Smoke Apartments (from B Site)</h3>
     <p class="muted">13 uses · 6 teams · 69% rounds won</p>
   </div>
-</a><a class="card" href="/en/dust2/smoke-mid-doors-from-top-mid-t/"
+</a><a class="card" href="/en/dust2/smoke-mid-doors-from-top-mid-t/" data-id="smoke-mid-doors-from-top-mid-t"
    data-type="smoke" data-side="T" data-area="MidDoors" data-map="dust2"
    data-teams="falcons furia g2 legacy" data-players="art fallen heavygod hunter karrigan m0nesy molodoy nertz teses"
    data-diff="1" data-count="12" data-eff="-1">
@@ -603,7 +604,7 @@
     <h3>Smoke Mid Doors (from Top Mid)</h3>
     <p class="muted">12 uses · 4 teams · 42% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/smoke-a-site-from-t-spawn-t/"
+</a><a class="card" href="/en/mirage/smoke-a-site-from-t-spawn-t/" data-id="smoke-a-site-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="BombsiteA" data-map="mirage"
    data-teams="fut g2 mouz spirit vitality" data-players="coolio dziugss hunter magixx mezii sunpayus torzsi zont1x"
    data-diff="3" data-count="12" data-eff="-1">
@@ -620,7 +621,7 @@
     <h3>Smoke A Site (from T Spawn)</h3>
     <p class="muted">12 uses · 5 teams · 17% rounds won</p>
   </div>
-</a><a class="card" href="/en/nuke/smoke-a-site-from-outside-t/"
+</a><a class="card" href="/en/nuke/smoke-a-site-from-outside-t/" data-id="smoke-a-site-from-outside-t"
    data-type="smoke" data-side="T" data-area="BombsiteA" data-map="nuke"
    data-teams="g2 spirit" data-players="heavygod r1nkle zont1x"
    data-diff="2" data-count="11" data-eff="-1">
@@ -637,7 +638,7 @@
     <h3>Smoke A Site (from Outside)</h3>
     <p class="muted">11 uses · 2 teams · 0% rounds won</p>
   </div>
-</a><a class="card" href="/en/cache/smoke-b-site-from-t-spawn-t/"
+</a><a class="card" href="/en/cache/smoke-b-site-from-t-spawn-t/" data-id="smoke-b-site-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="BombsiteB" data-map="cache"
    data-teams="mouz spirit vitality" data-players="ropz spinx zont1x"
    data-diff="3" data-count="10" data-eff="-1">
@@ -654,7 +655,7 @@
     <h3>Smoke B Site (from T Spawn)</h3>
     <p class="muted">10 uses · 3 teams · 70% rounds won</p>
   </div>
-</a><a class="card" href="/en/dust2/smoke-mid-doors-from-outside-long-t/"
+</a><a class="card" href="/en/dust2/smoke-mid-doors-from-outside-long-t/" data-id="smoke-mid-doors-from-outside-long-t"
    data-type="smoke" data-side="T" data-area="MidDoors" data-map="dust2"
    data-teams="furia legacy vitality" data-players="fallen latto mezii yekindar"
    data-diff="2" data-count="10" data-eff="-1">
@@ -671,7 +672,7 @@
     <h3>Smoke Mid Doors (from Outside Long)</h3>
     <p class="muted">10 uses · 3 teams · 50% rounds won</p>
   </div>
-</a><a class="card" href="/en/dust2/smoke-under-a-from-long-doors-t/"
+</a><a class="card" href="/en/dust2/smoke-under-a-from-long-doors-t/" data-id="smoke-under-a-from-long-doors-t"
    data-type="smoke" data-side="T" data-area="UnderA" data-map="dust2"
    data-teams="falcons furia g2 vitality" data-players="apex m0nesy mezii r1nkle teses yuurih"
    data-diff="2" data-count="10" data-eff="-1">
@@ -688,7 +689,7 @@
     <h3>Smoke Under A (from Long Doors)</h3>
     <p class="muted">10 uses · 4 teams · 70% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/smoke-stairs-from-t-spawn-t/"
+</a><a class="card" href="/en/mirage/smoke-stairs-from-t-spawn-t/" data-id="smoke-stairs-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="Stairs" data-map="mirage"
    data-teams="fut g2 legacy mouz spirit vitality" data-players="hunter latto magixx mezii sunpayus torzsi"
    data-diff="2" data-count="10" data-eff="-1">
@@ -705,7 +706,7 @@
     <h3>Smoke Stairs (from T Spawn)</h3>
     <p class="muted">10 uses · 6 teams · 10% rounds won</p>
   </div>
-</a><a class="card" href="/en/dust2/smoke-upper-tunnels-from-b-site-ct/"
+</a><a class="card" href="/en/dust2/smoke-upper-tunnels-from-b-site-ct/" data-id="smoke-upper-tunnels-from-b-site-ct"
    data-type="smoke" data-side="CT" data-area="UpperTunnel" data-map="dust2"
    data-teams="falcons furia legacy vitality" data-players="ksloks mezii teses yuurih"
    data-diff="3" data-count="9" data-eff="-1">
@@ -722,7 +723,7 @@
     <h3>Smoke Upper Tunnels (from B Site)</h3>
     <p class="muted">9 uses · 4 teams · 67% rounds won</p>
   </div>
-</a><a class="card" href="/en/inferno/smoke-banana-from-t-spawn-t/"
+</a><a class="card" href="/en/inferno/smoke-banana-from-t-spawn-t/" data-id="smoke-banana-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="Banana" data-map="inferno"
    data-teams="furia g2 mouz vitality" data-players="apex fallen r1nkle torzsi"
    data-diff="3" data-count="9" data-eff="-1">
@@ -739,7 +740,7 @@
     <h3>Smoke Banana (from T Spawn)</h3>
     <p class="muted">9 uses · 4 teams · 33% rounds won</p>
   </div>
-</a><a class="card" href="/en/inferno/smoke-banana-from-b-site-ct/"
+</a><a class="card" href="/en/inferno/smoke-banana-from-b-site-ct/" data-id="smoke-banana-from-b-site-ct"
    data-type="smoke" data-side="CT" data-area="Banana" data-map="inferno"
    data-teams="mouz vitality" data-players="flamez pr xertion"
    data-diff="3" data-count="9" data-eff="-1">
@@ -756,7 +757,7 @@
     <h3>Smoke Banana (from B Site)</h3>
     <p class="muted">9 uses · 2 teams · 67% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/smoke-a-site-from-t-ramp-t/"
+</a><a class="card" href="/en/mirage/smoke-a-site-from-t-ramp-t/" data-id="smoke-a-site-from-t-ramp-t"
    data-type="smoke" data-side="T" data-area="BombsiteA" data-map="mirage"
    data-teams="fut g2 legacy mouz spirit vitality" data-players="dem0n hunter latto magixx mezii sh1ro sunpayus torzsi"
    data-diff="1" data-count="9" data-eff="-1">
@@ -773,7 +774,7 @@
     <h3>Smoke A Site (from T Ramp)</h3>
     <p class="muted">9 uses · 6 teams · 56% rounds won</p>
   </div>
-</a><a class="card" href="/en/ancient/smoke-alley-from-ruins-t/"
+</a><a class="card" href="/en/ancient/smoke-alley-from-ruins-t/" data-id="smoke-alley-from-ruins-t"
    data-type="smoke" data-side="T" data-area="Alley" data-map="ancient"
    data-teams="g2 spirit" data-players="r1nkle sh1ro"
    data-diff="2" data-count="8" data-eff="-1">
@@ -790,7 +791,7 @@
     <h3>Smoke Alley (from Ruins)</h3>
     <p class="muted">8 uses · 2 teams · 62% rounds won</p>
   </div>
-</a><a class="card" href="/en/inferno/smoke-top-mid-from-t-spawn-t/"
+</a><a class="card" href="/en/inferno/smoke-top-mid-from-t-spawn-t/" data-id="smoke-top-mid-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="TopofMid" data-map="inferno"
    data-teams="furia g2 mouz vitality" data-players="flamez matys xelex yuurih"
    data-diff="3" data-count="8" data-eff="-1">
@@ -807,7 +808,7 @@
     <h3>Smoke Top Mid (from T Spawn)</h3>
     <p class="muted">8 uses · 4 teams · 38% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/smoke-palace-from-ct-spawn-ct/"
+</a><a class="card" href="/en/mirage/smoke-palace-from-ct-spawn-ct/" data-id="smoke-palace-from-ct-spawn-ct"
    data-type="smoke" data-side="CT" data-area="PalaceInterior" data-map="mirage"
    data-teams="falcons furia fut g2" data-players="dem0n fallen heavygod hunter m0nesy yekindar"
    data-diff="2" data-count="8" data-eff="-1">
@@ -824,7 +825,7 @@
     <h3>Smoke Palace (from CT Spawn)</h3>
     <p class="muted">8 uses · 4 teams · 62% rounds won</p>
   </div>
-</a><a class="card" href="/en/ancient/smoke-b-site-from-ruins-t/"
+</a><a class="card" href="/en/ancient/smoke-b-site-from-ruins-t/" data-id="smoke-b-site-from-ruins-t"
    data-type="smoke" data-side="T" data-area="BombsiteB" data-map="ancient"
    data-teams="g2 spirit" data-players="magixx r1nkle sh1ro"
    data-diff="2" data-count="7" data-eff="-1">
@@ -841,7 +842,7 @@
     <h3>Smoke B Site (from Ruins)</h3>
     <p class="muted">7 uses · 2 teams · 71% rounds won</p>
   </div>
-</a><a class="card" href="/en/dust2/smoke-b-doors-from-outside-tunnels-t/"
+</a><a class="card" href="/en/dust2/smoke-b-doors-from-outside-tunnels-t/" data-id="smoke-b-doors-from-outside-tunnels-t"
    data-type="smoke" data-side="T" data-area="BDoors" data-map="dust2"
    data-teams="falcons legacy" data-players="karrigan teses try"
    data-diff="3" data-count="7" data-eff="-1">
@@ -858,7 +859,7 @@
     <h3>Smoke B Doors (from Outside Tunnels)</h3>
     <p class="muted">7 uses · 2 teams · 43% rounds won</p>
   </div>
-</a><a class="card" href="/en/dust2/smoke-mid-doors-from-lower-tunnels-t/"
+</a><a class="card" href="/en/dust2/smoke-mid-doors-from-lower-tunnels-t/" data-id="smoke-mid-doors-from-lower-tunnels-t"
    data-type="smoke" data-side="T" data-area="MidDoors" data-map="dust2"
    data-teams="falcons g2" data-players="hunter karrigan niko"
    data-diff="1" data-count="7" data-eff="-1">
@@ -875,7 +876,7 @@
     <h3>Smoke Mid Doors (from Lower Tunnels)</h3>
     <p class="muted">7 uses · 2 teams · 100% rounds won</p>
   </div>
-</a><a class="card" href="/en/dust2/smoke-under-a-from-short-stairs-t/"
+</a><a class="card" href="/en/dust2/smoke-under-a-from-short-stairs-t/" data-id="smoke-under-a-from-short-stairs-t"
    data-type="smoke" data-side="T" data-area="UnderA" data-map="dust2"
    data-teams="falcons g2 legacy vitality" data-players="art flamez ksloks kyousuke nertz"
    data-diff="1" data-count="7" data-eff="-1">
@@ -892,7 +893,7 @@
     <h3>Smoke Under A (from Short Stairs)</h3>
     <p class="muted">7 uses · 4 teams · 43% rounds won</p>
   </div>
-</a><a class="card" href="/en/inferno/smoke-ruins-from-banana-t/"
+</a><a class="card" href="/en/inferno/smoke-ruins-from-banana-t/" data-id="smoke-ruins-from-banana-t"
    data-type="smoke" data-side="T" data-area="Ruins" data-map="inferno"
    data-teams="g2 mouz vitality" data-players="mezii nertz r1nkle xertion"
    data-diff="3" data-count="7" data-eff="-1">
@@ -909,7 +910,7 @@
     <h3>Smoke Ruins (from Banana)</h3>
     <p class="muted">7 uses · 3 teams · 71% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/smoke-apartments-from-truck-ct/"
+</a><a class="card" href="/en/mirage/smoke-apartments-from-truck-ct/" data-id="smoke-apartments-from-truck-ct"
    data-type="smoke" data-side="CT" data-area="Apartments" data-map="mirage"
    data-teams="falcons legacy mouz spirit vitality" data-players="karrigan ksloks magixx mezii pr"
    data-diff="1" data-count="7" data-eff="-1">
@@ -926,7 +927,7 @@
     <h3>Smoke Apartments (from Truck)</h3>
     <p class="muted">7 uses · 5 teams · 71% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/smoke-a-site-from-top-mid-t/"
+</a><a class="card" href="/en/mirage/smoke-a-site-from-top-mid-t/" data-id="smoke-a-site-from-top-mid-t"
    data-type="smoke" data-side="T" data-area="BombsiteA" data-map="mirage"
    data-teams="falcons g2 mouz" data-players="hunter r1nkle teses torzsi"
    data-diff="1" data-count="7" data-eff="-1">
@@ -943,7 +944,7 @@
     <h3>Smoke A Site (from Top Mid)</h3>
     <p class="muted">7 uses · 3 teams · 57% rounds won</p>
   </div>
-</a><a class="card" href="/en/ancient/smoke-side-entrance-from-water-t/"
+</a><a class="card" href="/en/ancient/smoke-side-entrance-from-water-t/" data-id="smoke-side-entrance-from-water-t"
    data-type="smoke" data-side="T" data-area="SideEntrance" data-map="ancient"
    data-teams="g2 mouz spirit" data-players="donk hunter r1nkle sh1ro torzsi"
    data-diff="2" data-count="6" data-eff="-1">
@@ -960,7 +961,7 @@
     <h3>Smoke Side Entrance (from Water)</h3>
     <p class="muted">6 uses · 3 teams · 33% rounds won</p>
   </div>
-</a><a class="card" href="/en/cache/smoke-b-site-from-bhalls-t/"
+</a><a class="card" href="/en/cache/smoke-b-site-from-bhalls-t/" data-id="smoke-b-site-from-bhalls-t"
    data-type="smoke" data-side="T" data-area="BombsiteB" data-map="cache"
    data-teams="mouz spirit" data-players="spinx zont1x"
    data-diff="3" data-count="6" data-eff="-1">
@@ -977,7 +978,7 @@
     <h3>Smoke B Site (from BHalls)</h3>
     <p class="muted">6 uses · 2 teams · 67% rounds won</p>
   </div>
-</a><a class="card" href="/en/dust2/smoke-mid-from-t-spawn-t/"
+</a><a class="card" href="/en/dust2/smoke-mid-from-t-spawn-t/" data-id="smoke-mid-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="Middle" data-map="dust2"
    data-teams="falcons legacy" data-players="teses try"
    data-diff="2" data-count="6" data-eff="-1">
@@ -994,7 +995,7 @@
     <h3>Smoke Mid (from T Spawn)</h3>
     <p class="muted">6 uses · 2 teams · 67% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/smoke-t-ramp-from-ct-spawn-ct/"
+</a><a class="card" href="/en/mirage/smoke-t-ramp-from-ct-spawn-ct/" data-id="smoke-t-ramp-from-ct-spawn-ct"
    data-type="smoke" data-side="CT" data-area="TRamp" data-map="mirage"
    data-teams="fut g2 spirit vitality" data-players="coolio r1nkle sh1ro sunpayus zywoo"
    data-diff="1" data-count="6" data-eff="-1">
@@ -1011,7 +1012,7 @@
     <h3>Smoke T Ramp (from CT Spawn)</h3>
     <p class="muted">6 uses · 4 teams · 83% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/smoke-ct-spawn-from-palace-alley-t/"
+</a><a class="card" href="/en/mirage/smoke-ct-spawn-from-palace-alley-t/" data-id="smoke-ct-spawn-from-palace-alley-t"
    data-type="smoke" data-side="T" data-area="CTSpawn" data-map="mirage"
    data-teams="fut g2 vitality" data-players="r1nkle sunpayus zywoo"
    data-diff="2" data-count="6" data-eff="-1">
@@ -1028,7 +1029,7 @@
     <h3>Smoke CT Spawn (from Palace Alley)</h3>
     <p class="muted">6 uses · 3 teams · 33% rounds won</p>
   </div>
-</a><a class="card" href="/en/nuke/smoke-mini-from-lobby-t/"
+</a><a class="card" href="/en/nuke/smoke-mini-from-lobby-t/" data-id="smoke-mini-from-lobby-t"
    data-type="smoke" data-side="T" data-area="Mini" data-map="nuke"
    data-teams="fut g2 spirit" data-players="dem0n heavygod nertz sh1ro zont1x"
    data-diff="3" data-count="6" data-eff="-1">
@@ -1045,7 +1046,7 @@
     <h3>Smoke Mini (from Lobby)</h3>
     <p class="muted">6 uses · 3 teams · 33% rounds won</p>
   </div>
-</a><a class="card" href="/en/ancient/smoke-b-site-from-tside-lower-t/"
+</a><a class="card" href="/en/ancient/smoke-b-site-from-tside-lower-t/" data-id="smoke-b-site-from-tside-lower-t"
    data-type="smoke" data-side="T" data-area="BombsiteB" data-map="ancient"
    data-teams="g2 mouz spirit" data-players="heavygod r1nkle sh1ro torzsi"
    data-diff="1" data-count="5" data-eff="-1">
@@ -1062,7 +1063,7 @@
     <h3>Smoke B Site (from TSide Lower)</h3>
     <p class="muted">5 uses · 3 teams · 60% rounds won</p>
   </div>
-</a><a class="card" href="/en/anubis/smoke-canal-from-b-site-ct/"
+</a><a class="card" href="/en/anubis/smoke-canal-from-b-site-ct/" data-id="smoke-canal-from-b-site-ct"
    data-type="smoke" data-side="CT" data-area="Canal" data-map="anubis"
    data-teams="g2" data-players="heavygod matys"
    data-diff="2" data-count="5" data-eff="-1">
@@ -1079,7 +1080,7 @@
     <h3>Smoke Canal (from B Site)</h3>
     <p class="muted">5 uses · 1 team · 20% rounds won</p>
   </div>
-</a><a class="card" href="/en/cache/smoke-garage-from-connector-ct/"
+</a><a class="card" href="/en/cache/smoke-garage-from-connector-ct/" data-id="smoke-garage-from-connector-ct"
    data-type="smoke" data-side="CT" data-area="Garage" data-map="cache"
    data-teams="fut spirit vitality" data-players="donk flamez xfl0ud"
    data-diff="3" data-count="5" data-eff="-1">
@@ -1096,7 +1097,7 @@
     <h3>Smoke Garage (from Connector)</h3>
     <p class="muted">5 uses · 3 teams · 80% rounds won</p>
   </div>
-</a><a class="card" href="/en/dust2/smoke-mid-doors-from-b-doors-ct/"
+</a><a class="card" href="/en/dust2/smoke-mid-doors-from-b-doors-ct/" data-id="smoke-mid-doors-from-b-doors-ct"
    data-type="smoke" data-side="CT" data-area="MidDoors" data-map="dust2"
    data-teams="furia vitality" data-players="mezii yekindar"
    data-diff="1" data-count="5" data-eff="-1">
@@ -1113,7 +1114,7 @@
     <h3>Smoke Mid Doors (from B Doors)</h3>
     <p class="muted">5 uses · 2 teams · 100% rounds won</p>
   </div>
-</a><a class="card" href="/en/dust2/smoke-ct-spawn-from-mid-doors-t/"
+</a><a class="card" href="/en/dust2/smoke-ct-spawn-from-mid-doors-t/" data-id="smoke-ct-spawn-from-mid-doors-t"
    data-type="smoke" data-side="T" data-area="CTSpawn" data-map="dust2"
    data-teams="falcons furia vitality" data-players="fallen flamez karrigan mezii"
    data-diff="1" data-count="5" data-eff="-1">
@@ -1130,7 +1131,7 @@
     <h3>Smoke CT Spawn (from Mid Doors)</h3>
     <p class="muted">5 uses · 3 teams · 40% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/smoke-mid-from-a-site-ct/"
+</a><a class="card" href="/en/mirage/smoke-mid-from-a-site-ct/" data-id="smoke-mid-from-a-site-ct"
    data-type="smoke" data-side="CT" data-area="Middle" data-map="mirage"
    data-teams="falcons furia spirit" data-players="donk kscerato m0nesy"
    data-diff="1" data-count="5" data-eff="-1">
@@ -1147,7 +1148,7 @@
     <h3>Smoke Mid (from A Site)</h3>
     <p class="muted">5 uses · 3 teams · 80% rounds won</p>
   </div>
-</a><a class="card" href="/en/nuke/smoke-squeaky-from-a-site-ct/"
+</a><a class="card" href="/en/nuke/smoke-squeaky-from-a-site-ct/" data-id="smoke-squeaky-from-a-site-ct"
    data-type="smoke" data-side="CT" data-area="Squeaky" data-map="nuke"
    data-teams="fut g2 spirit" data-players="dziugss nertz tn1r"
    data-diff="3" data-count="5" data-eff="-1">
@@ -1164,7 +1165,7 @@
     <h3>Smoke Squeaky (from A Site)</h3>
     <p class="muted">5 uses · 3 teams · 80% rounds won</p>
   </div>
-</a><a class="card" href="/en/nuke/smoke-a-site-from-lobby-t/"
+</a><a class="card" href="/en/nuke/smoke-a-site-from-lobby-t/" data-id="smoke-a-site-from-lobby-t"
    data-type="smoke" data-side="T" data-area="BombsiteA" data-map="nuke"
    data-teams="fut g2 mouz spirit" data-players="dziugss heavygod spinx zont1x"
    data-diff="3" data-count="5" data-eff="-1">
@@ -1181,7 +1182,7 @@
     <h3>Smoke A Site (from Lobby)</h3>
     <p class="muted">5 uses · 4 teams · 60% rounds won</p>
   </div>
-</a><a class="card" href="/en/ancient/smoke-a-site-from-outside-t/"
+</a><a class="card" href="/en/ancient/smoke-a-site-from-outside-t/" data-id="smoke-a-site-from-outside-t"
    data-type="smoke" data-side="T" data-area="BombsiteA" data-map="ancient"
    data-teams="g2 spirit" data-players="hunter magixx"
    data-diff="2" data-count="4" data-eff="-1">
@@ -1198,7 +1199,7 @@
     <h3>Smoke A Site (from Outside)</h3>
     <p class="muted">4 uses · 2 teams · 75% rounds won</p>
   </div>
-</a><a class="card" href="/en/ancient/smoke-side-entrance-from-t-spawn-t/"
+</a><a class="card" href="/en/ancient/smoke-side-entrance-from-t-spawn-t/" data-id="smoke-side-entrance-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="SideEntrance" data-map="ancient"
    data-teams="fut mouz spirit" data-players="sh1ro sunpayus torzsi"
    data-diff="2" data-count="4" data-eff="-1">
@@ -1215,7 +1216,7 @@
     <h3>Smoke Side Entrance (from T Spawn)</h3>
     <p class="muted">4 uses · 3 teams · 100% rounds won</p>
   </div>
-</a><a class="card" href="/en/anubis/smoke-main-from-street-t/"
+</a><a class="card" href="/en/anubis/smoke-main-from-street-t/" data-id="smoke-main-from-street-t"
    data-type="smoke" data-side="T" data-area="Main" data-map="anubis"
    data-teams="falcons g2" data-players="hunter niko"
    data-diff="2" data-count="4" data-eff="-1">
@@ -1232,7 +1233,7 @@
     <h3>Smoke Main (from Street)</h3>
     <p class="muted">4 uses · 2 teams · 100% rounds won</p>
   </div>
-</a><a class="card" href="/en/cache/smoke-mid-from-highway-ct/"
+</a><a class="card" href="/en/cache/smoke-mid-from-highway-ct/" data-id="smoke-mid-from-highway-ct"
    data-type="smoke" data-side="CT" data-area="Mid" data-map="cache"
    data-teams="fut mouz vitality" data-players="dziugss flamez torzsi"
    data-diff="1" data-count="4" data-eff="-1">
@@ -1249,7 +1250,7 @@
     <h3>Smoke Mid (from Highway)</h3>
     <p class="muted">4 uses · 3 teams · 75% rounds won</p>
   </div>
-</a><a class="card" href="/en/cache/smoke-bmain-from-bhalls-t/"
+</a><a class="card" href="/en/cache/smoke-bmain-from-bhalls-t/" data-id="smoke-bmain-from-bhalls-t"
    data-type="smoke" data-side="T" data-area="BMain" data-map="cache"
    data-teams="fut" data-players="dziugss"
    data-diff="3" data-count="4" data-eff="-1">
@@ -1266,7 +1267,7 @@
     <h3>Smoke BMain (from BHalls)</h3>
     <p class="muted">4 uses · 1 team · 50% rounds won</p>
   </div>
-</a><a class="card" href="/en/cache/smoke-connector-from-long-a-t/"
+</a><a class="card" href="/en/cache/smoke-connector-from-long-a-t/" data-id="smoke-connector-from-long-a-t"
    data-type="smoke" data-side="T" data-area="Connector" data-map="cache"
    data-teams="fut" data-players="xfl0ud"
    data-diff="2" data-count="4" data-eff="-1">
@@ -1283,7 +1284,7 @@
     <h3>Smoke Connector (from Long A)</h3>
     <p class="muted">4 uses · 1 team · 50% rounds won</p>
   </div>
-</a><a class="card" href="/en/dust2/smoke-ct-spawn-from-outside-tunnels-t/"
+</a><a class="card" href="/en/dust2/smoke-ct-spawn-from-outside-tunnels-t/" data-id="smoke-ct-spawn-from-outside-tunnels-t"
    data-type="smoke" data-side="T" data-area="CTSpawn" data-map="dust2"
    data-teams="falcons furia g2 legacy" data-players="art matys niko yuurih"
    data-diff="3" data-count="4" data-eff="-1">
@@ -1300,7 +1301,7 @@
     <h3>Smoke CT Spawn (from Outside Tunnels)</h3>
     <p class="muted">4 uses · 4 teams · 75% rounds won</p>
   </div>
-</a><a class="card" href="/en/dust2/smoke-b-doors-from-upper-tunnels-t/"
+</a><a class="card" href="/en/dust2/smoke-b-doors-from-upper-tunnels-t/" data-id="smoke-b-doors-from-upper-tunnels-t"
    data-type="smoke" data-side="T" data-area="BDoors" data-map="dust2"
    data-teams="furia g2" data-players="hunter kscerato molodoy r1nkle"
    data-diff="3" data-count="4" data-eff="-1">
@@ -1317,7 +1318,7 @@
     <h3>Smoke B Doors (from Upper Tunnels)</h3>
     <p class="muted">4 uses · 2 teams · 50% rounds won</p>
   </div>
-</a><a class="card" href="/en/inferno/smoke-top-mid-from-second-mid-t/"
+</a><a class="card" href="/en/inferno/smoke-top-mid-from-second-mid-t/" data-id="smoke-top-mid-from-second-mid-t"
    data-type="smoke" data-side="T" data-area="TopofMid" data-map="inferno"
    data-teams="furia g2" data-players="heavygod yuurih"
    data-diff="1" data-count="4" data-eff="-1">
@@ -1334,7 +1335,7 @@
     <h3>Smoke Top Mid (from Second Mid)</h3>
     <p class="muted">4 uses · 2 teams · 25% rounds won</p>
   </div>
-</a><a class="card" href="/en/inferno/smoke-banana-from-lower-mid-t/"
+</a><a class="card" href="/en/inferno/smoke-banana-from-lower-mid-t/" data-id="smoke-banana-from-lower-mid-t"
    data-type="smoke" data-side="T" data-area="Banana" data-map="inferno"
    data-teams="g2 vitality" data-players="flamez hunter r1nkle"
    data-diff="2" data-count="4" data-eff="-1">
@@ -1351,7 +1352,7 @@
     <h3>Smoke Banana (from Lower Mid)</h3>
     <p class="muted">4 uses · 2 teams · 25% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/smoke-apartments-ct/"
+</a><a class="card" href="/en/mirage/smoke-apartments-ct/" data-id="smoke-apartments-ct"
    data-type="smoke" data-side="CT" data-area="Apartments" data-map="mirage"
    data-teams="mouz spirit" data-players="magixx pr"
    data-diff="2" data-count="4" data-eff="-1">
@@ -1368,7 +1369,7 @@
     <h3>Smoke Apartments</h3>
     <p class="muted">4 uses · 2 teams · 75% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/smoke-palace-from-stairs-ct/"
+</a><a class="card" href="/en/mirage/smoke-palace-from-stairs-ct/" data-id="smoke-palace-from-stairs-ct"
    data-type="smoke" data-side="CT" data-area="PalaceInterior" data-map="mirage"
    data-teams="furia legacy mouz spirit" data-players="molodoy tn1r torzsi try"
    data-diff="2" data-count="4" data-eff="-1">
@@ -1385,7 +1386,7 @@
     <h3>Smoke Palace (from Stairs)</h3>
     <p class="muted">4 uses · 4 teams · 75% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/smoke-t-ramp-from-a-site-ct/"
+</a><a class="card" href="/en/mirage/smoke-t-ramp-from-a-site-ct/" data-id="smoke-t-ramp-from-a-site-ct"
    data-type="smoke" data-side="CT" data-area="TRamp" data-map="mirage"
    data-teams="furia mouz" data-players="torzsi yuurih"
    data-diff="1" data-count="4" data-eff="-1">
@@ -1402,7 +1403,7 @@
     <h3>Smoke T Ramp (from A Site)</h3>
     <p class="muted">4 uses · 2 teams · 100% rounds won</p>
   </div>
-</a><a class="card" href="/en/nuke/smoke-a-site-ct/"
+</a><a class="card" href="/en/nuke/smoke-a-site-ct/" data-id="smoke-a-site-ct"
    data-type="smoke" data-side="CT" data-area="BombsiteA" data-map="nuke"
    data-teams="fut" data-players="dem0n"
    data-diff="1" data-count="4" data-eff="-1">
@@ -1419,7 +1420,7 @@
     <h3>Smoke A Site</h3>
     <p class="muted">4 uses · 1 team · 50% rounds won</p>
   </div>
-</a><a class="card" href="/en/nuke/smoke-control-from-ramp-ct/"
+</a><a class="card" href="/en/nuke/smoke-control-from-ramp-ct/" data-id="smoke-control-from-ramp-ct"
    data-type="smoke" data-side="CT" data-area="Control" data-map="nuke"
    data-teams="fut" data-players="xfl0ud"
    data-diff="1" data-count="4" data-eff="-1">
@@ -1436,7 +1437,7 @@
     <h3>Smoke Control (from Ramp)</h3>
     <p class="muted">4 uses · 1 team · 75% rounds won</p>
   </div>
-</a><a class="card" href="/en/ancient/smoke-a-site-ct/"
+</a><a class="card" href="/en/ancient/smoke-a-site-ct/" data-id="smoke-a-site-ct"
    data-type="smoke" data-side="CT" data-area="BombsiteA" data-map="ancient"
    data-teams="mouz spirit" data-players="donk xelex"
    data-diff="3" data-count="3" data-eff="-1">
@@ -1453,7 +1454,7 @@
     <h3>Smoke A Site</h3>
     <p class="muted">3 uses · 2 teams · 67% rounds won</p>
   </div>
-</a><a class="card" href="/en/ancient/smoke-side-hall-from-outside-t/"
+</a><a class="card" href="/en/ancient/smoke-side-hall-from-outside-t/" data-id="smoke-side-hall-from-outside-t"
    data-type="smoke" data-side="T" data-area="SideHall" data-map="ancient"
    data-teams="g2 spirit" data-players="hunter magixx"
    data-diff="3" data-count="3" data-eff="-1">
@@ -1470,7 +1471,7 @@
     <h3>Smoke Side Hall (from Outside)</h3>
     <p class="muted">3 uses · 2 teams · 67% rounds won</p>
   </div>
-</a><a class="card" href="/en/anubis/smoke-bridge-from-mid-ct/"
+</a><a class="card" href="/en/anubis/smoke-bridge-from-mid-ct/" data-id="smoke-bridge-from-mid-ct"
    data-type="smoke" data-side="CT" data-area="Bridge" data-map="anubis"
    data-teams="falcons g2" data-players="hunter niko"
    data-diff="1" data-count="3" data-eff="-1">
@@ -1487,7 +1488,7 @@
     <h3>Smoke Bridge (from Mid)</h3>
     <p class="muted">3 uses · 2 teams · 0% rounds won</p>
   </div>
-</a><a class="card" href="/en/anubis/smoke-mid-doors-from-t-spawn-t/"
+</a><a class="card" href="/en/anubis/smoke-mid-doors-from-t-spawn-t/" data-id="smoke-mid-doors-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="MidDoors" data-map="anubis"
    data-teams="g2" data-players="hunter matys"
    data-diff="2" data-count="3" data-eff="-1">
@@ -1504,7 +1505,7 @@
     <h3>Smoke Mid Doors (from T Spawn)</h3>
     <p class="muted">3 uses · 1 team · 33% rounds won</p>
   </div>
-</a><a class="card" href="/en/anubis/smoke-mid-from-ruins-t/"
+</a><a class="card" href="/en/anubis/smoke-mid-from-ruins-t/" data-id="smoke-mid-from-ruins-t"
    data-type="smoke" data-side="T" data-area="Middle" data-map="anubis"
    data-teams="falcons g2" data-players="karrigan nertz"
    data-diff="2" data-count="3" data-eff="-1">
@@ -1521,7 +1522,7 @@
     <h3>Smoke Mid (from Ruins)</h3>
     <p class="muted">3 uses · 2 teams · 67% rounds won</p>
   </div>
-</a><a class="card" href="/en/anubis/smoke-connector-from-t-spawn-t/"
+</a><a class="card" href="/en/anubis/smoke-connector-from-t-spawn-t/" data-id="smoke-connector-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="Connector" data-map="anubis"
    data-teams="g2" data-players="r1nkle"
    data-diff="2" data-count="3" data-eff="-1">
@@ -1538,7 +1539,7 @@
     <h3>Smoke Connector (from T Spawn)</h3>
     <p class="muted">3 uses · 1 team · 67% rounds won</p>
   </div>
-</a><a class="card" href="/en/anubis/smoke-bricks-from-canal-t/"
+</a><a class="card" href="/en/anubis/smoke-bricks-from-canal-t/" data-id="smoke-bricks-from-canal-t"
    data-type="smoke" data-side="T" data-area="Bricks" data-map="anubis"
    data-teams="g2" data-players="hunter r1nkle"
    data-diff="2" data-count="3" data-eff="-1">
@@ -1555,7 +1556,7 @@
     <h3>Smoke Bricks (from Canal)</h3>
     <p class="muted">3 uses · 1 team · 67% rounds won</p>
   </div>
-</a><a class="card" href="/en/cache/smoke-bmain-from-t-spawn-t/"
+</a><a class="card" href="/en/cache/smoke-bmain-from-t-spawn-t/" data-id="smoke-bmain-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="BMain" data-map="cache"
    data-teams="mouz" data-players="spinx"
    data-diff="3" data-count="3" data-eff="-1">
@@ -1572,7 +1573,7 @@
     <h3>Smoke BMain (from T Spawn)</h3>
     <p class="muted">3 uses · 1 team · 67% rounds won</p>
   </div>
-</a><a class="card" href="/en/cache/smoke-a-site-from-tyard-t/"
+</a><a class="card" href="/en/cache/smoke-a-site-from-tyard-t/" data-id="smoke-a-site-from-tyard-t"
    data-type="smoke" data-side="T" data-area="BombsiteA" data-map="cache"
    data-teams="fut mouz" data-players="coolio xertion"
    data-diff="3" data-count="3" data-eff="-1">
@@ -1589,7 +1590,7 @@
     <h3>Smoke A Site (from TYard)</h3>
     <p class="muted">3 uses · 2 teams · 0% rounds won</p>
   </div>
-</a><a class="card" href="/en/cache/smoke-connector-from-t-spawn-t/"
+</a><a class="card" href="/en/cache/smoke-connector-from-t-spawn-t/" data-id="smoke-connector-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="Connector" data-map="cache"
    data-teams="fut" data-players="dem0n xfl0ud"
    data-diff="3" data-count="3" data-eff="-1">
@@ -1606,7 +1607,7 @@
     <h3>Smoke Connector (from T Spawn)</h3>
     <p class="muted">3 uses · 1 team · 67% rounds won</p>
   </div>
-</a><a class="card" href="/en/cache/smoke-b-site-from-long-a-t/"
+</a><a class="card" href="/en/cache/smoke-b-site-from-long-a-t/" data-id="smoke-b-site-from-long-a-t"
    data-type="smoke" data-side="T" data-area="BombsiteB" data-map="cache"
    data-teams="mouz" data-players="pr"
    data-diff="3" data-count="3" data-eff="-1">
@@ -1623,7 +1624,7 @@
     <h3>Smoke B Site (from Long A)</h3>
     <p class="muted">3 uses · 1 team · 67% rounds won</p>
   </div>
-</a><a class="card" href="/en/dust2/smoke-long-a-from-under-a-ct/"
+</a><a class="card" href="/en/dust2/smoke-long-a-from-under-a-ct/" data-id="smoke-long-a-from-under-a-ct"
    data-type="smoke" data-side="CT" data-area="LongA" data-map="dust2"
    data-teams="falcons furia g2" data-players="hunter karrigan yekindar"
    data-diff="1" data-count="3" data-eff="-1">
@@ -1640,7 +1641,7 @@
     <h3>Smoke Long A (from Under A)</h3>
     <p class="muted">3 uses · 3 teams · 100% rounds won</p>
   </div>
-</a><a class="card" href="/en/dust2/smoke-short-stairs-from-a-ramp-ct/"
+</a><a class="card" href="/en/dust2/smoke-short-stairs-from-a-ramp-ct/" data-id="smoke-short-stairs-from-a-ramp-ct"
    data-type="smoke" data-side="CT" data-area="ShortStairs" data-map="dust2"
    data-teams="falcons legacy" data-players="art m0nesy"
    data-diff="1" data-count="3" data-eff="-1">
@@ -1657,7 +1658,7 @@
     <h3>Smoke Short Stairs (from A Ramp)</h3>
     <p class="muted">3 uses · 2 teams · 33% rounds won</p>
   </div>
-</a><a class="card" href="/en/dust2/smoke-ct-spawn-from-catwalk-t/"
+</a><a class="card" href="/en/dust2/smoke-ct-spawn-from-catwalk-t/" data-id="smoke-ct-spawn-from-catwalk-t"
    data-type="smoke" data-side="T" data-area="CTSpawn" data-map="dust2"
    data-teams="furia g2" data-players="fallen heavygod r1nkle"
    data-diff="2" data-count="3" data-eff="-1">
@@ -1674,7 +1675,7 @@
     <h3>Smoke CT Spawn (from Catwalk)</h3>
     <p class="muted">3 uses · 2 teams · 100% rounds won</p>
   </div>
-</a><a class="card" href="/en/dust2/smoke-long-a-from-t-spawn-t/"
+</a><a class="card" href="/en/dust2/smoke-long-a-from-t-spawn-t/" data-id="smoke-long-a-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="LongA" data-map="dust2"
    data-teams="falcons vitality" data-players="teses zywoo"
    data-diff="2" data-count="3" data-eff="-1">
@@ -1691,7 +1692,7 @@
     <h3>Smoke Long A (from T Spawn)</h3>
     <p class="muted">3 uses · 2 teams · 33% rounds won</p>
   </div>
-</a><a class="card" href="/en/inferno/smoke-mid-from-arch-ct/"
+</a><a class="card" href="/en/inferno/smoke-mid-from-arch-ct/" data-id="smoke-mid-from-arch-ct"
    data-type="smoke" data-side="CT" data-area="Middle" data-map="inferno"
    data-teams="furia mouz vitality" data-players="molodoy ropz torzsi"
    data-diff="2" data-count="3" data-eff="-1">
@@ -1708,7 +1709,7 @@
     <h3>Smoke Mid (from Arch)</h3>
     <p class="muted">3 uses · 3 teams · 67% rounds won</p>
   </div>
-</a><a class="card" href="/en/inferno/smoke-a-site-from-mid-t/"
+</a><a class="card" href="/en/inferno/smoke-a-site-from-mid-t/" data-id="smoke-a-site-from-mid-t"
    data-type="smoke" data-side="T" data-area="BombsiteA" data-map="inferno"
    data-teams="furia g2" data-players="kscerato r1nkle"
    data-diff="3" data-count="3" data-eff="-1">
@@ -1725,7 +1726,7 @@
     <h3>Smoke A Site (from Mid)</h3>
     <p class="muted">3 uses · 2 teams · 67% rounds won</p>
   </div>
-</a><a class="card" href="/en/inferno/smoke-b-site-from-mid-t/"
+</a><a class="card" href="/en/inferno/smoke-b-site-from-mid-t/" data-id="smoke-b-site-from-mid-t"
    data-type="smoke" data-side="T" data-area="BombsiteB" data-map="inferno"
    data-teams="g2" data-players="hunter r1nkle"
    data-diff="3" data-count="3" data-eff="-1">
@@ -1742,7 +1743,7 @@
     <h3>Smoke B Site (from Mid)</h3>
     <p class="muted">3 uses · 1 team · 0% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/smoke-mid-from-connector-ct/"
+</a><a class="card" href="/en/mirage/smoke-mid-from-connector-ct/" data-id="smoke-mid-from-connector-ct"
    data-type="smoke" data-side="CT" data-area="Middle" data-map="mirage"
    data-teams="falcons fut g2" data-players="nertz niko sunpayus"
    data-diff="2" data-count="3" data-eff="-1">
@@ -1759,7 +1760,7 @@
     <h3>Smoke Mid (from Connector)</h3>
     <p class="muted">3 uses · 3 teams · 67% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/smoke-underpass-from-connector-ct/"
+</a><a class="card" href="/en/mirage/smoke-underpass-from-connector-ct/" data-id="smoke-underpass-from-connector-ct"
    data-type="smoke" data-side="CT" data-area="Underpass" data-map="mirage"
    data-teams="falcons mouz vitality" data-players="apex niko xertion"
    data-diff="1" data-count="3" data-eff="-1">
@@ -1776,7 +1777,7 @@
     <h3>Smoke Underpass (from Connector)</h3>
     <p class="muted">3 uses · 3 teams · 100% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/smoke-catwalk-from-house-t/"
+</a><a class="card" href="/en/mirage/smoke-catwalk-from-house-t/" data-id="smoke-catwalk-from-house-t"
    data-type="smoke" data-side="T" data-area="Catwalk" data-map="mirage"
    data-teams="legacy vitality" data-players="apex art"
    data-diff="2" data-count="3" data-eff="-1">
@@ -1793,7 +1794,7 @@
     <h3>Smoke Catwalk (from House)</h3>
     <p class="muted">3 uses · 2 teams · 33% rounds won</p>
   </div>
-</a><a class="card" href="/en/nuke/smoke-squeaky-from-outside-ct/"
+</a><a class="card" href="/en/nuke/smoke-squeaky-from-outside-ct/" data-id="smoke-squeaky-from-outside-ct"
    data-type="smoke" data-side="CT" data-area="Squeaky" data-map="nuke"
    data-teams="g2 mouz" data-players="nertz spinx"
    data-diff="2" data-count="3" data-eff="-1">
@@ -1810,7 +1811,7 @@
     <h3>Smoke Squeaky (from Outside)</h3>
     <p class="muted">3 uses · 2 teams · 100% rounds won</p>
   </div>
-</a><a class="card" href="/en/nuke/smoke-trophy-from-ramp-ct/"
+</a><a class="card" href="/en/nuke/smoke-trophy-from-ramp-ct/" data-id="smoke-trophy-from-ramp-ct"
    data-type="smoke" data-side="CT" data-area="Trophy" data-map="nuke"
    data-teams="fut g2" data-players="heavygod xfl0ud"
    data-diff="3" data-count="3" data-eff="-1">
@@ -1827,7 +1828,7 @@
     <h3>Smoke Trophy (from Ramp)</h3>
     <p class="muted">3 uses · 2 teams · 33% rounds won</p>
   </div>
-</a><a class="card" href="/en/nuke/smoke-a-site-from-heaven-ct/"
+</a><a class="card" href="/en/nuke/smoke-a-site-from-heaven-ct/" data-id="smoke-a-site-from-heaven-ct"
    data-type="smoke" data-side="CT" data-area="BombsiteA" data-map="nuke"
    data-teams="g2 mouz" data-players="matys nertz xertion"
    data-diff="3" data-count="3" data-eff="-1">
@@ -1844,7 +1845,7 @@
     <h3>Smoke A Site (from Heaven)</h3>
     <p class="muted">3 uses · 2 teams · 33% rounds won</p>
   </div>
-</a><a class="card" href="/en/nuke/smoke-tunnels-from-vents-ct/"
+</a><a class="card" href="/en/nuke/smoke-tunnels-from-vents-ct/" data-id="smoke-tunnels-from-vents-ct"
    data-type="smoke" data-side="CT" data-area="Tunnels" data-map="nuke"
    data-teams="fut g2" data-players="coolio hunter"
    data-diff="2" data-count="3" data-eff="-1">
@@ -1861,7 +1862,7 @@
     <h3>Smoke Tunnels (from Vents)</h3>
     <p class="muted">3 uses · 2 teams · 100% rounds won</p>
   </div>
-</a><a class="card" href="/en/nuke/smoke-squeaky-from-hut-roof-ct/"
+</a><a class="card" href="/en/nuke/smoke-squeaky-from-hut-roof-ct/" data-id="smoke-squeaky-from-hut-roof-ct"
    data-type="smoke" data-side="CT" data-area="Squeaky" data-map="nuke"
    data-teams="fut" data-players="dziugss"
    data-diff="1" data-count="3" data-eff="-1">

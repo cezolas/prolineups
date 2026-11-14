@@ -21,15 +21,16 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Lineups Pro">
 <meta name="theme-color" content="#0b0f15">
-<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light"; } catch (e) {}</script>
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
+  if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/static/style.css">
-<script>window.I18N = {"copied": "Copied!", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s"}; window.LANG = "en";</script>
+<script>window.I18N = {"copied": "Copied!", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "open": "Open", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s"}; window.LANG = "en";</script>
 </head>
 <body>
 <header class="top">
   <div class="top-in">
-    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-controls="side" aria-expanded="false">☰</button>
+    <button class="menu-btn" id="menuBtn" aria-label="Show or hide the menu" aria-controls="side" aria-expanded="false">☰</button>
     <a class="logo" href="/en/"><span class="logo-mark">◎</span> Lineups Pro</a>
     <div class="search">
       <input id="q" type="search" placeholder="Search map, player, team, smoke…" autocomplete="off" aria-label="Search">
@@ -60,7 +61,7 @@
 <a href="/en/player/apex/"><span>apEX</span></a><a href="/en/player/art/"><span>art</span></a><a href="/en/player/coolio/"><span>coolio</span></a><a href="/en/player/dem0n/"><span>dem0n</span></a><a href="/en/player/donk/"><span>donk</span></a><a href="/en/player/dumau/"><span>dumau</span></a><a href="/en/player/dziugss/"><span>dziugss</span></a><a href="/en/player/fallen/"><span>FalleN</span></a><a href="/en/player/flamez/"><span>flameZ</span></a><a href="/en/player/heavygod/"><span>HeavyGod</span></a><a href="/en/player/hunter/"><span>huNter</span></a><a href="/en/player/karrigan/"><span>karrigan</span></a><a class="more" href="/en/players/">see all (40)</a>      </details>
       <details class="nav-g" data-k="teams" open>
         <summary class="nav-h"><a href="/en/teams/">Teams</a></summary>
-<a href="/en/team/falcons/"><span>Falcons</span></a><a href="/en/team/furia/"><span>FURIA</span></a><a href="/en/team/fut/"><span>FUT</span></a><a href="/en/team/g2/"><span>G2</span></a><a href="/en/team/legacy/"><span>Legacy</span></a><a href="/en/team/mouz/"><span>MOUZ</span></a><a href="/en/team/spirit/"><span>Spirit</span></a><a href="/en/team/vitality/"><span>Vitality</span></a>      </details>
+<a href="/en/team/falcons/"><span><img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12">Falcons</span></a><a href="/en/team/furia/"><span><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12">FURIA</span></a><a href="/en/team/fut/"><span><img class="flag" src="/static/flags/tr.svg" alt="Turkey" title="Turkey" width="16" height="12">FUT</span></a><a href="/en/team/g2/"><span><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12">G2</span></a><a href="/en/team/legacy/"><span><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12">Legacy</span></a><a href="/en/team/mouz/"><span><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12">MOUZ</span></a><a href="/en/team/spirit/"><span><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12">Spirit</span></a><a href="/en/team/vitality/"><span><img class="flag" src="/static/flags/fr.svg" alt="France" title="France" width="16" height="12">Vitality</span></a>      </details>
       <details class="nav-g" data-k="events" open>
         <summary class="nav-h"><a href="/en/tournaments/">Tournaments</a></summary>
 <a href="/en/tournament/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      </details>
@@ -168,7 +169,7 @@ He was moving, so the result depends on your timing.</p>
     <tbody>
       <tr>
         <td><a href="/en/player/matys/">MATYS</a></td>
-        <td><a href="/en/team/g2/">G2</a></td>
+        <td><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12"> <a href="/en/team/g2/">G2</a></td>
         <td><a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>11</td>
         <td>lost</td>
@@ -177,7 +178,7 @@ He was moving, so the result depends on your timing.</p>
       </tr>
       <tr>
         <td><a href="/en/player/kyousuke/">kyousuke</a></td>
-        <td><a href="/en/team/falcons/">Falcons</a></td>
+        <td><img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12"> <a href="/en/team/falcons/">Falcons</a></td>
         <td><a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>16</td>
         <td>lost</td>
@@ -186,7 +187,7 @@ He was moving, so the result depends on your timing.</p>
       </tr>
       <tr>
         <td><a href="/en/player/niko/">NiKo</a></td>
-        <td><a href="/en/team/falcons/">Falcons</a></td>
+        <td><img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12"> <a href="/en/team/falcons/">Falcons</a></td>
         <td><a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>20</td>
         <td>won</td>
@@ -195,7 +196,7 @@ He was moving, so the result depends on your timing.</p>
       </tr>
       <tr>
         <td><a href="/en/player/art/">art</a></td>
-        <td><a href="/en/team/legacy/">Legacy</a></td>
+        <td><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"> <a href="/en/team/legacy/">Legacy</a></td>
         <td><a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>8</td>
         <td>won</td>
@@ -204,7 +205,7 @@ He was moving, so the result depends on your timing.</p>
       </tr>
       <tr>
         <td><a href="/en/player/fallen/">FalleN</a></td>
-        <td><a href="/en/team/furia/">FURIA</a></td>
+        <td><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"> <a href="/en/team/furia/">FURIA</a></td>
         <td><a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>12</td>
         <td>won</td>
@@ -213,7 +214,7 @@ He was moving, so the result depends on your timing.</p>
       </tr>
       <tr>
         <td><a href="/en/player/flamez/">flameZ</a></td>
-        <td><a href="/en/team/vitality/">Vitality</a></td>
+        <td><img class="flag" src="/static/flags/fr.svg" alt="France" title="France" width="16" height="12"> <a href="/en/team/vitality/">Vitality</a></td>
         <td><a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>16</td>
         <td>won</td>
@@ -222,7 +223,7 @@ He was moving, so the result depends on your timing.</p>
       </tr>
       <tr>
         <td><a href="/en/player/zywoo/">ZywOo</a></td>
-        <td><a href="/en/team/vitality/">Vitality</a></td>
+        <td><img class="flag" src="/static/flags/fr.svg" alt="France" title="France" width="16" height="12"> <a href="/en/team/vitality/">Vitality</a></td>
         <td><a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>19</td>
         <td>won</td>
@@ -231,7 +232,7 @@ He was moving, so the result depends on your timing.</p>
       </tr>
       <tr>
         <td><a href="/en/player/art/">art</a></td>
-        <td><a href="/en/team/legacy/">Legacy</a></td>
+        <td><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"> <a href="/en/team/legacy/">Legacy</a></td>
         <td><a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>12</td>
         <td>lost</td>
@@ -240,7 +241,7 @@ He was moving, so the result depends on your timing.</p>
       </tr>
       <tr>
         <td><a href="/en/player/molodoy/">molodoy</a></td>
-        <td><a href="/en/team/furia/">FURIA</a></td>
+        <td><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"> <a href="/en/team/furia/">FURIA</a></td>
         <td><a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>5</td>
         <td>won</td>
@@ -249,7 +250,7 @@ He was moving, so the result depends on your timing.</p>
       </tr>
       <tr>
         <td><a href="/en/player/dumau/">dumau</a></td>
-        <td><a href="/en/team/legacy/">Legacy</a></td>
+        <td><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"> <a href="/en/team/legacy/">Legacy</a></td>
         <td><a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>8</td>
         <td>won</td>
@@ -258,7 +259,7 @@ He was moving, so the result depends on your timing.</p>
       </tr>
       <tr>
         <td><a href="/en/player/art/">art</a></td>
-        <td><a href="/en/team/legacy/">Legacy</a></td>
+        <td><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"> <a href="/en/team/legacy/">Legacy</a></td>
         <td><a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>10</td>
         <td>won</td>
@@ -267,7 +268,7 @@ He was moving, so the result depends on your timing.</p>
       </tr>
       <tr>
         <td><a href="/en/player/dumau/">dumau</a></td>
-        <td><a href="/en/team/legacy/">Legacy</a></td>
+        <td><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"> <a href="/en/team/legacy/">Legacy</a></td>
         <td><a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>12</td>
         <td>lost</td>
@@ -276,7 +277,7 @@ He was moving, so the result depends on your timing.</p>
       </tr>
       <tr>
         <td><a href="/en/player/heavygod/">HeavyGod</a></td>
-        <td><a href="/en/team/g2/">G2</a></td>
+        <td><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12"> <a href="/en/team/g2/">G2</a></td>
         <td><a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>8</td>
         <td>won</td>
@@ -285,7 +286,7 @@ He was moving, so the result depends on your timing.</p>
       </tr>
       <tr>
         <td><a href="/en/player/karrigan/">karrigan</a></td>
-        <td><a href="/en/team/falcons/">Falcons</a></td>
+        <td><img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12"> <a href="/en/team/falcons/">Falcons</a></td>
         <td><a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>18</td>
         <td>lost</td>
@@ -294,7 +295,7 @@ He was moving, so the result depends on your timing.</p>
       </tr>
       <tr>
         <td><a href="/en/player/karrigan/">karrigan</a></td>
-        <td><a href="/en/team/falcons/">Falcons</a></td>
+        <td><img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12"> <a href="/en/team/falcons/">Falcons</a></td>
         <td><a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>16</td>
         <td>won</td>
@@ -303,7 +304,7 @@ He was moving, so the result depends on your timing.</p>
       </tr>
       <tr>
         <td><a href="/en/player/hunter/">huNter</a></td>
-        <td><a href="/en/team/g2/">G2</a></td>
+        <td><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12"> <a href="/en/team/g2/">G2</a></td>
         <td><a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>12</td>
         <td>lost</td>
@@ -312,7 +313,7 @@ He was moving, so the result depends on your timing.</p>
       </tr>
       <tr>
         <td><a href="/en/player/niko/">NiKo</a></td>
-        <td><a href="/en/team/falcons/">Falcons</a></td>
+        <td><img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12"> <a href="/en/team/falcons/">Falcons</a></td>
         <td><a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>21</td>
         <td>won</td>
@@ -321,7 +322,7 @@ He was moving, so the result depends on your timing.</p>
       </tr>
       <tr>
         <td><a href="/en/player/karrigan/">karrigan</a></td>
-        <td><a href="/en/team/falcons/">Falcons</a></td>
+        <td><img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12"> <a href="/en/team/falcons/">Falcons</a></td>
         <td><a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>24</td>
         <td>lost</td>

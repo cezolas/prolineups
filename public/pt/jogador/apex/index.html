@@ -19,15 +19,16 @@
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Lineups Pro">
 <meta name="theme-color" content="#0b0f15">
-<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light"; } catch (e) {}</script>
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
+  if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/static/style.css">
-<script>window.I18N = {"copied": "Copiado!", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "throws_in": "lan\u00e7a em {s}s"}; window.LANG = "pt";</script>
+<script>window.I18N = {"copied": "Copiado!", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "open": "Abrir", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "throws_in": "lan\u00e7a em {s}s"}; window.LANG = "pt";</script>
 </head>
 <body>
 <header class="top">
   <div class="top-in">
-    <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-controls="side" aria-expanded="false">☰</button>
+    <button class="menu-btn" id="menuBtn" aria-label="Mostrar ou ocultar o menu" aria-controls="side" aria-expanded="false">☰</button>
     <a class="logo" href="/pt/"><span class="logo-mark">◎</span> Lineups Pro</a>
     <div class="search">
       <input id="q" type="search" placeholder="Buscar mapa, jogador, time, smoke…" autocomplete="off" aria-label="Buscar">
@@ -58,7 +59,7 @@
 <a href="/pt/jogador/apex/" aria-current="page"><span>apEX</span></a><a href="/pt/jogador/art/"><span>art</span></a><a href="/pt/jogador/coolio/"><span>coolio</span></a><a href="/pt/jogador/dem0n/"><span>dem0n</span></a><a href="/pt/jogador/donk/"><span>donk</span></a><a href="/pt/jogador/dumau/"><span>dumau</span></a><a href="/pt/jogador/dziugss/"><span>dziugss</span></a><a href="/pt/jogador/fallen/"><span>FalleN</span></a><a href="/pt/jogador/flamez/"><span>flameZ</span></a><a href="/pt/jogador/heavygod/"><span>HeavyGod</span></a><a href="/pt/jogador/hunter/"><span>huNter</span></a><a href="/pt/jogador/karrigan/"><span>karrigan</span></a><a class="more" href="/pt/jogadores/">ver todos (40)</a>      </details>
       <details class="nav-g" data-k="teams" open>
         <summary class="nav-h"><a href="/pt/times/">Times</a></summary>
-<a href="/pt/time/falcons/"><span>Falcons</span></a><a href="/pt/time/furia/"><span>FURIA</span></a><a href="/pt/time/fut/"><span>FUT</span></a><a href="/pt/time/g2/"><span>G2</span></a><a href="/pt/time/legacy/"><span>Legacy</span></a><a href="/pt/time/mouz/"><span>MOUZ</span></a><a href="/pt/time/spirit/"><span>Spirit</span></a><a href="/pt/time/vitality/"><span>Vitality</span></a>      </details>
+<a href="/pt/time/falcons/"><span><img class="flag" src="/static/flags/sa.svg" alt="Arábia Saudita" title="Arábia Saudita" width="16" height="12">Falcons</span></a><a href="/pt/time/furia/"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">FURIA</span></a><a href="/pt/time/fut/"><span><img class="flag" src="/static/flags/tr.svg" alt="Turquia" title="Turquia" width="16" height="12">FUT</span></a><a href="/pt/time/g2/"><span><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12">G2</span></a><a href="/pt/time/legacy/"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">Legacy</span></a><a href="/pt/time/mouz/"><span><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12">MOUZ</span></a><a href="/pt/time/spirit/"><span><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12">Spirit</span></a><a href="/pt/time/vitality/"><span><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12">Vitality</span></a>      </details>
       <details class="nav-g" data-k="events" open>
         <summary class="nav-h"><a href="/pt/torneios/">Torneios</a></summary>
 <a href="/pt/torneio/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      </details>
@@ -84,11 +85,10 @@
 <nav class="crumbs"><a href="/pt/">Início</a> › <a href="/pt/jogadores/">Jogadores</a> › apEX</nav>
 <h1>Granadas de apEX</h1>
 <p class="muted">
-Vitality · 45 granadas em 4 mapas
+<img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12"> Vitality · 45 granadas em 4 mapas
 </p>
 <section class="sig" id="assinatura">
-  <h2>Assinatura de utilitária</h2>
-  <p class="muted">Todas as granadas que ele jogou nas partidas (não só as lineups publicadas), por mapa e lado, comparadas com a média dos jogadores no mesmo mapa e lado. ▲/▼ = 15% acima/abaixo da média.</p>
+  <h2>Assinatura de utilitária</h2>  <p class="muted">Todas as granadas que ele jogou nas partidas (não só as lineups publicadas), por mapa e lado, comparadas com a média dos jogadores no mesmo mapa e lado. ▲/▼ = 15% acima/abaixo da média.</p>
   <div class="seg sig-maps" role="tablist"><button role="tab" data-sig="mirage" class="on">Mirage</button><button role="tab" data-sig="cache">Cache</button><button role="tab" data-sig="dust2">Dust2</button><button role="tab" data-sig="inferno">Inferno</button></div>
   <div class="sig-map" data-sig-panel="mirage">
     <div class="sig-cols">
@@ -307,8 +307,7 @@ Vitality · 45 granadas em 4 mapas
     </div>
   </div>
   <div class="heat-toggles small">Mostrar no mapa: <label><input type="checkbox" data-heat="0" checked> Smokes</label><label><input type="checkbox" data-heat="1" checked> Flashes</label><label><input type="checkbox" data-heat="2" checked> Molotovs</label><label><input type="checkbox" data-heat="3" checked> HEs</label></div>
-</section>
-<script>
+</section><script>
 (function () {
   var sec = document.getElementById("assinatura"); if (!sec) return;
   sec.addEventListener("click", function (e) {
@@ -325,7 +324,7 @@ Vitality · 45 granadas em 4 mapas
 
 <section>
   <h2 class="sec"><a href="/pt/cache/">Cache</a> <span class="muted">· 4 lineups</span></h2>
-  <div class="cards"><a class="card" href="/pt/cache/molotov-boost-from-mid-ct/"
+  <div class="cards"><a class="card" href="/pt/cache/molotov-boost-from-mid-ct/" data-id="molotov-boost-from-mid-ct"
    data-type="molotov" data-side="CT" data-area="Boost" data-map="cache"
    data-teams="mouz spirit vitality" data-players="apex donk mezii spinx"
    data-diff="2" data-count="15" data-eff="0.0">
@@ -342,7 +341,7 @@ Vitality · 45 granadas em 4 mapas
     <h3>Molotov Pézinho Lona (de Meio)</h3>
     <p class="muted">5 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/smoke-catwalk-from-outside-a-t/"
+</a><a class="card" href="/pt/cache/smoke-catwalk-from-outside-a-t/" data-id="smoke-catwalk-from-outside-a-t"
    data-type="smoke" data-side="T" data-area="Catwalk" data-map="cache"
    data-teams="fut mouz spirit vitality" data-players="apex dem0n dziugss magixx pr sh1ro sunpayus torzsi xfl0ud"
    data-diff="2" data-count="24" data-eff="-1">
@@ -359,7 +358,7 @@ Vitality · 45 granadas em 4 mapas
     <h3>Smoke Metal (de Outside A)</h3>
     <p class="muted">4 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/flash-a-site-from-long-a-t/"
+</a><a class="card" href="/pt/cache/flash-a-site-from-long-a-t/" data-id="flash-a-site-from-long-a-t"
    data-type="flash" data-side="T" data-area="BombsiteA" data-map="cache"
    data-teams="mouz vitality" data-players="apex spinx"
    data-diff="2" data-count="4" data-eff="1.25">
@@ -377,7 +376,7 @@ Vitality · 45 granadas em 4 mapas
 <p class="eff">cega 1,2 inimigo(s) por 3,5s em média</p>
     <p class="muted">2 usos</p>
   </div>
-</a><a class="card" href="/pt/cache/flash-bmain-from-tree-room-ct/"
+</a><a class="card" href="/pt/cache/flash-bmain-from-tree-room-ct/" data-id="flash-bmain-from-tree-room-ct"
    data-type="flash" data-side="CT" data-area="BMain" data-map="cache"
    data-teams="fut spirit vitality" data-players="apex magixx xfl0ud"
    data-diff="2" data-count="4" data-eff="0.0">
@@ -398,7 +397,7 @@ Vitality · 45 granadas em 4 mapas
 </section>
 <section>
   <h2 class="sec"><a href="/pt/dust2/">Dust2</a> <span class="muted">· 7 lineups</span></h2>
-  <div class="cards"><a class="card" href="/pt/dust2/flash-long-a-ct/"
+  <div class="cards"><a class="card" href="/pt/dust2/flash-long-a-ct/" data-id="flash-long-a-ct"
    data-type="flash" data-side="CT" data-area="LongA" data-map="dust2"
    data-teams="falcons furia g2 legacy vitality" data-players="apex fallen flamez hunter karrigan latto m0nesy molodoy r1nkle try yekindar zywoo"
    data-diff="1" data-count="23" data-eff="0.57">
@@ -416,7 +415,7 @@ Vitality · 45 granadas em 4 mapas
 <p class="eff">cega 0,6 inimigo(s) por 1,3s em média</p>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/smoke-ct-spawn-from-mid-t/"
+</a><a class="card" href="/pt/dust2/smoke-ct-spawn-from-mid-t/" data-id="smoke-ct-spawn-from-mid-t"
    data-type="smoke" data-side="T" data-area="CTSpawn" data-map="dust2"
    data-teams="falcons furia legacy vitality" data-players="apex art fallen flamez karrigan kscerato kyousuke m0nesy molodoy niko yekindar yuurih"
    data-diff="2" data-count="19" data-eff="-1">
@@ -433,7 +432,7 @@ Vitality · 45 granadas em 4 mapas
     <h3>Smoke Base CT (de Meio)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/molotov-catwalk-from-top-mid-t/"
+</a><a class="card" href="/pt/dust2/molotov-catwalk-from-top-mid-t/" data-id="molotov-catwalk-from-top-mid-t"
    data-type="molotov" data-side="T" data-area="Catwalk" data-map="dust2"
    data-teams="falcons furia g2 legacy vitality" data-players="apex art fallen heavygod hunter karrigan m0nesy molodoy try"
    data-diff="3" data-count="16" data-eff="0.0">
@@ -450,7 +449,7 @@ Vitality · 45 granadas em 4 mapas
     <h3>Molotov Varanda (de Coqueiro)</h3>
     <p class="muted">1 uso</p>
   </div>
-</a><a class="card" href="/pt/dust2/smoke-long-doors-from-under-a-ct/"
+</a><a class="card" href="/pt/dust2/smoke-long-doors-from-under-a-ct/" data-id="smoke-long-doors-from-under-a-ct"
    data-type="smoke" data-side="CT" data-area="LongDoors" data-map="dust2"
    data-teams="falcons furia g2 legacy vitality" data-players="apex art hunter karrigan kscerato m0nesy molodoy niko r1nkle try"
    data-diff="2" data-count="25" data-eff="-1">
@@ -467,7 +466,7 @@ Vitality · 45 granadas em 4 mapas
     <h3>Smoke Portas do Fundo (de Rampa do CT)</h3>
     <p class="muted">1 uso</p>
   </div>
-</a><a class="card" href="/pt/dust2/smoke-under-a-from-long-doors-t/"
+</a><a class="card" href="/pt/dust2/smoke-under-a-from-long-doors-t/" data-id="smoke-under-a-from-long-doors-t"
    data-type="smoke" data-side="T" data-area="UnderA" data-map="dust2"
    data-teams="falcons furia g2 vitality" data-players="apex m0nesy mezii r1nkle teses yuurih"
    data-diff="2" data-count="10" data-eff="-1">
@@ -484,7 +483,7 @@ Vitality · 45 granadas em 4 mapas
     <h3>Smoke Rampa do CT (de Portas do Fundo)</h3>
     <p class="muted">1 uso</p>
   </div>
-</a><a class="card" href="/pt/dust2/flash-catwalk-from-top-mid-t/"
+</a><a class="card" href="/pt/dust2/flash-catwalk-from-top-mid-t/" data-id="flash-catwalk-from-top-mid-t"
    data-type="flash" data-side="T" data-area="Catwalk" data-map="dust2"
    data-teams="falcons g2 legacy vitality" data-players="apex hunter karrigan try"
    data-diff="1" data-count="4" data-eff="0.0">
@@ -501,7 +500,7 @@ Vitality · 45 granadas em 4 mapas
     <h3>Flash Varanda (de Coqueiro)</h3>
     <p class="muted">1 uso</p>
   </div>
-</a><a class="card" href="/pt/dust2/he-catwalk-from-a-extended-ct/"
+</a><a class="card" href="/pt/dust2/he-catwalk-from-a-extended-ct/" data-id="he-catwalk-from-a-extended-ct"
    data-type="he" data-side="CT" data-area="Catwalk" data-map="dust2"
    data-teams="falcons vitality" data-players="apex m0nesy niko"
    data-diff="3" data-count="4" data-eff="0.0">
@@ -522,7 +521,7 @@ Vitality · 45 granadas em 4 mapas
 </section>
 <section>
   <h2 class="sec"><a href="/pt/inferno/">Inferno</a> <span class="muted">· 4 lineups</span></h2>
-  <div class="cards"><a class="card" href="/pt/inferno/flash-banana-from-b-site-ct/"
+  <div class="cards"><a class="card" href="/pt/inferno/flash-banana-from-b-site-ct/" data-id="flash-banana-from-b-site-ct"
    data-type="flash" data-side="CT" data-area="Banana" data-map="inferno"
    data-teams="furia g2 mouz vitality" data-players="apex hunter kscerato mezii pr spinx xertion"
    data-diff="1" data-count="16" data-eff="1.19">
@@ -540,7 +539,7 @@ Vitality · 45 granadas em 4 mapas
 <p class="eff">cega 1,2 inimigo(s) por 3,3s em média</p>
     <p class="muted">4 usos</p>
   </div>
-</a><a class="card" href="/pt/inferno/molotov-b-site-from-banana-t/"
+</a><a class="card" href="/pt/inferno/molotov-b-site-from-banana-t/" data-id="molotov-b-site-from-banana-t"
    data-type="molotov" data-side="T" data-area="BombsiteB" data-map="inferno"
    data-teams="furia g2 mouz vitality" data-players="apex hunter matys mezii spinx torzsi yuurih"
    data-diff="2" data-count="11" data-eff="0.0">
@@ -557,7 +556,7 @@ Vitality · 45 granadas em 4 mapas
     <h3>Molotov Bomb B (de Banana)</h3>
     <p class="muted">1 uso</p>
   </div>
-</a><a class="card" href="/pt/inferno/smoke-banana-from-t-spawn-t/"
+</a><a class="card" href="/pt/inferno/smoke-banana-from-t-spawn-t/" data-id="smoke-banana-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="Banana" data-map="inferno"
    data-teams="furia g2 mouz vitality" data-players="apex fallen r1nkle torzsi"
    data-diff="3" data-count="9" data-eff="-1">
@@ -574,7 +573,7 @@ Vitality · 45 granadas em 4 mapas
     <h3>Smoke Banana (de Base TR)</h3>
     <p class="muted">1 uso</p>
   </div>
-</a><a class="card" href="/pt/inferno/molotov-banana-from-b-site-ct/"
+</a><a class="card" href="/pt/inferno/molotov-banana-from-b-site-ct/" data-id="molotov-banana-from-b-site-ct"
    data-type="molotov" data-side="CT" data-area="Banana" data-map="inferno"
    data-teams="furia g2 mouz vitality" data-players="apex flamez hunter kscerato pr"
    data-diff="2" data-count="8" data-eff="0.0">
@@ -595,7 +594,7 @@ Vitality · 45 granadas em 4 mapas
 </section>
 <section>
   <h2 class="sec"><a href="/pt/mirage/">Mirage</a> <span class="muted">· 10 lineups</span></h2>
-  <div class="cards"><a class="card" href="/pt/mirage/smoke-sniper-s-nest-from-t-spawn-t/"
+  <div class="cards"><a class="card" href="/pt/mirage/smoke-sniper-s-nest-from-t-spawn-t/" data-id="smoke-sniper-s-nest-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="SnipersNest" data-map="mirage"
    data-teams="falcons furia fut g2 legacy mouz spirit vitality" data-players="apex art coolio dem0n donk dumau dziugss flamez heavygod hunter karrigan ksloks kyousuke latto m0nesy magixx matys mezii nertz niko pr r1nkle ropz sh1ro spinx sunpayus torzsi try xelex xertion xfl0ud yekindar zont1x zywoo"
    data-diff="3" data-count="99" data-eff="-1">
@@ -612,7 +611,7 @@ Vitality · 45 granadas em 4 mapas
     <h3>Smoke Janela (de Base TR)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-t-ramp-from-t-spawn-t/"
+</a><a class="card" href="/pt/mirage/flash-t-ramp-from-t-spawn-t/" data-id="flash-t-ramp-from-t-spawn-t"
    data-type="flash" data-side="T" data-area="TRamp" data-map="mirage"
    data-teams="vitality" data-players="apex mezii"
    data-diff="1" data-count="5" data-eff="0.4">
@@ -630,7 +629,7 @@ Vitality · 45 granadas em 4 mapas
 <p class="eff">cega 0,4 inimigo(s) por 1,7s em média</p>
     <p class="muted">2 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-a-site-from-palace-t/"
+</a><a class="card" href="/pt/mirage/flash-a-site-from-palace-t/" data-id="flash-a-site-from-palace-t"
    data-type="flash" data-side="T" data-area="BombsiteA" data-map="mirage"
    data-teams="fut vitality" data-players="apex dziugss"
    data-diff="1" data-count="3" data-eff="0.0">
@@ -647,7 +646,7 @@ Vitality · 45 granadas em 4 mapas
     <h3>Flash Bomb A (de Palacio)</h3>
     <p class="muted">2 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/smoke-catwalk-from-house-t/"
+</a><a class="card" href="/pt/mirage/smoke-catwalk-from-house-t/" data-id="smoke-catwalk-from-house-t"
    data-type="smoke" data-side="T" data-area="Catwalk" data-map="mirage"
    data-teams="legacy vitality" data-players="apex art"
    data-diff="2" data-count="3" data-eff="-1">
@@ -664,7 +663,7 @@ Vitality · 45 granadas em 4 mapas
     <h3>Smoke L (de TV)</h3>
     <p class="muted">2 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/smoke-connector-from-top-mid-t/"
+</a><a class="card" href="/pt/mirage/smoke-connector-from-top-mid-t/" data-id="smoke-connector-from-top-mid-t"
    data-type="smoke" data-side="T" data-area="Connector" data-map="mirage"
    data-teams="falcons fut g2 legacy mouz spirit vitality" data-players="apex dumau flamez heavygod hunter karrigan magixx nertz niko sunpayus tn1r xertion"
    data-diff="1" data-count="20" data-eff="-1">
@@ -681,7 +680,7 @@ Vitality · 45 granadas em 4 mapas
     <h3>Smoke Ligação (de Top Mid)</h3>
     <p class="muted">1 uso</p>
   </div>
-</a><a class="card" href="/pt/mirage/smoke-palace-from-a-site-ct/"
+</a><a class="card" href="/pt/mirage/smoke-palace-from-a-site-ct/" data-id="smoke-palace-from-a-site-ct"
    data-type="smoke" data-side="CT" data-area="PalaceInterior" data-map="mirage"
    data-teams="falcons furia mouz vitality" data-players="apex teses xelex yekindar yuurih"
    data-diff="1" data-count="13" data-eff="-1">
@@ -698,7 +697,7 @@ Vitality · 45 granadas em 4 mapas
     <h3>Smoke Palacio (de Bomb A)</h3>
     <p class="muted">1 uso</p>
   </div>
-</a><a class="card" href="/pt/mirage/he-top-mid-from-sniper-s-nest-ct/"
+</a><a class="card" href="/pt/mirage/he-top-mid-from-sniper-s-nest-ct/" data-id="he-top-mid-from-sniper-s-nest-ct"
    data-type="he" data-side="CT" data-area="TopofMid" data-map="mirage"
    data-teams="falcons mouz vitality" data-players="apex niko xertion"
    data-diff="3" data-count="4" data-eff="0.0">
@@ -715,7 +714,7 @@ Vitality · 45 granadas em 4 mapas
     <h3>HE Top Mid (de Janela)</h3>
     <p class="muted">1 uso</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-mid-from-top-mid-t/"
+</a><a class="card" href="/pt/mirage/flash-mid-from-top-mid-t/" data-id="flash-mid-from-top-mid-t"
    data-type="flash" data-side="T" data-area="Middle" data-map="mirage"
    data-teams="fut vitality" data-players="apex coolio xfl0ud"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -732,7 +731,7 @@ Vitality · 45 granadas em 4 mapas
     <h3>Flash Meio (de Top Mid)</h3>
     <p class="muted">1 uso</p>
   </div>
-</a><a class="card" href="/pt/mirage/he-top-mid-from-connector-ct/"
+</a><a class="card" href="/pt/mirage/he-top-mid-from-connector-ct/" data-id="he-top-mid-from-connector-ct"
    data-type="he" data-side="CT" data-area="TopofMid" data-map="mirage"
    data-teams="falcons g2 mouz vitality" data-players="apex heavygod m0nesy niko xertion"
    data-diff="3" data-count="6" data-eff="0.0">
@@ -749,7 +748,7 @@ Vitality · 45 granadas em 4 mapas
     <h3>HE Top Mid (de Ligação)</h3>
     <p class="muted">1 uso</p>
   </div>
-</a><a class="card" href="/pt/mirage/smoke-underpass-from-connector-ct/"
+</a><a class="card" href="/pt/mirage/smoke-underpass-from-connector-ct/" data-id="smoke-underpass-from-connector-ct"
    data-type="smoke" data-side="CT" data-area="Underpass" data-map="mirage"
    data-teams="falcons mouz vitality" data-players="apex niko xertion"
    data-diff="1" data-count="3" data-eff="-1">

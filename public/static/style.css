@@ -494,3 +494,76 @@ a.card.is-fav h3::before { content: "★ "; color: var(--accent); }
 .c24-l { font-size: 9px; text-align: center; color: var(--muted); }
 .an-table td, .an-table th { text-align: right; } .an-table td:first-child, .an-table th:first-child { text-align: left; }
 @media (max-width: 600px) { .an-grid { grid-template-columns: 1fr; } .kpis { grid-template-columns: 1fr 1fr; } .kpi-v { font-size: 22px; } }
+
+/* map page: interactive radar beside the list */
+.map-split { display: grid; grid-template-columns: minmax(320px, 44%) minmax(0, 1fr); gap: 16px; align-items: start; margin-bottom: 18px; }
+.map-ov { position: sticky; top: 70px; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 10px; }
+.ov-svg { width: 100%; display: block; background: var(--radar-bg); border-radius: 3px; max-height: calc(100vh - 230px); }
+.ov-toggles { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; align-items: center; }
+.ov-tg { display: inline-flex; align-items: center; gap: 4px; font-size: 12.5px; padding: 3px 8px; border: 1px solid var(--line); border-radius: 99px; cursor: pointer; background: var(--panel2); }
+.ov-tg input { accent-color: var(--accent); margin: 0; }
+.ov-sep { width: 1px; height: 18px; background: var(--line); margin: 0 2px; }
+.tg-smoke { border-color: color-mix(in srgb, var(--smoke) 50%, var(--line)); } .tg-flash { border-color: color-mix(in srgb, var(--flash) 50%, var(--line)); }
+.tg-molotov { border-color: color-mix(in srgb, var(--molotov) 50%, var(--line)); } .tg-he { border-color: color-mix(in srgb, var(--he) 50%, var(--line)); }
+.tg-T { border-color: color-mix(in srgb, var(--t) 50%, var(--line)); } .tg-CT { border-color: color-mix(in srgb, var(--ct) 50%, var(--line)); }
+.ov-labels text { fill: #e9ecf1; fill-opacity: .7; font-size: 15px; font-weight: 600; text-anchor: middle; dominant-baseline: middle;
+  paint-order: stroke; stroke: rgba(11, 13, 17, .85); stroke-width: 3.5px; pointer-events: none; }
+.map-ov.no-labels .ov-labels { display: none; }
+.ov-item { cursor: pointer; outline: none; }
+.ov-item.off { display: none; }
+.ov-traj { fill: none; stroke-width: 2.4; opacity: .55; }
+.ov-land { fill-opacity: .18; stroke-width: 2; }
+.ov-throw { stroke: #000; stroke-width: 2; }
+.ov-item:hover .ov-traj, .ov-item.hov .ov-traj, .ov-item:focus .ov-traj { opacity: 1; stroke-width: 4; }
+.ov-item:hover .ov-land, .ov-item.hov .ov-land { fill-opacity: .45; }
+.ov-item.sel .ov-traj { opacity: 1; stroke-width: 5; } .ov-item.sel .ov-land { fill-opacity: .55; stroke-width: 3; }
+.ov-item.sel .ov-throw { r: 9; stroke: #fff; }
+.ov-info { margin-top: 8px; }
+.ov-info-a { display: flex; flex-direction: column; gap: 4px; padding: 8px 10px; background: var(--panel2); border: 1px solid var(--accent); border-radius: var(--radius); color: var(--text); text-decoration: none; }
+.ov-open { color: var(--link); font-weight: 600; font-size: 13px; }
+.map-list .cards { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+.card.hl { border-color: var(--accent); box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 45%, transparent); }
+@media (max-width: 900px) {
+  .map-split { grid-template-columns: 1fr; }
+  .map-ov { position: static; }
+  .ov-svg { max-height: none; }
+}
+.filters:has(+ .map-split) { position: static; }
+/* desktop: the ☰ button collapses the whole sidebar (more room for the content) */
+@media (min-width: 961px) {
+  .menu-btn { display: inline-block; }
+  html.side-off .layout { grid-template-columns: minmax(0, 1fr); }
+  html.side-off .side { display: none; }
+  html.side-off .foot-in { padding-left: 24px; }
+}
+
+/* team page: players + tactics with every map on one screen */
+.roster { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px; }
+.pl-card { display: flex; flex-direction: column; gap: 4px; background: var(--panel2); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 10px 12px; color: var(--text); text-decoration: none; }
+.pl-card:hover { border-color: var(--link); } .pl-card:hover b { color: var(--link); }
+.pl-card .mix { height: 8px; }
+.tm-toggles { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 4px 0 10px; }
+.tm-maps { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+.tm-map { background: var(--panel2); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; }
+.tm-map header { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding: 8px 10px; background: var(--head); flex-wrap: wrap; }
+.tm-map header a { color: var(--text); text-decoration: none; } .tm-map header a:hover { color: var(--link); }
+.tm-heat { width: 100%; display: block; background: var(--radar-bg); }
+.tm-heat .h { opacity: .42; } .tm-heat .h0 { fill: var(--smoke); } .tm-heat .h1 { fill: var(--flash); } .tm-heat .h2 { fill: var(--molotov); } .tm-heat .h3 { fill: var(--he); }
+.tm-tactics.hide-h0 .h0, .tm-tactics.hide-h1 .h1, .tm-tactics.hide-h2 .h2, .tm-tactics.hide-h3 .h3 { display: none; }
+.tm-tactics.only-T .hs-CT, .tm-tactics.only-CT .hs-T { display: none; }
+.tm-body { padding: 8px 10px 10px; display: flex; flex-direction: column; gap: 6px; }
+.tm-line { display: grid; grid-template-columns: auto 1fr auto; gap: 8px; align-items: center; }
+.tm-line .mix { height: 8px; }
+.tm-plays { display: flex; flex-direction: column; gap: 2px; }
+.tm-plays a { font-size: 13px; color: var(--text); text-decoration: none; font-weight: 600; } .tm-plays a:hover { color: var(--link); }
+.tm-links { display: flex; flex-wrap: wrap; gap: 10px; }
+.sig-details > summary { list-style: none; cursor: pointer; }
+.sig-details > summary::-webkit-details-marker { display: none; }
+.sig-details > summary h2::after { content: " ▸"; } .sig-details[open] > summary h2::after { content: " ▾"; }
+.tm-group { margin: 0 0 8px; } .tm-group > summary { cursor: pointer; padding: 6px 0; }
+.content > section > details.tm-group { margin-left: 12px; margin-right: 12px; }
+@media (max-width: 600px) { .tm-maps, .roster { grid-template-columns: 1fr; } }
+
+img.flag { width: 16px; height: 12px; display: inline-block; vertical-align: -1px; border-radius: 2px; box-shadow: 0 0 0 1px rgba(0,0,0,.25); object-fit: cover; }
+h1 img.flag { width: 24px; height: 18px; vertical-align: 0; }

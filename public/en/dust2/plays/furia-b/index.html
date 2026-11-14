@@ -19,15 +19,16 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Lineups Pro">
 <meta name="theme-color" content="#0b0f15">
-<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light"; } catch (e) {}</script>
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
+  if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/static/style.css">
-<script>window.I18N = {"copied": "Copied!", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s"}; window.LANG = "en";</script>
+<script>window.I18N = {"copied": "Copied!", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "open": "Open", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s"}; window.LANG = "en";</script>
 </head>
 <body>
 <header class="top">
   <div class="top-in">
-    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-controls="side" aria-expanded="false">☰</button>
+    <button class="menu-btn" id="menuBtn" aria-label="Show or hide the menu" aria-controls="side" aria-expanded="false">☰</button>
     <a class="logo" href="/en/"><span class="logo-mark">◎</span> Lineups Pro</a>
     <div class="search">
       <input id="q" type="search" placeholder="Search map, player, team, smoke…" autocomplete="off" aria-label="Search">
@@ -58,7 +59,7 @@
 <a href="/en/player/apex/"><span>apEX</span></a><a href="/en/player/art/"><span>art</span></a><a href="/en/player/coolio/"><span>coolio</span></a><a href="/en/player/dem0n/"><span>dem0n</span></a><a href="/en/player/donk/"><span>donk</span></a><a href="/en/player/dumau/"><span>dumau</span></a><a href="/en/player/dziugss/"><span>dziugss</span></a><a href="/en/player/fallen/"><span>FalleN</span></a><a href="/en/player/flamez/"><span>flameZ</span></a><a href="/en/player/heavygod/"><span>HeavyGod</span></a><a href="/en/player/hunter/"><span>huNter</span></a><a href="/en/player/karrigan/"><span>karrigan</span></a><a class="more" href="/en/players/">see all (40)</a>      </details>
       <details class="nav-g" data-k="teams" open>
         <summary class="nav-h"><a href="/en/teams/">Teams</a></summary>
-<a href="/en/team/falcons/"><span>Falcons</span></a><a href="/en/team/furia/"><span>FURIA</span></a><a href="/en/team/fut/"><span>FUT</span></a><a href="/en/team/g2/"><span>G2</span></a><a href="/en/team/legacy/"><span>Legacy</span></a><a href="/en/team/mouz/"><span>MOUZ</span></a><a href="/en/team/spirit/"><span>Spirit</span></a><a href="/en/team/vitality/"><span>Vitality</span></a>      </details>
+<a href="/en/team/falcons/"><span><img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12">Falcons</span></a><a href="/en/team/furia/"><span><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12">FURIA</span></a><a href="/en/team/fut/"><span><img class="flag" src="/static/flags/tr.svg" alt="Turkey" title="Turkey" width="16" height="12">FUT</span></a><a href="/en/team/g2/"><span><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12">G2</span></a><a href="/en/team/legacy/"><span><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12">Legacy</span></a><a href="/en/team/mouz/"><span><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12">MOUZ</span></a><a href="/en/team/spirit/"><span><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12">Spirit</span></a><a href="/en/team/vitality/"><span><img class="flag" src="/static/flags/fr.svg" alt="France" title="France" width="16" height="12">Vitality</span></a>      </details>
       <details class="nav-g" data-k="events" open>
         <summary class="nav-h"><a href="/en/tournaments/">Tournaments</a></summary>
 <a href="/en/tournament/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      </details>
@@ -83,7 +84,7 @@
   <main class="content">
 <nav class="crumbs"><a href="/en/">Home</a> › <a href="/en/dust2/">Dust2</a> ›
   <a href="/en/dust2/plays/">Plays</a> › FURIA B entry</nav>
-<h1>FURIA B entry <span class="muted h-sub">· Dust2</span></h1>
+<h1><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"> FURIA B entry <span class="muted h-sub">· Dust2</span></h1>
 <p class="muted">2 rounds · round won 100% · median plant at 1:12
  · <a href="/en/team/furia/">FURIA</a></p>
 
@@ -115,13 +116,13 @@
     <h2>Rounds</h2>
     <div class="round-list">
       <button class="round-item" data-play="furia-vs-vitality-m2-dust2-r13" data-clip="/media/furia-vs-vitality-m2-dust2/entry-r13.mp4" data-poster="/media/furia-vs-vitality-m2-dust2/entry-r13.jpg" data-pov="YEKINDAR">
-        <span class="ri-top"><b>vs Vitality</b> · Round 13
+        <span class="ri-top"><b>vs <img class="flag" src="/static/flags/fr.svg" alt="France" title="France" width="16" height="12"> Vitality</b> · Round 13
           <span class="badge win">won</span><span class="badge video">▶ video</span></span>
         <span class="muted small">plant at 0:56 into the round · 2026-11-12</span>
         <span class="ri-util"><span class="dot-nade type-decoy" title="KSCERATO · decoy"></span><span class="dot-nade type-smoke" title="FalleN · smoke"></span><span class="dot-nade type-smoke" title="yuurih · smoke"></span><span class="dot-nade type-flash" title="FalleN · flash"></span><span class="dot-nade type-molotov" title="yuurih · molotov"></span><span class="dot-nade type-flash" title="FalleN · flash"></span></span>
       </button>
       <button class="round-item" data-play="furia-vs-vitality-m2-dust2-r23" data-clip="/media/furia-vs-vitality-m2-dust2/entry-r23.mp4" data-poster="/media/furia-vs-vitality-m2-dust2/entry-r23.jpg" data-pov="YEKINDAR">
-        <span class="ri-top"><b>vs Vitality</b> · Round 23
+        <span class="ri-top"><b>vs <img class="flag" src="/static/flags/fr.svg" alt="France" title="France" width="16" height="12"> Vitality</b> · Round 23
           <span class="badge win">won</span><span class="badge video">▶ video</span></span>
         <span class="muted small">plant at 1:12 into the round · 2026-11-12</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="FalleN · smoke"></span><span class="dot-nade type-molotov" title="FalleN · molotov"></span><span class="dot-nade type-flash" title="KSCERATO · flash"></span><span class="dot-nade type-molotov" title="KSCERATO · molotov"></span><span class="dot-nade type-smoke" title="KSCERATO · smoke"></span><span class="dot-nade type-smoke" title="YEKINDAR · smoke"></span><span class="dot-nade type-smoke" title="molodoy · smoke"></span><span class="dot-nade type-flash" title="molodoy · flash"></span><span class="dot-nade type-flash" title="YEKINDAR · flash"></span><span class="dot-nade type-molotov" title="FalleN · molotov"></span><span class="dot-nade type-flash" title="molodoy · flash"></span><span class="dot-nade type-smoke" title="yuurih · smoke"></span></span>
@@ -134,7 +135,7 @@
 <section>
   <h2>Grenades used in these entries</h2>
   <p class="muted">Published lineups the team threw before the plant in these rounds.</p>
-  <div class="cards"><a class="card" href="/en/dust2/smoke-ct-spawn-from-outside-tunnels-t/"
+  <div class="cards"><a class="card" href="/en/dust2/smoke-ct-spawn-from-outside-tunnels-t/" data-id="smoke-ct-spawn-from-outside-tunnels-t"
    data-type="smoke" data-side="T" data-area="CTSpawn" data-map="dust2"
    data-teams="falcons furia g2 legacy" data-players="art matys niko yuurih"
    data-diff="3" data-count="4" data-eff="-1">
@@ -151,7 +152,7 @@
     <h3>Smoke CT Spawn (from Outside Tunnels)</h3>
     <p class="muted">4 uses · 4 teams · 75% rounds won</p>
   </div>
-</a><a class="card" href="/en/dust2/smoke-mid-doors-from-top-mid-t/"
+</a><a class="card" href="/en/dust2/smoke-mid-doors-from-top-mid-t/" data-id="smoke-mid-doors-from-top-mid-t"
    data-type="smoke" data-side="T" data-area="MidDoors" data-map="dust2"
    data-teams="falcons furia g2 legacy" data-players="art fallen heavygod hunter karrigan m0nesy molodoy nertz teses"
    data-diff="1" data-count="12" data-eff="-1">
@@ -168,7 +169,7 @@
     <h3>Smoke Mid Doors (from Top Mid)</h3>
     <p class="muted">12 uses · 4 teams · 42% rounds won</p>
   </div>
-</a><a class="card" href="/en/dust2/molotov-catwalk-from-top-mid-t/"
+</a><a class="card" href="/en/dust2/molotov-catwalk-from-top-mid-t/" data-id="molotov-catwalk-from-top-mid-t"
    data-type="molotov" data-side="T" data-area="Catwalk" data-map="dust2"
    data-teams="falcons furia g2 legacy vitality" data-players="apex art fallen heavygod hunter karrigan m0nesy molodoy try"
    data-diff="3" data-count="16" data-eff="0.0">
@@ -185,7 +186,7 @@
     <h3>Molotov Catwalk (from Top Mid)</h3>
     <p class="muted">16 uses · 5 teams · 50% rounds won</p>
   </div>
-</a><a class="card" href="/en/dust2/flash-lower-tunnels-t/"
+</a><a class="card" href="/en/dust2/flash-lower-tunnels-t/" data-id="flash-lower-tunnels-t"
    data-type="flash" data-side="T" data-area="LowerTunnel" data-map="dust2"
    data-teams="falcons furia g2 vitality" data-players="flamez kscerato nertz niko"
    data-diff="1" data-count="10" data-eff="0.2">
@@ -203,7 +204,7 @@
 <p class="eff">blinds 0.2 enemy(ies) for 0.3s on average</p>
     <p class="muted">10 uses · 4 teams · 60% rounds won</p>
   </div>
-</a><a class="card" href="/en/dust2/smoke-ct-spawn-from-mid-t/"
+</a><a class="card" href="/en/dust2/smoke-ct-spawn-from-mid-t/" data-id="smoke-ct-spawn-from-mid-t"
    data-type="smoke" data-side="T" data-area="CTSpawn" data-map="dust2"
    data-teams="falcons furia legacy vitality" data-players="apex art fallen flamez karrigan kscerato kyousuke m0nesy molodoy niko yekindar yuurih"
    data-diff="2" data-count="19" data-eff="-1">
@@ -220,7 +221,7 @@
     <h3>Smoke CT Spawn (from Mid)</h3>
     <p class="muted">19 uses · 4 teams · 42% rounds won</p>
   </div>
-</a><a class="card" href="/en/dust2/smoke-b-site-from-upper-tunnels-t/"
+</a><a class="card" href="/en/dust2/smoke-b-site-from-upper-tunnels-t/" data-id="smoke-b-site-from-upper-tunnels-t"
    data-type="smoke" data-side="T" data-area="BombsiteB" data-map="dust2"
    data-teams="falcons furia g2 legacy vitality" data-players="heavygod hunter ksloks matys niko ropz yekindar yuurih zywoo"
    data-diff="1" data-count="17" data-eff="-1">
@@ -237,7 +238,7 @@
     <h3>Smoke B Site (from Upper Tunnels)</h3>
     <p class="muted">17 uses · 5 teams · 53% rounds won</p>
   </div>
-</a><a class="card" href="/en/dust2/smoke-b-doors-from-upper-tunnels-t/"
+</a><a class="card" href="/en/dust2/smoke-b-doors-from-upper-tunnels-t/" data-id="smoke-b-doors-from-upper-tunnels-t"
    data-type="smoke" data-side="T" data-area="BDoors" data-map="dust2"
    data-teams="furia g2" data-players="hunter kscerato molodoy r1nkle"
    data-diff="3" data-count="4" data-eff="-1">

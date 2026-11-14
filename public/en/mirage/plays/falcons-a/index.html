@@ -19,15 +19,16 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Lineups Pro">
 <meta name="theme-color" content="#0b0f15">
-<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light"; } catch (e) {}</script>
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
+  if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/static/style.css">
-<script>window.I18N = {"copied": "Copied!", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s"}; window.LANG = "en";</script>
+<script>window.I18N = {"copied": "Copied!", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "open": "Open", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s"}; window.LANG = "en";</script>
 </head>
 <body>
 <header class="top">
   <div class="top-in">
-    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-controls="side" aria-expanded="false">☰</button>
+    <button class="menu-btn" id="menuBtn" aria-label="Show or hide the menu" aria-controls="side" aria-expanded="false">☰</button>
     <a class="logo" href="/en/"><span class="logo-mark">◎</span> Lineups Pro</a>
     <div class="search">
       <input id="q" type="search" placeholder="Search map, player, team, smoke…" autocomplete="off" aria-label="Search">
@@ -58,7 +59,7 @@
 <a href="/en/player/apex/"><span>apEX</span></a><a href="/en/player/art/"><span>art</span></a><a href="/en/player/coolio/"><span>coolio</span></a><a href="/en/player/dem0n/"><span>dem0n</span></a><a href="/en/player/donk/"><span>donk</span></a><a href="/en/player/dumau/"><span>dumau</span></a><a href="/en/player/dziugss/"><span>dziugss</span></a><a href="/en/player/fallen/"><span>FalleN</span></a><a href="/en/player/flamez/"><span>flameZ</span></a><a href="/en/player/heavygod/"><span>HeavyGod</span></a><a href="/en/player/hunter/"><span>huNter</span></a><a href="/en/player/karrigan/"><span>karrigan</span></a><a class="more" href="/en/players/">see all (40)</a>      </details>
       <details class="nav-g" data-k="teams" open>
         <summary class="nav-h"><a href="/en/teams/">Teams</a></summary>
-<a href="/en/team/falcons/"><span>Falcons</span></a><a href="/en/team/furia/"><span>FURIA</span></a><a href="/en/team/fut/"><span>FUT</span></a><a href="/en/team/g2/"><span>G2</span></a><a href="/en/team/legacy/"><span>Legacy</span></a><a href="/en/team/mouz/"><span>MOUZ</span></a><a href="/en/team/spirit/"><span>Spirit</span></a><a href="/en/team/vitality/"><span>Vitality</span></a>      </details>
+<a href="/en/team/falcons/"><span><img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12">Falcons</span></a><a href="/en/team/furia/"><span><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12">FURIA</span></a><a href="/en/team/fut/"><span><img class="flag" src="/static/flags/tr.svg" alt="Turkey" title="Turkey" width="16" height="12">FUT</span></a><a href="/en/team/g2/"><span><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12">G2</span></a><a href="/en/team/legacy/"><span><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12">Legacy</span></a><a href="/en/team/mouz/"><span><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12">MOUZ</span></a><a href="/en/team/spirit/"><span><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12">Spirit</span></a><a href="/en/team/vitality/"><span><img class="flag" src="/static/flags/fr.svg" alt="France" title="France" width="16" height="12">Vitality</span></a>      </details>
       <details class="nav-g" data-k="events" open>
         <summary class="nav-h"><a href="/en/tournaments/">Tournaments</a></summary>
 <a href="/en/tournament/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      </details>
@@ -83,7 +84,7 @@
   <main class="content">
 <nav class="crumbs"><a href="/en/">Home</a> › <a href="/en/mirage/">Mirage</a> ›
   <a href="/en/mirage/plays/">Plays</a> › Falcons A entry</nav>
-<h1>Falcons A entry <span class="muted h-sub">· Mirage</span></h1>
+<h1><img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12"> Falcons A entry <span class="muted h-sub">· Mirage</span></h1>
 <p class="muted">3 rounds · round won 100% · median plant at 1:00
  · <a href="/en/team/falcons/">Falcons</a></p>
 
@@ -115,19 +116,19 @@
     <h2>Rounds</h2>
     <div class="round-list">
       <button class="round-item" data-play="legacy-vs-falcons-m2-mirage-r13" data-clip="/media/legacy-vs-falcons-m2-mirage/entry-r13.mp4" data-poster="/media/legacy-vs-falcons-m2-mirage/entry-r13.jpg" data-pov="karrigan">
-        <span class="ri-top"><b>vs Legacy</b> · Round 13
+        <span class="ri-top"><b>vs <img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"> Legacy</b> · Round 13
           <span class="badge win">won</span><span class="badge video">▶ video</span></span>
         <span class="muted small">plant at 0:33 into the round · 2026-11-12</span>
         <span class="ri-util"><span class="dot-nade type-decoy" title="karrigan · decoy"></span><span class="dot-nade type-smoke" title="TeSeS · smoke"></span><span class="dot-nade type-molotov" title="TeSeS · molotov"></span><span class="dot-nade type-flash" title="TeSeS · flash"></span><span class="dot-nade type-flash" title="TeSeS · flash"></span><span class="dot-nade type-smoke" title="TeSeS · smoke"></span></span>
       </button>
       <button class="round-item" data-play="legacy-vs-falcons-m2-mirage-r14" data-clip="/media/legacy-vs-falcons-m2-mirage/entry-r14.mp4" data-poster="/media/legacy-vs-falcons-m2-mirage/entry-r14.jpg" data-pov="m0NESY">
-        <span class="ri-top"><b>vs Legacy</b> · Round 14
+        <span class="ri-top"><b>vs <img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"> Legacy</b> · Round 14
           <span class="badge win">won</span><span class="badge video">▶ video</span></span>
         <span class="muted small">plant at 1:00 into the round · 2026-11-12</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="kyousuke · smoke"></span><span class="dot-nade type-molotov" title="karrigan · molotov"></span><span class="dot-nade type-he" title="karrigan · he"></span><span class="dot-nade type-smoke" title="karrigan · smoke"></span><span class="dot-nade type-flash" title="m0NESY · flash"></span><span class="dot-nade type-smoke" title="TeSeS · smoke"></span><span class="dot-nade type-molotov" title="m0NESY · molotov"></span><span class="dot-nade type-flash" title="TeSeS · flash"></span><span class="dot-nade type-molotov" title="kyousuke · molotov"></span><span class="dot-nade type-smoke" title="m0NESY · smoke"></span><span class="dot-nade type-smoke" title="kyousuke · smoke"></span><span class="dot-nade type-flash" title="TeSeS · flash"></span></span>
       </button>
       <button class="round-item" data-play="legacy-vs-falcons-m2-mirage-r16" data-clip="/media/legacy-vs-falcons-m2-mirage/entry-r16.mp4" data-poster="/media/legacy-vs-falcons-m2-mirage/entry-r16.jpg" data-pov="karrigan">
-        <span class="ri-top"><b>vs Legacy</b> · Round 16
+        <span class="ri-top"><b>vs <img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"> Legacy</b> · Round 16
           <span class="badge win">won</span><span class="badge video">▶ video</span></span>
         <span class="muted small">plant at 1:11 into the round · 2026-11-12</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="m0NESY · smoke"></span><span class="dot-nade type-smoke" title="TeSeS · smoke"></span><span class="dot-nade type-molotov" title="kyousuke · molotov"></span><span class="dot-nade type-molotov" title="karrigan · molotov"></span><span class="dot-nade type-smoke" title="NiKo · smoke"></span><span class="dot-nade type-molotov" title="NiKo · molotov"></span><span class="dot-nade type-smoke" title="karrigan · smoke"></span><span class="dot-nade type-molotov" title="karrigan · molotov"></span><span class="dot-nade type-flash" title="karrigan · flash"></span></span>
@@ -145,7 +146,7 @@
 <section>
   <h2>Grenades used in these entries</h2>
   <p class="muted">Published lineups the team threw before the plant in these rounds.</p>
-  <div class="cards"><a class="card" href="/en/mirage/smoke-sniper-s-nest-from-t-spawn-t/"
+  <div class="cards"><a class="card" href="/en/mirage/smoke-sniper-s-nest-from-t-spawn-t/" data-id="smoke-sniper-s-nest-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="SnipersNest" data-map="mirage"
    data-teams="falcons furia fut g2 legacy mouz spirit vitality" data-players="apex art coolio dem0n donk dumau dziugss flamez heavygod hunter karrigan ksloks kyousuke latto m0nesy magixx matys mezii nertz niko pr r1nkle ropz sh1ro spinx sunpayus torzsi try xelex xertion xfl0ud yekindar zont1x zywoo"
    data-diff="3" data-count="99" data-eff="-1">
@@ -162,7 +163,7 @@
     <h3>Smoke Sniper&#39;s Nest (from T Spawn)</h3>
     <p class="muted">99 uses · 8 teams · 31% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/smoke-connector-from-top-mid-t/"
+</a><a class="card" href="/en/mirage/smoke-connector-from-top-mid-t/" data-id="smoke-connector-from-top-mid-t"
    data-type="smoke" data-side="T" data-area="Connector" data-map="mirage"
    data-teams="falcons fut g2 legacy mouz spirit vitality" data-players="apex dumau flamez heavygod hunter karrigan magixx nertz niko sunpayus tn1r xertion"
    data-diff="1" data-count="20" data-eff="-1">
@@ -179,7 +180,7 @@
     <h3>Smoke Connector (from Top Mid)</h3>
     <p class="muted">20 uses · 7 teams · 35% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/smoke-a-site-from-palace-alley-t/"
+</a><a class="card" href="/en/mirage/smoke-a-site-from-palace-alley-t/" data-id="smoke-a-site-from-palace-alley-t"
    data-type="smoke" data-side="T" data-area="BombsiteA" data-map="mirage"
    data-teams="falcons furia fut g2 legacy mouz spirit vitality" data-players="dziugss heavygod hunter kscerato mezii ropz sh1ro spinx teses torzsi try"
    data-diff="2" data-count="14" data-eff="-1">
@@ -196,7 +197,7 @@
     <h3>Smoke A Site (from Palace Alley)</h3>
     <p class="muted">14 uses · 8 teams · 43% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/molotov-stairs-from-palace-alley-t/"
+</a><a class="card" href="/en/mirage/molotov-stairs-from-palace-alley-t/" data-id="molotov-stairs-from-palace-alley-t"
    data-type="molotov" data-side="T" data-area="Stairs" data-map="mirage"
    data-teams="falcons furia legacy mouz" data-players="kscerato spinx teses torzsi try"
    data-diff="3" data-count="7" data-eff="0.0">
@@ -213,7 +214,7 @@
     <h3>Molotov Stairs (from Palace Alley)</h3>
     <p class="muted">7 uses · 4 teams · 71% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/smoke-a-site-from-top-mid-t/"
+</a><a class="card" href="/en/mirage/smoke-a-site-from-top-mid-t/" data-id="smoke-a-site-from-top-mid-t"
    data-type="smoke" data-side="T" data-area="BombsiteA" data-map="mirage"
    data-teams="falcons g2 mouz" data-players="hunter r1nkle teses torzsi"
    data-diff="1" data-count="7" data-eff="-1">

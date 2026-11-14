@@ -19,15 +19,16 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Lineups Pro">
 <meta name="theme-color" content="#0b0f15">
-<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light"; } catch (e) {}</script>
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
+  if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/static/style.css">
-<script>window.I18N = {"copied": "Copied!", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s"}; window.LANG = "en";</script>
+<script>window.I18N = {"copied": "Copied!", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "open": "Open", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s"}; window.LANG = "en";</script>
 </head>
 <body>
 <header class="top">
   <div class="top-in">
-    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-controls="side" aria-expanded="false">☰</button>
+    <button class="menu-btn" id="menuBtn" aria-label="Show or hide the menu" aria-controls="side" aria-expanded="false">☰</button>
     <a class="logo" href="/en/"><span class="logo-mark">◎</span> Lineups Pro</a>
     <div class="search">
       <input id="q" type="search" placeholder="Search map, player, team, smoke…" autocomplete="off" aria-label="Search">
@@ -58,7 +59,7 @@
 <a href="/en/player/apex/"><span>apEX</span></a><a href="/en/player/art/"><span>art</span></a><a href="/en/player/coolio/"><span>coolio</span></a><a href="/en/player/dem0n/"><span>dem0n</span></a><a href="/en/player/donk/"><span>donk</span></a><a href="/en/player/dumau/"><span>dumau</span></a><a href="/en/player/dziugss/"><span>dziugss</span></a><a href="/en/player/fallen/"><span>FalleN</span></a><a href="/en/player/flamez/"><span>flameZ</span></a><a href="/en/player/heavygod/"><span>HeavyGod</span></a><a href="/en/player/hunter/"><span>huNter</span></a><a href="/en/player/karrigan/"><span>karrigan</span></a><a class="more" href="/en/players/">see all (40)</a>      </details>
       <details class="nav-g" data-k="teams" open>
         <summary class="nav-h"><a href="/en/teams/">Teams</a></summary>
-<a href="/en/team/falcons/"><span>Falcons</span></a><a href="/en/team/furia/"><span>FURIA</span></a><a href="/en/team/fut/"><span>FUT</span></a><a href="/en/team/g2/"><span>G2</span></a><a href="/en/team/legacy/"><span>Legacy</span></a><a href="/en/team/mouz/"><span>MOUZ</span></a><a href="/en/team/spirit/"><span>Spirit</span></a><a href="/en/team/vitality/"><span>Vitality</span></a>      </details>
+<a href="/en/team/falcons/"><span><img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12">Falcons</span></a><a href="/en/team/furia/"><span><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12">FURIA</span></a><a href="/en/team/fut/"><span><img class="flag" src="/static/flags/tr.svg" alt="Turkey" title="Turkey" width="16" height="12">FUT</span></a><a href="/en/team/g2/"><span><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12">G2</span></a><a href="/en/team/legacy/"><span><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12">Legacy</span></a><a href="/en/team/mouz/"><span><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12">MOUZ</span></a><a href="/en/team/spirit/"><span><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12">Spirit</span></a><a href="/en/team/vitality/"><span><img class="flag" src="/static/flags/fr.svg" alt="France" title="France" width="16" height="12">Vitality</span></a>      </details>
       <details class="nav-g" data-k="events" open>
         <summary class="nav-h"><a href="/en/tournaments/">Tournaments</a></summary>
 <a href="/en/tournament/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      </details>
@@ -83,7 +84,7 @@
   <main class="content">
 <nav class="crumbs"><a href="/en/">Home</a> › <a href="/en/nuke/">Nuke</a> ›
   <a href="/en/nuke/plays/">Plays</a> › Spirit A entry</nav>
-<h1>Spirit A entry <span class="muted h-sub">· Nuke</span></h1>
+<h1><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12"> Spirit A entry <span class="muted h-sub">· Nuke</span></h1>
 <p class="muted">5 rounds · round won 100% · median plant at 1:10
  · <a href="/en/team/spirit/">Spirit</a></p>
 
@@ -115,31 +116,31 @@
     <h2>Rounds</h2>
     <div class="round-list">
       <button class="round-item" data-play="spirit-vs-g2-m2-nuke-r1" data-clip="/media/spirit-vs-g2-m2-nuke/entry-r1.mp4" data-poster="/media/spirit-vs-g2-m2-nuke/entry-r1.jpg" data-pov="sh1ro">
-        <span class="ri-top"><b>vs G2</b> · Round 1
+        <span class="ri-top"><b>vs <img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12"> G2</b> · Round 1
           <span class="badge win">won</span><span class="badge video">▶ video</span></span>
         <span class="muted small">plant at 1:10 into the round · 2026-11-12</span>
         <span class="ri-util"><span class="dot-nade type-decoy" title="magixx · decoy"></span><span class="dot-nade type-smoke" title="magixx · smoke"></span><span class="dot-nade type-flash" title="magixx · flash"></span></span>
       </button>
       <button class="round-item" data-play="spirit-vs-g2-m2-nuke-r4" data-clip="/media/spirit-vs-g2-m2-nuke/entry-r4.mp4" data-poster="/media/spirit-vs-g2-m2-nuke/entry-r4.jpg" data-pov="magixx">
-        <span class="ri-top"><b>vs G2</b> · Round 4
+        <span class="ri-top"><b>vs <img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12"> G2</b> · Round 4
           <span class="badge win">won</span><span class="badge video">▶ video</span></span>
         <span class="muted small">plant at 1:07 into the round · 2026-11-12</span>
         <span class="ri-util"><span class="dot-nade type-he" title="zont1x · he"></span><span class="dot-nade type-molotov" title="tN1R · molotov"></span><span class="dot-nade type-flash" title="donk · flash"></span><span class="dot-nade type-smoke" title="magixx · smoke"></span><span class="dot-nade type-smoke" title="magixx · smoke"></span><span class="dot-nade type-he" title="tN1R · he"></span><span class="dot-nade type-he" title="donk · he"></span><span class="dot-nade type-smoke" title="magixx · smoke"></span><span class="dot-nade type-molotov" title="zont1x · molotov"></span><span class="dot-nade type-flash" title="tN1R · flash"></span><span class="dot-nade type-smoke" title="magixx · smoke"></span><span class="dot-nade type-molotov" title="magixx · molotov"></span><span class="dot-nade type-smoke" title="magixx · smoke"></span></span>
       </button>
       <button class="round-item" data-play="spirit-vs-g2-m2-nuke-r7" data-clip="/media/spirit-vs-g2-m2-nuke/entry-r7.mp4" data-poster="/media/spirit-vs-g2-m2-nuke/entry-r7.jpg" data-pov="sh1ro">
-        <span class="ri-top"><b>vs G2</b> · Round 7
+        <span class="ri-top"><b>vs <img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12"> G2</b> · Round 7
           <span class="badge win">won</span><span class="badge video">▶ video</span></span>
         <span class="muted small">plant at 1:38 into the round · 2026-11-12</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="donk · smoke"></span><span class="dot-nade type-he" title="zont1x · he"></span><span class="dot-nade type-smoke" title="sh1ro · smoke"></span><span class="dot-nade type-smoke" title="magixx · smoke"></span><span class="dot-nade type-smoke" title="zont1x · smoke"></span><span class="dot-nade type-smoke" title="magixx · smoke"></span><span class="dot-nade type-molotov" title="zont1x · molotov"></span></span>
       </button>
       <button class="round-item" data-play="spirit-vs-g2-m2-nuke-r9" data-clip="/media/spirit-vs-g2-m2-nuke/entry-r9.mp4" data-poster="/media/spirit-vs-g2-m2-nuke/entry-r9.jpg" data-pov="donk">
-        <span class="ri-top"><b>vs G2</b> · Round 9
+        <span class="ri-top"><b>vs <img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12"> G2</b> · Round 9
           <span class="badge win">won</span><span class="badge video">▶ video</span></span>
         <span class="muted small">plant at 1:26 into the round · 2026-11-12</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="donk · smoke"></span><span class="dot-nade type-flash" title="sh1ro · flash"></span><span class="dot-nade type-he" title="zont1x · he"></span><span class="dot-nade type-molotov" title="tN1R · molotov"></span><span class="dot-nade type-smoke" title="magixx · smoke"></span><span class="dot-nade type-molotov" title="donk · molotov"></span><span class="dot-nade type-smoke" title="magixx · smoke"></span><span class="dot-nade type-molotov" title="magixx · molotov"></span><span class="dot-nade type-flash" title="magixx · flash"></span><span class="dot-nade type-he" title="donk · he"></span><span class="dot-nade type-flash" title="tN1R · flash"></span><span class="dot-nade type-molotov" title="sh1ro · molotov"></span><span class="dot-nade type-molotov" title="zont1x · molotov"></span><span class="dot-nade type-smoke" title="sh1ro · smoke"></span></span>
       </button>
       <button class="round-item" data-play="spirit-vs-g2-m2-nuke-r10" data-clip="/media/spirit-vs-g2-m2-nuke/entry-r10.mp4" data-poster="/media/spirit-vs-g2-m2-nuke/entry-r10.jpg" data-pov="zont1x">
-        <span class="ri-top"><b>vs G2</b> · Round 10
+        <span class="ri-top"><b>vs <img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12"> G2</b> · Round 10
           <span class="badge win">won</span><span class="badge video">▶ video</span></span>
         <span class="muted small">plant at 0:38 into the round · 2026-11-12</span>
         <span class="ri-util"><span class="dot-nade type-he" title="zont1x · he"></span><span class="dot-nade type-smoke" title="sh1ro · smoke"></span><span class="dot-nade type-he" title="donk · he"></span><span class="dot-nade type-flash" title="magixx · flash"></span><span class="dot-nade type-smoke" title="tN1R · smoke"></span><span class="dot-nade type-flash" title="sh1ro · flash"></span><span class="dot-nade type-molotov" title="magixx · molotov"></span><span class="dot-nade type-he" title="sh1ro · he"></span><span class="dot-nade type-molotov" title="tN1R · molotov"></span><span class="dot-nade type-smoke" title="magixx · smoke"></span><span class="dot-nade type-molotov" title="donk · molotov"></span><span class="dot-nade type-molotov" title="magixx · molotov"></span></span>
@@ -157,7 +158,7 @@
 <section>
   <h2>Grenades used in these entries</h2>
   <p class="muted">Published lineups the team threw before the plant in these rounds.</p>
-  <div class="cards"><a class="card" href="/en/nuke/smoke-outside-t/"
+  <div class="cards"><a class="card" href="/en/nuke/smoke-outside-t/" data-id="smoke-outside-t"
    data-type="smoke" data-side="T" data-area="Outside" data-map="nuke"
    data-teams="fut g2 mouz spirit" data-players="donk hunter magixx matys nertz pr sh1ro torzsi xelex xertion xfl0ud"
    data-diff="2" data-count="98" data-eff="-1">
@@ -174,7 +175,7 @@
     <h3>Smoke Outside</h3>
     <p class="muted">98 uses · 4 teams · 46% rounds won</p>
   </div>
-</a><a class="card" href="/en/nuke/smoke-outside-from-t-spawn-t/"
+</a><a class="card" href="/en/nuke/smoke-outside-from-t-spawn-t/" data-id="smoke-outside-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="Outside" data-map="nuke"
    data-teams="fut g2 mouz spirit" data-players="hunter magixx nertz sh1ro xertion xfl0ud"
    data-diff="2" data-count="35" data-eff="-1">
@@ -191,7 +192,7 @@
     <h3>Smoke Outside (from T Spawn)</h3>
     <p class="muted">35 uses · 4 teams · 40% rounds won</p>
   </div>
-</a><a class="card" href="/en/nuke/molotov-admin-from-control-t/"
+</a><a class="card" href="/en/nuke/molotov-admin-from-control-t/" data-id="molotov-admin-from-control-t"
    data-type="molotov" data-side="T" data-area="Admin" data-map="nuke"
    data-teams="g2 mouz spirit" data-players="r1nkle xertion zont1x"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -208,7 +209,7 @@
     <h3>Molotov Admin (from Control)</h3>
     <p class="muted">3 uses · 3 teams · 67% rounds won</p>
   </div>
-</a><a class="card" href="/en/nuke/molotov-a-site-from-squeaky-t/"
+</a><a class="card" href="/en/nuke/molotov-a-site-from-squeaky-t/" data-id="molotov-a-site-from-squeaky-t"
    data-type="molotov" data-side="T" data-area="BombsiteA" data-map="nuke"
    data-teams="spirit" data-players="zont1x"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -225,7 +226,7 @@
     <h3>Molotov A Site (from Squeaky)</h3>
     <p class="muted">3 uses · 1 team · 67% rounds won</p>
   </div>
-</a><a class="card" href="/en/nuke/molotov-outside-t/"
+</a><a class="card" href="/en/nuke/molotov-outside-t/" data-id="molotov-outside-t"
    data-type="molotov" data-side="T" data-area="Outside" data-map="nuke"
    data-teams="fut spirit" data-players="magixx sunpayus"
    data-diff="2" data-count="4" data-eff="0.0">
@@ -242,7 +243,7 @@
     <h3>Molotov Outside</h3>
     <p class="muted">4 uses · 2 teams · 50% rounds won</p>
   </div>
-</a><a class="card" href="/en/nuke/smoke-mini-from-lobby-t/"
+</a><a class="card" href="/en/nuke/smoke-mini-from-lobby-t/" data-id="smoke-mini-from-lobby-t"
    data-type="smoke" data-side="T" data-area="Mini" data-map="nuke"
    data-teams="fut g2 spirit" data-players="dem0n heavygod nertz sh1ro zont1x"
    data-diff="3" data-count="6" data-eff="-1">

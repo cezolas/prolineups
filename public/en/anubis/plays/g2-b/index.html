@@ -19,15 +19,16 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Lineups Pro">
 <meta name="theme-color" content="#0b0f15">
-<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light"; } catch (e) {}</script>
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
+  if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/static/style.css">
-<script>window.I18N = {"copied": "Copied!", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s"}; window.LANG = "en";</script>
+<script>window.I18N = {"copied": "Copied!", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "open": "Open", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s"}; window.LANG = "en";</script>
 </head>
 <body>
 <header class="top">
   <div class="top-in">
-    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-controls="side" aria-expanded="false">☰</button>
+    <button class="menu-btn" id="menuBtn" aria-label="Show or hide the menu" aria-controls="side" aria-expanded="false">☰</button>
     <a class="logo" href="/en/"><span class="logo-mark">◎</span> Lineups Pro</a>
     <div class="search">
       <input id="q" type="search" placeholder="Search map, player, team, smoke…" autocomplete="off" aria-label="Search">
@@ -58,7 +59,7 @@
 <a href="/en/player/apex/"><span>apEX</span></a><a href="/en/player/art/"><span>art</span></a><a href="/en/player/coolio/"><span>coolio</span></a><a href="/en/player/dem0n/"><span>dem0n</span></a><a href="/en/player/donk/"><span>donk</span></a><a href="/en/player/dumau/"><span>dumau</span></a><a href="/en/player/dziugss/"><span>dziugss</span></a><a href="/en/player/fallen/"><span>FalleN</span></a><a href="/en/player/flamez/"><span>flameZ</span></a><a href="/en/player/heavygod/"><span>HeavyGod</span></a><a href="/en/player/hunter/"><span>huNter</span></a><a href="/en/player/karrigan/"><span>karrigan</span></a><a class="more" href="/en/players/">see all (40)</a>      </details>
       <details class="nav-g" data-k="teams" open>
         <summary class="nav-h"><a href="/en/teams/">Teams</a></summary>
-<a href="/en/team/falcons/"><span>Falcons</span></a><a href="/en/team/furia/"><span>FURIA</span></a><a href="/en/team/fut/"><span>FUT</span></a><a href="/en/team/g2/"><span>G2</span></a><a href="/en/team/legacy/"><span>Legacy</span></a><a href="/en/team/mouz/"><span>MOUZ</span></a><a href="/en/team/spirit/"><span>Spirit</span></a><a href="/en/team/vitality/"><span>Vitality</span></a>      </details>
+<a href="/en/team/falcons/"><span><img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12">Falcons</span></a><a href="/en/team/furia/"><span><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12">FURIA</span></a><a href="/en/team/fut/"><span><img class="flag" src="/static/flags/tr.svg" alt="Turkey" title="Turkey" width="16" height="12">FUT</span></a><a href="/en/team/g2/"><span><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12">G2</span></a><a href="/en/team/legacy/"><span><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12">Legacy</span></a><a href="/en/team/mouz/"><span><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12">MOUZ</span></a><a href="/en/team/spirit/"><span><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12">Spirit</span></a><a href="/en/team/vitality/"><span><img class="flag" src="/static/flags/fr.svg" alt="France" title="France" width="16" height="12">Vitality</span></a>      </details>
       <details class="nav-g" data-k="events" open>
         <summary class="nav-h"><a href="/en/tournaments/">Tournaments</a></summary>
 <a href="/en/tournament/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      </details>
@@ -83,7 +84,7 @@
   <main class="content">
 <nav class="crumbs"><a href="/en/">Home</a> › <a href="/en/anubis/">Anubis</a> ›
   <a href="/en/anubis/plays/">Plays</a> › G2 B entry</nav>
-<h1>G2 B entry <span class="muted h-sub">· Anubis</span></h1>
+<h1><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12"> G2 B entry <span class="muted h-sub">· Anubis</span></h1>
 <p class="muted">4 rounds · round won 100% · median plant at 1:15
  · <a href="/en/team/g2/">G2</a></p>
 
@@ -115,25 +116,25 @@
     <h2>Rounds</h2>
     <div class="round-list">
       <button class="round-item" data-play="g2-vs-falcons-m3-anubis-r1" data-clip="/media/g2-vs-falcons-m3-anubis/entry-r1.mp4" data-poster="/media/g2-vs-falcons-m3-anubis/entry-r1.jpg" data-pov="HeavyGod">
-        <span class="ri-top"><b>vs Falcons</b> · Round 1
+        <span class="ri-top"><b>vs <img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12"> Falcons</b> · Round 1
           <span class="badge win">won</span><span class="badge video">▶ video</span></span>
         <span class="muted small">plant at 1:06 into the round · 2026-11-13</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="huNter · smoke"></span><span class="dot-nade type-molotov" title="r1nkle · molotov"></span></span>
       </button>
       <button class="round-item" data-play="g2-vs-falcons-m3-anubis-r6" data-clip="/media/g2-vs-falcons-m3-anubis/entry-r6.mp4" data-poster="/media/g2-vs-falcons-m3-anubis/entry-r6.jpg" data-pov="MATYS">
-        <span class="ri-top"><b>vs Falcons</b> · Round 6
+        <span class="ri-top"><b>vs <img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12"> Falcons</b> · Round 6
           <span class="badge win">won</span><span class="badge video">▶ video</span></span>
         <span class="muted small">plant at 0:54 into the round · 2026-11-13</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="r1nkle · smoke"></span><span class="dot-nade type-smoke" title="NertZ · smoke"></span><span class="dot-nade type-molotov" title="MATYS · molotov"></span><span class="dot-nade type-smoke" title="huNter · smoke"></span><span class="dot-nade type-flash" title="HeavyGod · flash"></span><span class="dot-nade type-flash" title="MATYS · flash"></span><span class="dot-nade type-flash" title="NertZ · flash"></span><span class="dot-nade type-molotov" title="HeavyGod · molotov"></span><span class="dot-nade type-he" title="HeavyGod · he"></span><span class="dot-nade type-he" title="huNter · he"></span><span class="dot-nade type-smoke" title="r1nkle · smoke"></span><span class="dot-nade type-flash" title="r1nkle · flash"></span><span class="dot-nade type-he" title="NertZ · he"></span><span class="dot-nade type-he" title="MATYS · he"></span><span class="dot-nade type-molotov" title="NertZ · molotov"></span><span class="dot-nade type-molotov" title="HeavyGod · molotov"></span><span class="dot-nade type-smoke" title="MATYS · smoke"></span><span class="dot-nade type-flash" title="MATYS · flash"></span><span class="dot-nade type-molotov" title="r1nkle · molotov"></span></span>
       </button>
       <button class="round-item" data-play="g2-vs-falcons-m3-anubis-r8" data-clip="/media/g2-vs-falcons-m3-anubis/entry-r8.mp4" data-poster="/media/g2-vs-falcons-m3-anubis/entry-r8.jpg" data-pov="huNter">
-        <span class="ri-top"><b>vs Falcons</b> · Round 8
+        <span class="ri-top"><b>vs <img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12"> Falcons</b> · Round 8
           <span class="badge win">won</span><span class="badge video">▶ video</span></span>
         <span class="muted small">plant at 1:15 into the round · 2026-11-13</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="r1nkle · smoke"></span><span class="dot-nade type-molotov" title="NertZ · molotov"></span><span class="dot-nade type-smoke" title="MATYS · smoke"></span><span class="dot-nade type-smoke" title="HeavyGod · smoke"></span><span class="dot-nade type-flash" title="huNter · flash"></span><span class="dot-nade type-molotov" title="r1nkle · molotov"></span><span class="dot-nade type-flash" title="HeavyGod · flash"></span><span class="dot-nade type-flash" title="huNter · flash"></span><span class="dot-nade type-flash" title="HeavyGod · flash"></span><span class="dot-nade type-molotov" title="HeavyGod · molotov"></span><span class="dot-nade type-smoke" title="NertZ · smoke"></span><span class="dot-nade type-smoke" title="r1nkle · smoke"></span><span class="dot-nade type-flash" title="r1nkle · flash"></span><span class="dot-nade type-molotov" title="MATYS · molotov"></span><span class="dot-nade type-he" title="NertZ · he"></span><span class="dot-nade type-flash" title="r1nkle · flash"></span><span class="dot-nade type-molotov" title="HeavyGod · molotov"></span><span class="dot-nade type-molotov" title="HeavyGod · molotov"></span><span class="dot-nade type-flash" title="r1nkle · flash"></span></span>
       </button>
       <button class="round-item" data-play="g2-vs-falcons-m3-anubis-r9" data-clip="/media/g2-vs-falcons-m3-anubis/entry-r9.mp4" data-poster="/media/g2-vs-falcons-m3-anubis/entry-r9.jpg" data-pov="HeavyGod">
-        <span class="ri-top"><b>vs Falcons</b> · Round 9
+        <span class="ri-top"><b>vs <img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12"> Falcons</b> · Round 9
           <span class="badge win">won</span><span class="badge video">▶ video</span></span>
         <span class="muted small">plant at 1:28 into the round · 2026-11-13</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="r1nkle · smoke"></span><span class="dot-nade type-molotov" title="NertZ · molotov"></span><span class="dot-nade type-molotov" title="MATYS · molotov"></span><span class="dot-nade type-smoke" title="huNter · smoke"></span><span class="dot-nade type-he" title="MATYS · he"></span><span class="dot-nade type-flash" title="NertZ · flash"></span><span class="dot-nade type-smoke" title="NertZ · smoke"></span><span class="dot-nade type-flash" title="NertZ · flash"></span><span class="dot-nade type-molotov" title="huNter · molotov"></span><span class="dot-nade type-he" title="NertZ · he"></span><span class="dot-nade type-molotov" title="HeavyGod · molotov"></span><span class="dot-nade type-flash" title="r1nkle · flash"></span><span class="dot-nade type-flash" title="r1nkle · flash"></span><span class="dot-nade type-flash" title="huNter · flash"></span><span class="dot-nade type-smoke" title="NertZ · smoke"></span><span class="dot-nade type-smoke" title="huNter · smoke"></span><span class="dot-nade type-flash" title="HeavyGod · flash"></span><span class="dot-nade type-molotov" title="r1nkle · molotov"></span><span class="dot-nade type-smoke" title="HeavyGod · smoke"></span><span class="dot-nade type-flash" title="HeavyGod · flash"></span></span>
@@ -151,7 +152,7 @@
 <section>
   <h2>Grenades used in these entries</h2>
   <p class="muted">Published lineups the team threw before the plant in these rounds.</p>
-  <div class="cards"><a class="card" href="/en/anubis/smoke-bricks-from-canal-t/"
+  <div class="cards"><a class="card" href="/en/anubis/smoke-bricks-from-canal-t/" data-id="smoke-bricks-from-canal-t"
    data-type="smoke" data-side="T" data-area="Bricks" data-map="anubis"
    data-teams="g2" data-players="hunter r1nkle"
    data-diff="2" data-count="3" data-eff="-1">
@@ -168,7 +169,7 @@
     <h3>Smoke Bricks (from Canal)</h3>
     <p class="muted">3 uses · 1 team · 67% rounds won</p>
   </div>
-</a><a class="card" href="/en/anubis/smoke-main-from-street-t/"
+</a><a class="card" href="/en/anubis/smoke-main-from-street-t/" data-id="smoke-main-from-street-t"
    data-type="smoke" data-side="T" data-area="Main" data-map="anubis"
    data-teams="falcons g2" data-players="hunter niko"
    data-diff="2" data-count="4" data-eff="-1">
@@ -185,7 +186,7 @@
     <h3>Smoke Main (from Street)</h3>
     <p class="muted">4 uses · 2 teams · 100% rounds won</p>
   </div>
-</a><a class="card" href="/en/anubis/molotov-mid-doors-from-ruins-t/"
+</a><a class="card" href="/en/anubis/molotov-mid-doors-from-ruins-t/" data-id="molotov-mid-doors-from-ruins-t"
    data-type="molotov" data-side="T" data-area="MidDoors" data-map="anubis"
    data-teams="g2" data-players="matys"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -202,7 +203,7 @@
     <h3>Molotov Mid Doors (from Ruins)</h3>
     <p class="muted">3 uses · 1 team · 33% rounds won</p>
   </div>
-</a><a class="card" href="/en/anubis/molotov-main-from-canal-t/"
+</a><a class="card" href="/en/anubis/molotov-main-from-canal-t/" data-id="molotov-main-from-canal-t"
    data-type="molotov" data-side="T" data-area="Main" data-map="anubis"
    data-teams="g2" data-players="heavygod"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -219,7 +220,7 @@
     <h3>Molotov Main (from Canal)</h3>
     <p class="muted">3 uses · 1 team · 67% rounds won</p>
   </div>
-</a><a class="card" href="/en/anubis/flash-canal-t/"
+</a><a class="card" href="/en/anubis/flash-canal-t/" data-id="flash-canal-t"
    data-type="flash" data-side="T" data-area="Canal" data-map="anubis"
    data-teams="g2" data-players="hunter r1nkle"
    data-diff="3" data-count="3" data-eff="1.33">
@@ -237,7 +238,7 @@
 <p class="eff">blinds 1.3 enemy(ies) for 2.6s on average</p>
     <p class="muted">3 uses · 1 team · 33% rounds won</p>
   </div>
-</a><a class="card" href="/en/anubis/he-back-of-b-from-connector-t/"
+</a><a class="card" href="/en/anubis/he-back-of-b-from-connector-t/" data-id="he-back-of-b-from-connector-t"
    data-type="he" data-side="T" data-area="BackofB" data-map="anubis"
    data-teams="falcons g2" data-players="hunter karrigan nertz"
    data-diff="2" data-count="3" data-eff="0.33">
@@ -254,7 +255,7 @@
     <h3>HE Back of B (from Connector)</h3>
 <p class="eff">1 kill with the grenade</p>    <p class="muted">3 uses · 2 teams · 67% rounds won</p>
   </div>
-</a><a class="card" href="/en/anubis/smoke-connector-from-t-spawn-t/"
+</a><a class="card" href="/en/anubis/smoke-connector-from-t-spawn-t/" data-id="smoke-connector-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="Connector" data-map="anubis"
    data-teams="g2" data-players="r1nkle"
    data-diff="2" data-count="3" data-eff="-1">
@@ -271,7 +272,7 @@
     <h3>Smoke Connector (from T Spawn)</h3>
     <p class="muted">3 uses · 1 team · 67% rounds won</p>
   </div>
-</a><a class="card" href="/en/anubis/smoke-mid-from-ruins-t/"
+</a><a class="card" href="/en/anubis/smoke-mid-from-ruins-t/" data-id="smoke-mid-from-ruins-t"
    data-type="smoke" data-side="T" data-area="Middle" data-map="anubis"
    data-teams="falcons g2" data-players="karrigan nertz"
    data-diff="2" data-count="3" data-eff="-1">

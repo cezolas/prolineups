@@ -51,6 +51,33 @@
     const params = new URLSearchParams(location.search);
     for (const k of Object.keys(state)) state[k] = params.get(names[k]) || "";
     const cards = $$("#cards .card"), box = $("#cards");
+    // interactive radar of the map page: same filters + its own type/side checkboxes
+    const ov = $("#ov"), ovOff = new Set(), ovItems = new Map();
+    if (ov) {
+      $$(".ov-item", ov).forEach(g => ovItems.set(g.dataset.id, g));
+      const card = id => cards.find(c => c.dataset.id === id);
+      const info = $("#ovInfo");
+      const select = id => {
+        $$(".ov-item.sel", ov).forEach(g => g.classList.remove("sel"));
+        const g = ovItems.get(id), c = card(id); if (!g || !c) return;
+        g.classList.add("sel"); g.parentNode.appendChild(g);  // on top
+        info.innerHTML = `<a class="ov-info-a" href="${c.getAttribute("href")}"><b>${c.querySelector("h3").textContent}</b>
+          <span>${c.querySelector(".card-badges").innerHTML}</span><span class="muted small">${c.querySelector("p.muted")?.textContent || ""}</span>
+          <span class="ov-open">${(window.I18N || {}).open || "Abrir"} →</span></a>`;
+        info.hidden = false;
+        $$("#cards .card.hl").forEach(x => x.classList.remove("hl")); c.classList.add("hl");
+      };
+      ov.addEventListener("click", e => { const g = e.target.closest(".ov-item"); if (g && !g.classList.contains("off")) select(g.dataset.id); });
+      ov.addEventListener("keydown", e => { const g = e.target.closest(".ov-item"); if (g && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); select(g.dataset.id); } });
+      ov.addEventListener("change", e => {
+        const i = e.target;
+        if (i.dataset.ovLabels !== undefined) { ov.classList.toggle("no-labels", !i.checked); return; }
+        const k = i.dataset.ovType || i.dataset.ovSide; if (!k) return;
+        i.checked ? ovOff.delete(k) : ovOff.add(k); apply();
+      });
+      box?.addEventListener("mouseover", e => { const c = e.target.closest(".card"); $$(".ov-item.hov", ov).forEach(g => g.classList.remove("hov")); if (c) ovItems.get(c.dataset.id)?.classList.add("hov"); });
+      box?.addEventListener("mouseleave", () => $$(".ov-item.hov", ov).forEach(g => g.classList.remove("hov")));
+    }
     const original = cards.slice();
     const SORT = {
       eff: (a, b) => (+b.dataset.eff) - (+a.dataset.eff) || (+b.dataset.count) - (+a.dataset.count),
@@ -63,8 +90,10 @@
           (!state.area || c.dataset.area === state.area) && (!state.map || c.dataset.map === state.map) &&
           (!state.teams || c.dataset.teams.split(" ").includes(state.teams)) &&
           (!state.players || c.dataset.players.split(" ").includes(state.players)) &&
-          (!state.diff || c.dataset.diff === state.diff);
+          (!state.diff || c.dataset.diff === state.diff) &&
+          (!ovOff.has(c.dataset.type) && !ovOff.has(c.dataset.side));
         c.hidden = !ok; if (ok) shown++;
+        const g = ovItems.get(c.dataset.id); if (g) g.classList.toggle("off", !ok);
       }
       if (box) (state.sort && SORT[state.sort] ? original.slice().sort(SORT[state.sort]) : original).forEach(c => box.appendChild(c));
       $("#shown").textContent = `${shown} ${shown === 1 ? (T.lineup_1 || "lineup") : (T.lineup_n || "lineups")}`;
@@ -87,7 +116,17 @@
     menuBtn.setAttribute("aria-expanded", String(open)); document.body.style.overflow = open ? "hidden" : "";
   }
   if (menuBtn) {
-    menuBtn.addEventListener("click", () => menu(!side.classList.contains("open")));
+    const desktop = () => matchMedia("(min-width: 961px)").matches;
+    menuBtn.addEventListener("click", () => {
+      if (desktop()) {  // desktop: collapse / expand the whole sidebar, remembered in this browser
+        const off = document.documentElement.classList.toggle("side-off");
+        menuBtn.setAttribute("aria-expanded", String(!off));
+        try { localStorage.setItem("sideOff", off ? "1" : ""); } catch (e) {}
+        return;
+      }
+      menu(!side.classList.contains("open"));
+    });
+    if (desktop()) menuBtn.setAttribute("aria-expanded", String(!document.documentElement.classList.contains("side-off")));
     scrim.addEventListener("click", () => menu(false));
     document.addEventListener("keydown", e => { if (e.key === "Escape") menu(false); });
     side.querySelector("[aria-current]")?.scrollIntoView({ block: "center" });

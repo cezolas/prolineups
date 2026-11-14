@@ -19,15 +19,16 @@
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Lineups Pro">
 <meta name="theme-color" content="#0b0f15">
-<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light"; } catch (e) {}</script>
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
+  if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/static/style.css">
-<script>window.I18N = {"copied": "Copiado!", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "throws_in": "lan\u00e7a em {s}s"}; window.LANG = "pt";</script>
+<script>window.I18N = {"copied": "Copiado!", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "open": "Abrir", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "throws_in": "lan\u00e7a em {s}s"}; window.LANG = "pt";</script>
 </head>
 <body>
 <header class="top">
   <div class="top-in">
-    <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-controls="side" aria-expanded="false">☰</button>
+    <button class="menu-btn" id="menuBtn" aria-label="Mostrar ou ocultar o menu" aria-controls="side" aria-expanded="false">☰</button>
     <a class="logo" href="/pt/"><span class="logo-mark">◎</span> Lineups Pro</a>
     <div class="search">
       <input id="q" type="search" placeholder="Buscar mapa, jogador, time, smoke…" autocomplete="off" aria-label="Buscar">
@@ -58,7 +59,7 @@
 <a href="/pt/jogador/apex/"><span>apEX</span></a><a href="/pt/jogador/art/"><span>art</span></a><a href="/pt/jogador/coolio/"><span>coolio</span></a><a href="/pt/jogador/dem0n/"><span>dem0n</span></a><a href="/pt/jogador/donk/"><span>donk</span></a><a href="/pt/jogador/dumau/"><span>dumau</span></a><a href="/pt/jogador/dziugss/"><span>dziugss</span></a><a href="/pt/jogador/fallen/"><span>FalleN</span></a><a href="/pt/jogador/flamez/"><span>flameZ</span></a><a href="/pt/jogador/heavygod/"><span>HeavyGod</span></a><a href="/pt/jogador/hunter/"><span>huNter</span></a><a href="/pt/jogador/karrigan/"><span>karrigan</span></a><a class="more" href="/pt/jogadores/">ver todos (40)</a>      </details>
       <details class="nav-g" data-k="teams" open>
         <summary class="nav-h"><a href="/pt/times/">Times</a></summary>
-<a href="/pt/time/falcons/"><span>Falcons</span></a><a href="/pt/time/furia/"><span>FURIA</span></a><a href="/pt/time/fut/"><span>FUT</span></a><a href="/pt/time/g2/"><span>G2</span></a><a href="/pt/time/legacy/"><span>Legacy</span></a><a href="/pt/time/mouz/"><span>MOUZ</span></a><a href="/pt/time/spirit/"><span>Spirit</span></a><a href="/pt/time/vitality/"><span>Vitality</span></a>      </details>
+<a href="/pt/time/falcons/"><span><img class="flag" src="/static/flags/sa.svg" alt="Arábia Saudita" title="Arábia Saudita" width="16" height="12">Falcons</span></a><a href="/pt/time/furia/"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">FURIA</span></a><a href="/pt/time/fut/"><span><img class="flag" src="/static/flags/tr.svg" alt="Turquia" title="Turquia" width="16" height="12">FUT</span></a><a href="/pt/time/g2/"><span><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12">G2</span></a><a href="/pt/time/legacy/"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">Legacy</span></a><a href="/pt/time/mouz/"><span><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12">MOUZ</span></a><a href="/pt/time/spirit/"><span><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12">Spirit</span></a><a href="/pt/time/vitality/"><span><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12">Vitality</span></a>      </details>
       <details class="nav-g" data-k="events" open>
         <summary class="nav-h"><a href="/pt/torneios/">Torneios</a></summary>
 <a href="/pt/torneio/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      </details>
@@ -83,7 +84,7 @@
   <main class="content">
 <nav class="crumbs"><a href="/pt/">Início</a> › <a href="/pt/cache/">Cache</a> ›
   <a href="/pt/cache/jogadas/">Jogadas</a> › Entrada B da MOUZ</nav>
-<h1>Entrada B da MOUZ <span class="muted h-sub">· Cache</span></h1>
+<h1><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"> Entrada B da MOUZ <span class="muted h-sub">· Cache</span></h1>
 <p class="muted">7 rounds · round ganho em 71% · plant em média aos 1:25
  · <a href="/pt/time/mouz/">MOUZ</a></p>
 
@@ -115,43 +116,43 @@
     <h2>Rounds</h2>
     <div class="round-list">
       <button class="round-item" data-play="fut-vs-mouz-m1-cache-r15" data-clip="/media/fut-vs-mouz-m1-cache/entry-r15.mp4" data-poster="/media/fut-vs-mouz-m1-cache/entry-r15.jpg" data-pov="Spinx">
-        <span class="ri-top"><b>vs FUT</b> · Round 15
+        <span class="ri-top"><b>vs <img class="flag" src="/static/flags/tr.svg" alt="Turquia" title="Turquia" width="16" height="12"> FUT</b> · Round 15
           <span class="badge win">venceu</span><span class="badge video">▶ vídeo</span></span>
         <span class="muted small">plant aos 1:05 de round · 12/11/2026</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="Spinx · smoke"></span><span class="dot-nade type-smoke" title="xertioN · smoke"></span><span class="dot-nade type-molotov" title="torzsi · molotov"></span><span class="dot-nade type-flash" title="torzsi · flash"></span><span class="dot-nade type-molotov" title="xelex · molotov"></span><span class="dot-nade type-flash" title="PR · flash"></span><span class="dot-nade type-flash" title="PR · flash"></span><span class="dot-nade type-smoke" title="torzsi · smoke"></span><span class="dot-nade type-flash" title="xertioN · flash"></span><span class="dot-nade type-smoke" title="torzsi · smoke"></span><span class="dot-nade type-flash" title="PR · flash"></span><span class="dot-nade type-molotov" title="torzsi · molotov"></span><span class="dot-nade type-flash" title="torzsi · flash"></span><span class="dot-nade type-flash" title="torzsi · flash"></span><span class="dot-nade type-molotov" title="Spinx · molotov"></span><span class="dot-nade type-smoke" title="PR · smoke"></span></span>
       </button>
       <button class="round-item" data-play="fut-vs-mouz-m1-cache-r16" data-clip="/media/fut-vs-mouz-m1-cache/entry-r16.mp4" data-poster="/media/fut-vs-mouz-m1-cache/entry-r16.jpg" data-pov="xertioN">
-        <span class="ri-top"><b>vs FUT</b> · Round 16
+        <span class="ri-top"><b>vs <img class="flag" src="/static/flags/tr.svg" alt="Turquia" title="Turquia" width="16" height="12"> FUT</b> · Round 16
           <span class="badge win">venceu</span><span class="badge video">▶ vídeo</span></span>
         <span class="muted small">plant aos 1:26 de round · 12/11/2026</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="Spinx · smoke"></span><span class="dot-nade type-smoke" title="PR · smoke"></span><span class="dot-nade type-molotov" title="Spinx · molotov"></span><span class="dot-nade type-molotov" title="PR · molotov"></span><span class="dot-nade type-flash" title="torzsi · flash"></span><span class="dot-nade type-molotov" title="torzsi · molotov"></span><span class="dot-nade type-molotov" title="xertioN · molotov"></span><span class="dot-nade type-he" title="Spinx · he"></span><span class="dot-nade type-smoke" title="xertioN · smoke"></span><span class="dot-nade type-he" title="xertioN · he"></span><span class="dot-nade type-flash" title="PR · flash"></span><span class="dot-nade type-smoke" title="xertioN · smoke"></span><span class="dot-nade type-flash" title="PR · flash"></span></span>
       </button>
       <button class="round-item" data-play="fut-vs-mouz-m1-cache-r21" data-clip="/media/fut-vs-mouz-m1-cache/entry-r21.mp4" data-poster="/media/fut-vs-mouz-m1-cache/entry-r21.jpg" data-pov="xertioN">
-        <span class="ri-top"><b>vs FUT</b> · Round 21
+        <span class="ri-top"><b>vs <img class="flag" src="/static/flags/tr.svg" alt="Turquia" title="Turquia" width="16" height="12"> FUT</b> · Round 21
           <span class="badge loss">perdeu</span><span class="badge video">▶ vídeo</span></span>
         <span class="muted small">plant aos 1:28 de round · 12/11/2026</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="Spinx · smoke"></span><span class="dot-nade type-he" title="PR · he"></span><span class="dot-nade type-molotov" title="Spinx · molotov"></span><span class="dot-nade type-he" title="xelex · he"></span><span class="dot-nade type-he" title="Spinx · he"></span><span class="dot-nade type-he" title="xertioN · he"></span><span class="dot-nade type-flash" title="PR · flash"></span><span class="dot-nade type-molotov" title="PR · molotov"></span><span class="dot-nade type-flash" title="xelex · flash"></span><span class="dot-nade type-molotov" title="xelex · molotov"></span><span class="dot-nade type-molotov" title="xertioN · molotov"></span><span class="dot-nade type-smoke" title="torzsi · smoke"></span><span class="dot-nade type-molotov" title="torzsi · molotov"></span></span>
       </button>
       <button class="round-item" data-play="fut-vs-mouz-m1-cache-r24" data-clip="/media/fut-vs-mouz-m1-cache/entry-r24.mp4" data-poster="/media/fut-vs-mouz-m1-cache/entry-r24.jpg" data-pov="xertioN">
-        <span class="ri-top"><b>vs FUT</b> · Round 24
+        <span class="ri-top"><b>vs <img class="flag" src="/static/flags/tr.svg" alt="Turquia" title="Turquia" width="16" height="12"> FUT</b> · Round 24
           <span class="badge win">venceu</span><span class="badge video">▶ vídeo</span></span>
         <span class="muted small">plant aos 1:25 de round · 12/11/2026</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="Spinx · smoke"></span><span class="dot-nade type-smoke" title="xertioN · smoke"></span><span class="dot-nade type-he" title="PR · he"></span><span class="dot-nade type-flash" title="Spinx · flash"></span><span class="dot-nade type-molotov" title="PR · molotov"></span><span class="dot-nade type-flash" title="xertioN · flash"></span><span class="dot-nade type-he" title="xelex · he"></span><span class="dot-nade type-flash" title="PR · flash"></span><span class="dot-nade type-smoke" title="xelex · smoke"></span><span class="dot-nade type-flash" title="xelex · flash"></span><span class="dot-nade type-smoke" title="PR · smoke"></span><span class="dot-nade type-molotov" title="PR · molotov"></span><span class="dot-nade type-flash" title="torzsi · flash"></span><span class="dot-nade type-smoke" title="torzsi · smoke"></span><span class="dot-nade type-he" title="Spinx · he"></span><span class="dot-nade type-molotov" title="Spinx · molotov"></span><span class="dot-nade type-molotov" title="xelex · molotov"></span><span class="dot-nade type-flash" title="torzsi · flash"></span></span>
       </button>
       <button class="round-item" data-play="vitality-vs-mouz-m2-cache-r14" data-clip="/media/vitality-vs-mouz-m2-cache/entry-r14.mp4" data-poster="/media/vitality-vs-mouz-m2-cache/entry-r14.jpg" data-pov="xertioN">
-        <span class="ri-top"><b>vs Vitality</b> · Round 14
+        <span class="ri-top"><b>vs <img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12"> Vitality</b> · Round 14
           <span class="badge win">venceu</span><span class="badge video">▶ vídeo</span></span>
         <span class="muted small">plant aos 0:41 de round · 13/11/2026</span>
         <span class="ri-util"><span class="dot-nade type-he" title="PR · he"></span><span class="dot-nade type-smoke" title="PR · smoke"></span><span class="dot-nade type-molotov" title="PR · molotov"></span><span class="dot-nade type-molotov" title="xertioN · molotov"></span><span class="dot-nade type-molotov" title="torzsi · molotov"></span><span class="dot-nade type-molotov" title="xelex · molotov"></span><span class="dot-nade type-flash" title="Spinx · flash"></span><span class="dot-nade type-flash" title="torzsi · flash"></span><span class="dot-nade type-smoke" title="torzsi · smoke"></span><span class="dot-nade type-smoke" title="xertioN · smoke"></span></span>
       </button>
       <button class="round-item" data-play="vitality-vs-mouz-m2-cache-r17" data-clip="/media/vitality-vs-mouz-m2-cache/entry-r17.mp4" data-poster="/media/vitality-vs-mouz-m2-cache/entry-r17.jpg" data-pov="xertioN">
-        <span class="ri-top"><b>vs Vitality</b> · Round 17
+        <span class="ri-top"><b>vs <img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12"> Vitality</b> · Round 17
           <span class="badge loss">perdeu</span><span class="badge video">▶ vídeo</span></span>
         <span class="muted small">plant aos 1:46 de round · 13/11/2026</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="xertioN · smoke"></span><span class="dot-nade type-smoke" title="torzsi · smoke"></span><span class="dot-nade type-smoke" title="torzsi · smoke"></span><span class="dot-nade type-molotov" title="PR · molotov"></span><span class="dot-nade type-flash" title="torzsi · flash"></span><span class="dot-nade type-flash" title="torzsi · flash"></span><span class="dot-nade type-flash" title="xertioN · flash"></span></span>
       </button>
       <button class="round-item" data-play="vitality-vs-mouz-m2-cache-r21" data-clip="/media/vitality-vs-mouz-m2-cache/entry-r21.mp4" data-poster="/media/vitality-vs-mouz-m2-cache/entry-r21.jpg" data-pov="xertioN">
-        <span class="ri-top"><b>vs Vitality</b> · Round 21
+        <span class="ri-top"><b>vs <img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12"> Vitality</b> · Round 21
           <span class="badge win">venceu</span><span class="badge video">▶ vídeo</span></span>
         <span class="muted small">plant aos 0:35 de round · 13/11/2026</span>
         <span class="ri-util"><span class="dot-nade type-he" title="PR · he"></span><span class="dot-nade type-flash" title="torzsi · flash"></span><span class="dot-nade type-smoke" title="PR · smoke"></span><span class="dot-nade type-flash" title="torzsi · flash"></span><span class="dot-nade type-molotov" title="PR · molotov"></span><span class="dot-nade type-molotov" title="xelex · molotov"></span><span class="dot-nade type-smoke" title="xertioN · smoke"></span><span class="dot-nade type-molotov" title="Spinx · molotov"></span><span class="dot-nade type-molotov" title="xertioN · molotov"></span><span class="dot-nade type-molotov" title="torzsi · molotov"></span></span>
@@ -169,7 +170,7 @@
 <section>
   <h2>Granadas usadas nessas entradas</h2>
   <p class="muted">Lineups publicadas que o time jogou antes do plant nesses rounds.</p>
-  <div class="cards"><a class="card" href="/pt/cache/flash-b-site-from-sun-room-t/"
+  <div class="cards"><a class="card" href="/pt/cache/flash-b-site-from-sun-room-t/" data-id="flash-b-site-from-sun-room-t"
    data-type="flash" data-side="T" data-area="BombsiteB" data-map="cache"
    data-teams="fut mouz vitality" data-players="sunpayus torzsi zywoo"
    data-diff="2" data-count="10" data-eff="1.1">
@@ -187,7 +188,7 @@
 <p class="eff">cega 1,1 inimigo(s) por 2,6s em média</p>
     <p class="muted">10 usos · 3 times · round ganho 40%</p>
   </div>
-</a><a class="card" href="/pt/cache/smoke-b-site-from-long-a-t/"
+</a><a class="card" href="/pt/cache/smoke-b-site-from-long-a-t/" data-id="smoke-b-site-from-long-a-t"
    data-type="smoke" data-side="T" data-area="BombsiteB" data-map="cache"
    data-teams="mouz" data-players="pr"
    data-diff="3" data-count="3" data-eff="-1">
@@ -204,7 +205,7 @@
     <h3>Smoke Bomb B (de Long A)</h3>
     <p class="muted">3 usos · 1 time · round ganho 67%</p>
   </div>
-</a><a class="card" href="/pt/cache/flash-catwalk-from-long-a-t/"
+</a><a class="card" href="/pt/cache/flash-catwalk-from-long-a-t/" data-id="flash-catwalk-from-long-a-t"
    data-type="flash" data-side="T" data-area="Catwalk" data-map="cache"
    data-teams="mouz" data-players="torzsi"
    data-diff="3" data-count="4" data-eff="1.0">
@@ -222,7 +223,7 @@
 <p class="eff">cega 1,0 inimigo(s) por 2,3s em média</p>
     <p class="muted">4 usos · 1 time · round ganho 50%</p>
   </div>
-</a><a class="card" href="/pt/cache/smoke-b-site-from-t-spawn-t/"
+</a><a class="card" href="/pt/cache/smoke-b-site-from-t-spawn-t/" data-id="smoke-b-site-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="BombsiteB" data-map="cache"
    data-teams="mouz spirit vitality" data-players="ropz spinx zont1x"
    data-diff="3" data-count="10" data-eff="-1">
@@ -239,7 +240,7 @@
     <h3>Smoke Bomb B (de Base TR)</h3>
     <p class="muted">10 usos · 3 times · round ganho 70%</p>
   </div>
-</a><a class="card" href="/pt/cache/flash-mid-from-outside-a-t/"
+</a><a class="card" href="/pt/cache/flash-mid-from-outside-a-t/" data-id="flash-mid-from-outside-a-t"
    data-type="flash" data-side="T" data-area="Mid" data-map="cache"
    data-teams="mouz" data-players="torzsi"
    data-diff="3" data-count="3" data-eff="1.33">
@@ -257,7 +258,7 @@
 <p class="eff">cega 1,3 inimigo(s) por 2,8s em média</p>
     <p class="muted">3 usos · 1 time · round ganho 100%</p>
   </div>
-</a><a class="card" href="/pt/cache/smoke-catwalk-from-outside-a-t/"
+</a><a class="card" href="/pt/cache/smoke-catwalk-from-outside-a-t/" data-id="smoke-catwalk-from-outside-a-t"
    data-type="smoke" data-side="T" data-area="Catwalk" data-map="cache"
    data-teams="fut mouz spirit vitality" data-players="apex dem0n dziugss magixx pr sh1ro sunpayus torzsi xfl0ud"
    data-diff="2" data-count="24" data-eff="-1">
@@ -274,7 +275,7 @@
     <h3>Smoke Metal (de Outside A)</h3>
     <p class="muted">24 usos · 4 times · round ganho 50%</p>
   </div>
-</a><a class="card" href="/pt/cache/flash-highway-from-mid-t/"
+</a><a class="card" href="/pt/cache/flash-highway-from-mid-t/" data-id="flash-highway-from-mid-t"
    data-type="flash" data-side="T" data-area="Highway" data-map="cache"
    data-teams="mouz vitality" data-players="mezii xertion zywoo"
    data-diff="1" data-count="3" data-eff="1.0">
@@ -292,7 +293,7 @@
 <p class="eff">cega 1,0 inimigo(s) por 3,0s em média</p>
     <p class="muted">3 usos · 2 times · round ganho 67%</p>
   </div>
-</a><a class="card" href="/pt/cache/smoke-b-site-from-bhalls-t/"
+</a><a class="card" href="/pt/cache/smoke-b-site-from-bhalls-t/" data-id="smoke-b-site-from-bhalls-t"
    data-type="smoke" data-side="T" data-area="BombsiteB" data-map="cache"
    data-teams="mouz spirit" data-players="spinx zont1x"
    data-diff="3" data-count="6" data-eff="-1">

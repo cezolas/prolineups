@@ -19,15 +19,16 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Lineups Pro">
 <meta name="theme-color" content="#0b0f15">
-<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light"; } catch (e) {}</script>
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
+  if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/static/style.css">
-<script>window.I18N = {"copied": "Copied!", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s"}; window.LANG = "en";</script>
+<script>window.I18N = {"copied": "Copied!", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "open": "Open", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s"}; window.LANG = "en";</script>
 </head>
 <body>
 <header class="top">
   <div class="top-in">
-    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-controls="side" aria-expanded="false">☰</button>
+    <button class="menu-btn" id="menuBtn" aria-label="Show or hide the menu" aria-controls="side" aria-expanded="false">☰</button>
     <a class="logo" href="/en/"><span class="logo-mark">◎</span> Lineups Pro</a>
     <div class="search">
       <input id="q" type="search" placeholder="Search map, player, team, smoke…" autocomplete="off" aria-label="Search">
@@ -58,7 +59,7 @@
 <a href="/en/player/apex/"><span>apEX</span></a><a href="/en/player/art/"><span>art</span></a><a href="/en/player/coolio/"><span>coolio</span></a><a href="/en/player/dem0n/"><span>dem0n</span></a><a href="/en/player/donk/"><span>donk</span></a><a href="/en/player/dumau/"><span>dumau</span></a><a href="/en/player/dziugss/"><span>dziugss</span></a><a href="/en/player/fallen/"><span>FalleN</span></a><a href="/en/player/flamez/"><span>flameZ</span></a><a href="/en/player/heavygod/"><span>HeavyGod</span></a><a href="/en/player/hunter/"><span>huNter</span></a><a href="/en/player/karrigan/"><span>karrigan</span></a><a class="more" href="/en/players/">see all (40)</a>      </details>
       <details class="nav-g" data-k="teams" open>
         <summary class="nav-h"><a href="/en/teams/">Teams</a></summary>
-<a href="/en/team/falcons/"><span>Falcons</span></a><a href="/en/team/furia/"><span>FURIA</span></a><a href="/en/team/fut/"><span>FUT</span></a><a href="/en/team/g2/"><span>G2</span></a><a href="/en/team/legacy/"><span>Legacy</span></a><a href="/en/team/mouz/"><span>MOUZ</span></a><a href="/en/team/spirit/"><span>Spirit</span></a><a href="/en/team/vitality/"><span>Vitality</span></a>      </details>
+<a href="/en/team/falcons/"><span><img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12">Falcons</span></a><a href="/en/team/furia/"><span><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12">FURIA</span></a><a href="/en/team/fut/"><span><img class="flag" src="/static/flags/tr.svg" alt="Turkey" title="Turkey" width="16" height="12">FUT</span></a><a href="/en/team/g2/"><span><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12">G2</span></a><a href="/en/team/legacy/"><span><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12">Legacy</span></a><a href="/en/team/mouz/"><span><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12">MOUZ</span></a><a href="/en/team/spirit/"><span><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12">Spirit</span></a><a href="/en/team/vitality/"><span><img class="flag" src="/static/flags/fr.svg" alt="France" title="France" width="16" height="12">Vitality</span></a>      </details>
       <details class="nav-g" data-k="events" open>
         <summary class="nav-h"><a href="/en/tournaments/">Tournaments</a></summary>
 <a href="/en/tournament/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      </details>
@@ -110,7 +111,7 @@
   <span class="muted" id="shown"></span>
 </div>
 <div class="cards" id="cards">
-<a class="card" href="/en/ancient/he-tside-lower-from-b-site-ct/"
+<a class="card" href="/en/ancient/he-tside-lower-from-b-site-ct/" data-id="he-tside-lower-from-b-site-ct"
    data-type="he" data-side="CT" data-area="TSideLower" data-map="ancient"
    data-teams="mouz spirit" data-players="magixx pr spinx"
    data-diff="3" data-count="13" data-eff="0.0">
@@ -127,7 +128,7 @@
     <h3>HE TSide Lower (from B Site)</h3>
     <p class="muted">13 uses · 2 teams · 62% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/he-sniper-s-nest-ct/"
+</a><a class="card" href="/en/mirage/he-sniper-s-nest-ct/" data-id="he-sniper-s-nest-ct"
    data-type="he" data-side="CT" data-area="SnipersNest" data-map="mirage"
    data-teams="falcons furia fut legacy" data-players="dem0n dumau kscerato kyousuke niko sunpayus"
    data-diff="1" data-count="9" data-eff="0.0">
@@ -144,7 +145,7 @@
     <h3>HE Sniper&#39;s Nest</h3>
     <p class="muted">9 uses · 4 teams · 89% rounds won</p>
   </div>
-</a><a class="card" href="/en/cache/he-bmain-from-b-site-ct/"
+</a><a class="card" href="/en/cache/he-bmain-from-b-site-ct/" data-id="he-bmain-from-b-site-ct"
    data-type="he" data-side="CT" data-area="BMain" data-map="cache"
    data-teams="fut mouz spirit" data-players="donk xertion xfl0ud"
    data-diff="3" data-count="8" data-eff="0.0">
@@ -161,7 +162,7 @@
     <h3>HE BMain (from B Site)</h3>
     <p class="muted">8 uses · 3 teams · 62% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/he-underpass-from-ct-spawn-ct/"
+</a><a class="card" href="/en/mirage/he-underpass-from-ct-spawn-ct/" data-id="he-underpass-from-ct-spawn-ct"
    data-type="he" data-side="CT" data-area="Underpass" data-map="mirage"
    data-teams="mouz" data-players="xertion"
    data-diff="2" data-count="7" data-eff="0.0">
@@ -178,7 +179,7 @@
     <h3>HE Underpass (from CT Spawn)</h3>
     <p class="muted">7 uses · 1 team · 86% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/he-top-mid-from-connector-ct/"
+</a><a class="card" href="/en/mirage/he-top-mid-from-connector-ct/" data-id="he-top-mid-from-connector-ct"
    data-type="he" data-side="CT" data-area="TopofMid" data-map="mirage"
    data-teams="falcons g2 mouz vitality" data-players="apex heavygod m0nesy niko xertion"
    data-diff="3" data-count="6" data-eff="0.0">
@@ -195,7 +196,7 @@
     <h3>HE Top Mid (from Connector)</h3>
     <p class="muted">6 uses · 4 teams · 100% rounds won</p>
   </div>
-</a><a class="card" href="/en/cache/he-amain-from-a-site-ct/"
+</a><a class="card" href="/en/cache/he-amain-from-a-site-ct/" data-id="he-amain-from-a-site-ct"
    data-type="he" data-side="CT" data-area="AMain" data-map="cache"
    data-teams="mouz" data-players="pr"
    data-diff="3" data-count="5" data-eff="0.0">
@@ -212,7 +213,7 @@
     <h3>HE AMain (from A Site)</h3>
     <p class="muted">5 uses · 1 team · 40% rounds won</p>
   </div>
-</a><a class="card" href="/en/inferno/he-apartments-ct/"
+</a><a class="card" href="/en/inferno/he-apartments-ct/" data-id="he-apartments-ct"
    data-type="he" data-side="CT" data-area="Apartments" data-map="inferno"
    data-teams="g2 mouz" data-players="heavygod spinx xelex"
    data-diff="1" data-count="5" data-eff="0.0">
@@ -229,7 +230,7 @@
     <h3>HE Apartments</h3>
     <p class="muted">5 uses · 2 teams · 40% rounds won</p>
   </div>
-</a><a class="card" href="/en/nuke/he-silo-from-outside-ct/"
+</a><a class="card" href="/en/nuke/he-silo-from-outside-ct/" data-id="he-silo-from-outside-ct"
    data-type="he" data-side="CT" data-area="Silo" data-map="nuke"
    data-teams="fut g2 mouz spirit" data-players="donk hunter spinx sunpayus"
    data-diff="1" data-count="5" data-eff="0.0">
@@ -246,7 +247,7 @@
     <h3>HE Silo (from Outside)</h3>
     <p class="muted">5 uses · 4 teams · 80% rounds won</p>
   </div>
-</a><a class="card" href="/en/ancient/he-mid-from-outside-t/"
+</a><a class="card" href="/en/ancient/he-mid-from-outside-t/" data-id="he-mid-from-outside-t"
    data-type="he" data-side="T" data-area="Middle" data-map="ancient"
    data-teams="g2 spirit" data-players="hunter magixx zont1x"
    data-diff="3" data-count="4" data-eff="0.0">
@@ -263,7 +264,7 @@
     <h3>HE Mid (from Outside)</h3>
     <p class="muted">4 uses · 2 teams · 75% rounds won</p>
   </div>
-</a><a class="card" href="/en/cache/he-outside-a-from-mid-ct/"
+</a><a class="card" href="/en/cache/he-outside-a-from-mid-ct/" data-id="he-outside-a-from-mid-ct"
    data-type="he" data-side="CT" data-area="OutsideA" data-map="cache"
    data-teams="mouz" data-players="spinx"
    data-diff="3" data-count="4" data-eff="0.0">
@@ -280,7 +281,7 @@
     <h3>HE Outside A (from Mid)</h3>
     <p class="muted">4 uses · 1 team · 100% rounds won</p>
   </div>
-</a><a class="card" href="/en/dust2/he-mid-doors-ct/"
+</a><a class="card" href="/en/dust2/he-mid-doors-ct/" data-id="he-mid-doors-ct"
    data-type="he" data-side="CT" data-area="MidDoors" data-map="dust2"
    data-teams="falcons legacy vitality" data-players="kyousuke mezii try"
    data-diff="2" data-count="4" data-eff="0.0">
@@ -297,7 +298,7 @@
     <h3>HE Mid Doors</h3>
     <p class="muted">4 uses · 3 teams · 100% rounds won</p>
   </div>
-</a><a class="card" href="/en/dust2/he-catwalk-from-a-extended-ct/"
+</a><a class="card" href="/en/dust2/he-catwalk-from-a-extended-ct/" data-id="he-catwalk-from-a-extended-ct"
    data-type="he" data-side="CT" data-area="Catwalk" data-map="dust2"
    data-teams="falcons vitality" data-players="apex m0nesy niko"
    data-diff="3" data-count="4" data-eff="0.0">
@@ -314,7 +315,7 @@
     <h3>HE Catwalk (from A Extended)</h3>
     <p class="muted">4 uses · 2 teams · 100% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/he-top-mid-from-sniper-s-nest-ct/"
+</a><a class="card" href="/en/mirage/he-top-mid-from-sniper-s-nest-ct/" data-id="he-top-mid-from-sniper-s-nest-ct"
    data-type="he" data-side="CT" data-area="TopofMid" data-map="mirage"
    data-teams="falcons mouz vitality" data-players="apex niko xertion"
    data-diff="3" data-count="4" data-eff="0.0">
@@ -331,7 +332,7 @@
     <h3>HE Top Mid (from Sniper&#39;s Nest)</h3>
     <p class="muted">4 uses · 3 teams · 50% rounds won</p>
   </div>
-</a><a class="card" href="/en/ancient/he-mid-from-top-mid-ct/"
+</a><a class="card" href="/en/ancient/he-mid-from-top-mid-ct/" data-id="he-mid-from-top-mid-ct"
    data-type="he" data-side="CT" data-area="Middle" data-map="ancient"
    data-teams="spirit" data-players="donk"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -348,7 +349,7 @@
     <h3>HE Mid (from Top Mid)</h3>
     <p class="muted">3 uses · 1 team · 100% rounds won</p>
   </div>
-</a><a class="card" href="/en/ancient/he-mid-from-house-ct/"
+</a><a class="card" href="/en/ancient/he-mid-from-house-ct/" data-id="he-mid-from-house-ct"
    data-type="he" data-side="CT" data-area="Middle" data-map="ancient"
    data-teams="fut g2" data-players="hunter r1nkle sunpayus"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -365,7 +366,7 @@
     <h3>HE Mid (from House)</h3>
     <p class="muted">3 uses · 2 teams · 33% rounds won</p>
   </div>
-</a><a class="card" href="/en/ancient/he-ramp-from-alley-ct/"
+</a><a class="card" href="/en/ancient/he-ramp-from-alley-ct/" data-id="he-ramp-from-alley-ct"
    data-type="he" data-side="CT" data-area="Ramp" data-map="ancient"
    data-teams="g2 mouz" data-players="heavygod spinx"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -382,7 +383,7 @@
     <h3>HE Ramp (from Alley)</h3>
     <p class="muted">3 uses · 2 teams · 33% rounds won</p>
   </div>
-</a><a class="card" href="/en/anubis/he-connector-from-b-site-ct/"
+</a><a class="card" href="/en/anubis/he-connector-from-b-site-ct/" data-id="he-connector-from-b-site-ct"
    data-type="he" data-side="CT" data-area="Connector" data-map="anubis"
    data-teams="falcons g2" data-players="heavygod karrigan matys"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -399,7 +400,7 @@
     <h3>HE Connector (from B Site)</h3>
     <p class="muted">3 uses · 2 teams · 33% rounds won</p>
   </div>
-</a><a class="card" href="/en/anubis/he-back-of-b-from-connector-t/"
+</a><a class="card" href="/en/anubis/he-back-of-b-from-connector-t/" data-id="he-back-of-b-from-connector-t"
    data-type="he" data-side="T" data-area="BackofB" data-map="anubis"
    data-teams="falcons g2" data-players="hunter karrigan nertz"
    data-diff="2" data-count="3" data-eff="0.33">
@@ -416,7 +417,7 @@
     <h3>HE Back of B (from Connector)</h3>
 <p class="eff">1 kill with the grenade</p>    <p class="muted">3 uses · 2 teams · 67% rounds won</p>
   </div>
-</a><a class="card" href="/en/dust2/he-long-doors-from-long-a-ct/"
+</a><a class="card" href="/en/dust2/he-long-doors-from-long-a-ct/" data-id="he-long-doors-from-long-a-ct"
    data-type="he" data-side="CT" data-area="LongDoors" data-map="dust2"
    data-teams="falcons legacy" data-players="dumau kyousuke niko"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -433,7 +434,7 @@
     <h3>HE Long Doors (from Long A)</h3>
     <p class="muted">3 uses · 2 teams · 33% rounds won</p>
   </div>
-</a><a class="card" href="/en/dust2/he-b-site-from-upper-tunnels-t/"
+</a><a class="card" href="/en/dust2/he-b-site-from-upper-tunnels-t/" data-id="he-b-site-from-upper-tunnels-t"
    data-type="he" data-side="T" data-area="BombsiteB" data-map="dust2"
    data-teams="falcons vitality" data-players="niko ropz"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -450,7 +451,7 @@
     <h3>HE B Site (from Upper Tunnels)</h3>
     <p class="muted">3 uses · 2 teams · 67% rounds won</p>
   </div>
-</a><a class="card" href="/en/inferno/he-mid-from-arch-ct/"
+</a><a class="card" href="/en/inferno/he-mid-from-arch-ct/" data-id="he-mid-from-arch-ct"
    data-type="he" data-side="CT" data-area="Middle" data-map="inferno"
    data-teams="g2 vitality" data-players="heavygod mezii"
    data-diff="2" data-count="3" data-eff="0.0">
@@ -467,7 +468,7 @@
     <h3>HE Mid (from Arch)</h3>
     <p class="muted">3 uses · 2 teams · 33% rounds won</p>
   </div>
-</a><a class="card" href="/en/inferno/he-banana-from-t-ramp-t/"
+</a><a class="card" href="/en/inferno/he-banana-from-t-ramp-t/" data-id="he-banana-from-t-ramp-t"
    data-type="he" data-side="T" data-area="Banana" data-map="inferno"
    data-teams="g2 vitality" data-players="hunter mezii"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -484,7 +485,7 @@
     <h3>HE Banana (from T Ramp)</h3>
     <p class="muted">3 uses · 2 teams · 67% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/he-palace-alley-from-jungle-ct/"
+</a><a class="card" href="/en/mirage/he-palace-alley-from-jungle-ct/" data-id="he-palace-alley-from-jungle-ct"
    data-type="he" data-side="CT" data-area="PalaceAlley" data-map="mirage"
    data-teams="falcons mouz" data-players="niko xertion"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -501,7 +502,7 @@
     <h3>HE Palace Alley (from Jungle)</h3>
     <p class="muted">3 uses · 2 teams · 67% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/he-palace-alley-from-a-site-ct/"
+</a><a class="card" href="/en/mirage/he-palace-alley-from-a-site-ct/" data-id="he-palace-alley-from-a-site-ct"
    data-type="he" data-side="CT" data-area="PalaceAlley" data-map="mirage"
    data-teams="fut mouz spirit" data-players="tn1r xelex xfl0ud"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -518,7 +519,7 @@
     <h3>HE Palace Alley (from A Site)</h3>
     <p class="muted">3 uses · 3 teams · 67% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/he-apartments-from-b-site-ct/"
+</a><a class="card" href="/en/mirage/he-apartments-from-b-site-ct/" data-id="he-apartments-from-b-site-ct"
    data-type="he" data-side="CT" data-area="Apartments" data-map="mirage"
    data-teams="fut vitality" data-players="mezii xfl0ud"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -535,7 +536,7 @@
     <h3>HE Apartments (from B Site)</h3>
     <p class="muted">3 uses · 2 teams · 33% rounds won</p>
   </div>
-</a><a class="card" href="/en/nuke/he-trophy-from-ramp-ct/"
+</a><a class="card" href="/en/nuke/he-trophy-from-ramp-ct/" data-id="he-trophy-from-ramp-ct"
    data-type="he" data-side="CT" data-area="Trophy" data-map="nuke"
    data-teams="fut" data-players="xfl0ud"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -552,7 +553,7 @@
     <h3>HE Trophy (from Ramp)</h3>
     <p class="muted">3 uses · 1 team · 67% rounds won</p>
   </div>
-</a><a class="card" href="/en/nuke/he-lobby-from-a-site-ct/"
+</a><a class="card" href="/en/nuke/he-lobby-from-a-site-ct/" data-id="he-lobby-from-a-site-ct"
    data-type="he" data-side="CT" data-area="Lobby" data-map="nuke"
    data-teams="fut g2 mouz" data-players="dem0n matys xelex"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -569,7 +570,7 @@
     <h3>HE Lobby (from A Site)</h3>
     <p class="muted">3 uses · 3 teams · 67% rounds won</p>
   </div>
-</a><a class="card" href="/en/nuke/he-control-from-ramp-ct/"
+</a><a class="card" href="/en/nuke/he-control-from-ramp-ct/" data-id="he-control-from-ramp-ct"
    data-type="he" data-side="CT" data-area="Control" data-map="nuke"
    data-teams="fut g2" data-players="r1nkle sunpayus"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -586,7 +587,7 @@
     <h3>HE Control (from Ramp)</h3>
     <p class="muted">3 uses · 2 teams · 33% rounds won</p>
   </div>
-</a><a class="card" href="/en/nuke/he-hut-from-rafters-ct/"
+</a><a class="card" href="/en/nuke/he-hut-from-rafters-ct/" data-id="he-hut-from-rafters-ct"
    data-type="he" data-side="CT" data-area="Hut" data-map="nuke"
    data-teams="g2" data-players="matys"
    data-diff="3" data-count="3" data-eff="0.0">
@@ -603,7 +604,7 @@
     <h3>HE Hut (from Rafters)</h3>
     <p class="muted">3 uses · 1 team · 33% rounds won</p>
   </div>
-</a><a class="card" href="/en/nuke/he-a-site-from-roof-t/"
+</a><a class="card" href="/en/nuke/he-a-site-from-roof-t/" data-id="he-a-site-from-roof-t"
    data-type="he" data-side="T" data-area="BombsiteA" data-map="nuke"
    data-teams="fut spirit" data-players="dem0n tn1r"
    data-diff="3" data-count="3" data-eff="0.0">

@@ -19,15 +19,16 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Lineups Pro">
 <meta name="theme-color" content="#0b0f15">
-<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light"; } catch (e) {}</script>
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
+  if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/static/style.css">
-<script>window.I18N = {"copied": "Copied!", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s"}; window.LANG = "en";</script>
+<script>window.I18N = {"copied": "Copied!", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "open": "Open", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s"}; window.LANG = "en";</script>
 </head>
 <body>
 <header class="top">
   <div class="top-in">
-    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-controls="side" aria-expanded="false">☰</button>
+    <button class="menu-btn" id="menuBtn" aria-label="Show or hide the menu" aria-controls="side" aria-expanded="false">☰</button>
     <a class="logo" href="/en/"><span class="logo-mark">◎</span> Lineups Pro</a>
     <div class="search">
       <input id="q" type="search" placeholder="Search map, player, team, smoke…" autocomplete="off" aria-label="Search">
@@ -58,7 +59,7 @@
 <a href="/en/player/apex/"><span>apEX</span></a><a href="/en/player/art/"><span>art</span></a><a href="/en/player/coolio/"><span>coolio</span></a><a href="/en/player/dem0n/"><span>dem0n</span></a><a href="/en/player/donk/"><span>donk</span></a><a href="/en/player/dumau/"><span>dumau</span></a><a href="/en/player/dziugss/"><span>dziugss</span></a><a href="/en/player/fallen/"><span>FalleN</span></a><a href="/en/player/flamez/"><span>flameZ</span></a><a href="/en/player/heavygod/"><span>HeavyGod</span></a><a href="/en/player/hunter/"><span>huNter</span></a><a href="/en/player/karrigan/"><span>karrigan</span></a><a class="more" href="/en/players/">see all (40)</a>      </details>
       <details class="nav-g" data-k="teams" open>
         <summary class="nav-h"><a href="/en/teams/">Teams</a></summary>
-<a href="/en/team/falcons/"><span>Falcons</span></a><a href="/en/team/furia/"><span>FURIA</span></a><a href="/en/team/fut/"><span>FUT</span></a><a href="/en/team/g2/"><span>G2</span></a><a href="/en/team/legacy/"><span>Legacy</span></a><a href="/en/team/mouz/"><span>MOUZ</span></a><a href="/en/team/spirit/"><span>Spirit</span></a><a href="/en/team/vitality/"><span>Vitality</span></a>      </details>
+<a href="/en/team/falcons/"><span><img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12">Falcons</span></a><a href="/en/team/furia/"><span><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12">FURIA</span></a><a href="/en/team/fut/"><span><img class="flag" src="/static/flags/tr.svg" alt="Turkey" title="Turkey" width="16" height="12">FUT</span></a><a href="/en/team/g2/"><span><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12">G2</span></a><a href="/en/team/legacy/"><span><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12">Legacy</span></a><a href="/en/team/mouz/"><span><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12">MOUZ</span></a><a href="/en/team/spirit/"><span><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12">Spirit</span></a><a href="/en/team/vitality/"><span><img class="flag" src="/static/flags/fr.svg" alt="France" title="France" width="16" height="12">Vitality</span></a>      </details>
       <details class="nav-g" data-k="events" open>
         <summary class="nav-h"><a href="/en/tournaments/">Tournaments</a></summary>
 <a href="/en/tournament/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      </details>
@@ -88,6 +89,543 @@
   <details class="cfg-help"><summary>How to use the practice pack</summary>
     <ol><li>Download the file and copy it to <code>Counter-Strike Global Offensive/game/csgo/cfg/</code>.</li><li>In CS2, open <b>Play → Practice</b> (offline server) on the map.</li><li>In the console, type <code>exec lineupspro_inferno</code>.</li><li>Type <code>bind ] lp_next; bind [ lp_prev</code> and use <b>]</b> and <b>[</b> to jump between lineups: you land on the pro's exact spot, already aiming.</li><li>Offline servers only, never in online matches.</li></ol>
   </details>
+</div>
+<div class="filters" id="filters">
+  <div class="seg" role="group" aria-label="Type">
+    <button data-f="type" data-v="" class="on">All <span class="n">22</span></button>
+<button data-f="type" data-v="smoke">Smokes <span class="n">10</span></button><button data-f="type" data-v="flash">Flashes <span class="n">5</span></button><button data-f="type" data-v="molotov">Molotovs <span class="n">4</span></button><button data-f="type" data-v="he">HEs <span class="n">3</span></button>  </div>
+  <div class="seg" role="group" aria-label="Side">
+    <button data-f="side" data-v="" class="on">T and CT</button>
+    <button data-f="side" data-v="T">T</button>
+    <button data-f="side" data-v="CT">CT</button>
+  </div>
+  <select data-f="area" aria-label="Lands at">
+    <option value="">Anywhere</option>
+<option value="BombsiteA">A Site</option><option value="Apartments">Apartments</option><option value="Arch">Arch</option><option value="BombsiteB">B Site</option><option value="Banana">Banana</option><option value="Middle">Mid</option><option value="Quad">Quad</option><option value="Ruins">Ruins</option><option value="TopofMid">Top Mid</option>  </select>
+  <select data-f="teams" aria-label="Team">
+    <option value="">All teams</option>
+<option value="furia">FURIA</option><option value="g2">G2</option><option value="mouz">MOUZ</option><option value="vitality">Vitality</option>  </select>
+  <select data-f="players" aria-label="Player">
+    <option value="">All players</option>
+<option value="apex">apEX</option><option value="fallen">FalleN</option><option value="flamez">flameZ</option><option value="heavygod">HeavyGod</option><option value="hunter">huNter</option><option value="kscerato">KSCERATO</option><option value="matys">MATYS</option><option value="mezii">mezii</option><option value="molodoy">molodoy</option><option value="nertz">NertZ</option><option value="pr">PR</option><option value="r1nkle">r1nkle</option><option value="ropz">ropz</option><option value="spinx">Spinx</option><option value="torzsi">torzsi</option><option value="xelex">xelex</option><option value="xertion">xertioN</option><option value="yekindar">YEKINDAR</option><option value="yuurih">yuurih</option>  </select>
+  <select data-f="diff" aria-label="Difficulty">
+    <option value="">Any difficulty</option>
+<option value="1">Easy</option><option value="2">Medium</option><option value="3">Hard</option>  </select>
+  <select data-f="sort" aria-label="Sort">
+    <option value="">Most used</option>
+    <option value="eff">Most effective</option>
+    <option value="easy">Easiest first</option>
+  </select>
+  <span class="muted" id="shown"></span>
+</div>
+<div class="map-split">
+  <aside class="map-ov" id="ov" data-map="inferno">
+    <div class="ov-toggles" role="group" aria-label="Show on map">
+<label class="ov-tg tg-smoke"><input type="checkbox" data-ov-type="smoke" checked> Smokes</label><label class="ov-tg tg-flash"><input type="checkbox" data-ov-type="flash" checked> Flashes</label><label class="ov-tg tg-molotov"><input type="checkbox" data-ov-type="molotov" checked> Molotovs</label><label class="ov-tg tg-he"><input type="checkbox" data-ov-type="he" checked> HEs</label>      <span class="ov-sep"></span>
+      <label class="ov-tg tg-T"><input type="checkbox" data-ov-side="T" checked> T</label>
+      <label class="ov-tg tg-CT"><input type="checkbox" data-ov-side="CT" checked> CT</label>
+      <label class="ov-tg"><input type="checkbox" data-ov-labels checked> Names</label>
+    </div>
+    <svg class="ov-svg" viewBox="33.2 19.5 971.2 971.2" role="img" aria-label="Every Inferno grenade on the radar">
+      <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
+      <g class="ov-labels"><text x="528.4" y="217.3">B Site</text><text x="841.4" y="311.8">CT Spawn</text><text x="862.0" y="723.5">A Site</text><text x="502.0" y="409.4">Banana</text><text x="545.7" y="809.4">Second Mid</text><text x="670.4" y="861.8">Apartments</text><text x="526.7" y="669.0">Mid</text><text x="289.4" y="684.5">Lower Mid</text><text x="671.2" y="199.2">Ruins</text><text x="720.0" y="654.5">Top Mid</text><text x="142.0" y="745.1">T Spawn</text><text x="797.8" y="553.1">Arch</text><text x="916.5" y="843.1">Pit</text><text x="601.6" y="920.0">Back Alley</text><text x="386.5" y="616.1">T Ramp</text><text x="939.0" y="518.4">Library</text><text x="848.2" y="828.8">Balcony</text><text x="313.7" y="752.7">Upstairs</text><text x="343.9" y="819.2">Bridge</text><text x="484.3" y="700.8">Underpass</text><text x="723.3" y="802.2">Quad</text><text x="398.4" y="723.9">Kitchen</text><text x="416.3" y="779.2">Deck</text></g>
+      <g class="ov-item" data-id="smoke-banana-from-ct-spawn-ct" data-type="smoke" data-side="CT" tabindex="0" role="button" aria-label="Smoke Banana (from CT Spawn)">
+        <path class="ov-traj traj-smoke" d="M837.8,400.4 L832.0,402.7 L826.3,404.9 L820.4,406.9 L814.7,409.2 L809.0,411.4 L803.3,413.7 L797.3,415.9 L791.6,418.2 L785.9,420.4 L780.2,422.4 L774.3,424.7 L768.6,426.9 L762.9,429.2 L757.1,431.4 L751.2,433.7 L745.5,435.7 L739.8,438.0 L734.1,440.2 L728.2,442.4 L722.4,444.7 L716.7,446.9 L711.0,449.2 L705.1,451.2 L699.4,453.5 L693.7,455.7 L688.0,458.0 L682.0,460.2 L676.3,462.4 L670.6,464.7 L664.9,466.7 L659.0,469.0 L653.3,471.2 L647.6,473.5 L641.8,475.7 L635.9,478.0 L630.2,480.0 L624.5,482.2 L618.8,484.5 L612.9,486.7 L607.1,489.0 L601.4,491.2 L595.7,493.5 L589.8,495.5 L584.1,497.8 L578.4,500.0 L572.7,502.2 L566.7,504.5 L561.0,506.7 L555.3,509.0 L549.6,511.0 L543.7,513.3 L538.0,515.5 L532.2,517.8 L526.5,520.0 L520.6,522.2 L514.9,524.5 L509.2,526.5 L503.5,528.8 L497.6,531.0 L491.8,533.3 L486.1,535.5 L480.4,537.8 L474.5,539.8 L468.8,542.0 L463.1,544.3 L457.3,546.5 L451.4,548.8 L445.7,551.0 L440.0,553.3 L436.9,554.9 L439.6,555.9 L442.2,556.9 L444.7,558.0 L447.3,559.0 L450.0,560.0 L452.7,561.0 L455.1,562.0 L457.8,562.9 L460.4,563.9 L462.9,564.9 L465.5,565.9 L464.9,566.5 L463.7,566.9 L462.7,567.3 L461.8,567.8 L461.2,568.2 L460.6,568.6 L460.0,568.8 L459.4,569.2 L458.8,569.6 L458.2,570.0 L457.6,570.2 L456.9,570.6 L456.3,571.0 L455.7,571.4 L455.3,571.8 L454.7,572.0 L454.1,572.4 L453.7,572.7 L453.5,572.9 L453.1,573.3 L452.7,573.5 L452.2,573.7 L452.0,573.9 L451.8,574.1 L451.6,574.3 L451.6,574.3"/>
+        <circle class="ov-land land-smoke" cx="451.9" cy="574.6" r="29.6"/>
+        <circle class="ov-throw side-CT" cx="837.8" cy="400.4" r="6"/>
+      </g>
+      <g class="ov-item" data-id="smoke-banana-from-t-spawn-t" data-type="smoke" data-side="T" tabindex="0" role="button" aria-label="Smoke Banana (from T Spawn)">
+        <path class="ov-traj traj-smoke" d="M148.2,758.4 L152.7,754.7 L157.3,751.0 L161.8,747.3 L166.5,743.7 L171.0,739.8 L175.5,736.1 L180.2,732.4 L184.7,728.8 L189.4,725.1 L193.9,721.2 L198.6,717.6 L203.1,713.9 L207.8,710.2 L212.2,706.3 L216.9,702.7 L221.4,699.0 L225.9,695.3 L230.6,691.6 L235.1,687.8 L239.8,684.1 L244.3,680.4 L249.0,676.7 L253.5,673.1 L258.2,669.2 L262.7,665.5 L267.3,661.8 L271.8,658.2 L276.5,654.3 L281.0,650.6 L285.5,646.9 L290.2,643.3 L294.7,639.6 L299.4,635.7 L303.9,632.0 L308.6,628.4 L313.1,624.7 L317.8,621.0 L322.2,617.1 L326.9,613.5 L331.4,609.8 L335.9,606.1 L340.6,602.2 L345.1,598.6 L349.8,594.9 L354.3,591.2 L359.0,587.6 L363.5,583.7 L368.2,580.0 L372.7,576.3 L377.3,572.7 L381.8,569.0 L386.5,565.1 L391.0,561.4 L395.5,557.8 L400.2,554.1 L404.7,550.2 L409.4,546.5 L413.9,542.9 L418.6,539.2 L423.1,535.5 L427.8,531.6 L432.2,528.0 L436.9,524.3 L441.4,520.6 L445.9,516.9 L450.6,513.1 L455.1,509.4 L459.8,505.7 L464.3,502.0 L469.0,498.2 L473.5,494.5 L478.2,490.8 L481.4,487.3 L481.4,484.7 L481.4,482.0 L481.4,479.4 L481.2,476.7 L481.2,474.1 L481.2,471.4 L481.2,468.8 L481.0,466.1 L481.0,463.5 L480.2,462.0 L479.2,460.8 L478.2,459.4 L477.3,458.2 L476.3,456.9 L475.3,455.7 L474.3,454.3 L473.3,453.1 L472.2,451.8 L471.2,450.4 L470.4,449.2 L469.4,448.0 L468.4,446.7 L467.3,445.3 L466.3,444.1 L465.3,442.9 L464.5,441.6 L463.5,440.2 L462.4,439.0 L461.4,437.8 L460.6,436.7 L460.2,436.3 L459.6,435.9 L459.6,435.9 L460.0,435.9 L460.2,435.9 L460.6,436.1 L460.8,436.1 L461.0,436.3 L461.2,436.3 L461.2,436.5 L461.4,436.5 L461.4,436.7 L461.4,436.7"/>
+        <circle class="ov-land land-smoke" cx="462.1" cy="436.3" r="29.6"/>
+        <circle class="ov-throw side-T" cx="149.6" cy="758.4" r="6"/>
+      </g>
+      <g class="ov-item" data-id="smoke-banana-from-b-site-ct" data-type="smoke" data-side="CT" tabindex="0" role="button" aria-label="Smoke Banana (from B Site)">
+        <path class="ov-traj traj-smoke" d="M512.2,252.9 L508.0,260.6 L503.9,268.2 L499.6,275.9 L495.3,283.7 L491.2,291.2 L486.9,299.0 L482.9,306.5 L478.6,314.3 L474.3,321.8 L470.2,329.6 L470.0,334.3 L472.0,337.8 L473.9,341.2 L475.7,344.7 L477.8,348.2 L479.6,351.6 L481.4,355.1 L483.3,358.6 L485.3,362.0 L487.1,365.5 L489.0,368.8 L490.8,372.2 L492.9,375.7 L494.7,379.2 L496.5,382.7 L498.6,386.1 L500.4,389.6 L502.2,393.1 L504.3,396.5 L506.1,400.0 L508.0,403.3 L509.8,406.7 L511.8,410.2 L513.7,413.7 L515.5,417.1 L517.6,420.6 L518.8,423.3 L518.4,423.5 L518.2,423.7 L518.0,423.9 L517.8,424.1 L517.8,424.3 L517.6,424.5 L517.3,424.5 L517.3,424.7 L517.1,424.9 L516.9,425.1 L516.9,425.3 L516.7,425.5 L516.7,425.7 L516.5,425.9 L516.5,425.9 L516.5,426.1 L516.5,426.1 L516.5,426.3 L516.5,426.3 L516.5,426.5 L516.5,426.5 L516.5,426.5"/>
+        <circle class="ov-land land-smoke" cx="516.0" cy="426.2" r="29.6"/>
+        <circle class="ov-throw side-CT" cx="512.3" cy="252.9" r="6"/>
+      </g>
+      <g class="ov-item" data-id="smoke-top-mid-from-t-spawn-t" data-type="smoke" data-side="T" tabindex="0" role="button" aria-label="Smoke Top Mid (from T Spawn)">
+        <path class="ov-traj traj-smoke" d="M219.0,672.7 L231.0,672.9 L243.3,673.1 L255.3,673.3 L267.3,673.5 L279.6,673.7 L291.6,673.9 L303.9,674.1 L315.9,674.3 L328.2,674.5 L340.2,674.7 L352.2,674.9 L364.5,675.1 L376.5,675.3 L388.8,675.5 L400.8,675.7 L413.1,675.9 L425.1,676.1 L437.1,676.3 L449.4,676.5 L461.4,676.7 L473.7,676.9 L485.7,677.1 L498.0,677.3 L510.0,677.6 L522.0,677.8 L534.3,678.0 L546.3,678.2 L558.6,678.4 L570.6,678.6 L582.7,678.8 L594.9,679.0 L606.9,679.2 L619.2,679.4 L631.2,679.6 L643.5,679.8 L655.5,680.0 L667.6,680.2 L679.8,680.4 L691.8,680.8 L704.1,681.0 L716.1,681.2 L728.4,681.4 L734.3,681.4 L737.6,681.4 L735.1,681.4 L732.7,681.4 L730.2,681.4 L727.8,681.4 L725.3,681.4 L722.9,681.4 L720.4,681.4 L718.0,681.4 L715.5,681.4 L713.9,681.4 L712.7,681.4 L711.6,681.4 L710.4,681.2 L709.4,681.2 L708.2,681.2 L707.6,681.2 L707.1,681.2 L706.5,681.2 L706.3,681.2 L706.1,681.2 L706.1,681.2"/>
+        <circle class="ov-land land-smoke" cx="707.0" cy="680.8" r="29.6"/>
+        <circle class="ov-throw side-T" cx="219.5" cy="672.7" r="6"/>
+      </g>
+      <g class="ov-item" data-id="smoke-ruins-from-banana-t" data-type="smoke" data-side="T" tabindex="0" role="button" aria-label="Smoke Ruins (from Banana)">
+        <path class="ov-traj traj-smoke" d="M503.5,445.5 L505.9,440.4 L508.4,435.3 L510.8,430.2 L513.3,425.1 L515.7,420.0 L518.2,414.9 L520.6,409.8 L523.1,404.7 L525.5,399.6 L528.0,394.5 L530.4,389.4 L532.9,384.3 L535.3,379.2 L537.8,374.1 L540.2,369.0 L542.7,363.9 L545.1,358.8 L547.6,353.7 L550.0,348.6 L552.4,343.5 L554.9,338.4 L557.3,333.3 L559.8,328.2 L562.2,323.1 L564.7,318.0 L567.1,312.9 L569.6,307.8 L572.0,302.4 L574.5,297.3 L576.9,292.2 L579.4,287.1 L581.8,282.0 L584.3,276.9 L586.7,271.8 L589.2,266.7 L591.6,261.6 L594.1,256.5 L596.5,251.4 L599.0,246.3 L601.4,241.2 L603.9,236.1 L606.3,231.0 L608.8,225.9 L611.2,220.8 L613.3,217.6 L614.3,219.2 L615.5,220.8 L616.5,222.2 L617.6,223.9 L618.8,225.5 L619.8,227.1 L621.0,228.6 L622.0,230.2 L623.1,231.8 L624.3,233.5 L625.3,234.9 L626.5,236.5 L627.6,238.2 L628.6,239.6 L629.8,241.2 L630.8,242.9 L632.0,244.5 L633.1,245.9 L634.1,247.6 L635.3,249.2 L636.1,250.2 L636.5,250.6 L637.1,251.0 L637.6,251.4 L638.0,251.8 L638.6,252.2 L639.0,252.4 L639.6,252.9 L639.8,252.9 L640.2,252.4 L640.2,252.0 L640.4,251.8 L640.4,251.6 L640.6,251.6"/>
+        <circle class="ov-land land-smoke" cx="638.6" cy="252.5" r="29.6"/>
+        <circle class="ov-throw side-T" cx="503.5" cy="445.6" r="6"/>
+      </g>
+      <g class="ov-item" data-id="smoke-top-mid-from-second-mid-t" data-type="smoke" data-side="T" tabindex="0" role="button" aria-label="Smoke Top Mid (from Second Mid)">
+        <path class="ov-traj traj-smoke" d="M570.6,785.1 L573.7,781.8 L576.9,778.4 L580.0,774.9 L583.3,771.4 L586.3,768.0 L589.6,764.5 L592.7,761.0 L595.9,757.6 L599.0,754.1 L602.2,750.8 L605.3,747.3 L608.6,743.9 L611.6,740.4 L614.9,736.9 L618.0,733.5 L621.2,730.0 L624.3,726.5 L627.6,723.3 L630.6,719.8 L633.9,716.3 L636.9,712.9 L640.2,709.4 L643.3,705.9 L646.5,702.4 L649.6,699.0 L652.9,695.5 L655.9,692.2 L659.2,688.8 L662.2,685.3 L665.5,681.8 L668.6,678.4 L671.8,674.9 L674.9,671.4 L678.2,668.0 L681.2,664.5 L684.3,661.2 L687.6,657.8 L690.6,654.3 L693.9,650.8 L696.9,647.3 L700.2,643.9 L703.3,640.4 L706.5,636.9 L709.6,633.5 L712.9,630.2 L715.9,626.7 L719.2,623.3 L722.2,619.8 L725.5,616.3 L726.9,613.9 L726.9,612.2 L726.7,610.8 L726.7,609.2 L726.7,607.8 L726.5,606.1 L726.5,604.5 L726.3,603.1 L726.3,601.4 L726.3,600.0 L726.1,598.4 L726.1,596.7 L725.9,595.3 L725.9,593.7 L725.9,592.2 L725.7,590.6 L725.7,589.0 L725.5,587.6 L725.5,585.9 L725.5,584.5 L725.3,582.9 L725.3,581.2 L725.1,579.8 L725.1,578.2 L725.1,576.7 L724.9,575.1 L724.9,573.5 L724.7,572.0 L724.7,570.4 L724.7,569.0 L724.5,567.3 L724.5,565.7 L724.3,564.3 L724.5,564.1 L724.5,563.9 L724.5,563.7 L724.5,563.5 L724.5,563.3 L724.5,563.1 L724.5,562.9 L724.5,562.7 L724.5,562.4 L724.5,562.2 L724.5,562.0 L724.7,561.8 L724.7,561.6 L724.7,561.2 L724.7,561.0 L724.7,560.8 L724.7,560.6 L724.7,560.4 L724.7,560.2 L724.7,560.2 L724.7,560.2 L724.9,560.4 L724.9,560.4 L724.9,560.6 L724.9,560.8 L724.9,560.8 L724.9,561.0 L724.9,561.0 L725.1,561.2 L725.1,561.4 L725.1,561.6 L725.1,561.6 L725.1,561.8 L725.1,562.0 L725.1,562.0 L725.1,562.2"/>
+        <circle class="ov-land land-smoke" cx="721.6" cy="564.4" r="29.6"/>
+        <circle class="ov-throw side-T" cx="571.6" cy="785.1" r="6"/>
+      </g>
+      <g class="ov-item" data-id="smoke-banana-from-lower-mid-t" data-type="smoke" data-side="T" tabindex="0" role="button" aria-label="Smoke Banana (from Lower Mid)">
+        <path class="ov-traj traj-smoke" d="M255.1,694.9 L262.2,690.2 L269.4,685.7 L276.5,681.0 L283.7,676.3 L290.8,671.6 L298.0,667.1 L305.1,662.4 L312.2,657.8 L319.4,653.1 L326.5,648.6 L333.7,643.9 L340.6,639.2 L347.8,634.7 L354.9,630.0 L362.0,625.3 L369.2,620.6 L376.3,616.1 L383.5,611.4 L390.6,606.7 L397.8,602.0 L404.9,597.6 L412.0,592.9 L419.2,588.2 L426.3,583.7 L433.5,579.0 L440.6,574.3 L447.8,569.6 L454.9,565.1 L462.0,560.4 L464.5,556.9 L461.2,554.9 L458.0,552.7 L454.9,550.6 L451.6,548.6 L448.4,546.5 L445.3,544.3 L442.0,542.2 L438.8,540.2 L436.7,538.4 L437.8,537.8 L438.6,537.3 L439.4,536.9 L440.0,536.7 L440.8,536.3 L441.6,535.9 L442.2,535.5 L442.7,535.5 L443.1,535.3 L443.5,535.3 L443.7,535.1 L443.9,535.1 L443.9,535.1"/>
+        <circle class="ov-land land-smoke" cx="443.3" cy="534.9" r="29.6"/>
+        <circle class="ov-throw side-T" cx="255.1" cy="694.9" r="6"/>
+      </g>
+      <g class="ov-item" data-id="smoke-mid-from-arch-ct" data-type="smoke" data-side="CT" tabindex="0" role="button" aria-label="Smoke Mid (from Arch)">
+        <path class="ov-traj traj-smoke" d="M747.3,547.8 L743.5,556.3 L739.8,564.9 L735.9,573.7 L732.0,582.2 L728.2,590.8 L724.3,599.4 L720.6,608.0 L716.7,616.5 L712.9,625.1 L709.0,633.7 L705.1,642.2 L701.2,650.8 L697.6,659.4 L694.5,666.3 L692.7,670.2 L691.0,674.1 L689.2,678.0 L687.6,681.8 L685.7,685.7 L684.1,689.6 L682.2,693.5 L680.6,697.1 L678.8,701.0 L677.8,701.2 L677.1,699.4 L676.5,697.8 L675.7,695.9 L675.1,694.3 L674.5,692.9 L674.1,692.0 L673.7,691.2 L673.1,690.4 L672.7,689.6 L672.2,688.8 L671.8,688.0 L671.4,687.6 L671.2,687.1 L671.0,686.9 L670.8,686.7 L670.6,686.5 L670.6,686.5"/>
+        <circle class="ov-land land-smoke" cx="671.3" cy="691.0" r="29.6"/>
+        <circle class="ov-throw side-CT" cx="747.0" cy="549.1" r="6"/>
+      </g>
+      <g class="ov-item" data-id="smoke-a-site-from-mid-t" data-type="smoke" data-side="T" tabindex="0" role="button" aria-label="Smoke A Site (from Mid)">
+        <path class="ov-traj traj-smoke" d="M439.6,699.6 L445.9,698.6 L452.4,697.6 L458.8,696.3 L465.3,695.3 L471.6,694.3 L478.2,693.1 L484.7,692.0 L491.0,691.0 L497.6,689.8 L503.9,688.8 L510.4,687.8 L516.7,686.5 L523.3,685.5 L529.6,684.5 L536.1,683.3 L542.4,682.2 L549.0,681.2 L555.3,680.0 L561.8,679.0 L568.2,678.0 L574.7,676.7 L581.0,675.7 L587.6,674.7 L594.1,673.5 L600.4,672.4 L606.9,671.4 L613.3,670.2 L619.8,669.2 L626.1,668.2 L632.7,666.9 L639.0,665.9 L645.5,664.9 L651.8,663.7 L658.4,662.7 L664.7,661.6 L671.2,660.4 L677.6,659.4 L684.1,658.4 L690.4,657.1 L696.9,656.1 L703.5,655.1 L709.8,653.9 L716.3,652.9 L722.7,651.8 L729.2,650.6 L735.5,649.6 L742.0,648.6 L748.4,647.3 L754.9,646.3 L761.2,645.3 L767.8,644.1 L774.1,643.1 L780.6,642.0 L786.9,640.8 L793.5,639.8 L800.0,638.8 L806.3,637.6 L812.9,636.5 L819.2,635.5 L825.7,634.3 L832.0,633.3 L838.6,632.2 L844.9,631.0 L851.4,630.0 L857.8,629.0 L864.3,627.8 L870.6,626.7 L877.1,625.7 L883.5,624.5 L890.0,623.5 L896.5,622.4 L902.9,621.2 L909.4,620.2 L915.7,619.2 L922.2,618.0 L922.4,617.6 L921.2,617.1 L920.0,616.9 L918.6,616.7 L917.3,616.5 L916.1,616.3 L914.7,616.1 L913.5,615.9 L912.0,615.7 L910.8,615.5 L909.6,615.3 L908.2,615.1 L906.9,614.9 L905.5,614.7 L904.3,614.3 L903.1,614.1 L901.6,613.9 L900.6,613.7 L899.8,613.7 L899.2,613.5 L898.4,613.5 L897.8,613.3 L896.9,613.3 L896.3,613.1 L895.5,613.1 L894.9,613.1 L894.5,612.9 L894.1,612.9 L893.7,612.9 L893.5,612.9 L893.3,612.9 L893.1,612.9 L893.1,612.9"/>
+        <circle class="ov-land land-smoke" cx="888.1" cy="614.0" r="29.6"/>
+        <circle class="ov-throw side-T" cx="439.7" cy="699.7" r="6"/>
+      </g>
+      <g class="ov-item" data-id="smoke-b-site-from-mid-t" data-type="smoke" data-side="T" tabindex="0" role="button" aria-label="Smoke B Site (from Mid)">
+        <path class="ov-traj traj-smoke" d="M436.7,696.1 L439.2,689.8 L441.6,683.5 L443.9,677.1 L446.3,670.8 L448.8,664.5 L451.2,658.2 L453.5,651.8 L455.9,645.5 L458.4,639.2 L460.8,632.9 L463.1,626.5 L465.5,620.2 L468.0,613.9 L470.4,607.6 L472.7,601.2 L475.1,594.9 L477.6,588.6 L480.0,582.2 L482.2,575.9 L484.7,569.6 L487.1,563.3 L489.6,556.9 L491.8,550.6 L494.3,544.3 L496.7,538.0 L499.2,531.6 L501.4,525.3 L503.9,519.0 L506.3,512.7 L508.8,506.3 L511.0,500.0 L513.5,493.7 L515.9,487.3 L518.4,481.0 L520.6,474.7 L523.1,468.4 L525.5,462.0 L528.0,455.7 L530.2,449.4 L532.7,443.1 L535.1,436.7 L537.6,430.4 L539.8,424.1 L542.2,417.8 L544.7,411.4 L547.1,405.1 L549.4,398.8 L551.8,392.4 L554.3,386.1 L556.7,379.8 L559.0,373.5 L561.4,367.1 L563.9,360.8 L566.3,354.5 L568.6,348.2 L571.0,341.8 L573.5,335.5 L575.9,329.2 L578.2,322.9 L580.6,316.5 L583.1,310.2 L585.5,303.9 L587.8,297.6 L590.2,291.2 L592.7,284.9 L595.1,278.6 L597.3,272.2 L599.8,265.9 L602.2,259.6 L604.7,253.3 L606.9,246.9 L609.4,240.6 L611.8,234.3 L614.3,228.0 L615.5,224.9 L616.3,223.1 L617.3,221.0 L618.2,219.2 L618.6,220.2 L619.0,221.0 L619.4,221.8 L619.8,222.9 L620.2,223.7 L620.6,224.5 L621.0,225.3 L621.6,226.3 L622.0,227.1 L622.4,228.0 L622.9,229.0 L623.3,229.8 L623.5,230.6 L623.9,231.0 L624.1,231.4 L624.3,231.8 L624.5,232.2 L624.9,232.7 L625.1,232.9 L625.3,233.3 L625.5,233.7 L625.7,234.1 L625.9,234.3 L626.1,234.3 L626.3,234.5 L626.3,234.7 L626.5,234.7 L626.5,234.9 L626.5,234.9"/>
+        <circle class="ov-land land-smoke" cx="626.8" cy="234.7" r="29.6"/>
+        <circle class="ov-throw side-T" cx="436.8" cy="696.1" r="6"/>
+      </g>
+      <g class="ov-item" data-id="flash-banana-from-b-site-ct" data-type="flash" data-side="CT" tabindex="0" role="button" aria-label="Flash Banana (from B Site)">
+        <path class="ov-traj traj-flash" d="M535.9,163.1 L536.3,170.8 L536.7,178.4 L537.1,185.9 L537.8,193.5 L538.2,201.2 L538.6,208.8 L539.0,216.3 L539.4,224.1 L540.0,231.6 L540.4,239.2 L540.8,246.7 L541.2,254.5 L541.8,262.0 L542.2,269.6 L542.7,277.1 L543.1,284.9 L543.5,292.4 L544.1,300.0 L544.5,307.8 L544.9,315.3 L545.3,322.9 L545.9,330.4 L546.3,338.2 L546.7,345.7 L547.1,353.3 L547.6,359.0"/>
+        <circle class="ov-land land-flash" cx="548.3" cy="358.5" r="10.2"/>
+        <circle class="ov-throw side-CT" cx="535.8" cy="163.1" r="6"/>
+      </g>
+      <g class="ov-item" data-id="flash-b-site-from-banana-t" data-type="flash" data-side="T" tabindex="0" role="button" aria-label="Flash B Site (from Banana)">
+        <path class="ov-traj traj-flash" d="M453.1,459.8 L457.3,452.4 L461.4,445.1 L465.7,437.8 L469.8,430.4 L473.9,423.1 L478.2,415.7 L482.2,408.4 L486.3,401.0 L490.6,393.9 L494.7,386.5 L499.0,379.2 L503.1,371.8 L507.1,364.5 L511.4,357.1 L515.5,349.8 L519.6,342.4 L523.9,335.1 L528.0,327.8 L532.2,320.4 L536.3,313.1 L540.4,305.7 L544.7,298.4 L548.8,291.0 L552.9,283.7 L557.1,276.3 L560.2,270.8"/>
+        <circle class="ov-land land-flash" cx="560.2" cy="270.8" r="10.2"/>
+        <circle class="ov-throw side-T" cx="453.1" cy="459.9" r="6"/>
+      </g>
+      <g class="ov-item" data-id="flash-banana-from-lower-mid-t" data-type="flash" data-side="T" tabindex="0" role="button" aria-label="Flash Banana (from Lower Mid)">
+        <path class="ov-traj traj-flash" d="M352.4,631.6 L355.7,628.6 L359.2,625.5 L362.7,622.4 L366.1,619.2 L369.4,616.1 L372.9,613.1 L376.3,610.0 L379.6,606.7 L383.1,603.7 L386.5,600.6 L390.0,597.6 L393.3,594.3 L396.7,591.2 L400.2,588.2 L403.5,584.9 L406.9,581.8 L410.4,578.8 L413.9,575.7 L417.1,572.4 L420.6,569.4 L424.1,566.3 L427.3,563.3 L430.8,560.0 L434.3,556.9 L437.8,553.9 L440.2,551.4"/>
+        <circle class="ov-land land-flash" cx="444.7" cy="545.6" r="10.2"/>
+        <circle class="ov-throw side-T" cx="352.2" cy="632.8" r="6"/>
+      </g>
+      <g class="ov-item" data-id="flash-arch-from-second-mid-t" data-type="flash" data-side="T" tabindex="0" role="button" aria-label="Flash Arch (from Second Mid)">
+        <path class="ov-traj traj-flash" d="M602.9,725.5 L608.4,719.8 L614.1,714.1 L619.8,708.4 L625.5,702.4 L631.2,696.7 L636.9,691.0 L642.7,685.3 L648.4,679.6 L654.1,673.9 L659.8,668.2 L665.5,662.2 L671.2,656.5 L676.9,650.8 L682.7,645.1 L688.4,639.4 L694.1,633.5 L699.8,627.8 L705.5,622.0 L711.2,616.3 L716.9,610.6 L722.7,604.9 L728.4,599.2 L733.9,593.3 L739.6,587.6 L745.3,581.8 L749.6,577.6"/>
+        <circle class="ov-land land-flash" cx="749.9" cy="577.9" r="10.2"/>
+        <circle class="ov-throw side-T" cx="602.8" cy="725.5" r="6"/>
+      </g>
+      <g class="ov-item" data-id="flash-banana-t" data-type="flash" data-side="T" tabindex="0" role="button" aria-label="Flash Banana">
+        <path class="ov-traj traj-flash" d="M462.9,580.8 L463.1,573.5 L463.3,566.1 L463.7,558.8 L463.9,551.4 L464.1,544.1 L464.3,536.7 L464.7,529.4 L464.9,522.0 L465.1,514.7 L465.3,507.3 L465.7,500.2 L465.9,492.9 L466.1,485.5 L466.5,478.2 L466.7,470.8 L466.9,463.5 L467.1,456.1 L467.6,448.8 L467.8,441.4 L468.0,434.3 L468.2,426.9 L468.6,419.6 L468.8,412.2 L469.0,404.9 L469.6,399.8 L470.2,397.8"/>
+        <circle class="ov-land land-flash" cx="470.7" cy="399.1" r="10.2"/>
+        <circle class="ov-throw side-T" cx="462.7" cy="581.7" r="6"/>
+      </g>
+      <g class="ov-item" data-id="molotov-b-site-from-banana-t" data-type="molotov" data-side="T" tabindex="0" role="button" aria-label="Molotov B Site (from Banana)">
+        <path class="ov-traj traj-molotov" d="M521.4,374.9 L518.0,369.6 L514.5,364.3 L511.0,359.0 L507.6,353.7 L504.1,348.4 L500.6,343.3 L496.9,338.0 L493.5,332.7 L490.0,327.3 L486.5,322.0 L483.1,316.7 L479.6,311.4 L476.1,306.1 L474.5,303.7 L472.9,301.2 L471.2,299.0 L469.6,296.5 L468.2,294.1 L466.5,291.8 L464.9,289.4 L463.5,286.9 L461.8,284.7 L460.2,282.2 L458.8,280.0 L457.1,277.6 L455.5,275.1 L453.9,272.9 L452.4,270.4 L450.8,268.0 L449.4,266.5 L448.2,267.1 L447.1,267.8"/>
+        <circle class="ov-land land-molotov" cx="448.4" cy="268.2" r="24.5"/>
+        <circle class="ov-throw side-T" cx="521.1" cy="374.3" r="6"/>
+      </g>
+      <g class="ov-item" data-id="molotov-banana-from-b-site-ct" data-type="molotov" data-side="CT" tabindex="0" role="button" aria-label="Molotov Banana (from B Site)">
+        <path class="ov-traj traj-molotov" d="M534.7,163.7 L533.1,172.2 L531.6,180.6 L530.2,189.2 L528.6,197.6 L527.1,206.1 L525.7,214.5 L524.3,223.1 L522.7,231.4 L521.2,240.0 L519.8,248.6 L518.2,256.9 L516.7,265.5 L515.3,273.9 L513.9,282.4 L512.2,290.8 L510.8,299.4 L509.4,307.8 L508.0,316.3 L506.3,324.9 L504.9,333.3 L503.5,341.8 L501.8,350.2 L500.4,358.8 L499.0,367.1 L497.6,375.7 L495.9,384.1 L494.5,392.7 L493.1,401.0 L491.4,409.6 L490.0,418.0 L488.6,426.5 L487.1,435.1"/>
+        <circle class="ov-land land-molotov" cx="488.4" cy="435.2" r="24.5"/>
+        <circle class="ov-throw side-CT" cx="534.7" cy="163.7" r="6"/>
+      </g>
+      <g class="ov-item" data-id="molotov-b-site-t" data-type="molotov" data-side="T" tabindex="0" role="button" aria-label="Molotov B Site">
+        <path class="ov-traj traj-molotov" d="M591.4,271.0 L584.7,261.2 L578.0,251.4 L571.2,241.4 L564.5,231.6 L557.8,221.8 L551.0,211.8 L544.3,202.0 L537.6,192.2 L530.8,182.2 L524.1,172.4 L517.3,162.7 L510.6,152.9 L503.7,142.9 L500.6,135.1 L503.7,130.6 L506.7,126.1 L509.8,121.8 L512.9,117.3 L515.9,112.9 L519.0,108.6 L522.0,104.1 L524.9,99.6 L528.0,95.1 L531.0,90.8 L534.1,86.3 L537.1,81.8 L538.0,80.8"/>
+        <circle class="ov-land land-molotov" cx="537.3" cy="79.5" r="24.5"/>
+        <circle class="ov-throw side-T" cx="591.4" cy="272.4" r="6"/>
+      </g>
+      <g class="ov-item" data-id="molotov-quad-from-apartments-t" data-type="molotov" data-side="T" tabindex="0" role="button" aria-label="Molotov Quad (from Apartments)">
+        <path class="ov-traj traj-molotov" d="M681.4,730.6 L688.0,720.4 L691.8,720.4 L694.7,725.1 L697.8,729.6 L700.6,734.1 L703.5,738.6 L706.5,743.1 L709.4,747.6 L712.2,752.2 L715.1,756.7 L718.2,761.2 L721.0,765.7 L723.9,770.2 L726.7,774.7 L729.8,779.4 L732.7,783.9 L735.3,787.6 L736.7,785.5 L737.6,783.9"/>
+        <circle class="ov-land land-molotov" cx="736.5" cy="786.2" r="24.5"/>
+        <circle class="ov-throw side-T" cx="681.3" cy="731.0" r="6"/>
+      </g>
+      <g class="ov-item" data-id="he-apartments-ct" data-type="he" data-side="CT" tabindex="0" role="button" aria-label="HE Apartments">
+        <path class="ov-traj traj-he" d="M683.5,728.2 L683.1,735.9 L682.7,743.9 L682.2,751.6 L682.0,759.6 L681.6,767.3 L681.2,775.3 L681.0,783.1 L680.6,791.0 L680.2,799.0 L680.0,806.7 L679.6,814.7 L679.2,822.4 L678.8,830.4 L678.6,838.2 L678.2,846.1 L677.8,853.9 L677.6,861.8 L677.1,869.6 L676.7,877.6 L676.5,885.5 L676.1,893.3 L675.7,901.2 L675.3,909.0 L675.1,916.9 L674.7,924.7 L674.5,930.6"/>
+        <circle class="ov-land land-he" cx="672.6" cy="930.7" r="14.3"/>
+        <circle class="ov-throw side-CT" cx="683.7" cy="728.6" r="6"/>
+      </g>
+      <g class="ov-item" data-id="he-mid-from-arch-ct" data-type="he" data-side="CT" tabindex="0" role="button" aria-label="HE Mid (from Arch)">
+        <path class="ov-traj traj-he" d="M745.7,551.0 L741.4,560.6 L736.9,570.2 L732.4,579.8 L728.0,589.4 L723.5,599.0 L719.0,608.6 L714.5,618.2 L710.0,627.8 L705.7,637.3 L701.2,646.9 L696.7,656.5 L692.2,666.1 L687.8,675.9 L683.3,685.5 L678.8,695.1 L674.5,704.5 L672.4,700.2 L670.4,695.7 L668.4,691.4 L666.3,687.1 L664.5,682.9 L662.4,678.6 L660.4,674.3 L658.4,669.8 L656.3,665.5 L655.5,665.7"/>
+        <circle class="ov-land land-he" cx="655.9" cy="666.7" r="14.3"/>
+        <circle class="ov-throw side-CT" cx="746.4" cy="551.1" r="6"/>
+      </g>
+      <g class="ov-item" data-id="he-banana-from-t-ramp-t" data-type="he" data-side="T" tabindex="0" role="button" aria-label="HE Banana (from T Ramp)">
+        <path class="ov-traj traj-he" d="M434.5,601.8 L438.8,591.2 L442.9,580.4 L447.1,569.8 L451.4,559.2 L455.5,548.4 L459.8,537.8 L463.9,527.1 L468.2,516.3 L472.2,505.7 L476.5,495.1 L480.8,484.3 L484.9,473.7 L489.2,463.1 L493.3,452.2 L497.6,441.6 L501.6,431.0 L505.9,420.2 L510.2,409.6 L514.3,399.0 L518.6,388.2 L522.7,377.6 L526.9,366.9 L531.0,356.1 L533.7,357.1 L535.5,361.8 L536.9,365.5"/>
+        <circle class="ov-land land-he" cx="536.6" cy="366.1" r="14.3"/>
+        <circle class="ov-throw side-T" cx="433.6" cy="602.7" r="6"/>
+      </g>
+    </svg>
+    <div class="ov-info" id="ovInfo" hidden></div>
+    <p class="muted small">Click a grenade on the map to see which one it is; hover a card to find it on the map. The filters above apply to the map too.</p>
+  </aside>
+  <div class="map-list">
+<div class="cards" id="cards">
+<a class="card" href="/en/inferno/smoke-banana-from-ct-spawn-ct/" data-id="smoke-banana-from-ct-spawn-ct"
+   data-type="smoke" data-side="CT" data-area="Banana" data-map="inferno"
+   data-teams="furia g2 mouz vitality" data-players="fallen heavygod hunter kscerato mezii r1nkle spinx torzsi xelex"
+   data-diff="2" data-count="26" data-eff="-1">
+  <svg class="radar" viewBox="366.9 217.0 540.9 540.9" role="img" aria-label="Trajectory: Smoke Banana (from CT Spawn)">
+  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="18.0"><text x="841.4" y="311.8">CT Spawn</text><text x="502.0" y="409.4">Banana</text><text x="526.7" y="669.0">Mid</text><text x="720.0" y="654.5">Top Mid</text><text x="797.8" y="553.1">Arch</text></g>
+  <circle class="land land-smoke" cx="451.9" cy="574.6" r="29.6"/>
+  <path class="traj traj-smoke" d="M837.8,400.4 L832.0,402.7 L826.3,404.9 L820.4,406.9 L814.7,409.2 L809.0,411.4 L803.3,413.7 L797.3,415.9 L791.6,418.2 L785.9,420.4 L780.2,422.4 L774.3,424.7 L768.6,426.9 L762.9,429.2 L757.1,431.4 L751.2,433.7 L745.5,435.7 L739.8,438.0 L734.1,440.2 L728.2,442.4 L722.4,444.7 L716.7,446.9 L711.0,449.2 L705.1,451.2 L699.4,453.5 L693.7,455.7 L688.0,458.0 L682.0,460.2 L676.3,462.4 L670.6,464.7 L664.9,466.7 L659.0,469.0 L653.3,471.2 L647.6,473.5 L641.8,475.7 L635.9,478.0 L630.2,480.0 L624.5,482.2 L618.8,484.5 L612.9,486.7 L607.1,489.0 L601.4,491.2 L595.7,493.5 L589.8,495.5 L584.1,497.8 L578.4,500.0 L572.7,502.2 L566.7,504.5 L561.0,506.7 L555.3,509.0 L549.6,511.0 L543.7,513.3 L538.0,515.5 L532.2,517.8 L526.5,520.0 L520.6,522.2 L514.9,524.5 L509.2,526.5 L503.5,528.8 L497.6,531.0 L491.8,533.3 L486.1,535.5 L480.4,537.8 L474.5,539.8 L468.8,542.0 L463.1,544.3 L457.3,546.5 L451.4,548.8 L445.7,551.0 L440.0,553.3 L436.9,554.9 L439.6,555.9 L442.2,556.9 L444.7,558.0 L447.3,559.0 L450.0,560.0 L452.7,561.0 L455.1,562.0 L457.8,562.9 L460.4,563.9 L462.9,564.9 L465.5,565.9 L464.9,566.5 L463.7,566.9 L462.7,567.3 L461.8,567.8 L461.2,568.2 L460.6,568.6 L460.0,568.8 L459.4,569.2 L458.8,569.6 L458.2,570.0 L457.6,570.2 L456.9,570.6 L456.3,571.0 L455.7,571.4 L455.3,571.8 L454.7,572.0 L454.1,572.4 L453.7,572.7 L453.5,572.9 L453.1,573.3 L452.7,573.5 L452.2,573.7 L452.0,573.9 L451.8,574.1 L451.6,574.3 L451.6,574.3"/>
+  <line class="aim" x1="837.8" y1="400.4" x2="806.1" y2="412.6"/>
+  <circle class="spot side-CT" cx="837.8" cy="400.4" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-CT">CT</span><span class="badge diff-2">Medium</span><span class="badge">jump throw</span><span class="badge video">▶ video</span><span class="badge">3 variants</span></div>
+    <h3>Smoke Banana (from CT Spawn)</h3>
+    <p class="muted">26 uses · 4 teams · 73% rounds won</p>
+  </div>
+</a><a class="card" href="/en/inferno/smoke-banana-from-t-spawn-t/" data-id="smoke-banana-from-t-spawn-t"
+   data-type="smoke" data-side="T" data-area="Banana" data-map="inferno"
+   data-teams="furia g2 mouz vitality" data-players="apex fallen r1nkle torzsi"
+   data-diff="3" data-count="9" data-eff="-1">
+  <svg class="radar" viewBox="78.2 360.6 473.3 473.3" role="img" aria-label="Trajectory: Smoke Banana (from T Spawn)">
+  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="15.8"><text x="289.4" y="684.5">Lower Mid</text><text x="142.0" y="745.1">T Spawn</text><text x="386.5" y="616.1">T Ramp</text><text x="313.7" y="752.7">Upstairs</text><text x="484.3" y="700.8">Underpass</text><text x="398.4" y="723.9">Kitchen</text><text x="416.3" y="779.2">Deck</text></g>
+  <circle class="land land-smoke" cx="462.1" cy="436.3" r="29.6"/>
+  <path class="traj traj-smoke" d="M148.2,758.4 L152.7,754.7 L157.3,751.0 L161.8,747.3 L166.5,743.7 L171.0,739.8 L175.5,736.1 L180.2,732.4 L184.7,728.8 L189.4,725.1 L193.9,721.2 L198.6,717.6 L203.1,713.9 L207.8,710.2 L212.2,706.3 L216.9,702.7 L221.4,699.0 L225.9,695.3 L230.6,691.6 L235.1,687.8 L239.8,684.1 L244.3,680.4 L249.0,676.7 L253.5,673.1 L258.2,669.2 L262.7,665.5 L267.3,661.8 L271.8,658.2 L276.5,654.3 L281.0,650.6 L285.5,646.9 L290.2,643.3 L294.7,639.6 L299.4,635.7 L303.9,632.0 L308.6,628.4 L313.1,624.7 L317.8,621.0 L322.2,617.1 L326.9,613.5 L331.4,609.8 L335.9,606.1 L340.6,602.2 L345.1,598.6 L349.8,594.9 L354.3,591.2 L359.0,587.6 L363.5,583.7 L368.2,580.0 L372.7,576.3 L377.3,572.7 L381.8,569.0 L386.5,565.1 L391.0,561.4 L395.5,557.8 L400.2,554.1 L404.7,550.2 L409.4,546.5 L413.9,542.9 L418.6,539.2 L423.1,535.5 L427.8,531.6 L432.2,528.0 L436.9,524.3 L441.4,520.6 L445.9,516.9 L450.6,513.1 L455.1,509.4 L459.8,505.7 L464.3,502.0 L469.0,498.2 L473.5,494.5 L478.2,490.8 L481.4,487.3 L481.4,484.7 L481.4,482.0 L481.4,479.4 L481.2,476.7 L481.2,474.1 L481.2,471.4 L481.2,468.8 L481.0,466.1 L481.0,463.5 L480.2,462.0 L479.2,460.8 L478.2,459.4 L477.3,458.2 L476.3,456.9 L475.3,455.7 L474.3,454.3 L473.3,453.1 L472.2,451.8 L471.2,450.4 L470.4,449.2 L469.4,448.0 L468.4,446.7 L467.3,445.3 L466.3,444.1 L465.3,442.9 L464.5,441.6 L463.5,440.2 L462.4,439.0 L461.4,437.8 L460.6,436.7 L460.2,436.3 L459.6,435.9 L459.6,435.9 L460.0,435.9 L460.2,435.9 L460.6,436.1 L460.8,436.1 L461.0,436.3 L461.2,436.3 L461.2,436.5 L461.4,436.5 L461.4,436.7 L461.4,436.7"/>
+  <line class="aim" x1="149.6" y1="758.4" x2="175.9" y2="736.9"/>
+  <circle class="spot side-T" cx="149.6" cy="758.4" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">T</span><span class="badge diff-3">Hard</span><span class="badge">jump throw</span><span class="badge video">▶ video</span><span class="badge">2 variants</span></div>
+    <h3>Smoke Banana (from T Spawn)</h3>
+    <p class="muted">9 uses · 4 teams · 33% rounds won</p>
+  </div>
+</a><a class="card" href="/en/inferno/smoke-banana-from-b-site-ct/" data-id="smoke-banana-from-b-site-ct"
+   data-type="smoke" data-side="CT" data-area="Banana" data-map="inferno"
+   data-teams="mouz vitality" data-players="flamez pr xertion"
+   data-diff="3" data-count="9" data-eff="-1">
+  <svg class="radar" viewBox="337.6 182.9 313.7 313.7" role="img" aria-label="Trajectory: Smoke Banana (from B Site)">
+  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="10.5"><text x="502.0" y="409.4">Banana</text></g>
+  <circle class="land land-smoke" cx="516.0" cy="426.2" r="29.6"/>
+  <path class="traj traj-smoke" d="M512.2,252.9 L508.0,260.6 L503.9,268.2 L499.6,275.9 L495.3,283.7 L491.2,291.2 L486.9,299.0 L482.9,306.5 L478.6,314.3 L474.3,321.8 L470.2,329.6 L470.0,334.3 L472.0,337.8 L473.9,341.2 L475.7,344.7 L477.8,348.2 L479.6,351.6 L481.4,355.1 L483.3,358.6 L485.3,362.0 L487.1,365.5 L489.0,368.8 L490.8,372.2 L492.9,375.7 L494.7,379.2 L496.5,382.7 L498.6,386.1 L500.4,389.6 L502.2,393.1 L504.3,396.5 L506.1,400.0 L508.0,403.3 L509.8,406.7 L511.8,410.2 L513.7,413.7 L515.5,417.1 L517.6,420.6 L518.8,423.3 L518.4,423.5 L518.2,423.7 L518.0,423.9 L517.8,424.1 L517.8,424.3 L517.6,424.5 L517.3,424.5 L517.3,424.7 L517.1,424.9 L516.9,425.1 L516.9,425.3 L516.7,425.5 L516.7,425.7 L516.5,425.9 L516.5,425.9 L516.5,426.1 L516.5,426.1 L516.5,426.3 L516.5,426.3 L516.5,426.5 L516.5,426.5 L516.5,426.5"/>
+  <line class="aim" x1="512.3" y1="252.9" x2="494.9" y2="282.1"/>
+  <circle class="spot side-CT" cx="512.3" cy="252.9" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-CT">CT</span><span class="badge diff-3">Hard</span><span class="badge">jump throw</span><span class="badge video">▶ video</span><span class="badge">3 variants</span></div>
+    <h3>Smoke Banana (from B Site)</h3>
+    <p class="muted">9 uses · 2 teams · 67% rounds won</p>
+  </div>
+</a><a class="card" href="/en/inferno/smoke-top-mid-from-t-spawn-t/" data-id="smoke-top-mid-from-t-spawn-t"
+   data-type="smoke" data-side="T" data-area="TopofMid" data-map="inferno"
+   data-teams="furia g2 mouz vitality" data-players="flamez matys xelex yuurih"
+   data-diff="3" data-count="8" data-eff="-1">
+  <svg class="radar" viewBox="149.0 347.8 658.6 658.6" role="img" aria-label="Trajectory: Smoke Top Mid (from T Spawn)">
+  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="22.0"><text x="545.7" y="809.4">Second Mid</text><text x="670.4" y="861.8">Apartments</text><text x="526.7" y="669.0">Mid</text><text x="289.4" y="684.5">Lower Mid</text><text x="720.0" y="654.5">Top Mid</text><text x="601.6" y="920.0">Back Alley</text><text x="386.5" y="616.1">T Ramp</text><text x="313.7" y="752.7">Upstairs</text><text x="343.9" y="819.2">Bridge</text><text x="484.3" y="700.8">Underpass</text><text x="723.3" y="802.2">Quad</text><text x="398.4" y="723.9">Kitchen</text><text x="416.3" y="779.2">Deck</text></g>
+  <circle class="land land-smoke" cx="707.0" cy="680.8" r="29.6"/>
+  <path class="traj traj-smoke" d="M219.0,672.7 L231.0,672.9 L243.3,673.1 L255.3,673.3 L267.3,673.5 L279.6,673.7 L291.6,673.9 L303.9,674.1 L315.9,674.3 L328.2,674.5 L340.2,674.7 L352.2,674.9 L364.5,675.1 L376.5,675.3 L388.8,675.5 L400.8,675.7 L413.1,675.9 L425.1,676.1 L437.1,676.3 L449.4,676.5 L461.4,676.7 L473.7,676.9 L485.7,677.1 L498.0,677.3 L510.0,677.6 L522.0,677.8 L534.3,678.0 L546.3,678.2 L558.6,678.4 L570.6,678.6 L582.7,678.8 L594.9,679.0 L606.9,679.2 L619.2,679.4 L631.2,679.6 L643.5,679.8 L655.5,680.0 L667.6,680.2 L679.8,680.4 L691.8,680.8 L704.1,681.0 L716.1,681.2 L728.4,681.4 L734.3,681.4 L737.6,681.4 L735.1,681.4 L732.7,681.4 L730.2,681.4 L727.8,681.4 L725.3,681.4 L722.9,681.4 L720.4,681.4 L718.0,681.4 L715.5,681.4 L713.9,681.4 L712.7,681.4 L711.6,681.4 L710.4,681.2 L709.4,681.2 L708.2,681.2 L707.6,681.2 L707.1,681.2 L706.5,681.2 L706.3,681.2 L706.1,681.2 L706.1,681.2"/>
+  <line class="aim" x1="219.5" y1="672.7" x2="253.5" y2="673.2"/>
+  <circle class="spot side-T" cx="219.5" cy="672.7" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">T</span><span class="badge diff-3">Hard</span><span class="badge">jump throw</span><span class="badge video">▶ video</span></div>
+    <h3>Smoke Top Mid (from T Spawn)</h3>
+    <p class="muted">8 uses · 4 teams · 38% rounds won</p>
+  </div>
+</a><a class="card" href="/en/inferno/smoke-ruins-from-banana-t/" data-id="smoke-ruins-from-banana-t"
+   data-type="smoke" data-side="T" data-area="Ruins" data-map="inferno"
+   data-teams="g2 mouz vitality" data-players="mezii nertz r1nkle xertion"
+   data-diff="3" data-count="7" data-eff="-1">
+  <svg class="radar" viewBox="388.0 147.6 368.1 368.1" role="img" aria-label="Trajectory: Smoke Ruins (from Banana)">
+  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="12.3"><text x="528.4" y="217.3">B Site</text><text x="502.0" y="409.4">Banana</text><text x="671.2" y="199.2">Ruins</text></g>
+  <circle class="land land-smoke" cx="638.6" cy="252.5" r="29.6"/>
+  <path class="traj traj-smoke" d="M503.5,445.5 L505.9,440.4 L508.4,435.3 L510.8,430.2 L513.3,425.1 L515.7,420.0 L518.2,414.9 L520.6,409.8 L523.1,404.7 L525.5,399.6 L528.0,394.5 L530.4,389.4 L532.9,384.3 L535.3,379.2 L537.8,374.1 L540.2,369.0 L542.7,363.9 L545.1,358.8 L547.6,353.7 L550.0,348.6 L552.4,343.5 L554.9,338.4 L557.3,333.3 L559.8,328.2 L562.2,323.1 L564.7,318.0 L567.1,312.9 L569.6,307.8 L572.0,302.4 L574.5,297.3 L576.9,292.2 L579.4,287.1 L581.8,282.0 L584.3,276.9 L586.7,271.8 L589.2,266.7 L591.6,261.6 L594.1,256.5 L596.5,251.4 L599.0,246.3 L601.4,241.2 L603.9,236.1 L606.3,231.0 L608.8,225.9 L611.2,220.8 L613.3,217.6 L614.3,219.2 L615.5,220.8 L616.5,222.2 L617.6,223.9 L618.8,225.5 L619.8,227.1 L621.0,228.6 L622.0,230.2 L623.1,231.8 L624.3,233.5 L625.3,234.9 L626.5,236.5 L627.6,238.2 L628.6,239.6 L629.8,241.2 L630.8,242.9 L632.0,244.5 L633.1,245.9 L634.1,247.6 L635.3,249.2 L636.1,250.2 L636.5,250.6 L637.1,251.0 L637.6,251.4 L638.0,251.8 L638.6,252.2 L639.0,252.4 L639.6,252.9 L639.8,252.9 L640.2,252.4 L640.2,252.0 L640.4,251.8 L640.4,251.6 L640.6,251.6"/>
+  <line class="aim" x1="503.5" y1="445.6" x2="518.2" y2="415.0"/>
+  <circle class="spot side-T" cx="503.5" cy="445.6" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">T</span><span class="badge diff-3">Hard</span><span class="badge">jump throw</span><span class="badge video">▶ video</span></div>
+    <h3>Smoke Ruins (from Banana)</h3>
+    <p class="muted">7 uses · 3 teams · 71% rounds won</p>
+  </div>
+</a><a class="card" href="/en/inferno/smoke-top-mid-from-second-mid-t/" data-id="smoke-top-mid-from-second-mid-t"
+   data-type="smoke" data-side="T" data-area="TopofMid" data-map="inferno"
+   data-teams="furia g2" data-players="heavygod yuurih"
+   data-diff="1" data-count="4" data-eff="-1">
+  <svg class="radar" viewBox="466.3 490.2 364.9 364.9" role="img" aria-label="Trajectory: Smoke Top Mid (from Second Mid)">
+  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="12.2"><text x="545.7" y="809.4">Second Mid</text><text x="526.7" y="669.0">Mid</text><text x="720.0" y="654.5">Top Mid</text><text x="723.3" y="802.2">Quad</text></g>
+  <circle class="land land-smoke" cx="721.6" cy="564.4" r="29.6"/>
+  <path class="traj traj-smoke" d="M570.6,785.1 L573.7,781.8 L576.9,778.4 L580.0,774.9 L583.3,771.4 L586.3,768.0 L589.6,764.5 L592.7,761.0 L595.9,757.6 L599.0,754.1 L602.2,750.8 L605.3,747.3 L608.6,743.9 L611.6,740.4 L614.9,736.9 L618.0,733.5 L621.2,730.0 L624.3,726.5 L627.6,723.3 L630.6,719.8 L633.9,716.3 L636.9,712.9 L640.2,709.4 L643.3,705.9 L646.5,702.4 L649.6,699.0 L652.9,695.5 L655.9,692.2 L659.2,688.8 L662.2,685.3 L665.5,681.8 L668.6,678.4 L671.8,674.9 L674.9,671.4 L678.2,668.0 L681.2,664.5 L684.3,661.2 L687.6,657.8 L690.6,654.3 L693.9,650.8 L696.9,647.3 L700.2,643.9 L703.3,640.4 L706.5,636.9 L709.6,633.5 L712.9,630.2 L715.9,626.7 L719.2,623.3 L722.2,619.8 L725.5,616.3 L726.9,613.9 L726.9,612.2 L726.7,610.8 L726.7,609.2 L726.7,607.8 L726.5,606.1 L726.5,604.5 L726.3,603.1 L726.3,601.4 L726.3,600.0 L726.1,598.4 L726.1,596.7 L725.9,595.3 L725.9,593.7 L725.9,592.2 L725.7,590.6 L725.7,589.0 L725.5,587.6 L725.5,585.9 L725.5,584.5 L725.3,582.9 L725.3,581.2 L725.1,579.8 L725.1,578.2 L725.1,576.7 L724.9,575.1 L724.9,573.5 L724.7,572.0 L724.7,570.4 L724.7,569.0 L724.5,567.3 L724.5,565.7 L724.3,564.3 L724.5,564.1 L724.5,563.9 L724.5,563.7 L724.5,563.5 L724.5,563.3 L724.5,563.1 L724.5,562.9 L724.5,562.7 L724.5,562.4 L724.5,562.2 L724.5,562.0 L724.7,561.8 L724.7,561.6 L724.7,561.2 L724.7,561.0 L724.7,560.8 L724.7,560.6 L724.7,560.4 L724.7,560.2 L724.7,560.2 L724.7,560.2 L724.9,560.4 L724.9,560.4 L724.9,560.6 L724.9,560.8 L724.9,560.8 L724.9,561.0 L724.9,561.0 L725.1,561.2 L725.1,561.4 L725.1,561.6 L725.1,561.6 L725.1,561.8 L725.1,562.0 L725.1,562.0 L725.1,562.2"/>
+  <line class="aim" x1="571.6" y1="785.1" x2="594.1" y2="759.6"/>
+  <circle class="spot side-T" cx="571.6" cy="785.1" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">T</span><span class="badge diff-1">Easy</span><span class="badge video">▶ video</span></div>
+    <h3>Smoke Top Mid (from Second Mid)</h3>
+    <p class="muted">4 uses · 2 teams · 25% rounds won</p>
+  </div>
+</a><a class="card" href="/en/inferno/smoke-banana-from-lower-mid-t/" data-id="smoke-banana-from-lower-mid-t"
+   data-type="smoke" data-side="T" data-area="Banana" data-map="inferno"
+   data-teams="g2 vitality" data-players="flamez hunter r1nkle"
+   data-diff="2" data-count="4" data-eff="-1">
+  <svg class="radar" viewBox="185.1 440.2 349.4 349.4" role="img" aria-label="Trajectory: Smoke Banana (from Lower Mid)">
+  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="11.6"><text x="289.4" y="684.5">Lower Mid</text><text x="386.5" y="616.1">T Ramp</text><text x="484.3" y="700.8">Underpass</text><text x="398.4" y="723.9">Kitchen</text></g>
+  <circle class="land land-smoke" cx="443.3" cy="534.9" r="29.6"/>
+  <path class="traj traj-smoke" d="M255.1,694.9 L262.2,690.2 L269.4,685.7 L276.5,681.0 L283.7,676.3 L290.8,671.6 L298.0,667.1 L305.1,662.4 L312.2,657.8 L319.4,653.1 L326.5,648.6 L333.7,643.9 L340.6,639.2 L347.8,634.7 L354.9,630.0 L362.0,625.3 L369.2,620.6 L376.3,616.1 L383.5,611.4 L390.6,606.7 L397.8,602.0 L404.9,597.6 L412.0,592.9 L419.2,588.2 L426.3,583.7 L433.5,579.0 L440.6,574.3 L447.8,569.6 L454.9,565.1 L462.0,560.4 L464.5,556.9 L461.2,554.9 L458.0,552.7 L454.9,550.6 L451.6,548.6 L448.4,546.5 L445.3,544.3 L442.0,542.2 L438.8,540.2 L436.7,538.4 L437.8,537.8 L438.6,537.3 L439.4,536.9 L440.0,536.7 L440.8,536.3 L441.6,535.9 L442.2,535.5 L442.7,535.5 L443.1,535.3 L443.5,535.3 L443.7,535.1 L443.9,535.1 L443.9,535.1"/>
+  <line class="aim" x1="255.1" y1="694.9" x2="283.6" y2="676.4"/>
+  <circle class="spot side-T" cx="255.1" cy="694.9" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">T</span><span class="badge diff-2">Medium</span><span class="badge">jump throw</span><span class="badge video">▶ video</span></div>
+    <h3>Smoke Banana (from Lower Mid)</h3>
+    <p class="muted">4 uses · 2 teams · 25% rounds won</p>
+  </div>
+</a><a class="card" href="/en/inferno/smoke-mid-from-arch-ct/" data-id="smoke-mid-from-arch-ct"
+   data-type="smoke" data-side="CT" data-area="Middle" data-map="inferno"
+   data-teams="furia mouz vitality" data-players="molodoy ropz torzsi"
+   data-diff="2" data-count="3" data-eff="-1">
+  <svg class="radar" viewBox="562.2 477.8 293.5 293.5" role="img" aria-label="Trajectory: Smoke Mid (from Arch)">
+  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="9.8"><text x="720.0" y="654.5">Top Mid</text><text x="797.8" y="553.1">Arch</text></g>
+  <circle class="land land-smoke" cx="671.3" cy="691.0" r="29.6"/>
+  <path class="traj traj-smoke" d="M747.3,547.8 L743.5,556.3 L739.8,564.9 L735.9,573.7 L732.0,582.2 L728.2,590.8 L724.3,599.4 L720.6,608.0 L716.7,616.5 L712.9,625.1 L709.0,633.7 L705.1,642.2 L701.2,650.8 L697.6,659.4 L694.5,666.3 L692.7,670.2 L691.0,674.1 L689.2,678.0 L687.6,681.8 L685.7,685.7 L684.1,689.6 L682.2,693.5 L680.6,697.1 L678.8,701.0 L677.8,701.2 L677.1,699.4 L676.5,697.8 L675.7,695.9 L675.1,694.3 L674.5,692.9 L674.1,692.0 L673.7,691.2 L673.1,690.4 L672.7,689.6 L672.2,688.8 L671.8,688.0 L671.4,687.6 L671.2,687.1 L671.0,686.9 L670.8,686.7 L670.6,686.5 L670.6,686.5"/>
+  <line class="aim" x1="747.0" y1="549.1" x2="732.6" y2="579.9"/>
+  <circle class="spot side-CT" cx="747.0" cy="549.1" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-CT">CT</span><span class="badge diff-2">Medium</span><span class="badge video">▶ video</span></div>
+    <h3>Smoke Mid (from Arch)</h3>
+    <p class="muted">3 uses · 3 teams · 67% rounds won</p>
+  </div>
+</a><a class="card" href="/en/inferno/smoke-a-site-from-mid-t/" data-id="smoke-a-site-from-mid-t"
+   data-type="smoke" data-side="T" data-area="BombsiteA" data-map="inferno"
+   data-teams="furia g2" data-players="kscerato r1nkle"
+   data-diff="3" data-count="3" data-eff="-1">
+  <svg class="radar" viewBox="369.6 344.8 622.9 622.9" role="img" aria-label="Trajectory: Smoke A Site (from Mid)">
+  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="20.8"><text x="862.0" y="723.5">A Site</text><text x="545.7" y="809.4">Second Mid</text><text x="670.4" y="861.8">Apartments</text><text x="526.7" y="669.0">Mid</text><text x="720.0" y="654.5">Top Mid</text><text x="797.8" y="553.1">Arch</text><text x="916.5" y="843.1">Pit</text><text x="848.2" y="828.8">Balcony</text><text x="484.3" y="700.8">Underpass</text><text x="723.3" y="802.2">Quad</text></g>
+  <circle class="land land-smoke" cx="888.1" cy="614.0" r="29.6"/>
+  <path class="traj traj-smoke" d="M439.6,699.6 L445.9,698.6 L452.4,697.6 L458.8,696.3 L465.3,695.3 L471.6,694.3 L478.2,693.1 L484.7,692.0 L491.0,691.0 L497.6,689.8 L503.9,688.8 L510.4,687.8 L516.7,686.5 L523.3,685.5 L529.6,684.5 L536.1,683.3 L542.4,682.2 L549.0,681.2 L555.3,680.0 L561.8,679.0 L568.2,678.0 L574.7,676.7 L581.0,675.7 L587.6,674.7 L594.1,673.5 L600.4,672.4 L606.9,671.4 L613.3,670.2 L619.8,669.2 L626.1,668.2 L632.7,666.9 L639.0,665.9 L645.5,664.9 L651.8,663.7 L658.4,662.7 L664.7,661.6 L671.2,660.4 L677.6,659.4 L684.1,658.4 L690.4,657.1 L696.9,656.1 L703.5,655.1 L709.8,653.9 L716.3,652.9 L722.7,651.8 L729.2,650.6 L735.5,649.6 L742.0,648.6 L748.4,647.3 L754.9,646.3 L761.2,645.3 L767.8,644.1 L774.1,643.1 L780.6,642.0 L786.9,640.8 L793.5,639.8 L800.0,638.8 L806.3,637.6 L812.9,636.5 L819.2,635.5 L825.7,634.3 L832.0,633.3 L838.6,632.2 L844.9,631.0 L851.4,630.0 L857.8,629.0 L864.3,627.8 L870.6,626.7 L877.1,625.7 L883.5,624.5 L890.0,623.5 L896.5,622.4 L902.9,621.2 L909.4,620.2 L915.7,619.2 L922.2,618.0 L922.4,617.6 L921.2,617.1 L920.0,616.9 L918.6,616.7 L917.3,616.5 L916.1,616.3 L914.7,616.1 L913.5,615.9 L912.0,615.7 L910.8,615.5 L909.6,615.3 L908.2,615.1 L906.9,614.9 L905.5,614.7 L904.3,614.3 L903.1,614.1 L901.6,613.9 L900.6,613.7 L899.8,613.7 L899.2,613.5 L898.4,613.5 L897.8,613.3 L896.9,613.3 L896.3,613.1 L895.5,613.1 L894.9,613.1 L894.5,612.9 L894.1,612.9 L893.7,612.9 L893.5,612.9 L893.3,612.9 L893.1,612.9 L893.1,612.9"/>
+  <line class="aim" x1="439.7" y1="699.7" x2="473.2" y2="694.1"/>
+  <circle class="spot side-T" cx="439.7" cy="699.7" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">T</span><span class="badge diff-3">Hard</span><span class="badge">jump throw</span><span class="badge video">▶ video</span></div>
+    <h3>Smoke A Site (from Mid)</h3>
+    <p class="muted">3 uses · 2 teams · 67% rounds won</p>
+  </div>
+</a><a class="card" href="/en/inferno/smoke-b-site-from-mid-t/" data-id="smoke-b-site-from-mid-t"
+   data-type="smoke" data-side="T" data-area="BombsiteB" data-map="inferno"
+   data-teams="g2" data-players="hunter r1nkle"
+   data-diff="3" data-count="3" data-eff="-1">
+  <svg class="radar" viewBox="223.3 149.2 616.9 616.9" role="img" aria-label="Trajectory: Smoke B Site (from Mid)">
+  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="20.6"><text x="528.4" y="217.3">B Site</text><text x="502.0" y="409.4">Banana</text><text x="526.7" y="669.0">Mid</text><text x="720.0" y="654.5">Top Mid</text><text x="386.5" y="616.1">T Ramp</text></g>
+  <circle class="land land-smoke" cx="626.8" cy="234.7" r="29.6"/>
+  <path class="traj traj-smoke" d="M436.7,696.1 L439.2,689.8 L441.6,683.5 L443.9,677.1 L446.3,670.8 L448.8,664.5 L451.2,658.2 L453.5,651.8 L455.9,645.5 L458.4,639.2 L460.8,632.9 L463.1,626.5 L465.5,620.2 L468.0,613.9 L470.4,607.6 L472.7,601.2 L475.1,594.9 L477.6,588.6 L480.0,582.2 L482.2,575.9 L484.7,569.6 L487.1,563.3 L489.6,556.9 L491.8,550.6 L494.3,544.3 L496.7,538.0 L499.2,531.6 L501.4,525.3 L503.9,519.0 L506.3,512.7 L508.8,506.3 L511.0,500.0 L513.5,493.7 L515.9,487.3 L518.4,481.0 L520.6,474.7 L523.1,468.4 L525.5,462.0 L528.0,455.7 L530.2,449.4 L532.7,443.1 L535.1,436.7 L537.6,430.4 L539.8,424.1 L542.2,417.8 L544.7,411.4 L547.1,405.1 L549.4,398.8 L551.8,392.4 L554.3,386.1 L556.7,379.8 L559.0,373.5 L561.4,367.1 L563.9,360.8 L566.3,354.5 L568.6,348.2 L571.0,341.8 L573.5,335.5 L575.9,329.2 L578.2,322.9 L580.6,316.5 L583.1,310.2 L585.5,303.9 L587.8,297.6 L590.2,291.2 L592.7,284.9 L595.1,278.6 L597.3,272.2 L599.8,265.9 L602.2,259.6 L604.7,253.3 L606.9,246.9 L609.4,240.6 L611.8,234.3 L614.3,228.0 L615.5,224.9 L616.3,223.1 L617.3,221.0 L618.2,219.2 L618.6,220.2 L619.0,221.0 L619.4,221.8 L619.8,222.9 L620.2,223.7 L620.6,224.5 L621.0,225.3 L621.6,226.3 L622.0,227.1 L622.4,228.0 L622.9,229.0 L623.3,229.8 L623.5,230.6 L623.9,231.0 L624.1,231.4 L624.3,231.8 L624.5,232.2 L624.9,232.7 L625.1,232.9 L625.3,233.3 L625.5,233.7 L625.7,234.1 L625.9,234.3 L626.1,234.3 L626.3,234.5 L626.3,234.7 L626.5,234.7 L626.5,234.9 L626.5,234.9"/>
+  <line class="aim" x1="436.8" y1="696.1" x2="448.8" y2="664.3"/>
+  <circle class="spot side-T" cx="436.8" cy="696.1" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">T</span><span class="badge diff-3">Hard</span><span class="badge">jump throw</span><span class="badge video">▶ video</span></div>
+    <h3>Smoke B Site (from Mid)</h3>
+    <p class="muted">3 uses · 1 team · 0% rounds won</p>
+  </div>
+</a><a class="card" href="/en/inferno/flash-banana-from-b-site-ct/" data-id="flash-banana-from-b-site-ct"
+   data-type="flash" data-side="CT" data-area="Banana" data-map="inferno"
+   data-teams="furia g2 mouz vitality" data-players="apex hunter kscerato mezii pr spinx xertion"
+   data-diff="1" data-count="16" data-eff="1.19">
+  <svg class="radar" viewBox="374.1 93.1 335.9 335.9" role="img" aria-label="Trajectory: Flash Banana (from B Site)">
+  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="11.2"><text x="528.4" y="217.3">B Site</text><text x="671.2" y="199.2">Ruins</text></g>
+  <circle class="land land-flash" cx="548.3" cy="358.5" r="10.2"/>
+  <path class="traj traj-flash" d="M535.9,163.1 L536.3,170.8 L536.7,178.4 L537.1,185.9 L537.8,193.5 L538.2,201.2 L538.6,208.8 L539.0,216.3 L539.4,224.1 L540.0,231.6 L540.4,239.2 L540.8,246.7 L541.2,254.5 L541.8,262.0 L542.2,269.6 L542.7,277.1 L543.1,284.9 L543.5,292.4 L544.1,300.0 L544.5,307.8 L544.9,315.3 L545.3,322.9 L545.9,330.4 L546.3,338.2 L546.7,345.7 L547.1,353.3 L547.6,359.0"/>
+  <line class="aim" x1="535.8" y1="163.1" x2="538.0" y2="197.1"/>
+  <circle class="spot side-CT" cx="535.8" cy="163.1" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-flash">Flash</span><span class="badge side-CT">CT</span><span class="badge diff-1">Easy</span><span class="badge video">▶ video</span><span class="badge">2 variants</span></div>
+    <h3>Flash Banana (from B Site)</h3>
+<p class="eff">blinds 1.2 enemy(ies) for 3.3s on average</p>
+    <p class="muted">16 uses · 4 teams · 62% rounds won</p>
+  </div>
+</a><a class="card" href="/en/inferno/flash-b-site-from-banana-t/" data-id="flash-b-site-from-banana-t"
+   data-type="flash" data-side="T" data-area="BombsiteB" data-map="inferno"
+   data-teams="furia g2 mouz" data-players="fallen r1nkle torzsi xertion"
+   data-diff="2" data-count="11" data-eff="0.91">
+  <svg class="radar" viewBox="342.1 200.8 329.1 329.1" role="img" aria-label="Trajectory: Flash B Site (from Banana)">
+  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="11.0"><text x="502.0" y="409.4">Banana</text></g>
+  <circle class="land land-flash" cx="560.2" cy="270.8" r="10.2"/>
+  <path class="traj traj-flash" d="M453.1,459.8 L457.3,452.4 L461.4,445.1 L465.7,437.8 L469.8,430.4 L473.9,423.1 L478.2,415.7 L482.2,408.4 L486.3,401.0 L490.6,393.9 L494.7,386.5 L499.0,379.2 L503.1,371.8 L507.1,364.5 L511.4,357.1 L515.5,349.8 L519.6,342.4 L523.9,335.1 L528.0,327.8 L532.2,320.4 L536.3,313.1 L540.4,305.7 L544.7,298.4 L548.8,291.0 L552.9,283.7 L557.1,276.3 L560.2,270.8"/>
+  <line class="aim" x1="453.1" y1="459.9" x2="469.9" y2="430.3"/>
+  <circle class="spot side-T" cx="453.1" cy="459.9" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-2">Medium</span><span class="badge">jump throw</span><span class="badge video">▶ video</span><span class="badge">3 variants</span></div>
+    <h3>Flash B Site (from Banana)</h3>
+<p class="eff">blinds 0.9 enemy(ies) for 2.3s on average</p>
+    <p class="muted">11 uses · 3 teams · 36% rounds won</p>
+  </div>
+</a><a class="card" href="/en/inferno/flash-banana-from-lower-mid-t/" data-id="flash-banana-from-lower-mid-t"
+   data-type="flash" data-side="T" data-area="Banana" data-map="inferno"
+   data-teams="furia g2 mouz vitality" data-players="mezii r1nkle torzsi yekindar"
+   data-diff="2" data-count="10" data-eff="0.6">
+  <svg class="radar" viewBox="268.4 459.2 260 260" role="img" aria-label="Trajectory: Flash Banana (from Lower Mid)">
+  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="8.7"><text x="386.5" y="616.1">T Ramp</text></g>
+  <circle class="land land-flash" cx="444.7" cy="545.6" r="10.2"/>
+  <path class="traj traj-flash" d="M352.4,631.6 L355.7,628.6 L359.2,625.5 L362.7,622.4 L366.1,619.2 L369.4,616.1 L372.9,613.1 L376.3,610.0 L379.6,606.7 L383.1,603.7 L386.5,600.6 L390.0,597.6 L393.3,594.3 L396.7,591.2 L400.2,588.2 L403.5,584.9 L406.9,581.8 L410.4,578.8 L413.9,575.7 L417.1,572.4 L420.6,569.4 L424.1,566.3 L427.3,563.3 L430.8,560.0 L434.3,556.9 L437.8,553.9 L440.2,551.4"/>
+  <line class="aim" x1="352.2" y1="632.8" x2="377.0" y2="609.4"/>
+  <circle class="spot side-T" cx="352.2" cy="632.8" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-2">Medium</span><span class="badge">jump throw</span><span class="badge video">▶ video</span></div>
+    <h3>Flash Banana (from Lower Mid)</h3>
+<p class="eff">blinds 0.6 enemy(ies) for 2.0s on average</p>
+    <p class="muted">10 uses · 4 teams · 10% rounds won</p>
+  </div>
+</a><a class="card" href="/en/inferno/flash-arch-from-second-mid-t/" data-id="flash-arch-from-second-mid-t"
+   data-type="flash" data-side="T" data-area="Arch" data-map="inferno"
+   data-teams="furia" data-players="kscerato"
+   data-diff="2" data-count="4" data-eff="0.25">
+  <svg class="radar" viewBox="532.4 507.6 288.0 288.0" role="img" aria-label="Trajectory: Flash Arch (from Second Mid)">
+  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="9.6"><text x="720.0" y="654.5">Top Mid</text></g>
+  <circle class="land land-flash" cx="749.9" cy="577.9" r="10.2"/>
+  <path class="traj traj-flash" d="M602.9,725.5 L608.4,719.8 L614.1,714.1 L619.8,708.4 L625.5,702.4 L631.2,696.7 L636.9,691.0 L642.7,685.3 L648.4,679.6 L654.1,673.9 L659.8,668.2 L665.5,662.2 L671.2,656.5 L676.9,650.8 L682.7,645.1 L688.4,639.4 L694.1,633.5 L699.8,627.8 L705.5,622.0 L711.2,616.3 L716.9,610.6 L722.7,604.9 L728.4,599.2 L733.9,593.3 L739.6,587.6 L745.3,581.8 L749.6,577.6"/>
+  <line class="aim" x1="602.8" y1="725.5" x2="626.8" y2="701.4"/>
+  <circle class="spot side-T" cx="602.8" cy="725.5" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-2">Medium</span><span class="badge">jump throw</span><span class="badge video">▶ video</span></div>
+    <h3>Flash Arch (from Second Mid)</h3>
+<p class="eff">blinds 0.2 enemy(ies) for 1.0s on average</p>
+    <p class="muted">4 uses · 1 team · 0% rounds won</p>
+  </div>
+</a><a class="card" href="/en/inferno/flash-banana-t/" data-id="flash-banana-t"
+   data-type="flash" data-side="T" data-area="Banana" data-map="inferno"
+   data-teams="mouz" data-players="torzsi"
+   data-diff="1" data-count="3" data-eff="0.0">
+  <svg class="radar" viewBox="304.7 327.8 324.0 324.0" role="img" aria-label="Trajectory: Flash Banana">
+  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="10.8"><text x="502.0" y="409.4">Banana</text><text x="386.5" y="616.1">T Ramp</text></g>
+  <circle class="land land-flash" cx="470.7" cy="399.1" r="10.2"/>
+  <path class="traj traj-flash" d="M462.9,580.8 L463.1,573.5 L463.3,566.1 L463.7,558.8 L463.9,551.4 L464.1,544.1 L464.3,536.7 L464.7,529.4 L464.9,522.0 L465.1,514.7 L465.3,507.3 L465.7,500.2 L465.9,492.9 L466.1,485.5 L466.5,478.2 L466.7,470.8 L466.9,463.5 L467.1,456.1 L467.6,448.8 L467.8,441.4 L468.0,434.3 L468.2,426.9 L468.6,419.6 L468.8,412.2 L469.0,404.9 L469.6,399.8 L470.2,397.8"/>
+  <line class="aim" x1="462.7" y1="581.7" x2="464.0" y2="547.8"/>
+  <circle class="spot side-T" cx="462.7" cy="581.7" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-1">Easy</span><span class="badge video">▶ video</span></div>
+    <h3>Flash Banana</h3>
+    <p class="muted">3 uses · 1 team · 0% rounds won</p>
+  </div>
+</a><a class="card" href="/en/inferno/molotov-b-site-from-banana-t/" data-id="molotov-b-site-from-banana-t"
+   data-type="molotov" data-side="T" data-area="BombsiteB" data-map="inferno"
+   data-teams="furia g2 mouz vitality" data-players="apex hunter matys mezii spinx torzsi yuurih"
+   data-diff="2" data-count="11" data-eff="0.0">
+  <svg class="radar" viewBox="354.3 190.7 260 260" role="img" aria-label="Trajectory: Molotov B Site (from Banana)">
+  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="8.7"><text x="502.0" y="409.4">Banana</text></g>
+  <circle class="land land-molotov" cx="448.4" cy="268.2" r="24.5"/>
+  <path class="traj traj-molotov" d="M521.4,374.9 L518.0,369.6 L514.5,364.3 L511.0,359.0 L507.6,353.7 L504.1,348.4 L500.6,343.3 L496.9,338.0 L493.5,332.7 L490.0,327.3 L486.5,322.0 L483.1,316.7 L479.6,311.4 L476.1,306.1 L474.5,303.7 L472.9,301.2 L471.2,299.0 L469.6,296.5 L468.2,294.1 L466.5,291.8 L464.9,289.4 L463.5,286.9 L461.8,284.7 L460.2,282.2 L458.8,280.0 L457.1,277.6 L455.5,275.1 L453.9,272.9 L452.4,270.4 L450.8,268.0 L449.4,266.5 L448.2,267.1 L447.1,267.8"/>
+  <line class="aim" x1="521.1" y1="374.3" x2="502.5" y2="345.8"/>
+  <circle class="spot side-T" cx="521.1" cy="374.3" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-molotov">Molotov</span><span class="badge side-T">T</span><span class="badge diff-2">Medium</span><span class="badge">jump throw</span><span class="badge video">▶ video</span><span class="badge">3 variants</span></div>
+    <h3>Molotov B Site (from Banana)</h3>
+    <p class="muted">11 uses · 4 teams · 36% rounds won</p>
+  </div>
+</a><a class="card" href="/en/inferno/molotov-banana-from-b-site-ct/" data-id="molotov-banana-from-b-site-ct"
+   data-type="molotov" data-side="CT" data-area="Banana" data-map="inferno"
+   data-teams="furia g2 mouz vitality" data-players="apex flamez hunter kscerato pr"
+   data-diff="2" data-count="8" data-eff="0.0">
+  <svg class="radar" viewBox="305.2 93.7 411.5 411.5" role="img" aria-label="Trajectory: Molotov Banana (from B Site)">
+  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="13.7"><text x="528.4" y="217.3">B Site</text><text x="502.0" y="409.4">Banana</text><text x="671.2" y="199.2">Ruins</text></g>
+  <circle class="land land-molotov" cx="488.4" cy="435.2" r="24.5"/>
+  <path class="traj traj-molotov" d="M534.7,163.7 L533.1,172.2 L531.6,180.6 L530.2,189.2 L528.6,197.6 L527.1,206.1 L525.7,214.5 L524.3,223.1 L522.7,231.4 L521.2,240.0 L519.8,248.6 L518.2,256.9 L516.7,265.5 L515.3,273.9 L513.9,282.4 L512.2,290.8 L510.8,299.4 L509.4,307.8 L508.0,316.3 L506.3,324.9 L504.9,333.3 L503.5,341.8 L501.8,350.2 L500.4,358.8 L499.0,367.1 L497.6,375.7 L495.9,384.1 L494.5,392.7 L493.1,401.0 L491.4,409.6 L490.0,418.0 L488.6,426.5 L487.1,435.1"/>
+  <line class="aim" x1="534.7" y1="163.7" x2="529.0" y2="197.2"/>
+  <circle class="spot side-CT" cx="534.7" cy="163.7" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-molotov">Molotov</span><span class="badge side-CT">CT</span><span class="badge diff-2">Medium</span><span class="badge">jump throw</span><span class="badge video">▶ video</span><span class="badge">2 variants</span></div>
+    <h3>Molotov Banana (from B Site)</h3>
+    <p class="muted">8 uses · 4 teams · 62% rounds won</p>
+  </div>
+</a><a class="card" href="/en/inferno/molotov-b-site-t/" data-id="molotov-b-site-t"
+   data-type="molotov" data-side="T" data-area="BombsiteB" data-map="inferno"
+   data-teams="furia g2 mouz" data-players="heavygod kscerato xelex"
+   data-diff="3" data-count="3" data-eff="0.0">
+  <svg class="radar" viewBox="379.6 9.5 332.9 332.9" role="img" aria-label="Trajectory: Molotov B Site">
+  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="11.1"><text x="528.4" y="217.3">B Site</text><text x="671.2" y="199.2">Ruins</text></g>
+  <circle class="land land-molotov" cx="537.3" cy="79.5" r="24.5"/>
+  <path class="traj traj-molotov" d="M591.4,271.0 L584.7,261.2 L578.0,251.4 L571.2,241.4 L564.5,231.6 L557.8,221.8 L551.0,211.8 L544.3,202.0 L537.6,192.2 L530.8,182.2 L524.1,172.4 L517.3,162.7 L510.6,152.9 L503.7,142.9 L500.6,135.1 L503.7,130.6 L506.7,126.1 L509.8,121.8 L512.9,117.3 L515.9,112.9 L519.0,108.6 L522.0,104.1 L524.9,99.6 L528.0,95.1 L531.0,90.8 L534.1,86.3 L537.1,81.8 L538.0,80.8"/>
+  <line class="aim" x1="591.4" y1="272.4" x2="572.3" y2="244.2"/>
+  <circle class="spot side-T" cx="591.4" cy="272.4" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-molotov">Molotov</span><span class="badge side-T">T</span><span class="badge diff-3">Hard</span><span class="badge video">▶ video</span></div>
+    <h3>Molotov B Site</h3>
+    <p class="muted">3 uses · 3 teams · 33% rounds won</p>
+  </div>
+</a><a class="card" href="/en/inferno/molotov-quad-from-apartments-t/" data-id="molotov-quad-from-apartments-t"
+   data-type="molotov" data-side="T" data-area="Quad" data-map="inferno"
+   data-teams="furia" data-players="fallen kscerato yuurih"
+   data-diff="3" data-count="3" data-eff="0.0">
+  <svg class="radar" viewBox="579.4 624.0 260 260" role="img" aria-label="Trajectory: Molotov Quad (from Apartments)">
+  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="8.7"><text x="720.0" y="654.5">Top Mid</text><text x="723.3" y="802.2">Quad</text></g>
+  <circle class="land land-molotov" cx="736.5" cy="786.2" r="24.5"/>
+  <path class="traj traj-molotov" d="M681.4,730.6 L688.0,720.4 L691.8,720.4 L694.7,725.1 L697.8,729.6 L700.6,734.1 L703.5,738.6 L706.5,743.1 L709.4,747.6 L712.2,752.2 L715.1,756.7 L718.2,761.2 L721.0,765.7 L723.9,770.2 L726.7,774.7 L729.8,779.4 L732.7,783.9 L735.3,787.6 L736.7,785.5 L737.6,783.9"/>
+  <line class="aim" x1="681.3" y1="731.0" x2="699.7" y2="702.4"/>
+  <circle class="spot side-T" cx="681.3" cy="731.0" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-molotov">Molotov</span><span class="badge side-T">T</span><span class="badge diff-3">Hard</span><span class="badge video">▶ video</span></div>
+    <h3>Molotov Quad (from Apartments)</h3>
+    <p class="muted">3 uses · 1 team · 0% rounds won</p>
+  </div>
+</a><a class="card" href="/en/inferno/he-apartments-ct/" data-id="he-apartments-ct"
+   data-type="he" data-side="CT" data-area="Apartments" data-map="inferno"
+   data-teams="g2 mouz" data-players="heavygod spinx xelex"
+   data-diff="1" data-count="5" data-eff="0.0">
+  <svg class="radar" viewBox="506.9 658.2 342.5 342.5" role="img" aria-label="Trajectory: HE Apartments">
+  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="11.4"><text x="545.7" y="809.4">Second Mid</text><text x="670.4" y="861.8">Apartments</text><text x="601.6" y="920.0">Back Alley</text><text x="723.3" y="802.2">Quad</text></g>
+  <circle class="land land-he" cx="672.6" cy="930.7" r="14.3"/>
+  <path class="traj traj-he" d="M683.5,728.2 L683.1,735.9 L682.7,743.9 L682.2,751.6 L682.0,759.6 L681.6,767.3 L681.2,775.3 L681.0,783.1 L680.6,791.0 L680.2,799.0 L680.0,806.7 L679.6,814.7 L679.2,822.4 L678.8,830.4 L678.6,838.2 L678.2,846.1 L677.8,853.9 L677.6,861.8 L677.1,869.6 L676.7,877.6 L676.5,885.5 L676.1,893.3 L675.7,901.2 L675.3,909.0 L675.1,916.9 L674.7,924.7 L674.5,930.6"/>
+  <line class="aim" x1="683.7" y1="728.6" x2="681.9" y2="762.5"/>
+  <circle class="spot side-CT" cx="683.7" cy="728.6" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-he">HE</span><span class="badge side-CT">CT</span><span class="badge diff-1">Easy</span><span class="badge video">▶ video</span></div>
+    <h3>HE Apartments</h3>
+    <p class="muted">5 uses · 2 teams · 40% rounds won</p>
+  </div>
+</a><a class="card" href="/en/inferno/he-mid-from-arch-ct/" data-id="he-mid-from-arch-ct"
+   data-type="he" data-side="CT" data-area="Middle" data-map="inferno"
+   data-teams="g2 vitality" data-players="heavygod mezii"
+   data-diff="2" data-count="3" data-eff="0.0">
+  <svg class="radar" viewBox="554.2 481.0 293.5 293.5" role="img" aria-label="Trajectory: HE Mid (from Arch)">
+  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="9.8"><text x="720.0" y="654.5">Top Mid</text><text x="797.8" y="553.1">Arch</text></g>
+  <circle class="land land-he" cx="655.9" cy="666.7" r="14.3"/>
+  <path class="traj traj-he" d="M745.7,551.0 L741.4,560.6 L736.9,570.2 L732.4,579.8 L728.0,589.4 L723.5,599.0 L719.0,608.6 L714.5,618.2 L710.0,627.8 L705.7,637.3 L701.2,646.9 L696.7,656.5 L692.2,666.1 L687.8,675.9 L683.3,685.5 L678.8,695.1 L674.5,704.5 L672.4,700.2 L670.4,695.7 L668.4,691.4 L666.3,687.1 L664.5,682.9 L662.4,678.6 L660.4,674.3 L658.4,669.8 L656.3,665.5 L655.5,665.7"/>
+  <line class="aim" x1="746.4" y1="551.1" x2="731.9" y2="581.8"/>
+  <circle class="spot side-CT" cx="746.4" cy="551.1" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-he">HE</span><span class="badge side-CT">CT</span><span class="badge diff-2">Medium</span><span class="badge video">▶ video</span></div>
+    <h3>HE Mid (from Arch)</h3>
+    <p class="muted">3 uses · 2 teams · 33% rounds won</p>
+  </div>
+</a><a class="card" href="/en/inferno/he-banana-from-t-ramp-t/" data-id="he-banana-from-t-ramp-t"
+   data-type="he" data-side="T" data-area="Banana" data-map="inferno"
+   data-teams="g2 vitality" data-players="hunter mezii"
+   data-diff="3" data-count="3" data-eff="0.0">
+  <svg class="radar" viewBox="292.0 286.1 386.6 386.6" role="img" aria-label="Trajectory: HE Banana (from T Ramp)">
+  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="12.9"><text x="502.0" y="409.4">Banana</text><text x="386.5" y="616.1">T Ramp</text></g>
+  <circle class="land land-he" cx="536.6" cy="366.1" r="14.3"/>
+  <path class="traj traj-he" d="M434.5,601.8 L438.8,591.2 L442.9,580.4 L447.1,569.8 L451.4,559.2 L455.5,548.4 L459.8,537.8 L463.9,527.1 L468.2,516.3 L472.2,505.7 L476.5,495.1 L480.8,484.3 L484.9,473.7 L489.2,463.1 L493.3,452.2 L497.6,441.6 L501.6,431.0 L505.9,420.2 L510.2,409.6 L514.3,399.0 L518.6,388.2 L522.7,377.6 L526.9,366.9 L531.0,356.1 L533.7,357.1 L535.5,361.8 L536.9,365.5"/>
+  <line class="aim" x1="433.6" y1="602.7" x2="446.0" y2="571.1"/>
+  <circle class="spot side-T" cx="433.6" cy="602.7" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-he">HE</span><span class="badge side-T">T</span><span class="badge diff-3">Hard</span><span class="badge video">▶ video</span></div>
+    <h3>HE Banana (from T Ramp)</h3>
+    <p class="muted">3 uses · 2 teams · 67% rounds won</p>
+  </div>
+</a></div>
+<p class="empty muted" id="empty" hidden>No lineups match these filters.</p>
+  </div>
 </div>
 <section class="start-here" id="comece">
   <h2>Start here</h2>
@@ -184,415 +722,6 @@ G2 (2)</div>
     </div>
   </div>
 </section>
-<div class="filters" id="filters">
-  <div class="seg" role="group" aria-label="Type">
-    <button data-f="type" data-v="" class="on">All <span class="n">22</span></button>
-<button data-f="type" data-v="smoke">Smokes <span class="n">10</span></button><button data-f="type" data-v="flash">Flashes <span class="n">5</span></button><button data-f="type" data-v="molotov">Molotovs <span class="n">4</span></button><button data-f="type" data-v="he">HEs <span class="n">3</span></button>  </div>
-  <div class="seg" role="group" aria-label="Side">
-    <button data-f="side" data-v="" class="on">T and CT</button>
-    <button data-f="side" data-v="T">T</button>
-    <button data-f="side" data-v="CT">CT</button>
-  </div>
-  <select data-f="area" aria-label="Lands at">
-    <option value="">Anywhere</option>
-<option value="BombsiteA">A Site</option><option value="Apartments">Apartments</option><option value="Arch">Arch</option><option value="BombsiteB">B Site</option><option value="Banana">Banana</option><option value="Middle">Mid</option><option value="Quad">Quad</option><option value="Ruins">Ruins</option><option value="TopofMid">Top Mid</option>  </select>
-  <select data-f="teams" aria-label="Team">
-    <option value="">All teams</option>
-<option value="furia">FURIA</option><option value="g2">G2</option><option value="mouz">MOUZ</option><option value="vitality">Vitality</option>  </select>
-  <select data-f="players" aria-label="Player">
-    <option value="">All players</option>
-<option value="apex">apEX</option><option value="fallen">FalleN</option><option value="flamez">flameZ</option><option value="heavygod">HeavyGod</option><option value="hunter">huNter</option><option value="kscerato">KSCERATO</option><option value="matys">MATYS</option><option value="mezii">mezii</option><option value="molodoy">molodoy</option><option value="nertz">NertZ</option><option value="pr">PR</option><option value="r1nkle">r1nkle</option><option value="ropz">ropz</option><option value="spinx">Spinx</option><option value="torzsi">torzsi</option><option value="xelex">xelex</option><option value="xertion">xertioN</option><option value="yekindar">YEKINDAR</option><option value="yuurih">yuurih</option>  </select>
-  <select data-f="diff" aria-label="Difficulty">
-    <option value="">Any difficulty</option>
-<option value="1">Easy</option><option value="2">Medium</option><option value="3">Hard</option>  </select>
-  <select data-f="sort" aria-label="Sort">
-    <option value="">Most used</option>
-    <option value="eff">Most effective</option>
-    <option value="easy">Easiest first</option>
-  </select>
-  <span class="muted" id="shown"></span>
-</div>
-<div class="cards" id="cards">
-<a class="card" href="/en/inferno/smoke-banana-from-ct-spawn-ct/"
-   data-type="smoke" data-side="CT" data-area="Banana" data-map="inferno"
-   data-teams="furia g2 mouz vitality" data-players="fallen heavygod hunter kscerato mezii r1nkle spinx torzsi xelex"
-   data-diff="2" data-count="26" data-eff="-1">
-  <svg class="radar" viewBox="366.9 217.0 540.9 540.9" role="img" aria-label="Trajectory: Smoke Banana (from CT Spawn)">
-  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="18.0"><text x="841.4" y="311.8">CT Spawn</text><text x="502.0" y="409.4">Banana</text><text x="526.7" y="669.0">Mid</text><text x="720.0" y="654.5">Top Mid</text><text x="797.8" y="553.1">Arch</text></g>
-  <circle class="land land-smoke" cx="451.9" cy="574.6" r="29.6"/>
-  <path class="traj traj-smoke" d="M837.8,400.4 L832.0,402.7 L826.3,404.9 L820.4,406.9 L814.7,409.2 L809.0,411.4 L803.3,413.7 L797.3,415.9 L791.6,418.2 L785.9,420.4 L780.2,422.4 L774.3,424.7 L768.6,426.9 L762.9,429.2 L757.1,431.4 L751.2,433.7 L745.5,435.7 L739.8,438.0 L734.1,440.2 L728.2,442.4 L722.4,444.7 L716.7,446.9 L711.0,449.2 L705.1,451.2 L699.4,453.5 L693.7,455.7 L688.0,458.0 L682.0,460.2 L676.3,462.4 L670.6,464.7 L664.9,466.7 L659.0,469.0 L653.3,471.2 L647.6,473.5 L641.8,475.7 L635.9,478.0 L630.2,480.0 L624.5,482.2 L618.8,484.5 L612.9,486.7 L607.1,489.0 L601.4,491.2 L595.7,493.5 L589.8,495.5 L584.1,497.8 L578.4,500.0 L572.7,502.2 L566.7,504.5 L561.0,506.7 L555.3,509.0 L549.6,511.0 L543.7,513.3 L538.0,515.5 L532.2,517.8 L526.5,520.0 L520.6,522.2 L514.9,524.5 L509.2,526.5 L503.5,528.8 L497.6,531.0 L491.8,533.3 L486.1,535.5 L480.4,537.8 L474.5,539.8 L468.8,542.0 L463.1,544.3 L457.3,546.5 L451.4,548.8 L445.7,551.0 L440.0,553.3 L436.9,554.9 L439.6,555.9 L442.2,556.9 L444.7,558.0 L447.3,559.0 L450.0,560.0 L452.7,561.0 L455.1,562.0 L457.8,562.9 L460.4,563.9 L462.9,564.9 L465.5,565.9 L464.9,566.5 L463.7,566.9 L462.7,567.3 L461.8,567.8 L461.2,568.2 L460.6,568.6 L460.0,568.8 L459.4,569.2 L458.8,569.6 L458.2,570.0 L457.6,570.2 L456.9,570.6 L456.3,571.0 L455.7,571.4 L455.3,571.8 L454.7,572.0 L454.1,572.4 L453.7,572.7 L453.5,572.9 L453.1,573.3 L452.7,573.5 L452.2,573.7 L452.0,573.9 L451.8,574.1 L451.6,574.3 L451.6,574.3"/>
-  <line class="aim" x1="837.8" y1="400.4" x2="806.1" y2="412.6"/>
-  <circle class="spot side-CT" cx="837.8" cy="400.4" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-CT">CT</span><span class="badge diff-2">Medium</span><span class="badge">jump throw</span><span class="badge video">▶ video</span><span class="badge">3 variants</span></div>
-    <h3>Smoke Banana (from CT Spawn)</h3>
-    <p class="muted">26 uses · 4 teams · 73% rounds won</p>
-  </div>
-</a><a class="card" href="/en/inferno/smoke-banana-from-t-spawn-t/"
-   data-type="smoke" data-side="T" data-area="Banana" data-map="inferno"
-   data-teams="furia g2 mouz vitality" data-players="apex fallen r1nkle torzsi"
-   data-diff="3" data-count="9" data-eff="-1">
-  <svg class="radar" viewBox="78.2 360.6 473.3 473.3" role="img" aria-label="Trajectory: Smoke Banana (from T Spawn)">
-  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="15.8"><text x="289.4" y="684.5">Lower Mid</text><text x="142.0" y="745.1">T Spawn</text><text x="386.5" y="616.1">T Ramp</text><text x="313.7" y="752.7">Upstairs</text><text x="484.3" y="700.8">Underpass</text><text x="398.4" y="723.9">Kitchen</text><text x="416.3" y="779.2">Deck</text></g>
-  <circle class="land land-smoke" cx="462.1" cy="436.3" r="29.6"/>
-  <path class="traj traj-smoke" d="M148.2,758.4 L152.7,754.7 L157.3,751.0 L161.8,747.3 L166.5,743.7 L171.0,739.8 L175.5,736.1 L180.2,732.4 L184.7,728.8 L189.4,725.1 L193.9,721.2 L198.6,717.6 L203.1,713.9 L207.8,710.2 L212.2,706.3 L216.9,702.7 L221.4,699.0 L225.9,695.3 L230.6,691.6 L235.1,687.8 L239.8,684.1 L244.3,680.4 L249.0,676.7 L253.5,673.1 L258.2,669.2 L262.7,665.5 L267.3,661.8 L271.8,658.2 L276.5,654.3 L281.0,650.6 L285.5,646.9 L290.2,643.3 L294.7,639.6 L299.4,635.7 L303.9,632.0 L308.6,628.4 L313.1,624.7 L317.8,621.0 L322.2,617.1 L326.9,613.5 L331.4,609.8 L335.9,606.1 L340.6,602.2 L345.1,598.6 L349.8,594.9 L354.3,591.2 L359.0,587.6 L363.5,583.7 L368.2,580.0 L372.7,576.3 L377.3,572.7 L381.8,569.0 L386.5,565.1 L391.0,561.4 L395.5,557.8 L400.2,554.1 L404.7,550.2 L409.4,546.5 L413.9,542.9 L418.6,539.2 L423.1,535.5 L427.8,531.6 L432.2,528.0 L436.9,524.3 L441.4,520.6 L445.9,516.9 L450.6,513.1 L455.1,509.4 L459.8,505.7 L464.3,502.0 L469.0,498.2 L473.5,494.5 L478.2,490.8 L481.4,487.3 L481.4,484.7 L481.4,482.0 L481.4,479.4 L481.2,476.7 L481.2,474.1 L481.2,471.4 L481.2,468.8 L481.0,466.1 L481.0,463.5 L480.2,462.0 L479.2,460.8 L478.2,459.4 L477.3,458.2 L476.3,456.9 L475.3,455.7 L474.3,454.3 L473.3,453.1 L472.2,451.8 L471.2,450.4 L470.4,449.2 L469.4,448.0 L468.4,446.7 L467.3,445.3 L466.3,444.1 L465.3,442.9 L464.5,441.6 L463.5,440.2 L462.4,439.0 L461.4,437.8 L460.6,436.7 L460.2,436.3 L459.6,435.9 L459.6,435.9 L460.0,435.9 L460.2,435.9 L460.6,436.1 L460.8,436.1 L461.0,436.3 L461.2,436.3 L461.2,436.5 L461.4,436.5 L461.4,436.7 L461.4,436.7"/>
-  <line class="aim" x1="149.6" y1="758.4" x2="175.9" y2="736.9"/>
-  <circle class="spot side-T" cx="149.6" cy="758.4" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">T</span><span class="badge diff-3">Hard</span><span class="badge">jump throw</span><span class="badge video">▶ video</span><span class="badge">2 variants</span></div>
-    <h3>Smoke Banana (from T Spawn)</h3>
-    <p class="muted">9 uses · 4 teams · 33% rounds won</p>
-  </div>
-</a><a class="card" href="/en/inferno/smoke-banana-from-b-site-ct/"
-   data-type="smoke" data-side="CT" data-area="Banana" data-map="inferno"
-   data-teams="mouz vitality" data-players="flamez pr xertion"
-   data-diff="3" data-count="9" data-eff="-1">
-  <svg class="radar" viewBox="337.6 182.9 313.7 313.7" role="img" aria-label="Trajectory: Smoke Banana (from B Site)">
-  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="10.5"><text x="502.0" y="409.4">Banana</text></g>
-  <circle class="land land-smoke" cx="516.0" cy="426.2" r="29.6"/>
-  <path class="traj traj-smoke" d="M512.2,252.9 L508.0,260.6 L503.9,268.2 L499.6,275.9 L495.3,283.7 L491.2,291.2 L486.9,299.0 L482.9,306.5 L478.6,314.3 L474.3,321.8 L470.2,329.6 L470.0,334.3 L472.0,337.8 L473.9,341.2 L475.7,344.7 L477.8,348.2 L479.6,351.6 L481.4,355.1 L483.3,358.6 L485.3,362.0 L487.1,365.5 L489.0,368.8 L490.8,372.2 L492.9,375.7 L494.7,379.2 L496.5,382.7 L498.6,386.1 L500.4,389.6 L502.2,393.1 L504.3,396.5 L506.1,400.0 L508.0,403.3 L509.8,406.7 L511.8,410.2 L513.7,413.7 L515.5,417.1 L517.6,420.6 L518.8,423.3 L518.4,423.5 L518.2,423.7 L518.0,423.9 L517.8,424.1 L517.8,424.3 L517.6,424.5 L517.3,424.5 L517.3,424.7 L517.1,424.9 L516.9,425.1 L516.9,425.3 L516.7,425.5 L516.7,425.7 L516.5,425.9 L516.5,425.9 L516.5,426.1 L516.5,426.1 L516.5,426.3 L516.5,426.3 L516.5,426.5 L516.5,426.5 L516.5,426.5"/>
-  <line class="aim" x1="512.3" y1="252.9" x2="494.9" y2="282.1"/>
-  <circle class="spot side-CT" cx="512.3" cy="252.9" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-CT">CT</span><span class="badge diff-3">Hard</span><span class="badge">jump throw</span><span class="badge video">▶ video</span><span class="badge">3 variants</span></div>
-    <h3>Smoke Banana (from B Site)</h3>
-    <p class="muted">9 uses · 2 teams · 67% rounds won</p>
-  </div>
-</a><a class="card" href="/en/inferno/smoke-top-mid-from-t-spawn-t/"
-   data-type="smoke" data-side="T" data-area="TopofMid" data-map="inferno"
-   data-teams="furia g2 mouz vitality" data-players="flamez matys xelex yuurih"
-   data-diff="3" data-count="8" data-eff="-1">
-  <svg class="radar" viewBox="149.0 347.8 658.6 658.6" role="img" aria-label="Trajectory: Smoke Top Mid (from T Spawn)">
-  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="22.0"><text x="545.7" y="809.4">Second Mid</text><text x="670.4" y="861.8">Apartments</text><text x="526.7" y="669.0">Mid</text><text x="289.4" y="684.5">Lower Mid</text><text x="720.0" y="654.5">Top Mid</text><text x="601.6" y="920.0">Back Alley</text><text x="386.5" y="616.1">T Ramp</text><text x="313.7" y="752.7">Upstairs</text><text x="343.9" y="819.2">Bridge</text><text x="484.3" y="700.8">Underpass</text><text x="723.3" y="802.2">Quad</text><text x="398.4" y="723.9">Kitchen</text><text x="416.3" y="779.2">Deck</text></g>
-  <circle class="land land-smoke" cx="707.0" cy="680.8" r="29.6"/>
-  <path class="traj traj-smoke" d="M219.0,672.7 L231.0,672.9 L243.3,673.1 L255.3,673.3 L267.3,673.5 L279.6,673.7 L291.6,673.9 L303.9,674.1 L315.9,674.3 L328.2,674.5 L340.2,674.7 L352.2,674.9 L364.5,675.1 L376.5,675.3 L388.8,675.5 L400.8,675.7 L413.1,675.9 L425.1,676.1 L437.1,676.3 L449.4,676.5 L461.4,676.7 L473.7,676.9 L485.7,677.1 L498.0,677.3 L510.0,677.6 L522.0,677.8 L534.3,678.0 L546.3,678.2 L558.6,678.4 L570.6,678.6 L582.7,678.8 L594.9,679.0 L606.9,679.2 L619.2,679.4 L631.2,679.6 L643.5,679.8 L655.5,680.0 L667.6,680.2 L679.8,680.4 L691.8,680.8 L704.1,681.0 L716.1,681.2 L728.4,681.4 L734.3,681.4 L737.6,681.4 L735.1,681.4 L732.7,681.4 L730.2,681.4 L727.8,681.4 L725.3,681.4 L722.9,681.4 L720.4,681.4 L718.0,681.4 L715.5,681.4 L713.9,681.4 L712.7,681.4 L711.6,681.4 L710.4,681.2 L709.4,681.2 L708.2,681.2 L707.6,681.2 L707.1,681.2 L706.5,681.2 L706.3,681.2 L706.1,681.2 L706.1,681.2"/>
-  <line class="aim" x1="219.5" y1="672.7" x2="253.5" y2="673.2"/>
-  <circle class="spot side-T" cx="219.5" cy="672.7" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">T</span><span class="badge diff-3">Hard</span><span class="badge">jump throw</span><span class="badge video">▶ video</span></div>
-    <h3>Smoke Top Mid (from T Spawn)</h3>
-    <p class="muted">8 uses · 4 teams · 38% rounds won</p>
-  </div>
-</a><a class="card" href="/en/inferno/smoke-ruins-from-banana-t/"
-   data-type="smoke" data-side="T" data-area="Ruins" data-map="inferno"
-   data-teams="g2 mouz vitality" data-players="mezii nertz r1nkle xertion"
-   data-diff="3" data-count="7" data-eff="-1">
-  <svg class="radar" viewBox="388.0 147.6 368.1 368.1" role="img" aria-label="Trajectory: Smoke Ruins (from Banana)">
-  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="12.3"><text x="528.4" y="217.3">B Site</text><text x="502.0" y="409.4">Banana</text><text x="671.2" y="199.2">Ruins</text></g>
-  <circle class="land land-smoke" cx="638.6" cy="252.5" r="29.6"/>
-  <path class="traj traj-smoke" d="M503.5,445.5 L505.9,440.4 L508.4,435.3 L510.8,430.2 L513.3,425.1 L515.7,420.0 L518.2,414.9 L520.6,409.8 L523.1,404.7 L525.5,399.6 L528.0,394.5 L530.4,389.4 L532.9,384.3 L535.3,379.2 L537.8,374.1 L540.2,369.0 L542.7,363.9 L545.1,358.8 L547.6,353.7 L550.0,348.6 L552.4,343.5 L554.9,338.4 L557.3,333.3 L559.8,328.2 L562.2,323.1 L564.7,318.0 L567.1,312.9 L569.6,307.8 L572.0,302.4 L574.5,297.3 L576.9,292.2 L579.4,287.1 L581.8,282.0 L584.3,276.9 L586.7,271.8 L589.2,266.7 L591.6,261.6 L594.1,256.5 L596.5,251.4 L599.0,246.3 L601.4,241.2 L603.9,236.1 L606.3,231.0 L608.8,225.9 L611.2,220.8 L613.3,217.6 L614.3,219.2 L615.5,220.8 L616.5,222.2 L617.6,223.9 L618.8,225.5 L619.8,227.1 L621.0,228.6 L622.0,230.2 L623.1,231.8 L624.3,233.5 L625.3,234.9 L626.5,236.5 L627.6,238.2 L628.6,239.6 L629.8,241.2 L630.8,242.9 L632.0,244.5 L633.1,245.9 L634.1,247.6 L635.3,249.2 L636.1,250.2 L636.5,250.6 L637.1,251.0 L637.6,251.4 L638.0,251.8 L638.6,252.2 L639.0,252.4 L639.6,252.9 L639.8,252.9 L640.2,252.4 L640.2,252.0 L640.4,251.8 L640.4,251.6 L640.6,251.6"/>
-  <line class="aim" x1="503.5" y1="445.6" x2="518.2" y2="415.0"/>
-  <circle class="spot side-T" cx="503.5" cy="445.6" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">T</span><span class="badge diff-3">Hard</span><span class="badge">jump throw</span><span class="badge video">▶ video</span></div>
-    <h3>Smoke Ruins (from Banana)</h3>
-    <p class="muted">7 uses · 3 teams · 71% rounds won</p>
-  </div>
-</a><a class="card" href="/en/inferno/smoke-top-mid-from-second-mid-t/"
-   data-type="smoke" data-side="T" data-area="TopofMid" data-map="inferno"
-   data-teams="furia g2" data-players="heavygod yuurih"
-   data-diff="1" data-count="4" data-eff="-1">
-  <svg class="radar" viewBox="466.3 490.2 364.9 364.9" role="img" aria-label="Trajectory: Smoke Top Mid (from Second Mid)">
-  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="12.2"><text x="545.7" y="809.4">Second Mid</text><text x="526.7" y="669.0">Mid</text><text x="720.0" y="654.5">Top Mid</text><text x="723.3" y="802.2">Quad</text></g>
-  <circle class="land land-smoke" cx="721.6" cy="564.4" r="29.6"/>
-  <path class="traj traj-smoke" d="M570.6,785.1 L573.7,781.8 L576.9,778.4 L580.0,774.9 L583.3,771.4 L586.3,768.0 L589.6,764.5 L592.7,761.0 L595.9,757.6 L599.0,754.1 L602.2,750.8 L605.3,747.3 L608.6,743.9 L611.6,740.4 L614.9,736.9 L618.0,733.5 L621.2,730.0 L624.3,726.5 L627.6,723.3 L630.6,719.8 L633.9,716.3 L636.9,712.9 L640.2,709.4 L643.3,705.9 L646.5,702.4 L649.6,699.0 L652.9,695.5 L655.9,692.2 L659.2,688.8 L662.2,685.3 L665.5,681.8 L668.6,678.4 L671.8,674.9 L674.9,671.4 L678.2,668.0 L681.2,664.5 L684.3,661.2 L687.6,657.8 L690.6,654.3 L693.9,650.8 L696.9,647.3 L700.2,643.9 L703.3,640.4 L706.5,636.9 L709.6,633.5 L712.9,630.2 L715.9,626.7 L719.2,623.3 L722.2,619.8 L725.5,616.3 L726.9,613.9 L726.9,612.2 L726.7,610.8 L726.7,609.2 L726.7,607.8 L726.5,606.1 L726.5,604.5 L726.3,603.1 L726.3,601.4 L726.3,600.0 L726.1,598.4 L726.1,596.7 L725.9,595.3 L725.9,593.7 L725.9,592.2 L725.7,590.6 L725.7,589.0 L725.5,587.6 L725.5,585.9 L725.5,584.5 L725.3,582.9 L725.3,581.2 L725.1,579.8 L725.1,578.2 L725.1,576.7 L724.9,575.1 L724.9,573.5 L724.7,572.0 L724.7,570.4 L724.7,569.0 L724.5,567.3 L724.5,565.7 L724.3,564.3 L724.5,564.1 L724.5,563.9 L724.5,563.7 L724.5,563.5 L724.5,563.3 L724.5,563.1 L724.5,562.9 L724.5,562.7 L724.5,562.4 L724.5,562.2 L724.5,562.0 L724.7,561.8 L724.7,561.6 L724.7,561.2 L724.7,561.0 L724.7,560.8 L724.7,560.6 L724.7,560.4 L724.7,560.2 L724.7,560.2 L724.7,560.2 L724.9,560.4 L724.9,560.4 L724.9,560.6 L724.9,560.8 L724.9,560.8 L724.9,561.0 L724.9,561.0 L725.1,561.2 L725.1,561.4 L725.1,561.6 L725.1,561.6 L725.1,561.8 L725.1,562.0 L725.1,562.0 L725.1,562.2"/>
-  <line class="aim" x1="571.6" y1="785.1" x2="594.1" y2="759.6"/>
-  <circle class="spot side-T" cx="571.6" cy="785.1" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">T</span><span class="badge diff-1">Easy</span><span class="badge video">▶ video</span></div>
-    <h3>Smoke Top Mid (from Second Mid)</h3>
-    <p class="muted">4 uses · 2 teams · 25% rounds won</p>
-  </div>
-</a><a class="card" href="/en/inferno/smoke-banana-from-lower-mid-t/"
-   data-type="smoke" data-side="T" data-area="Banana" data-map="inferno"
-   data-teams="g2 vitality" data-players="flamez hunter r1nkle"
-   data-diff="2" data-count="4" data-eff="-1">
-  <svg class="radar" viewBox="185.1 440.2 349.4 349.4" role="img" aria-label="Trajectory: Smoke Banana (from Lower Mid)">
-  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="11.6"><text x="289.4" y="684.5">Lower Mid</text><text x="386.5" y="616.1">T Ramp</text><text x="484.3" y="700.8">Underpass</text><text x="398.4" y="723.9">Kitchen</text></g>
-  <circle class="land land-smoke" cx="443.3" cy="534.9" r="29.6"/>
-  <path class="traj traj-smoke" d="M255.1,694.9 L262.2,690.2 L269.4,685.7 L276.5,681.0 L283.7,676.3 L290.8,671.6 L298.0,667.1 L305.1,662.4 L312.2,657.8 L319.4,653.1 L326.5,648.6 L333.7,643.9 L340.6,639.2 L347.8,634.7 L354.9,630.0 L362.0,625.3 L369.2,620.6 L376.3,616.1 L383.5,611.4 L390.6,606.7 L397.8,602.0 L404.9,597.6 L412.0,592.9 L419.2,588.2 L426.3,583.7 L433.5,579.0 L440.6,574.3 L447.8,569.6 L454.9,565.1 L462.0,560.4 L464.5,556.9 L461.2,554.9 L458.0,552.7 L454.9,550.6 L451.6,548.6 L448.4,546.5 L445.3,544.3 L442.0,542.2 L438.8,540.2 L436.7,538.4 L437.8,537.8 L438.6,537.3 L439.4,536.9 L440.0,536.7 L440.8,536.3 L441.6,535.9 L442.2,535.5 L442.7,535.5 L443.1,535.3 L443.5,535.3 L443.7,535.1 L443.9,535.1 L443.9,535.1"/>
-  <line class="aim" x1="255.1" y1="694.9" x2="283.6" y2="676.4"/>
-  <circle class="spot side-T" cx="255.1" cy="694.9" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">T</span><span class="badge diff-2">Medium</span><span class="badge">jump throw</span><span class="badge video">▶ video</span></div>
-    <h3>Smoke Banana (from Lower Mid)</h3>
-    <p class="muted">4 uses · 2 teams · 25% rounds won</p>
-  </div>
-</a><a class="card" href="/en/inferno/smoke-mid-from-arch-ct/"
-   data-type="smoke" data-side="CT" data-area="Middle" data-map="inferno"
-   data-teams="furia mouz vitality" data-players="molodoy ropz torzsi"
-   data-diff="2" data-count="3" data-eff="-1">
-  <svg class="radar" viewBox="562.2 477.8 293.5 293.5" role="img" aria-label="Trajectory: Smoke Mid (from Arch)">
-  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="9.8"><text x="720.0" y="654.5">Top Mid</text><text x="797.8" y="553.1">Arch</text></g>
-  <circle class="land land-smoke" cx="671.3" cy="691.0" r="29.6"/>
-  <path class="traj traj-smoke" d="M747.3,547.8 L743.5,556.3 L739.8,564.9 L735.9,573.7 L732.0,582.2 L728.2,590.8 L724.3,599.4 L720.6,608.0 L716.7,616.5 L712.9,625.1 L709.0,633.7 L705.1,642.2 L701.2,650.8 L697.6,659.4 L694.5,666.3 L692.7,670.2 L691.0,674.1 L689.2,678.0 L687.6,681.8 L685.7,685.7 L684.1,689.6 L682.2,693.5 L680.6,697.1 L678.8,701.0 L677.8,701.2 L677.1,699.4 L676.5,697.8 L675.7,695.9 L675.1,694.3 L674.5,692.9 L674.1,692.0 L673.7,691.2 L673.1,690.4 L672.7,689.6 L672.2,688.8 L671.8,688.0 L671.4,687.6 L671.2,687.1 L671.0,686.9 L670.8,686.7 L670.6,686.5 L670.6,686.5"/>
-  <line class="aim" x1="747.0" y1="549.1" x2="732.6" y2="579.9"/>
-  <circle class="spot side-CT" cx="747.0" cy="549.1" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-CT">CT</span><span class="badge diff-2">Medium</span><span class="badge video">▶ video</span></div>
-    <h3>Smoke Mid (from Arch)</h3>
-    <p class="muted">3 uses · 3 teams · 67% rounds won</p>
-  </div>
-</a><a class="card" href="/en/inferno/smoke-a-site-from-mid-t/"
-   data-type="smoke" data-side="T" data-area="BombsiteA" data-map="inferno"
-   data-teams="furia g2" data-players="kscerato r1nkle"
-   data-diff="3" data-count="3" data-eff="-1">
-  <svg class="radar" viewBox="369.6 344.8 622.9 622.9" role="img" aria-label="Trajectory: Smoke A Site (from Mid)">
-  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="20.8"><text x="862.0" y="723.5">A Site</text><text x="545.7" y="809.4">Second Mid</text><text x="670.4" y="861.8">Apartments</text><text x="526.7" y="669.0">Mid</text><text x="720.0" y="654.5">Top Mid</text><text x="797.8" y="553.1">Arch</text><text x="916.5" y="843.1">Pit</text><text x="848.2" y="828.8">Balcony</text><text x="484.3" y="700.8">Underpass</text><text x="723.3" y="802.2">Quad</text></g>
-  <circle class="land land-smoke" cx="888.1" cy="614.0" r="29.6"/>
-  <path class="traj traj-smoke" d="M439.6,699.6 L445.9,698.6 L452.4,697.6 L458.8,696.3 L465.3,695.3 L471.6,694.3 L478.2,693.1 L484.7,692.0 L491.0,691.0 L497.6,689.8 L503.9,688.8 L510.4,687.8 L516.7,686.5 L523.3,685.5 L529.6,684.5 L536.1,683.3 L542.4,682.2 L549.0,681.2 L555.3,680.0 L561.8,679.0 L568.2,678.0 L574.7,676.7 L581.0,675.7 L587.6,674.7 L594.1,673.5 L600.4,672.4 L606.9,671.4 L613.3,670.2 L619.8,669.2 L626.1,668.2 L632.7,666.9 L639.0,665.9 L645.5,664.9 L651.8,663.7 L658.4,662.7 L664.7,661.6 L671.2,660.4 L677.6,659.4 L684.1,658.4 L690.4,657.1 L696.9,656.1 L703.5,655.1 L709.8,653.9 L716.3,652.9 L722.7,651.8 L729.2,650.6 L735.5,649.6 L742.0,648.6 L748.4,647.3 L754.9,646.3 L761.2,645.3 L767.8,644.1 L774.1,643.1 L780.6,642.0 L786.9,640.8 L793.5,639.8 L800.0,638.8 L806.3,637.6 L812.9,636.5 L819.2,635.5 L825.7,634.3 L832.0,633.3 L838.6,632.2 L844.9,631.0 L851.4,630.0 L857.8,629.0 L864.3,627.8 L870.6,626.7 L877.1,625.7 L883.5,624.5 L890.0,623.5 L896.5,622.4 L902.9,621.2 L909.4,620.2 L915.7,619.2 L922.2,618.0 L922.4,617.6 L921.2,617.1 L920.0,616.9 L918.6,616.7 L917.3,616.5 L916.1,616.3 L914.7,616.1 L913.5,615.9 L912.0,615.7 L910.8,615.5 L909.6,615.3 L908.2,615.1 L906.9,614.9 L905.5,614.7 L904.3,614.3 L903.1,614.1 L901.6,613.9 L900.6,613.7 L899.8,613.7 L899.2,613.5 L898.4,613.5 L897.8,613.3 L896.9,613.3 L896.3,613.1 L895.5,613.1 L894.9,613.1 L894.5,612.9 L894.1,612.9 L893.7,612.9 L893.5,612.9 L893.3,612.9 L893.1,612.9 L893.1,612.9"/>
-  <line class="aim" x1="439.7" y1="699.7" x2="473.2" y2="694.1"/>
-  <circle class="spot side-T" cx="439.7" cy="699.7" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">T</span><span class="badge diff-3">Hard</span><span class="badge">jump throw</span><span class="badge video">▶ video</span></div>
-    <h3>Smoke A Site (from Mid)</h3>
-    <p class="muted">3 uses · 2 teams · 67% rounds won</p>
-  </div>
-</a><a class="card" href="/en/inferno/smoke-b-site-from-mid-t/"
-   data-type="smoke" data-side="T" data-area="BombsiteB" data-map="inferno"
-   data-teams="g2" data-players="hunter r1nkle"
-   data-diff="3" data-count="3" data-eff="-1">
-  <svg class="radar" viewBox="223.3 149.2 616.9 616.9" role="img" aria-label="Trajectory: Smoke B Site (from Mid)">
-  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="20.6"><text x="528.4" y="217.3">B Site</text><text x="502.0" y="409.4">Banana</text><text x="526.7" y="669.0">Mid</text><text x="720.0" y="654.5">Top Mid</text><text x="386.5" y="616.1">T Ramp</text></g>
-  <circle class="land land-smoke" cx="626.8" cy="234.7" r="29.6"/>
-  <path class="traj traj-smoke" d="M436.7,696.1 L439.2,689.8 L441.6,683.5 L443.9,677.1 L446.3,670.8 L448.8,664.5 L451.2,658.2 L453.5,651.8 L455.9,645.5 L458.4,639.2 L460.8,632.9 L463.1,626.5 L465.5,620.2 L468.0,613.9 L470.4,607.6 L472.7,601.2 L475.1,594.9 L477.6,588.6 L480.0,582.2 L482.2,575.9 L484.7,569.6 L487.1,563.3 L489.6,556.9 L491.8,550.6 L494.3,544.3 L496.7,538.0 L499.2,531.6 L501.4,525.3 L503.9,519.0 L506.3,512.7 L508.8,506.3 L511.0,500.0 L513.5,493.7 L515.9,487.3 L518.4,481.0 L520.6,474.7 L523.1,468.4 L525.5,462.0 L528.0,455.7 L530.2,449.4 L532.7,443.1 L535.1,436.7 L537.6,430.4 L539.8,424.1 L542.2,417.8 L544.7,411.4 L547.1,405.1 L549.4,398.8 L551.8,392.4 L554.3,386.1 L556.7,379.8 L559.0,373.5 L561.4,367.1 L563.9,360.8 L566.3,354.5 L568.6,348.2 L571.0,341.8 L573.5,335.5 L575.9,329.2 L578.2,322.9 L580.6,316.5 L583.1,310.2 L585.5,303.9 L587.8,297.6 L590.2,291.2 L592.7,284.9 L595.1,278.6 L597.3,272.2 L599.8,265.9 L602.2,259.6 L604.7,253.3 L606.9,246.9 L609.4,240.6 L611.8,234.3 L614.3,228.0 L615.5,224.9 L616.3,223.1 L617.3,221.0 L618.2,219.2 L618.6,220.2 L619.0,221.0 L619.4,221.8 L619.8,222.9 L620.2,223.7 L620.6,224.5 L621.0,225.3 L621.6,226.3 L622.0,227.1 L622.4,228.0 L622.9,229.0 L623.3,229.8 L623.5,230.6 L623.9,231.0 L624.1,231.4 L624.3,231.8 L624.5,232.2 L624.9,232.7 L625.1,232.9 L625.3,233.3 L625.5,233.7 L625.7,234.1 L625.9,234.3 L626.1,234.3 L626.3,234.5 L626.3,234.7 L626.5,234.7 L626.5,234.9 L626.5,234.9"/>
-  <line class="aim" x1="436.8" y1="696.1" x2="448.8" y2="664.3"/>
-  <circle class="spot side-T" cx="436.8" cy="696.1" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">T</span><span class="badge diff-3">Hard</span><span class="badge">jump throw</span><span class="badge video">▶ video</span></div>
-    <h3>Smoke B Site (from Mid)</h3>
-    <p class="muted">3 uses · 1 team · 0% rounds won</p>
-  </div>
-</a><a class="card" href="/en/inferno/flash-banana-from-b-site-ct/"
-   data-type="flash" data-side="CT" data-area="Banana" data-map="inferno"
-   data-teams="furia g2 mouz vitality" data-players="apex hunter kscerato mezii pr spinx xertion"
-   data-diff="1" data-count="16" data-eff="1.19">
-  <svg class="radar" viewBox="374.1 93.1 335.9 335.9" role="img" aria-label="Trajectory: Flash Banana (from B Site)">
-  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="11.2"><text x="528.4" y="217.3">B Site</text><text x="671.2" y="199.2">Ruins</text></g>
-  <circle class="land land-flash" cx="548.3" cy="358.5" r="10.2"/>
-  <path class="traj traj-flash" d="M535.9,163.1 L536.3,170.8 L536.7,178.4 L537.1,185.9 L537.8,193.5 L538.2,201.2 L538.6,208.8 L539.0,216.3 L539.4,224.1 L540.0,231.6 L540.4,239.2 L540.8,246.7 L541.2,254.5 L541.8,262.0 L542.2,269.6 L542.7,277.1 L543.1,284.9 L543.5,292.4 L544.1,300.0 L544.5,307.8 L544.9,315.3 L545.3,322.9 L545.9,330.4 L546.3,338.2 L546.7,345.7 L547.1,353.3 L547.6,359.0"/>
-  <line class="aim" x1="535.8" y1="163.1" x2="538.0" y2="197.1"/>
-  <circle class="spot side-CT" cx="535.8" cy="163.1" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge type-flash">Flash</span><span class="badge side-CT">CT</span><span class="badge diff-1">Easy</span><span class="badge video">▶ video</span><span class="badge">2 variants</span></div>
-    <h3>Flash Banana (from B Site)</h3>
-<p class="eff">blinds 1.2 enemy(ies) for 3.3s on average</p>
-    <p class="muted">16 uses · 4 teams · 62% rounds won</p>
-  </div>
-</a><a class="card" href="/en/inferno/flash-b-site-from-banana-t/"
-   data-type="flash" data-side="T" data-area="BombsiteB" data-map="inferno"
-   data-teams="furia g2 mouz" data-players="fallen r1nkle torzsi xertion"
-   data-diff="2" data-count="11" data-eff="0.91">
-  <svg class="radar" viewBox="342.1 200.8 329.1 329.1" role="img" aria-label="Trajectory: Flash B Site (from Banana)">
-  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="11.0"><text x="502.0" y="409.4">Banana</text></g>
-  <circle class="land land-flash" cx="560.2" cy="270.8" r="10.2"/>
-  <path class="traj traj-flash" d="M453.1,459.8 L457.3,452.4 L461.4,445.1 L465.7,437.8 L469.8,430.4 L473.9,423.1 L478.2,415.7 L482.2,408.4 L486.3,401.0 L490.6,393.9 L494.7,386.5 L499.0,379.2 L503.1,371.8 L507.1,364.5 L511.4,357.1 L515.5,349.8 L519.6,342.4 L523.9,335.1 L528.0,327.8 L532.2,320.4 L536.3,313.1 L540.4,305.7 L544.7,298.4 L548.8,291.0 L552.9,283.7 L557.1,276.3 L560.2,270.8"/>
-  <line class="aim" x1="453.1" y1="459.9" x2="469.9" y2="430.3"/>
-  <circle class="spot side-T" cx="453.1" cy="459.9" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-2">Medium</span><span class="badge">jump throw</span><span class="badge video">▶ video</span><span class="badge">3 variants</span></div>
-    <h3>Flash B Site (from Banana)</h3>
-<p class="eff">blinds 0.9 enemy(ies) for 2.3s on average</p>
-    <p class="muted">11 uses · 3 teams · 36% rounds won</p>
-  </div>
-</a><a class="card" href="/en/inferno/flash-banana-from-lower-mid-t/"
-   data-type="flash" data-side="T" data-area="Banana" data-map="inferno"
-   data-teams="furia g2 mouz vitality" data-players="mezii r1nkle torzsi yekindar"
-   data-diff="2" data-count="10" data-eff="0.6">
-  <svg class="radar" viewBox="268.4 459.2 260 260" role="img" aria-label="Trajectory: Flash Banana (from Lower Mid)">
-  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="8.7"><text x="386.5" y="616.1">T Ramp</text></g>
-  <circle class="land land-flash" cx="444.7" cy="545.6" r="10.2"/>
-  <path class="traj traj-flash" d="M352.4,631.6 L355.7,628.6 L359.2,625.5 L362.7,622.4 L366.1,619.2 L369.4,616.1 L372.9,613.1 L376.3,610.0 L379.6,606.7 L383.1,603.7 L386.5,600.6 L390.0,597.6 L393.3,594.3 L396.7,591.2 L400.2,588.2 L403.5,584.9 L406.9,581.8 L410.4,578.8 L413.9,575.7 L417.1,572.4 L420.6,569.4 L424.1,566.3 L427.3,563.3 L430.8,560.0 L434.3,556.9 L437.8,553.9 L440.2,551.4"/>
-  <line class="aim" x1="352.2" y1="632.8" x2="377.0" y2="609.4"/>
-  <circle class="spot side-T" cx="352.2" cy="632.8" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-2">Medium</span><span class="badge">jump throw</span><span class="badge video">▶ video</span></div>
-    <h3>Flash Banana (from Lower Mid)</h3>
-<p class="eff">blinds 0.6 enemy(ies) for 2.0s on average</p>
-    <p class="muted">10 uses · 4 teams · 10% rounds won</p>
-  </div>
-</a><a class="card" href="/en/inferno/flash-arch-from-second-mid-t/"
-   data-type="flash" data-side="T" data-area="Arch" data-map="inferno"
-   data-teams="furia" data-players="kscerato"
-   data-diff="2" data-count="4" data-eff="0.25">
-  <svg class="radar" viewBox="532.4 507.6 288.0 288.0" role="img" aria-label="Trajectory: Flash Arch (from Second Mid)">
-  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="9.6"><text x="720.0" y="654.5">Top Mid</text></g>
-  <circle class="land land-flash" cx="749.9" cy="577.9" r="10.2"/>
-  <path class="traj traj-flash" d="M602.9,725.5 L608.4,719.8 L614.1,714.1 L619.8,708.4 L625.5,702.4 L631.2,696.7 L636.9,691.0 L642.7,685.3 L648.4,679.6 L654.1,673.9 L659.8,668.2 L665.5,662.2 L671.2,656.5 L676.9,650.8 L682.7,645.1 L688.4,639.4 L694.1,633.5 L699.8,627.8 L705.5,622.0 L711.2,616.3 L716.9,610.6 L722.7,604.9 L728.4,599.2 L733.9,593.3 L739.6,587.6 L745.3,581.8 L749.6,577.6"/>
-  <line class="aim" x1="602.8" y1="725.5" x2="626.8" y2="701.4"/>
-  <circle class="spot side-T" cx="602.8" cy="725.5" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-2">Medium</span><span class="badge">jump throw</span><span class="badge video">▶ video</span></div>
-    <h3>Flash Arch (from Second Mid)</h3>
-<p class="eff">blinds 0.2 enemy(ies) for 1.0s on average</p>
-    <p class="muted">4 uses · 1 team · 0% rounds won</p>
-  </div>
-</a><a class="card" href="/en/inferno/flash-banana-t/"
-   data-type="flash" data-side="T" data-area="Banana" data-map="inferno"
-   data-teams="mouz" data-players="torzsi"
-   data-diff="1" data-count="3" data-eff="0.0">
-  <svg class="radar" viewBox="304.7 327.8 324.0 324.0" role="img" aria-label="Trajectory: Flash Banana">
-  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="10.8"><text x="502.0" y="409.4">Banana</text><text x="386.5" y="616.1">T Ramp</text></g>
-  <circle class="land land-flash" cx="470.7" cy="399.1" r="10.2"/>
-  <path class="traj traj-flash" d="M462.9,580.8 L463.1,573.5 L463.3,566.1 L463.7,558.8 L463.9,551.4 L464.1,544.1 L464.3,536.7 L464.7,529.4 L464.9,522.0 L465.1,514.7 L465.3,507.3 L465.7,500.2 L465.9,492.9 L466.1,485.5 L466.5,478.2 L466.7,470.8 L466.9,463.5 L467.1,456.1 L467.6,448.8 L467.8,441.4 L468.0,434.3 L468.2,426.9 L468.6,419.6 L468.8,412.2 L469.0,404.9 L469.6,399.8 L470.2,397.8"/>
-  <line class="aim" x1="462.7" y1="581.7" x2="464.0" y2="547.8"/>
-  <circle class="spot side-T" cx="462.7" cy="581.7" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-1">Easy</span><span class="badge video">▶ video</span></div>
-    <h3>Flash Banana</h3>
-    <p class="muted">3 uses · 1 team · 0% rounds won</p>
-  </div>
-</a><a class="card" href="/en/inferno/molotov-b-site-from-banana-t/"
-   data-type="molotov" data-side="T" data-area="BombsiteB" data-map="inferno"
-   data-teams="furia g2 mouz vitality" data-players="apex hunter matys mezii spinx torzsi yuurih"
-   data-diff="2" data-count="11" data-eff="0.0">
-  <svg class="radar" viewBox="354.3 190.7 260 260" role="img" aria-label="Trajectory: Molotov B Site (from Banana)">
-  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="8.7"><text x="502.0" y="409.4">Banana</text></g>
-  <circle class="land land-molotov" cx="448.4" cy="268.2" r="24.5"/>
-  <path class="traj traj-molotov" d="M521.4,374.9 L518.0,369.6 L514.5,364.3 L511.0,359.0 L507.6,353.7 L504.1,348.4 L500.6,343.3 L496.9,338.0 L493.5,332.7 L490.0,327.3 L486.5,322.0 L483.1,316.7 L479.6,311.4 L476.1,306.1 L474.5,303.7 L472.9,301.2 L471.2,299.0 L469.6,296.5 L468.2,294.1 L466.5,291.8 L464.9,289.4 L463.5,286.9 L461.8,284.7 L460.2,282.2 L458.8,280.0 L457.1,277.6 L455.5,275.1 L453.9,272.9 L452.4,270.4 L450.8,268.0 L449.4,266.5 L448.2,267.1 L447.1,267.8"/>
-  <line class="aim" x1="521.1" y1="374.3" x2="502.5" y2="345.8"/>
-  <circle class="spot side-T" cx="521.1" cy="374.3" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge type-molotov">Molotov</span><span class="badge side-T">T</span><span class="badge diff-2">Medium</span><span class="badge">jump throw</span><span class="badge video">▶ video</span><span class="badge">3 variants</span></div>
-    <h3>Molotov B Site (from Banana)</h3>
-    <p class="muted">11 uses · 4 teams · 36% rounds won</p>
-  </div>
-</a><a class="card" href="/en/inferno/molotov-banana-from-b-site-ct/"
-   data-type="molotov" data-side="CT" data-area="Banana" data-map="inferno"
-   data-teams="furia g2 mouz vitality" data-players="apex flamez hunter kscerato pr"
-   data-diff="2" data-count="8" data-eff="0.0">
-  <svg class="radar" viewBox="305.2 93.7 411.5 411.5" role="img" aria-label="Trajectory: Molotov Banana (from B Site)">
-  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="13.7"><text x="528.4" y="217.3">B Site</text><text x="502.0" y="409.4">Banana</text><text x="671.2" y="199.2">Ruins</text></g>
-  <circle class="land land-molotov" cx="488.4" cy="435.2" r="24.5"/>
-  <path class="traj traj-molotov" d="M534.7,163.7 L533.1,172.2 L531.6,180.6 L530.2,189.2 L528.6,197.6 L527.1,206.1 L525.7,214.5 L524.3,223.1 L522.7,231.4 L521.2,240.0 L519.8,248.6 L518.2,256.9 L516.7,265.5 L515.3,273.9 L513.9,282.4 L512.2,290.8 L510.8,299.4 L509.4,307.8 L508.0,316.3 L506.3,324.9 L504.9,333.3 L503.5,341.8 L501.8,350.2 L500.4,358.8 L499.0,367.1 L497.6,375.7 L495.9,384.1 L494.5,392.7 L493.1,401.0 L491.4,409.6 L490.0,418.0 L488.6,426.5 L487.1,435.1"/>
-  <line class="aim" x1="534.7" y1="163.7" x2="529.0" y2="197.2"/>
-  <circle class="spot side-CT" cx="534.7" cy="163.7" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge type-molotov">Molotov</span><span class="badge side-CT">CT</span><span class="badge diff-2">Medium</span><span class="badge">jump throw</span><span class="badge video">▶ video</span><span class="badge">2 variants</span></div>
-    <h3>Molotov Banana (from B Site)</h3>
-    <p class="muted">8 uses · 4 teams · 62% rounds won</p>
-  </div>
-</a><a class="card" href="/en/inferno/molotov-b-site-t/"
-   data-type="molotov" data-side="T" data-area="BombsiteB" data-map="inferno"
-   data-teams="furia g2 mouz" data-players="heavygod kscerato xelex"
-   data-diff="3" data-count="3" data-eff="0.0">
-  <svg class="radar" viewBox="379.6 9.5 332.9 332.9" role="img" aria-label="Trajectory: Molotov B Site">
-  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="11.1"><text x="528.4" y="217.3">B Site</text><text x="671.2" y="199.2">Ruins</text></g>
-  <circle class="land land-molotov" cx="537.3" cy="79.5" r="24.5"/>
-  <path class="traj traj-molotov" d="M591.4,271.0 L584.7,261.2 L578.0,251.4 L571.2,241.4 L564.5,231.6 L557.8,221.8 L551.0,211.8 L544.3,202.0 L537.6,192.2 L530.8,182.2 L524.1,172.4 L517.3,162.7 L510.6,152.9 L503.7,142.9 L500.6,135.1 L503.7,130.6 L506.7,126.1 L509.8,121.8 L512.9,117.3 L515.9,112.9 L519.0,108.6 L522.0,104.1 L524.9,99.6 L528.0,95.1 L531.0,90.8 L534.1,86.3 L537.1,81.8 L538.0,80.8"/>
-  <line class="aim" x1="591.4" y1="272.4" x2="572.3" y2="244.2"/>
-  <circle class="spot side-T" cx="591.4" cy="272.4" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge type-molotov">Molotov</span><span class="badge side-T">T</span><span class="badge diff-3">Hard</span><span class="badge video">▶ video</span></div>
-    <h3>Molotov B Site</h3>
-    <p class="muted">3 uses · 3 teams · 33% rounds won</p>
-  </div>
-</a><a class="card" href="/en/inferno/molotov-quad-from-apartments-t/"
-   data-type="molotov" data-side="T" data-area="Quad" data-map="inferno"
-   data-teams="furia" data-players="fallen kscerato yuurih"
-   data-diff="3" data-count="3" data-eff="0.0">
-  <svg class="radar" viewBox="579.4 624.0 260 260" role="img" aria-label="Trajectory: Molotov Quad (from Apartments)">
-  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="8.7"><text x="720.0" y="654.5">Top Mid</text><text x="723.3" y="802.2">Quad</text></g>
-  <circle class="land land-molotov" cx="736.5" cy="786.2" r="24.5"/>
-  <path class="traj traj-molotov" d="M681.4,730.6 L688.0,720.4 L691.8,720.4 L694.7,725.1 L697.8,729.6 L700.6,734.1 L703.5,738.6 L706.5,743.1 L709.4,747.6 L712.2,752.2 L715.1,756.7 L718.2,761.2 L721.0,765.7 L723.9,770.2 L726.7,774.7 L729.8,779.4 L732.7,783.9 L735.3,787.6 L736.7,785.5 L737.6,783.9"/>
-  <line class="aim" x1="681.3" y1="731.0" x2="699.7" y2="702.4"/>
-  <circle class="spot side-T" cx="681.3" cy="731.0" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge type-molotov">Molotov</span><span class="badge side-T">T</span><span class="badge diff-3">Hard</span><span class="badge video">▶ video</span></div>
-    <h3>Molotov Quad (from Apartments)</h3>
-    <p class="muted">3 uses · 1 team · 0% rounds won</p>
-  </div>
-</a><a class="card" href="/en/inferno/he-apartments-ct/"
-   data-type="he" data-side="CT" data-area="Apartments" data-map="inferno"
-   data-teams="g2 mouz" data-players="heavygod spinx xelex"
-   data-diff="1" data-count="5" data-eff="0.0">
-  <svg class="radar" viewBox="506.9 658.2 342.5 342.5" role="img" aria-label="Trajectory: HE Apartments">
-  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="11.4"><text x="545.7" y="809.4">Second Mid</text><text x="670.4" y="861.8">Apartments</text><text x="601.6" y="920.0">Back Alley</text><text x="723.3" y="802.2">Quad</text></g>
-  <circle class="land land-he" cx="672.6" cy="930.7" r="14.3"/>
-  <path class="traj traj-he" d="M683.5,728.2 L683.1,735.9 L682.7,743.9 L682.2,751.6 L682.0,759.6 L681.6,767.3 L681.2,775.3 L681.0,783.1 L680.6,791.0 L680.2,799.0 L680.0,806.7 L679.6,814.7 L679.2,822.4 L678.8,830.4 L678.6,838.2 L678.2,846.1 L677.8,853.9 L677.6,861.8 L677.1,869.6 L676.7,877.6 L676.5,885.5 L676.1,893.3 L675.7,901.2 L675.3,909.0 L675.1,916.9 L674.7,924.7 L674.5,930.6"/>
-  <line class="aim" x1="683.7" y1="728.6" x2="681.9" y2="762.5"/>
-  <circle class="spot side-CT" cx="683.7" cy="728.6" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge type-he">HE</span><span class="badge side-CT">CT</span><span class="badge diff-1">Easy</span><span class="badge video">▶ video</span></div>
-    <h3>HE Apartments</h3>
-    <p class="muted">5 uses · 2 teams · 40% rounds won</p>
-  </div>
-</a><a class="card" href="/en/inferno/he-mid-from-arch-ct/"
-   data-type="he" data-side="CT" data-area="Middle" data-map="inferno"
-   data-teams="g2 vitality" data-players="heavygod mezii"
-   data-diff="2" data-count="3" data-eff="0.0">
-  <svg class="radar" viewBox="554.2 481.0 293.5 293.5" role="img" aria-label="Trajectory: HE Mid (from Arch)">
-  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="9.8"><text x="720.0" y="654.5">Top Mid</text><text x="797.8" y="553.1">Arch</text></g>
-  <circle class="land land-he" cx="655.9" cy="666.7" r="14.3"/>
-  <path class="traj traj-he" d="M745.7,551.0 L741.4,560.6 L736.9,570.2 L732.4,579.8 L728.0,589.4 L723.5,599.0 L719.0,608.6 L714.5,618.2 L710.0,627.8 L705.7,637.3 L701.2,646.9 L696.7,656.5 L692.2,666.1 L687.8,675.9 L683.3,685.5 L678.8,695.1 L674.5,704.5 L672.4,700.2 L670.4,695.7 L668.4,691.4 L666.3,687.1 L664.5,682.9 L662.4,678.6 L660.4,674.3 L658.4,669.8 L656.3,665.5 L655.5,665.7"/>
-  <line class="aim" x1="746.4" y1="551.1" x2="731.9" y2="581.8"/>
-  <circle class="spot side-CT" cx="746.4" cy="551.1" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge type-he">HE</span><span class="badge side-CT">CT</span><span class="badge diff-2">Medium</span><span class="badge video">▶ video</span></div>
-    <h3>HE Mid (from Arch)</h3>
-    <p class="muted">3 uses · 2 teams · 33% rounds won</p>
-  </div>
-</a><a class="card" href="/en/inferno/he-banana-from-t-ramp-t/"
-   data-type="he" data-side="T" data-area="Banana" data-map="inferno"
-   data-teams="g2 vitality" data-players="hunter mezii"
-   data-diff="3" data-count="3" data-eff="0.0">
-  <svg class="radar" viewBox="292.0 286.1 386.6 386.6" role="img" aria-label="Trajectory: HE Banana (from T Ramp)">
-  <image href="/static/radars/inferno.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="12.9"><text x="502.0" y="409.4">Banana</text><text x="386.5" y="616.1">T Ramp</text></g>
-  <circle class="land land-he" cx="536.6" cy="366.1" r="14.3"/>
-  <path class="traj traj-he" d="M434.5,601.8 L438.8,591.2 L442.9,580.4 L447.1,569.8 L451.4,559.2 L455.5,548.4 L459.8,537.8 L463.9,527.1 L468.2,516.3 L472.2,505.7 L476.5,495.1 L480.8,484.3 L484.9,473.7 L489.2,463.1 L493.3,452.2 L497.6,441.6 L501.6,431.0 L505.9,420.2 L510.2,409.6 L514.3,399.0 L518.6,388.2 L522.7,377.6 L526.9,366.9 L531.0,356.1 L533.7,357.1 L535.5,361.8 L536.9,365.5"/>
-  <line class="aim" x1="433.6" y1="602.7" x2="446.0" y2="571.1"/>
-  <circle class="spot side-T" cx="433.6" cy="602.7" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge type-he">HE</span><span class="badge side-T">T</span><span class="badge diff-3">Hard</span><span class="badge video">▶ video</span></div>
-    <h3>HE Banana (from T Ramp)</h3>
-    <p class="muted">3 uses · 2 teams · 67% rounds won</p>
-  </div>
-</a></div>
-<p class="empty muted" id="empty" hidden>No lineups match these filters.</p>
   </main>
 </div>
 <footer class="foot">

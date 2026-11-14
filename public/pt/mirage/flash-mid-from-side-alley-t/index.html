@@ -21,15 +21,16 @@
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Lineups Pro">
 <meta name="theme-color" content="#0b0f15">
-<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light"; } catch (e) {}</script>
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
+  if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/static/style.css">
-<script>window.I18N = {"copied": "Copiado!", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "throws_in": "lan\u00e7a em {s}s"}; window.LANG = "pt";</script>
+<script>window.I18N = {"copied": "Copiado!", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "open": "Abrir", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "throws_in": "lan\u00e7a em {s}s"}; window.LANG = "pt";</script>
 </head>
 <body>
 <header class="top">
   <div class="top-in">
-    <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-controls="side" aria-expanded="false">☰</button>
+    <button class="menu-btn" id="menuBtn" aria-label="Mostrar ou ocultar o menu" aria-controls="side" aria-expanded="false">☰</button>
     <a class="logo" href="/pt/"><span class="logo-mark">◎</span> Lineups Pro</a>
     <div class="search">
       <input id="q" type="search" placeholder="Buscar mapa, jogador, time, smoke…" autocomplete="off" aria-label="Buscar">
@@ -60,7 +61,7 @@
 <a href="/pt/jogador/apex/"><span>apEX</span></a><a href="/pt/jogador/art/"><span>art</span></a><a href="/pt/jogador/coolio/"><span>coolio</span></a><a href="/pt/jogador/dem0n/"><span>dem0n</span></a><a href="/pt/jogador/donk/"><span>donk</span></a><a href="/pt/jogador/dumau/"><span>dumau</span></a><a href="/pt/jogador/dziugss/"><span>dziugss</span></a><a href="/pt/jogador/fallen/"><span>FalleN</span></a><a href="/pt/jogador/flamez/"><span>flameZ</span></a><a href="/pt/jogador/heavygod/"><span>HeavyGod</span></a><a href="/pt/jogador/hunter/"><span>huNter</span></a><a href="/pt/jogador/karrigan/"><span>karrigan</span></a><a class="more" href="/pt/jogadores/">ver todos (40)</a>      </details>
       <details class="nav-g" data-k="teams" open>
         <summary class="nav-h"><a href="/pt/times/">Times</a></summary>
-<a href="/pt/time/falcons/"><span>Falcons</span></a><a href="/pt/time/furia/"><span>FURIA</span></a><a href="/pt/time/fut/"><span>FUT</span></a><a href="/pt/time/g2/"><span>G2</span></a><a href="/pt/time/legacy/"><span>Legacy</span></a><a href="/pt/time/mouz/"><span>MOUZ</span></a><a href="/pt/time/spirit/"><span>Spirit</span></a><a href="/pt/time/vitality/"><span>Vitality</span></a>      </details>
+<a href="/pt/time/falcons/"><span><img class="flag" src="/static/flags/sa.svg" alt="Arábia Saudita" title="Arábia Saudita" width="16" height="12">Falcons</span></a><a href="/pt/time/furia/"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">FURIA</span></a><a href="/pt/time/fut/"><span><img class="flag" src="/static/flags/tr.svg" alt="Turquia" title="Turquia" width="16" height="12">FUT</span></a><a href="/pt/time/g2/"><span><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12">G2</span></a><a href="/pt/time/legacy/"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">Legacy</span></a><a href="/pt/time/mouz/"><span><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12">MOUZ</span></a><a href="/pt/time/spirit/"><span><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12">Spirit</span></a><a href="/pt/time/vitality/"><span><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12">Vitality</span></a>      </details>
       <details class="nav-g" data-k="events" open>
         <summary class="nav-h"><a href="/pt/torneios/">Torneios</a></summary>
 <a href="/pt/torneio/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      </details>
@@ -169,7 +170,7 @@ Como ele estava em movimento, o resultado depende do seu timing.</p>
     <tbody>
       <tr>
         <td><a href="/pt/jogador/flamez/">flameZ</a></td>
-        <td><a href="/pt/time/vitality/">Vitality</a></td>
+        <td><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12"> <a href="/pt/time/vitality/">Vitality</a></td>
         <td><a href="/pt/torneio/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>9</td>
         <td>perdeu</td>
@@ -178,7 +179,7 @@ Como ele estava em movimento, o resultado depende do seu timing.</p>
       </tr>
       <tr>
         <td><a href="/pt/jogador/xertion/">xertioN</a></td>
-        <td><a href="/pt/time/mouz/">MOUZ</a></td>
+        <td><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"> <a href="/pt/time/mouz/">MOUZ</a></td>
         <td><a href="/pt/torneio/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>7</td>
         <td>venceu</td>
@@ -187,7 +188,7 @@ Como ele estava em movimento, o resultado depende do seu timing.</p>
       </tr>
       <tr>
         <td><a href="/pt/jogador/xertion/">xertioN</a></td>
-        <td><a href="/pt/time/mouz/">MOUZ</a></td>
+        <td><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"> <a href="/pt/time/mouz/">MOUZ</a></td>
         <td><a href="/pt/torneio/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>10</td>
         <td>perdeu</td>
@@ -196,7 +197,7 @@ Como ele estava em movimento, o resultado depende do seu timing.</p>
       </tr>
       <tr>
         <td><a href="/pt/jogador/magixx/">magixx</a></td>
-        <td><a href="/pt/time/spirit/">Spirit</a></td>
+        <td><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12"> <a href="/pt/time/spirit/">Spirit</a></td>
         <td><a href="/pt/torneio/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>18</td>
         <td>venceu</td>
@@ -205,7 +206,7 @@ Como ele estava em movimento, o resultado depende do seu timing.</p>
       </tr>
       <tr>
         <td><a href="/pt/jogador/donk/">donk</a></td>
-        <td><a href="/pt/time/spirit/">Spirit</a></td>
+        <td><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12"> <a href="/pt/time/spirit/">Spirit</a></td>
         <td><a href="/pt/torneio/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>20</td>
         <td>perdeu</td>
@@ -214,7 +215,7 @@ Como ele estava em movimento, o resultado depende do seu timing.</p>
       </tr>
       <tr>
         <td><a href="/pt/jogador/magixx/">magixx</a></td>
-        <td><a href="/pt/time/spirit/">Spirit</a></td>
+        <td><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12"> <a href="/pt/time/spirit/">Spirit</a></td>
         <td><a href="/pt/torneio/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>22</td>
         <td>perdeu</td>
@@ -229,7 +230,7 @@ Como ele estava em movimento, o resultado depende do seu timing.</p>
 
 <section>
   <h2>Lineups parecidas</h2>
-  <div class="cards"><a class="card" href="/pt/mirage/flash-mid-from-ct-spawn-ct/"
+  <div class="cards"><a class="card" href="/pt/mirage/flash-mid-from-ct-spawn-ct/" data-id="flash-mid-from-ct-spawn-ct"
    data-type="flash" data-side="CT" data-area="Middle" data-map="mirage"
    data-teams="falcons furia fut g2 mouz" data-players="coolio kscerato m0nesy nertz xertion xfl0ud"
    data-diff="2" data-count="7" data-eff="1.0">
@@ -247,7 +248,7 @@ Como ele estava em movimento, o resultado depende do seu timing.</p>
 <p class="eff">cega 1,0 inimigo(s) por 2,6s em média</p>
     <p class="muted">7 usos · 5 times · round ganho 86%</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-mid-from-jungle-ct/"
+</a><a class="card" href="/pt/mirage/flash-mid-from-jungle-ct/" data-id="flash-mid-from-jungle-ct"
    data-type="flash" data-side="CT" data-area="Middle" data-map="mirage"
    data-teams="fut mouz vitality" data-players="coolio dziugss torzsi zywoo"
    data-diff="1" data-count="7" data-eff="1.57">
@@ -265,7 +266,7 @@ Como ele estava em movimento, o resultado depende do seu timing.</p>
 <p class="eff">cega 1,6 inimigo(s) por 4,1s em média</p>
     <p class="muted">7 usos · 3 times · round ganho 43%</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-mid-from-top-mid-t/"
+</a><a class="card" href="/pt/mirage/flash-mid-from-top-mid-t/" data-id="flash-mid-from-top-mid-t"
    data-type="flash" data-side="T" data-area="Middle" data-map="mirage"
    data-teams="fut vitality" data-players="apex coolio xfl0ud"
    data-diff="3" data-count="3" data-eff="0.0">
