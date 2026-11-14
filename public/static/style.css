@@ -422,3 +422,75 @@ a.card.is-fav h3::before { content: "★ "; color: var(--accent); }
 .tac-list li:last-child { border-bottom: 0; }
 .tac-list a { color: var(--text); text-decoration: none; font-weight: 600; } .tac-list a:hover { color: var(--link); }
 .tac-more { display: flex; gap: 14px; padding: 2px 12px; font-size: 13px; }
+
+/* utility signature (team / player) */
+.sig-maps { margin: 4px 0 10px; flex-wrap: wrap; }
+.sig-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; }
+.sig-col { background: var(--panel2); border: 1px solid var(--line); border-radius: var(--radius); padding: 10px 12px; }
+.sig-col h3 { margin: 0 0 8px; font-size: 14px; display: flex; gap: 6px; align-items: center; }
+.mix { display: flex; height: 18px; border-radius: 3px; overflow: hidden; font-size: 10.5px; font-weight: 700; color: #111; }
+.mix span { display: flex; align-items: center; justify-content: center; overflow: hidden; white-space: nowrap; }
+.mix-smoke { background: var(--smoke); } .mix-flash { background: var(--flash); } .mix-molotov { background: var(--molotov); } .mix-he { background: var(--he); }
+.mix-legend { display: flex; gap: 10px; margin: 4px 0 8px; flex-wrap: wrap; } .mix-legend i { margin-right: 4px; vertical-align: -1px; }
+.sig-table { width: 100%; border-collapse: collapse; font-size: 13px; font-variant-numeric: tabular-nums; }
+.sig-table th, .sig-table td { padding: 4px 6px; border-bottom: 1px solid var(--side-line); text-align: right; }
+.sig-table th:first-child, .sig-table td:first-child { text-align: left; }
+.sig-table th { color: var(--muted); font-weight: 500; font-size: 12px; }
+.sig-table tr.sub td:first-child { padding-left: 16px; color: var(--muted); }
+.sig-table .up { color: var(--good); font-size: 10px; } .sig-table .down { color: var(--bad); font-size: 10px; }
+.heat { margin: 8px 0 0; } .heat svg { width: 100%; display: block; border-radius: 3px; background: var(--radar-bg); }
+.heat .h { opacity: .45; } .heat .h0 { fill: var(--smoke); } .heat .h1 { fill: var(--flash); } .heat .h2 { fill: var(--molotov); } .heat .h3 { fill: var(--he); }
+.sig.hide-h0 .h0, .sig.hide-h1 .h1, .sig.hide-h2 .h2, .sig.hide-h3 .h3 { display: none; }
+.heat-toggles { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 10px; } .heat-toggles label { cursor: pointer; }
+
+/* full-width layout: sidebar flush left, content uses the whole screen (phone: sidebar becomes a drawer) */
+.layout { max-width: none; margin: 0; }
+.foot-in { max-width: none; }
+.content { padding: 18px clamp(16px, 2vw, 32px) 40px; }
+.rows { max-width: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+.hero p, .lead { max-width: 900px; }
+.play-grid { grid-template-columns: minmax(0, 1fr) minmax(280px, 380px); }
+.play-view .replay { max-width: min(100%, calc(100vh - 150px)); }
+@media (min-width: 1600px) { .layout { grid-template-columns: 260px minmax(0, 1fr); } .foot-in { padding-left: 284px; } }
+@media (max-width: 600px) {
+  .top-in { gap: 8px; padding: 6px 12px; }
+  .logo { font-size: 15px; }
+  .content { padding: 12px 12px 28px; }
+  .cards { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .card-body { padding: 6px 8px 8px; } .card h3 { font-size: 13px; }
+  .rows { grid-template-columns: 1fr; }
+  .lp-hero .info-col { padding: 12px; }
+  .sig-cols, .exec-list, .start-cols, .tac-grid { grid-template-columns: 1fr; }
+  .filters { position: static; }
+  h1 { font-size: 21px; }
+}
+@media (max-width: 380px) { .cards { grid-template-columns: 1fr; } }
+
+/* analytics */
+.an-filters { position: static; }
+.an-filters select:disabled { opacity: .45; }
+.kpis { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; margin: 12px 0; }
+.kpi { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 10px 12px; display: flex; flex-direction: column; gap: 3px; }
+.kpi-v { font-size: 26px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.kpi-l { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+.kpi-s { font-size: 12px; color: var(--muted); }
+.kpi-link { justify-content: center; align-items: center; font-weight: 600; text-decoration: none; }
+.team-kpis .kpi { border-color: color-mix(in srgb, var(--accent) 40%, var(--line)); }
+.split { display: flex; height: 16px; border-radius: 3px; overflow: hidden; font-size: 10.5px; font-weight: 700; margin: 4px 0; }
+.split span { display: flex; align-items: center; justify-content: center; white-space: nowrap; overflow: hidden; color: #111; }
+.sp-t { background: var(--t); } .sp-ct { background: var(--ct); }
+.an-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 12px; }
+.an-card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 0 12px 12px; margin: 0 0 12px; }
+.an-card > h3 { margin: 0 -12px 10px; padding: 8px 12px; background: var(--head); border-bottom: 1px solid var(--line); color: var(--head-ink);
+  font-size: 12px; text-transform: uppercase; letter-spacing: .07em; }
+.an-card h4 { margin: 10px 0 4px; font-size: 12.5px; color: var(--muted); font-weight: 600; }
+.hb { display: grid; grid-template-columns: minmax(90px, 38%) 1fr 72px; gap: 8px; align-items: center; font-size: 13px; padding: 3px 0; }
+.hb-t { height: 10px; background: var(--panel2); border-radius: 2px; overflow: hidden; }
+.hb-f { display: block; height: 100%; } .f-t { background: var(--t); } .f-ct { background: var(--ct); } .f-acc { background: var(--accent); } .f-muted { background: var(--muted); }
+.hb-v { text-align: right; font-variant-numeric: tabular-nums; } .hb-v small { color: var(--muted); }
+.cols24 { display: grid; grid-template-columns: repeat(24, 1fr); gap: 2px; height: 130px; align-items: end; }
+.c24 { display: flex; flex-direction: column; justify-content: flex-end; height: 100%; }
+.c24-b { background: var(--t); border-radius: 2px 2px 0 0; min-height: 1px; }
+.c24-l { font-size: 9px; text-align: center; color: var(--muted); }
+.an-table td, .an-table th { text-align: right; } .an-table td:first-child, .an-table th:first-child { text-align: left; }
+@media (max-width: 600px) { .an-grid { grid-template-columns: 1fr; } .kpis { grid-template-columns: 1fr 1fr; } .kpi-v { font-size: 22px; } }

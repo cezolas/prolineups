@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pro round analytics · Lineups Pro</title>
+<meta name="description" content="CS2 stats from every round of pro matches: T/CT wins, A/B site, post-plant conversion, economy, opening kills and utility, filtered by map, team, opponent and more.">
+<link rel="canonical" href="https://prolineups.cezolas.workers.dev/en/analytics/">
+<link rel="alternate" hreflang="pt" href="https://prolineups.cezolas.workers.dev/pt/analises/">
+<link rel="alternate" hreflang="en" href="https://prolineups.cezolas.workers.dev/en/analytics/">
+<link rel="alternate" hreflang="x-default" href="https://prolineups.cezolas.workers.dev/pt/analises/">
+<meta property="og:title" content="Pro round analytics">
+<meta property="og:description" content="CS2 stats from every round of pro matches: T/CT wins, A/B site, post-plant conversion, economy, opening kills and utility, filtered by map, team, opponent and more.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://prolineups.cezolas.workers.dev/static/og-en.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Lineups Pro">
+<meta name="theme-color" content="#0b0f15">
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light"; } catch (e) {}</script>
+<link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/static/style.css">
+<script>window.I18N = {"copied": "Copied!", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s"}; window.LANG = "en";</script>
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-controls="side" aria-expanded="false">☰</button>
+    <a class="logo" href="/en/"><span class="logo-mark">◎</span> Lineups Pro</a>
+    <div class="search">
+      <input id="q" type="search" placeholder="Search map, player, team, smoke…" autocomplete="off" aria-label="Search">
+      <div id="results" class="results" hidden></div>
+    </div>
+    <nav class="langs" aria-label="Language">
+<a href="/pt/analises/" hreflang="pt" lang="pt" title="Português">PT</a><a href="/en/analytics/" hreflang="en" lang="en" aria-current="true" title="English">EN</a>    </nav>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="Toggle light/dark mode" title="Toggle light/dark mode"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.6"/><g stroke-width="2.2" stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></g></svg></button>
+  </div>
+</header>
+<div class="layout">
+  <aside class="side" id="side" aria-label="Navigation">
+    <nav>
+      <a href="/en/"><span>Home</span></a>
+      <a href="/en/analytics/" aria-current="page"><span>▤ Analytics</span></a>
+      <a href="/en/my-list/"><span>★ My list</span><span class="n" id="favCount"></span></a>
+      <details class="nav-g" data-k="types" open>
+        <summary class="nav-h"><span>Grenades</span></summary>
+<a href="/en/smokes/"><span>Smokes</span><span class="n">104</span></a><a href="/en/flashes/"><span>Flashes</span><span class="n">53</span></a><a href="/en/molotovs/"><span>Molotovs</span><span class="n">53</span></a><a href="/en/hes/"><span>HEs</span><span class="n">30</span></a>      </details>
+      <details class="nav-g" data-k="tactics" open>
+        <summary class="nav-h"><a href="/en/tactics/">Tactics</a></summary>
+<a href="/en/ancient/plays/"><span>Ancient</span><span class="n">36</span></a><a href="/en/anubis/plays/"><span>Anubis</span><span class="n">13</span></a><a href="/en/cache/plays/"><span>Cache</span><span class="n">37</span></a><a href="/en/dust2/plays/"><span>Dust2</span><span class="n">40</span></a><a href="/en/inferno/plays/"><span>Inferno</span><span class="n">17</span></a><a href="/en/mirage/plays/"><span>Mirage</span><span class="n">44</span></a><a href="/en/nuke/plays/"><span>Nuke</span><span class="n">32</span></a>      </details>
+      <details class="nav-g" data-k="maps" open>
+        <summary class="nav-h"><a href="/en/maps/">Maps</a></summary>
+<a href="/en/ancient/"><span>Ancient</span><span class="n">30</span></a><a href="/en/anubis/"><span>Anubis</span><span class="n">20</span></a><a href="/en/cache/"><span>Cache</span><span class="n">39</span></a><a href="/en/dust2/"><span>Dust2</span><span class="n">39</span></a><a href="/en/inferno/"><span>Inferno</span><span class="n">22</span></a><a href="/en/mirage/"><span>Mirage</span><span class="n">57</span></a><a href="/en/nuke/"><span>Nuke</span><span class="n">33</span></a>      </details>
+      <details class="nav-g" data-k="players" open>
+        <summary class="nav-h"><a href="/en/players/">Players</a></summary>
+<a href="/en/player/apex/"><span>apEX</span></a><a href="/en/player/art/"><span>art</span></a><a href="/en/player/coolio/"><span>coolio</span></a><a href="/en/player/dem0n/"><span>dem0n</span></a><a href="/en/player/donk/"><span>donk</span></a><a href="/en/player/dumau/"><span>dumau</span></a><a href="/en/player/dziugss/"><span>dziugss</span></a><a href="/en/player/fallen/"><span>FalleN</span></a><a href="/en/player/flamez/"><span>flameZ</span></a><a href="/en/player/heavygod/"><span>HeavyGod</span></a><a href="/en/player/hunter/"><span>huNter</span></a><a href="/en/player/karrigan/"><span>karrigan</span></a><a class="more" href="/en/players/">see all (40)</a>      </details>
+      <details class="nav-g" data-k="teams" open>
+        <summary class="nav-h"><a href="/en/teams/">Teams</a></summary>
+<a href="/en/team/falcons/"><span>Falcons</span></a><a href="/en/team/furia/"><span>FURIA</span></a><a href="/en/team/fut/"><span>FUT</span></a><a href="/en/team/g2/"><span>G2</span></a><a href="/en/team/legacy/"><span>Legacy</span></a><a href="/en/team/mouz/"><span>MOUZ</span></a><a href="/en/team/spirit/"><span>Spirit</span></a><a href="/en/team/vitality/"><span>Vitality</span></a>      </details>
+      <details class="nav-g" data-k="events" open>
+        <summary class="nav-h"><a href="/en/tournaments/">Tournaments</a></summary>
+<a href="/en/tournament/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      </details>
+      <div class="nav-sep"></div>
+      <a href="/en/about/"><span>About</span></a>
+    </nav>
+    <script>
+      /* collapsed sections are remembered in this browser; applied before paint */
+      (function () {
+        var c = []; try { c = JSON.parse(localStorage.getItem("navClosed") || "[]"); } catch (e) {}
+        document.querySelectorAll(".nav-g").forEach(function (d) {
+          if (c.indexOf(d.dataset.k) >= 0 && !d.querySelector("[aria-current]")) d.open = false;
+          d.addEventListener("toggle", function () {
+            var s = []; document.querySelectorAll(".nav-g").forEach(function (x) { if (!x.open) s.push(x.dataset.k); });
+            try { localStorage.setItem("navClosed", JSON.stringify(s)); } catch (e) {}
+          });
+        });
+      })();
+    </script>
+  </aside>
+  <div class="scrim" id="scrim" hidden></div>
+  <main class="content">
+<nav class="crumbs"><a href="/en/">Home</a> › Analytics</nav>
+<h1>Pro round analytics</h1>
+<p class="muted">Every round of the matches we have, filtered by map, team, side, opponent, event, match, economy, half and bombsite. Click a map, team or match in the tables to filter.</p>
+<div id="an" data-i18n='{"after_plant": "T wins after the plant", "all_events": "All events", "all_maps": "All maps", "all_matches": "All matches", "all_opps": "Any opponent", "all_teams": "All teams", "buy": {"eco": "Eco", "force": "Force buy", "full": "Full buy", "pistol": "Pistol"}, "buy_ct_all": "Any CT buy", "buy_t_all": "Any T buy", "c_eco": "Economy", "c_eco_help": "Win % of each side by buy type.", "c_fk": "Opening kill", "c_fk_help": "Who opens the round and how much it weighs on the result.", "c_reasons": "How rounds end", "c_rounds": "T win by round", "c_rounds_help": "Height = T win % in each round (1 and 13 are pistols). Hover to see the numbers.", "c_sites": "A \u00d7 B site", "c_sites_help": "Where T plants and how often it converts after the plant on each site.", "c_util": "Utility", "c_util_help": "Average grenades per round and how T smokes relate to the result.", "dec": ".", "desc": "CS2 stats from every round of pro matches: T/CT wins, A/B site, post-plant conversion, economy, opening kills and utility, filtered by map, team, opponent and more.", "eco_ct": "CT wins with\u2026", "eco_t": "T wins with\u2026", "empty": "No rounds with these filters.", "f_buy_ct": "CT buy", "f_buy_t": "T buy", "f_event": "Event", "f_half": "Half", "f_map": "Map", "f_match": "Match", "f_opp": "Opponent", "f_site": "Bombsite", "f_team": "Team", "f_tside": "Team side", "fk_ct_win": "CT wins when opening", "fk_t_win": "T wins when opening", "fk_time": "Opening kill (median)", "half_1": "1st half (1\u201312)", "half_2": "2nd half (13\u201324)", "half_any": "Whole game", "half_ot": "Overtime", "k_conv": "Post-plant conversion", "k_conv_sub": "T wins after planting", "k_fk": "Opening kill decides", "k_fk_sub": "side with the 1st kill wins", "k_pistol": "Pistols won by T", "k_pistol_sub": "{n} pistol rounds", "k_plant_time": "Plant (median)", "k_plant_time_sub": "round time until the plant", "k_plants": "Rounds with a plant", "k_rounds": "Rounds", "k_t_win": "T wins", "k_util": "Grenades per round", "k_util_sub": "T / CT", "lead": "Every round of the matches we have, filtered by map, team, side, opponent, event, match, economy, half and bombsite. Click a map, team or match in the tables to filter.", "loading": "Loading data\u2026", "nav": "Analytics", "no_data": "No data.", "no_plant": "No plant", "of_rounds": "{n} rounds", "reason": {"bomb_defused": "Bomb defused", "bomb_exploded": "Bomb exploded", "ct_elimination": "CT eliminated T", "other": "Other", "t_elimination": "T eliminated CT", "time_ran_out": "Time ran out"}, "reason_side": {"bomb_defused": "CT", "bomb_exploded": "T", "ct_elimination": "CT", "other": "CT", "t_elimination": "T", "time_ran_out": "CT"}, "reset": "Clear filters", "round": "Round", "rounds_n": "{n} rounds", "side_ct": "CT", "side_t": "T", "site_a": "A site", "site_any": "With or without plant", "site_b": "B site", "site_none": "No plant", "site_planted": "Planted", "t_maps": "By map", "t_matches": "Matches", "t_teams": "By team", "t_teams_help": "Plant and A/B count the team\u0027s T rounds; opening = % of rounds where the team got the 1st kill.", "team_page": "Team page", "team_plants": "Plants as T", "team_plants_sub": "% of T rounds with a plant", "team_retake": "CT retakes", "team_retake_sub": "CT wins after a plant", "team_win": "{t} round wins", "team_win_ct": "Wins as CT", "team_win_t": "Wins as T", "th_conv": "T post-plant", "th_ct": "CT wins", "th_date": "Date", "th_fk": "Opening", "th_map": "Map", "th_match": "Match", "th_pistol": "Pistols", "th_plant": "Plant", "th_plant_t": "Plant (T)", "th_rounds": "Rounds", "th_t": "T wins", "th_team": "Team", "th_util": "Grenades/round", "th_win": "Wins", "title": "Pro round analytics", "tside_any": "Team on either side", "tside_ct": "Team as CT", "tside_t": "Team as T", "util": {"flash": "flashes", "he": "HEs", "molotov": "molotovs", "smoke": "smokes"}, "util_smokes": "T wins when throwing\u2026"}' data-l="/en" data-paths='{"about": "about", "analytics": "analytics", "event": "tournament", "events": "tournaments", "maps": "maps", "mylist": "my-list", "player": "player", "players": "players", "plays": "plays", "tactics": "tactics", "team": "team", "teams": "teams"}'>
+  <div class="filters an-filters">
+    <select data-f="map" aria-label="Map"></select>
+    <select data-f="team" aria-label="Team"></select>
+    <select data-f="tside" aria-label="Team side">
+      <option value="">Team on either side</option><option value="T">Team as T</option><option value="CT">Team as CT</option>
+    </select>
+    <select data-f="opp" aria-label="Opponent"></select>
+    <select data-f="event" aria-label="Event"></select>
+    <select data-f="match" aria-label="Match"></select>
+    <select data-f="buy_t" aria-label="T buy"></select>
+    <select data-f="buy_ct" aria-label="CT buy"></select>
+    <select data-f="half" aria-label="Half">
+      <option value="">Whole game</option><option value="1">1st half (1–12)</option><option value="2">2nd half (13–24)</option><option value="ot">Overtime</option>
+    </select>
+    <select data-f="site" aria-label="Bombsite">
+      <option value="">With or without plant</option><option value="planted">Planted</option><option value="A">A site</option><option value="B">B site</option><option value="none">No plant</option>
+    </select>
+    <button class="btn small" data-act="reset" type="button">Clear filters</button>
+    <span class="muted" id="anCount"></span>
+  </div>
+  <div id="anOut"><p class="muted">Loading data…</p></div>
+</div>
+  </main>
+</div>
+<footer class="foot">
+  <div class="foot-in">
+    <p>Data extracted from official match demos. Demos: <a href="https://www.hltv.org/" rel="noopener" target="_blank">HLTV.org</a>.</p>
+    <p>Free fan project. Not affiliated with Valve, HLTV, the teams or tournament organizers. Counter-Strike is a trademark of Valve Corporation.</p>
+    <p><a href="/en/about/">About and credits</a> · updated 2026-11-14</p>
+  </div>
+</footer>
+<script src="/static/app.js" defer></script>
+<script src="/static/analytics.js" defer></script></body>
+</html>
