@@ -389,3 +389,7 @@ table.uses { font-size: 13px; }
 .dot-nade.type-smoke { background: var(--smoke); } .dot-nade.type-flash { background: var(--flash); }
 .dot-nade.type-molotov, .dot-nade.type-incgrenade { background: var(--molotov); } .dot-nade.type-he { background: var(--he); }
 @media (max-width: 900px) { .play-grid { grid-template-columns: 1fr; } .play-rounds { position: static; } }
+
+.play-pov { margin: 0; border-bottom: 1px solid var(--line); }
+.play-pov video { width: 100%; aspect-ratio: 16 / 9; display: block; background: #000; }
+.play-pov figcaption { padding: 5px 10px; }

@@ -28,6 +28,7 @@
     view = [Math.min(Math.max(cx - size / 2, 0), 1024 - size), Math.min(Math.max(cy - size / 2, 0), 1024 - size), size];
     t = Math.max(D.t0, D.plant - LEAD); range.min = D.t0; range.max = D.t1; range.value = t;
     document.querySelectorAll("[data-play]").forEach(b => b.classList.toggle("on", b.dataset.play === id));
+    showPov(document.querySelector(`[data-play="${id}"]`));
     draw();
   }
 
@@ -38,6 +39,19 @@
     const w = b[0] === a[0] ? 0 : Math.min(1, Math.max(0, (tt - a[0]) / (b[0] - a[0])));
     const bm = new Map(b[1].map(p => [p[0], p]));
     return a[1].map(p => { const q = bm.get(p[0]) || p; return [p[0], p[1] + (q[1] - p[1]) * w, p[2] + (q[2] - p[2]) * w, p[3], p[4], p[5]]; });
+  }
+
+  // POV video of the entry player for the selected round (recorded with the grenade clips)
+  const pov = document.getElementById("pov"), video = pov && pov.querySelector("video");
+  function showPov(item) {
+    if (!pov) return;
+    const src = item && item.dataset.clip;
+    pov.hidden = !src;
+    if (!src) { video.removeAttribute("src"); video.load(); return; }
+    if (video.getAttribute("src") !== src) {
+      video.src = src; if (item.dataset.poster) video.poster = item.dataset.poster;
+      const cap = pov.querySelector("figcaption"); cap.textContent = cap.dataset.povCaption.replace("{p}", item.dataset.pov || "");
+    }
   }
 
   const clock = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
