@@ -567,3 +567,9 @@ a.card.is-fav h3::before { content: "★ "; color: var(--accent); }
 
 img.flag { width: 16px; height: 12px; display: inline-block; vertical-align: -1px; border-radius: 2px; box-shadow: 0 0 0 1px rgba(0,0,0,.25); object-fit: cover; }
 h1 img.flag { width: 24px; height: 18px; vertical-align: 0; }
+
+/* heat maps with grenade icons (grouped; the number = grenades there) */
+.tm-heat .h, .heat .h { opacity: .95; fill: initial; }
+.tm-heat use.h, .heat use.h { filter: drop-shadow(0 1px 1.5px rgba(0,0,0,.7)); }
+.hn { font: 700 13px system-ui, sans-serif; fill: #fff; paint-order: stroke; stroke: #000; stroke-width: 3px; pointer-events: none; }
+.tm-heat use.one, .heat use.one { opacity: .5; }
