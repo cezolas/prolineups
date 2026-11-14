@@ -105,6 +105,22 @@
       history.replaceState(null, "", p.toString() ? "?" + p : location.pathname);
     }
     filters.addEventListener("click", e => { const b = e.target.closest("button[data-f]"); if (b) { state[b.dataset.f] = b.dataset.v; apply(); } });
+    // quick search on the map page: "I want a smoke on X" -> type + landing place, easiest first
+    const quick = $("#rapida");
+    if (quick) quick.addEventListener("click", e => {
+      const t = e.target.closest("[data-qt]");
+      if (t) {
+        $$("[data-qt]", quick).forEach(x => x.classList.toggle("on", x === t));
+        $$("[data-qt-panel]", quick).forEach(p => { p.hidden = p.dataset.qtPanel !== t.dataset.qt; });
+        return;
+      }
+      const c = e.target.closest("[data-quick]"); if (!c) return;
+      const [ty, area] = c.dataset.quick.split("|");
+      Object.assign(state, { type: ty, area, side: "", teams: "", players: "", diff: "", sort: "easy" });
+      $$("[data-quick]", quick).forEach(x => x.classList.toggle("on", x === c));
+      apply();
+      filters.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
     filters.addEventListener("change", e => { const s = e.target.closest("select[data-f]"); if (s) { state[s.dataset.f] = s.value; apply(); } });
     apply();
   }

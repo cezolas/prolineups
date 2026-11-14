@@ -43,6 +43,8 @@
   <aside class="side" id="side" aria-label="Navegação">
     <nav>
       <a href="/pt/"><span>Início</span></a>
+      <a href="/pt/plano-de-treino/"><span>🎯 Plano de treino</span></a>
+      <a href="/pt/funcoes/"><span>👥 Funções</span></a>
       <a href="/pt/analises/"><span>▤ Análises</span></a>
       <a href="/pt/minha-lista/"><span>★ Minha lista</span><span class="n" id="favCount"></span></a>
       <details class="nav-g" data-k="types" open>
@@ -85,11 +87,25 @@
 <nav class="crumbs"><a href="/pt/">Início</a> › <a href="/pt/mapas/">Mapas</a> › Cache</nav>
 <h1>Granadas da Cache</h1>
 <div class="map-actions">
-<a class="btn" href="/pt/cache/jogadas/">▶ Ver jogadas dos times (replay do round)</a>  <a class="btn" href="/static/treino/pt/lineupspro_cache.cfg" download>⬇ Baixar treino (.cfg)</a>
+<a class="btn" href="/pt/cache/jogadas/">▶ Ver jogadas dos times (replay do round)</a>  <a class="btn" href="/pt/cache/funcoes/">👥 Granadas por função</a>
+  <a class="btn" href="/static/treino/pt/lineupspro_cache.cfg" download>⬇ Baixar treino (.cfg)</a>
   <details class="cfg-help"><summary>Como usar o treino</summary>
     <ol><li>Baixe o arquivo e copie para <code>Counter-Strike Global Offensive/game/csgo/cfg/</code>.</li><li>No CS2, abra <b>Jogar → Praticar</b> (servidor offline) no mapa.</li><li>No console, digite <code>exec lineupspro_cache</code>.</li><li>Digite <code>bind ] lp_next; bind [ lp_prev</code> e use <b>]</b> e <b>[</b> para pular de uma lineup para a outra: você vai para o ponto exato do pro, já mirando.</li><li>Use só em servidor offline, nunca em partidas online.</li></ol>
   </details>
 </div>
+<section class="quick" id="rapida">
+  <h2>Onde você quer a granada?</h2>
+  <div class="seg q-types" role="tablist"><button role="tab" data-qt="smoke" class="on">Smokes</button><button role="tab" data-qt="flash">Flashes</button><button role="tab" data-qt="molotov">Molotovs</button><button role="tab" data-qt="he">HEs</button></div>
+  <div class="q-areas" data-qt-panel="smoke">
+<button class="chip" data-quick="smoke|BombsiteB">Bomb B <span class="muted">· 4</span></button><button class="chip" data-quick="smoke|BMain">Garagem da B <span class="muted">· 3</span></button><button class="chip" data-quick="smoke|Catwalk">Metal <span class="muted">· 2</span></button><button class="chip" data-quick="smoke|Garage">Garagem do meio <span class="muted">· 2</span></button><button class="chip" data-quick="smoke|BombsiteA">Bomb A <span class="muted">· 2</span></button><button class="chip" data-quick="smoke|Connector">Liga/Janela <span class="muted">· 2</span></button><button class="chip" data-quick="smoke|Mid">Meio <span class="muted">· 1</span></button>  </div>
+  <div class="q-areas" data-qt-panel="flash" hidden>
+<button class="chip" data-quick="flash|BombsiteB">Bomb B <span class="muted">· 1</span></button><button class="chip" data-quick="flash|Garage">Garagem do meio <span class="muted">· 1</span></button><button class="chip" data-quick="flash|AMain">Garagem <span class="muted">· 1</span></button><button class="chip" data-quick="flash|BMain">Garagem da B <span class="muted">· 1</span></button><button class="chip" data-quick="flash|Catwalk">Metal <span class="muted">· 1</span></button><button class="chip" data-quick="flash|BombsiteA">Bomb A <span class="muted">· 1</span></button><button class="chip" data-quick="flash|Highway">Rua <span class="muted">· 1</span></button><button class="chip" data-quick="flash|Mid">Meio <span class="muted">· 1</span></button>  </div>
+  <div class="q-areas" data-qt-panel="molotov" hidden>
+<button class="chip" data-quick="molotov|BMain">Garagem da B <span class="muted">· 2</span></button><button class="chip" data-quick="molotov|Boost">Pézinho Lona <span class="muted">· 2</span></button><button class="chip" data-quick="molotov|BombsiteA">Bomb A <span class="muted">· 1</span></button><button class="chip" data-quick="molotov|Sandbags">Areia <span class="muted">· 1</span></button><button class="chip" data-quick="molotov|ForkLift">Empilhadeira <span class="muted">· 1</span></button><button class="chip" data-quick="molotov|Quad">Quad <span class="muted">· 1</span></button><button class="chip" data-quick="molotov|Heaven">Heaven <span class="muted">· 1</span></button><button class="chip" data-quick="molotov|Corner">Escanteio <span class="muted">· 1</span></button><button class="chip" data-quick="molotov|BombsiteB">Bomb B <span class="muted">· 1</span></button><button class="chip" data-quick="molotov|Mid">Meio <span class="muted">· 1</span></button>  </div>
+  <div class="q-areas" data-qt-panel="he" hidden>
+<button class="chip" data-quick="he|BMain">Garagem da B <span class="muted">· 1</span></button><button class="chip" data-quick="he|AMain">Garagem <span class="muted">· 1</span></button><button class="chip" data-quick="he|OutsideA">Outside A <span class="muted">· 1</span></button>  </div>
+  <p class="muted small">Escolha o tipo e o lugar onde ela tem que cair: aparecem todas as formas de jogar lá, da mais fácil para a mais difícil. O número é quantas lineups diferentes existem.</p>
+</section>
 <section class="start-here" id="comece">
   <h2>Comece por aqui</h2>
   <p class="muted">As granadas que os pros mais usam neste mapa, da mais fácil para a mais difícil. Aprenda estas primeiro.</p>
@@ -177,6 +193,7 @@
       </div>
       <div class="muted small">vista 3 vezes · round ganho em 33% ·
 FUT (2), MOUZ (1)</div>
+      <a class="small" href="/pt/cache/execucoes/t-385a84/">Kit para o seu time (quem joga cada granada) →</a>
       <ol class="exec-parts">
         <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/cache/smoke-catwalk-from-long-a-t/">Smoke Metal (de Long A)</a></li>
         <li><span class="exec-t">+2.4s</span><span class="badge type-smoke">Smoke</span><a href="/pt/cache/smoke-a-site-from-long-a-t/">Smoke Bomb A (de Long A)</a></li>
@@ -190,6 +207,7 @@ FUT (2), MOUZ (1)</div>
       </div>
       <div class="muted small">vista 2 vezes · round ganho em 0% ·
 MOUZ (2)</div>
+      <a class="small" href="/pt/cache/execucoes/ct-6bb735/">Kit para o seu time (quem joga cada granada) →</a>
       <ol class="exec-parts">
         <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/cache/smoke-garage-from-bus-stop-ct/">Smoke Garagem do meio (de Ônibus)</a></li>
         <li><span class="exec-t">+3.8s</span><span class="badge type-flash">Flash</span><a href="/pt/cache/flash-garage-from-connector-ct/">Flash Garagem do meio (de Liga/Janela)</a></li>
@@ -203,6 +221,7 @@ MOUZ (2)</div>
       </div>
       <div class="muted small">vista 2 vezes · round ganho em 50% ·
 MOUZ (2)</div>
+      <a class="small" href="/pt/cache/execucoes/t-a36160/">Kit para o seu time (quem joga cada granada) →</a>
       <ol class="exec-parts">
         <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/cache/smoke-catwalk-from-long-a-t/">Smoke Metal (de Long A)</a></li>
         <li><span class="exec-t">+2.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/cache/smoke-a-site-from-long-a-t/">Smoke Bomb A (de Long A)</a></li>
@@ -216,6 +235,7 @@ MOUZ (2)</div>
       </div>
       <div class="muted small">vista 2 vezes · round ganho em 50% ·
 FUT (2)</div>
+      <a class="small" href="/pt/cache/execucoes/ct-050c52/">Kit para o seu time (quem joga cada granada) →</a>
       <ol class="exec-parts">
         <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/cache/smoke-garage-from-bus-stop-ct/">Smoke Garagem do meio (de Ônibus)</a></li>
         <li><span class="exec-t">+4.3s</span><span class="badge type-molotov">Molotov</span><a href="/pt/cache/molotov-boost-from-connector-ct/">Molotov Pézinho Lona (de Liga/Janela)</a></li>

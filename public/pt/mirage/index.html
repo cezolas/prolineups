@@ -43,6 +43,8 @@
   <aside class="side" id="side" aria-label="Navegação">
     <nav>
       <a href="/pt/"><span>Início</span></a>
+      <a href="/pt/plano-de-treino/"><span>🎯 Plano de treino</span></a>
+      <a href="/pt/funcoes/"><span>👥 Funções</span></a>
       <a href="/pt/analises/"><span>▤ Análises</span></a>
       <a href="/pt/minha-lista/"><span>★ Minha lista</span><span class="n" id="favCount"></span></a>
       <details class="nav-g" data-k="types" open>
@@ -85,11 +87,25 @@
 <nav class="crumbs"><a href="/pt/">Início</a> › <a href="/pt/mapas/">Mapas</a> › Mirage</nav>
 <h1>Granadas da Mirage</h1>
 <div class="map-actions">
-<a class="btn" href="/pt/mirage/jogadas/">▶ Ver jogadas dos times (replay do round)</a>  <a class="btn" href="/static/treino/pt/lineupspro_mirage.cfg" download>⬇ Baixar treino (.cfg)</a>
+<a class="btn" href="/pt/mirage/jogadas/">▶ Ver jogadas dos times (replay do round)</a>  <a class="btn" href="/pt/mirage/funcoes/">👥 Granadas por função</a>
+  <a class="btn" href="/static/treino/pt/lineupspro_mirage.cfg" download>⬇ Baixar treino (.cfg)</a>
   <details class="cfg-help"><summary>Como usar o treino</summary>
     <ol><li>Baixe o arquivo e copie para <code>Counter-Strike Global Offensive/game/csgo/cfg/</code>.</li><li>No CS2, abra <b>Jogar → Praticar</b> (servidor offline) no mapa.</li><li>No console, digite <code>exec lineupspro_mirage</code>.</li><li>Digite <code>bind ] lp_next; bind [ lp_prev</code> e use <b>]</b> e <b>[</b> para pular de uma lineup para a outra: você vai para o ponto exato do pro, já mirando.</li><li>Use só em servidor offline, nunca em partidas online.</li></ol>
   </details>
 </div>
+<section class="quick" id="rapida">
+  <h2>Onde você quer a granada?</h2>
+  <div class="seg q-types" role="tablist"><button role="tab" data-qt="smoke" class="on">Smokes</button><button role="tab" data-qt="flash">Flashes</button><button role="tab" data-qt="molotov">Molotovs</button><button role="tab" data-qt="he">HEs</button></div>
+  <div class="q-areas" data-qt-panel="smoke">
+<button class="chip" data-quick="smoke|BombsiteA">Bomb A <span class="muted">· 4</span></button><button class="chip" data-quick="smoke|PalaceInterior">Palacio <span class="muted">· 3</span></button><button class="chip" data-quick="smoke|Apartments">Tapete <span class="muted">· 3</span></button><button class="chip" data-quick="smoke|SnipersNest">Janela <span class="muted">· 2</span></button><button class="chip" data-quick="smoke|Catwalk">L <span class="muted">· 2</span></button><button class="chip" data-quick="smoke|TRamp">Caverna <span class="muted">· 2</span></button><button class="chip" data-quick="smoke|Middle">Meio <span class="muted">· 2</span></button><button class="chip" data-quick="smoke|TopofMid">Top Mid <span class="muted">· 1</span></button><button class="chip" data-quick="smoke|Connector">Ligação <span class="muted">· 1</span></button><button class="chip" data-quick="smoke|Stairs">Cabecinha <span class="muted">· 1</span></button><button class="chip" data-quick="smoke|CTSpawn">Base CT <span class="muted">· 1</span></button><button class="chip" data-quick="smoke|Underpass">Rato <span class="muted">· 1</span></button>  </div>
+  <div class="q-areas" data-qt-panel="flash" hidden>
+<button class="chip" data-quick="flash|Middle">Meio <span class="muted">· 4</span></button><button class="chip" data-quick="flash|BombsiteB">Bomb B <span class="muted">· 3</span></button><button class="chip" data-quick="flash|BombsiteA">Bomb A <span class="muted">· 2</span></button><button class="chip" data-quick="flash|Apartments">Tapete <span class="muted">· 2</span></button><button class="chip" data-quick="flash|Stairs">Cabecinha <span class="muted">· 1</span></button><button class="chip" data-quick="flash|TRamp">Caverna <span class="muted">· 1</span></button><button class="chip" data-quick="flash|Jungle">Jungle <span class="muted">· 1</span></button><button class="chip" data-quick="flash|Catwalk">L <span class="muted">· 1</span></button><button class="chip" data-quick="flash|CTSpawn">Base CT <span class="muted">· 1</span></button>  </div>
+  <div class="q-areas" data-qt-panel="molotov" hidden>
+<button class="chip" data-quick="molotov|Stairs">Cabecinha <span class="muted">· 3</span></button><button class="chip" data-quick="molotov|TRamp">Caverna <span class="muted">· 1</span></button><button class="chip" data-quick="molotov|Underpass">Rato <span class="muted">· 1</span></button><button class="chip" data-quick="molotov|TopofMid">Top Mid <span class="muted">· 1</span></button><button class="chip" data-quick="molotov|SnipersNest">Janela <span class="muted">· 1</span></button><button class="chip" data-quick="molotov|BombsiteA">Bomb A <span class="muted">· 1</span></button><button class="chip" data-quick="molotov|Catwalk">L <span class="muted">· 1</span></button><button class="chip" data-quick="molotov|Middle">Meio <span class="muted">· 1</span></button><button class="chip" data-quick="molotov|BombsiteB">Bomb B <span class="muted">· 1</span></button>  </div>
+  <div class="q-areas" data-qt-panel="he" hidden>
+<button class="chip" data-quick="he|TopofMid">Top Mid <span class="muted">· 2</span></button><button class="chip" data-quick="he|PalaceAlley">Entrada da Caverna <span class="muted">· 2</span></button><button class="chip" data-quick="he|SnipersNest">Janela <span class="muted">· 1</span></button><button class="chip" data-quick="he|Underpass">Rato <span class="muted">· 1</span></button><button class="chip" data-quick="he|Apartments">Tapete <span class="muted">· 1</span></button>  </div>
+  <p class="muted small">Escolha o tipo e o lugar onde ela tem que cair: aparecem todas as formas de jogar lá, da mais fácil para a mais difícil. O número é quantas lineups diferentes existem.</p>
+</section>
 <section class="start-here" id="comece">
   <h2>Comece por aqui</h2>
   <p class="muted">As granadas que os pros mais usam neste mapa, da mais fácil para a mais difícil. Aprenda estas primeiro.</p>
@@ -177,6 +193,7 @@
       </div>
       <div class="muted small">vista 4 vezes · round ganho em 0% ·
 Vitality (3), Spirit (1)</div>
+      <a class="small" href="/pt/mirage/execucoes/t-b4a51a/">Kit para o seu time (quem joga cada granada) →</a>
       <ol class="exec-parts">
         <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/mirage/smoke-stairs-from-t-spawn-t/">Smoke Cabecinha (de Base TR)</a></li>
         <li><span class="exec-t">+0.5s</span><span class="badge type-smoke">Smoke</span><a href="/pt/mirage/smoke-ct-spawn-from-palace-alley-t/">Smoke Base CT (de Entrada da Caverna)</a></li>
@@ -190,6 +207,7 @@ Vitality (3), Spirit (1)</div>
       </div>
       <div class="muted small">vista 3 vezes · round ganho em 33% ·
 Spirit (3)</div>
+      <a class="small" href="/pt/mirage/execucoes/t-35c647/">Kit para o seu time (quem joga cada granada) →</a>
       <ol class="exec-parts">
         <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/mirage/smoke-sniper-s-nest-from-t-spawn-t/">Smoke Janela (de Base TR)</a></li>
         <li><span class="exec-t">+1.8s</span><span class="badge type-smoke">Smoke</span><a href="/pt/mirage/smoke-top-mid-from-t-spawn-t/">Smoke Top Mid (de Base TR)</a></li>
@@ -203,6 +221,7 @@ Spirit (3)</div>
       </div>
       <div class="muted small">vista 2 vezes · round ganho em 50% ·
 G2 (2)</div>
+      <a class="small" href="/pt/mirage/execucoes/t-5e76ce/">Kit para o seu time (quem joga cada granada) →</a>
       <ol class="exec-parts">
         <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/mirage/smoke-connector-from-top-mid-t/">Smoke Ligação (de Top Mid)</a></li>
         <li><span class="exec-t">+4.2s</span><span class="badge type-molotov">Molotov</span><a href="/pt/mirage/molotov-sniper-s-nest-from-top-mid-t/">Molotov Janela (de Top Mid)</a></li>
@@ -218,6 +237,7 @@ G2 (2)</div>
       </div>
       <div class="muted small">vista 2 vezes · round ganho em 50% ·
 Vitality (2)</div>
+      <a class="small" href="/pt/mirage/execucoes/t-25c234/">Kit para o seu time (quem joga cada granada) →</a>
       <ol class="exec-parts">
         <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/mirage/smoke-catwalk-from-house-t/">Smoke L (de TV)</a></li>
         <li><span class="exec-t">+3.0s</span><span class="badge type-flash">Flash</span><a href="/pt/mirage/flash-b-site-from-back-alley-t/">Flash Bomb B (de Saída do Rato)</a></li>
@@ -232,6 +252,7 @@ Vitality (2)</div>
       </div>
       <div class="muted small">vista 2 vezes · round ganho em 50% ·
 MOUZ (2)</div>
+      <a class="small" href="/pt/mirage/execucoes/t-6742db/">Kit para o seu time (quem joga cada granada) →</a>
       <ol class="exec-parts">
         <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/mirage/smoke-a-site-from-palace-alley-t/">Smoke Bomb A (de Entrada da Caverna)</a></li>
         <li><span class="exec-t">+2.5s</span><span class="badge type-molotov">Molotov</span><a href="/pt/mirage/molotov-stairs-from-palace-alley-t/">Molotov Cabecinha (de Entrada da Caverna)</a></li>

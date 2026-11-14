@@ -43,6 +43,8 @@
   <aside class="side" id="side" aria-label="Navigation">
     <nav>
       <a href="/en/"><span>Home</span></a>
+      <a href="/en/training-plan/"><span>🎯 Training plan</span></a>
+      <a href="/en/roles/"><span>👥 Roles</span></a>
       <a href="/en/analytics/"><span>▤ Analytics</span></a>
       <a href="/en/my-list/"><span>★ My list</span><span class="n" id="favCount"></span></a>
       <details class="nav-g" data-k="types" open>
@@ -85,11 +87,25 @@
 <nav class="crumbs"><a href="/en/">Home</a> › <a href="/en/maps/">Maps</a> › Nuke</nav>
 <h1>Nuke grenades</h1>
 <div class="map-actions">
-<a class="btn" href="/en/nuke/plays/">▶ See team plays (round replay)</a>  <a class="btn" href="/static/treino/en/lineupspro_nuke.cfg" download>⬇ Download practice pack (.cfg)</a>
+<a class="btn" href="/en/nuke/plays/">▶ See team plays (round replay)</a>  <a class="btn" href="/en/nuke/roles/">👥 Grenades by role</a>
+  <a class="btn" href="/static/treino/en/lineupspro_nuke.cfg" download>⬇ Download practice pack (.cfg)</a>
   <details class="cfg-help"><summary>How to use the practice pack</summary>
     <ol><li>Download the file and copy it to <code>Counter-Strike Global Offensive/game/csgo/cfg/</code>.</li><li>In CS2, open <b>Play → Practice</b> (offline server) on the map.</li><li>In the console, type <code>exec lineupspro_nuke</code>.</li><li>Type <code>bind ] lp_next; bind [ lp_prev</code> and use <b>]</b> and <b>[</b> to jump between lineups: you land on the pro's exact spot, already aiming.</li><li>Offline servers only, never in online matches.</li></ol>
   </details>
 </div>
+<section class="quick" id="rapida">
+  <h2>Where do you want the grenade?</h2>
+  <div class="seg q-types" role="tablist"><button role="tab" data-qt="smoke" class="on">Smokes</button><button role="tab" data-qt="flash">Flashes</button><button role="tab" data-qt="molotov">Molotovs</button><button role="tab" data-qt="he">HEs</button></div>
+  <div class="q-areas" data-qt-panel="smoke">
+<button class="chip" data-quick="smoke|BombsiteA">A Site <span class="muted">· 4</span></button><button class="chip" data-quick="smoke|Squeaky">Squeaky <span class="muted">· 3</span></button><button class="chip" data-quick="smoke|Outside">Outside <span class="muted">· 2</span></button><button class="chip" data-quick="smoke|Mini">Mini <span class="muted">· 1</span></button><button class="chip" data-quick="smoke|Control">Control <span class="muted">· 1</span></button><button class="chip" data-quick="smoke|Trophy">Trophy <span class="muted">· 1</span></button><button class="chip" data-quick="smoke|Tunnels">Tunnels <span class="muted">· 1</span></button>  </div>
+  <div class="q-areas" data-qt-panel="flash" hidden>
+<button class="chip" data-quick="flash|Rafters">Rafters <span class="muted">· 1</span></button><button class="chip" data-quick="flash|Ramp">Ramp <span class="muted">· 1</span></button><button class="chip" data-quick="flash|BombsiteA">A Site <span class="muted">· 1</span></button><button class="chip" data-quick="flash|Outside">Outside <span class="muted">· 1</span></button><button class="chip" data-quick="flash|Control">Control <span class="muted">· 1</span></button>  </div>
+  <div class="q-areas" data-qt-panel="molotov" hidden>
+<button class="chip" data-quick="molotov|BombsiteA">A Site <span class="muted">· 2</span></button><button class="chip" data-quick="molotov|Mini">Mini <span class="muted">· 1</span></button><button class="chip" data-quick="molotov|Ramp">Ramp <span class="muted">· 1</span></button><button class="chip" data-quick="molotov|Outside">Outside <span class="muted">· 1</span></button><button class="chip" data-quick="molotov|Lobby">Lobby <span class="muted">· 1</span></button><button class="chip" data-quick="molotov|Hut">Hut <span class="muted">· 1</span></button><button class="chip" data-quick="molotov|HutRoof">Hut Roof <span class="muted">· 1</span></button><button class="chip" data-quick="molotov|Admin">Admin <span class="muted">· 1</span></button>  </div>
+  <div class="q-areas" data-qt-panel="he" hidden>
+<button class="chip" data-quick="he|Silo">Silo <span class="muted">· 1</span></button><button class="chip" data-quick="he|Trophy">Trophy <span class="muted">· 1</span></button><button class="chip" data-quick="he|Lobby">Lobby <span class="muted">· 1</span></button><button class="chip" data-quick="he|Control">Control <span class="muted">· 1</span></button><button class="chip" data-quick="he|Hut">Hut <span class="muted">· 1</span></button><button class="chip" data-quick="he|BombsiteA">A Site <span class="muted">· 1</span></button>  </div>
+  <p class="muted small">Pick the type and where it has to land: you get every way to throw it there, easiest first. The number is how many different lineups exist.</p>
+</section>
 <section class="start-here" id="comece">
   <h2>Start here</h2>
   <p class="muted">The grenades pros use most on this map, easiest first. Learn these before anything else.</p>
@@ -177,6 +193,7 @@
       </div>
       <div class="muted small">seen 5 times · round won 20% ·
 Spirit (5)</div>
+      <a class="small" href="/en/nuke/executes/t-50c4fb/">Kit for your team (who throws what) →</a>
       <ol class="exec-parts">
         <li><span class="exec-t">+0.1s</span><span class="badge type-smoke">Smoke</span><a href="/en/nuke/smoke-a-site-from-outside-t/">Smoke A Site (from Outside)</a></li>
         <li><span class="exec-t">+0.9s</span><span class="badge type-smoke">Smoke</span><a href="/en/nuke/smoke-outside-from-t-spawn-t/">Smoke Outside (from T Spawn)</a></li>

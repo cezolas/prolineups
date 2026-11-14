@@ -43,6 +43,8 @@
   <aside class="side" id="side" aria-label="Navegação">
     <nav>
       <a href="/pt/"><span>Início</span></a>
+      <a href="/pt/plano-de-treino/"><span>🎯 Plano de treino</span></a>
+      <a href="/pt/funcoes/"><span>👥 Funções</span></a>
       <a href="/pt/analises/"><span>▤ Análises</span></a>
       <a href="/pt/minha-lista/"><span>★ Minha lista</span><span class="n" id="favCount"></span></a>
       <details class="nav-g" data-k="types" open>
@@ -85,11 +87,25 @@
 <nav class="crumbs"><a href="/pt/">Início</a> › <a href="/pt/mapas/">Mapas</a> › Nuke</nav>
 <h1>Granadas da Nuke</h1>
 <div class="map-actions">
-<a class="btn" href="/pt/nuke/jogadas/">▶ Ver jogadas dos times (replay do round)</a>  <a class="btn" href="/static/treino/pt/lineupspro_nuke.cfg" download>⬇ Baixar treino (.cfg)</a>
+<a class="btn" href="/pt/nuke/jogadas/">▶ Ver jogadas dos times (replay do round)</a>  <a class="btn" href="/pt/nuke/funcoes/">👥 Granadas por função</a>
+  <a class="btn" href="/static/treino/pt/lineupspro_nuke.cfg" download>⬇ Baixar treino (.cfg)</a>
   <details class="cfg-help"><summary>Como usar o treino</summary>
     <ol><li>Baixe o arquivo e copie para <code>Counter-Strike Global Offensive/game/csgo/cfg/</code>.</li><li>No CS2, abra <b>Jogar → Praticar</b> (servidor offline) no mapa.</li><li>No console, digite <code>exec lineupspro_nuke</code>.</li><li>Digite <code>bind ] lp_next; bind [ lp_prev</code> e use <b>]</b> e <b>[</b> para pular de uma lineup para a outra: você vai para o ponto exato do pro, já mirando.</li><li>Use só em servidor offline, nunca em partidas online.</li></ol>
   </details>
 </div>
+<section class="quick" id="rapida">
+  <h2>Onde você quer a granada?</h2>
+  <div class="seg q-types" role="tablist"><button role="tab" data-qt="smoke" class="on">Smokes</button><button role="tab" data-qt="flash">Flashes</button><button role="tab" data-qt="molotov">Molotovs</button><button role="tab" data-qt="he">HEs</button></div>
+  <div class="q-areas" data-qt-panel="smoke">
+<button class="chip" data-quick="smoke|BombsiteA">Bomb A <span class="muted">· 4</span></button><button class="chip" data-quick="smoke|Squeaky">Porta Rangente <span class="muted">· 3</span></button><button class="chip" data-quick="smoke|Outside">Fora <span class="muted">· 2</span></button><button class="chip" data-quick="smoke|Mini">Mini <span class="muted">· 1</span></button><button class="chip" data-quick="smoke|Control">Controle <span class="muted">· 1</span></button><button class="chip" data-quick="smoke|Trophy">Troféu <span class="muted">· 1</span></button><button class="chip" data-quick="smoke|Tunnels">Túneis <span class="muted">· 1</span></button>  </div>
+  <div class="q-areas" data-qt-panel="flash" hidden>
+<button class="chip" data-quick="flash|Rafters">Vigas <span class="muted">· 1</span></button><button class="chip" data-quick="flash|Ramp">Rampa <span class="muted">· 1</span></button><button class="chip" data-quick="flash|BombsiteA">Bomb A <span class="muted">· 1</span></button><button class="chip" data-quick="flash|Outside">Fora <span class="muted">· 1</span></button><button class="chip" data-quick="flash|Control">Controle <span class="muted">· 1</span></button>  </div>
+  <div class="q-areas" data-qt-panel="molotov" hidden>
+<button class="chip" data-quick="molotov|BombsiteA">Bomb A <span class="muted">· 2</span></button><button class="chip" data-quick="molotov|Mini">Mini <span class="muted">· 1</span></button><button class="chip" data-quick="molotov|Ramp">Rampa <span class="muted">· 1</span></button><button class="chip" data-quick="molotov|Outside">Fora <span class="muted">· 1</span></button><button class="chip" data-quick="molotov|Lobby">Lobby <span class="muted">· 1</span></button><button class="chip" data-quick="molotov|Hut">Casinha <span class="muted">· 1</span></button><button class="chip" data-quick="molotov|HutRoof">Telhado da Casinha <span class="muted">· 1</span></button><button class="chip" data-quick="molotov|Admin">Admin <span class="muted">· 1</span></button>  </div>
+  <div class="q-areas" data-qt-panel="he" hidden>
+<button class="chip" data-quick="he|Silo">Silo <span class="muted">· 1</span></button><button class="chip" data-quick="he|Trophy">Troféu <span class="muted">· 1</span></button><button class="chip" data-quick="he|Lobby">Lobby <span class="muted">· 1</span></button><button class="chip" data-quick="he|Control">Controle <span class="muted">· 1</span></button><button class="chip" data-quick="he|Hut">Casinha <span class="muted">· 1</span></button><button class="chip" data-quick="he|BombsiteA">Bomb A <span class="muted">· 1</span></button>  </div>
+  <p class="muted small">Escolha o tipo e o lugar onde ela tem que cair: aparecem todas as formas de jogar lá, da mais fácil para a mais difícil. O número é quantas lineups diferentes existem.</p>
+</section>
 <section class="start-here" id="comece">
   <h2>Comece por aqui</h2>
   <p class="muted">As granadas que os pros mais usam neste mapa, da mais fácil para a mais difícil. Aprenda estas primeiro.</p>
@@ -177,6 +193,7 @@
       </div>
       <div class="muted small">vista 5 vezes · round ganho em 20% ·
 Spirit (5)</div>
+      <a class="small" href="/pt/nuke/execucoes/t-50c4fb/">Kit para o seu time (quem joga cada granada) →</a>
       <ol class="exec-parts">
         <li><span class="exec-t">+0.1s</span><span class="badge type-smoke">Smoke</span><a href="/pt/nuke/smoke-a-site-from-outside-t/">Smoke Bomb A (de Fora)</a></li>
         <li><span class="exec-t">+0.9s</span><span class="badge type-smoke">Smoke</span><a href="/pt/nuke/smoke-outside-from-t-spawn-t/">Smoke Fora (de Base TR)</a></li>

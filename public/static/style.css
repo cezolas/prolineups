@@ -573,3 +573,44 @@ h1 img.flag { width: 24px; height: 18px; vertical-align: 0; }
 .tm-heat use.h, .heat use.h { filter: drop-shadow(0 1px 1.5px rgba(0,0,0,.7)); }
 .hn { font: 700 13px system-ui, sans-serif; fill: #fff; paint-order: stroke; stroke: #000; stroke-width: 3px; pointer-events: none; }
 .tm-heat use.one, .heat use.one { opacity: .5; }
+
+/* quick search: "I want a smoke on X" */
+.quick .q-types { margin: 0 0 8px; flex-wrap: wrap; }
+.q-areas { display: flex; flex-wrap: wrap; gap: 6px; }
+.q-areas .chip { cursor: pointer; font: inherit; font-size: 13.5px; color: var(--text); }
+.q-areas .chip.on { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 18%, var(--panel)); }
+
+/* execution kit */
+.kit-share { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin: 6px 0 4px; }
+.kit { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+.kit-part { background: var(--panel2); border: 1px solid var(--line); border-radius: var(--radius); padding: 10px 12px; display: flex; flex-direction: column; gap: 6px; }
+.kit-head { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.kit-n { font-weight: 700; color: var(--accent); }
+.kit-t { font-variant-numeric: tabular-nums; color: var(--muted); font-size: 13px; }
+.kit-name { font-weight: 600; color: var(--text); text-decoration: none; } .kit-name:hover { color: var(--link); }
+.kit-part video { width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: 3px; }
+.kit-part code { display: block; background: var(--code); color: #e8eaee; padding: 6px 8px; border-radius: 3px; font-size: 12px; word-break: break-all; }
+.kit-part .btn { align-self: flex-start; }
+
+/* player roles */
+.role { display: inline-block; font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; padding: 1px 6px; border-radius: 2px; border: 1px solid; }
+.role-awp { color: #c7a3ff; } .role-entry { color: #ff8a6b; } .role-lurker { color: #7fd1b9; } .role-support { color: #8dbbe8; } .role-rifler { color: var(--muted); }
+.pl-card .role { align-self: flex-start; margin-top: 2px; }
+.ro-legend .chip { display: inline-flex; gap: 6px; align-items: center; }
+.ro-cols { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+.ro-col { background: var(--panel2); border: 1px solid var(--line); border-radius: var(--radius); padding: 10px 12px; }
+.ro-col h3 { margin: 0 0 6px; }
+
+/* weekly training plan */
+.plan-opts { position: static; } .plan-opts label { display: inline-flex; gap: 6px; align-items: center; font-size: 13px; color: var(--muted); }
+.plan-prog { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: center; margin: 4px 0 12px; max-width: 520px; }
+.plan-days { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
+.pd { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 0 12px 10px; }
+.pd h3 { margin: 0 -12px 8px; padding: 8px 12px; background: var(--head); color: var(--head-ink); font-size: 13px; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.pd ul { list-style: none; margin: 0; padding: 0; }
+.pd li { display: flex; flex-wrap: wrap; gap: 4px 6px; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--side-line); }
+.pd li:last-child { border-bottom: 0; }
+.pd label { display: flex; gap: 6px; align-items: center; flex: 1 1 100%; }
+.pd input { accent-color: var(--good); width: 16px; height: 16px; }
+.pd input:checked + a { text-decoration: line-through; color: var(--muted); }
+.pd a { color: var(--text); text-decoration: none; font-weight: 600; } .pd a:hover { color: var(--link); }

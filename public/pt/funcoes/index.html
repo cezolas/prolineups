@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Funções dos jogadores: o que cada um joga · Lineups Pro</title>
+<meta name="description" content="Quais granadas o entry, o suporte, o lurker e o AWP jogam em cada mapa, tiradas das partidas profissionais.">
+<link rel="canonical" href="https://prolineups.cezolas.workers.dev/pt/funcoes/">
+<link rel="alternate" hreflang="pt" href="https://prolineups.cezolas.workers.dev/pt/funcoes/">
+<link rel="alternate" hreflang="en" href="https://prolineups.cezolas.workers.dev/en/roles/">
+<link rel="alternate" hreflang="x-default" href="https://prolineups.cezolas.workers.dev/pt/funcoes/">
+<meta property="og:title" content="Funções dos jogadores: o que cada um joga">
+<meta property="og:description" content="Quais granadas o entry, o suporte, o lurker e o AWP jogam em cada mapa, tiradas das partidas profissionais.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://prolineups.cezolas.workers.dev/static/og-pt.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Lineups Pro">
+<meta name="theme-color" content="#0b0f15">
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
+  if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
+<link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/static/style.css">
+<script>window.I18N = {"copied": "Copiado!", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "open": "Abrir", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "throws_in": "lan\u00e7a em {s}s"}; window.LANG = "pt";</script>
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <button class="menu-btn" id="menuBtn" aria-label="Mostrar ou ocultar o menu" aria-controls="side" aria-expanded="false">☰</button>
+    <a class="logo" href="/pt/"><span class="logo-mark">◎</span> Lineups Pro</a>
+    <div class="search">
+      <input id="q" type="search" placeholder="Buscar mapa, jogador, time, smoke…" autocomplete="off" aria-label="Buscar">
+      <div id="results" class="results" hidden></div>
+    </div>
+    <nav class="langs" aria-label="Idioma">
+<a href="/pt/funcoes/" hreflang="pt" lang="pt" aria-current="true" title="Português">PT</a><a href="/en/roles/" hreflang="en" lang="en" title="English">EN</a>    </nav>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="Alternar modo claro/escuro" title="Alternar modo claro/escuro"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.6"/><g stroke-width="2.2" stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></g></svg></button>
+  </div>
+</header>
+<div class="layout">
+  <aside class="side" id="side" aria-label="Navegação">
+    <nav>
+      <a href="/pt/"><span>Início</span></a>
+      <a href="/pt/plano-de-treino/"><span>🎯 Plano de treino</span></a>
+      <a href="/pt/funcoes/" aria-current="page"><span>👥 Funções</span></a>
+      <a href="/pt/analises/"><span>▤ Análises</span></a>
+      <a href="/pt/minha-lista/"><span>★ Minha lista</span><span class="n" id="favCount"></span></a>
+      <details class="nav-g" data-k="types" open>
+        <summary class="nav-h"><span>Granadas</span></summary>
+<a href="/pt/smokes/"><span>Smokes</span><span class="n">104</span></a><a href="/pt/flashes/"><span>Flashes</span><span class="n">53</span></a><a href="/pt/molotovs/"><span>Molotovs</span><span class="n">53</span></a><a href="/pt/hes/"><span>HEs</span><span class="n">30</span></a>      </details>
+      <details class="nav-g" data-k="tactics" open>
+        <summary class="nav-h"><a href="/pt/taticas/">Táticas</a></summary>
+<a href="/pt/ancient/jogadas/"><span>Ancient</span><span class="n">36</span></a><a href="/pt/anubis/jogadas/"><span>Anubis</span><span class="n">13</span></a><a href="/pt/cache/jogadas/"><span>Cache</span><span class="n">37</span></a><a href="/pt/dust2/jogadas/"><span>Dust2</span><span class="n">40</span></a><a href="/pt/inferno/jogadas/"><span>Inferno</span><span class="n">17</span></a><a href="/pt/mirage/jogadas/"><span>Mirage</span><span class="n">44</span></a><a href="/pt/nuke/jogadas/"><span>Nuke</span><span class="n">32</span></a>      </details>
+      <details class="nav-g" data-k="maps" open>
+        <summary class="nav-h"><a href="/pt/mapas/">Mapas</a></summary>
+<a href="/pt/ancient/"><span>Ancient</span><span class="n">30</span></a><a href="/pt/anubis/"><span>Anubis</span><span class="n">20</span></a><a href="/pt/cache/"><span>Cache</span><span class="n">39</span></a><a href="/pt/dust2/"><span>Dust2</span><span class="n">39</span></a><a href="/pt/inferno/"><span>Inferno</span><span class="n">22</span></a><a href="/pt/mirage/"><span>Mirage</span><span class="n">57</span></a><a href="/pt/nuke/"><span>Nuke</span><span class="n">33</span></a>      </details>
+      <details class="nav-g" data-k="players" open>
+        <summary class="nav-h"><a href="/pt/jogadores/">Jogadores</a></summary>
+<a href="/pt/jogador/apex/"><span><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12">apEX</span></a><a href="/pt/jogador/art/"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">art</span></a><a href="/pt/jogador/coolio/"><span>coolio</span></a><a href="/pt/jogador/dem0n/"><span>dem0n</span></a><a href="/pt/jogador/donk/"><span><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12">donk</span></a><a href="/pt/jogador/dumau/"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">dumau</span></a><a href="/pt/jogador/dziugss/"><span><img class="flag" src="/static/flags/lt.svg" alt="Lituânia" title="Lituânia" width="16" height="12">dziugss</span></a><a href="/pt/jogador/fallen/"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">FalleN</span></a><a href="/pt/jogador/flamez/"><span><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12">flameZ</span></a><a href="/pt/jogador/heavygod/"><span><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12">HeavyGod</span></a><a href="/pt/jogador/hunter/"><span><img class="flag" src="/static/flags/ba.svg" alt="Bósnia" title="Bósnia" width="16" height="12">huNter</span></a><a href="/pt/jogador/karrigan/"><span><img class="flag" src="/static/flags/dk.svg" alt="Dinamarca" title="Dinamarca" width="16" height="12">karrigan</span></a><a class="more" href="/pt/jogadores/">ver todos (40)</a>      </details>
+      <details class="nav-g" data-k="teams" open>
+        <summary class="nav-h"><a href="/pt/times/">Times</a></summary>
+<a href="/pt/time/falcons/"><span><img class="flag" src="/static/flags/sa.svg" alt="Arábia Saudita" title="Arábia Saudita" width="16" height="12">Falcons</span></a><a href="/pt/time/furia/"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">FURIA</span></a><a href="/pt/time/fut/"><span><img class="flag" src="/static/flags/tr.svg" alt="Turquia" title="Turquia" width="16" height="12">FUT</span></a><a href="/pt/time/g2/"><span><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12">G2</span></a><a href="/pt/time/legacy/"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">Legacy</span></a><a href="/pt/time/mouz/"><span><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12">MOUZ</span></a><a href="/pt/time/spirit/"><span><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12">Spirit</span></a><a href="/pt/time/vitality/"><span><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12">Vitality</span></a>      </details>
+      <details class="nav-g" data-k="events" open>
+        <summary class="nav-h"><a href="/pt/torneios/">Torneios</a></summary>
+<a href="/pt/torneio/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      </details>
+      <div class="nav-sep"></div>
+      <a href="/pt/sobre/"><span>Sobre</span></a>
+    </nav>
+    <script>
+      /* collapsed sections are remembered in this browser; applied before paint */
+      (function () {
+        var c = []; try { c = JSON.parse(localStorage.getItem("navClosed") || "[]"); } catch (e) {}
+        document.querySelectorAll(".nav-g").forEach(function (d) {
+          if (c.indexOf(d.dataset.k) >= 0 && !d.querySelector("[aria-current]")) d.open = false;
+          d.addEventListener("toggle", function () {
+            var s = []; document.querySelectorAll(".nav-g").forEach(function (x) { if (!x.open) s.push(x.dataset.k); });
+            try { localStorage.setItem("navClosed", JSON.stringify(s)); } catch (e) {}
+          });
+        });
+      })();
+    </script>
+  </aside>
+  <div class="scrim" id="scrim" hidden></div>
+  <main class="content">
+<nav class="crumbs"><a href="/pt/">Início</a> › Funções</nav>
+<h1>Funções dos jogadores: o que cada um joga</h1>
+<p class="muted">A função de cada pro é calculada pelas demos (quem entra primeiro no bomb, quem joga mais utilitária, quem joga longe do time, quem mata de AWP). Use para saber o que é responsabilidade sua no time.</p>
+<div class="chips ro-legend"><span class="chip"><span class="role role-awp">AWP</span> <span class="muted small">atirador de AWP</span></span><span class="chip"><span class="role role-entry">Entry</span> <span class="muted small">primeiro a entrar no bomb</span></span><span class="chip"><span class="role role-lurker">Lurker</span> <span class="muted small">joga sozinho, longe do time</span></span><span class="chip"><span class="role role-support">Suporte</span> <span class="muted small">joga mais utilitária</span></span><span class="chip"><span class="role role-rifler">Rifler</span> <span class="muted small">fuzil, segue o time</span></span></div>
+
+<section>
+  <h2>Escolha o mapa</h2>
+  <div class="chips"><a class="chip" href="/pt/ancient/funcoes/">Ancient</a><a class="chip" href="/pt/anubis/funcoes/">Anubis</a><a class="chip" href="/pt/cache/funcoes/">Cache</a><a class="chip" href="/pt/dust2/funcoes/">Dust2</a><a class="chip" href="/pt/inferno/funcoes/">Inferno</a><a class="chip" href="/pt/mirage/funcoes/">Mirage</a><a class="chip" href="/pt/nuke/funcoes/">Nuke</a></div>
+</section>
+<section>
+  <h2>Função de cada jogador</h2>
+  <div class="table-wrap"><table class="uses an-table">
+    <thead><tr><th>Time</th><th>Jogador</th><th>Função</th><th>AWP</th><th>Entra 1º</th><th>Distância do time</th><th>Granadas por round</th></tr></thead>
+    <tbody>
+      <tr><td><img class="flag" src="/static/flags/sa.svg" alt="Arábia Saudita" title="Arábia Saudita" width="16" height="12"> <a href="/pt/time/falcons/">Falcons</a></td>
+        <td><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12"> <a href="/pt/jogador/m0nesy/">m0NESY</a></td>
+        <td><span class="role role-awp">AWP</span></td>
+        <td>55%</td><td>9%</td><td>464</td><td>2,0</td></tr>
+      <tr><td></td>
+        <td><img class="flag" src="/static/flags/dk.svg" alt="Dinamarca" title="Dinamarca" width="16" height="12"> <a href="/pt/jogador/karrigan/">karrigan</a></td>
+        <td><span class="role role-entry">Entry</span></td>
+        <td>0%</td><td>16%</td><td>532</td><td>2,3</td></tr>
+      <tr><td></td>
+        <td><img class="flag" src="/static/flags/ba.svg" alt="Bósnia" title="Bósnia" width="16" height="12"> <a href="/pt/jogador/niko/">NiKo</a></td>
+        <td><span class="role role-lurker">Lurker</span></td>
+        <td>0%</td><td>12%</td><td>779</td><td>2,2</td></tr>
+      <tr><td></td>
+        <td><img class="flag" src="/static/flags/dk.svg" alt="Dinamarca" title="Dinamarca" width="16" height="12"> <a href="/pt/jogador/teses/">TeSeS</a></td>
+        <td><span class="role role-support">Suporte</span></td>
+        <td>0%</td><td>12%</td><td>602</td><td>2,7</td></tr>
+      <tr><td></td>
+        <td><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12"> <a href="/pt/jogador/kyousuke/">kyousuke</a></td>
+        <td><span class="role role-rifler">Rifler</span></td>
+        <td>1%</td><td>9%</td><td>313</td><td>1,8</td></tr>
+      <tr><td><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"> <a href="/pt/time/furia/">FURIA</a></td>
+        <td><img class="flag" src="/static/flags/kz.svg" alt="Cazaquistão" title="Cazaquistão" width="16" height="12"> <a href="/pt/jogador/molodoy/">molodoy</a></td>
+        <td><span class="role role-awp">AWP</span></td>
+        <td>46%</td><td>0%</td><td>473</td><td>2,2</td></tr>
+      <tr><td></td>
+        <td><img class="flag" src="/static/flags/lv.svg" alt="Letônia" title="Letônia" width="16" height="12"> <a href="/pt/jogador/yekindar/">YEKINDAR</a></td>
+        <td><span class="role role-entry">Entry</span></td>
+        <td>0%</td><td>25%</td><td>467</td><td>2,2</td></tr>
+      <tr><td></td>
+        <td><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"> <a href="/pt/jogador/kscerato/">KSCERATO</a></td>
+        <td><span class="role role-lurker">Lurker</span></td>
+        <td>2%</td><td>4%</td><td>652</td><td>2,5</td></tr>
+      <tr><td></td>
+        <td><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"> <a href="/pt/jogador/yuurih/">yuurih</a></td>
+        <td><span class="role role-support">Suporte</span></td>
+        <td>0%</td><td>4%</td><td>456</td><td>2,7</td></tr>
+      <tr><td></td>
+        <td><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"> <a href="/pt/jogador/fallen/">FalleN</a></td>
+        <td><span class="role role-rifler">Rifler</span></td>
+        <td>0%</td><td>4%</td><td>569</td><td>2,3</td></tr>
+      <tr><td><img class="flag" src="/static/flags/tr.svg" alt="Turquia" title="Turquia" width="16" height="12"> <a href="/pt/time/fut/">FUT</a></td>
+        <td><img class="flag" src="/static/flags/es.svg" alt="Espanha" title="Espanha" width="16" height="12"> <a href="/pt/jogador/sunpayus/">SunPayus</a></td>
+        <td><span class="role role-awp">AWP</span></td>
+        <td>42%</td><td>12%</td><td>437</td><td>2,2</td></tr>
+      <tr><td></td>
+        <td><img class="flag" src="/static/flags/tr.svg" alt="Turquia" title="Turquia" width="16" height="12"> <a href="/pt/jogador/xfl0ud/">xfl0ud</a></td>
+        <td><span class="role role-entry">Entry</span></td>
+        <td>2%</td><td>7%</td><td>518</td><td>2,2</td></tr>
+      <tr><td></td>
+        <td><img class="flag" src="/static/flags/lt.svg" alt="Lituânia" title="Lituânia" width="16" height="12"> <a href="/pt/jogador/dziugss/">dziugss</a></td>
+        <td><span class="role role-lurker">Lurker</span></td>
+        <td>0%</td><td>7%</td><td>694</td><td>2,0</td></tr>
+      <tr><td></td>
+        <td> <a href="/pt/jogador/dem0n/">dem0n</a></td>
+        <td><span class="role role-support">Suporte</span></td>
+        <td>0%</td><td>4%</td><td>454</td><td>2,0</td></tr>
+      <tr><td></td>
+        <td> <a href="/pt/jogador/coolio/">coolio</a></td>
+        <td><span class="role role-rifler">Rifler</span></td>
+        <td>1%</td><td>7%</td><td>571</td><td>1,9</td></tr>
+      <tr><td><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"> <a href="/pt/time/g2/">G2</a></td>
+        <td><img class="flag" src="/static/flags/ua.svg" alt="Ucrânia" title="Ucrânia" width="16" height="12"> <a href="/pt/jogador/r1nkle/">r1nkle</a></td>
+        <td><span class="role role-awp">AWP</span></td>
+        <td>44%</td><td>0%</td><td>467</td><td>2,1</td></tr>
+      <tr><td></td>
+        <td><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12"> <a href="/pt/jogador/heavygod/">HeavyGod</a></td>
+        <td><span class="role role-entry">Entry</span></td>
+        <td>0%</td><td>15%</td><td>643</td><td>2,2</td></tr>
+      <tr><td></td>
+        <td><img class="flag" src="/static/flags/sk.svg" alt="Eslováquia" title="Eslováquia" width="16" height="12"> <a href="/pt/jogador/matys/">MATYS</a></td>
+        <td><span class="role role-lurker">Lurker</span></td>
+        <td>0%</td><td>12%</td><td>544</td><td>1,8</td></tr>
+      <tr><td></td>
+        <td><img class="flag" src="/static/flags/ba.svg" alt="Bósnia" title="Bósnia" width="16" height="12"> <a href="/pt/jogador/hunter/">huNter</a></td>
+        <td><span class="role role-support">Suporte</span></td>
+        <td>1%</td><td>10%</td><td>493</td><td>2,6</td></tr>
+      <tr><td></td>
+        <td><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12"> <a href="/pt/jogador/nertz/">NertZ</a></td>
+        <td><span class="role role-rifler">Rifler</span></td>
+        <td>5%</td><td>9%</td><td>457</td><td>2,1</td></tr>
+      <tr><td><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"> <a href="/pt/time/legacy/">Legacy</a></td>
+        <td><img class="flag" src="/static/flags/ar.svg" alt="Argentina" title="Argentina" width="16" height="12"> <a href="/pt/jogador/try/">try</a></td>
+        <td><span class="role role-awp">AWP</span></td>
+        <td>46%</td><td>5%</td><td>578</td><td>1,6</td></tr>
+      <tr><td></td>
+        <td><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"> <a href="/pt/jogador/dumau/">dumau</a></td>
+        <td><span class="role role-entry">Entry</span></td>
+        <td>0%</td><td>14%</td><td>458</td><td>1,8</td></tr>
+      <tr><td></td>
+        <td> <a href="/pt/jogador/ksloks/">ksloks</a></td>
+        <td><span class="role role-lurker">Lurker</span></td>
+        <td>0%</td><td>10%</td><td>749</td><td>1,8</td></tr>
+      <tr><td></td>
+        <td><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"> <a href="/pt/jogador/art/">art</a></td>
+        <td><span class="role role-support">Suporte</span></td>
+        <td>0%</td><td>10%</td><td>516</td><td>2,6</td></tr>
+      <tr><td></td>
+        <td><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"> <a href="/pt/jogador/latto/">latto</a></td>
+        <td><span class="role role-rifler">Rifler</span></td>
+        <td>0%</td><td>5%</td><td>501</td><td>2,6</td></tr>
+      <tr><td><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"> <a href="/pt/time/mouz/">MOUZ</a></td>
+        <td><img class="flag" src="/static/flags/hu.svg" alt="Hungria" title="Hungria" width="16" height="12"> <a href="/pt/jogador/torzsi/">torzsi</a></td>
+        <td><span class="role role-awp">AWP</span></td>
+        <td>51%</td><td>5%</td><td>415</td><td>2,1</td></tr>
+      <tr><td></td>
+        <td><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12"> <a href="/pt/jogador/xertion/">xertioN</a></td>
+        <td><span class="role role-entry">Entry</span></td>
+        <td>0%</td><td>18%</td><td>438</td><td>2,5</td></tr>
+      <tr><td></td>
+        <td><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12"> <a href="/pt/jogador/spinx/">Spinx</a></td>
+        <td><span class="role role-lurker">Lurker</span></td>
+        <td>0%</td><td>10%</td><td>724</td><td>2,1</td></tr>
+      <tr><td></td>
+        <td> <a href="/pt/jogador/pr/">PR</a></td>
+        <td><span class="role role-support">Suporte</span></td>
+        <td>0%</td><td>8%</td><td>578</td><td>2,4</td></tr>
+      <tr><td></td>
+        <td> <a href="/pt/jogador/xelex/">xelex</a></td>
+        <td><span class="role role-rifler">Rifler</span></td>
+        <td>0%</td><td>15%</td><td>388</td><td>1,8</td></tr>
+      <tr><td><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12"> <a href="/pt/time/spirit/">Spirit</a></td>
+        <td><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12"> <a href="/pt/jogador/sh1ro/">sh1ro</a></td>
+        <td><span class="role role-awp">AWP</span></td>
+        <td>29%</td><td>5%</td><td>437</td><td>2,1</td></tr>
+      <tr><td></td>
+        <td><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12"> <a href="/pt/jogador/tn1r/">tN1R</a></td>
+        <td><span class="role role-entry">Entry</span></td>
+        <td>0%</td><td>13%</td><td>556</td><td>1,9</td></tr>
+      <tr><td></td>
+        <td><img class="flag" src="/static/flags/ua.svg" alt="Ucrânia" title="Ucrânia" width="16" height="12"> <a href="/pt/jogador/zont1x/">zont1x</a></td>
+        <td><span class="role role-lurker">Lurker</span></td>
+        <td>2%</td><td>8%</td><td>851</td><td>2,1</td></tr>
+      <tr><td></td>
+        <td><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12"> <a href="/pt/jogador/magixx/">magixx</a></td>
+        <td><span class="role role-support">Suporte</span></td>
+        <td>2%</td><td>13%</td><td>468</td><td>2,7</td></tr>
+      <tr><td></td>
+        <td><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12"> <a href="/pt/jogador/donk/">donk</a></td>
+        <td><span class="role role-rifler">Rifler</span></td>
+        <td>0%</td><td>5%</td><td>478</td><td>1,9</td></tr>
+      <tr><td><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12"> <a href="/pt/time/vitality/">Vitality</a></td>
+        <td><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12"> <a href="/pt/jogador/zywoo/">ZywOo</a></td>
+        <td><span class="role role-awp">AWP</span></td>
+        <td>41%</td><td>4%</td><td>410</td><td>1,8</td></tr>
+      <tr><td></td>
+        <td><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12"> <a href="/pt/jogador/flamez/">flameZ</a></td>
+        <td><span class="role role-entry">Entry</span></td>
+        <td>0%</td><td>17%</td><td>455</td><td>2,6</td></tr>
+      <tr><td></td>
+        <td><img class="flag" src="/static/flags/ee.svg" alt="Estônia" title="Estônia" width="16" height="12"> <a href="/pt/jogador/ropz/">ropz</a></td>
+        <td><span class="role role-lurker">Lurker</span></td>
+        <td>0%</td><td>4%</td><td>932</td><td>1,7</td></tr>
+      <tr><td></td>
+        <td><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12"> <a href="/pt/jogador/apex/">apEX</a></td>
+        <td><span class="role role-support">Suporte</span></td>
+        <td>0%</td><td>9%</td><td>545</td><td>2,4</td></tr>
+      <tr><td></td>
+        <td><img class="flag" src="/static/flags/gb.svg" alt="Reino Unido" title="Reino Unido" width="16" height="12"> <a href="/pt/jogador/mezii/">mezii</a></td>
+        <td><span class="role role-rifler">Rifler</span></td>
+        <td>0%</td><td>9%</td><td>507</td><td>2,2</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted small">AWP = % dos abates com AWP (função se ≥25%); Entra 1º = % dos rounds de TR com plant em que foi o primeiro no bomb; Distância do time = média até o colega mais próximo (unidades do jogo) entre 25 e 45 s dos rounds de TR. Em cada time: AWP, depois Entry, Lurker e Suporte; os outros são Riflers.</p>
+</section>
+  </main>
+</div>
+<footer class="foot">
+  <div class="foot-in">
+    <p>Dados extraídos das demos oficiais das partidas. Demos: <a href="https://www.hltv.org/" rel="noopener" target="_blank">HLTV.org</a>.</p>
+    <p>Projeto de fãs, gratuito. Não afiliado à Valve, HLTV, aos times ou aos organizadores dos torneios. Counter-Strike é marca da Valve Corporation.</p>
+    <p><a href="/pt/sobre/">Sobre e créditos</a> · atualizado em 2026-11-14</p>
+  </div>
+</footer>
+<script src="/static/app.js" defer></script>
+</body>
+</html>
