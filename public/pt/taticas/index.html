@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Táticas dos pros: entradas e execuções · Lineups Pro</title>
+<meta name="description" content="Como os times profissionais de CS2 entram em cada bomb: replay 2D do round inteiro, POV da entrada e as granadas usadas, mapa por mapa.">
+<link rel="canonical" href="https://prolineups.cezolas.workers.dev/pt/taticas/">
+<link rel="alternate" hreflang="pt" href="https://prolineups.cezolas.workers.dev/pt/taticas/">
+<link rel="alternate" hreflang="en" href="https://prolineups.cezolas.workers.dev/en/tactics/">
+<link rel="alternate" hreflang="x-default" href="https://prolineups.cezolas.workers.dev/pt/taticas/">
+<meta property="og:title" content="Táticas dos pros: entradas e execuções">
+<meta property="og:description" content="Como os times profissionais de CS2 entram em cada bomb: replay 2D do round inteiro, POV da entrada e as granadas usadas, mapa por mapa.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://prolineups.cezolas.workers.dev/static/og-pt.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Lineups Pro">
+<meta name="theme-color" content="#0b0f15">
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light"; } catch (e) {}</script>
+<link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/static/style.css">
+<script>window.I18N = {"copied": "Copiado!", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "throws_in": "lan\u00e7a em {s}s"}; window.LANG = "pt";</script>
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-controls="side" aria-expanded="false">☰</button>
+    <a class="logo" href="/pt/"><span class="logo-mark">◎</span> Lineups Pro</a>
+    <div class="search">
+      <input id="q" type="search" placeholder="Buscar mapa, jogador, time, smoke…" autocomplete="off" aria-label="Buscar">
+      <div id="results" class="results" hidden></div>
+    </div>
+    <nav class="langs" aria-label="Idioma">
+<a href="/pt/taticas/" hreflang="pt" lang="pt" aria-current="true" title="Português">PT</a><a href="/en/tactics/" hreflang="en" lang="en" title="English">EN</a>    </nav>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="Alternar modo claro/escuro" title="Alternar modo claro/escuro"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.6"/><g stroke-width="2.2" stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></g></svg></button>
+  </div>
+</header>
+<div class="layout">
+  <aside class="side" id="side" aria-label="Navegação">
+    <nav>
+      <a href="/pt/"><span>Início</span></a>
+      <a href="/pt/minha-lista/"><span>★ Minha lista</span><span class="n" id="favCount"></span></a>
+      <details class="nav-g" data-k="types" open>
+        <summary class="nav-h"><span>Granadas</span></summary>
+<a href="/pt/smokes/"><span>Smokes</span><span class="n">104</span></a><a href="/pt/flashes/"><span>Flashes</span><span class="n">53</span></a><a href="/pt/molotovs/"><span>Molotovs</span><span class="n">53</span></a><a href="/pt/hes/"><span>HEs</span><span class="n">30</span></a>      </details>
+      <details class="nav-g" data-k="tactics" open>
+        <summary class="nav-h"><a href="/pt/taticas/">Táticas</a></summary>
+<a href="/pt/ancient/jogadas/"><span>Ancient</span><span class="n">36</span></a><a href="/pt/anubis/jogadas/"><span>Anubis</span><span class="n">13</span></a><a href="/pt/cache/jogadas/"><span>Cache</span><span class="n">37</span></a><a href="/pt/dust2/jogadas/"><span>Dust2</span><span class="n">40</span></a><a href="/pt/inferno/jogadas/"><span>Inferno</span><span class="n">17</span></a><a href="/pt/mirage/jogadas/"><span>Mirage</span><span class="n">44</span></a><a href="/pt/nuke/jogadas/"><span>Nuke</span><span class="n">32</span></a>      </details>
+      <details class="nav-g" data-k="maps" open>
+        <summary class="nav-h"><a href="/pt/mapas/">Mapas</a></summary>
+<a href="/pt/ancient/"><span>Ancient</span><span class="n">30</span></a><a href="/pt/anubis/"><span>Anubis</span><span class="n">20</span></a><a href="/pt/cache/"><span>Cache</span><span class="n">39</span></a><a href="/pt/dust2/"><span>Dust2</span><span class="n">39</span></a><a href="/pt/inferno/"><span>Inferno</span><span class="n">22</span></a><a href="/pt/mirage/"><span>Mirage</span><span class="n">57</span></a><a href="/pt/nuke/"><span>Nuke</span><span class="n">33</span></a>      </details>
+      <details class="nav-g" data-k="players" open>
+        <summary class="nav-h"><a href="/pt/jogadores/">Jogadores</a></summary>
+<a href="/pt/jogador/apex/"><span>apEX</span></a><a href="/pt/jogador/art/"><span>art</span></a><a href="/pt/jogador/coolio/"><span>coolio</span></a><a href="/pt/jogador/dem0n/"><span>dem0n</span></a><a href="/pt/jogador/donk/"><span>donk</span></a><a href="/pt/jogador/dumau/"><span>dumau</span></a><a href="/pt/jogador/dziugss/"><span>dziugss</span></a><a href="/pt/jogador/fallen/"><span>FalleN</span></a><a href="/pt/jogador/flamez/"><span>flameZ</span></a><a href="/pt/jogador/heavygod/"><span>HeavyGod</span></a><a href="/pt/jogador/hunter/"><span>huNter</span></a><a href="/pt/jogador/karrigan/"><span>karrigan</span></a><a class="more" href="/pt/jogadores/">ver todos (40)</a>      </details>
+      <details class="nav-g" data-k="teams" open>
+        <summary class="nav-h"><a href="/pt/times/">Times</a></summary>
+<a href="/pt/time/falcons/"><span>Falcons</span></a><a href="/pt/time/furia/"><span>FURIA</span></a><a href="/pt/time/fut/"><span>FUT</span></a><a href="/pt/time/g2/"><span>G2</span></a><a href="/pt/time/legacy/"><span>Legacy</span></a><a href="/pt/time/mouz/"><span>MOUZ</span></a><a href="/pt/time/spirit/"><span>Spirit</span></a><a href="/pt/time/vitality/"><span>Vitality</span></a>      </details>
+      <details class="nav-g" data-k="events" open>
+        <summary class="nav-h"><a href="/pt/torneios/">Torneios</a></summary>
+<a href="/pt/torneio/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      </details>
+      <div class="nav-sep"></div>
+      <a href="/pt/sobre/"><span>Sobre</span></a>
+    </nav>
+    <script>
+      /* collapsed sections are remembered in this browser; applied before paint */
+      (function () {
+        var c = []; try { c = JSON.parse(localStorage.getItem("navClosed") || "[]"); } catch (e) {}
+        document.querySelectorAll(".nav-g").forEach(function (d) {
+          if (c.indexOf(d.dataset.k) >= 0 && !d.querySelector("[aria-current]")) d.open = false;
+          d.addEventListener("toggle", function () {
+            var s = []; document.querySelectorAll(".nav-g").forEach(function (x) { if (!x.open) s.push(x.dataset.k); });
+            try { localStorage.setItem("navClosed", JSON.stringify(s)); } catch (e) {}
+          });
+        });
+      })();
+    </script>
+  </aside>
+  <div class="scrim" id="scrim" hidden></div>
+  <main class="content">
+<nav class="crumbs"><a href="/pt/">Início</a> › Táticas</nav>
+<h1>Táticas dos pros: entradas e execuções</h1>
+<p class="muted">Entradas no bomb (rounds do TR que terminaram em plant) e execuções (granadas que o time joga junto), tiradas das partidas profissionais. O número no menu é a quantidade de rounds com replay.</p>
+<div class="tac-grid">
+  <section class="tac-map">
+    <a class="tac-head" href="/pt/ancient/jogadas/">
+      <img src="/static/radars/ancient.webp" alt="" loading="lazy" width="64" height="64">
+      <span><b>Ancient</b><br><span class="muted small">36 rounds · 8 entradas · 9 execuções</span></span>
+    </a>
+    <ul class="tac-list">
+      <li><a href="/pt/ancient/jogadas/g2-a/">▶ Entrada A da G2</a>
+        <span class="muted small">9 rounds · round ganho em 89%</span></li>
+      <li><a href="/pt/ancient/jogadas/mouz-a/">▶ Entrada A da MOUZ</a>
+        <span class="muted small">7 rounds · round ganho em 86%</span></li>
+      <li><a href="/pt/ancient/jogadas/g2-b/">▶ Entrada B da G2</a>
+        <span class="muted small">6 rounds · round ganho em 67%</span></li>
+      <li><a href="/pt/ancient/jogadas/spirit-a/">▶ Entrada A da Spirit</a>
+        <span class="muted small">6 rounds · round ganho em 83%</span></li>
+      <li><a href="/pt/ancient/jogadas/spirit-b/">▶ Entrada B da Spirit</a>
+        <span class="muted small">4 rounds · round ganho em 100%</span></li>
+    </ul>
+    <div class="tac-more">
+<a href="/pt/ancient/jogadas/">ver todos (8)</a><a href="/pt/ancient/#execucoes">Execuções dos pros (9)</a>    </div>
+  </section>
+  <section class="tac-map">
+    <a class="tac-head" href="/pt/anubis/jogadas/">
+      <img src="/static/radars/anubis.webp" alt="" loading="lazy" width="64" height="64">
+      <span><b>Anubis</b><br><span class="muted small">13 rounds · 4 entradas</span></span>
+    </a>
+    <ul class="tac-list">
+      <li><a href="/pt/anubis/jogadas/falcons-a/">▶ Entrada A da Falcons</a>
+        <span class="muted small">4 rounds · round ganho em 100%</span></li>
+      <li><a href="/pt/anubis/jogadas/g2-b/">▶ Entrada B da G2</a>
+        <span class="muted small">4 rounds · round ganho em 100%</span></li>
+      <li><a href="/pt/anubis/jogadas/falcons-b/">▶ Entrada B da Falcons</a>
+        <span class="muted small">3 rounds · round ganho em 100%</span></li>
+      <li><a href="/pt/anubis/jogadas/g2-a/">▶ Entrada A da G2</a>
+        <span class="muted small">2 rounds · round ganho em 100%</span></li>
+    </ul>
+    <div class="tac-more">
+    </div>
+  </section>
+  <section class="tac-map">
+    <a class="tac-head" href="/pt/cache/jogadas/">
+      <img src="/static/radars/cache.webp" alt="" loading="lazy" width="64" height="64">
+      <span><b>Cache</b><br><span class="muted small">37 rounds · 8 entradas · 4 execuções</span></span>
+    </a>
+    <ul class="tac-list">
+      <li><a href="/pt/cache/jogadas/mouz-a/">▶ Entrada A da MOUZ</a>
+        <span class="muted small">9 rounds · round ganho em 67%</span></li>
+      <li><a href="/pt/cache/jogadas/mouz-b/">▶ Entrada B da MOUZ</a>
+        <span class="muted small">7 rounds · round ganho em 71%</span></li>
+      <li><a href="/pt/cache/jogadas/fut-b/">▶ Entrada B da FUT</a>
+        <span class="muted small">6 rounds · round ganho em 83%</span></li>
+      <li><a href="/pt/cache/jogadas/fut-a/">▶ Entrada A da FUT</a>
+        <span class="muted small">5 rounds · round ganho em 100%</span></li>
+      <li><a href="/pt/cache/jogadas/spirit-a/">▶ Entrada A da Spirit</a>
+        <span class="muted small">3 rounds · round ganho em 67%</span></li>
+    </ul>
+    <div class="tac-more">
+<a href="/pt/cache/jogadas/">ver todos (8)</a><a href="/pt/cache/#execucoes">Execuções dos pros (4)</a>    </div>
+  </section>
+  <section class="tac-map">
+    <a class="tac-head" href="/pt/dust2/jogadas/">
+      <img src="/static/radars/dust2.webp" alt="" loading="lazy" width="64" height="64">
+      <span><b>Dust2</b><br><span class="muted small">40 rounds · 10 entradas · 2 execuções</span></span>
+    </a>
+    <ul class="tac-list">
+      <li><a href="/pt/dust2/jogadas/falcons-b/">▶ Entrada B da Falcons</a>
+        <span class="muted small">7 rounds · round ganho em 86%</span></li>
+      <li><a href="/pt/dust2/jogadas/falcons-a/">▶ Entrada A da Falcons</a>
+        <span class="muted small">6 rounds · round ganho em 100%</span></li>
+      <li><a href="/pt/dust2/jogadas/vitality-a/">▶ Entrada A da Vitality</a>
+        <span class="muted small">6 rounds · round ganho em 50%</span></li>
+      <li><a href="/pt/dust2/jogadas/g2-a/">▶ Entrada A da G2</a>
+        <span class="muted small">5 rounds · round ganho em 80%</span></li>
+      <li><a href="/pt/dust2/jogadas/furia-a/">▶ Entrada A da FURIA</a>
+        <span class="muted small">3 rounds · round ganho em 67%</span></li>
+    </ul>
+    <div class="tac-more">
+<a href="/pt/dust2/jogadas/">ver todos (10)</a><a href="/pt/dust2/#execucoes">Execuções dos pros (2)</a>    </div>
+  </section>
+  <section class="tac-map">
+    <a class="tac-head" href="/pt/inferno/jogadas/">
+      <img src="/static/radars/inferno.webp" alt="" loading="lazy" width="64" height="64">
+      <span><b>Inferno</b><br><span class="muted small">17 rounds · 7 entradas · 1 execução</span></span>
+    </a>
+    <ul class="tac-list">
+      <li><a href="/pt/inferno/jogadas/g2-b/">▶ Entrada B da G2</a>
+        <span class="muted small">4 rounds · round ganho em 100%</span></li>
+      <li><a href="/pt/inferno/jogadas/furia-b/">▶ Entrada B da FURIA</a>
+        <span class="muted small">3 rounds · round ganho em 33%</span></li>
+      <li><a href="/pt/inferno/jogadas/g2-a/">▶ Entrada A da G2</a>
+        <span class="muted small">3 rounds · round ganho em 100%</span></li>
+      <li><a href="/pt/inferno/jogadas/mouz-a/">▶ Entrada A da MOUZ</a>
+        <span class="muted small">3 rounds · round ganho em 67%</span></li>
+      <li><a href="/pt/inferno/jogadas/mouz-b/">▶ Entrada B da MOUZ</a>
+        <span class="muted small">2 rounds · round ganho em 0%</span></li>
+    </ul>
+    <div class="tac-more">
+<a href="/pt/inferno/jogadas/">ver todos (7)</a><a href="/pt/inferno/#execucoes">Execuções dos pros (1)</a>    </div>
+  </section>
+  <section class="tac-map">
+    <a class="tac-head" href="/pt/mirage/jogadas/">
+      <img src="/static/radars/mirage.webp" alt="" loading="lazy" width="64" height="64">
+      <span><b>Mirage</b><br><span class="muted small">44 rounds · 14 entradas · 5 execuções</span></span>
+    </a>
+    <ul class="tac-list">
+      <li><a href="/pt/mirage/jogadas/mouz-a/">▶ Entrada A da MOUZ</a>
+        <span class="muted small">11 rounds · round ganho em 64%</span></li>
+      <li><a href="/pt/mirage/jogadas/g2-b/">▶ Entrada B da G2</a>
+        <span class="muted small">4 rounds · round ganho em 100%</span></li>
+      <li><a href="/pt/mirage/jogadas/legacy-a/">▶ Entrada A da Legacy</a>
+        <span class="muted small">4 rounds · round ganho em 75%</span></li>
+      <li><a href="/pt/mirage/jogadas/vitality-a/">▶ Entrada A da Vitality</a>
+        <span class="muted small">4 rounds · round ganho em 0%</span></li>
+      <li><a href="/pt/mirage/jogadas/fut-b/">▶ Entrada B da FUT</a>
+        <span class="muted small">3 rounds · round ganho em 33%</span></li>
+    </ul>
+    <div class="tac-more">
+<a href="/pt/mirage/jogadas/">ver todos (14)</a><a href="/pt/mirage/#execucoes">Execuções dos pros (5)</a>    </div>
+  </section>
+  <section class="tac-map">
+    <a class="tac-head" href="/pt/nuke/jogadas/">
+      <img src="/static/radars/nuke.webp" alt="" loading="lazy" width="64" height="64">
+      <span><b>Nuke</b><br><span class="muted small">32 rounds · 8 entradas · 1 execução</span></span>
+    </a>
+    <ul class="tac-list">
+      <li><a href="/pt/nuke/jogadas/mouz-b/">▶ Entrada B da MOUZ</a>
+        <span class="muted small">13 rounds · round ganho em 92%</span></li>
+      <li><a href="/pt/nuke/jogadas/spirit-a/">▶ Entrada A da Spirit</a>
+        <span class="muted small">5 rounds · round ganho em 100%</span></li>
+      <li><a href="/pt/nuke/jogadas/spirit-b/">▶ Entrada B da Spirit</a>
+        <span class="muted small">4 rounds · round ganho em 50%</span></li>
+      <li><a href="/pt/nuke/jogadas/g2-b/">▶ Entrada B da G2</a>
+        <span class="muted small">3 rounds · round ganho em 67%</span></li>
+      <li><a href="/pt/nuke/jogadas/mouz-a/">▶ Entrada A da MOUZ</a>
+        <span class="muted small">3 rounds · round ganho em 100%</span></li>
+    </ul>
+    <div class="tac-more">
+<a href="/pt/nuke/jogadas/">ver todos (8)</a><a href="/pt/nuke/#execucoes">Execuções dos pros (1)</a>    </div>
+  </section>
+</div>
+  </main>
+</div>
+<footer class="foot">
+  <div class="foot-in">
+    <p>Dados extraídos das demos oficiais das partidas. Demos: <a href="https://www.hltv.org/" rel="noopener" target="_blank">HLTV.org</a>.</p>
+    <p>Projeto de fãs, gratuito. Não afiliado à Valve, HLTV, aos times ou aos organizadores dos torneios. Counter-Strike é marca da Valve Corporation.</p>
+    <p><a href="/pt/sobre/">Sobre e créditos</a> · atualizado em 2026-11-14</p>
+  </div>
+</footer>
+<script src="/static/app.js" defer></script>
+</body>
+</html>

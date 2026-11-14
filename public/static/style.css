@@ -409,3 +409,16 @@ table.uses { font-size: 13px; }
 a.card.is-fav { box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--accent) 60%, transparent); }
 a.card.is-fav h3::before { content: "★ "; color: var(--accent); }
 .fav-row a.row-name { color: var(--text); text-decoration: none; } .fav-row a.row-name:hover { color: var(--link); }
+
+/* tactics overview */
+.tac-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin-top: 12px; }
+.tac-map { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 0 0 8px; }
+.tac-head { display: flex; gap: 10px; align-items: center; padding: 10px 12px; background: var(--head); border-bottom: 1px solid var(--line);
+  color: var(--text); text-decoration: none; }
+.tac-head img { width: 48px; height: 48px; border-radius: 3px; background: var(--radar-bg); }
+.tac-head:hover b { color: var(--link); }
+.tac-list { list-style: none; margin: 0; padding: 4px 12px; }
+.tac-list li { display: flex; flex-direction: column; padding: 6px 0; border-bottom: 1px solid var(--side-line); }
+.tac-list li:last-child { border-bottom: 0; }
+.tac-list a { color: var(--text); text-decoration: none; font-weight: 600; } .tac-list a:hover { color: var(--link); }
+.tac-more { display: flex; gap: 14px; padding: 2px 12px; font-size: 13px; }
