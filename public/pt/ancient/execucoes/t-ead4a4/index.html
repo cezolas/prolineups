@@ -28,8 +28,8 @@
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
   if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg?v=714ec3503f" type="image/svg+xml">
-<link rel="stylesheet" href="/static/style.css?v=a3bab22373">
-<script>window.I18N = {"copied": "Copiado!", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "open": "Abrir", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "throws_in": "lan\u00e7a em {s}s"}; window.LANG = "pt";</script>
+<link rel="stylesheet" href="/static/style.css?v=10c9da3914">
+<script>window.I18N = {"copied": "Copiado!", "dec": ",", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "open": "Abrir", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "throws_in": "lan\u00e7a em {s}s", "v_back": "Voltar 2 segundos", "v_frame_back": "Quadro anterior", "v_frame_fwd": "Pr\u00f3ximo quadro", "v_fwd": "Avan\u00e7ar 2 segundos", "v_play": "Reproduzir / pausar"}; window.LANG = "pt";</script>
 </head>
 <body>
 <header class="top">
@@ -113,7 +113,7 @@
         <span class="badge type-smoke">Smoke</span><span class="badge diff-3">Difícil</span>
       </div>
       <a class="kit-name" href="/pt/ancient/smoke-house-from-t-spawn-t/">Smoke Casa (de Base TR)</a>
-      <video src="/media/mouz-vs-g2-m2-ancient/194274-76561198355739212.mp4" poster="/media/mouz-vs-g2-m2-ancient/194274-76561198355739212.jpg" muted loop playsinline controls preload="none"></video>
+      <video data-tools src="/media/mouz-vs-g2-m2-ancient/194274-76561198355739212.mp4" poster="/media/mouz-vs-g2-m2-ancient/194274-76561198355739212.jpg" muted loop playsinline controls preload="none"></video>
       <div class="muted small">Posição: Base TR · jump throw · andando · clique esquerdo</div>
       <code id="kc-1">sv_cheats 1; setpos -583.926 -2284.830 -125.484; setang -34.3045 88.6356 0</code>
       <button class="btn small" data-copy="#kc-1">copiar comando</button>
@@ -125,7 +125,7 @@
         <span class="badge type-smoke">Smoke</span><span class="badge diff-3">Difícil</span>
       </div>
       <a class="kit-name" href="/pt/ancient/smoke-mid-from-t-spawn-t/">Smoke Meio (de Base TR)</a>
-      <video src="/media/spirit-vs-fut-m3-ancient/142199-76561198079275281.mp4" poster="/media/spirit-vs-fut-m3-ancient/142199-76561198079275281.jpg" muted loop playsinline controls preload="none"></video>
+      <video data-tools src="/media/spirit-vs-fut-m3-ancient/142199-76561198079275281.mp4" poster="/media/spirit-vs-fut-m3-ancient/142199-76561198079275281.jpg" muted loop playsinline controls preload="none"></video>
       <div class="muted small">Posição: Base TR · jump throw · andando · clique esquerdo</div>
       <code id="kc-2">sv_cheats 1; setpos -735.969 -2135.969 -130.844; setang -27.7535 93.5016 0</code>
       <button class="btn small" data-copy="#kc-2">copiar comando</button>
@@ -137,7 +137,7 @@
         <span class="badge type-molotov">Molotov</span><span class="badge diff-3">Difícil</span>
       </div>
       <a class="kit-name" href="/pt/ancient/molotov-b-site-from-ruins-t/">Molotov Bomb B (de Ruínas)</a>
-      <video src="/media/furia-vs-falcons-m1-ancient/304228-76561198041683378.mp4" poster="/media/furia-vs-falcons-m1-ancient/304228-76561198041683378.jpg" muted loop playsinline controls preload="none"></video>
+      <video data-tools src="/media/furia-vs-falcons-m1-ancient/304228-76561198041683378.mp4" poster="/media/furia-vs-falcons-m1-ancient/304228-76561198041683378.jpg" muted loop playsinline controls preload="none"></video>
       <div class="muted small">Posição: Ruínas · correndo · clique esquerdo</div>
       <code id="kc-3">sv_cheats 1; setpos 997.521 -1068.806 4.214; setang -10.8902 50.6641 0</code>
       <button class="btn small" data-copy="#kc-3">copiar comando</button>
@@ -160,6 +160,7 @@
 </footer>
 <script src="/static/app.js?v=8b5d4be2d7" defer></script>
 <script src="/static/accounts.js?v=9e0472e7bb" defer></script>
+<script src="/static/video.js?v=59be808746" defer></script>
 <script>
 document.addEventListener("click", function (e) {
   var b = e.target.closest("[data-copy-url]"); if (!b) return;

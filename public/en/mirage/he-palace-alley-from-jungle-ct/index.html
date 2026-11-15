@@ -30,8 +30,8 @@
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
   if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg?v=714ec3503f" type="image/svg+xml">
-<link rel="stylesheet" href="/static/style.css?v=a3bab22373">
-<script>window.I18N = {"copied": "Copied!", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "open": "Open", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s"}; window.LANG = "en";</script>
+<link rel="stylesheet" href="/static/style.css?v=10c9da3914">
+<script>window.I18N = {"copied": "Copied!", "dec": ".", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "open": "Open", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s", "v_back": "Back 2 seconds", "v_frame_back": "Previous frame", "v_frame_fwd": "Next frame", "v_fwd": "Forward 2 seconds", "v_play": "Play / pause"}; window.LANG = "en";</script>
 </head>
 <body>
 <header class="top">
@@ -97,7 +97,7 @@
 <div class="lp-hero">
   <div class="media-col">
     <figure class="clip">
-      <video src="/media/g2-vs-falcons-m2-mirage/65640-76561198041683378.mp4" poster="/media/g2-vs-falcons-m2-mirage/65640-76561198041683378.jpg"             muted loop playsinline autoplay controls preload="metadata" aria-label="NiKo&#39;s view throwing HE Palace Alley (from Jungle)"></video>
+      <video data-tools src="/media/g2-vs-falcons-m2-mirage/65640-76561198041683378.mp4" poster="/media/g2-vs-falcons-m2-mirage/65640-76561198041683378.jpg"             muted loop playsinline autoplay controls preload="metadata" aria-label="NiKo&#39;s view throwing HE Palace Alley (from Jungle)"></video>
       <figcaption class="muted">NiKo&#39;s view, recorded from the match demo.</figcaption>
     </figure>
   </div>
@@ -250,5 +250,6 @@ He was moving, so the result depends on your timing.</p>
 </footer>
 <script src="/static/app.js?v=8b5d4be2d7" defer></script>
 <script src="/static/accounts.js?v=9e0472e7bb" defer></script>
+<script src="/static/video.js?v=59be808746" defer></script>
 <script src="/static/replay.js?v=65e2dac786" defer></script></body>
 </html>

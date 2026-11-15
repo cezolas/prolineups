@@ -28,8 +28,8 @@
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
   if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg?v=714ec3503f" type="image/svg+xml">
-<link rel="stylesheet" href="/static/style.css?v=a3bab22373">
-<script>window.I18N = {"copied": "Copiado!", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "open": "Abrir", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "throws_in": "lan\u00e7a em {s}s"}; window.LANG = "pt";</script>
+<link rel="stylesheet" href="/static/style.css?v=10c9da3914">
+<script>window.I18N = {"copied": "Copiado!", "dec": ",", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "open": "Abrir", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "throws_in": "lan\u00e7a em {s}s", "v_back": "Voltar 2 segundos", "v_frame_back": "Quadro anterior", "v_frame_fwd": "Pr\u00f3ximo quadro", "v_fwd": "Avan\u00e7ar 2 segundos", "v_play": "Reproduzir / pausar"}; window.LANG = "pt";</script>
 </head>
 <body>
 <header class="top">
@@ -106,6 +106,14 @@
           <span class="muted small">3 usos de entrys</span></a></li>
         <li><a href="/pt/dust2/smoke-mid-doors-from-outside-long-t/"><span class="start-name">Smoke Portas do Meio (de Fora do Fundo)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-2">Médio</span>
           <span class="muted small">9 usos de entrys</span></a></li>
+        <li><a href="/pt/dust2/smoke-under-a-from-long-doors-t/"><span class="start-name">Smoke Rampa do CT (de Portas do Fundo)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-2">Médio</span>
+          <span class="muted small">5 usos de entrys</span></a></li>
+        <li><a href="/pt/dust2/smoke-mid-from-t-spawn-t/"><span class="start-name">Smoke Meio (de Base TR)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-2">Médio</span>
+          <span class="muted small">4 usos de entrys</span></a></li>
+        <li><a href="/pt/dust2/flash-mid-doors-from-mid-t/"><span class="start-name">Flash Portas do Meio (de Meio)</span><span class="badge type-flash">Flash</span><span class="badge diff-2">Médio</span>
+          <span class="muted small">2 usos de entrys</span></a></li>
+        <li><a href="/pt/dust2/smoke-long-a-from-t-spawn-t/"><span class="start-name">Smoke Fundo (de Base TR)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-2">Médio</span>
+          <span class="muted small">2 usos de entrys</span></a></li>
       </ol>
     </div>
     <div class="ro-col">
@@ -129,19 +137,13 @@
       <h3><span class="role role-lurker">Lurker</span></h3>
       <ol class="start-list">
         <li><a href="/pt/dust2/smoke-b-site-from-upper-tunnels-t/"><span class="start-name">Smoke Bomb B (de Escuro Alto)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-1">Fácil</span>
-          <span class="muted small">13 usos de lurkers</span></a></li>
-        <li><a href="/pt/dust2/smoke-under-a-from-long-doors-t/"><span class="start-name">Smoke Rampa do CT (de Portas do Fundo)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-2">Médio</span>
-          <span class="muted small">6 usos de lurkers</span></a></li>
-        <li><a href="/pt/dust2/smoke-mid-from-t-spawn-t/"><span class="start-name">Smoke Meio (de Base TR)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-2">Médio</span>
-          <span class="muted small">4 usos de lurkers</span></a></li>
+          <span class="muted small">20 usos de lurkers</span></a></li>
         <li><a href="/pt/dust2/molotov-b-doors-from-b-site-t/"><span class="start-name">Molotov Portas do B (de Bomb B)</span><span class="badge type-molotov">Molotov</span><span class="badge diff-2">Médio</span>
           <span class="muted small">3 usos de lurkers</span></a></li>
-        <li><a href="/pt/dust2/smoke-long-a-from-t-spawn-t/"><span class="start-name">Smoke Fundo (de Base TR)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-2">Médio</span>
-          <span class="muted small">2 usos de lurkers</span></a></li>
         <li><a href="/pt/dust2/he-b-site-from-upper-tunnels-t/"><span class="start-name">HE Bomb B (de Escuro Alto)</span><span class="badge type-he">HE</span><span class="badge diff-3">Difícil</span>
-          <span class="muted small">3 usos de lurkers</span></a></li>
+          <span class="muted small">5 usos de lurkers</span></a></li>
         <li><a href="/pt/dust2/smoke-ct-spawn-from-outside-tunnels-t/"><span class="start-name">Smoke Base CT (de Fora do Escuro)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-3">Difícil</span>
-          <span class="muted small">3 usos de lurkers</span></a></li>
+          <span class="muted small">4 usos de lurkers</span></a></li>
       </ol>
     </div>
     <div class="ro-col">
@@ -186,17 +188,11 @@
     <div class="ro-col">
       <h3><span class="role role-entry">Entry</span></h3>
       <ol class="start-list">
-        <li><a href="/pt/dust2/molotov-catwalk-from-short-stairs-ct/"><span class="start-name">Molotov Varanda (de Escada da Varanda)</span><span class="badge type-molotov">Molotov</span><span class="badge diff-1">Fácil</span>
-          <span class="muted small">4 usos de entrys</span></a></li>
         <li><a href="/pt/dust2/smoke-long-a-from-under-a-ct/"><span class="start-name">Smoke Fundo (de Rampa do CT)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-1">Fácil</span>
           <span class="muted small">3 usos de entrys</span></a></li>
-        <li><a href="/pt/dust2/he-catwalk-from-under-a-ct/"><span class="start-name">HE Varanda (de Rampa do CT)</span><span class="badge type-he">HE</span><span class="badge diff-1">Fácil</span>
-          <span class="muted small">2 usos de entrys</span></a></li>
-        <li><a href="/pt/dust2/he-long-doors-from-long-a-ct/"><span class="start-name">HE Portas do Fundo (de Fundo)</span><span class="badge type-he">HE</span><span class="badge diff-3">Difícil</span>
-          <span class="muted small">4 usos de entrys</span></a></li>
-        <li><a href="/pt/dust2/he-catwalk-from-a-extended-ct/"><span class="start-name">HE Varanda (de RKZ)</span><span class="badge type-he">HE</span><span class="badge diff-3">Difícil</span>
-          <span class="muted small">2 usos de entrys</span></a></li>
-        <li><a href="/pt/dust2/smoke-a-extended-from-a-ramp-ct/"><span class="start-name">Smoke RKZ (de Rampa A)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-3">Difícil</span>
+        <li><a href="/pt/dust2/smoke-upper-tunnels-from-b-site-ct/"><span class="start-name">Smoke Escuro Alto (de Bomb B)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-3">Difícil</span>
+          <span class="muted small">3 usos de entrys</span></a></li>
+        <li><a href="/pt/dust2/flash-upper-tunnels-from-b-site-ct/"><span class="start-name">Flash Escuro Alto (de Bomb B)</span><span class="badge type-flash">Flash</span><span class="badge diff-3">Difícil</span>
           <span class="muted small">2 usos de entrys</span></a></li>
       </ol>
     </div>
@@ -212,11 +208,13 @@
       <ol class="start-list">
         <li><a href="/pt/dust2/he-mid-doors-from-ct-spawn-ct/"><span class="start-name">HE Portas do Meio (de Base CT)</span><span class="badge type-he">HE</span><span class="badge diff-1">Fácil</span>
           <span class="muted small">4 usos de lurkers</span></a></li>
-        <li><a href="/pt/dust2/molotov-upper-tunnels-from-b-site-ct/"><span class="start-name">Molotov Escuro Alto (de Bomb B)</span><span class="badge type-molotov">Molotov</span><span class="badge diff-1">Fácil</span>
+        <li><a href="/pt/dust2/molotov-catwalk-from-short-stairs-ct/"><span class="start-name">Molotov Varanda (de Escada da Varanda)</span><span class="badge type-molotov">Molotov</span><span class="badge diff-1">Fácil</span>
+          <span class="muted small">4 usos de lurkers</span></a></li>
+        <li><a href="/pt/dust2/he-catwalk-from-under-a-ct/"><span class="start-name">HE Varanda (de Rampa do CT)</span><span class="badge type-he">HE</span><span class="badge diff-1">Fácil</span>
           <span class="muted small">2 usos de lurkers</span></a></li>
-        <li><a href="/pt/dust2/smoke-upper-tunnels-from-b-site-ct/"><span class="start-name">Smoke Escuro Alto (de Bomb B)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-3">Difícil</span>
-          <span class="muted small">5 usos de lurkers</span></a></li>
-        <li><a href="/pt/dust2/flash-upper-tunnels-from-b-site-ct/"><span class="start-name">Flash Escuro Alto (de Bomb B)</span><span class="badge type-flash">Flash</span><span class="badge diff-3">Difícil</span>
+        <li><a href="/pt/dust2/he-long-doors-from-long-a-ct/"><span class="start-name">HE Portas do Fundo (de Fundo)</span><span class="badge type-he">HE</span><span class="badge diff-3">Difícil</span>
+          <span class="muted small">4 usos de lurkers</span></a></li>
+        <li><a href="/pt/dust2/he-catwalk-from-a-extended-ct/"><span class="start-name">HE Varanda (de RKZ)</span><span class="badge type-he">HE</span><span class="badge diff-3">Difícil</span>
           <span class="muted small">2 usos de lurkers</span></a></li>
         <li><a href="/pt/dust2/flash-upper-tunnels-from-b-doors-ct/"><span class="start-name">Flash Escuro Alto (de Portas do B)</span><span class="badge type-flash">Flash</span><span class="badge diff-3">Difícil</span>
           <span class="muted small">2 usos de lurkers</span></a></li>
@@ -257,5 +255,6 @@
 </footer>
 <script src="/static/app.js?v=8b5d4be2d7" defer></script>
 <script src="/static/accounts.js?v=9e0472e7bb" defer></script>
+<script src="/static/video.js?v=59be808746" defer></script>
 </body>
 </html>

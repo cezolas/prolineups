@@ -768,3 +768,14 @@ td.up { color: var(--good); } td.down { color: var(--bad); }
 .hero-pts circle { fill: var(--brand-a); }
 @media (max-width: 760px) { .hero.hero-v2 { grid-template-columns: 1fr; padding: 16px; } .hero-art { display: none; } }
 .he-buddy { width: 22px; height: 22px; margin-left: 4px; }
+/* video toolbar */
+.vtools { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; margin: 6px 0 2px; }
+.vtools button { background: var(--panel2); color: var(--text); border: 1px solid var(--line); border-radius: 4px; padding: 4px 8px; font: inherit; font-size: 12.5px; cursor: pointer; }
+.vtools button:hover { border-color: var(--accent); }
+.vtools button.on { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.vtools .vt-sep { width: 1px; height: 18px; background: var(--line); margin: 0 4px; }
+.lp-hero .vtools { padding: 0 10px 6px; }
+
+.cm-saved { padding: 8px 12px; background: var(--panel2); border: 1px solid var(--line); border-radius: var(--radius); display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.cm-role-name { margin: 0 12px 4px; font-size: 15px; } .cm-role-name .role { font-size: 13px; padding: 2px 8px; }
+.cm-role > p.small { margin: 0 12px 8px; }

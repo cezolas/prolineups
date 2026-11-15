@@ -28,8 +28,8 @@
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
   if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg?v=714ec3503f" type="image/svg+xml">
-<link rel="stylesheet" href="/static/style.css?v=a3bab22373">
-<script>window.I18N = {"copied": "Copied!", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "open": "Open", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s"}; window.LANG = "en";</script>
+<link rel="stylesheet" href="/static/style.css?v=10c9da3914">
+<script>window.I18N = {"copied": "Copied!", "dec": ".", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "open": "Open", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s", "v_back": "Back 2 seconds", "v_frame_back": "Previous frame", "v_frame_fwd": "Next frame", "v_fwd": "Forward 2 seconds", "v_play": "Play / pause"}; window.LANG = "en";</script>
 </head>
 <body>
 <header class="top">
@@ -147,13 +147,6 @@
   <h2><span class="badge side-CT">CT</span> grenades of each role</h2>
   <div class="ro-cols">
     <div class="ro-col">
-      <h3><span class="role role-entry">Entry</span></h3>
-      <ol class="start-list">
-        <li><a href="/en/anubis/smoke-bridge-from-mid-ct/"><span class="start-name">Smoke Bridge (from Mid)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-1">Easy</span>
-          <span class="muted small">2 uses by entrys</span></a></li>
-      </ol>
-    </div>
-    <div class="ro-col">
       <h3><span class="role role-support">Support</span></h3>
       <ol class="start-list">
         <li><a href="/en/anubis/molotov-connector-from-b-site-ct/"><span class="start-name">Molotov Connector (from B Site)</span><span class="badge type-molotov">Molotov</span><span class="badge diff-1">Easy</span>
@@ -163,6 +156,8 @@
     <div class="ro-col">
       <h3><span class="role role-lurker">Lurker</span></h3>
       <ol class="start-list">
+        <li><a href="/en/anubis/smoke-bridge-from-mid-ct/"><span class="start-name">Smoke Bridge (from Mid)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-1">Easy</span>
+          <span class="muted small">2 uses by lurkers</span></a></li>
         <li><a href="/en/anubis/smoke-canal-from-b-site-ct/"><span class="start-name">Smoke Canal (from B Site)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-2">Medium</span>
           <span class="muted small">4 uses by lurkers</span></a></li>
         <li><a href="/en/anubis/flash-connector-from-b-site-ct/"><span class="start-name">Flash Connector (from B Site)</span><span class="badge type-flash">Flash</span><span class="badge diff-2">Medium</span>
@@ -196,5 +191,6 @@
 </footer>
 <script src="/static/app.js?v=8b5d4be2d7" defer></script>
 <script src="/static/accounts.js?v=9e0472e7bb" defer></script>
+<script src="/static/video.js?v=59be808746" defer></script>
 </body>
 </html>

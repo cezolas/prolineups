@@ -28,8 +28,8 @@
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
   if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg?v=714ec3503f" type="image/svg+xml">
-<link rel="stylesheet" href="/static/style.css?v=a3bab22373">
-<script>window.I18N = {"copied": "Copied!", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "open": "Open", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s"}; window.LANG = "en";</script>
+<link rel="stylesheet" href="/static/style.css?v=10c9da3914">
+<script>window.I18N = {"copied": "Copied!", "dec": ".", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "open": "Open", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s", "v_back": "Back 2 seconds", "v_frame_back": "Previous frame", "v_frame_fwd": "Next frame", "v_fwd": "Forward 2 seconds", "v_play": "Play / pause"}; window.LANG = "en";</script>
 </head>
 <body>
 <header class="top">
@@ -113,7 +113,7 @@
         <span class="badge type-smoke">Smoke</span><span class="badge diff-2">Medium</span>
       </div>
       <a class="kit-name" href="/en/ancient/smoke-side-entrance-from-water-t/">Smoke Side Entrance (from Water)</a>
-      <video src="/media/spirit-vs-fut-m3-ancient/53802-76561198386265483.mp4" poster="/media/spirit-vs-fut-m3-ancient/53802-76561198386265483.jpg" muted loop playsinline controls preload="none"></video>
+      <video data-tools src="/media/spirit-vs-fut-m3-ancient/53802-76561198386265483.mp4" poster="/media/spirit-vs-fut-m3-ancient/53802-76561198386265483.jpg" muted loop playsinline controls preload="none"></video>
       <div class="muted small">Position: Water · jump throw · standing · left click</div>
       <code id="kc-1">sv_cheats 1; setpos 759.969 -1636.042 -15.750; setang -29.4526 101.9888 0</code>
       <button class="btn small" data-copy="#kc-1">copy command</button>
@@ -125,7 +125,7 @@
         <span class="badge type-molotov">Molotov</span><span class="badge diff-3">Hard</span>
       </div>
       <a class="kit-name" href="/en/ancient/molotov-b-site-from-ruins-t/">Molotov B Site (from Ruins)</a>
-      <video src="/media/furia-vs-falcons-m1-ancient/304228-76561198041683378.mp4" poster="/media/furia-vs-falcons-m1-ancient/304228-76561198041683378.jpg" muted loop playsinline controls preload="none"></video>
+      <video data-tools src="/media/furia-vs-falcons-m1-ancient/304228-76561198041683378.mp4" poster="/media/furia-vs-falcons-m1-ancient/304228-76561198041683378.jpg" muted loop playsinline controls preload="none"></video>
       <div class="muted small">Position: Ruins · running · left click</div>
       <code id="kc-2">sv_cheats 1; setpos 997.521 -1068.806 4.214; setang -10.8902 50.6641 0</code>
       <button class="btn small" data-copy="#kc-2">copy command</button>
@@ -137,7 +137,7 @@
         <span class="badge type-flash">Flash</span><span class="badge diff-3">Hard</span>
       </div>
       <a class="kit-name" href="/en/ancient/flash-b-site-from-tside-lower-t/">Flash B Site (from TSide Lower)</a>
-      <video src="/media/mouz-vs-g2-m2-ancient/76804-76561198012872053.mp4" poster="/media/mouz-vs-g2-m2-ancient/76804-76561198012872053.jpg" muted loop playsinline controls preload="none"></video>
+      <video data-tools src="/media/mouz-vs-g2-m2-ancient/76804-76561198012872053.mp4" poster="/media/mouz-vs-g2-m2-ancient/76804-76561198012872053.jpg" muted loop playsinline controls preload="none"></video>
       <div class="muted small">Position: TSide Lower · jump throw · walking · left click</div>
       <code id="kc-3">sv_cheats 1; setpos 1159.945 -915.824 36.047; setang 0.5225 81.1728 0</code>
       <button class="btn small" data-copy="#kc-3">copy command</button>
@@ -160,6 +160,7 @@
 </footer>
 <script src="/static/app.js?v=8b5d4be2d7" defer></script>
 <script src="/static/accounts.js?v=9e0472e7bb" defer></script>
+<script src="/static/video.js?v=59be808746" defer></script>
 <script>
 document.addEventListener("click", function (e) {
   var b = e.target.closest("[data-copy-url]"); if (!b) return;

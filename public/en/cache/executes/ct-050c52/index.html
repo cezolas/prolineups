@@ -28,8 +28,8 @@
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
   if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg?v=714ec3503f" type="image/svg+xml">
-<link rel="stylesheet" href="/static/style.css?v=a3bab22373">
-<script>window.I18N = {"copied": "Copied!", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "open": "Open", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s"}; window.LANG = "en";</script>
+<link rel="stylesheet" href="/static/style.css?v=10c9da3914">
+<script>window.I18N = {"copied": "Copied!", "dec": ".", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "open": "Open", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s", "v_back": "Back 2 seconds", "v_frame_back": "Previous frame", "v_frame_fwd": "Next frame", "v_fwd": "Forward 2 seconds", "v_play": "Play / pause"}; window.LANG = "en";</script>
 </head>
 <body>
 <header class="top">
@@ -113,7 +113,7 @@
         <span class="badge type-smoke">Smoke</span><span class="badge diff-3">Hard</span>
       </div>
       <a class="kit-name" href="/en/cache/smoke-garage-from-bus-stop-ct/">Smoke Garage (from Bus Stop)</a>
-      <video src="/media/vitality-vs-mouz-m2-cache/28010-76561198063336407.mp4" poster="/media/vitality-vs-mouz-m2-cache/28010-76561198063336407.jpg" muted loop playsinline controls preload="none"></video>
+      <video data-tools src="/media/vitality-vs-mouz-m2-cache/28010-76561198063336407.mp4" poster="/media/vitality-vs-mouz-m2-cache/28010-76561198063336407.jpg" muted loop playsinline controls preload="none"></video>
       <div class="muted small">Position: Bus Stop · running · left click</div>
       <code id="kc-1">sv_cheats 1; setpos -1298.332 247.593 1614.031; setang -73.3018 0.7738 0</code>
       <button class="btn small" data-copy="#kc-1">copy command</button>
@@ -125,7 +125,7 @@
         <span class="badge type-molotov">Molotov</span><span class="badge diff-3">Hard</span>
       </div>
       <a class="kit-name" href="/en/cache/molotov-boost-from-connector-ct/">Molotov Boost (from Connector)</a>
-      <video src="/media/fut-vs-mouz-m1-cache/165221-76561198875633179.mp4" poster="/media/fut-vs-mouz-m1-cache/165221-76561198875633179.jpg" muted loop playsinline controls preload="none"></video>
+      <video data-tools src="/media/fut-vs-mouz-m1-cache/165221-76561198875633179.mp4" poster="/media/fut-vs-mouz-m1-cache/165221-76561198875633179.jpg" muted loop playsinline controls preload="none"></video>
       <div class="muted small">Position: Connector · running · left click</div>
       <code id="kc-2">sv_cheats 1; setpos -352.679 -4.632 1664.031; setang -16.2859 28.0745 0</code>
       <button class="btn small" data-copy="#kc-2">copy command</button>
@@ -137,7 +137,7 @@
         <span class="badge type-smoke">Smoke</span><span class="badge diff-3">Hard</span>
       </div>
       <a class="kit-name" href="/en/cache/smoke-bmain-from-rafters-ct/">Smoke BMain (from Rafters)</a>
-      <video src="/media/fut-vs-mouz-m1-cache/135458-76561198178209109.mp4" poster="/media/fut-vs-mouz-m1-cache/135458-76561198178209109.jpg" muted loop playsinline controls preload="none"></video>
+      <video data-tools src="/media/fut-vs-mouz-m1-cache/135458-76561198178209109.mp4" poster="/media/fut-vs-mouz-m1-cache/135458-76561198178209109.jpg" muted loop playsinline controls preload="none"></video>
       <div class="muted small">Position: Rafters · running · left click</div>
       <code id="kc-3">sv_cheats 1; setpos -283.552 -680.511 1796.031; setang 20.9880 37.7319 0</code>
       <button class="btn small" data-copy="#kc-3">copy command</button>
@@ -160,6 +160,7 @@
 </footer>
 <script src="/static/app.js?v=8b5d4be2d7" defer></script>
 <script src="/static/accounts.js?v=9e0472e7bb" defer></script>
+<script src="/static/video.js?v=59be808746" defer></script>
 <script>
 document.addEventListener("click", function (e) {
   var b = e.target.closest("[data-copy-url]"); if (!b) return;

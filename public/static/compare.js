@@ -5,7 +5,8 @@
   const S = JSON.parse(root.dataset.i18n), lang = root.dataset.lang;
   const $ = s => root.querySelector(s);
   const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-  let DATA = null, FLIGHTS = [], MAP = null, EV = [];
+  let DATA = null, FLIGHTS = [], MAP = null, EV = [], SAMPLES = [], FILE = "";
+  const SAVE = "cmpLast";  // last analysed demo, kept in this browser so it is still there after leaving the page
   const dist = (a, b) => Math.hypot(a[0] - b[0], a[1] - b[1], (a[2] - b[2]) * 0.5);
   const clock = t => { const s = Math.floor(t / 64); return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`; };
   const status = (msg, err) => { const el = $("#cmpStatus"); el.textContent = msg; el.classList.toggle("err", !!err); el.hidden = !msg; };
@@ -16,6 +17,24 @@
   ["dragleave", "drop"].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove("over"); }));
   drop.addEventListener("drop", e => { const f = e.dataTransfer.files[0]; if (f) read(f); });
   $("#cmpPlayer").addEventListener("change", () => { try { localStorage.setItem("cmpPlayer", $("#cmpPlayer").value); } catch (e) {} render(); });
+
+  (async function restore() {
+    let saved = null;
+    try { saved = JSON.parse(localStorage.getItem(SAVE) || "null"); } catch (e) {}
+    if (!saved || !saved.events) return;
+    DATA = await (await fetch(`/dados/comparar-${lang}.json`)).json();
+    if (!DATA.maps[saved.map]) return;
+    MAP = saved.map; EV = saved.events; SAMPLES = saved.samples || []; FILE = saved.file || "";
+    FLIGHTS = flights(EV);
+    if (!FLIGHTS.length) return;
+    $("#cmpSaved").hidden = false;
+    $("#cmpSavedName").textContent = FILE;
+    players();
+  })();
+  $("#cmpForget").addEventListener("click", () => {
+    try { localStorage.removeItem(SAVE); } catch (e) {}
+    $("#cmpSaved").hidden = true; $("#cmpPick").hidden = true; $("#cmpOut").innerHTML = "";
+  });
 
   async function read(file) {
     if (/\.bz2$/i.test(file.name)) { status(S.err_bz2, true); return; }
@@ -31,8 +50,9 @@
       MAP = (d.header && d.header.map_name) || "";
       if (!DATA) DATA = await (await fetch(`/dados/comparar-${lang}.json`)).json();
       if (!DATA.maps[MAP]) { status(S.err_map.replace("{m}", MAP || "?"), true); return; }
-      EV = d.events || [];
+      EV = d.events || []; SAMPLES = d.samples || []; FILE = file.name;
       FLIGHTS = flights(EV);
+      try { localStorage.setItem(SAVE, JSON.stringify({ file: FILE, map: MAP, events: EV, samples: SAMPLES, at: Date.now() })); } catch (e) {}
       if (!FLIGHTS.length) { status(S.err_none, true); return; }
       status("");
       players();
@@ -100,7 +120,7 @@
       return `<li class="cm none">${head}<div><b>${esc(S.none_t)}</b></div><div class="muted small">${esc(S.none_d)}</div></li>`;
     };
     const section = (k, title) => mine.some(x => x.m.kind === k) ? `<section><h2>${esc(title)} (${n(k)})</h2><ul class="cm-list">${mine.filter(x => x.m.kind === k).map(card).join("")}</ul></section>` : "";
-    $("#cmpOut").innerHTML = statsBlock(who) + heatBlock(mine) + `
+    $("#cmpOut").innerHTML = roleBlock(who) + statsBlock(who) + heatBlock(mine) + `
       <div class="kpis">
         <div class="kpi"><div class="kpi-v">${mine.length}</div><div class="kpi-l">${esc(S.k_total)}</div></div>
         <div class="kpi"><div class="kpi-v">${n("same")}</div><div class="kpi-l">${esc(S.k_same)}</div></div>
@@ -174,4 +194,74 @@
     if (c.dataset.h) box.classList.toggle("hide-" + c.dataset.h, !c.checked);
     if (c.dataset.ht) box.classList.toggle("hide-" + c.dataset.ht, !c.checked);
   });
+
+  // ---------------------------------------------------------------- your role, and the pros who play it
+  function myFeatures(who) {
+    const deaths = EV.filter(e => e.event_name === "player_death").sort((a, b) => a.tick - b.tick);
+    const kills = deaths.filter(e => e.attacker_name === who && e.user_name !== who && e.attacker_team_num !== e.user_team_num);
+    const d = deaths.filter(e => e.user_name === who).length;
+    const rounds = Math.max(1, EV.filter(e => e.event_name === "round_end").length);
+    const fe = EV.filter(e => e.event_name === "round_freeze_end").map(e => e.tick).sort((a, b) => a - b);
+    // my side per round (from the position samples), and the round's first kill
+    const sideOf = new Map();
+    SAMPLES.forEach(r => { if (r.name === who) { const i = fe.findIndex((t, k) => r.tick >= t && (k === fe.length - 1 || r.tick < fe[k + 1])); if (i >= 0) sideOf.set(i, r.team); } });
+    let tRounds = 0, openT = 0;
+    fe.forEach((t0, i) => {
+      if (sideOf.get(i) !== 2) return;
+      tRounds++;
+      const t1 = fe[i + 1] || Infinity;
+      const fk = deaths.find(e => e.tick > t0 && e.tick < t1);
+      if (fk && (fk.attacker_name === who || fk.user_name === who)) openT++;
+    });
+    // distance to the nearest living teammate while T
+    let lurk = 0, ln = 0;
+    const byTick = new Map();
+    SAMPLES.forEach(r => { if (!byTick.has(r.tick)) byTick.set(r.tick, []); byTick.get(r.tick).push(r); });
+    byTick.forEach(rows => {
+      const me = rows.find(r => r.name === who && r.alive && r.team === 2); if (!me) return;
+      const mates = rows.filter(r => r !== me && r.alive && r.team === 2); if (mates.length < 2) return;
+      lurk += Math.min(...mates.map(m => Math.hypot(m.x - me.x, m.y - me.y))); ln++;
+    });
+    const thrown = EV.filter(e => e.event_name === "grenade_thrown" && e.user_name === who && THROWN[e.weapon]);
+    const per_type = { smoke: 0, flash: 0, molotov: 0, he: 0 };
+    thrown.forEach(e => per_type[THROWN[e.weapon]]++);
+    Object.keys(per_type).forEach(k => per_type[k] /= rounds);
+    return { awp: kills.length ? kills.filter(e => e.weapon === "awp").length / kills.length : 0,
+             open_t: tRounds ? openT / tRounds : 0, lurk: ln ? lurk / ln : null, util: thrown.length / rounds,
+             kpr: kills.length / rounds, kd: d ? kills.length / d : kills.length, hs: kills.length ? kills.filter(e => e.headshot).length / kills.length : 0,
+             per_type, tRounds };
+  }
+  function guessRole(me) {
+    const R = DATA.roles; if (!R) return null;
+    if (me.awp >= 0.25 && R.profiles.awp) return "awp";
+    const use = ["open_t", "lurk", "util"].filter(f => me[f] != null);
+    let best = null, bestD = Infinity;
+    for (const r of ["entry", "lurker", "support", "rifler"]) {
+      const p = R.profiles[r]; if (!p) continue;
+      const dd = Math.hypot(...use.map(f => (me[f] - p[f]) / (R.spread[f] || 1)));
+      if (dd < bestD) { bestD = dd; best = r; }
+    }
+    return best;
+  }
+  function roleBlock(who) {
+    const R = DATA.roles; if (!R) return "";
+    const me = myFeatures(who), role = guessRole(me); if (!role) return "";
+    const p = R.profiles[role], name = R.names[role];
+    const pct = v => (v == null ? "–" : Math.round(v * 100) + "%");
+    const num = (v, n = 2) => (v == null ? "–" : v.toFixed(n).replace(".", S.dec));
+    const units = v => (v == null ? "–" : Math.round(v));
+    const cmp = (a, b) => { if (a == null || !b) return ""; const r = a / b; return r >= 1.15 ? ' <span class="up">▲</span>' : r <= 0.85 ? ' <span class="down">▼</span>' : ""; };
+    const row = (l, a, b, fmt) => `<tr><td>${esc(l)}</td><td><b>${fmt(a)}</b>${cmp(a, b)}</td><td>${fmt(b)}</td></tr>`;
+    const pros = (p.players || []).map(x => x.slug ? `<a href="/${lang}/${S.player_path}/${x.slug}/">${esc(x.name)}</a>` : esc(x.name)).join(", ");
+    return `<section class="cm-role"><h2>${esc(S.role_h)}</h2>
+      <p class="cm-role-name"><span class="role role-${role}">${esc(name)}</span> <span class="muted">${esc(S.role_why[role] || "")}</span></p>
+      <p class="muted small">${esc(S.role_pros.replace("{r}", name))} ${pros}</p>
+      <div class="table-wrap"><table class="uses an-table cm-table"><thead><tr><th></th><th>${esc(S.you)}</th><th>${esc(S.role_avg.replace("{r}", name))}</th></tr></thead><tbody>
+        ${row(S.f_kpr, me.kpr, p.kpr, num)}${row("K/D", me.kd, p.kd, num)}${row("HS%", me.hs, p.hs, pct)}
+        ${row(S.f_open, me.open_t, p.open_t, pct)}${row(S.f_lurk, me.lurk, p.lurk, units)}${row(S.f_awp, me.awp, p.awp, pct)}
+        ${row(S.r_per_round, me.util, p.util, num)}
+        ${["smoke", "flash", "molotov", "he"].map(t => row(`${S.types[t]} ${S.r_per_round_short}`, me.per_type[t], p.per_type[t], num)).join("")}
+      </tbody></table></div>
+      <p class="muted small">${esc(S.role_help)}</p></section>`;
+  }
 })();

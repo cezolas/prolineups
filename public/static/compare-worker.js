@@ -23,7 +23,7 @@ self.onmessage = async (e) => {
     self.postMessage({ stage: "grenades" });
     // events, not parseGrenades: the WASM binding of parseGrenades returns the player table, not the projectiles
     const ev = wasm_bindgen.parseEvents(bytes, ["grenade_thrown", "smokegrenade_detonate", "flashbang_detonate",
-      "hegrenade_detonate", "inferno_startburn", "player_death", "player_blind", "round_end"], ["X", "Y", "Z", "team_num"], []);
+      "hegrenade_detonate", "inferno_startburn", "player_death", "player_blind", "round_end", "round_freeze_end"], ["X", "Y", "Z", "team_num"], []);
     const plain = x => (x instanceof Map ? Object.fromEntries(x) : x);
     const events = ev.map(plain);
     // some demos (e.g. FACEIT) have no grenade_thrown: rebuild it from weapon_fire of the grenade weapons
@@ -54,7 +54,16 @@ self.onmessage = async (e) => {
         }
       }
     }
-    self.postMessage({ done: true, header: plain(header), events });
+    // positions 25-45 s into each round (every 5 s): distance to teammates, for the role guess
+    let samples = [];
+    const fe = events.filter(x => x.event_name === "round_freeze_end").map(x => x.tick);
+    if (fe.length) {
+      self.postMessage({ stage: "roles" });
+      const st = new Int32Array(fe.flatMap(t => [25, 30, 35, 40, 45].map(s => t + s * 64)));
+      samples = wasm_bindgen.parseTicks(bytes, ["X", "Y", "team_num", "is_alive"], st).map(plain)
+        .map(r => ({ tick: r.tick, name: r.name, x: r.X, y: r.Y, team: r.team_num, alive: r.is_alive }));
+    }
+    self.postMessage({ done: true, header: plain(header), events, samples });
   } catch (err) {
     self.postMessage({ error: String(err && err.message || err) });
   }

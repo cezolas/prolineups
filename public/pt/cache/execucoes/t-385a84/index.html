@@ -28,8 +28,8 @@
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
   if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg?v=714ec3503f" type="image/svg+xml">
-<link rel="stylesheet" href="/static/style.css?v=a3bab22373">
-<script>window.I18N = {"copied": "Copiado!", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "open": "Abrir", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "throws_in": "lan\u00e7a em {s}s"}; window.LANG = "pt";</script>
+<link rel="stylesheet" href="/static/style.css?v=10c9da3914">
+<script>window.I18N = {"copied": "Copiado!", "dec": ",", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "open": "Abrir", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "throws_in": "lan\u00e7a em {s}s", "v_back": "Voltar 2 segundos", "v_frame_back": "Quadro anterior", "v_frame_fwd": "Pr\u00f3ximo quadro", "v_fwd": "Avan\u00e7ar 2 segundos", "v_play": "Reproduzir / pausar"}; window.LANG = "pt";</script>
 </head>
 <body>
 <header class="top">
@@ -113,7 +113,7 @@
         <span class="badge type-smoke">Smoke</span><span class="badge diff-1">Fácil</span>
       </div>
       <a class="kit-name" href="/pt/cache/smoke-catwalk-from-long-a-t/">Smoke Metal (de Long A)</a>
-      <video src="/media/vitality-vs-mouz-m2-cache/215830-76561198355739212.mp4" poster="/media/vitality-vs-mouz-m2-cache/215830-76561198355739212.jpg" muted loop playsinline controls preload="none"></video>
+      <video data-tools src="/media/vitality-vs-mouz-m2-cache/215830-76561198355739212.mp4" poster="/media/vitality-vs-mouz-m2-cache/215830-76561198355739212.jpg" muted loop playsinline controls preload="none"></video>
       <div class="muted small">Posição: Long A · parado · clique esquerdo</div>
       <code id="kc-1">sv_cheats 1; setpos 1315.965 1587.936 1704.031; setang -47.4541 -165.5039 0</code>
       <button class="btn small" data-copy="#kc-1">copiar comando</button>
@@ -125,7 +125,7 @@
         <span class="badge type-smoke">Smoke</span><span class="badge diff-1">Fácil</span>
       </div>
       <a class="kit-name" href="/pt/cache/smoke-a-site-from-long-a-t/">Smoke Bomb A (de Long A)</a>
-      <video src="/media/vitality-vs-mouz-m2-cache/215950-76561198355739212.mp4" poster="/media/vitality-vs-mouz-m2-cache/215950-76561198355739212.jpg" muted loop playsinline controls preload="none"></video>
+      <video data-tools src="/media/vitality-vs-mouz-m2-cache/215950-76561198355739212.mp4" poster="/media/vitality-vs-mouz-m2-cache/215950-76561198355739212.jpg" muted loop playsinline controls preload="none"></video>
       <div class="muted small">Posição: Long A · parado · clique esquerdo</div>
       <code id="kc-2">sv_cheats 1; setpos 1315.901 1587.941 1704.031; setang -48.3999 -173.9252 0</code>
       <button class="btn small" data-copy="#kc-2">copiar comando</button>
@@ -137,7 +137,7 @@
         <span class="badge type-molotov">Molotov</span><span class="badge diff-3">Difícil</span>
       </div>
       <a class="kit-name" href="/pt/cache/molotov-quad-from-amain-t/">Molotov Quad (de Garagem)</a>
-      <video src="/media/fut-vs-mouz-m1-cache/183035-76561198193174134.mp4" poster="/media/fut-vs-mouz-m1-cache/183035-76561198193174134.jpg" muted loop playsinline controls preload="none"></video>
+      <video data-tools src="/media/fut-vs-mouz-m1-cache/183035-76561198193174134.mp4" poster="/media/fut-vs-mouz-m1-cache/183035-76561198193174134.jpg" muted loop playsinline controls preload="none"></video>
       <div class="muted small">Posição: Garagem · correndo · clique esquerdo</div>
       <code id="kc-3">sv_cheats 1; setpos 571.401 1560.812 1700.031; setang -0.6599 141.4775 0</code>
       <button class="btn small" data-copy="#kc-3">copiar comando</button>
@@ -160,6 +160,7 @@
 </footer>
 <script src="/static/app.js?v=8b5d4be2d7" defer></script>
 <script src="/static/accounts.js?v=9e0472e7bb" defer></script>
+<script src="/static/video.js?v=59be808746" defer></script>
 <script>
 document.addEventListener("click", function (e) {
   var b = e.target.closest("[data-copy-url]"); if (!b) return;

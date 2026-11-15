@@ -28,8 +28,8 @@
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
   if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg?v=714ec3503f" type="image/svg+xml">
-<link rel="stylesheet" href="/static/style.css?v=a3bab22373">
-<script>window.I18N = {"copied": "Copiado!", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "open": "Abrir", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "throws_in": "lan\u00e7a em {s}s"}; window.LANG = "pt";</script>
+<link rel="stylesheet" href="/static/style.css?v=10c9da3914">
+<script>window.I18N = {"copied": "Copiado!", "dec": ",", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "open": "Abrir", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "throws_in": "lan\u00e7a em {s}s", "v_back": "Voltar 2 segundos", "v_frame_back": "Quadro anterior", "v_frame_fwd": "Pr\u00f3ximo quadro", "v_fwd": "Avan\u00e7ar 2 segundos", "v_play": "Reproduzir / pausar"}; window.LANG = "pt";</script>
 </head>
 <body>
 <header class="top">
@@ -113,7 +113,7 @@
         <span class="badge type-smoke">Smoke</span><span class="badge diff-2">Médio</span>
       </div>
       <a class="kit-name" href="/pt/nuke/smoke-a-site-from-outside-t/">Smoke Bomb A (de Fora)</a>
-      <video src="/media/spirit-vs-g2-m2-nuke/42192-76561198995880877.mp4" poster="/media/spirit-vs-g2-m2-nuke/42192-76561198995880877.jpg" muted loop playsinline controls preload="none"></video>
+      <video data-tools src="/media/spirit-vs-g2-m2-nuke/42192-76561198995880877.mp4" poster="/media/spirit-vs-g2-m2-nuke/42192-76561198995880877.jpg" muted loop playsinline controls preload="none"></video>
       <div class="muted small">Posição: Fora · jump throw · parado · clique esquerdo</div>
       <code id="kc-1">sv_cheats 1; setpos -891.969 -927.030 -369.969; setang -13.9753 -11.0742 0</code>
       <button class="btn small" data-copy="#kc-1">copiar comando</button>
@@ -125,7 +125,7 @@
         <span class="badge type-smoke">Smoke</span><span class="badge diff-2">Médio</span>
       </div>
       <a class="kit-name" href="/pt/nuke/smoke-outside-from-t-spawn-t/">Smoke Fora (de Base TR)</a>
-      <video src="/media/fut-vs-mouz-m3-nuke/77522-76561198193174134.mp4" poster="/media/fut-vs-mouz-m3-nuke/77522-76561198193174134.jpg" muted loop playsinline controls preload="none"></video>
+      <video data-tools src="/media/fut-vs-mouz-m3-nuke/77522-76561198193174134.mp4" poster="/media/fut-vs-mouz-m3-nuke/77522-76561198193174134.jpg" muted loop playsinline controls preload="none"></video>
       <div class="muted small">Posição: Base TR · jump throw · parado · clique esquerdo</div>
       <code id="kc-2">sv_cheats 1; setpos -1268.042 -1165.007 -372.516; setang -45.2760 -24.3241 0</code>
       <button class="btn small" data-copy="#kc-2">copiar comando</button>
@@ -137,7 +137,7 @@
         <span class="badge type-smoke">Smoke</span><span class="badge diff-2">Médio</span>
       </div>
       <a class="kit-name" href="/pt/nuke/smoke-outside-t/">Smoke Fora</a>
-      <video src="/media/fut-vs-mouz-m3-nuke/83882-76561198310561479.mp4" poster="/media/fut-vs-mouz-m3-nuke/83882-76561198310561479.jpg" muted loop playsinline controls preload="none"></video>
+      <video data-tools src="/media/fut-vs-mouz-m3-nuke/83882-76561198310561479.mp4" poster="/media/fut-vs-mouz-m3-nuke/83882-76561198310561479.jpg" muted loop playsinline controls preload="none"></video>
       <div class="muted small">Posição: Fora · jump throw · parado · clique esquerdo</div>
       <code id="kc-3">sv_cheats 1; setpos -732.876 -1322.139 -361.734; setang -18.5974 -17.8947 0</code>
       <button class="btn small" data-copy="#kc-3">copiar comando</button>
@@ -149,7 +149,7 @@
         <span class="badge type-molotov">Molotov</span><span class="badge diff-3">Difícil</span>
       </div>
       <a class="kit-name" href="/pt/nuke/molotov-mini-from-lobby-t/">Molotov Mini (de Lobby)</a>
-      <video src="/media/spirit-vs-g2-m2-nuke/37195-76561198995880877.mp4" poster="/media/spirit-vs-g2-m2-nuke/37195-76561198995880877.jpg" muted loop playsinline controls preload="none"></video>
+      <video data-tools src="/media/spirit-vs-g2-m2-nuke/37195-76561198995880877.mp4" poster="/media/spirit-vs-g2-m2-nuke/37195-76561198995880877.jpg" muted loop playsinline controls preload="none"></video>
       <div class="muted small">Posição: Lobby · correndo · clique esquerdo</div>
       <code id="kc-4">sv_cheats 1; setpos -189.401 -1105.036 -415.969; setang -0.7622 -22.3586 0</code>
       <button class="btn small" data-copy="#kc-4">copiar comando</button>
@@ -172,6 +172,7 @@
 </footer>
 <script src="/static/app.js?v=8b5d4be2d7" defer></script>
 <script src="/static/accounts.js?v=9e0472e7bb" defer></script>
+<script src="/static/video.js?v=59be808746" defer></script>
 <script>
 document.addEventListener("click", function (e) {
   var b = e.target.closest("[data-copy-url]"); if (!b) return;

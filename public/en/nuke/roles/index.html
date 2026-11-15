@@ -28,8 +28,8 @@
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
   if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg?v=714ec3503f" type="image/svg+xml">
-<link rel="stylesheet" href="/static/style.css?v=a3bab22373">
-<script>window.I18N = {"copied": "Copied!", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "open": "Open", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s"}; window.LANG = "en";</script>
+<link rel="stylesheet" href="/static/style.css?v=10c9da3914">
+<script>window.I18N = {"copied": "Copied!", "dec": ".", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "open": "Open", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s", "v_back": "Back 2 seconds", "v_frame_back": "Previous frame", "v_frame_fwd": "Next frame", "v_fwd": "Forward 2 seconds", "v_play": "Play / pause"}; window.LANG = "en";</script>
 </head>
 <body>
 <header class="top">
@@ -105,9 +105,7 @@
         <li><a href="/en/nuke/smoke-a-site-from-outside-t/"><span class="start-name">Smoke A Site (from Outside)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-2">Medium</span>
           <span class="muted small">10 uses by entrys</span></a></li>
         <li><a href="/en/nuke/molotov-mini-from-lobby-t/"><span class="start-name">Molotov Mini (from Lobby)</span><span class="badge type-molotov">Molotov</span><span class="badge diff-3">Hard</span>
-          <span class="muted small">6 uses by entrys</span></a></li>
-        <li><a href="/en/nuke/smoke-a-site-from-lobby-t/"><span class="start-name">Smoke A Site (from Lobby)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-3">Hard</span>
-          <span class="muted small">3 uses by entrys</span></a></li>
+          <span class="muted small">5 uses by entrys</span></a></li>
         <li><a href="/en/nuke/molotov-a-site-from-squeaky-t/"><span class="start-name">Molotov A Site (from Squeaky)</span><span class="badge type-molotov">Molotov</span><span class="badge diff-3">Hard</span>
           <span class="muted small">3 uses by entrys</span></a></li>
         <li><a href="/en/nuke/molotov-admin-from-control-t/"><span class="start-name">Molotov Admin (from Control)</span><span class="badge type-molotov">Molotov</span><span class="badge diff-3">Hard</span>
@@ -134,6 +132,8 @@
     <div class="ro-col">
       <h3><span class="role role-lurker">Lurker</span></h3>
       <ol class="start-list">
+        <li><a href="/en/nuke/smoke-a-site-from-lobby-t/"><span class="start-name">Smoke A Site (from Lobby)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-3">Hard</span>
+          <span class="muted small">3 uses by lurkers</span></a></li>
         <li><a href="/en/nuke/he-a-site-from-roof-t/"><span class="start-name">HE A Site (from Roof)</span><span class="badge type-he">HE</span><span class="badge diff-3">Hard</span>
           <span class="muted small">2 uses by lurkers</span></a></li>
       </ol>
@@ -164,12 +164,12 @@
     <div class="ro-col">
       <h3><span class="role role-entry">Entry</span></h3>
       <ol class="start-list">
-        <li><a href="/en/nuke/smoke-squeaky-from-hut-roof-ct/"><span class="start-name">Smoke Squeaky (from Hut Roof)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-1">Easy</span>
-          <span class="muted small">3 uses by entrys</span></a></li>
-        <li><a href="/en/nuke/smoke-squeaky-from-a-site-ct/"><span class="start-name">Smoke Squeaky (from A Site)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-3">Hard</span>
-          <span class="muted small">3 uses by entrys</span></a></li>
+        <li><a href="/en/nuke/smoke-tunnels-from-vents-ct/"><span class="start-name">Smoke Tunnels (from Vents)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-2">Medium</span>
+          <span class="muted small">2 uses by entrys</span></a></li>
         <li><a href="/en/nuke/flash-control-from-ramp-ct/"><span class="start-name">Flash Control (from Ramp)</span><span class="badge type-flash">Flash</span><span class="badge diff-3">Hard</span>
           <span class="muted small">3 uses by entrys</span></a></li>
+        <li><a href="/en/nuke/flash-outside-ct/"><span class="start-name">Flash Outside</span><span class="badge type-flash">Flash</span><span class="badge diff-3">Hard</span>
+          <span class="muted small">2 uses by entrys</span></a></li>
       </ol>
     </div>
     <div class="ro-col">
@@ -186,14 +186,14 @@
     <div class="ro-col">
       <h3><span class="role role-lurker">Lurker</span></h3>
       <ol class="start-list">
+        <li><a href="/en/nuke/smoke-squeaky-from-hut-roof-ct/"><span class="start-name">Smoke Squeaky (from Hut Roof)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-1">Easy</span>
+          <span class="muted small">3 uses by lurkers</span></a></li>
         <li><a href="/en/nuke/molotov-hut-from-a-site-ct/"><span class="start-name">Molotov Hut (from A Site)</span><span class="badge type-molotov">Molotov</span><span class="badge diff-2">Medium</span>
           <span class="muted small">2 uses by lurkers</span></a></li>
-        <li><a href="/en/nuke/smoke-tunnels-from-vents-ct/"><span class="start-name">Smoke Tunnels (from Vents)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-2">Medium</span>
-          <span class="muted small">2 uses by lurkers</span></a></li>
+        <li><a href="/en/nuke/smoke-squeaky-from-a-site-ct/"><span class="start-name">Smoke Squeaky (from A Site)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-3">Hard</span>
+          <span class="muted small">4 uses by lurkers</span></a></li>
         <li><a href="/en/nuke/he-hut-from-rafters-ct/"><span class="start-name">HE Hut (from Rafters)</span><span class="badge type-he">HE</span><span class="badge diff-3">Hard</span>
           <span class="muted small">3 uses by lurkers</span></a></li>
-        <li><a href="/en/nuke/flash-outside-ct/"><span class="start-name">Flash Outside</span><span class="badge type-flash">Flash</span><span class="badge diff-3">Hard</span>
-          <span class="muted small">2 uses by lurkers</span></a></li>
       </ol>
     </div>
     <div class="ro-col">
@@ -231,5 +231,6 @@
 </footer>
 <script src="/static/app.js?v=8b5d4be2d7" defer></script>
 <script src="/static/accounts.js?v=9e0472e7bb" defer></script>
+<script src="/static/video.js?v=59be808746" defer></script>
 </body>
 </html>
