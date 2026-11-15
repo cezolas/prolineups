@@ -693,3 +693,7 @@ td.up { color: var(--good); } td.down { color: var(--bad); }
 .series-card li a:hover b { color: var(--link); }
 .mt-mini { font-variant-numeric: tabular-nums; font-weight: 700; margin-left: auto; }
 @media (max-width: 600px) { .mt-head { font-size: 15px; gap: 8px; } .mt-score { font-size: 26px; } }
+/* sidebar: flags in a fixed slot so names line up (with or without a flag) */
+.side nav a .nl { display: inline-flex; align-items: center; min-width: 0; }
+.side .nav-flag { display: inline-flex; justify-content: center; align-items: center; width: 18px; height: 12px; margin-right: 10px; flex: none; }
+.side .nav-flag img.flag { margin: 0; }
