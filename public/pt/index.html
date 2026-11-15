@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Smokes, flashes e molotovs dos pros de CS2 · Pronades</title>
+<title>O futuro do CS está aqui: granadas e táticas dos pros · Pronades</title>
 <meta name="description" content="Aprenda as smokes, flashes e molotovs dos jogadores profissionais de CS2, tiradas direto das demos das partidas.">
 <link rel="canonical" href="https://pronades.com.br/pt/">
 <link rel="alternate" hreflang="pt" href="https://pronades.com.br/pt/">
 <link rel="alternate" hreflang="en" href="https://pronades.com.br/en/">
 <link rel="alternate" hreflang="x-default" href="https://pronades.com.br/pt/">
-<meta property="og:title" content="Smokes, flashes e molotovs dos pros de CS2">
+<meta property="og:title" content="O futuro do CS está aqui: granadas e táticas dos pros">
 <meta property="og:description" content="Aprenda as smokes, flashes e molotovs dos jogadores profissionais de CS2, tiradas direto das demos das partidas.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://pronades.com.br/static/og-pt.jpg">
@@ -19,6 +19,8 @@
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Pronades">
 <meta name="theme-color" content="#0b0f15">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&display=swap">
 <script>/* one address: www and the old workers.dev address go to the main domain */
 (function () { var h = location.hostname, main = "pronades.com.br";
   if (h !== main && h !== "localhost" && h !== "127.0.0.1" && (h === "www." + main || /\.workers\.dev$/.test(h)))
@@ -33,7 +35,7 @@
 <header class="top">
   <div class="top-in">
     <button class="menu-btn" id="menuBtn" aria-label="Mostrar ou ocultar o menu" aria-controls="side" aria-expanded="false">☰</button>
-    <a class="logo" href="/pt/"><span class="logo-mark">◎</span> Pronades</a>
+    <a class="logo wordmark" href="/pt/" aria-label="Pronades">Pro<span>nades</span></a>
     <div class="search">
       <input id="q" type="search" placeholder="Buscar mapa, jogador, time, smoke…" autocomplete="off" aria-label="Buscar">
       <div id="results" class="results" hidden></div>
@@ -89,13 +91,43 @@
   </aside>
   <div class="scrim" id="scrim" hidden></div>
   <main class="content">
-<section class="hero">
-  <h1>Aprenda as granadas dos pros</h1>
-  <p class="lead">Smokes, flashes e molotovs tiradas direto das demos das partidas profissionais. Escolha um mapa, um jogador ou um time e veja de onde jogar, como mirar e o vídeo da jogada.</p>
-  <p class="muted">292 lineups publicadas.</p>
+<section class="hero hero-v2">
+  <div class="hero-text">
+    <p class="eyebrow">IA + dados das partidas profissionais</p>
+    <h1>O futuro do CS <span class="grad">está aqui.</span></h1>
+    <p class="lead">Lemos cada granada, entrada e round das partidas dos pros e transformamos em um caminho claro para você evoluir: o que jogar, de onde, como mirar e como você se compara a eles.</p>
+    <div class="hero-cta">
+      <a class="btn cta" href="#mapas">Escolha seu mapa</a>
+      <a class="btn ghost" href="/pt/comparar-minha-demo/">⇄ Compare sua demo com os pros</a>
+      <a class="btn ghost" href="/pt/plano-de-treino/">🎯 Monte seu plano de treino</a>
+    </div>
+    <ul class="hero-stats">
+      <li><b>292</b> lineups dos pros</li>
+      <li><b>29</b> partidas analisadas</li>
+      <li><b>40</b> jogadores</li>
+      <li><b>7</b> mapas</li>
+    </ul>
+  </div>
+  <svg class="hero-art" viewBox="0 0 400 300" aria-hidden="true">
+    <defs>
+      <linearGradient id="hg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f5a623"/><stop offset="1" stop-color="#ffd76a"/></linearGradient>
+      <radialGradient id="hglow"><stop offset="0" stop-color="#ffd76a" stop-opacity=".5"/><stop offset="1" stop-color="#ffd76a" stop-opacity="0"/></radialGradient>
+      <pattern id="hgrid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#ffffff" stroke-opacity=".06"/></pattern>
+    </defs>
+    <rect width="400" height="300" fill="url(#hgrid)"/>
+    <g class="hero-pts"><circle cx="60" cy="60" r="2.2"/><circle cx="110" cy="210" r="2.2"/><circle cx="170" cy="90" r="2.2"/><circle cx="230" cy="240" r="2.2"/><circle cx="290" cy="70" r="2.2"/><circle cx="340" cy="170" r="2.2"/><circle cx="80" cy="150" r="2.2"/><circle cx="260" cy="140" r="2.2"/><circle cx="355" cy="250" r="2.2"/><circle cx="140" cy="40" r="2.2"/></g>
+    <path class="hero-arc ghost" d="M40 250 Q 150 -10 300 190"/>
+    <path class="hero-arc ghost2" d="M60 270 Q 190 40 330 230"/>
+    <path class="hero-arc main" d="M30 260 Q 170 -30 320 200"/>
+    <circle cx="320" cy="200" r="46" fill="url(#hglow)" class="hero-land"/>
+    <circle cx="320" cy="200" r="6" fill="#ffd76a" class="hero-land"/>
+    <circle cx="320" cy="200" r="16" class="hero-ring r1"/>
+    <circle cx="320" cy="200" r="16" class="hero-ring r2"/>
+    <circle cx="30" cy="260" r="5" fill="#f5a623"/>
+  </svg>
 </section>
 
-<h2 class="sec">Por mapa</h2>
+<h2 class="sec" id="mapas">Por mapa</h2>
 <div class="tiles">
   <a class="tile map-tile" href="/pt/ancient/">
     <img src="/static/radars/ancient.webp" alt="" loading="lazy" width="512" height="512">

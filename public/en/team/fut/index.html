@@ -19,6 +19,8 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Pronades">
 <meta name="theme-color" content="#0b0f15">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&display=swap">
 <script>/* one address: www and the old workers.dev address go to the main domain */
 (function () { var h = location.hostname, main = "pronades.com.br";
   if (h !== main && h !== "localhost" && h !== "127.0.0.1" && (h === "www." + main || /\.workers\.dev$/.test(h)))
@@ -33,7 +35,7 @@
 <header class="top">
   <div class="top-in">
     <button class="menu-btn" id="menuBtn" aria-label="Show or hide the menu" aria-controls="side" aria-expanded="false">☰</button>
-    <a class="logo" href="/en/"><span class="logo-mark">◎</span> Pronades</a>
+    <a class="logo wordmark" href="/en/" aria-label="Pronades">Pro<span>nades</span></a>
     <div class="search">
       <input id="q" type="search" placeholder="Search map, player, team, smoke…" autocomplete="off" aria-label="Search">
       <div id="results" class="results" hidden></div>
@@ -131,13 +133,13 @@
   <h2>Players</h2>
   <div class="roster">
     <a class="pl-card" href="/en/player/coolio/">
-      <b> coolio</b><span class="role role-entry">Entry</span>      <span class="muted small">1.9 grenades per round</span>
+      <b> coolio</b><span class="role role-rifler">Rifler</span>      <span class="muted small">1.9 grenades per round</span>
       <span class="mix"><span class="mix-smoke" style="width: 30.0%"></span><span class="mix-flash" style="width: 26.1%"></span><span class="mix-molotov" style="width: 26.9%"></span><span class="mix-he" style="width: 17.0%"></span></span>
       <span class="muted small">Uses most: Smokes · flash blinds 1.0</span>
       <span class="muted small">28 uses in the site&#39;s lineups</span>
     </a>
     <a class="pl-card" href="/en/player/dem0n/">
-      <b> dem0n</b><span class="role role-rifler">Rifler</span>      <span class="muted small">2.0 grenades per round</span>
+      <b> dem0n</b><span class="role role-support">Support</span>      <span class="muted small">2.0 grenades per round</span>
       <span class="mix"><span class="mix-smoke" style="width: 32.3%"></span><span class="mix-flash" style="width: 18.2%"></span><span class="mix-molotov" style="width: 26.8%"></span><span class="mix-he" style="width: 22.7%"></span></span>
       <span class="muted small">Uses most: Smokes · flash blinds 1.0</span>
       <span class="muted small">21 uses in the site&#39;s lineups</span>
@@ -155,7 +157,7 @@
       <span class="muted small">29 uses in the site&#39;s lineups</span>
     </a>
     <a class="pl-card" href="/en/player/xfl0ud/">
-      <b><img class="flag" src="/static/flags/tr.svg" alt="Turkey" title="Turkey" width="16" height="12"> xfl0ud</b><span class="role role-support">Support</span>      <span class="muted small">2.2 grenades per round</span>
+      <b><img class="flag" src="/static/flags/tr.svg" alt="Turkey" title="Turkey" width="16" height="12"> xfl0ud</b><span class="role role-entry">Entry</span>      <span class="muted small">2.2 grenades per round</span>
       <span class="mix"><span class="mix-smoke" style="width: 33.6%"></span><span class="mix-flash" style="width: 22.5%"></span><span class="mix-molotov" style="width: 25.2%"></span><span class="mix-he" style="width: 18.8%"></span></span>
       <span class="muted small">Uses most: Smokes · flash blinds 0.7</span>
       <span class="muted small">26 uses in the site&#39;s lineups</span>

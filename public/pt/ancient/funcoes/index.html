@@ -19,6 +19,8 @@
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Pronades">
 <meta name="theme-color" content="#0b0f15">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&display=swap">
 <script>/* one address: www and the old workers.dev address go to the main domain */
 (function () { var h = location.hostname, main = "pronades.com.br";
   if (h !== main && h !== "localhost" && h !== "127.0.0.1" && (h === "www." + main || /\.workers\.dev$/.test(h)))
@@ -33,7 +35,7 @@
 <header class="top">
   <div class="top-in">
     <button class="menu-btn" id="menuBtn" aria-label="Mostrar ou ocultar o menu" aria-controls="side" aria-expanded="false">☰</button>
-    <a class="logo" href="/pt/"><span class="logo-mark">◎</span> Pronades</a>
+    <a class="logo wordmark" href="/pt/" aria-label="Pronades">Pro<span>nades</span></a>
     <div class="search">
       <input id="q" type="search" placeholder="Buscar mapa, jogador, time, smoke…" autocomplete="off" aria-label="Buscar">
       <div id="results" class="results" hidden></div>
@@ -192,8 +194,6 @@
           <span class="muted small">16 usos de entrys</span></a></li>
         <li><a href="/pt/ancient/flash-mid-from-top-mid-ct/"><span class="start-name">Flash Meio (de Top Mid)</span><span class="badge type-flash">Flash</span><span class="badge diff-3">Difícil</span>
           <span class="muted small">4 usos de entrys</span></a></li>
-        <li><a href="/pt/ancient/smoke-side-entrance-from-b-site-ct/"><span class="start-name">Smoke Entrada Lateral (de Bomb B)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-3">Difícil</span>
-          <span class="muted small">2 usos de entrys</span></a></li>
       </ol>
     </div>
     <div class="ro-col">
@@ -210,6 +210,8 @@
     <div class="ro-col">
       <h3><span class="role role-lurker">Lurker</span></h3>
       <ol class="start-list">
+        <li><a href="/pt/ancient/flash-tside-lower-from-b-site-ct/"><span class="start-name">Flash TR Inferior (de Bomb B)</span><span class="badge type-flash">Flash</span><span class="badge diff-1">Fácil</span>
+          <span class="muted small">2 usos de lurkers</span></a></li>
         <li><a href="/pt/ancient/smoke-mid-from-ct-spawn-ct/"><span class="start-name">Smoke Meio (de Base CT)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-2">Médio</span>
           <span class="muted small">3 usos de lurkers</span></a></li>
         <li><a href="/pt/ancient/molotov-tside-lower-from-alley-ct/"><span class="start-name">Molotov TR Inferior (de Beco)</span><span class="badge type-molotov">Molotov</span><span class="badge diff-3">Difícil</span>
@@ -234,8 +236,6 @@
     <div class="ro-col">
       <h3><span class="role role-rifler">Rifler</span></h3>
       <ol class="start-list">
-        <li><a href="/pt/ancient/flash-tside-lower-from-b-site-ct/"><span class="start-name">Flash TR Inferior (de Bomb B)</span><span class="badge type-flash">Flash</span><span class="badge diff-1">Fácil</span>
-          <span class="muted small">2 usos de riflers</span></a></li>
         <li><a href="/pt/ancient/molotov-mid-from-house-ct/"><span class="start-name">Molotov Meio (de Casa)</span><span class="badge type-molotov">Molotov</span><span class="badge diff-3">Difícil</span>
           <span class="muted small">13 usos de riflers</span></a></li>
         <li><a href="/pt/ancient/he-mid-from-top-mid-ct/"><span class="start-name">HE Meio (de Top Mid)</span><span class="badge type-he">HE</span><span class="badge diff-3">Difícil</span>

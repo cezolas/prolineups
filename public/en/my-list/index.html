@@ -19,6 +19,8 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Pronades">
 <meta name="theme-color" content="#0b0f15">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&display=swap">
 <script>/* one address: www and the old workers.dev address go to the main domain */
 (function () { var h = location.hostname, main = "pronades.com.br";
   if (h !== main && h !== "localhost" && h !== "127.0.0.1" && (h === "www." + main || /\.workers\.dev$/.test(h)))
@@ -33,7 +35,7 @@
 <header class="top">
   <div class="top-in">
     <button class="menu-btn" id="menuBtn" aria-label="Show or hide the menu" aria-controls="side" aria-expanded="false">☰</button>
-    <a class="logo" href="/en/"><span class="logo-mark">◎</span> Pronades</a>
+    <a class="logo wordmark" href="/en/" aria-label="Pronades">Pro<span>nades</span></a>
     <div class="search">
       <input id="q" type="search" placeholder="Search map, player, team, smoke…" autocomplete="off" aria-label="Search">
       <div id="results" class="results" hidden></div>
