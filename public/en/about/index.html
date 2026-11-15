@@ -92,7 +92,7 @@
   </aside>
   <div class="scrim" id="scrim" hidden></div>
   <main class="content">
-<nav class="crumbs"><a href="/en/">Home</a> › About</nav>
+<a class="back-btn" id="backBtn" href="/en/">← Back</a><nav class="crumbs"><a href="/en/">Home</a> › About</nav>
 <article class="prose">
   <h1>About Pronades</h1>
   <p>The lineups on this site are not recorded by hand: they are extracted automatically from the demos (replay files) of professional Counter-Strike 2 matches. For every grenade we record where it was thrown from, the aim, the technique (jump, running, click) and where it landed. Identical grenades thrown by different pros become one lineup.</p>
@@ -108,6 +108,13 @@
   <h2>Privacy</h2>
   <p>This site uses no cookies and collects no personal data. Visit statistics are anonymous and aggregated.</p>
 </article>
+<script>
+(function () { // back button: always to the previous page (home if there is none); placed right under the breadcrumbs
+  var b = document.getElementById("backBtn"); if (!b) return;
+  var c = document.querySelector("main.content .crumbs"); if (c) c.insertAdjacentElement("afterend", b);
+  b.addEventListener("click", function (e) { if (history.length > 1) { e.preventDefault(); history.back(); } });
+})();
+</script>
   </main>
 </div>
 <footer class="foot">

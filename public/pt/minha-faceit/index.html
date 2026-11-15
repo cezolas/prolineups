@@ -92,7 +92,7 @@
   </aside>
   <div class="scrim" id="scrim" hidden></div>
   <main class="content">
-<nav class="crumbs"><a href="/pt/">Início</a> › Minha FACEIT</nav>
+<a class="back-btn" id="backBtn" href="/pt/">← Voltar</a><nav class="crumbs"><a href="/pt/">Início</a> › Minha FACEIT</nav>
 <h1>Minha FACEIT</h1>
 <div id="fc" data-lang="pt" data-i18n='{"compare_link": "Comparar minha demo", "compare_path": "comparar-minha-demo", "connect": "Conectar minha FACEIT", "dec": ",", "demo_help": "Para analisar as granadas de uma partida: abra na FACEIT, baixe a demo (.dem.zst) e envie em Comparar minha demo. Em breve vai ser com um clique.", "desc": "Conecte sua conta FACEIT e veja seu n\u00edvel, ELO, estat\u00edsticas por mapa e suas \u00faltimas partidas, lado a lado com o que os pros fazem.", "error": "N\u00e3o consegui carregar seus dados da FACEIT agora. Tente de novo em alguns minutos.", "k_matches": "Partidas", "k_streak": "Maior sequ\u00eancia", "k_winrate": "Vit\u00f3rias", "l": "D", "level": "N\u00edvel", "link_lead": "Sua conta ainda n\u00e3o est\u00e1 conectada \u00e0 FACEIT. Conecte para ver suas estat\u00edsticas aqui.", "linked": "FACEIT conectada: {n}", "lost": "Derrota", "maps": {"ancient": "/pt/ancient/", "anubis": "/pt/anubis/", "cache": "/pt/cache/", "dust2": "/pt/dust2/", "inferno": "/pt/inferno/", "mirage": "/pt/mirage/", "nuke": "/pt/nuke/"}, "maps_h": "Seus mapas", "maps_help": "Clique no mapa para ver as granadas dos pros nele.", "matches_h": "\u00daltimas partidas", "note": "Os dados v\u00eam da API oficial da FACEIT e s\u00e3o atualizados a cada 10 minutos. S\u00f3 lemos o que \u00e9 p\u00fablico no seu perfil.", "open_room": "Abrir na FACEIT", "out_lead": "Entre com sua conta FACEIT para ver seu n\u00edvel, ELO, estat\u00edsticas por mapa e suas \u00faltimas partidas.", "signin": "Entrar com FACEIT", "th_date": "Data", "th_map": "Mapa", "th_result": "Resultado", "title": "Minha FACEIT", "w": "V", "won": "Vit\u00f3ria"}'>
   <section class="fc-state" id="fcOut" hidden>
@@ -107,6 +107,13 @@
   <div id="fcOutBox"></div>
   <p class="muted small">Os dados vêm da API oficial da FACEIT e são atualizados a cada 10 minutos. Só lemos o que é público no seu perfil.</p>
 </div>
+<script>
+(function () { // back button: always to the previous page (home if there is none); placed right under the breadcrumbs
+  var b = document.getElementById("backBtn"); if (!b) return;
+  var c = document.querySelector("main.content .crumbs"); if (c) c.insertAdjacentElement("afterend", b);
+  b.addEventListener("click", function (e) { if (history.length > 1) { e.preventDefault(); history.back(); } });
+})();
+</script>
   </main>
 </div>
 <footer class="foot">

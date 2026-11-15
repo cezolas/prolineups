@@ -92,7 +92,7 @@
   </aside>
   <div class="scrim" id="scrim" hidden></div>
   <main class="content">
-<nav class="crumbs"><a href="/pt/">Início</a> › Minha conta</nav>
+<a class="back-btn" id="backBtn" href="/pt/">← Voltar</a><nav class="crumbs"><a href="/pt/">Início</a> › Minha conta</nav>
 <h1>Minha conta</h1>
 <div id="acc">
   <section class="acc-out" id="accOut" hidden>
@@ -115,6 +115,13 @@
   </section>
   <p class="muted" id="accOff" hidden>O login ainda não está disponível. Seus favoritos e o plano de treino continuam salvos neste navegador.</p>
 </div>
+<script>
+(function () { // back button: always to the previous page (home if there is none); placed right under the breadcrumbs
+  var b = document.getElementById("backBtn"); if (!b) return;
+  var c = document.querySelector("main.content .crumbs"); if (c) c.insertAdjacentElement("afterend", b);
+  b.addEventListener("click", function (e) { if (history.length > 1) { e.preventDefault(); history.back(); } });
+})();
+</script>
   </main>
 </div>
 <footer class="foot">

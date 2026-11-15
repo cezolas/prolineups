@@ -92,7 +92,7 @@
   </aside>
   <div class="scrim" id="scrim" hidden></div>
   <main class="content">
-<nav class="crumbs"><a href="/en/">Home</a> › <a href="/en/maps/">Maps</a> › Dust2</nav>
+<a class="back-btn" id="backBtn" href="/en/">← Back</a><nav class="crumbs"><a href="/en/">Home</a> › <a href="/en/maps/">Maps</a> › Dust2</nav>
 <h1>Dust2 grenades</h1>
 <div class="map-actions">
 <a class="btn" href="/en/dust2/plays/">▶ See team plays (round replay)</a>  <a class="btn" href="/en/dust2/roles/">👥 Grenades by role</a>
@@ -1153,6 +1153,13 @@ Falcons (3), FURIA (2), G2 (1)</div>
   </div>
 </a></div>
 <p class="empty muted" id="empty" hidden>No lineups match these filters.</p>
+<script>
+(function () { // back button: always to the previous page (home if there is none); placed right under the breadcrumbs
+  var b = document.getElementById("backBtn"); if (!b) return;
+  var c = document.querySelector("main.content .crumbs"); if (c) c.insertAdjacentElement("afterend", b);
+  b.addEventListener("click", function (e) { if (history.length > 1) { e.preventDefault(); history.back(); } });
+})();
+</script>
   </main>
 </div>
 <footer class="foot">

@@ -92,7 +92,7 @@
   </aside>
   <div class="scrim" id="scrim" hidden></div>
   <main class="content">
-<nav class="crumbs"><a href="/en/">Home</a> › Grenades › Molotovs</nav>
+<a class="back-btn" id="backBtn" href="/en/">← Back</a><nav class="crumbs"><a href="/en/">Home</a> › Grenades › Molotovs</nav>
 <h1>Molotovs</h1>
 <p class="muted">67 molotovs lineups, from the most used by pros to the least.</p>
 <div class="filters" id="filters">
@@ -1262,6 +1262,13 @@
   </div>
 </a></div>
 <p class="empty muted" id="empty" hidden>No lineups match these filters.</p>
+<script>
+(function () { // back button: always to the previous page (home if there is none); placed right under the breadcrumbs
+  var b = document.getElementById("backBtn"); if (!b) return;
+  var c = document.querySelector("main.content .crumbs"); if (c) c.insertAdjacentElement("afterend", b);
+  b.addEventListener("click", function (e) { if (history.length > 1) { e.preventDefault(); history.back(); } });
+})();
+</script>
   </main>
 </div>
 <footer class="foot">

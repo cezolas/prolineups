@@ -92,7 +92,7 @@
   </aside>
   <div class="scrim" id="scrim" hidden></div>
   <main class="content">
-<nav class="crumbs"><a href="/en/">Home</a> › Tactics</nav>
+<a class="back-btn" id="backBtn" href="/en/">← Back</a><nav class="crumbs"><a href="/en/">Home</a> › Tactics</nav>
 <h1>Pro tactics: site entries and executes</h1>
 <p class="muted">Bombsite entries (T rounds that ended in a plant) and executes (grenades a team throws together), taken from pro matches. The number in the menu is how many rounds have a replay.</p>
 <div class="tac-grid">
@@ -269,6 +269,13 @@
 <a href="/en/nuke/plays/">see all (8)</a><a href="/en/nuke/#execucoes">Pro executes (1)</a>    </div>
   </section>
 </div>
+<script>
+(function () { // back button: always to the previous page (home if there is none); placed right under the breadcrumbs
+  var b = document.getElementById("backBtn"); if (!b) return;
+  var c = document.querySelector("main.content .crumbs"); if (c) c.insertAdjacentElement("afterend", b);
+  b.addEventListener("click", function (e) { if (history.length > 1) { e.preventDefault(); history.back(); } });
+})();
+</script>
   </main>
 </div>
 <footer class="foot">

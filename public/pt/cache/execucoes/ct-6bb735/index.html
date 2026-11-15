@@ -92,7 +92,7 @@
   </aside>
   <div class="scrim" id="scrim" hidden></div>
   <main class="content">
-<nav class="crumbs"><a href="/pt/">Início</a> › <a href="/pt/cache/">Cache</a> ›
+<a class="back-btn" id="backBtn" href="/pt/">← Voltar</a><nav class="crumbs"><a href="/pt/">Início</a> › <a href="/pt/cache/">Cache</a> ›
   <a href="/pt/cache/#execucoes">Execuções dos pros</a> › Defesa Garagem do meio + Pézinho Lona na Cache: kit para o seu time</nav>
 <h1><span class="badge side-CT">CT</span> Defesa Garagem do meio + Pézinho Lona na Cache: kit para o seu time</h1>
 <p class="muted">vista 2 vezes · round ganho em 0% ·
@@ -150,6 +150,13 @@
   <h2>Partidas em que isso aconteceu</h2>
   <ul class="mref-list"><li><span class="mref">FUT vs MOUZ <b>19–16</b> · <a href="/pt/torneio/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a> · mapa 1 · 12/11/2026</span> <span class="muted small">· Round 7</span></li><li><span class="mref">MOUZ vs Vitality <b>16–14</b> · <a href="/pt/torneio/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a> · mapa 2 · 13/11/2026</span> <span class="muted small">· Round 28</span></li></ul>
 </section>
+<script>
+(function () { // back button: always to the previous page (home if there is none); placed right under the breadcrumbs
+  var b = document.getElementById("backBtn"); if (!b) return;
+  var c = document.querySelector("main.content .crumbs"); if (c) c.insertAdjacentElement("afterend", b);
+  b.addEventListener("click", function (e) { if (history.length > 1) { e.preventDefault(); history.back(); } });
+})();
+</script>
   </main>
 </div>
 <footer class="foot">

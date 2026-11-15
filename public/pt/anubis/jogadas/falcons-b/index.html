@@ -92,7 +92,7 @@
   </aside>
   <div class="scrim" id="scrim" hidden></div>
   <main class="content">
-<nav class="crumbs"><a href="/pt/">Início</a> › <a href="/pt/anubis/">Anubis</a> ›
+<a class="back-btn" id="backBtn" href="/pt/">← Voltar</a><nav class="crumbs"><a href="/pt/">Início</a> › <a href="/pt/anubis/">Anubis</a> ›
   <a href="/pt/anubis/jogadas/">Jogadas</a> › Entrada B da Falcons</nav>
 <h1><img class="flag" src="/static/flags/sa.svg" alt="Arábia Saudita" title="Arábia Saudita" width="16" height="12"> Entrada B da Falcons <span class="muted h-sub">· Anubis</span></h1>
 <p class="muted">3 rounds · round ganho em 100% · plant em média aos 1:28
@@ -216,6 +216,13 @@
   </div>
 </a></div>
 </section>
+<script>
+(function () { // back button: always to the previous page (home if there is none); placed right under the breadcrumbs
+  var b = document.getElementById("backBtn"); if (!b) return;
+  var c = document.querySelector("main.content .crumbs"); if (c) c.insertAdjacentElement("afterend", b);
+  b.addEventListener("click", function (e) { if (history.length > 1) { e.preventDefault(); history.back(); } });
+})();
+</script>
   </main>
 </div>
 <footer class="foot">

@@ -92,7 +92,7 @@
   </aside>
   <div class="scrim" id="scrim" hidden></div>
   <main class="content">
-<nav class="crumbs"><a href="/pt/">Início</a> › Política de privacidade</nav>
+<a class="back-btn" id="backBtn" href="/pt/">← Voltar</a><nav class="crumbs"><a href="/pt/">Início</a> › Política de privacidade</nav>
 <article class="prose">
   <h1>Política de privacidade</h1>
   <p class="muted small">Última atualização: 15/11/2026</p>
@@ -102,6 +102,13 @@
 <p>Só para manter você conectado e guardar o que você salvou, para que fique disponível em qualquer aparelho. Não vendemos nem compartilhamos seus dados e não usamos para publicidade. Base legal (LGPD): execução do serviço que você pediu e seu consentimento ao entrar.</p>  <h2>Onde fica</h2>
 <p>Os dados ficam na infraestrutura da Cloudflare (hospedagem do site). O login é feito pelo Google, que segue a própria política de privacidade.</p>  <h2>Seus direitos</h2>
 <p>Você pode sair a qualquer momento e <b>excluir sua conta</b> na página Minha conta: isso apaga na hora tudo o que guardamos sobre você. Para dúvidas ou outros pedidos (acesso, correção), fale com (e-mail de contato em breve).</p></article>
+<script>
+(function () { // back button: always to the previous page (home if there is none); placed right under the breadcrumbs
+  var b = document.getElementById("backBtn"); if (!b) return;
+  var c = document.querySelector("main.content .crumbs"); if (c) c.insertAdjacentElement("afterend", b);
+  b.addEventListener("click", function (e) { if (history.length > 1) { e.preventDefault(); history.back(); } });
+})();
+</script>
   </main>
 </div>
 <footer class="foot">

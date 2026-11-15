@@ -92,7 +92,7 @@
   </aside>
   <div class="scrim" id="scrim" hidden></div>
   <main class="content">
-<nav class="crumbs"><a href="/pt/">Início</a> › <a href="/pt/mirage/">Mirage</a> ›
+<a class="back-btn" id="backBtn" href="/pt/">← Voltar</a><nav class="crumbs"><a href="/pt/">Início</a> › <a href="/pt/mirage/">Mirage</a> ›
   <a href="/pt/mirage/#execucoes">Execuções dos pros</a> › Execução Bomb A + Cabecinha na Mirage: kit para o seu time</nav>
 <h1><span class="badge side-T">TR</span> Execução Bomb A + Cabecinha na Mirage: kit para o seu time</h1>
 <p class="muted">vista 3 vezes · round ganho em 67% ·
@@ -123,24 +123,24 @@
       <div class="kit-head">
         <span class="kit-n">Jogador 2</span>
         <span class="kit-t">+2,9s</span>
-        <span class="badge type-smoke">Smoke</span><span class="badge diff-3">Difícil</span>
+        <span class="badge type-molotov">Molotov</span><span class="badge diff-1">Fácil</span>
       </div>
-      <a class="kit-name" href="/pt/mirage/smoke-a-site-from-t-spawn-t/">Smoke Bomb A (de Base TR)</a>
-      <video data-tools src="/media/furia-vs-vitality-m3-mirage/38529-76561197973140692.mp4" poster="/media/furia-vs-vitality-m3-mirage/38529-76561197973140692.jpg" muted loop playsinline controls preload="none"></video>
-      <div class="muted small">Posição: Base TR · jump throw · andando · clique esquerdo</div>
-      <code id="kc-2">sv_cheats 1; setpos 1235.829 -1128.765 -219.234; setang -20.9218 -169.2039 0</code>
+      <a class="kit-name" href="/pt/mirage/molotov-a-site-from-palace-alley-t/">Molotov Bomb A (de Entrada da Caverna)</a>
+      <video data-tools src="/media/spirit-vs-g2-m1-mirage/178228-76561199063238565.mp4" poster="/media/spirit-vs-g2-m1-mirage/178228-76561199063238565.jpg" muted loop playsinline controls preload="none"></video>
+      <div class="muted small">Posição: Entrada da Caverna · parado · clique esquerdo</div>
+      <code id="kc-2">sv_cheats 1; setpos 831.510 -1255.159 -108.969; setang -19.8993 -164.9755 0</code>
       <button class="btn small" data-copy="#kc-2">copiar comando</button>
     </li>
     <li class="kit-part">
       <div class="kit-head">
         <span class="kit-n">Jogador 3</span>
         <span class="kit-t">+2,9s</span>
-        <span class="badge type-molotov">Molotov</span><span class="badge diff-1">Fácil</span>
+        <span class="badge type-smoke">Smoke</span><span class="badge diff-3">Difícil</span>
       </div>
-      <a class="kit-name" href="/pt/mirage/molotov-a-site-from-palace-alley-t/">Molotov Bomb A (de Entrada da Caverna)</a>
-      <video data-tools src="/media/spirit-vs-g2-m1-mirage/178228-76561199063238565.mp4" poster="/media/spirit-vs-g2-m1-mirage/178228-76561199063238565.jpg" muted loop playsinline controls preload="none"></video>
-      <div class="muted small">Posição: Entrada da Caverna · parado · clique esquerdo</div>
-      <code id="kc-3">sv_cheats 1; setpos 831.510 -1255.159 -108.969; setang -19.8993 -164.9755 0</code>
+      <a class="kit-name" href="/pt/mirage/smoke-a-site-from-t-spawn-t/">Smoke Bomb A (de Base TR)</a>
+      <video data-tools src="/media/furia-vs-vitality-m3-mirage/38529-76561197973140692.mp4" poster="/media/furia-vs-vitality-m3-mirage/38529-76561197973140692.jpg" muted loop playsinline controls preload="none"></video>
+      <div class="muted small">Posição: Base TR · jump throw · andando · clique esquerdo</div>
+      <code id="kc-3">sv_cheats 1; setpos 1235.829 -1128.765 -219.234; setang -20.9218 -169.2039 0</code>
       <button class="btn small" data-copy="#kc-3">copiar comando</button>
     </li>
     <li class="kit-part">
@@ -174,6 +174,13 @@
   <h2>Partidas em que isso aconteceu</h2>
   <ul class="mref-list"><li><span class="mref">MOUZ vs FUT <b>16–14</b> · <a href="/pt/torneio/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a> · mapa 2 · 12/11/2026</span> <span class="muted small">· Round 14</span></li><li><span class="mref">FURIA vs Spirit <b>13–8</b> · <a href="/pt/torneio/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a> · mapa 3 · 15/11/2026</span> <span class="muted small">· Round 6</span></li><li><span class="mref">G2 vs Spirit <b>13–9</b> · <a href="/pt/torneio/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a> · mapa 1 · 12/11/2026</span> <span class="muted small">· Round 16</span></li></ul>
 </section>
+<script>
+(function () { // back button: always to the previous page (home if there is none); placed right under the breadcrumbs
+  var b = document.getElementById("backBtn"); if (!b) return;
+  var c = document.querySelector("main.content .crumbs"); if (c) c.insertAdjacentElement("afterend", b);
+  b.addEventListener("click", function (e) { if (history.length > 1) { e.preventDefault(); history.back(); } });
+})();
+</script>
   </main>
 </div>
 <footer class="foot">

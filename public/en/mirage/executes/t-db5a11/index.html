@@ -92,7 +92,7 @@
   </aside>
   <div class="scrim" id="scrim" hidden></div>
   <main class="content">
-<nav class="crumbs"><a href="/en/">Home</a> › <a href="/en/mirage/">Mirage</a> ›
+<a class="back-btn" id="backBtn" href="/en/">← Back</a><nav class="crumbs"><a href="/en/">Home</a> › <a href="/en/mirage/">Mirage</a> ›
   <a href="/en/mirage/#execucoes">Pro executes</a> › Execute B Site + Catwalk on Mirage: kit for your team</nav>
 <h1><span class="badge side-T">T</span> Execute B Site + Catwalk on Mirage: kit for your team</h1>
 <p class="muted">seen 3 times · round won 67% ·
@@ -162,6 +162,13 @@
   <h2>Matches where this happened</h2>
   <ul class="mref-list"><li><span class="mref">FURIA vs Vitality <b>13–0</b> · <a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a> · map 3 · 2026-11-12</span> <span class="muted small">· Round 10</span></li><li><span class="mref">FURIA vs Spirit <b>13–8</b> · <a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a> · map 3 · 2026-11-15</span> <span class="muted small">· Round 14</span></li><li><span class="mref">MOUZ vs Vitality <b>13–8</b> · <a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a> · map 1 · 2026-11-13</span> <span class="muted small">· Round 17</span></li></ul>
 </section>
+<script>
+(function () { // back button: always to the previous page (home if there is none); placed right under the breadcrumbs
+  var b = document.getElementById("backBtn"); if (!b) return;
+  var c = document.querySelector("main.content .crumbs"); if (c) c.insertAdjacentElement("afterend", b);
+  b.addEventListener("click", function (e) { if (history.length > 1) { e.preventDefault(); history.back(); } });
+})();
+</script>
   </main>
 </div>
 <footer class="foot">

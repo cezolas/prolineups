@@ -92,7 +92,7 @@
   </aside>
   <div class="scrim" id="scrim" hidden></div>
   <main class="content">
-<nav class="crumbs"><a href="/en/">Home</a> › <a href="/en/players/">Players</a> › FalleN</nav>
+<a class="back-btn" id="backBtn" href="/en/">← Back</a><nav class="crumbs"><a href="/en/">Home</a> › <a href="/en/players/">Players</a> › FalleN</nav>
 <h1><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"> Grenades by FalleN</h1>
 <p class="muted">
 <span class="pl-team">FURIA</span> · 109 grenades on 4 maps
@@ -964,6 +964,13 @@
   </div>
 </a></div>
 </section>
+<script>
+(function () { // back button: always to the previous page (home if there is none); placed right under the breadcrumbs
+  var b = document.getElementById("backBtn"); if (!b) return;
+  var c = document.querySelector("main.content .crumbs"); if (c) c.insertAdjacentElement("afterend", b);
+  b.addEventListener("click", function (e) { if (history.length > 1) { e.preventDefault(); history.back(); } });
+})();
+</script>
   </main>
 </div>
 <footer class="foot">

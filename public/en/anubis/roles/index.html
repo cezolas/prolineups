@@ -92,7 +92,7 @@
   </aside>
   <div class="scrim" id="scrim" hidden></div>
   <main class="content">
-<nav class="crumbs"><a href="/en/">Home</a> › <a href="/en/anubis/">Anubis</a> › Roles</nav>
+<a class="back-btn" id="backBtn" href="/en/">← Back</a><nav class="crumbs"><a href="/en/">Home</a> › <a href="/en/anubis/">Anubis</a> › Roles</nav>
 <h1>Anubis grenades by role</h1>
 <p class="muted">Each pro&#39;s role is computed from the demos (who enters the site first, who throws the most utility, who plays far from the team, who kills with the AWP). Use it to know what is your job in the team.</p>
 <div class="chips ro-legend"><span class="chip"><span class="role role-awp">AWP</span> <span class="muted small">AWPer</span></span><span class="chip"><span class="role role-entry">Entry</span> <span class="muted small">first onto the site</span></span><span class="chip"><span class="role role-lurker">Lurker</span> <span class="muted small">plays alone, away from the team</span></span><span class="chip"><span class="role role-support">Support</span> <span class="muted small">throws the most utility</span></span><span class="chip"><span class="role role-rifler">Rifler</span> <span class="muted small">rifle, follows the team</span></span></div>
@@ -148,6 +148,13 @@
   <h2><span class="badge side-CT">CT</span> grenades of each role</h2>
   <div class="ro-cols">
     <div class="ro-col">
+      <h3><span class="role role-entry">Entry</span></h3>
+      <ol class="start-list">
+        <li><a href="/en/anubis/smoke-bridge-from-mid-ct/"><span class="start-name">Smoke Bridge (from Mid)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-1">Easy</span>
+          <span class="muted small">2 uses by entrys</span></a></li>
+      </ol>
+    </div>
+    <div class="ro-col">
       <h3><span class="role role-support">Support</span></h3>
       <ol class="start-list">
         <li><a href="/en/anubis/molotov-connector-from-b-site-ct/"><span class="start-name">Molotov Connector (from B Site)</span><span class="badge type-molotov">Molotov</span><span class="badge diff-1">Easy</span>
@@ -157,8 +164,6 @@
     <div class="ro-col">
       <h3><span class="role role-lurker">Lurker</span></h3>
       <ol class="start-list">
-        <li><a href="/en/anubis/smoke-bridge-from-mid-ct/"><span class="start-name">Smoke Bridge (from Mid)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-1">Easy</span>
-          <span class="muted small">2 uses by lurkers</span></a></li>
         <li><a href="/en/anubis/smoke-canal-from-b-site-ct/"><span class="start-name">Smoke Canal (from B Site)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-2">Medium</span>
           <span class="muted small">4 uses by lurkers</span></a></li>
         <li><a href="/en/anubis/flash-connector-from-b-site-ct/"><span class="start-name">Flash Connector (from B Site)</span><span class="badge type-flash">Flash</span><span class="badge diff-2">Medium</span>
@@ -181,6 +186,13 @@
     </div>
   </div>
 </section>
+<script>
+(function () { // back button: always to the previous page (home if there is none); placed right under the breadcrumbs
+  var b = document.getElementById("backBtn"); if (!b) return;
+  var c = document.querySelector("main.content .crumbs"); if (c) c.insertAdjacentElement("afterend", b);
+  b.addEventListener("click", function (e) { if (history.length > 1) { e.preventDefault(); history.back(); } });
+})();
+</script>
   </main>
 </div>
 <footer class="foot">

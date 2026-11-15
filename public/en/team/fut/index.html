@@ -92,7 +92,7 @@
   </aside>
   <div class="scrim" id="scrim" hidden></div>
   <main class="content">
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<a class="back-btn" id="backBtn" href="/en/">← Back</a><svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <symbol id="g-smoke" viewBox="0 0 24 24">
       <rect x="7" y="6" width="10" height="16" rx="2.5" fill="#c9d0d8" stroke="#111" stroke-width="1.6"/>
@@ -134,7 +134,7 @@
   <h2>Players</h2>
   <div class="roster">
     <a class="pl-card" href="/en/player/coolio/">
-      <b> coolio</b><span class="role role-entry">Entry</span>      <span class="muted small">1.9 grenades per round</span>
+      <b> coolio</b><span class="role role-lurker">Lurker</span>      <span class="muted small">1.9 grenades per round</span>
       <span class="mix"><span class="mix-smoke" style="width: 30.0%"></span><span class="mix-flash" style="width: 26.1%"></span><span class="mix-molotov" style="width: 26.9%"></span><span class="mix-he" style="width: 17.0%"></span></span>
       <span class="muted small">Uses most: Smokes · flash blinds 1.0</span>
       <span class="muted small">28 uses in the site&#39;s lineups</span>
@@ -146,7 +146,7 @@
       <span class="muted small">21 uses in the site&#39;s lineups</span>
     </a>
     <a class="pl-card" href="/en/player/dziugss/">
-      <b><img class="flag" src="/static/flags/lt.svg" alt="Lithuania" title="Lithuania" width="16" height="12"> dziugss</b><span class="role role-lurker">Lurker</span>      <span class="muted small">2.0 grenades per round</span>
+      <b><img class="flag" src="/static/flags/lt.svg" alt="Lithuania" title="Lithuania" width="16" height="12"> dziugss</b><span class="role role-entry">Entry</span>      <span class="muted small">2.0 grenades per round</span>
       <span class="mix"><span class="mix-smoke" style="width: 35.1%"></span><span class="mix-flash" style="width: 21.4%"></span><span class="mix-molotov" style="width: 23.9%"></span><span class="mix-he" style="width: 19.6%"></span></span>
       <span class="muted small">Uses most: Smokes · flash blinds 0.8</span>
       <span class="muted small">23 uses in the site&#39;s lineups</span>
@@ -2172,6 +2172,13 @@
     if (d.tagName === "DETAILS") d.open = true;
     var b = d.querySelector('[data-sig="' + a.dataset.sigOpen + '"]'); if (b) b.click();
   });
+})();
+</script>
+<script>
+(function () { // back button: always to the previous page (home if there is none); placed right under the breadcrumbs
+  var b = document.getElementById("backBtn"); if (!b) return;
+  var c = document.querySelector("main.content .crumbs"); if (c) c.insertAdjacentElement("afterend", b);
+  b.addEventListener("click", function (e) { if (history.length > 1) { e.preventDefault(); history.back(); } });
 })();
 </script>
   </main>

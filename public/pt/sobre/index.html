@@ -92,7 +92,7 @@
   </aside>
   <div class="scrim" id="scrim" hidden></div>
   <main class="content">
-<nav class="crumbs"><a href="/pt/">Início</a> › Sobre</nav>
+<a class="back-btn" id="backBtn" href="/pt/">← Voltar</a><nav class="crumbs"><a href="/pt/">Início</a> › Sobre</nav>
 <article class="prose">
   <h1>Sobre o Pronades</h1>
   <p>As lineups deste site não são gravadas à mão: elas são extraídas automaticamente das demos (arquivos de replay) de partidas profissionais de Counter-Strike 2. Para cada granada, registramos de onde foi jogada, a mira, a técnica (pulo, corrida, clique) e onde caiu. Granadas iguais jogadas por pros diferentes viram uma lineup.</p>
@@ -108,6 +108,13 @@
   <h2>Privacidade</h2>
   <p>Este site não usa cookies nem coleta dados pessoais. As estatísticas de visitas são anônimas e agregadas.</p>
 </article>
+<script>
+(function () { // back button: always to the previous page (home if there is none); placed right under the breadcrumbs
+  var b = document.getElementById("backBtn"); if (!b) return;
+  var c = document.querySelector("main.content .crumbs"); if (c) c.insertAdjacentElement("afterend", b);
+  b.addEventListener("click", function (e) { if (history.length > 1) { e.preventDefault(); history.back(); } });
+})();
+</script>
   </main>
 </div>
 <footer class="foot">

@@ -92,7 +92,7 @@
   </aside>
   <div class="scrim" id="scrim" hidden></div>
   <main class="content">
-<nav class="crumbs"><a href="/en/">Home</a> ›
+<a class="back-btn" id="backBtn" href="/en/">← Back</a><nav class="crumbs"><a href="/en/">Home</a> ›
 <a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a> › FURIA vs Vitality on Dust2</nav>
 <header class="mt-head">
   <div class="mt-team win"><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"> <b>FURIA</b></div>
@@ -939,6 +939,13 @@
       <span class="row-name">▶ <img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"> FURIA B entry</span>
       <span class="row-sub muted">Round 23 · won · plant at 1:12 into the round</span></a></div>
 </section>
+<script>
+(function () { // back button: always to the previous page (home if there is none); placed right under the breadcrumbs
+  var b = document.getElementById("backBtn"); if (!b) return;
+  var c = document.querySelector("main.content .crumbs"); if (c) c.insertAdjacentElement("afterend", b);
+  b.addEventListener("click", function (e) { if (history.length > 1) { e.preventDefault(); history.back(); } });
+})();
+</script>
   </main>
 </div>
 <footer class="foot">

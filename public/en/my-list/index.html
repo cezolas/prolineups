@@ -92,11 +92,18 @@
   </aside>
   <div class="scrim" id="scrim" hidden></div>
   <main class="content">
-<nav class="crumbs"><a href="/en/">Home</a> › My list</nav>
+<a class="back-btn" id="backBtn" href="/en/">← Back</a><nav class="crumbs"><a href="/en/">Home</a> › My list</nav>
 <h1>★ My list</h1>
 <p class="muted">The grenades you saved to practice. Kept only in this browser, no account needed.</p>
 <div class="rows" id="favList"></div>
 <p class="muted" id="favEmpty" hidden>Nothing saved yet. Open a grenade and click ☆ Save to my list.</p>
+<script>
+(function () { // back button: always to the previous page (home if there is none); placed right under the breadcrumbs
+  var b = document.getElementById("backBtn"); if (!b) return;
+  var c = document.querySelector("main.content .crumbs"); if (c) c.insertAdjacentElement("afterend", b);
+  b.addEventListener("click", function (e) { if (history.length > 1) { e.preventDefault(); history.back(); } });
+})();
+</script>
   </main>
 </div>
 <footer class="foot">

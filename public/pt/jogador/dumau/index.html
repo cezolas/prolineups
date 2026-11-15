@@ -92,7 +92,7 @@
   </aside>
   <div class="scrim" id="scrim" hidden></div>
   <main class="content">
-<nav class="crumbs"><a href="/pt/">Início</a> › <a href="/pt/jogadores/">Jogadores</a> › dumau</nav>
+<a class="back-btn" id="backBtn" href="/pt/">← Voltar</a><nav class="crumbs"><a href="/pt/">Início</a> › <a href="/pt/jogadores/">Jogadores</a> › dumau</nav>
 <h1><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"> Granadas de dumau</h1>
 <p class="muted">
 <span class="pl-team">Legacy</span> · 10 granadas em 2 mapas
@@ -417,6 +417,13 @@
   </div>
 </a></div>
 </section>
+<script>
+(function () { // back button: always to the previous page (home if there is none); placed right under the breadcrumbs
+  var b = document.getElementById("backBtn"); if (!b) return;
+  var c = document.querySelector("main.content .crumbs"); if (c) c.insertAdjacentElement("afterend", b);
+  b.addEventListener("click", function (e) { if (history.length > 1) { e.preventDefault(); history.back(); } });
+})();
+</script>
   </main>
 </div>
 <footer class="foot">

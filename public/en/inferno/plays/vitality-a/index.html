@@ -92,7 +92,7 @@
   </aside>
   <div class="scrim" id="scrim" hidden></div>
   <main class="content">
-<nav class="crumbs"><a href="/en/">Home</a> › <a href="/en/inferno/">Inferno</a> ›
+<a class="back-btn" id="backBtn" href="/en/">← Back</a><nav class="crumbs"><a href="/en/">Home</a> › <a href="/en/inferno/">Inferno</a> ›
   <a href="/en/inferno/plays/">Plays</a> › Vitality A entry</nav>
 <h1><img class="flag" src="/static/flags/fr.svg" alt="France" title="France" width="16" height="12"> Vitality A entry <span class="muted h-sub">· Inferno</span></h1>
 <p class="muted">1 round · round won 100% · median plant at 1:51
@@ -198,6 +198,13 @@
   </div>
 </a></div>
 </section>
+<script>
+(function () { // back button: always to the previous page (home if there is none); placed right under the breadcrumbs
+  var b = document.getElementById("backBtn"); if (!b) return;
+  var c = document.querySelector("main.content .crumbs"); if (c) c.insertAdjacentElement("afterend", b);
+  b.addEventListener("click", function (e) { if (history.length > 1) { e.preventDefault(); history.back(); } });
+})();
+</script>
   </main>
 </div>
 <footer class="foot">

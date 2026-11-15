@@ -92,7 +92,7 @@
   </aside>
   <div class="scrim" id="scrim" hidden></div>
   <main class="content">
-<nav class="crumbs"><a href="/en/">Home</a> › <a href="/en/maps/">Maps</a> › Mirage</nav>
+<a class="back-btn" id="backBtn" href="/en/">← Back</a><nav class="crumbs"><a href="/en/">Home</a> › <a href="/en/maps/">Maps</a> › Mirage</nav>
 <h1>Mirage grenades</h1>
 <div class="map-actions">
 <a class="btn" href="/en/mirage/plays/">▶ See team plays (round replay)</a>  <a class="btn" href="/en/mirage/roles/">👥 Grenades by role</a>
@@ -235,8 +235,8 @@ Spirit (2), FUT (1)</div>
       <a class="small" href="/en/mirage/executes/t-7ffd65/">Kit for your team (who throws what) →</a>
       <ol class="exec-parts">
         <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/en/mirage/smoke-stairs-from-t-spawn-t/">Smoke Stairs (from T Spawn)</a></li>
-        <li><span class="exec-t">+2.9s</span><span class="badge type-smoke">Smoke</span><a href="/en/mirage/smoke-a-site-from-t-spawn-t/">Smoke A Site (from T Spawn)</a></li>
         <li><span class="exec-t">+2.9s</span><span class="badge type-molotov">Molotov</span><a href="/en/mirage/molotov-a-site-from-palace-alley-t/">Molotov A Site (from Palace Alley)</a></li>
+        <li><span class="exec-t">+2.9s</span><span class="badge type-smoke">Smoke</span><a href="/en/mirage/smoke-a-site-from-t-spawn-t/">Smoke A Site (from T Spawn)</a></li>
         <li><span class="exec-t">+7.1s</span><span class="badge type-molotov">Molotov</span><a href="/en/mirage/molotov-a-site-from-palace-t/">Molotov A Site (from Palace)</a></li>
         <li><span class="exec-t">+8.3s</span><span class="badge type-flash">Flash</span><a href="/en/mirage/flash-a-site-from-palace-t/">Flash A Site (from Palace)</a></li>
       </ol>
@@ -1581,6 +1581,13 @@ Legacy (1), G2 (1)</div>
   </div>
 </a></div>
 <p class="empty muted" id="empty" hidden>No lineups match these filters.</p>
+<script>
+(function () { // back button: always to the previous page (home if there is none); placed right under the breadcrumbs
+  var b = document.getElementById("backBtn"); if (!b) return;
+  var c = document.querySelector("main.content .crumbs"); if (c) c.insertAdjacentElement("afterend", b);
+  b.addEventListener("click", function (e) { if (history.length > 1) { e.preventDefault(); history.back(); } });
+})();
+</script>
   </main>
 </div>
 <footer class="foot">

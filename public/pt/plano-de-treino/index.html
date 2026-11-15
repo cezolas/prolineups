@@ -92,7 +92,7 @@
   </aside>
   <div class="scrim" id="scrim" hidden></div>
   <main class="content">
-<nav class="crumbs"><a href="/pt/">Início</a> › Plano de treino</nav>
+<a class="back-btn" id="backBtn" href="/pt/">← Voltar</a><nav class="crumbs"><a href="/pt/">Início</a> › Plano de treino</nav>
 <h1>Plano de treino semanal de granadas</h1>
 <p class="muted">Escolha o mapa e o lado que você mais joga. O plano usa as granadas mais usadas pelos pros, da mais fácil para a mais difícil: 6 dias de granadas novas e o 7º dia de revisão. Marque o que já treinou (fica salvo neste navegador) e baixe o .cfg de cada dia para treinar no servidor offline.</p>
 <div id="plan" data-lang="pt" data-i18n='{"cfg": ".cfg do dia", "cfg_ready": "Pronades: treino do dia carregado. Digite lp_next (ou bind ] lp_next).", "cfg_title": "treino dia", "day": "Dia {n}", "day_file": "dia", "diff": {"1": "F\u00e1cil", "2": "M\u00e9dio", "3": "Dif\u00edcil"}, "progress": "{a} de {b} treinadas", "review": "Dia 7 \u00b7 revis\u00e3o", "side": {"CT": "CT", "T": "TR"}}'>
@@ -107,6 +107,13 @@
     <ol><li>Baixe o arquivo e copie para <code>Counter-Strike Global Offensive/game/csgo/cfg/</code>.</li><li>No CS2, abra <b>Jogar → Praticar</b> (servidor offline) no mapa.</li><li>No console, digite <code>exec pronades_&lt;mapa&gt;_dia1</code>.</li><li>Digite <code>bind ] lp_next; bind [ lp_prev</code> e use <b>]</b> e <b>[</b> para pular de uma lineup para a outra: você vai para o ponto exato do pro, já mirando.</li><li>Use só em servidor offline, nunca em partidas online.</li></ol>
   </details>
 </div>
+<script>
+(function () { // back button: always to the previous page (home if there is none); placed right under the breadcrumbs
+  var b = document.getElementById("backBtn"); if (!b) return;
+  var c = document.querySelector("main.content .crumbs"); if (c) c.insertAdjacentElement("afterend", b);
+  b.addEventListener("click", function (e) { if (history.length > 1) { e.preventDefault(); history.back(); } });
+})();
+</script>
   </main>
 </div>
 <footer class="foot">

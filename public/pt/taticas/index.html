@@ -92,7 +92,7 @@
   </aside>
   <div class="scrim" id="scrim" hidden></div>
   <main class="content">
-<nav class="crumbs"><a href="/pt/">Início</a> › Táticas</nav>
+<a class="back-btn" id="backBtn" href="/pt/">← Voltar</a><nav class="crumbs"><a href="/pt/">Início</a> › Táticas</nav>
 <h1>Táticas dos pros: entradas e execuções</h1>
 <p class="muted">Entradas no bomb (rounds do TR que terminaram em plant) e execuções (granadas que o time joga junto), tiradas das partidas profissionais. O número no menu é a quantidade de rounds com replay.</p>
 <div class="tac-grid">
@@ -269,6 +269,13 @@
 <a href="/pt/nuke/jogadas/">ver todos (8)</a><a href="/pt/nuke/#execucoes">Execuções dos pros (1)</a>    </div>
   </section>
 </div>
+<script>
+(function () { // back button: always to the previous page (home if there is none); placed right under the breadcrumbs
+  var b = document.getElementById("backBtn"); if (!b) return;
+  var c = document.querySelector("main.content .crumbs"); if (c) c.insertAdjacentElement("afterend", b);
+  b.addEventListener("click", function (e) { if (history.length > 1) { e.preventDefault(); history.back(); } });
+})();
+</script>
   </main>
 </div>
 <footer class="foot">

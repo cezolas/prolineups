@@ -92,7 +92,7 @@
   </aside>
   <div class="scrim" id="scrim" hidden></div>
   <main class="content">
-<nav class="crumbs"><a href="/pt/">Início</a> › Granadas › Smokes</nav>
+<a class="back-btn" id="backBtn" href="/pt/">← Voltar</a><nav class="crumbs"><a href="/pt/">Início</a> › Granadas › Smokes</nav>
 <h1>Smokes</h1>
 <p class="muted">120 lineups de smokes, das mais usadas pelos pros para as menos usadas.</p>
 <div class="filters" id="filters">
@@ -2163,6 +2163,13 @@
   </div>
 </a></div>
 <p class="empty muted" id="empty" hidden>Nenhuma lineup com esses filtros.</p>
+<script>
+(function () { // back button: always to the previous page (home if there is none); placed right under the breadcrumbs
+  var b = document.getElementById("backBtn"); if (!b) return;
+  var c = document.querySelector("main.content .crumbs"); if (c) c.insertAdjacentElement("afterend", b);
+  b.addEventListener("click", function (e) { if (history.length > 1) { e.preventDefault(); history.back(); } });
+})();
+</script>
   </main>
 </div>
 <footer class="foot">

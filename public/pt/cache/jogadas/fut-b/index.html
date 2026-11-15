@@ -92,7 +92,7 @@
   </aside>
   <div class="scrim" id="scrim" hidden></div>
   <main class="content">
-<nav class="crumbs"><a href="/pt/">Início</a> › <a href="/pt/cache/">Cache</a> ›
+<a class="back-btn" id="backBtn" href="/pt/">← Voltar</a><nav class="crumbs"><a href="/pt/">Início</a> › <a href="/pt/cache/">Cache</a> ›
   <a href="/pt/cache/jogadas/">Jogadas</a> › Entrada B da FUT</nav>
 <h1><img class="flag" src="/static/flags/tr.svg" alt="Turquia" title="Turquia" width="16" height="12"> Entrada B da FUT <span class="muted h-sub">· Cache</span></h1>
 <p class="muted">6 rounds · round ganho em 83% · plant em média aos 1:15
@@ -306,6 +306,13 @@
   </div>
 </a></div>
 </section>
+<script>
+(function () { // back button: always to the previous page (home if there is none); placed right under the breadcrumbs
+  var b = document.getElementById("backBtn"); if (!b) return;
+  var c = document.querySelector("main.content .crumbs"); if (c) c.insertAdjacentElement("afterend", b);
+  b.addEventListener("click", function (e) { if (history.length > 1) { e.preventDefault(); history.back(); } });
+})();
+</script>
   </main>
 </div>
 <footer class="foot">

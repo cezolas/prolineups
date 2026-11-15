@@ -92,7 +92,7 @@
   </aside>
   <div class="scrim" id="scrim" hidden></div>
   <main class="content">
-<nav class="crumbs"><a href="/pt/">Início</a> ›
+<a class="back-btn" id="backBtn" href="/pt/">← Voltar</a><nav class="crumbs"><a href="/pt/">Início</a> ›
 <a href="/pt/torneio/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a> › MOUZ vs Vitality na Cache</nav>
 <header class="mt-head">
   <div class="mt-team win"><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"> <b>MOUZ</b></div>
@@ -923,6 +923,13 @@
       <span class="row-name">Execução: Metal + Bomb A</span>
       <span class="row-sub muted">Round 20 · vista 2 vezes</span></a></div>
 </section>
+<script>
+(function () { // back button: always to the previous page (home if there is none); placed right under the breadcrumbs
+  var b = document.getElementById("backBtn"); if (!b) return;
+  var c = document.querySelector("main.content .crumbs"); if (c) c.insertAdjacentElement("afterend", b);
+  b.addEventListener("click", function (e) { if (history.length > 1) { e.preventDefault(); history.back(); } });
+})();
+</script>
   </main>
 </div>
 <footer class="foot">

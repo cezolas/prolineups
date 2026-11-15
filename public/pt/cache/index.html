@@ -92,7 +92,7 @@
   </aside>
   <div class="scrim" id="scrim" hidden></div>
   <main class="content">
-<nav class="crumbs"><a href="/pt/">Início</a> › <a href="/pt/mapas/">Mapas</a> › Cache</nav>
+<a class="back-btn" id="backBtn" href="/pt/">← Voltar</a><nav class="crumbs"><a href="/pt/">Início</a> › <a href="/pt/mapas/">Mapas</a> › Cache</nav>
 <h1>Granadas da Cache</h1>
 <div class="map-actions">
 <a class="btn" href="/pt/cache/jogadas/">▶ Ver jogadas dos times (replay do round)</a>  <a class="btn" href="/pt/cache/funcoes/">👥 Granadas por função</a>
@@ -956,6 +956,13 @@ FUT (2)</div>
   </div>
 </a></div>
 <p class="empty muted" id="empty" hidden>Nenhuma lineup com esses filtros.</p>
+<script>
+(function () { // back button: always to the previous page (home if there is none); placed right under the breadcrumbs
+  var b = document.getElementById("backBtn"); if (!b) return;
+  var c = document.querySelector("main.content .crumbs"); if (c) c.insertAdjacentElement("afterend", b);
+  b.addEventListener("click", function (e) { if (history.length > 1) { e.preventDefault(); history.back(); } });
+})();
+</script>
   </main>
 </div>
 <footer class="foot">

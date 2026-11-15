@@ -92,7 +92,7 @@
   </aside>
   <div class="scrim" id="scrim" hidden></div>
   <main class="content">
-<nav class="crumbs"><a href="/en/">Home</a> › <a href="/en/ancient/">Ancient</a> ›
+<a class="back-btn" id="backBtn" href="/en/">← Back</a><nav class="crumbs"><a href="/en/">Home</a> › <a href="/en/ancient/">Ancient</a> ›
   <a href="/en/ancient/#execucoes">Pro executes</a> › Defense TSide Lower + Outside on Ancient: kit for your team</nav>
 <h1><span class="badge side-CT">CT</span> Defense TSide Lower + Outside on Ancient: kit for your team</h1>
 <p class="muted">seen 9 times · round won 89% ·
@@ -150,6 +150,13 @@
   <h2>Matches where this happened</h2>
   <ul class="mref-list"><li><span class="mref">FURIA vs Falcons <b>16–14</b> · <a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a> · map 1 · 2026-11-14</span> <span class="muted small">· Round 18, 25, 26</span></li><li><span class="mref">G2 vs MOUZ <b>16–14</b> · <a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a> · map 2 · 2026-11-11</span> <span class="muted small">· Round 4, 9, 10, 11</span></li><li><span class="mref">FURIA vs Spirit <b>13–11</b> · <a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a> · map 1 · 2026-11-15</span> <span class="muted small">· Round 20</span></li><li><span class="mref">Spirit vs MOUZ <b>13–11</b> · <a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a> · map 2 · 2026-11-14</span> <span class="muted small">· Round 8</span></li></ul>
 </section>
+<script>
+(function () { // back button: always to the previous page (home if there is none); placed right under the breadcrumbs
+  var b = document.getElementById("backBtn"); if (!b) return;
+  var c = document.querySelector("main.content .crumbs"); if (c) c.insertAdjacentElement("afterend", b);
+  b.addEventListener("click", function (e) { if (history.length > 1) { e.preventDefault(); history.back(); } });
+})();
+</script>
   </main>
 </div>
 <footer class="foot">

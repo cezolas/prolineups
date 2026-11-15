@@ -92,7 +92,7 @@
   </aside>
   <div class="scrim" id="scrim" hidden></div>
   <main class="content">
-<nav class="crumbs"><a href="/en/">Home</a> › <a href="/en/maps/">Maps</a> › Cache</nav>
+<a class="back-btn" id="backBtn" href="/en/">← Back</a><nav class="crumbs"><a href="/en/">Home</a> › <a href="/en/maps/">Maps</a> › Cache</nav>
 <h1>Cache grenades</h1>
 <div class="map-actions">
 <a class="btn" href="/en/cache/plays/">▶ See team plays (round replay)</a>  <a class="btn" href="/en/cache/roles/">👥 Grenades by role</a>
@@ -956,6 +956,13 @@ FUT (2)</div>
   </div>
 </a></div>
 <p class="empty muted" id="empty" hidden>No lineups match these filters.</p>
+<script>
+(function () { // back button: always to the previous page (home if there is none); placed right under the breadcrumbs
+  var b = document.getElementById("backBtn"); if (!b) return;
+  var c = document.querySelector("main.content .crumbs"); if (c) c.insertAdjacentElement("afterend", b);
+  b.addEventListener("click", function (e) { if (history.length > 1) { e.preventDefault(); history.back(); } });
+})();
+</script>
   </main>
 </div>
 <footer class="foot">

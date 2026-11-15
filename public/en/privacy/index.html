@@ -92,7 +92,7 @@
   </aside>
   <div class="scrim" id="scrim" hidden></div>
   <main class="content">
-<nav class="crumbs"><a href="/en/">Home</a> › Privacy policy</nav>
+<a class="back-btn" id="backBtn" href="/en/">← Back</a><nav class="crumbs"><a href="/en/">Home</a> › Privacy policy</nav>
 <article class="prose">
   <h1>Privacy policy</h1>
   <p class="muted small">Last updated: 2026-11-15</p>
@@ -102,6 +102,13 @@
 <p>Only to keep you signed in and keep what you saved, available on any device. We don't sell or share your data and don't use it for advertising.</p>  <h2>Where it is</h2>
 <p>Data is stored on Cloudflare's infrastructure (the site's hosting). Sign-in is done by Google, under Google's own privacy policy.</p>  <h2>Your rights</h2>
 <p>You can sign out at any time and <b>delete your account</b> on the My account page: it immediately erases everything we store about you. For questions or other requests (access, correction), contact (contact e-mail coming soon).</p></article>
+<script>
+(function () { // back button: always to the previous page (home if there is none); placed right under the breadcrumbs
+  var b = document.getElementById("backBtn"); if (!b) return;
+  var c = document.querySelector("main.content .crumbs"); if (c) c.insertAdjacentElement("afterend", b);
+  b.addEventListener("click", function (e) { if (history.length > 1) { e.preventDefault(); history.back(); } });
+})();
+</script>
   </main>
 </div>
 <footer class="foot">

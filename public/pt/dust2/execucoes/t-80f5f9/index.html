@@ -92,7 +92,7 @@
   </aside>
   <div class="scrim" id="scrim" hidden></div>
   <main class="content">
-<nav class="crumbs"><a href="/pt/">Início</a> › <a href="/pt/dust2/">Dust2</a> ›
+<a class="back-btn" id="backBtn" href="/pt/">← Voltar</a><nav class="crumbs"><a href="/pt/">Início</a> › <a href="/pt/dust2/">Dust2</a> ›
   <a href="/pt/dust2/#execucoes">Execuções dos pros</a> › Execução Portas do Meio + Varanda na Dust2: kit para o seu time</nav>
 <h1><span class="badge side-T">TR</span> Execução Portas do Meio + Varanda na Dust2: kit para o seu time</h1>
 <p class="muted">vista 6 vezes · round ganho em 33% ·
@@ -150,6 +150,13 @@
   <h2>Partidas em que isso aconteceu</h2>
   <ul class="mref-list"><li><span class="mref">FURIA vs Falcons <b>13–5</b> · <a href="/pt/torneio/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a> · mapa 2 · 14/11/2026</span> <span class="muted small">· Round 11</span></li><li><span class="mref">G2 vs Falcons <b>13–11</b> · <a href="/pt/torneio/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a> · mapa 1 · 13/11/2026</span> <span class="muted small">· Round 8, 20</span></li><li><span class="mref">Falcons vs Legacy <b>13–8</b> · <a href="/pt/torneio/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a> · mapa 1 · 12/11/2026</span> <span class="muted small">· Round 5, 10</span></li><li><span class="mref">FURIA vs Spirit <b>13–5</b> · <a href="/pt/torneio/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a> · mapa 2 · 15/11/2026</span> <span class="muted small">· Round 9</span></li></ul>
 </section>
+<script>
+(function () { // back button: always to the previous page (home if there is none); placed right under the breadcrumbs
+  var b = document.getElementById("backBtn"); if (!b) return;
+  var c = document.querySelector("main.content .crumbs"); if (c) c.insertAdjacentElement("afterend", b);
+  b.addEventListener("click", function (e) { if (history.length > 1) { e.preventDefault(); history.back(); } });
+})();
+</script>
   </main>
 </div>
 <footer class="foot">
