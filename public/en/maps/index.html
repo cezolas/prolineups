@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Maps · Lineups Pro</title>
+<title>Maps · Pronades</title>
 <meta name="description" content="Maps with grenades (smokes, flashes and molotovs) taken from professional CS2 match demos.">
 <link rel="canonical" href="https://prolineups.cezolas.workers.dev/en/maps/">
 <link rel="alternate" hreflang="pt" href="https://prolineups.cezolas.workers.dev/pt/mapas/">
@@ -17,7 +17,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta property="og:locale" content="en_US">
-<meta property="og:site_name" content="Lineups Pro">
+<meta property="og:site_name" content="Pronades">
 <meta name="theme-color" content="#0b0f15">
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
   if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
@@ -29,13 +29,15 @@
 <header class="top">
   <div class="top-in">
     <button class="menu-btn" id="menuBtn" aria-label="Show or hide the menu" aria-controls="side" aria-expanded="false">☰</button>
-    <a class="logo" href="/en/"><span class="logo-mark">◎</span> Lineups Pro</a>
+    <a class="logo" href="/en/"><span class="logo-mark">◎</span> Pronades</a>
     <div class="search">
       <input id="q" type="search" placeholder="Search map, player, team, smoke…" autocomplete="off" aria-label="Search">
       <div id="results" class="results" hidden></div>
     </div>
     <nav class="langs" aria-label="Language">
 <a href="/pt/mapas/" hreflang="pt" lang="pt" title="Português">PT</a><a href="/en/maps/" hreflang="en" lang="en" aria-current="true" title="English">EN</a>    </nav>
+    <a class="login-btn" id="loginBtn" href="/auth/google" hidden>Sign in</a>
+    <a class="me-btn" id="meBtn" href="/en/account/" hidden aria-label="My account"><img alt="" width="28" height="28" referrerpolicy="no-referrer" hidden><span>Account</span></a>
     <button class="theme-btn" id="themeBtn" type="button" aria-label="Toggle light/dark mode" title="Toggle light/dark mode"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.6"/><g stroke-width="2.2" stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></g></svg></button>
   </div>
 </header>
@@ -43,30 +45,29 @@
   <aside class="side" id="side" aria-label="Navigation">
     <nav>
       <a href="/en/"><span>Home</span></a>
+      <a href="/en/compare-my-demo/"><span>⇄ Compare my demo</span></a>
       <a href="/en/training-plan/"><span>🎯 Training plan</span></a>
       <a href="/en/roles/"><span>👥 Roles</span></a>
       <a href="/en/analytics/"><span>▤ Analytics</span></a>
       <a href="/en/my-list/"><span>★ My list</span><span class="n" id="favCount"></span></a>
-      <details class="nav-g" data-k="types" open>
-        <summary class="nav-h"><span>Grenades</span></summary>
-<a href="/en/smokes/"><span>Smokes</span><span class="n">104</span></a><a href="/en/flashes/"><span>Flashes</span><span class="n">53</span></a><a href="/en/molotovs/"><span>Molotovs</span><span class="n">53</span></a><a href="/en/hes/"><span>HEs</span><span class="n">30</span></a>      </details>
-      <details class="nav-g" data-k="tactics" open>
-        <summary class="nav-h"><a href="/en/tactics/">Tactics</a></summary>
-<a href="/en/ancient/plays/"><span>Ancient</span><span class="n">36</span></a><a href="/en/anubis/plays/"><span>Anubis</span><span class="n">13</span></a><a href="/en/cache/plays/"><span>Cache</span><span class="n">37</span></a><a href="/en/dust2/plays/"><span>Dust2</span><span class="n">40</span></a><a href="/en/inferno/plays/"><span>Inferno</span><span class="n">17</span></a><a href="/en/mirage/plays/"><span>Mirage</span><span class="n">44</span></a><a href="/en/nuke/plays/"><span>Nuke</span><span class="n">32</span></a>      </details>
       <details class="nav-g" data-k="maps" open>
         <summary class="nav-h"><a href="/en/maps/">Maps</a></summary>
-<a href="/en/ancient/"><span>Ancient</span><span class="n">30</span></a><a href="/en/anubis/"><span>Anubis</span><span class="n">20</span></a><a href="/en/cache/"><span>Cache</span><span class="n">39</span></a><a href="/en/dust2/"><span>Dust2</span><span class="n">39</span></a><a href="/en/inferno/"><span>Inferno</span><span class="n">22</span></a><a href="/en/mirage/"><span>Mirage</span><span class="n">57</span></a><a href="/en/nuke/"><span>Nuke</span><span class="n">33</span></a>      </details>
+<a href="/en/ancient/"><span>Ancient</span><span class="n">51</span></a><a href="/en/anubis/"><span>Anubis</span><span class="n">20</span></a><a href="/en/cache/"><span>Cache</span><span class="n">39</span></a><a href="/en/dust2/"><span>Dust2</span><span class="n">53</span></a><a href="/en/inferno/"><span>Inferno</span><span class="n">22</span></a><a href="/en/mirage/"><span>Mirage</span><span class="n">74</span></a><a href="/en/nuke/"><span>Nuke</span><span class="n">33</span></a>      </details>
+      <details class="nav-g" data-k="tactics" open>
+        <summary class="nav-h"><a href="/en/tactics/">Tactics</a></summary>
+<a href="/en/ancient/plays/"><span>Ancient</span><span class="n">85</span></a><a href="/en/anubis/plays/"><span>Anubis</span><span class="n">13</span></a><a href="/en/cache/plays/"><span>Cache</span><span class="n">37</span></a><a href="/en/dust2/plays/"><span>Dust2</span><span class="n">61</span></a><a href="/en/inferno/plays/"><span>Inferno</span><span class="n">17</span></a><a href="/en/mirage/plays/"><span>Mirage</span><span class="n">67</span></a><a href="/en/nuke/plays/"><span>Nuke</span><span class="n">32</span></a>      </details>
+      <details class="nav-g" data-k="events" open>
+        <summary class="nav-h"><a href="/en/tournaments/">Tournaments</a></summary>
+<a href="/en/tournament/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      </details>
       <details class="nav-g" data-k="players" open>
         <summary class="nav-h"><a href="/en/players/">Players</a></summary>
 <a href="/en/player/apex/"><span><img class="flag" src="/static/flags/fr.svg" alt="France" title="France" width="16" height="12">apEX</span></a><a href="/en/player/art/"><span><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12">art</span></a><a href="/en/player/coolio/"><span>coolio</span></a><a href="/en/player/dem0n/"><span>dem0n</span></a><a href="/en/player/donk/"><span><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12">donk</span></a><a href="/en/player/dumau/"><span><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12">dumau</span></a><a href="/en/player/dziugss/"><span><img class="flag" src="/static/flags/lt.svg" alt="Lithuania" title="Lithuania" width="16" height="12">dziugss</span></a><a href="/en/player/fallen/"><span><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12">FalleN</span></a><a href="/en/player/flamez/"><span><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12">flameZ</span></a><a href="/en/player/heavygod/"><span><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12">HeavyGod</span></a><a href="/en/player/hunter/"><span><img class="flag" src="/static/flags/ba.svg" alt="Bosnia" title="Bosnia" width="16" height="12">huNter</span></a><a href="/en/player/karrigan/"><span><img class="flag" src="/static/flags/dk.svg" alt="Denmark" title="Denmark" width="16" height="12">karrigan</span></a><a class="more" href="/en/players/">see all (40)</a>      </details>
       <details class="nav-g" data-k="teams" open>
         <summary class="nav-h"><a href="/en/teams/">Teams</a></summary>
 <a href="/en/team/falcons/"><span><img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12">Falcons</span></a><a href="/en/team/furia/"><span><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12">FURIA</span></a><a href="/en/team/fut/"><span><img class="flag" src="/static/flags/tr.svg" alt="Turkey" title="Turkey" width="16" height="12">FUT</span></a><a href="/en/team/g2/"><span><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12">G2</span></a><a href="/en/team/legacy/"><span><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12">Legacy</span></a><a href="/en/team/mouz/"><span><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12">MOUZ</span></a><a href="/en/team/spirit/"><span><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12">Spirit</span></a><a href="/en/team/vitality/"><span><img class="flag" src="/static/flags/fr.svg" alt="France" title="France" width="16" height="12">Vitality</span></a>      </details>
-      <details class="nav-g" data-k="events" open>
-        <summary class="nav-h"><a href="/en/tournaments/">Tournaments</a></summary>
-<a href="/en/tournament/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      </details>
       <div class="nav-sep"></div>
       <a href="/en/about/"><span>About</span></a>
+      <a href="/en/privacy/"><span>Privacy</span></a>
     </nav>
     <script>
       /* collapsed sections are remembered in this browser; applied before paint */
@@ -90,7 +91,7 @@
   <a class="tile map-tile" href="/en/ancient/">
     <img src="/static/radars/ancient.webp" alt="" loading="lazy" width="512" height="512">
     <span class="tile-name">Ancient</span>
-    <span class="tile-sub">30 lineups</span>
+    <span class="tile-sub">51 lineups</span>
   </a>
   <a class="tile map-tile" href="/en/anubis/">
     <img src="/static/radars/anubis.webp" alt="" loading="lazy" width="512" height="512">
@@ -105,7 +106,7 @@
   <a class="tile map-tile" href="/en/dust2/">
     <img src="/static/radars/dust2.webp" alt="" loading="lazy" width="512" height="512">
     <span class="tile-name">Dust2</span>
-    <span class="tile-sub">39 lineups</span>
+    <span class="tile-sub">53 lineups</span>
   </a>
   <a class="tile map-tile" href="/en/inferno/">
     <img src="/static/radars/inferno.webp" alt="" loading="lazy" width="512" height="512">
@@ -115,7 +116,7 @@
   <a class="tile map-tile" href="/en/mirage/">
     <img src="/static/radars/mirage.webp" alt="" loading="lazy" width="512" height="512">
     <span class="tile-name">Mirage</span>
-    <span class="tile-sub">57 lineups</span>
+    <span class="tile-sub">74 lineups</span>
   </a>
   <a class="tile map-tile" href="/en/nuke/">
     <img src="/static/radars/nuke.webp" alt="" loading="lazy" width="512" height="512">
@@ -129,9 +130,10 @@
   <div class="foot-in">
     <p>Data extracted from official match demos. Demos: <a href="https://www.hltv.org/" rel="noopener" target="_blank">HLTV.org</a>.</p>
     <p>Free fan project. Not affiliated with Valve, HLTV, the teams or tournament organizers. Counter-Strike is a trademark of Valve Corporation.</p>
-    <p><a href="/en/about/">About and credits</a> · updated 2026-11-14</p>
+    <p><a href="/en/about/">About and credits</a> · updated 2026-11-15</p>
   </div>
 </footer>
 <script src="/static/app.js" defer></script>
+<script src="/static/accounts.js" defer></script>
 </body>
 </html>

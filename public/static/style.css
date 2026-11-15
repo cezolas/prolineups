@@ -614,3 +614,55 @@ h1 img.flag { width: 24px; height: 18px; vertical-align: 0; }
 .pd input { accent-color: var(--good); width: 16px; height: 16px; }
 .pd input:checked + a { text-decoration: line-through; color: var(--muted); }
 .pd a { color: var(--text); text-decoration: none; font-weight: 600; } .pd a:hover { color: var(--link); }
+
+/* ================================================================ v3: neutral gray panels, minimal (dark theme)
+   page background unchanged; panels/headers/lines in neutral grays, plain white headings */
+:root:not([data-theme="light"]) {
+  --panel: #262626; --panel2: #2e2e2e; --head: #262626; --line: #3d3d3d; --side-line: #333333;
+  --text: #ececec; --muted: #a0a0a0; --link: #8fbbe8; --head-ink: #ffffff;
+  --sidebar: #1f1f1f; --side-on: #2f2f2f; --nav-h: #d6d6d6; --zebra: #2a2a2a; --train: #1f1f1f; --topbar: #161616;
+}
+:root:not([data-theme="light"]) .content > section > h2,
+:root:not([data-theme="light"]) .howto > h2,
+:root:not([data-theme="light"]) .sec,
+:root:not([data-theme="light"]) .an-card > h3,
+:root:not([data-theme="light"]) .play-rounds > h2,
+:root:not([data-theme="light"]) .pd h3 {
+  background: transparent; text-transform: none; letter-spacing: 0; font-size: 17px; font-weight: 700; color: #fff;
+  border-bottom: 1px solid var(--line); padding: 12px 14px 10px;
+}
+:root:not([data-theme="light"]) .side .nav-h { background: transparent; text-transform: none; letter-spacing: 0; font-size: 13px; color: #fff; }
+:root:not([data-theme="light"]) .side .nav-h a { color: #fff; }
+:root:not([data-theme="light"]) .side nav a { border-bottom-color: transparent; }
+:root:not([data-theme="light"]) .uses th { background: transparent; color: var(--muted); text-transform: none; letter-spacing: 0; font-size: 12.5px; }
+:root:not([data-theme="light"]) .tm-map header { background: transparent; border-bottom: 1px solid var(--line); }
+:root:not([data-theme="light"]) .hero, :root:not([data-theme="light"]) .lp-hero { border-color: var(--line); }
+:root:not([data-theme="light"]) .badge { background: transparent; }
+.pl-team { font-style: italic; font-size: .82em; color: var(--muted); margin-left: 2px; }
+
+/* compare my demo */
+.cm-drop { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 28px 16px; margin: 12px 0; text-align: center; cursor: pointer;
+  border: 2px dashed var(--line); border-radius: var(--radius); background: var(--panel); }
+.cm-drop:hover, .cm-drop.over { border-color: var(--accent); }
+.cm-status { padding: 8px 12px; background: var(--panel2); border-radius: var(--radius); }
+.cm-status.err { border: 1px solid var(--bad); color: var(--bad); }
+.cm-pick { position: static; gap: 16px; }
+.cm-list { list-style: none; margin: 0; padding: 0 12px; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 8px; }
+.cm { background: var(--panel2); border: 1px solid var(--line); border-left-width: 4px; border-radius: var(--radius); padding: 8px 10px; display: flex; flex-direction: column; gap: 3px; }
+.cm.same { border-left-color: var(--good); } .cm.dest { border-left-color: var(--accent); } .cm.none { border-left-color: var(--muted); }
+
+/* match references in tactics */
+.mref b { font-variant-numeric: tabular-nums; }
+.mref-list { list-style: none; margin: 0; padding: 0 12px; display: flex; flex-direction: column; gap: 6px; }
+.row-link .row-m { grid-column: 1 / -1; }
+
+/* accounts */
+.login-btn { font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 6px; background: var(--accent); color: var(--accent-ink); text-decoration: none; flex: none; }
+.me-btn { display: inline-flex; align-items: center; gap: 6px; text-decoration: none; color: var(--text); font-size: 13px; flex: none; }
+.me-btn img { width: 28px; height: 28px; border-radius: 50%; }
+.me-btn img:not([hidden]) + span { display: none; }
+.acc-card { display: flex; gap: 12px; align-items: center; margin: 8px 0 12px; }
+.acc-card img { border-radius: 50%; }
+.acc-list { list-style: none; padding: 0; }
+.google-btn { background: #fff; color: #1f1f1f; border-color: #dadce0; font-weight: 600; }
+.btn.danger { border-color: var(--bad); color: var(--bad); background: transparent; }

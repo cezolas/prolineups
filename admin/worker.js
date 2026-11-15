@@ -1,4 +1,4 @@
-// Lineups Pro — online Admin (Cloudflare Worker).
+// Pronades — online Admin (Cloudflare Worker).
 // The whole Worker sits behind Cloudflare Access (only the e-mails you allow can log in). As a second lock, every
 // request is checked here too: the Access JWT must be valid (signature, issuer, audience, expiry) and the e-mail must
 // be in ADMIN_EMAILS, or the request must come from the studio's service token (read-only export).

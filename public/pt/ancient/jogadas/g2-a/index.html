@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Entrada A da G2 · Ancient · Lineups Pro</title>
+<title>Entrada A da G2 · Ancient · Pronades</title>
 <meta name="description" content="Entrada A da G2 na Ancient: 9 rounds em replay 2D, com as granadas usadas e por onde entram.">
 <link rel="canonical" href="https://prolineups.cezolas.workers.dev/pt/ancient/jogadas/g2-a/">
 <link rel="alternate" hreflang="pt" href="https://prolineups.cezolas.workers.dev/pt/ancient/jogadas/g2-a/">
@@ -17,7 +17,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta property="og:locale" content="pt_BR">
-<meta property="og:site_name" content="Lineups Pro">
+<meta property="og:site_name" content="Pronades">
 <meta name="theme-color" content="#0b0f15">
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
   if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
@@ -29,13 +29,15 @@
 <header class="top">
   <div class="top-in">
     <button class="menu-btn" id="menuBtn" aria-label="Mostrar ou ocultar o menu" aria-controls="side" aria-expanded="false">☰</button>
-    <a class="logo" href="/pt/"><span class="logo-mark">◎</span> Lineups Pro</a>
+    <a class="logo" href="/pt/"><span class="logo-mark">◎</span> Pronades</a>
     <div class="search">
       <input id="q" type="search" placeholder="Buscar mapa, jogador, time, smoke…" autocomplete="off" aria-label="Buscar">
       <div id="results" class="results" hidden></div>
     </div>
     <nav class="langs" aria-label="Idioma">
 <a href="/pt/ancient/jogadas/g2-a/" hreflang="pt" lang="pt" aria-current="true" title="Português">PT</a><a href="/en/ancient/plays/g2-a/" hreflang="en" lang="en" title="English">EN</a>    </nav>
+    <a class="login-btn" id="loginBtn" href="/auth/google" hidden>Entrar</a>
+    <a class="me-btn" id="meBtn" href="/pt/conta/" hidden aria-label="Minha conta"><img alt="" width="28" height="28" referrerpolicy="no-referrer" hidden><span>Conta</span></a>
     <button class="theme-btn" id="themeBtn" type="button" aria-label="Alternar modo claro/escuro" title="Alternar modo claro/escuro"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.6"/><g stroke-width="2.2" stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></g></svg></button>
   </div>
 </header>
@@ -43,30 +45,29 @@
   <aside class="side" id="side" aria-label="Navegação">
     <nav>
       <a href="/pt/"><span>Início</span></a>
+      <a href="/pt/comparar-minha-demo/"><span>⇄ Comparar minha demo</span></a>
       <a href="/pt/plano-de-treino/"><span>🎯 Plano de treino</span></a>
       <a href="/pt/funcoes/"><span>👥 Funções</span></a>
       <a href="/pt/analises/"><span>▤ Análises</span></a>
       <a href="/pt/minha-lista/"><span>★ Minha lista</span><span class="n" id="favCount"></span></a>
-      <details class="nav-g" data-k="types" open>
-        <summary class="nav-h"><span>Granadas</span></summary>
-<a href="/pt/smokes/"><span>Smokes</span><span class="n">104</span></a><a href="/pt/flashes/"><span>Flashes</span><span class="n">53</span></a><a href="/pt/molotovs/"><span>Molotovs</span><span class="n">53</span></a><a href="/pt/hes/"><span>HEs</span><span class="n">30</span></a>      </details>
-      <details class="nav-g" data-k="tactics" open>
-        <summary class="nav-h"><a href="/pt/taticas/">Táticas</a></summary>
-<a href="/pt/ancient/jogadas/" aria-current="page"><span>Ancient</span><span class="n">36</span></a><a href="/pt/anubis/jogadas/"><span>Anubis</span><span class="n">13</span></a><a href="/pt/cache/jogadas/"><span>Cache</span><span class="n">37</span></a><a href="/pt/dust2/jogadas/"><span>Dust2</span><span class="n">40</span></a><a href="/pt/inferno/jogadas/"><span>Inferno</span><span class="n">17</span></a><a href="/pt/mirage/jogadas/"><span>Mirage</span><span class="n">44</span></a><a href="/pt/nuke/jogadas/"><span>Nuke</span><span class="n">32</span></a>      </details>
       <details class="nav-g" data-k="maps" open>
         <summary class="nav-h"><a href="/pt/mapas/">Mapas</a></summary>
-<a href="/pt/ancient/" aria-current="page"><span>Ancient</span><span class="n">30</span></a><a href="/pt/anubis/"><span>Anubis</span><span class="n">20</span></a><a href="/pt/cache/"><span>Cache</span><span class="n">39</span></a><a href="/pt/dust2/"><span>Dust2</span><span class="n">39</span></a><a href="/pt/inferno/"><span>Inferno</span><span class="n">22</span></a><a href="/pt/mirage/"><span>Mirage</span><span class="n">57</span></a><a href="/pt/nuke/"><span>Nuke</span><span class="n">33</span></a>      </details>
+<a href="/pt/ancient/" aria-current="page"><span>Ancient</span><span class="n">51</span></a><a href="/pt/anubis/"><span>Anubis</span><span class="n">20</span></a><a href="/pt/cache/"><span>Cache</span><span class="n">39</span></a><a href="/pt/dust2/"><span>Dust2</span><span class="n">53</span></a><a href="/pt/inferno/"><span>Inferno</span><span class="n">22</span></a><a href="/pt/mirage/"><span>Mirage</span><span class="n">74</span></a><a href="/pt/nuke/"><span>Nuke</span><span class="n">33</span></a>      </details>
+      <details class="nav-g" data-k="tactics" open>
+        <summary class="nav-h"><a href="/pt/taticas/">Táticas</a></summary>
+<a href="/pt/ancient/jogadas/" aria-current="page"><span>Ancient</span><span class="n">85</span></a><a href="/pt/anubis/jogadas/"><span>Anubis</span><span class="n">13</span></a><a href="/pt/cache/jogadas/"><span>Cache</span><span class="n">37</span></a><a href="/pt/dust2/jogadas/"><span>Dust2</span><span class="n">61</span></a><a href="/pt/inferno/jogadas/"><span>Inferno</span><span class="n">17</span></a><a href="/pt/mirage/jogadas/"><span>Mirage</span><span class="n">67</span></a><a href="/pt/nuke/jogadas/"><span>Nuke</span><span class="n">32</span></a>      </details>
+      <details class="nav-g" data-k="events" open>
+        <summary class="nav-h"><a href="/pt/torneios/">Torneios</a></summary>
+<a href="/pt/torneio/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      </details>
       <details class="nav-g" data-k="players" open>
         <summary class="nav-h"><a href="/pt/jogadores/">Jogadores</a></summary>
 <a href="/pt/jogador/apex/"><span><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12">apEX</span></a><a href="/pt/jogador/art/"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">art</span></a><a href="/pt/jogador/coolio/"><span>coolio</span></a><a href="/pt/jogador/dem0n/"><span>dem0n</span></a><a href="/pt/jogador/donk/"><span><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12">donk</span></a><a href="/pt/jogador/dumau/"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">dumau</span></a><a href="/pt/jogador/dziugss/"><span><img class="flag" src="/static/flags/lt.svg" alt="Lituânia" title="Lituânia" width="16" height="12">dziugss</span></a><a href="/pt/jogador/fallen/"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">FalleN</span></a><a href="/pt/jogador/flamez/"><span><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12">flameZ</span></a><a href="/pt/jogador/heavygod/"><span><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12">HeavyGod</span></a><a href="/pt/jogador/hunter/"><span><img class="flag" src="/static/flags/ba.svg" alt="Bósnia" title="Bósnia" width="16" height="12">huNter</span></a><a href="/pt/jogador/karrigan/"><span><img class="flag" src="/static/flags/dk.svg" alt="Dinamarca" title="Dinamarca" width="16" height="12">karrigan</span></a><a class="more" href="/pt/jogadores/">ver todos (40)</a>      </details>
       <details class="nav-g" data-k="teams" open>
         <summary class="nav-h"><a href="/pt/times/">Times</a></summary>
 <a href="/pt/time/falcons/"><span><img class="flag" src="/static/flags/sa.svg" alt="Arábia Saudita" title="Arábia Saudita" width="16" height="12">Falcons</span></a><a href="/pt/time/furia/"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">FURIA</span></a><a href="/pt/time/fut/"><span><img class="flag" src="/static/flags/tr.svg" alt="Turquia" title="Turquia" width="16" height="12">FUT</span></a><a href="/pt/time/g2/"><span><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12">G2</span></a><a href="/pt/time/legacy/"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">Legacy</span></a><a href="/pt/time/mouz/"><span><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12">MOUZ</span></a><a href="/pt/time/spirit/"><span><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12">Spirit</span></a><a href="/pt/time/vitality/"><span><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12">Vitality</span></a>      </details>
-      <details class="nav-g" data-k="events" open>
-        <summary class="nav-h"><a href="/pt/torneios/">Torneios</a></summary>
-<a href="/pt/torneio/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      </details>
       <div class="nav-sep"></div>
       <a href="/pt/sobre/"><span>Sobre</span></a>
+      <a href="/pt/privacidade/"><span>Privacidade</span></a>
     </nav>
     <script>
       /* collapsed sections are remembered in this browser; applied before paint */
@@ -94,7 +95,7 @@
   <section class="play-view">
     <div class="replay" id="play" data-plays='["mouz-vs-g2-m2-ancient-r1", "mouz-vs-g2-m2-ancient-r2", "mouz-vs-g2-m2-ancient-r5", "mouz-vs-g2-m2-ancient-r7", "mouz-vs-g2-m2-ancient-r12", "mouz-vs-g2-m2-ancient-r29", "mouz-vs-g2-m2-ancient-r30", "spirit-vs-g2-m3-ancient-r5", "spirit-vs-g2-m3-ancient-r6"]' data-map="ancient"
          data-mapdef='{"pos_x": -2953.0, "pos_y": 2164.0, "radar_size": 1024, "scale": 5.0}'
-         data-labels='[["Bomb A", 267.4, 272.8], ["Fora", 307.4, 666.2], ["Meio", 481.4, 512.6], ["Base CT", 500.2, 168.0], ["Bomb B", 783.0, 416.8], ["Beco", 736.8, 273.6], ["Sal\u00e3o", 217.4, 454.6], ["Entrada Lateral", 671.8, 469.2], ["Base TR", 485.2, 822.8], ["Corredor Lateral", 324.0, 442.6], ["Casa", 499.4, 282.8], ["Ru\u00ednas", 802.2, 698.0], ["TR Inferior", 758.8, 580.0], ["TR Superior", 622.0, 590.4], ["Rampa", 845.4, 546.6], ["T\u00fanel", 615.8, 802.2], ["Top Mid", 486.0, 407.8], ["\u00c1gua", 709.8, 775.4]]'>
+         data-labels='[["Bomb A", 274.8, 275.6], ["Fora", 309.8, 662.8], ["Meio", 483.8, 515.8], ["Base CT", 500.2, 168.0], ["Bomb B", 783.0, 416.8], ["Beco", 736.6, 270.2], ["Sal\u00e3o", 217.4, 454.6], ["Base TR", 483.6, 823.8], ["Entrada Lateral", 666.8, 465.4], ["Corredor Lateral", 322.2, 440.2], ["Casa", 499.4, 282.8], ["Ru\u00ednas", 793.0, 700.8], ["TR Inferior", 755.6, 578.8], ["TR Superior", 622.4, 592.8], ["Rampa", 846.6, 544.8], ["T\u00fanel", 615.2, 798.6], ["Top Mid", 486.0, 407.8], ["\u00c1gua", 708.8, 780.0]]'>
       <div class="play-canvas">
         <canvas width="1024" height="1024" aria-label="Replay 2D do round"></canvas>
         <div class="feed" data-out="feed" aria-live="polite"></div>
@@ -120,54 +121,63 @@
       <button class="round-item" data-play="mouz-vs-g2-m2-ancient-r1" data-clip="/media/mouz-vs-g2-m2-ancient/entry-r1.mp4" data-poster="/media/mouz-vs-g2-m2-ancient/entry-r1.jpg" data-pov="HeavyGod">
         <span class="ri-top"><b>vs <img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"> MOUZ</b> · Round 1
           <span class="badge win">venceu</span><span class="badge video">▶ vídeo</span></span>
+        <span class="muted small"><span class="mref">G2 vs MOUZ <b>16–14</b> · mapa 2</span></span>
         <span class="muted small">plant aos 0:32 de round · 11/11/2026</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="HeavyGod · smoke"></span><span class="dot-nade type-flash" title="MATYS · flash"></span><span class="dot-nade type-smoke" title="huNter · smoke"></span><span class="dot-nade type-molotov" title="HeavyGod · molotov"></span></span>
       </button>
       <button class="round-item" data-play="mouz-vs-g2-m2-ancient-r2" data-clip="/media/mouz-vs-g2-m2-ancient/entry-r2.mp4" data-poster="/media/mouz-vs-g2-m2-ancient/entry-r2.jpg" data-pov="NertZ">
         <span class="ri-top"><b>vs <img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"> MOUZ</b> · Round 2
           <span class="badge win">venceu</span><span class="badge video">▶ vídeo</span></span>
+        <span class="muted small"><span class="mref">G2 vs MOUZ <b>16–14</b> · mapa 2</span></span>
         <span class="muted small">plant aos 1:44 de round · 11/11/2026</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="r1nkle · smoke"></span><span class="dot-nade type-smoke" title="r1nkle · smoke"></span><span class="dot-nade type-flash" title="HeavyGod · flash"></span><span class="dot-nade type-he" title="NertZ · he"></span><span class="dot-nade type-flash" title="r1nkle · flash"></span><span class="dot-nade type-flash" title="r1nkle · flash"></span><span class="dot-nade type-molotov" title="MATYS · molotov"></span><span class="dot-nade type-flash" title="MATYS · flash"></span><span class="dot-nade type-he" title="huNter · he"></span><span class="dot-nade type-molotov" title="r1nkle · molotov"></span><span class="dot-nade type-molotov" title="huNter · molotov"></span><span class="dot-nade type-smoke" title="r1nkle · smoke"></span><span class="dot-nade type-flash" title="NertZ · flash"></span><span class="dot-nade type-smoke" title="r1nkle · smoke"></span><span class="dot-nade type-smoke" title="HeavyGod · smoke"></span><span class="dot-nade type-flash" title="HeavyGod · flash"></span></span>
       </button>
       <button class="round-item" data-play="mouz-vs-g2-m2-ancient-r5" data-clip="/media/mouz-vs-g2-m2-ancient/entry-r5.mp4" data-poster="/media/mouz-vs-g2-m2-ancient/entry-r5.jpg" data-pov="HeavyGod">
         <span class="ri-top"><b>vs <img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"> MOUZ</b> · Round 5
           <span class="badge win">venceu</span><span class="badge video">▶ vídeo</span></span>
+        <span class="muted small"><span class="mref">G2 vs MOUZ <b>16–14</b> · mapa 2</span></span>
         <span class="muted small">plant aos 0:37 de round · 11/11/2026</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="HeavyGod · smoke"></span><span class="dot-nade type-smoke" title="r1nkle · smoke"></span><span class="dot-nade type-molotov" title="huNter · molotov"></span><span class="dot-nade type-smoke" title="huNter · smoke"></span><span class="dot-nade type-molotov" title="r1nkle · molotov"></span><span class="dot-nade type-molotov" title="MATYS · molotov"></span><span class="dot-nade type-molotov" title="HeavyGod · molotov"></span><span class="dot-nade type-flash" title="r1nkle · flash"></span><span class="dot-nade type-smoke" title="NertZ · smoke"></span><span class="dot-nade type-molotov" title="r1nkle · molotov"></span><span class="dot-nade type-flash" title="HeavyGod · flash"></span></span>
       </button>
       <button class="round-item" data-play="mouz-vs-g2-m2-ancient-r7" data-clip="/media/mouz-vs-g2-m2-ancient/entry-r7.mp4" data-poster="/media/mouz-vs-g2-m2-ancient/entry-r7.jpg" data-pov="MATYS">
         <span class="ri-top"><b>vs <img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"> MOUZ</b> · Round 7
           <span class="badge loss">perdeu</span><span class="badge video">▶ vídeo</span></span>
+        <span class="muted small"><span class="mref">G2 vs MOUZ <b>16–14</b> · mapa 2</span></span>
         <span class="muted small">plant aos 1:17 de round · 11/11/2026</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="HeavyGod · smoke"></span><span class="dot-nade type-smoke" title="r1nkle · smoke"></span><span class="dot-nade type-he" title="huNter · he"></span><span class="dot-nade type-molotov" title="NertZ · molotov"></span><span class="dot-nade type-flash" title="MATYS · flash"></span><span class="dot-nade type-he" title="NertZ · he"></span><span class="dot-nade type-molotov" title="huNter · molotov"></span><span class="dot-nade type-flash" title="huNter · flash"></span><span class="dot-nade type-smoke" title="huNter · smoke"></span><span class="dot-nade type-flash" title="NertZ · flash"></span><span class="dot-nade type-flash" title="MATYS · flash"></span><span class="dot-nade type-smoke" title="NertZ · smoke"></span><span class="dot-nade type-molotov" title="HeavyGod · molotov"></span><span class="dot-nade type-molotov" title="MATYS · molotov"></span><span class="dot-nade type-flash" title="HeavyGod · flash"></span></span>
       </button>
       <button class="round-item" data-play="mouz-vs-g2-m2-ancient-r12" data-clip="/media/mouz-vs-g2-m2-ancient/entry-r12.mp4" data-poster="/media/mouz-vs-g2-m2-ancient/entry-r12.jpg" data-pov="HeavyGod">
         <span class="ri-top"><b>vs <img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"> MOUZ</b> · Round 12
           <span class="badge win">venceu</span><span class="badge video">▶ vídeo</span></span>
+        <span class="muted small"><span class="mref">G2 vs MOUZ <b>16–14</b> · mapa 2</span></span>
         <span class="muted small">plant aos 1:10 de round · 11/11/2026</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="HeavyGod · smoke"></span><span class="dot-nade type-smoke" title="r1nkle · smoke"></span><span class="dot-nade type-molotov" title="NertZ · molotov"></span><span class="dot-nade type-flash" title="huNter · flash"></span><span class="dot-nade type-smoke" title="NertZ · smoke"></span><span class="dot-nade type-flash" title="r1nkle · flash"></span><span class="dot-nade type-flash" title="huNter · flash"></span><span class="dot-nade type-flash" title="r1nkle · flash"></span><span class="dot-nade type-smoke" title="huNter · smoke"></span><span class="dot-nade type-smoke" title="huNter · smoke"></span><span class="dot-nade type-flash" title="r1nkle · flash"></span><span class="dot-nade type-flash" title="HeavyGod · flash"></span><span class="dot-nade type-flash" title="r1nkle · flash"></span><span class="dot-nade type-molotov" title="r1nkle · molotov"></span><span class="dot-nade type-he" title="r1nkle · he"></span><span class="dot-nade type-he" title="NertZ · he"></span><span class="dot-nade type-molotov" title="NertZ · molotov"></span></span>
       </button>
       <button class="round-item" data-play="mouz-vs-g2-m2-ancient-r29" data-clip="/media/mouz-vs-g2-m2-ancient/entry-r29.mp4" data-poster="/media/mouz-vs-g2-m2-ancient/entry-r29.jpg" data-pov="MATYS">
         <span class="ri-top"><b>vs <img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"> MOUZ</b> · Round 29
           <span class="badge win">venceu</span><span class="badge video">▶ vídeo</span></span>
+        <span class="muted small"><span class="mref">G2 vs MOUZ <b>16–14</b> · mapa 2</span></span>
         <span class="muted small">plant aos 1:29 de round · 11/11/2026</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="r1nkle · smoke"></span><span class="dot-nade type-smoke" title="r1nkle · smoke"></span><span class="dot-nade type-he" title="huNter · he"></span><span class="dot-nade type-molotov" title="NertZ · molotov"></span><span class="dot-nade type-flash" title="NertZ · flash"></span><span class="dot-nade type-molotov" title="huNter · molotov"></span><span class="dot-nade type-flash" title="MATYS · flash"></span><span class="dot-nade type-he" title="NertZ · he"></span><span class="dot-nade type-smoke" title="huNter · smoke"></span><span class="dot-nade type-flash" title="huNter · flash"></span><span class="dot-nade type-flash" title="MATYS · flash"></span><span class="dot-nade type-smoke" title="NertZ · smoke"></span><span class="dot-nade type-molotov" title="HeavyGod · molotov"></span><span class="dot-nade type-molotov" title="MATYS · molotov"></span><span class="dot-nade type-flash" title="r1nkle · flash"></span><span class="dot-nade type-molotov" title="r1nkle · molotov"></span><span class="dot-nade type-flash" title="HeavyGod · flash"></span><span class="dot-nade type-flash" title="r1nkle · flash"></span><span class="dot-nade type-flash" title="HeavyGod · flash"></span><span class="dot-nade type-smoke" title="huNter · smoke"></span></span>
       </button>
       <button class="round-item" data-play="mouz-vs-g2-m2-ancient-r30" data-clip="/media/mouz-vs-g2-m2-ancient/entry-r30.mp4" data-poster="/media/mouz-vs-g2-m2-ancient/entry-r30.jpg" data-pov="HeavyGod">
         <span class="ri-top"><b>vs <img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"> MOUZ</b> · Round 30
           <span class="badge win">venceu</span><span class="badge video">▶ vídeo</span></span>
+        <span class="muted small"><span class="mref">G2 vs MOUZ <b>16–14</b> · mapa 2</span></span>
         <span class="muted small">plant aos 1:00 de round · 11/11/2026</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="HeavyGod · smoke"></span><span class="dot-nade type-smoke" title="HeavyGod · smoke"></span><span class="dot-nade type-he" title="MATYS · he"></span><span class="dot-nade type-flash" title="HeavyGod · flash"></span><span class="dot-nade type-he" title="NertZ · he"></span><span class="dot-nade type-flash" title="HeavyGod · flash"></span><span class="dot-nade type-molotov" title="MATYS · molotov"></span><span class="dot-nade type-he" title="NertZ · he"></span><span class="dot-nade type-smoke" title="MATYS · smoke"></span><span class="dot-nade type-molotov" title="NertZ · molotov"></span><span class="dot-nade type-smoke" title="NertZ · smoke"></span><span class="dot-nade type-flash" title="NertZ · flash"></span><span class="dot-nade type-molotov" title="HeavyGod · molotov"></span></span>
       </button>
       <button class="round-item" data-play="spirit-vs-g2-m3-ancient-r5" data-clip="/media/spirit-vs-g2-m3-ancient/entry-r5.mp4" data-poster="/media/spirit-vs-g2-m3-ancient/entry-r5.jpg" data-pov="NertZ">
         <span class="ri-top"><b>vs <img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12"> Spirit</b> · Round 5
           <span class="badge win">venceu</span><span class="badge video">▶ vídeo</span></span>
+        <span class="muted small"><span class="mref">Spirit vs G2 <b>13–5</b> · mapa 3</span></span>
         <span class="muted small">plant aos 1:22 de round · 12/11/2026</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="HeavyGod · smoke"></span><span class="dot-nade type-he" title="MATYS · he"></span><span class="dot-nade type-flash" title="HeavyGod · flash"></span><span class="dot-nade type-molotov" title="MATYS · molotov"></span><span class="dot-nade type-smoke" title="MATYS · smoke"></span><span class="dot-nade type-flash" title="MATYS · flash"></span><span class="dot-nade type-he" title="huNter · he"></span><span class="dot-nade type-smoke" title="huNter · smoke"></span><span class="dot-nade type-flash" title="MATYS · flash"></span></span>
       </button>
       <button class="round-item" data-play="spirit-vs-g2-m3-ancient-r6" data-clip="/media/spirit-vs-g2-m3-ancient/entry-r6.mp4" data-poster="/media/spirit-vs-g2-m3-ancient/entry-r6.jpg" data-pov="NertZ">
         <span class="ri-top"><b>vs <img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12"> Spirit</b> · Round 6
           <span class="badge win">venceu</span><span class="badge video">▶ vídeo</span></span>
+        <span class="muted small"><span class="mref">Spirit vs G2 <b>13–5</b> · mapa 3</span></span>
         <span class="muted small">plant aos 1:33 de round · 12/11/2026</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="huNter · smoke"></span><span class="dot-nade type-smoke" title="r1nkle · smoke"></span><span class="dot-nade type-smoke" title="r1nkle · smoke"></span><span class="dot-nade type-molotov" title="NertZ · molotov"></span><span class="dot-nade type-molotov" title="HeavyGod · molotov"></span><span class="dot-nade type-flash" title="huNter · flash"></span><span class="dot-nade type-smoke" title="NertZ · smoke"></span><span class="dot-nade type-flash" title="r1nkle · flash"></span><span class="dot-nade type-molotov" title="MATYS · molotov"></span><span class="dot-nade type-flash" title="huNter · flash"></span><span class="dot-nade type-flash" title="r1nkle · flash"></span><span class="dot-nade type-flash" title="MATYS · flash"></span><span class="dot-nade type-flash" title="r1nkle · flash"></span><span class="dot-nade type-he" title="NertZ · he"></span><span class="dot-nade type-he" title="MATYS · he"></span><span class="dot-nade type-smoke" title="huNter · smoke"></span><span class="dot-nade type-molotov" title="huNter · molotov"></span><span class="dot-nade type-molotov" title="r1nkle · molotov"></span></span>
       </button>
@@ -175,6 +185,10 @@
   </section>
 </div>
 
+<section>
+  <h2>Partidas em que isso aconteceu</h2>
+  <ul class="mref-list"><li><span class="mref">G2 vs MOUZ <b>16–14</b> · <a href="/pt/torneio/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a> · mapa 2 · 11/11/2026</span> <span class="muted small">· 7 rounds</span></li><li><span class="mref">Spirit vs G2 <b>13–5</b> · <a href="/pt/torneio/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a> · mapa 3 · 12/11/2026</span> <span class="muted small">· 2 rounds</span></li></ul>
+</section>
 <section>
   <h2>Por onde entram</h2>
   <p class="muted">Onde os jogadores do TR estavam 6 segundos antes do plant (somando todos os rounds).</p>
@@ -184,141 +198,141 @@
 <section>
   <h2>Granadas usadas nessas entradas</h2>
   <p class="muted">Lineups publicadas que o time jogou antes do plant nesses rounds.</p>
-  <div class="cards"><a class="card" href="/pt/ancient/smoke-top-mid-from-t-spawn-t/" data-id="smoke-top-mid-from-t-spawn-t"
-   data-type="smoke" data-side="T" data-area="TopofMid" data-map="ancient"
-   data-teams="fut g2 mouz spirit" data-players="dziugss heavygod hunter r1nkle sh1ro sunpayus tn1r torzsi"
-   data-diff="3" data-count="31" data-eff="-1">
-  <svg class="radar" viewBox="187.2 318.8 637.2 637.2" role="img" aria-label="Trajetória: Smoke Top Mid (de Base TR)">
-  <image href="/static/radars/ancient.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="21.2"><text x="307.4" y="666.2">Fora</text><text x="481.4" y="512.6">Meio</text><text x="671.8" y="469.2">Entrada Lateral</text><text x="485.2" y="822.8">Base TR</text><text x="324.0" y="442.6">Corredor Lateral</text><text x="622.0" y="590.4">TR Superior</text><text x="615.8" y="802.2">Túnel</text><text x="486.0" y="407.8">Top Mid</text><text x="709.8" y="775.4">Água</text></g>
-  <circle class="land land-smoke" cx="487.3" cy="389.6" r="29.0"/>
-  <path class="traj traj-smoke" d="M524.6,886.0 L524.2,879.0 L523.8,871.8 L523.2,864.8 L522.8,857.8 L522.2,850.6 L521.8,843.6 L521.2,836.4 L520.8,829.4 L520.2,822.4 L519.8,815.2 L519.4,808.2 L518.8,801.2 L518.4,794.0 L517.8,787.0 L517.4,779.8 L516.8,772.8 L516.4,765.8 L515.8,758.6 L515.4,751.6 L515.0,744.4 L514.4,737.4 L514.0,730.4 L513.4,723.2 L513.0,716.2 L512.4,709.0 L512.0,702.0 L511.4,695.0 L511.0,687.8 L510.6,680.8 L510.0,673.6 L509.6,666.6 L509.0,659.6 L508.6,652.4 L508.0,645.4 L507.6,638.4 L507.0,631.2 L506.6,624.2 L506.0,617.0 L505.6,610.0 L505.2,603.0 L504.6,595.8 L504.2,588.8 L503.6,581.6 L503.2,574.6 L502.6,567.6 L502.2,560.4 L501.6,553.4 L501.2,546.4 L500.8,539.2 L500.2,532.2 L499.8,525.0 L499.2,518.0 L498.8,511.0 L498.2,503.8 L497.8,496.8 L497.2,489.6 L496.8,482.6 L496.4,475.6 L495.8,468.4 L495.4,461.4 L494.8,454.2 L494.4,447.2 L493.8,440.2 L493.4,433.0 L493.0,427.8 L492.6,425.4 L492.2,422.8 L491.8,420.4 L491.4,418.0 L491.2,415.4 L490.8,413.0 L490.4,410.6 L490.0,408.2 L489.6,405.6 L489.4,403.2 L489.0,400.8 L488.6,398.2 L488.2,395.8 L487.8,393.4 L487.6,390.8 L487.4,389.6 L487.2,389.4 L487.2,389.2 L487.2,389.0 L487.0,388.8 L487.0,388.8"/>
-  <line class="aim" x1="524.7" y1="885.7" x2="522.3" y2="851.7"/>
-  <circle class="spot side-T" cx="524.7" cy="885.7" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">TR</span><span class="badge diff-3">Difícil</span><span class="badge">jump throw</span><span class="badge video">▶ vídeo</span><span class="badge">3 variações</span></div>
-    <h3>Smoke Top Mid (de Base TR)</h3>
-    <p class="muted">31 usos · 4 times · round ganho 58%</p>
-  </div>
-</a><a class="card" href="/pt/ancient/smoke-t-upper-from-t-spawn-t/" data-id="smoke-t-upper-from-t-spawn-t"
+  <div class="cards"><a class="card" href="/pt/ancient/smoke-t-upper-from-t-spawn-t/" data-id="smoke-t-upper-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="TSideUpper" data-map="ancient"
-   data-teams="fut g2 mouz spirit" data-players="coolio heavygod hunter magixx r1nkle tn1r torzsi xelex xertion"
-   data-diff="2" data-count="27" data-eff="-1">
-  <svg class="radar" viewBox="317.6 492.0 434.0 434.0" role="img" aria-label="Trajetória: Smoke TR Superior (de Base TR)">
+   data-teams="falcons furia fut g2 mouz spirit" data-players="coolio heavygod hunter karrigan m0nesy magixx r1nkle teses tn1r torzsi xelex xertion yekindar"
+   data-diff="2" data-count="39" data-eff="-1">
+  <svg class="radar" viewBox="317.5 492.0 434.0 434.0" role="img" aria-label="Trajetória: Smoke TR Superior (de Base TR)">
   <image href="/static/radars/ancient.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="14.5"><text x="485.2" y="822.8">Base TR</text><text x="622.0" y="590.4">TR Superior</text><text x="615.8" y="802.2">Túnel</text></g>
-  <circle class="land land-smoke" cx="622.6" cy="594.4" r="29.0"/>
+  <g class="places" font-size="14.5"><text x="483.6" y="823.8">Base TR</text><text x="622.4" y="592.8">TR Superior</text><text x="615.2" y="798.6">Túnel</text></g>
+  <circle class="land land-smoke" cx="623.7" cy="594.0" r="29.0"/>
   <path class="traj traj-smoke" d="M445.4,856.0 L448.4,849.8 L451.4,843.4 L454.4,837.0 L457.6,830.8 L460.6,824.4 L463.6,818.2 L466.6,811.8 L469.6,805.6 L472.8,799.2 L475.8,792.8 L478.8,786.6 L481.8,780.2 L485.0,774.0 L488.0,767.6 L491.0,761.4 L494.0,755.0 L497.0,748.6 L500.2,742.4 L503.2,736.0 L506.2,729.8 L509.2,723.4 L512.4,717.2 L515.4,710.8 L518.4,704.4 L521.4,698.2 L524.6,691.8 L527.6,685.6 L530.6,679.2 L533.6,673.0 L536.6,666.6 L539.8,660.2 L542.8,654.0 L545.8,647.6 L548.8,641.4 L552.0,635.0 L555.0,628.8 L558.0,622.4 L561.0,616.0 L564.0,609.8 L567.2,603.4 L570.2,597.2 L573.2,590.8 L576.2,584.6 L579.4,578.2 L582.4,571.8 L585.4,565.6 L588.0,562.0 L589.4,565.2 L590.8,568.4 L592.0,571.8 L593.4,575.0 L594.8,578.2 L596.2,581.4 L597.6,584.6 L599.0,588.0 L600.4,591.2 L601.6,594.4 L603.0,597.6 L604.4,600.8 L605.8,604.2 L607.2,607.4 L608.6,610.6 L609.8,613.8 L611.2,617.0 L612.4,618.8 L613.0,617.2 L613.6,615.8 L614.2,614.4 L614.8,613.0 L615.4,611.4 L616.0,610.0 L616.8,608.6 L617.4,607.0 L618.0,605.6 L618.4,604.4 L618.8,603.8 L619.0,603.2 L619.2,602.4 L619.6,601.8 L619.8,601.2 L620.2,600.4 L620.4,599.8 L620.6,599.2 L621.0,598.6 L621.2,597.8 L621.6,597.2 L621.8,596.6 L622.0,595.8 L622.4,595.2 L622.6,594.6 L622.8,594.2 L623.0,593.8 L623.0,593.6 L623.2,593.4 L623.2,593.0 L623.4,592.8 L623.6,592.4 L623.6,592.2 L623.6,592.0 L623.8,592.0 L623.8,591.8 L623.8,591.8"/>
-  <line class="aim" x1="445.3" y1="856.0" x2="460.1" y2="825.4"/>
+  <line class="aim" x1="445.3" y1="856.0" x2="460.2" y2="825.5"/>
   <circle class="spot side-T" cx="445.3" cy="856.0" r="7"/>
 </svg>
   <div class="card-body">
     <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">TR</span><span class="badge diff-2">Médio</span><span class="badge">jump throw</span><span class="badge video">▶ vídeo</span><span class="badge">3 variações</span></div>
     <h3>Smoke TR Superior (de Base TR)</h3>
-    <p class="muted">27 usos · 4 times · round ganho 37%</p>
+    <p class="muted">39 usos · 6 times · round ganho 44%</p>
   </div>
 </a><a class="card" href="/pt/ancient/smoke-house-from-t-spawn-t/" data-id="smoke-house-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="House" data-map="ancient"
-   data-teams="fut g2 mouz spirit" data-players="dziugss heavygod hunter r1nkle sh1ro sunpayus torzsi"
-   data-diff="3" data-count="22" data-eff="-1">
-  <svg class="radar" viewBox="160.3 312.8 643.0 643.0" role="img" aria-label="Trajetória: Smoke Casa (de Base TR)">
+   data-teams="falcons furia fut g2 mouz spirit" data-players="dziugss fallen heavygod hunter m0nesy molodoy r1nkle sh1ro sunpayus teses torzsi xertion zont1x"
+   data-diff="3" data-count="54" data-eff="-1">
+  <svg class="radar" viewBox="157.7 311.0 645.0 645.0" role="img" aria-label="Trajetória: Smoke Casa (de Base TR)">
   <image href="/static/radars/ancient.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="21.4"><text x="307.4" y="666.2">Fora</text><text x="481.4" y="512.6">Meio</text><text x="671.8" y="469.2">Entrada Lateral</text><text x="485.2" y="822.8">Base TR</text><text x="324.0" y="442.6">Corredor Lateral</text><text x="622.0" y="590.4">TR Superior</text><text x="615.8" y="802.2">Túnel</text><text x="486.0" y="407.8">Top Mid</text><text x="709.8" y="775.4">Água</text></g>
-  <circle class="land land-smoke" cx="489.6" cy="384.8" r="29.0"/>
-  <path class="traj traj-smoke" d="M474.0,885.8 L474.2,879.0 L474.4,872.0 L474.6,865.2 L474.8,858.4 L475.0,851.6 L475.2,844.8 L475.4,838.0 L475.6,831.2 L475.8,824.4 L476.0,817.4 L476.2,810.6 L476.4,803.8 L476.6,797.0 L476.8,790.2 L477.0,783.4 L477.2,776.6 L477.4,769.6 L477.6,762.8 L477.8,756.0 L478.0,749.2 L478.2,742.4 L478.4,735.6 L478.6,728.8 L478.8,722.0 L479.0,715.0 L479.2,708.2 L479.4,701.4 L479.6,694.6 L479.8,687.8 L480.0,681.0 L480.2,674.2 L480.4,667.2 L480.6,660.4 L480.8,653.6 L481.0,646.8 L481.4,640.0 L481.4,633.2 L481.8,626.4 L482.0,619.6 L482.2,612.6 L482.4,605.8 L482.6,599.0 L482.8,592.2 L483.0,585.4 L483.2,578.6 L483.4,571.8 L483.6,564.8 L483.8,558.0 L484.0,551.2 L484.2,544.4 L484.4,537.6 L484.6,530.8 L484.8,524.0 L485.0,517.2 L485.2,510.2 L485.4,503.4 L485.6,496.6 L485.8,489.8 L486.0,483.0 L486.2,476.2 L486.4,469.4 L486.6,462.4 L486.8,455.6 L487.0,448.8 L487.2,442.0 L487.4,435.2 L487.6,428.4 L487.8,424.4 L487.8,422.2 L487.8,420.0 L488.0,417.6 L488.0,415.4 L488.0,413.0 L488.2,410.8 L488.2,408.6 L488.2,406.2 L488.4,404.0 L488.4,401.6 L488.6,399.4 L488.6,397.2 L488.6,394.8 L488.8,392.6 L488.8,390.4 L488.8,389.2 L488.8,388.4 L488.8,387.8 L489.0,387.2 L489.0,386.6 L489.0,386.0 L489.0,385.4 L489.0,384.8 L489.0,384.2 L489.0,384.0 L489.2,383.6 L489.2,383.4 L489.2,383.0 L489.2,383.0 L489.2,382.8 L489.2,382.8"/>
-  <line class="aim" x1="474.0" y1="885.7" x2="475.1" y2="851.8"/>
-  <circle class="spot side-T" cx="474.0" cy="885.7" r="7"/>
+  <g class="places" font-size="21.5"><text x="309.8" y="662.8">Fora</text><text x="483.8" y="515.8">Meio</text><text x="483.6" y="823.8">Base TR</text><text x="666.8" y="465.4">Entrada Lateral</text><text x="322.2" y="440.2">Corredor Lateral</text><text x="622.4" y="592.8">TR Superior</text><text x="615.2" y="798.6">Túnel</text><text x="486.0" y="407.8">Top Mid</text><text x="708.8" y="780.0">Água</text></g>
+  <circle class="land land-smoke" cx="486.5" cy="382.6" r="29.0"/>
+  <path class="traj traj-smoke" d="M474.0,886.0 L474.0,879.0 L474.2,872.2 L474.4,865.2 L474.6,858.4 L474.8,851.6 L474.8,844.6 L475.0,837.8 L475.2,830.8 L475.4,824.0 L475.6,817.2 L475.8,810.2 L475.8,803.4 L476.0,796.4 L476.2,789.6 L476.4,782.6 L476.6,775.8 L476.6,769.0 L476.8,762.0 L477.0,755.2 L477.2,748.2 L477.4,741.4 L477.6,734.6 L477.6,727.6 L477.8,720.8 L478.0,713.8 L478.2,707.0 L478.4,700.0 L478.4,693.2 L478.6,686.4 L478.8,679.4 L479.0,672.6 L479.2,665.6 L479.4,658.8 L479.4,652.0 L479.6,645.0 L479.8,638.2 L480.0,631.2 L480.2,624.4 L480.2,617.4 L480.4,610.6 L480.6,603.8 L480.8,596.8 L481.0,590.0 L481.2,583.0 L481.2,576.2 L481.4,569.4 L481.6,562.4 L481.8,555.6 L482.0,548.6 L482.0,541.8 L482.2,534.8 L482.4,528.0 L482.6,521.2 L482.8,514.2 L483.0,507.4 L483.0,500.4 L483.2,493.6 L483.4,486.8 L483.6,479.8 L483.8,473.0 L483.8,466.0 L484.0,459.2 L484.2,452.2 L484.4,445.4 L484.6,438.6 L484.8,431.6 L484.8,425.6 L485.0,423.4 L485.0,421.0 L485.0,418.8 L485.0,416.4 L485.2,414.2 L485.2,411.8 L485.2,409.4 L485.4,407.2 L485.4,404.8 L485.4,402.6 L485.4,400.2 L485.6,398.0 L485.6,395.6 L485.6,393.2 L485.6,391.0 L485.8,388.8 L485.8,387.8 L485.8,386.8 L485.8,385.8 L485.8,384.8 L485.8,383.8 L485.8,382.8 L485.8,382.4 L485.8,381.8 L486.0,381.4 L486.0,381.2 L486.0,381.0 L486.0,381.0"/>
+  <line class="aim" x1="473.9" y1="885.7" x2="474.8" y2="851.7"/>
+  <circle class="spot side-T" cx="473.9" cy="885.7" r="7"/>
 </svg>
   <div class="card-body">
     <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">TR</span><span class="badge diff-3">Difícil</span><span class="badge">jump throw</span><span class="badge video">▶ vídeo</span><span class="badge">3 variações</span></div>
     <h3>Smoke Casa (de Base TR)</h3>
-    <p class="muted">22 usos · 4 times · round ganho 50%</p>
+    <p class="muted">54 usos · 6 times · round ganho 50%</p>
   </div>
 </a><a class="card" href="/pt/ancient/smoke-mid-from-t-spawn-t/" data-id="smoke-mid-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="Middle" data-map="ancient"
-   data-teams="fut g2 spirit" data-players="coolio dziugss magixx r1nkle sh1ro zont1x"
-   data-diff="3" data-count="19" data-eff="-1">
-  <svg class="radar" viewBox="160.2 380.0 545.0 545.0" role="img" aria-label="Trajetória: Smoke Meio (de Base TR)">
+   data-teams="falcons furia fut g2 spirit" data-players="coolio dziugss fallen kscerato m0nesy magixx molodoy r1nkle sh1ro teses zont1x"
+   data-diff="3" data-count="54" data-eff="-1">
+  <svg class="radar" viewBox="156.2 378.2 547.4 547.4" role="img" aria-label="Trajetória: Smoke Meio (de Base TR)">
   <image href="/static/radars/ancient.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="18.2"><text x="307.4" y="666.2">Fora</text><text x="481.4" y="512.6">Meio</text><text x="485.2" y="822.8">Base TR</text><text x="324.0" y="442.6">Corredor Lateral</text><text x="622.0" y="590.4">TR Superior</text><text x="615.8" y="802.2">Túnel</text></g>
-  <circle class="land land-smoke" cx="422.5" cy="477.3" r="29.0"/>
-  <path class="traj traj-smoke" d="M443.2,854.8 L442.8,847.0 L442.4,839.2 L442.0,831.4 L441.8,823.6 L441.4,815.8 L441.0,808.0 L440.6,800.4 L440.2,792.6 L439.8,784.8 L439.6,777.0 L439.2,769.2 L438.8,761.4 L438.4,753.6 L438.0,746.0 L437.8,738.2 L437.4,730.4 L437.0,722.6 L436.6,714.8 L436.2,707.0 L435.8,699.2 L435.6,691.4 L435.2,683.8 L434.8,676.0 L434.4,668.2 L434.0,660.4 L433.8,652.6 L433.4,644.8 L433.0,637.0 L432.6,629.2 L432.2,621.6 L431.8,613.8 L431.6,606.0 L431.2,598.2 L430.8,590.4 L430.4,582.6 L430.0,574.8 L429.6,567.0 L429.4,559.4 L429.0,551.6 L428.6,543.8 L428.2,536.0 L427.8,528.2 L427.6,520.4 L427.2,512.6 L426.8,504.8 L426.4,497.2 L426.0,489.4 L425.6,481.6 L425.4,473.8 L425.0,466.0 L424.6,458.2 L424.2,450.4 L424.0,450.0 L423.8,453.6 L423.6,457.2 L423.4,460.6 L423.4,464.0 L423.2,467.6 L423.0,471.0 L422.8,474.6 L422.8,476.4 L422.6,478.2 L422.6,480.2 L422.6,482.0 L422.4,483.8 L422.4,485.0 L422.4,484.2 L422.4,483.2 L422.4,482.4 L422.2,481.6 L422.2,480.8 L422.2,480.0 L422.2,479.0 L422.2,478.6 L422.2,478.2 L422.2,477.6 L422.2,477.2 L422.2,476.8 L422.2,476.4 L422.2,476.0 L422.2,475.8 L422.2,475.6 L422.2,475.6"/>
-  <line class="aim" x1="443.2" y1="855.0" x2="441.3" y2="821.1"/>
-  <circle class="spot side-T" cx="443.2" cy="855.0" r="7"/>
+  <g class="places" font-size="18.2"><text x="309.8" y="662.8">Fora</text><text x="483.8" y="515.8">Meio</text><text x="217.4" y="454.6">Salão</text><text x="483.6" y="823.8">Base TR</text><text x="322.2" y="440.2">Corredor Lateral</text><text x="622.4" y="592.8">TR Superior</text><text x="615.2" y="798.6">Túnel</text></g>
+  <circle class="land land-smoke" cx="422.5" cy="477.2" r="29.0"/>
+  <path class="traj traj-smoke" d="M443.2,855.6 L442.8,848.8 L442.2,841.8 L441.8,834.8 L441.4,828.0 L441.0,821.0 L440.6,814.0 L440.2,807.2 L439.8,800.2 L439.4,793.2 L439.0,786.4 L438.4,779.4 L438.0,772.6 L437.6,765.6 L437.2,758.6 L436.8,751.8 L436.4,744.8 L436.0,737.8 L435.6,731.0 L435.0,724.0 L434.6,717.2 L434.2,710.2 L433.8,703.2 L433.4,696.4 L433.0,689.4 L432.6,682.4 L432.2,675.6 L431.6,668.6 L431.2,661.6 L430.8,654.8 L430.4,647.8 L430.0,641.0 L429.6,634.0 L429.2,627.0 L428.8,620.2 L428.4,613.2 L427.8,606.2 L427.4,599.4 L427.0,592.4 L426.6,585.6 L426.2,578.6 L425.8,571.6 L425.4,564.8 L425.0,557.8 L424.4,550.8 L424.0,544.0 L423.6,537.0 L423.2,530.0 L422.8,523.2 L422.4,516.2 L422.0,509.4 L421.6,502.4 L421.0,495.4 L420.6,488.6 L420.2,481.6 L419.8,474.6 L419.4,467.8 L419.0,460.8 L418.6,454.0 L418.2,448.2 L418.0,450.2 L418.0,451.6 L417.8,453.0 L417.8,454.4 L417.8,455.8 L417.6,457.2 L417.6,458.6 L417.4,460.0 L417.4,461.4 L417.2,462.8 L417.2,464.2 L417.0,465.6 L417.0,467.0 L417.0,468.4 L416.8,469.8 L416.8,471.2 L416.6,472.6 L416.6,474.0 L416.6,475.4 L416.8,476.0 L417.2,476.2 L417.6,476.4 L418.0,476.6 L418.4,476.8 L418.8,477.0 L419.2,477.2 L419.4,477.4 L419.8,477.6 L420.2,477.8 L420.6,478.0 L421.0,478.4 L421.4,478.6 L421.6,478.6 L421.8,478.6 L422.0,478.6 L422.2,478.6 L422.4,478.6 L422.6,478.6 L422.8,478.6 L422.8,478.6 L423.0,478.6 L423.0,478.6"/>
+  <line class="aim" x1="443.2" y1="855.1" x2="441.2" y2="821.2"/>
+  <circle class="spot side-T" cx="443.2" cy="855.1" r="7"/>
 </svg>
   <div class="card-body">
     <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">TR</span><span class="badge diff-3">Difícil</span><span class="badge">jump throw</span><span class="badge video">▶ vídeo</span><span class="badge">2 variações</span></div>
     <h3>Smoke Meio (de Base TR)</h3>
-    <p class="muted">19 usos · 3 times · round ganho 53%</p>
+    <p class="muted">54 usos · 5 times · round ganho 52%</p>
   </div>
-</a><a class="card" href="/pt/ancient/molotov-a-site-from-main-hall-t/" data-id="molotov-a-site-from-main-hall-t"
-   data-type="molotov" data-side="T" data-area="BombsiteA" data-map="ancient"
-   data-teams="g2 spirit" data-players="heavygod sh1ro"
-   data-diff="3" data-count="4" data-eff="0.0">
-  <svg class="radar" viewBox="46.1 124.8 338.0 338.0" role="img" aria-label="Trajetória: Molotov Bomb A (de Salão)">
+</a><a class="card" href="/pt/ancient/smoke-top-mid-from-t-spawn-t/" data-id="smoke-top-mid-from-t-spawn-t"
+   data-type="smoke" data-side="T" data-area="TopofMid" data-map="ancient"
+   data-teams="falcons furia fut g2 mouz spirit" data-players="dziugss heavygod hunter molodoy r1nkle sh1ro sunpayus teses torzsi"
+   data-diff="3" data-count="27" data-eff="-1">
+  <svg class="radar" viewBox="176.0 314.6 641.0 641.0" role="img" aria-label="Trajetória: Smoke Top Mid (de Base TR)">
   <image href="/static/radars/ancient.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="11.3"><text x="267.4" y="272.8">Bomb A</text></g>
-  <circle class="land land-molotov" cx="234.7" cy="196.7" r="24.0"/>
-  <path class="traj traj-molotov" d="M195.6,391.4 L195.6,379.4 L195.6,367.4 L195.6,355.2 L195.6,343.2 L195.6,331.2 L195.6,319.0 L195.4,307.0 L195.4,295.0 L195.4,282.8 L195.4,270.8 L195.4,258.8 L195.4,246.6 L195.4,234.6 L195.4,222.6 L199.0,217.6 L203.6,214.6 L208.0,211.6 L212.6,208.6 L217.0,205.4 L221.6,202.4 L226.0,199.4 L230.6,196.4 L232.8,194.8"/>
-  <line class="aim" x1="195.5" y1="392.8" x2="195.1" y2="358.8"/>
-  <circle class="spot side-T" cx="195.5" cy="392.8" r="7"/>
+  <g class="places" font-size="21.4"><text x="309.8" y="662.8">Fora</text><text x="483.8" y="515.8">Meio</text><text x="483.6" y="823.8">Base TR</text><text x="666.8" y="465.4">Entrada Lateral</text><text x="322.2" y="440.2">Corredor Lateral</text><text x="622.4" y="592.8">TR Superior</text><text x="615.2" y="798.6">Túnel</text><text x="486.0" y="407.8">Top Mid</text><text x="708.8" y="780.0">Água</text></g>
+  <circle class="land land-smoke" cx="487.3" cy="384.6" r="29.0"/>
+  <path class="traj traj-smoke" d="M505.8,885.6 L505.6,879.0 L505.4,872.4 L505.0,865.8 L504.8,859.2 L504.6,852.6 L504.4,846.0 L504.2,839.4 L504.0,832.8 L503.8,826.2 L503.4,819.6 L503.2,812.8 L503.0,806.2 L502.8,799.6 L502.6,793.0 L502.4,786.4 L502.2,779.8 L501.8,773.2 L501.6,766.6 L501.4,760.0 L501.2,753.4 L501.0,746.8 L500.8,740.2 L500.6,733.6 L500.2,727.0 L500.0,720.4 L499.8,713.8 L499.6,707.2 L499.4,700.6 L499.2,694.0 L499.0,687.4 L498.6,680.8 L498.4,674.2 L498.2,667.6 L498.0,661.0 L497.8,654.4 L497.6,647.8 L497.2,641.2 L497.0,634.6 L496.8,628.0 L496.6,621.4 L496.4,614.8 L496.2,608.2 L496.0,601.6 L495.6,594.8 L495.4,588.4 L495.2,581.6 L495.0,575.0 L494.8,568.4 L494.6,561.8 L494.4,555.2 L494.0,548.6 L493.8,542.0 L493.6,535.4 L493.4,528.8 L493.2,522.2 L493.0,515.6 L492.6,509.0 L492.4,502.4 L492.2,495.8 L492.0,489.2 L491.8,482.6 L491.6,476.0 L491.4,469.4 L491.0,462.8 L490.8,456.2 L490.6,449.6 L490.4,443.0 L490.2,436.4 L490.0,429.8 L489.8,425.8 L489.8,423.6 L489.6,421.4 L489.6,419.4 L489.6,417.2 L489.4,415.0 L489.4,413.0 L489.2,410.8 L489.2,408.6 L489.2,406.4 L489.0,404.4 L489.0,402.2 L489.0,400.0 L488.8,398.0 L488.8,395.8 L488.6,393.6 L488.6,391.6 L488.6,390.6 L488.6,389.6 L488.6,388.6 L488.6,387.6 L488.6,386.8 L488.4,386.4 L488.4,386.0 L488.4,385.8 L488.4,385.8"/>
+  <line class="aim" x1="505.6" y1="885.5" x2="504.3" y2="851.5"/>
+  <circle class="spot side-T" cx="505.6" cy="885.5" r="7"/>
 </svg>
   <div class="card-body">
-    <div class="card-badges"><span class="badge type-molotov">Molotov</span><span class="badge side-T">TR</span><span class="badge diff-3">Difícil</span><span class="badge video">▶ vídeo</span></div>
-    <h3>Molotov Bomb A (de Salão)</h3>
-    <p class="muted">4 usos · 2 times · round ganho 75%</p>
+    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">TR</span><span class="badge diff-3">Difícil</span><span class="badge">jump throw</span><span class="badge video">▶ vídeo</span><span class="badge">3 variações</span></div>
+    <h3>Smoke Top Mid (de Base TR)</h3>
+    <p class="muted">27 usos · 6 times · round ganho 63%</p>
+  </div>
+</a><a class="card" href="/pt/ancient/smoke-tside-lower-t/" data-id="smoke-tside-lower-t"
+   data-type="smoke" data-side="T" data-area="TSideLower" data-map="ancient"
+   data-teams="furia g2 spirit" data-players="hunter magixx matys yekindar"
+   data-diff="3" data-count="7" data-eff="-1">
+  <svg class="radar" viewBox="624.1 448.9 260 260" role="img" aria-label="Trajetória: Smoke TR Inferior">
+  <image href="/static/radars/ancient.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="8.7"><text x="755.6" y="578.8">TR Inferior</text><text x="846.6" y="544.8">Rampa</text></g>
+  <circle class="land land-smoke" cx="718.7" cy="602.2" r="29.0"/>
+  <path class="traj traj-smoke" d="M787.4,568.2 L778.2,561.2 L769.8,555.6 L765.8,558.8 L761.6,562.0 L757.4,565.2 L753.2,568.4 L749.2,571.6 L745.0,574.8 L740.8,577.8 L736.8,581.0 L732.6,584.2 L728.4,587.4 L724.4,590.6 L720.2,593.8 L718.8,598.2 L718.8,598.2"/>
+  <line class="aim" x1="789.4" y1="568.4" x2="755.4" y2="568.7"/>
+  <circle class="spot side-T" cx="789.4" cy="568.4" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">TR</span><span class="badge diff-3">Difícil</span><span class="badge video">▶ vídeo</span><span class="badge">2 variações</span></div>
+    <h3>Smoke TR Inferior</h3>
+    <p class="muted">7 usos · 3 times · round ganho 43%</p>
+  </div>
+</a><a class="card" href="/pt/ancient/smoke-mid-t/" data-id="smoke-mid-t"
+   data-type="smoke" data-side="T" data-area="Middle" data-map="ancient"
+   data-teams="falcons g2 spirit" data-players="donk karrigan nertz"
+   data-diff="3" data-count="4" data-eff="-1">
+  <svg class="radar" viewBox="347.0 384.7 262.6 262.6" role="img" aria-label="Trajetória: Smoke Meio">
+  <image href="/static/radars/ancient.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="8.8"><text x="483.8" y="515.8">Meio</text></g>
+  <circle class="land land-smoke" cx="420.1" cy="463.7" r="29.0"/>
+  <path class="traj traj-smoke" d="M420.4,569.2 L430.0,565.2 L439.4,561.0 L449.0,557.0 L458.6,553.0 L468.0,548.8 L477.6,544.8 L487.2,540.6 L496.6,536.6 L506.2,532.4 L515.8,528.4 L525.2,524.2 L534.8,520.2 L539.6,516.8 L535.4,515.0 L531.0,513.2 L526.8,511.4 L522.4,509.6 L518.2,507.6 L513.8,505.8 L509.6,504.0 L505.2,502.2 L501.0,500.4 L496.8,498.4 L492.4,496.6 L488.2,494.8 L483.8,493.0 L479.6,491.2 L475.2,489.2 L471.0,487.4 L466.6,485.6 L462.4,483.8 L458.2,482.0 L453.8,480.0 L450.4,478.6 L448.6,477.8 L446.8,477.0 L445.0,476.2 L443.2,475.4 L441.4,474.6 L439.8,473.8 L438.0,472.8 L436.2,472.0 L434.4,471.2 L432.6,470.4 L430.8,469.6 L429.0,468.8 L427.4,468.0 L425.6,467.2 L423.8,466.4 L422.0,465.6 L421.4,465.2 L420.8,464.8 L420.2,464.4 L419.6,464.0 L419.0,463.6 L418.4,463.4 L418.0,463.0 L417.6,462.6 L417.4,462.6 L417.2,462.4 L417.0,462.2 L417.0,462.2"/>
+  <line class="aim" x1="417.7" y1="569.7" x2="449.0" y2="556.4"/>
+  <circle class="spot side-T" cx="417.7" cy="569.7" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">TR</span><span class="badge diff-3">Difícil</span><span class="badge video">▶ vídeo</span></div>
+    <h3>Smoke Meio</h3>
+    <p class="muted">4 usos · 3 times · round ganho 50%</p>
   </div>
 </a><a class="card" href="/pt/ancient/molotov-b-site-from-ruins-t/" data-id="molotov-b-site-from-ruins-t"
    data-type="molotov" data-side="T" data-area="BombsiteB" data-map="ancient"
-   data-teams="g2 spirit" data-players="donk heavygod hunter r1nkle tn1r"
-   data-diff="3" data-count="13" data-eff="0.0">
-  <svg class="radar" viewBox="673.8 395.1 318.9 318.9" role="img" aria-label="Trajetória: Molotov Bomb B (de Ruínas)">
+   data-teams="falcons furia g2 mouz spirit" data-players="fallen heavygod hunter magixx molodoy niko r1nkle sh1ro tn1r torzsi"
+   data-diff="3" data-count="26" data-eff="0.0">
+  <svg class="radar" viewBox="674.9 393.0 319.0 319.0" role="img" aria-label="Trajetória: Molotov Bomb B (de Ruínas)">
   <image href="/static/radars/ancient.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="10.6"><text x="758.8" y="580.0">TR Inferior</text><text x="845.4" y="546.6">Rampa</text></g>
-  <circle class="land land-molotov" cx="825.9" cy="465.1" r="24.0"/>
-  <path class="traj traj-molotov" d="M792.0,644.0 L799.6,635.0 L807.0,626.0 L814.6,617.0 L822.0,608.0 L829.6,599.0 L837.0,590.0 L844.6,581.0 L852.0,572.0 L859.6,563.0 L867.0,554.0 L874.6,545.0 L873.4,540.2 L870.8,536.2 L868.0,532.0 L865.4,528.0 L862.8,524.0 L860.0,520.0 L857.4,515.8 L854.6,511.8 L852.0,507.8 L849.4,503.8 L846.6,499.6 L844.0,495.6 L841.2,491.6 L838.6,487.6 L836.0,483.4 L833.2,479.4 L830.6,475.4 L827.8,471.4 L825.2,467.2 L823.8,465.2"/>
-  <line class="aim" x1="792.3" y1="643.7" x2="813.8" y2="617.4"/>
-  <circle class="spot side-T" cx="792.3" cy="643.7" r="7"/>
+  <g class="places" font-size="10.6"><text x="755.6" y="578.8">TR Inferior</text><text x="846.6" y="544.8">Rampa</text></g>
+  <circle class="land land-molotov" cx="825.5" cy="463.0" r="24.0"/>
+  <path class="traj traj-molotov" d="M793.8,642.0 L801.2,632.8 L808.6,623.6 L816.2,614.6 L823.6,605.4 L831.0,596.2 L838.4,587.0 L845.8,578.0 L853.2,568.8 L860.6,559.6 L868.0,550.4 L875.2,541.4 L872.6,537.4 L869.8,533.2 L867.2,529.0 L864.6,525.0 L862.0,520.8 L859.2,516.8 L856.6,512.6 L854.0,508.6 L851.2,504.4 L848.6,500.2 L846.0,496.2 L843.2,492.0 L840.6,488.0 L838.0,483.8 L835.4,479.8 L832.6,475.6 L830.0,471.4 L827.4,467.4 L826.0,465.4"/>
+  <line class="aim" x1="793.7" y1="641.9" x2="815.3" y2="615.7"/>
+  <circle class="spot side-T" cx="793.7" cy="641.9" r="7"/>
 </svg>
   <div class="card-body">
-    <div class="card-badges"><span class="badge type-molotov">Molotov</span><span class="badge side-T">TR</span><span class="badge diff-3">Difícil</span><span class="badge video">▶ vídeo</span><span class="badge">3 variações</span></div>
+    <div class="card-badges"><span class="badge type-molotov">Molotov</span><span class="badge side-T">TR</span><span class="badge diff-3">Difícil</span><span class="badge video">▶ vídeo</span><span class="badge">6 variações</span></div>
     <h3>Molotov Bomb B (de Ruínas)</h3>
-    <p class="muted">13 usos · 2 times · round ganho 46%</p>
+    <p class="muted">26 usos · 5 times · round ganho 46%</p>
   </div>
 </a><a class="card" href="/pt/ancient/smoke-alley-from-ruins-t/" data-id="smoke-alley-from-ruins-t"
    data-type="smoke" data-side="T" data-area="Alley" data-map="ancient"
-   data-teams="g2 spirit" data-players="r1nkle sh1ro"
-   data-diff="2" data-count="8" data-eff="-1">
-  <svg class="radar" viewBox="489.3 260.1 534.7 534.7" role="img" aria-label="Trajetória: Smoke Beco (de Ruínas)">
+   data-teams="furia g2 mouz spirit" data-players="fallen molodoy pr r1nkle sh1ro"
+   data-diff="2" data-count="14" data-eff="-1">
+  <svg class="radar" viewBox="489.3 260.2 534.7 534.7" role="img" aria-label="Trajetória: Smoke Beco (de Ruínas)">
   <image href="/static/radars/ancient.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="17.8"><text x="783.0" y="416.8">Bomb B</text><text x="671.8" y="469.2">Entrada Lateral</text><text x="802.2" y="698.0">Ruínas</text><text x="758.8" y="580.0">TR Inferior</text><text x="622.0" y="590.4">TR Superior</text><text x="845.4" y="546.6">Rampa</text></g>
-  <circle class="land land-smoke" cx="726.7" cy="330.1" r="29.0"/>
+  <g class="places" font-size="17.8"><text x="783.0" y="416.8">Bomb B</text><text x="666.8" y="465.4">Entrada Lateral</text><text x="793.0" y="700.8">Ruínas</text><text x="755.6" y="578.8">TR Inferior</text><text x="622.4" y="592.8">TR Superior</text><text x="846.6" y="544.8">Rampa</text></g>
+  <circle class="land land-smoke" cx="726.7" cy="330.2" r="29.0"/>
   <path class="traj traj-smoke" d="M840.2,724.8 L837.6,717.4 L835.0,709.8 L832.4,702.2 L829.8,694.8 L827.2,687.2 L824.6,679.8 L822.0,672.2 L819.4,664.6 L816.8,657.2 L814.2,649.6 L811.6,642.0 L809.0,634.6 L806.4,627.0 L803.8,619.6 L801.2,612.0 L798.6,604.4 L796.0,597.0 L793.4,589.4 L790.8,581.8 L788.2,574.4 L785.6,566.8 L783.0,559.2 L780.4,551.8 L777.8,544.2 L775.2,536.8 L772.6,529.2 L770.0,521.6 L767.4,514.2 L764.8,506.6 L762.2,499.0 L759.6,491.6 L757.0,484.0 L754.4,476.6 L751.8,469.0 L749.2,461.4 L746.6,454.0 L744.0,446.4 L741.4,438.8 L738.8,431.4 L736.2,423.8 L733.6,416.4 L731.0,408.8 L728.4,401.2 L725.8,393.8 L723.2,386.2 L720.6,378.6 L718.0,371.2 L716.4,364.8 L717.4,361.4 L718.6,358.0 L719.8,354.6 L720.4,352.8 L721.0,351.2 L721.4,349.8 L721.8,348.4 L722.4,347.0 L722.8,345.4 L723.2,344.0 L723.8,342.6 L724.2,341.0 L724.6,339.6 L725.2,338.2 L725.6,336.6 L726.0,335.2 L726.2,334.4 L726.2,333.8 L726.4,333.2 L726.4,332.4 L726.6,331.8 L726.6,331.0 L726.6,330.8 L726.6,330.4 L726.6,330.2 L726.6,330.2"/>
   <line class="aim" x1="840.2" y1="724.9" x2="829.4" y2="692.6"/>
   <circle class="spot side-T" cx="840.2" cy="724.9" r="7"/>
 </svg>
   <div class="card-body">
-    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">TR</span><span class="badge diff-2">Médio</span><span class="badge">jump throw</span><span class="badge video">▶ vídeo</span></div>
+    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">TR</span><span class="badge diff-2">Médio</span><span class="badge">jump throw</span><span class="badge video">▶ vídeo</span><span class="badge">2 variações</span></div>
     <h3>Smoke Beco (de Ruínas)</h3>
-    <p class="muted">8 usos · 2 times · round ganho 62%</p>
-  </div>
-</a><a class="card" href="/pt/ancient/smoke-b-site-from-ruins-t/" data-id="smoke-b-site-from-ruins-t"
-   data-type="smoke" data-side="T" data-area="BombsiteB" data-map="ancient"
-   data-teams="g2 spirit" data-players="magixx r1nkle sh1ro"
-   data-diff="2" data-count="7" data-eff="-1">
-  <svg class="radar" viewBox="518.1 288.5 505.9 505.9" role="img" aria-label="Trajetória: Smoke Bomb B (de Ruínas)">
-  <image href="/static/radars/ancient.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="16.9"><text x="783.0" y="416.8">Bomb B</text><text x="671.8" y="469.2">Entrada Lateral</text><text x="802.2" y="698.0">Ruínas</text><text x="758.8" y="580.0">TR Inferior</text><text x="622.0" y="590.4">TR Superior</text><text x="845.4" y="546.6">Rampa</text></g>
-  <circle class="land land-smoke" cx="846.2" cy="358.5" r="29.0"/>
-  <path class="traj traj-smoke" d="M842.0,724.4 L842.4,716.2 L842.8,708.0 L843.4,699.8 L843.8,691.6 L844.2,683.4 L844.6,675.2 L845.0,667.0 L845.4,658.8 L845.8,650.4 L846.2,642.2 L846.6,634.0 L847.0,625.8 L847.4,617.6 L847.8,609.4 L848.4,601.2 L848.8,593.0 L849.2,584.8 L849.6,576.6 L850.0,568.4 L850.4,560.2 L850.8,552.0 L851.2,543.6 L851.6,535.4 L852.0,527.2 L852.4,519.0 L853.0,510.8 L853.4,502.6 L853.8,494.4 L854.2,486.2 L854.6,478.0 L855.0,469.8 L855.4,461.6 L855.8,453.4 L856.2,445.0 L856.6,436.8 L857.0,431.4 L857.2,427.6 L857.4,424.0 L857.6,420.4 L857.6,416.6 L857.8,413.0 L858.0,409.2 L858.2,405.6 L858.4,401.8 L858.6,398.2 L858.8,394.4 L859.0,391.2 L859.2,389.6 L859.2,388.0 L859.4,386.2 L859.6,384.6 L859.6,383.0 L859.8,381.4 L859.8,379.8 L860.0,378.0 L860.2,376.4 L860.2,374.8 L860.4,373.2 L860.6,371.4 L860.6,369.8 L860.6,368.4 L859.8,367.6 L859.0,367.0 L858.0,366.2 L857.2,365.4 L856.4,364.6 L855.6,364.0 L854.6,363.2 L854.0,362.6 L853.4,362.2 L852.8,362.0 L852.2,361.6 L851.8,361.4 L851.2,361.0 L850.6,360.8 L850.0,360.4 L849.4,360.2 L849.0,359.8 L848.4,359.6 L848.0,359.4 L847.6,359.2 L847.2,359.2 L847.0,359.0 L846.6,359.0 L846.4,359.0 L846.2,359.0 L846.0,359.0 L846.0,359.0"/>
-  <line class="aim" x1="842.1" y1="724.4" x2="842.6" y2="690.4"/>
-  <circle class="spot side-T" cx="842.1" cy="724.4" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">TR</span><span class="badge diff-2">Médio</span><span class="badge">jump throw</span><span class="badge video">▶ vídeo</span></div>
-    <h3>Smoke Bomb B (de Ruínas)</h3>
-    <p class="muted">7 usos · 2 times · round ganho 71%</p>
+    <p class="muted">14 usos · 4 times · round ganho 71%</p>
   </div>
 </a></div>
 </section>
@@ -328,9 +342,10 @@
   <div class="foot-in">
     <p>Dados extraídos das demos oficiais das partidas. Demos: <a href="https://www.hltv.org/" rel="noopener" target="_blank">HLTV.org</a>.</p>
     <p>Projeto de fãs, gratuito. Não afiliado à Valve, HLTV, aos times ou aos organizadores dos torneios. Counter-Strike é marca da Valve Corporation.</p>
-    <p><a href="/pt/sobre/">Sobre e créditos</a> · atualizado em 2026-11-14</p>
+    <p><a href="/pt/sobre/">Sobre e créditos</a> · atualizado em 2026-11-15</p>
   </div>
 </footer>
 <script src="/static/app.js" defer></script>
+<script src="/static/accounts.js" defer></script>
 <script src="/static/jogada.js" defer></script></body>
 </html>

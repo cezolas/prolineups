@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FUT A entry · Ancient · Lineups Pro</title>
+<title>FUT A entry · Ancient · Pronades</title>
 <meta name="description" content="FUT&#39;s A entry on Ancient: 1 rounds in 2D replay, with the grenades used and the routes in.">
 <link rel="canonical" href="https://prolineups.cezolas.workers.dev/en/ancient/plays/fut-a/">
 <link rel="alternate" hreflang="pt" href="https://prolineups.cezolas.workers.dev/pt/ancient/jogadas/fut-a/">
@@ -17,7 +17,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta property="og:locale" content="en_US">
-<meta property="og:site_name" content="Lineups Pro">
+<meta property="og:site_name" content="Pronades">
 <meta name="theme-color" content="#0b0f15">
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
   if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
@@ -29,13 +29,15 @@
 <header class="top">
   <div class="top-in">
     <button class="menu-btn" id="menuBtn" aria-label="Show or hide the menu" aria-controls="side" aria-expanded="false">☰</button>
-    <a class="logo" href="/en/"><span class="logo-mark">◎</span> Lineups Pro</a>
+    <a class="logo" href="/en/"><span class="logo-mark">◎</span> Pronades</a>
     <div class="search">
       <input id="q" type="search" placeholder="Search map, player, team, smoke…" autocomplete="off" aria-label="Search">
       <div id="results" class="results" hidden></div>
     </div>
     <nav class="langs" aria-label="Language">
 <a href="/pt/ancient/jogadas/fut-a/" hreflang="pt" lang="pt" title="Português">PT</a><a href="/en/ancient/plays/fut-a/" hreflang="en" lang="en" aria-current="true" title="English">EN</a>    </nav>
+    <a class="login-btn" id="loginBtn" href="/auth/google" hidden>Sign in</a>
+    <a class="me-btn" id="meBtn" href="/en/account/" hidden aria-label="My account"><img alt="" width="28" height="28" referrerpolicy="no-referrer" hidden><span>Account</span></a>
     <button class="theme-btn" id="themeBtn" type="button" aria-label="Toggle light/dark mode" title="Toggle light/dark mode"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.6"/><g stroke-width="2.2" stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></g></svg></button>
   </div>
 </header>
@@ -43,30 +45,29 @@
   <aside class="side" id="side" aria-label="Navigation">
     <nav>
       <a href="/en/"><span>Home</span></a>
+      <a href="/en/compare-my-demo/"><span>⇄ Compare my demo</span></a>
       <a href="/en/training-plan/"><span>🎯 Training plan</span></a>
       <a href="/en/roles/"><span>👥 Roles</span></a>
       <a href="/en/analytics/"><span>▤ Analytics</span></a>
       <a href="/en/my-list/"><span>★ My list</span><span class="n" id="favCount"></span></a>
-      <details class="nav-g" data-k="types" open>
-        <summary class="nav-h"><span>Grenades</span></summary>
-<a href="/en/smokes/"><span>Smokes</span><span class="n">104</span></a><a href="/en/flashes/"><span>Flashes</span><span class="n">53</span></a><a href="/en/molotovs/"><span>Molotovs</span><span class="n">53</span></a><a href="/en/hes/"><span>HEs</span><span class="n">30</span></a>      </details>
-      <details class="nav-g" data-k="tactics" open>
-        <summary class="nav-h"><a href="/en/tactics/">Tactics</a></summary>
-<a href="/en/ancient/plays/" aria-current="page"><span>Ancient</span><span class="n">36</span></a><a href="/en/anubis/plays/"><span>Anubis</span><span class="n">13</span></a><a href="/en/cache/plays/"><span>Cache</span><span class="n">37</span></a><a href="/en/dust2/plays/"><span>Dust2</span><span class="n">40</span></a><a href="/en/inferno/plays/"><span>Inferno</span><span class="n">17</span></a><a href="/en/mirage/plays/"><span>Mirage</span><span class="n">44</span></a><a href="/en/nuke/plays/"><span>Nuke</span><span class="n">32</span></a>      </details>
       <details class="nav-g" data-k="maps" open>
         <summary class="nav-h"><a href="/en/maps/">Maps</a></summary>
-<a href="/en/ancient/" aria-current="page"><span>Ancient</span><span class="n">30</span></a><a href="/en/anubis/"><span>Anubis</span><span class="n">20</span></a><a href="/en/cache/"><span>Cache</span><span class="n">39</span></a><a href="/en/dust2/"><span>Dust2</span><span class="n">39</span></a><a href="/en/inferno/"><span>Inferno</span><span class="n">22</span></a><a href="/en/mirage/"><span>Mirage</span><span class="n">57</span></a><a href="/en/nuke/"><span>Nuke</span><span class="n">33</span></a>      </details>
+<a href="/en/ancient/" aria-current="page"><span>Ancient</span><span class="n">51</span></a><a href="/en/anubis/"><span>Anubis</span><span class="n">20</span></a><a href="/en/cache/"><span>Cache</span><span class="n">39</span></a><a href="/en/dust2/"><span>Dust2</span><span class="n">53</span></a><a href="/en/inferno/"><span>Inferno</span><span class="n">22</span></a><a href="/en/mirage/"><span>Mirage</span><span class="n">74</span></a><a href="/en/nuke/"><span>Nuke</span><span class="n">33</span></a>      </details>
+      <details class="nav-g" data-k="tactics" open>
+        <summary class="nav-h"><a href="/en/tactics/">Tactics</a></summary>
+<a href="/en/ancient/plays/" aria-current="page"><span>Ancient</span><span class="n">85</span></a><a href="/en/anubis/plays/"><span>Anubis</span><span class="n">13</span></a><a href="/en/cache/plays/"><span>Cache</span><span class="n">37</span></a><a href="/en/dust2/plays/"><span>Dust2</span><span class="n">61</span></a><a href="/en/inferno/plays/"><span>Inferno</span><span class="n">17</span></a><a href="/en/mirage/plays/"><span>Mirage</span><span class="n">67</span></a><a href="/en/nuke/plays/"><span>Nuke</span><span class="n">32</span></a>      </details>
+      <details class="nav-g" data-k="events" open>
+        <summary class="nav-h"><a href="/en/tournaments/">Tournaments</a></summary>
+<a href="/en/tournament/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      </details>
       <details class="nav-g" data-k="players" open>
         <summary class="nav-h"><a href="/en/players/">Players</a></summary>
 <a href="/en/player/apex/"><span><img class="flag" src="/static/flags/fr.svg" alt="France" title="France" width="16" height="12">apEX</span></a><a href="/en/player/art/"><span><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12">art</span></a><a href="/en/player/coolio/"><span>coolio</span></a><a href="/en/player/dem0n/"><span>dem0n</span></a><a href="/en/player/donk/"><span><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12">donk</span></a><a href="/en/player/dumau/"><span><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12">dumau</span></a><a href="/en/player/dziugss/"><span><img class="flag" src="/static/flags/lt.svg" alt="Lithuania" title="Lithuania" width="16" height="12">dziugss</span></a><a href="/en/player/fallen/"><span><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12">FalleN</span></a><a href="/en/player/flamez/"><span><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12">flameZ</span></a><a href="/en/player/heavygod/"><span><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12">HeavyGod</span></a><a href="/en/player/hunter/"><span><img class="flag" src="/static/flags/ba.svg" alt="Bosnia" title="Bosnia" width="16" height="12">huNter</span></a><a href="/en/player/karrigan/"><span><img class="flag" src="/static/flags/dk.svg" alt="Denmark" title="Denmark" width="16" height="12">karrigan</span></a><a class="more" href="/en/players/">see all (40)</a>      </details>
       <details class="nav-g" data-k="teams" open>
         <summary class="nav-h"><a href="/en/teams/">Teams</a></summary>
 <a href="/en/team/falcons/"><span><img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12">Falcons</span></a><a href="/en/team/furia/"><span><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12">FURIA</span></a><a href="/en/team/fut/"><span><img class="flag" src="/static/flags/tr.svg" alt="Turkey" title="Turkey" width="16" height="12">FUT</span></a><a href="/en/team/g2/"><span><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12">G2</span></a><a href="/en/team/legacy/"><span><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12">Legacy</span></a><a href="/en/team/mouz/"><span><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12">MOUZ</span></a><a href="/en/team/spirit/"><span><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12">Spirit</span></a><a href="/en/team/vitality/"><span><img class="flag" src="/static/flags/fr.svg" alt="France" title="France" width="16" height="12">Vitality</span></a>      </details>
-      <details class="nav-g" data-k="events" open>
-        <summary class="nav-h"><a href="/en/tournaments/">Tournaments</a></summary>
-<a href="/en/tournament/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      </details>
       <div class="nav-sep"></div>
       <a href="/en/about/"><span>About</span></a>
+      <a href="/en/privacy/"><span>Privacy</span></a>
     </nav>
     <script>
       /* collapsed sections are remembered in this browser; applied before paint */
@@ -94,7 +95,7 @@
   <section class="play-view">
     <div class="replay" id="play" data-plays='["spirit-vs-fut-m3-ancient-r15"]' data-map="ancient"
          data-mapdef='{"pos_x": -2953.0, "pos_y": 2164.0, "radar_size": 1024, "scale": 5.0}'
-         data-labels='[["A Site", 267.4, 272.8], ["Outside", 307.4, 666.2], ["Mid", 481.4, 512.6], ["CT Spawn", 500.2, 168.0], ["B Site", 783.0, 416.8], ["Alley", 736.8, 273.6], ["Main Hall", 217.4, 454.6], ["Side Entrance", 671.8, 469.2], ["T Spawn", 485.2, 822.8], ["Side Hall", 324.0, 442.6], ["House", 499.4, 282.8], ["Ruins", 802.2, 698.0], ["TSide Lower", 758.8, 580.0], ["T Upper", 622.0, 590.4], ["Ramp", 845.4, 546.6], ["Tunnel", 615.8, 802.2], ["Top Mid", 486.0, 407.8], ["Water", 709.8, 775.4]]'>
+         data-labels='[["A Site", 274.8, 275.6], ["Outside", 309.8, 662.8], ["Mid", 483.8, 515.8], ["CT Spawn", 500.2, 168.0], ["B Site", 783.0, 416.8], ["Alley", 736.6, 270.2], ["Main Hall", 217.4, 454.6], ["T Spawn", 483.6, 823.8], ["Side Entrance", 666.8, 465.4], ["Side Hall", 322.2, 440.2], ["House", 499.4, 282.8], ["Ruins", 793.0, 700.8], ["TSide Lower", 755.6, 578.8], ["T Upper", 622.4, 592.8], ["Ramp", 846.6, 544.8], ["Tunnel", 615.2, 798.6], ["Top Mid", 486.0, 407.8], ["Water", 708.8, 780.0]]'>
       <div class="play-canvas">
         <canvas width="1024" height="1024" aria-label="2D round replay"></canvas>
         <div class="feed" data-out="feed" aria-live="polite"></div>
@@ -120,6 +121,7 @@
       <button class="round-item" data-play="spirit-vs-fut-m3-ancient-r15" data-clip="/media/spirit-vs-fut-m3-ancient/entry-r15.mp4" data-poster="/media/spirit-vs-fut-m3-ancient/entry-r15.jpg" data-pov="dem0n">
         <span class="ri-top"><b>vs <img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12"> Spirit</b> · Round 15
           <span class="badge win">won</span><span class="badge video">▶ video</span></span>
+        <span class="muted small"><span class="mref">Spirit vs FUT <b>13–5</b> · map 3</span></span>
         <span class="muted small">plant at 1:43 into the round · 2026-11-11</span>
         <span class="ri-util"><span class="dot-nade type-smoke" title="SunPayus · smoke"></span><span class="dot-nade type-smoke" title="SunPayus · smoke"></span><span class="dot-nade type-molotov" title="xfl0ud · molotov"></span><span class="dot-nade type-flash" title="SunPayus · flash"></span><span class="dot-nade type-molotov" title="coolio · molotov"></span><span class="dot-nade type-flash" title="SunPayus · flash"></span><span class="dot-nade type-smoke" title="coolio · smoke"></span><span class="dot-nade type-flash" title="SunPayus · flash"></span><span class="dot-nade type-smoke" title="dziugss · smoke"></span><span class="dot-nade type-molotov" title="dziugss · molotov"></span><span class="dot-nade type-smoke" title="SunPayus · smoke"></span></span>
       </button>
@@ -127,6 +129,10 @@
   </section>
 </div>
 
+<section>
+  <h2>Matches where this happened</h2>
+  <ul class="mref-list"><li><span class="mref">Spirit vs FUT <b>13–5</b> · <a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a> · map 3 · 2026-11-11</span> <span class="muted small">· 1 round</span></li></ul>
+</section>
 <section>
   <h2>Routes in</h2>
   <p class="muted">Where the T players were 6 seconds before the plant (all rounds added up).</p>
@@ -138,20 +144,54 @@
   <p class="muted">Published lineups the team threw before the plant in these rounds.</p>
   <div class="cards"><a class="card" href="/en/ancient/smoke-top-mid-from-t-spawn-t/" data-id="smoke-top-mid-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="TopofMid" data-map="ancient"
-   data-teams="fut g2 mouz spirit" data-players="dziugss heavygod hunter r1nkle sh1ro sunpayus tn1r torzsi"
-   data-diff="3" data-count="31" data-eff="-1">
-  <svg class="radar" viewBox="187.2 318.8 637.2 637.2" role="img" aria-label="Trajectory: Smoke Top Mid (from T Spawn)">
+   data-teams="falcons furia fut g2 mouz spirit" data-players="dziugss heavygod hunter molodoy r1nkle sh1ro sunpayus teses torzsi"
+   data-diff="3" data-count="27" data-eff="-1">
+  <svg class="radar" viewBox="176.0 314.6 641.0 641.0" role="img" aria-label="Trajectory: Smoke Top Mid (from T Spawn)">
   <image href="/static/radars/ancient.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="21.2"><text x="307.4" y="666.2">Outside</text><text x="481.4" y="512.6">Mid</text><text x="671.8" y="469.2">Side Entrance</text><text x="485.2" y="822.8">T Spawn</text><text x="324.0" y="442.6">Side Hall</text><text x="622.0" y="590.4">T Upper</text><text x="615.8" y="802.2">Tunnel</text><text x="486.0" y="407.8">Top Mid</text><text x="709.8" y="775.4">Water</text></g>
-  <circle class="land land-smoke" cx="487.3" cy="389.6" r="29.0"/>
-  <path class="traj traj-smoke" d="M524.6,886.0 L524.2,879.0 L523.8,871.8 L523.2,864.8 L522.8,857.8 L522.2,850.6 L521.8,843.6 L521.2,836.4 L520.8,829.4 L520.2,822.4 L519.8,815.2 L519.4,808.2 L518.8,801.2 L518.4,794.0 L517.8,787.0 L517.4,779.8 L516.8,772.8 L516.4,765.8 L515.8,758.6 L515.4,751.6 L515.0,744.4 L514.4,737.4 L514.0,730.4 L513.4,723.2 L513.0,716.2 L512.4,709.0 L512.0,702.0 L511.4,695.0 L511.0,687.8 L510.6,680.8 L510.0,673.6 L509.6,666.6 L509.0,659.6 L508.6,652.4 L508.0,645.4 L507.6,638.4 L507.0,631.2 L506.6,624.2 L506.0,617.0 L505.6,610.0 L505.2,603.0 L504.6,595.8 L504.2,588.8 L503.6,581.6 L503.2,574.6 L502.6,567.6 L502.2,560.4 L501.6,553.4 L501.2,546.4 L500.8,539.2 L500.2,532.2 L499.8,525.0 L499.2,518.0 L498.8,511.0 L498.2,503.8 L497.8,496.8 L497.2,489.6 L496.8,482.6 L496.4,475.6 L495.8,468.4 L495.4,461.4 L494.8,454.2 L494.4,447.2 L493.8,440.2 L493.4,433.0 L493.0,427.8 L492.6,425.4 L492.2,422.8 L491.8,420.4 L491.4,418.0 L491.2,415.4 L490.8,413.0 L490.4,410.6 L490.0,408.2 L489.6,405.6 L489.4,403.2 L489.0,400.8 L488.6,398.2 L488.2,395.8 L487.8,393.4 L487.6,390.8 L487.4,389.6 L487.2,389.4 L487.2,389.2 L487.2,389.0 L487.0,388.8 L487.0,388.8"/>
-  <line class="aim" x1="524.7" y1="885.7" x2="522.3" y2="851.7"/>
-  <circle class="spot side-T" cx="524.7" cy="885.7" r="7"/>
+  <g class="places" font-size="21.4"><text x="309.8" y="662.8">Outside</text><text x="483.8" y="515.8">Mid</text><text x="483.6" y="823.8">T Spawn</text><text x="666.8" y="465.4">Side Entrance</text><text x="322.2" y="440.2">Side Hall</text><text x="622.4" y="592.8">T Upper</text><text x="615.2" y="798.6">Tunnel</text><text x="486.0" y="407.8">Top Mid</text><text x="708.8" y="780.0">Water</text></g>
+  <circle class="land land-smoke" cx="487.3" cy="384.6" r="29.0"/>
+  <path class="traj traj-smoke" d="M505.8,885.6 L505.6,879.0 L505.4,872.4 L505.0,865.8 L504.8,859.2 L504.6,852.6 L504.4,846.0 L504.2,839.4 L504.0,832.8 L503.8,826.2 L503.4,819.6 L503.2,812.8 L503.0,806.2 L502.8,799.6 L502.6,793.0 L502.4,786.4 L502.2,779.8 L501.8,773.2 L501.6,766.6 L501.4,760.0 L501.2,753.4 L501.0,746.8 L500.8,740.2 L500.6,733.6 L500.2,727.0 L500.0,720.4 L499.8,713.8 L499.6,707.2 L499.4,700.6 L499.2,694.0 L499.0,687.4 L498.6,680.8 L498.4,674.2 L498.2,667.6 L498.0,661.0 L497.8,654.4 L497.6,647.8 L497.2,641.2 L497.0,634.6 L496.8,628.0 L496.6,621.4 L496.4,614.8 L496.2,608.2 L496.0,601.6 L495.6,594.8 L495.4,588.4 L495.2,581.6 L495.0,575.0 L494.8,568.4 L494.6,561.8 L494.4,555.2 L494.0,548.6 L493.8,542.0 L493.6,535.4 L493.4,528.8 L493.2,522.2 L493.0,515.6 L492.6,509.0 L492.4,502.4 L492.2,495.8 L492.0,489.2 L491.8,482.6 L491.6,476.0 L491.4,469.4 L491.0,462.8 L490.8,456.2 L490.6,449.6 L490.4,443.0 L490.2,436.4 L490.0,429.8 L489.8,425.8 L489.8,423.6 L489.6,421.4 L489.6,419.4 L489.6,417.2 L489.4,415.0 L489.4,413.0 L489.2,410.8 L489.2,408.6 L489.2,406.4 L489.0,404.4 L489.0,402.2 L489.0,400.0 L488.8,398.0 L488.8,395.8 L488.6,393.6 L488.6,391.6 L488.6,390.6 L488.6,389.6 L488.6,388.6 L488.6,387.6 L488.6,386.8 L488.4,386.4 L488.4,386.0 L488.4,385.8 L488.4,385.8"/>
+  <line class="aim" x1="505.6" y1="885.5" x2="504.3" y2="851.5"/>
+  <circle class="spot side-T" cx="505.6" cy="885.5" r="7"/>
 </svg>
   <div class="card-body">
     <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">T</span><span class="badge diff-3">Hard</span><span class="badge">jump throw</span><span class="badge video">▶ video</span><span class="badge">3 variants</span></div>
     <h3>Smoke Top Mid (from T Spawn)</h3>
-    <p class="muted">31 uses · 4 teams · 58% rounds won</p>
+    <p class="muted">27 uses · 6 teams · 63% rounds won</p>
+  </div>
+</a><a class="card" href="/en/ancient/molotov-ramp-from-ruins-t/" data-id="molotov-ramp-from-ruins-t"
+   data-type="molotov" data-side="T" data-area="Ramp" data-map="ancient"
+   data-teams="falcons furia fut" data-players="coolio karrigan yuurih"
+   data-diff="3" data-count="6" data-eff="0.0">
+  <svg class="radar" viewBox="700.2 437.0 274.1 274.1" role="img" aria-label="Trajectory: Molotov Ramp (from Ruins)">
+  <image href="/static/radars/ancient.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="9.1"><text x="755.6" y="578.8">TSide Lower</text><text x="846.6" y="544.8">Ramp</text></g>
+  <circle class="land land-molotov" cx="850.0" cy="535.2" r="24.0"/>
+  <path class="traj traj-molotov" d="M797.6,641.0 L804.4,631.6 L811.0,622.2 L817.6,612.8 L824.2,603.4 L831.0,594.0 L837.6,584.6 L844.2,575.2 L851.0,566.0 L857.6,556.6 L864.2,547.2 L870.8,537.8 L877.4,528.4 L875.8,523.8 L873.6,519.6 L871.2,515.2 L869.0,511.0 L866.8,507.0 L865.6,509.0 L864.6,510.8 L863.6,512.8 L862.6,514.6 L861.6,516.6 L860.6,518.4 L859.6,520.4 L858.4,522.2 L857.4,524.2 L856.4,526.0 L855.4,528.0 L854.4,530.0 L853.4,531.8 L852.4,533.8 L851.2,535.6"/>
+  <line class="aim" x1="797.1" y1="641.1" x2="817.1" y2="613.6"/>
+  <circle class="spot side-T" cx="797.1" cy="641.1" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-molotov">Molotov</span><span class="badge side-T">T</span><span class="badge diff-3">Hard</span><span class="badge video">▶ video</span><span class="badge">2 variants</span></div>
+    <h3>Molotov Ramp (from Ruins)</h3>
+    <p class="muted">6 uses · 3 teams · 67% rounds won</p>
+  </div>
+</a><a class="card" href="/en/ancient/smoke-a-site-from-main-hall-t/" data-id="smoke-a-site-from-main-hall-t"
+   data-type="smoke" data-side="T" data-area="BombsiteA" data-map="ancient"
+   data-teams="falcons furia fut spirit" data-players="fallen sh1ro sunpayus teses tn1r"
+   data-diff="1" data-count="7" data-eff="-1">
+  <svg class="radar" viewBox="127.8 133.4 327.2 327.2" role="img" aria-label="Trajectory: Smoke A Site (from Main Hall)">
+  <image href="/static/radars/ancient.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="10.9"><text x="274.8" y="275.6">A Site</text></g>
+  <circle class="land land-smoke" cx="374.8" cy="229.0" r="29.0"/>
+  <path class="traj traj-smoke" d="M197.8,364.6 L204.4,360.0 L210.8,355.6 L217.4,351.2 L223.8,346.8 L230.2,342.4 L236.8,337.8 L243.2,333.4 L249.8,329.0 L256.2,324.6 L262.6,320.2 L269.2,315.6 L275.6,311.2 L282.2,306.8 L288.6,302.4 L295.0,297.8 L301.6,293.4 L308.0,289.0 L314.6,284.6 L321.0,280.2 L327.4,275.6 L334.0,271.2 L340.4,266.8 L347.0,262.4 L353.4,258.0 L359.8,253.4 L366.4,249.0 L372.8,244.6 L379.4,240.2 L385.0,236.0 L383.0,234.8 L381.4,233.8 L379.8,233.0 L378.6,232.2 L378.0,231.8 L377.4,231.4 L376.8,231.2 L376.6,231.2 L376.6,231.2"/>
+  <line class="aim" x1="197.9" y1="364.9" x2="225.9" y2="345.7"/>
+  <circle class="spot side-T" cx="197.9" cy="364.9" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">T</span><span class="badge diff-1">Easy</span><span class="badge video">▶ video</span><span class="badge">2 variants</span></div>
+    <h3>Smoke A Site (from Main Hall)</h3>
+    <p class="muted">7 uses · 4 teams · 71% rounds won</p>
   </div>
 </a></div>
 </section>
@@ -161,9 +201,10 @@
   <div class="foot-in">
     <p>Data extracted from official match demos. Demos: <a href="https://www.hltv.org/" rel="noopener" target="_blank">HLTV.org</a>.</p>
     <p>Free fan project. Not affiliated with Valve, HLTV, the teams or tournament organizers. Counter-Strike is a trademark of Valve Corporation.</p>
-    <p><a href="/en/about/">About and credits</a> · updated 2026-11-14</p>
+    <p><a href="/en/about/">About and credits</a> · updated 2026-11-15</p>
   </div>
 </footer>
 <script src="/static/app.js" defer></script>
+<script src="/static/accounts.js" defer></script>
 <script src="/static/jogada.js" defer></script></body>
 </html>

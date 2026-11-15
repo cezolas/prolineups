@@ -1,0 +1,1 @@
+demoparser2 v0.42.2 (github.com/LaihoE/demoparser, MIT), compiled to WASM (wasm-pack --target no-modules). Local patches: profiling timers are a no-op on wasm32; console_error_panic_hook.

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compare suas granadas com as dos pros · Pronades</title>
+<meta name="description" content="Envie a demo da sua partida (Premier, FACEIT, MM) e veja quais granadas você jogou igual aos pros, quais caíram no mesmo lugar saindo de outro ponto e como os pros jogam.">
+<link rel="canonical" href="https://prolineups.cezolas.workers.dev/pt/comparar-minha-demo/">
+<link rel="alternate" hreflang="pt" href="https://prolineups.cezolas.workers.dev/pt/comparar-minha-demo/">
+<link rel="alternate" hreflang="en" href="https://prolineups.cezolas.workers.dev/en/compare-my-demo/">
+<link rel="alternate" hreflang="x-default" href="https://prolineups.cezolas.workers.dev/pt/comparar-minha-demo/">
+<meta property="og:title" content="Compare suas granadas com as dos pros">
+<meta property="og:description" content="Envie a demo da sua partida (Premier, FACEIT, MM) e veja quais granadas você jogou igual aos pros, quais caíram no mesmo lugar saindo de outro ponto e como os pros jogam.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://prolineups.cezolas.workers.dev/static/og-pt.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Pronades">
+<meta name="theme-color" content="#0b0f15">
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
+  if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
+<link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/static/style.css">
+<script>window.I18N = {"copied": "Copiado!", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "open": "Abrir", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "throws_in": "lan\u00e7a em {s}s"}; window.LANG = "pt";</script>
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <button class="menu-btn" id="menuBtn" aria-label="Mostrar ou ocultar o menu" aria-controls="side" aria-expanded="false">☰</button>
+    <a class="logo" href="/pt/"><span class="logo-mark">◎</span> Pronades</a>
+    <div class="search">
+      <input id="q" type="search" placeholder="Buscar mapa, jogador, time, smoke…" autocomplete="off" aria-label="Buscar">
+      <div id="results" class="results" hidden></div>
+    </div>
+    <nav class="langs" aria-label="Idioma">
+<a href="/pt/comparar-minha-demo/" hreflang="pt" lang="pt" aria-current="true" title="Português">PT</a><a href="/en/compare-my-demo/" hreflang="en" lang="en" title="English">EN</a>    </nav>
+    <a class="login-btn" id="loginBtn" href="/auth/google" hidden>Entrar</a>
+    <a class="me-btn" id="meBtn" href="/pt/conta/" hidden aria-label="Minha conta"><img alt="" width="28" height="28" referrerpolicy="no-referrer" hidden><span>Conta</span></a>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="Alternar modo claro/escuro" title="Alternar modo claro/escuro"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.6"/><g stroke-width="2.2" stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></g></svg></button>
+  </div>
+</header>
+<div class="layout">
+  <aside class="side" id="side" aria-label="Navegação">
+    <nav>
+      <a href="/pt/"><span>Início</span></a>
+      <a href="/pt/comparar-minha-demo/" aria-current="page"><span>⇄ Comparar minha demo</span></a>
+      <a href="/pt/plano-de-treino/"><span>🎯 Plano de treino</span></a>
+      <a href="/pt/funcoes/"><span>👥 Funções</span></a>
+      <a href="/pt/analises/"><span>▤ Análises</span></a>
+      <a href="/pt/minha-lista/"><span>★ Minha lista</span><span class="n" id="favCount"></span></a>
+      <details class="nav-g" data-k="maps" open>
+        <summary class="nav-h"><a href="/pt/mapas/">Mapas</a></summary>
+<a href="/pt/ancient/"><span>Ancient</span><span class="n">51</span></a><a href="/pt/anubis/"><span>Anubis</span><span class="n">20</span></a><a href="/pt/cache/"><span>Cache</span><span class="n">39</span></a><a href="/pt/dust2/"><span>Dust2</span><span class="n">53</span></a><a href="/pt/inferno/"><span>Inferno</span><span class="n">22</span></a><a href="/pt/mirage/"><span>Mirage</span><span class="n">74</span></a><a href="/pt/nuke/"><span>Nuke</span><span class="n">33</span></a>      </details>
+      <details class="nav-g" data-k="tactics" open>
+        <summary class="nav-h"><a href="/pt/taticas/">Táticas</a></summary>
+<a href="/pt/ancient/jogadas/"><span>Ancient</span><span class="n">85</span></a><a href="/pt/anubis/jogadas/"><span>Anubis</span><span class="n">13</span></a><a href="/pt/cache/jogadas/"><span>Cache</span><span class="n">37</span></a><a href="/pt/dust2/jogadas/"><span>Dust2</span><span class="n">61</span></a><a href="/pt/inferno/jogadas/"><span>Inferno</span><span class="n">17</span></a><a href="/pt/mirage/jogadas/"><span>Mirage</span><span class="n">67</span></a><a href="/pt/nuke/jogadas/"><span>Nuke</span><span class="n">32</span></a>      </details>
+      <details class="nav-g" data-k="events" open>
+        <summary class="nav-h"><a href="/pt/torneios/">Torneios</a></summary>
+<a href="/pt/torneio/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      </details>
+      <details class="nav-g" data-k="players" open>
+        <summary class="nav-h"><a href="/pt/jogadores/">Jogadores</a></summary>
+<a href="/pt/jogador/apex/"><span><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12">apEX</span></a><a href="/pt/jogador/art/"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">art</span></a><a href="/pt/jogador/coolio/"><span>coolio</span></a><a href="/pt/jogador/dem0n/"><span>dem0n</span></a><a href="/pt/jogador/donk/"><span><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12">donk</span></a><a href="/pt/jogador/dumau/"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">dumau</span></a><a href="/pt/jogador/dziugss/"><span><img class="flag" src="/static/flags/lt.svg" alt="Lituânia" title="Lituânia" width="16" height="12">dziugss</span></a><a href="/pt/jogador/fallen/"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">FalleN</span></a><a href="/pt/jogador/flamez/"><span><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12">flameZ</span></a><a href="/pt/jogador/heavygod/"><span><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12">HeavyGod</span></a><a href="/pt/jogador/hunter/"><span><img class="flag" src="/static/flags/ba.svg" alt="Bósnia" title="Bósnia" width="16" height="12">huNter</span></a><a href="/pt/jogador/karrigan/"><span><img class="flag" src="/static/flags/dk.svg" alt="Dinamarca" title="Dinamarca" width="16" height="12">karrigan</span></a><a class="more" href="/pt/jogadores/">ver todos (40)</a>      </details>
+      <details class="nav-g" data-k="teams" open>
+        <summary class="nav-h"><a href="/pt/times/">Times</a></summary>
+<a href="/pt/time/falcons/"><span><img class="flag" src="/static/flags/sa.svg" alt="Arábia Saudita" title="Arábia Saudita" width="16" height="12">Falcons</span></a><a href="/pt/time/furia/"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">FURIA</span></a><a href="/pt/time/fut/"><span><img class="flag" src="/static/flags/tr.svg" alt="Turquia" title="Turquia" width="16" height="12">FUT</span></a><a href="/pt/time/g2/"><span><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12">G2</span></a><a href="/pt/time/legacy/"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">Legacy</span></a><a href="/pt/time/mouz/"><span><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12">MOUZ</span></a><a href="/pt/time/spirit/"><span><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12">Spirit</span></a><a href="/pt/time/vitality/"><span><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12">Vitality</span></a>      </details>
+      <div class="nav-sep"></div>
+      <a href="/pt/sobre/"><span>Sobre</span></a>
+      <a href="/pt/privacidade/"><span>Privacidade</span></a>
+    </nav>
+    <script>
+      /* collapsed sections are remembered in this browser; applied before paint */
+      (function () {
+        var c = []; try { c = JSON.parse(localStorage.getItem("navClosed") || "[]"); } catch (e) {}
+        document.querySelectorAll(".nav-g").forEach(function (d) {
+          if (c.indexOf(d.dataset.k) >= 0 && !d.querySelector("[aria-current]")) d.open = false;
+          d.addEventListener("toggle", function () {
+            var s = []; document.querySelectorAll(".nav-g").forEach(function (x) { if (!x.open) s.push(x.dataset.k); });
+            try { localStorage.setItem("navClosed", JSON.stringify(s)); } catch (e) {}
+          });
+        });
+      })();
+    </script>
+  </aside>
+  <div class="scrim" id="scrim" hidden></div>
+  <main class="content">
+<nav class="crumbs"><a href="/pt/">Início</a> › Comparar minha demo</nav>
+<h1>Compare suas granadas com as dos pros</h1>
+<p class="muted">Escolha a demo da sua partida: ela é lida aqui no seu navegador (nada é enviado para servidor). Depois escolha seu nick e veja cada granada sua comparada com as lineups dos pros.</p>
+<div id="cmp" data-lang="pt" data-i18n='{"desc": "Envie a demo da sua partida (Premier, FACEIT, MM) e veja quais granadas voc\u00ea jogou igual aos pros, quais ca\u00edram no mesmo lugar saindo de outro ponto e como os pros jogam.", "dest_d": "Os pros jogam de {from}; voc\u00ea jogou a {u} unidades desse ponto.", "dest_t": "Os pros jogam essa:", "drop": "Clique ou arraste sua demo aqui (.dem ou .dem.gz)", "drop_help": "Demos de 100\u2013300 MB levam de 20 s a 1 min para ler, dependendo do PC.", "err_bz2": "Essa demo est\u00e1 compactada em .bz2. Descompacte primeiro (7-Zip: clique direito \u2192 Extrair aqui) e envie o .dem.", "err_map": "Ainda n\u00e3o temos lineups dos pros para o mapa {m}.", "err_none": "N\u00e3o encontrei granadas nessa demo.", "err_parse": "N\u00e3o consegui ler essa demo ({e}). Ela \u00e9 de CS2?", "how": ["\u003cb\u003ePremier/MM:\u003c/b\u003e no CS2, Assistir \u2192 Suas partidas \u2192 baixe a partida. O arquivo fica em \u003ccode\u003eCounter-Strike Global Offensive/game/csgo/replays\u003c/code\u003e (.dem).", "\u003cb\u003eFACEIT:\u003c/b\u003e na p\u00e1gina da partida, bot\u00e3o Assistir demo \u2192 baixa um .dem.gz (pode enviar compactado).", "Se vier .bz2, descompacte com o 7-Zip antes."], "how_h": "Como pegar a demo da sua partida", "k_dest": "mesmo destino, outro ponto", "k_none": "sem lineup dos pros", "k_same": "iguais \u00e0s dos pros", "k_total": "suas granadas", "lead": "Escolha a demo da sua partida: ela \u00e9 lida aqui no seu navegador (nada \u00e9 enviado para servidor). Depois escolha seu nick e veja cada granada sua comparada com as lineups dos pros.", "map": "Mapa", "nav": "Comparar minha demo", "none_d": "Pode ser uma granada sua, uma de rea\u00e7\u00e3o no meio do round ou um lugar que ainda n\u00e3o temos.", "none_t": "Nenhuma lineup dos pros cai nesse lugar.", "player": "Seu nick", "reading": "Abrindo a demo ({mb} MB)\u2026", "same_d": "Voc\u00ea jogou a {u} unidades do ponto dos pros.", "same_t": "Igual a", "sec_dest": "Ca\u00edram onde os pros jogam, mas saindo de outro ponto", "sec_none": "Sem lineup dos pros parecida", "sec_same": "Iguais \u00e0s dos pros", "stage_grenades": "Separando as granadas\u2026", "stage_header": "Lendo a demo\u2026", "stage_unzip": "Descompactando\u2026", "title": "Compare suas granadas com as dos pros", "types": {"flash": "Flash", "he": "HE", "molotov": "Molotov", "smoke": "Smoke"}}'>
+  <label class="cm-drop" id="cmpDrop">
+    <input type="file" id="cmpFile" accept=".dem,.gz" hidden>
+    <b>Clique ou arraste sua demo aqui (.dem ou .dem.gz)</b>
+    <span class="muted small">Demos de 100–300 MB levam de 20 s a 1 min para ler, dependendo do PC.</span>
+  </label>
+  <p class="cm-status" id="cmpStatus" hidden></p>
+  <div class="filters cm-pick" id="cmpPick" hidden>
+    <span>Mapa: <b id="cmpMap"></b></span>
+    <label>Seu nick <select id="cmpPlayer"></select></label>
+  </div>
+  <div id="cmpOut"></div>
+  <details class="cfg-help"><summary>Como pegar a demo da sua partida</summary>
+    <ol><li><b>Premier/MM:</b> no CS2, Assistir → Suas partidas → baixe a partida. O arquivo fica em <code>Counter-Strike Global Offensive/game/csgo/replays</code> (.dem).</li><li><b>FACEIT:</b> na página da partida, botão Assistir demo → baixa um .dem.gz (pode enviar compactado).</li><li>Se vier .bz2, descompacte com o 7-Zip antes.</li></ol>
+  </details>
+</div>
+  </main>
+</div>
+<footer class="foot">
+  <div class="foot-in">
+    <p>Dados extraídos das demos oficiais das partidas. Demos: <a href="https://www.hltv.org/" rel="noopener" target="_blank">HLTV.org</a>.</p>
+    <p>Projeto de fãs, gratuito. Não afiliado à Valve, HLTV, aos times ou aos organizadores dos torneios. Counter-Strike é marca da Valve Corporation.</p>
+    <p><a href="/pt/sobre/">Sobre e créditos</a> · atualizado em 2026-11-15</p>
+  </div>
+</footer>
+<script src="/static/app.js" defer></script>
+<script src="/static/accounts.js" defer></script>
+<script src="/static/compare.js" defer></script></body>
+</html>

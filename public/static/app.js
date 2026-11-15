@@ -178,7 +178,7 @@
 (function () {
   const KEY = "favs";
   const read = () => { try { return JSON.parse(localStorage.getItem(KEY) || "[]"); } catch (e) { return []; } };
-  const write = v => { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) {} };
+  const write = v => { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) {} window.PN && window.PN.push("favs"); };
   const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   // links are per language: /pt/mirage/x/ and /en/mirage/x/ are the same lineup
   const key = url => url.replace(/^\/[a-z]{2}\//, "/");
@@ -215,4 +215,5 @@
     if (u) { write(read().filter(x => key(x.url) !== key(u.dataset.unfav))); paint(); }
   });
   paint();
+  document.addEventListener("pn:synced", paint);
 })();

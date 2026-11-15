@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Legacy no CS2: táticas, jogadores e granadas · Lineups Pro</title>
+<title>Legacy no CS2: táticas, jogadores e granadas · Pronades</title>
 <meta name="description" content="Como a Legacy joga no CS2: entradas nos bombs com replay, mapa de calor das granadas em cada mapa e o perfil de utilitária de cada jogador.">
 <link rel="canonical" href="https://prolineups.cezolas.workers.dev/pt/time/legacy/">
 <link rel="alternate" hreflang="pt" href="https://prolineups.cezolas.workers.dev/pt/time/legacy/">
@@ -17,7 +17,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta property="og:locale" content="pt_BR">
-<meta property="og:site_name" content="Lineups Pro">
+<meta property="og:site_name" content="Pronades">
 <meta name="theme-color" content="#0b0f15">
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
   if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
@@ -29,13 +29,15 @@
 <header class="top">
   <div class="top-in">
     <button class="menu-btn" id="menuBtn" aria-label="Mostrar ou ocultar o menu" aria-controls="side" aria-expanded="false">☰</button>
-    <a class="logo" href="/pt/"><span class="logo-mark">◎</span> Lineups Pro</a>
+    <a class="logo" href="/pt/"><span class="logo-mark">◎</span> Pronades</a>
     <div class="search">
       <input id="q" type="search" placeholder="Buscar mapa, jogador, time, smoke…" autocomplete="off" aria-label="Buscar">
       <div id="results" class="results" hidden></div>
     </div>
     <nav class="langs" aria-label="Idioma">
 <a href="/pt/time/legacy/" hreflang="pt" lang="pt" aria-current="true" title="Português">PT</a><a href="/en/team/legacy/" hreflang="en" lang="en" title="English">EN</a>    </nav>
+    <a class="login-btn" id="loginBtn" href="/auth/google" hidden>Entrar</a>
+    <a class="me-btn" id="meBtn" href="/pt/conta/" hidden aria-label="Minha conta"><img alt="" width="28" height="28" referrerpolicy="no-referrer" hidden><span>Conta</span></a>
     <button class="theme-btn" id="themeBtn" type="button" aria-label="Alternar modo claro/escuro" title="Alternar modo claro/escuro"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.6"/><g stroke-width="2.2" stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></g></svg></button>
   </div>
 </header>
@@ -43,30 +45,29 @@
   <aside class="side" id="side" aria-label="Navegação">
     <nav>
       <a href="/pt/"><span>Início</span></a>
+      <a href="/pt/comparar-minha-demo/"><span>⇄ Comparar minha demo</span></a>
       <a href="/pt/plano-de-treino/"><span>🎯 Plano de treino</span></a>
       <a href="/pt/funcoes/"><span>👥 Funções</span></a>
       <a href="/pt/analises/"><span>▤ Análises</span></a>
       <a href="/pt/minha-lista/"><span>★ Minha lista</span><span class="n" id="favCount"></span></a>
-      <details class="nav-g" data-k="types" open>
-        <summary class="nav-h"><span>Granadas</span></summary>
-<a href="/pt/smokes/"><span>Smokes</span><span class="n">104</span></a><a href="/pt/flashes/"><span>Flashes</span><span class="n">53</span></a><a href="/pt/molotovs/"><span>Molotovs</span><span class="n">53</span></a><a href="/pt/hes/"><span>HEs</span><span class="n">30</span></a>      </details>
-      <details class="nav-g" data-k="tactics" open>
-        <summary class="nav-h"><a href="/pt/taticas/">Táticas</a></summary>
-<a href="/pt/ancient/jogadas/"><span>Ancient</span><span class="n">36</span></a><a href="/pt/anubis/jogadas/"><span>Anubis</span><span class="n">13</span></a><a href="/pt/cache/jogadas/"><span>Cache</span><span class="n">37</span></a><a href="/pt/dust2/jogadas/"><span>Dust2</span><span class="n">40</span></a><a href="/pt/inferno/jogadas/"><span>Inferno</span><span class="n">17</span></a><a href="/pt/mirage/jogadas/"><span>Mirage</span><span class="n">44</span></a><a href="/pt/nuke/jogadas/"><span>Nuke</span><span class="n">32</span></a>      </details>
       <details class="nav-g" data-k="maps" open>
         <summary class="nav-h"><a href="/pt/mapas/">Mapas</a></summary>
-<a href="/pt/ancient/"><span>Ancient</span><span class="n">30</span></a><a href="/pt/anubis/"><span>Anubis</span><span class="n">20</span></a><a href="/pt/cache/"><span>Cache</span><span class="n">39</span></a><a href="/pt/dust2/"><span>Dust2</span><span class="n">39</span></a><a href="/pt/inferno/"><span>Inferno</span><span class="n">22</span></a><a href="/pt/mirage/"><span>Mirage</span><span class="n">57</span></a><a href="/pt/nuke/"><span>Nuke</span><span class="n">33</span></a>      </details>
+<a href="/pt/ancient/"><span>Ancient</span><span class="n">51</span></a><a href="/pt/anubis/"><span>Anubis</span><span class="n">20</span></a><a href="/pt/cache/"><span>Cache</span><span class="n">39</span></a><a href="/pt/dust2/"><span>Dust2</span><span class="n">53</span></a><a href="/pt/inferno/"><span>Inferno</span><span class="n">22</span></a><a href="/pt/mirage/"><span>Mirage</span><span class="n">74</span></a><a href="/pt/nuke/"><span>Nuke</span><span class="n">33</span></a>      </details>
+      <details class="nav-g" data-k="tactics" open>
+        <summary class="nav-h"><a href="/pt/taticas/">Táticas</a></summary>
+<a href="/pt/ancient/jogadas/"><span>Ancient</span><span class="n">85</span></a><a href="/pt/anubis/jogadas/"><span>Anubis</span><span class="n">13</span></a><a href="/pt/cache/jogadas/"><span>Cache</span><span class="n">37</span></a><a href="/pt/dust2/jogadas/"><span>Dust2</span><span class="n">61</span></a><a href="/pt/inferno/jogadas/"><span>Inferno</span><span class="n">17</span></a><a href="/pt/mirage/jogadas/"><span>Mirage</span><span class="n">67</span></a><a href="/pt/nuke/jogadas/"><span>Nuke</span><span class="n">32</span></a>      </details>
+      <details class="nav-g" data-k="events" open>
+        <summary class="nav-h"><a href="/pt/torneios/">Torneios</a></summary>
+<a href="/pt/torneio/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      </details>
       <details class="nav-g" data-k="players" open>
         <summary class="nav-h"><a href="/pt/jogadores/">Jogadores</a></summary>
 <a href="/pt/jogador/apex/"><span><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12">apEX</span></a><a href="/pt/jogador/art/"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">art</span></a><a href="/pt/jogador/coolio/"><span>coolio</span></a><a href="/pt/jogador/dem0n/"><span>dem0n</span></a><a href="/pt/jogador/donk/"><span><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12">donk</span></a><a href="/pt/jogador/dumau/"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">dumau</span></a><a href="/pt/jogador/dziugss/"><span><img class="flag" src="/static/flags/lt.svg" alt="Lituânia" title="Lituânia" width="16" height="12">dziugss</span></a><a href="/pt/jogador/fallen/"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">FalleN</span></a><a href="/pt/jogador/flamez/"><span><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12">flameZ</span></a><a href="/pt/jogador/heavygod/"><span><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12">HeavyGod</span></a><a href="/pt/jogador/hunter/"><span><img class="flag" src="/static/flags/ba.svg" alt="Bósnia" title="Bósnia" width="16" height="12">huNter</span></a><a href="/pt/jogador/karrigan/"><span><img class="flag" src="/static/flags/dk.svg" alt="Dinamarca" title="Dinamarca" width="16" height="12">karrigan</span></a><a class="more" href="/pt/jogadores/">ver todos (40)</a>      </details>
       <details class="nav-g" data-k="teams" open>
         <summary class="nav-h"><a href="/pt/times/">Times</a></summary>
 <a href="/pt/time/falcons/"><span><img class="flag" src="/static/flags/sa.svg" alt="Arábia Saudita" title="Arábia Saudita" width="16" height="12">Falcons</span></a><a href="/pt/time/furia/"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">FURIA</span></a><a href="/pt/time/fut/"><span><img class="flag" src="/static/flags/tr.svg" alt="Turquia" title="Turquia" width="16" height="12">FUT</span></a><a href="/pt/time/g2/"><span><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12">G2</span></a><a href="/pt/time/legacy/" aria-current="page"><span><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12">Legacy</span></a><a href="/pt/time/mouz/"><span><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12">MOUZ</span></a><a href="/pt/time/spirit/"><span><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12">Spirit</span></a><a href="/pt/time/vitality/"><span><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12">Vitality</span></a>      </details>
-      <details class="nav-g" data-k="events" open>
-        <summary class="nav-h"><a href="/pt/torneios/">Torneios</a></summary>
-<a href="/pt/torneio/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      </details>
       <div class="nav-sep"></div>
       <a href="/pt/sobre/"><span>Sobre</span></a>
+      <a href="/pt/privacidade/"><span>Privacidade</span></a>
     </nav>
     <script>
       /* collapsed sections are remembered in this browser; applied before paint */
@@ -129,31 +130,31 @@
       <b><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"> art</b><span class="role role-support">Suporte</span>      <span class="muted small">2,6 granadas por round</span>
       <span class="mix"><span class="mix-smoke" style="width: 30.1%"></span><span class="mix-flash" style="width: 37.8%"></span><span class="mix-molotov" style="width: 22.3%"></span><span class="mix-he" style="width: 9.7%"></span></span>
       <span class="muted small">Mais usa: Flashes · flash cega 0,8</span>
-      <span class="muted small">15 usos nas lineups do site</span>
+      <span class="muted small">19 usos nas lineups do site</span>
     </a>
     <a class="pl-card" href="/pt/jogador/dumau/">
       <b><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"> dumau</b><span class="role role-entry">Entry</span>      <span class="muted small">1,8 granadas por round</span>
       <span class="mix"><span class="mix-smoke" style="width: 28.1%"></span><span class="mix-flash" style="width: 26.8%"></span><span class="mix-molotov" style="width: 26.8%"></span><span class="mix-he" style="width: 18.3%"></span></span>
       <span class="muted small">Mais usa: Smokes · flash cega 0,7</span>
-      <span class="muted small">8 usos nas lineups do site</span>
+      <span class="muted small">9 usos nas lineups do site</span>
     </a>
     <a class="pl-card" href="/pt/jogador/ksloks/">
       <b> ksloks</b><span class="role role-lurker">Lurker</span>      <span class="muted small">1,8 granadas por round</span>
       <span class="mix"><span class="mix-smoke" style="width: 38.0%"></span><span class="mix-flash" style="width: 16.9%"></span><span class="mix-molotov" style="width: 23.9%"></span><span class="mix-he" style="width: 21.1%"></span></span>
       <span class="muted small">Mais usa: Smokes · flash cega 0,8</span>
-      <span class="muted small">10 usos nas lineups do site</span>
+      <span class="muted small">11 usos nas lineups do site</span>
     </a>
     <a class="pl-card" href="/pt/jogador/latto/">
       <b><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"> latto</b><span class="role role-rifler">Rifler</span>      <span class="muted small">2,6 granadas por round</span>
       <span class="mix"><span class="mix-smoke" style="width: 32.0%"></span><span class="mix-flash" style="width: 34.9%"></span><span class="mix-molotov" style="width: 19.4%"></span><span class="mix-he" style="width: 13.6%"></span></span>
       <span class="muted small">Mais usa: Flashes · flash cega 1,2</span>
-      <span class="muted small">9 usos nas lineups do site</span>
+      <span class="muted small">10 usos nas lineups do site</span>
     </a>
     <a class="pl-card" href="/pt/jogador/try/">
       <b><img class="flag" src="/static/flags/ar.svg" alt="Argentina" title="Argentina" width="16" height="12"> try</b><span class="role role-awp">AWP</span>      <span class="muted small">1,6 granadas por round</span>
       <span class="mix"><span class="mix-smoke" style="width: 31.8%"></span><span class="mix-flash" style="width: 36.4%"></span><span class="mix-molotov" style="width: 19.7%"></span><span class="mix-he" style="width: 12.1%"></span></span>
       <span class="muted small">Mais usa: Flashes · flash cega 1,4</span>
-      <span class="muted small">17 usos nas lineups do site</span>
+      <span class="muted small">14 usos nas lineups do site</span>
     </a>
   </div>
 </section>
@@ -183,7 +184,7 @@
           <span class="small">11,92/round</span></div>
         <div class="tm-plays"><a href="/pt/dust2/jogadas/legacy-b/">▶ Bomb B · 3 rounds · 67%</a><a href="/pt/dust2/jogadas/legacy-a/">▶ Bomb A · 2 rounds · 50%</a></div>
         <div class="tm-links small">
-<a href="/pt/dust2/?time=legacy">23 lineups</a><a href="#assinatura" data-sig-open="dust2">Detalhes da utilitária</a>        </div>
+<a href="/pt/dust2/?time=legacy">25 lineups</a><a href="#assinatura" data-sig-open="dust2">Detalhes da utilitária</a>        </div>
       </div>
     </article>
     <article class="tm-map">
@@ -202,7 +203,7 @@
           <span class="small">8,86/round</span></div>
         <div class="tm-plays"><a href="/pt/mirage/jogadas/legacy-a/">▶ Bomb A · 4 rounds · 75%</a></div>
         <div class="tm-links small">
-<a href="/pt/mirage/?time=legacy">20 lineups</a><a href="#assinatura" data-sig-open="mirage">Detalhes da utilitária</a>        </div>
+<a href="/pt/mirage/#execucoes">1 execução</a><a href="/pt/mirage/?time=legacy">21 lineups</a><a href="#assinatura" data-sig-open="mirage">Detalhes da utilitária</a>        </div>
       </div>
     </article>
   </div>
@@ -219,15 +220,15 @@
       <table class="sig-table">
         <thead><tr><th></th><th>Legacy</th><th>Média dos times</th></tr></thead>
         <tbody>
-          <tr><td>Granadas por round</td><td>11,0</td><td>10,9</td></tr>
-          <tr class="sub"><td>Smokes por round</td><td>3,56</td><td>3,29</td></tr>
-          <tr class="sub"><td>Flashes por round</td><td>4,67</td><td>5,01</td></tr>
-          <tr class="sub"><td>Molotovs por round</td><td>2,56</td><td>2,38</td></tr>
-          <tr class="sub"><td>HEs por round</td><td>0,22</td><td>0,22</td></tr>
-          <tr><td>Inimigos cegados por flash</td><td>1,14 <span class="up" title="comparado com a média dos times">▲</span></td><td>0,99</td></tr>
-          <tr><td>Flashes que cegam o próprio time (≥1s)</td><td>33%</td><td>30%</td></tr>
-          <tr><td>Kills com granada a cada 10 rounds</td><td>1,1 <span class="up" title="comparado com a média dos times">▲</span></td><td>0,4</td></tr>
-          <tr><td>Tempo mediano do lançamento (round)</td><td>0:34</td><td>0:39</td></tr>
+          <tr><td>Granadas por round</td><td>11,0</td><td>10,6</td></tr>
+          <tr class="sub"><td>Smokes por round</td><td>3,56</td><td>3,18</td></tr>
+          <tr class="sub"><td>Flashes por round</td><td>4,67</td><td>4,84</td></tr>
+          <tr class="sub"><td>Molotovs por round</td><td>2,56</td><td>2,29</td></tr>
+          <tr class="sub"><td>HEs por round</td><td>0,22 <span class="down" title="comparado com a média dos times">▼</span></td><td>0,32</td></tr>
+          <tr><td>Inimigos cegados por flash</td><td>1,14</td><td>1,02</td></tr>
+          <tr><td>Flashes que cegam o próprio time (≥1s)</td><td>33%</td><td>28%</td></tr>
+          <tr><td>Kills com granada a cada 10 rounds</td><td>1,1 <span class="up" title="comparado com a média dos times">▲</span></td><td>0,3</td></tr>
+          <tr><td>Tempo mediano do lançamento (round)</td><td>0:34</td><td>0:40</td></tr>
         </tbody>
       </table>
 <p class="small muted">Quem mais joga utilitária: art (30), latto (24), try (21), ksloks (12), dumau (12)</p>      <figure class="heat">
@@ -244,15 +245,15 @@
       <table class="sig-table">
         <thead><tr><th></th><th>Legacy</th><th>Média dos times</th></tr></thead>
         <tbody>
-          <tr><td>Granadas por round</td><td>11,9</td><td>12,2</td></tr>
-          <tr class="sub"><td>Smokes por round</td><td>3,17</td><td>3,38</td></tr>
-          <tr class="sub"><td>Flashes por round</td><td>2,50</td><td>2,79</td></tr>
-          <tr class="sub"><td>Molotovs por round</td><td>2,75</td><td>2,82</td></tr>
-          <tr class="sub"><td>HEs por round</td><td>3,50</td><td>3,22</td></tr>
-          <tr><td>Inimigos cegados por flash</td><td>0,73 <span class="down" title="comparado com a média dos times">▼</span></td><td>0,88</td></tr>
-          <tr><td>Flashes que cegam o próprio time (≥1s)</td><td>27%</td><td>37%</td></tr>
-          <tr><td>Kills com granada a cada 10 rounds</td><td>1,7 <span class="up" title="comparado com a média dos times">▲</span></td><td>0,4</td></tr>
-          <tr><td>Tempo mediano do lançamento (round)</td><td>0:21</td><td>0:24</td></tr>
+          <tr><td>Granadas por round</td><td>11,9</td><td>12,1</td></tr>
+          <tr class="sub"><td>Smokes por round</td><td>3,17</td><td>3,44</td></tr>
+          <tr class="sub"><td>Flashes por round</td><td>2,50</td><td>2,72</td></tr>
+          <tr class="sub"><td>Molotovs por round</td><td>2,75</td><td>2,75</td></tr>
+          <tr class="sub"><td>HEs por round</td><td>3,50</td><td>3,13</td></tr>
+          <tr><td>Inimigos cegados por flash</td><td>0,73 <span class="down" title="comparado com a média dos times">▼</span></td><td>0,90</td></tr>
+          <tr><td>Flashes que cegam o próprio time (≥1s)</td><td>27%</td><td>36%</td></tr>
+          <tr><td>Kills com granada a cada 10 rounds</td><td>1,7 <span class="up" title="comparado com a média dos times">▲</span></td><td>0,6</td></tr>
+          <tr><td>Tempo mediano do lançamento (round)</td><td>0:21</td><td>0:25</td></tr>
         </tbody>
       </table>
 <p class="small muted">Quem mais joga utilitária: art (37), dumau (31), ksloks (30), latto (24), try (21)</p>      <figure class="heat">
@@ -273,15 +274,15 @@
       <table class="sig-table">
         <thead><tr><th></th><th>Legacy</th><th>Média dos times</th></tr></thead>
         <tbody>
-          <tr><td>Granadas por round</td><td>9,2</td><td>9,3</td></tr>
-          <tr class="sub"><td>Smokes por round</td><td>3,58</td><td>3,46</td></tr>
-          <tr class="sub"><td>Flashes por round</td><td>3,67</td><td>3,39</td></tr>
-          <tr class="sub"><td>Molotovs por round</td><td>1,75</td><td>1,94</td></tr>
-          <tr class="sub"><td>HEs por round</td><td>0,17 <span class="down" title="comparado com a média dos times">▼</span></td><td>0,56</td></tr>
-          <tr><td>Inimigos cegados por flash</td><td>1,02</td><td>0,91</td></tr>
-          <tr><td>Flashes que cegam o próprio time (≥1s)</td><td>27%</td><td>28%</td></tr>
-          <tr><td>Kills com granada a cada 10 rounds</td><td>0,0 <span class="down" title="comparado com a média dos times">▼</span></td><td>0,2</td></tr>
-          <tr><td>Tempo mediano do lançamento (round)</td><td>0:26</td><td>0:25</td></tr>
+          <tr><td>Granadas por round</td><td>9,2</td><td>9,6</td></tr>
+          <tr class="sub"><td>Smokes por round</td><td>3,58</td><td>3,45</td></tr>
+          <tr class="sub"><td>Flashes por round</td><td>3,67</td><td>3,45</td></tr>
+          <tr class="sub"><td>Molotovs por round</td><td>1,75 <span class="down" title="comparado com a média dos times">▼</span></td><td>2,10</td></tr>
+          <tr class="sub"><td>HEs por round</td><td>0,17 <span class="down" title="comparado com a média dos times">▼</span></td><td>0,63</td></tr>
+          <tr><td>Inimigos cegados por flash</td><td>1,02</td><td>0,94</td></tr>
+          <tr><td>Flashes que cegam o próprio time (≥1s)</td><td>27%</td><td>27%</td></tr>
+          <tr><td>Kills com granada a cada 10 rounds</td><td>0,0 <span class="down" title="comparado com a média dos times">▼</span></td><td>0,3</td></tr>
+          <tr><td>Tempo mediano do lançamento (round)</td><td>0:26</td><td>0:24</td></tr>
         </tbody>
       </table>
 <p class="small muted">Quem mais joga utilitária: latto (37), art (23), dumau (19), try (16), ksloks (15)</p>      <figure class="heat">
@@ -298,14 +299,14 @@
       <table class="sig-table">
         <thead><tr><th></th><th>Legacy</th><th>Média dos times</th></tr></thead>
         <tbody>
-          <tr><td>Granadas por round</td><td>8,9 <span class="down" title="comparado com a média dos times">▼</span></td><td>11,5</td></tr>
-          <tr class="sub"><td>Smokes por round</td><td>2,71</td><td>3,12</td></tr>
-          <tr class="sub"><td>Flashes por round</td><td>2,00 <span class="down" title="comparado com a média dos times">▼</span></td><td>2,66</td></tr>
-          <tr class="sub"><td>Molotovs por round</td><td>2,14 <span class="down" title="comparado com a média dos times">▼</span></td><td>2,97</td></tr>
-          <tr class="sub"><td>HEs por round</td><td>2,00 <span class="down" title="comparado com a média dos times">▼</span></td><td>2,72</td></tr>
-          <tr><td>Inimigos cegados por flash</td><td>1,07</td><td>1,08</td></tr>
+          <tr><td>Granadas por round</td><td>8,9 <span class="down" title="comparado com a média dos times">▼</span></td><td>11,1</td></tr>
+          <tr class="sub"><td>Smokes por round</td><td>2,71</td><td>3,09</td></tr>
+          <tr class="sub"><td>Flashes por round</td><td>2,00 <span class="down" title="comparado com a média dos times">▼</span></td><td>2,51</td></tr>
+          <tr class="sub"><td>Molotovs por round</td><td>2,14 <span class="down" title="comparado com a média dos times">▼</span></td><td>2,86</td></tr>
+          <tr class="sub"><td>HEs por round</td><td>2,00 <span class="down" title="comparado com a média dos times">▼</span></td><td>2,60</td></tr>
+          <tr><td>Inimigos cegados por flash</td><td>1,07</td><td>1,09</td></tr>
           <tr><td>Flashes que cegam o próprio time (≥1s)</td><td>36%</td><td>25%</td></tr>
-          <tr><td>Kills com granada a cada 10 rounds</td><td>0,0 <span class="down" title="comparado com a média dos times">▼</span></td><td>0,9</td></tr>
+          <tr><td>Kills com granada a cada 10 rounds</td><td>0,0 <span class="down" title="comparado com a média dos times">▼</span></td><td>0,7</td></tr>
           <tr><td>Tempo mediano do lançamento (round)</td><td>0:17</td><td>0:17</td></tr>
         </tbody>
       </table>
@@ -337,52 +338,18 @@
 <section>
   <h2>Granadas do time (lineups)</h2>
   <details class="tm-group" open>
-    <summary><b>Dust2</b> <span class="muted">· 23 lineups</span></summary>
-    <div class="cards"><a class="card" href="/pt/dust2/molotov-long-doors-from-long-a-ct/" data-id="molotov-long-doors-from-long-a-ct"
-   data-type="molotov" data-side="CT" data-area="LongDoors" data-map="dust2"
-   data-teams="falcons furia g2 legacy vitality" data-players="art dumau fallen flamez heavygod hunter karrigan kyousuke matys molodoy niko zywoo"
-   data-diff="3" data-count="18" data-eff="0.0">
-  <svg class="radar" viewBox="611.8 372.7 312.5 312.5" role="img" aria-label="Trajetória: Molotov Portas do Fundo (de Fundo)">
-  <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="10.4"><text x="782.0" y="539.5">Portas do Fundo</text><text x="881.1" y="607.3">Bunker</text></g>
-  <circle class="land land-molotov" cx="688.2" cy="600.9" r="27.3"/>
-  <path class="traj traj-molotov" d="M854.3,457.0 L843.6,465.5 L832.7,473.6 L822.0,482.0 L811.1,490.5 L800.5,498.9 L789.5,507.3 L778.9,515.7 L768.2,524.1 L757.3,532.5 L746.6,540.7 L735.7,549.1 L725.0,557.5 L714.1,565.9 L703.4,574.3 L692.5,582.7 L681.8,591.1 L683.4,595.7 L688.2,599.5 L689.5,600.5"/>
-  <line class="aim" x1="853.8" y1="457.5" x2="826.4" y2="477.5"/>
-  <circle class="spot side-CT" cx="853.8" cy="457.5" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge type-molotov">Molotov</span><span class="badge side-CT">CT</span><span class="badge diff-3">Difícil</span><span class="badge video">▶ vídeo</span><span class="badge">5 variações</span></div>
-    <h3>Molotov Portas do Fundo (de Fundo)</h3>
-    <p class="muted">5 usos</p>
-  </div>
-</a><a class="card" href="/pt/dust2/smoke-mid-doors-from-t-spawn-t/" data-id="smoke-mid-doors-from-t-spawn-t"
-   data-type="smoke" data-side="T" data-area="MidDoors" data-map="dust2"
-   data-teams="falcons g2 legacy vitality" data-players="art heavygod latto nertz teses try zywoo"
-   data-diff="2" data-count="21" data-eff="-1">
-  <svg class="radar" viewBox="228.2 299.5 643.9 643.9" role="img" aria-label="Trajetória: Smoke Portas do Meio (de Base TR)">
-  <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="21.5"><text x="642.7" y="746.8">Fora do Fundo</text><text x="782.0" y="539.5">Portas do Fundo</text><text x="475.7" y="660.0">Coqueiro</text><text x="480.9" y="461.8">Meio</text><text x="538.9" y="421.6">Varanda</text><text x="363.4" y="415.5">Escuro Baixo</text><text x="304.1" y="474.3">Escada do Escuro Baixo</text></g>
-  <circle class="land land-smoke" cx="456.6" cy="372.6" r="33.0"/>
-  <path class="traj traj-smoke" d="M643.6,873.4 L640.9,865.9 L638.2,858.2 L635.5,850.7 L632.7,843.2 L629.8,835.5 L627.0,828.0 L624.3,820.5 L621.6,812.7 L618.9,805.2 L616.1,797.7 L613.2,790.0 L610.5,782.5 L607.7,775.0 L605.0,767.3 L602.3,759.8 L599.5,752.3 L596.6,744.5 L593.9,737.0 L591.1,729.5 L588.4,721.8 L585.7,714.3 L582.7,706.8 L580.0,699.1 L577.3,691.6 L574.5,684.1 L571.8,676.4 L569.1,668.9 L566.1,661.4 L563.4,653.6 L560.7,646.1 L558.0,638.6 L555.2,630.9 L552.5,623.4 L549.5,615.9 L546.8,608.2 L544.1,600.7 L541.4,593.2 L538.6,585.5 L535.9,578.0 L533.0,570.5 L530.2,562.7 L527.5,555.2 L524.8,547.7 L522.0,540.0 L519.1,532.5 L516.4,525.0 L513.6,517.3 L510.9,509.8 L508.2,502.3 L505.5,494.5 L502.5,487.0 L499.8,479.5 L497.0,471.8 L494.3,464.3 L491.6,456.8 L488.9,449.1 L485.9,441.6 L483.2,434.1 L480.5,426.4 L477.7,418.9 L475.0,411.4 L472.3,403.6 L469.3,396.1 L466.6,388.6 L463.9,380.9 L461.1,373.9 L459.8,370.9 L459.1,369.5 L458.6,370.2 L458.4,370.9 L458.2,371.4 L458.0,371.6 L457.7,371.8 L457.5,372.0 L457.3,372.3 L457.0,372.5 L456.8,372.5 L456.6,372.7 L456.6,372.7 L456.6,372.7"/>
-  <line class="aim" x1="643.7" y1="873.4" x2="632.0" y2="841.5"/>
-  <circle class="spot side-T" cx="643.7" cy="873.4" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">TR</span><span class="badge diff-2">Médio</span><span class="badge">jump throw</span><span class="badge video">▶ vídeo</span><span class="badge">2 variações</span></div>
-    <h3>Smoke Portas do Meio (de Base TR)</h3>
-    <p class="muted">4 usos</p>
-  </div>
-</a><a class="card" href="/pt/dust2/smoke-long-doors-from-under-a-ct/" data-id="smoke-long-doors-from-under-a-ct"
+    <summary><b>Dust2</b> <span class="muted">· 25 lineups</span></summary>
+    <div class="cards"><a class="card" href="/pt/dust2/smoke-long-doors-from-under-a-ct/" data-id="smoke-long-doors-from-under-a-ct"
    data-type="smoke" data-side="CT" data-area="LongDoors" data-map="dust2"
-   data-teams="falcons furia g2 legacy vitality" data-players="apex art hunter karrigan kscerato m0nesy molodoy niko r1nkle try"
-   data-diff="2" data-count="25" data-eff="-1">
-  <svg class="radar" viewBox="451.6 130.2 569.5 569.5" role="img" aria-label="Trajetória: Smoke Portas do Fundo (de Rampa do CT)">
+   data-teams="falcons furia g2 legacy spirit vitality" data-players="apex art hunter karrigan kscerato m0nesy magixx molodoy niko r1nkle sh1ro try"
+   data-diff="2" data-count="37" data-eff="-1">
+  <svg class="radar" viewBox="451.4 130.2 569.5 569.5" role="img" aria-label="Trajetória: Smoke Portas do Fundo (de Rampa do CT)">
   <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="19.0"><text x="893.9" y="355.7">Fundo</text><text x="782.0" y="539.5">Portas do Fundo</text><text x="753.0" y="233.0">Rampa do CT</text><text x="605.2" y="234.3">Base CT</text><text x="538.9" y="421.6">Varanda</text><text x="650.0" y="348.6">Escada da Varanda</text><text x="881.1" y="607.3">Bunker</text><text x="946.8" y="566.6">Altar</text></g>
-  <circle class="land land-smoke" cx="682.6" cy="588.1" r="33.0"/>
-  <path class="traj traj-smoke" d="M790.0,200.2 L788.4,208.2 L786.6,216.1 L785.0,224.1 L783.2,232.3 L781.6,240.2 L779.8,248.2 L778.2,256.1 L776.4,264.1 L774.8,272.0 L773.0,280.0 L771.4,288.0 L769.5,295.9 L768.0,303.9 L766.1,312.0 L764.5,320.0 L762.7,328.0 L761.1,335.9 L759.3,343.9 L757.7,351.8 L755.9,359.8 L754.3,367.7 L752.5,375.7 L750.9,383.6 L749.1,391.8 L747.5,399.8 L745.7,407.7 L744.1,415.7 L742.3,423.6 L740.7,431.6 L738.9,439.5 L737.3,447.5 L735.5,455.5 L733.9,463.4 L732.0,471.6 L730.5,479.5 L728.6,487.5 L727.0,495.5 L725.2,503.4 L723.6,511.4 L721.8,519.3 L720.2,527.3 L718.4,535.2 L716.8,543.2 L715.0,551.4 L713.4,559.3 L711.6,567.3 L710.0,575.2 L708.2,583.2 L706.6,591.1 L705.0,599.1 L703.2,607.0 L701.4,615.0 L699.8,623.0 L698.2,629.8 L697.5,626.1 L696.6,622.5 L695.9,618.9 L695.0,615.5 L694.3,611.8 L693.6,608.2 L692.7,604.5 L692.0,601.1 L691.4,597.5 L690.5,593.9 L689.8,590.2 L689.1,586.6 L688.2,583.0 L687.5,579.5 L686.6,575.9 L685.9,572.3 L685.5,573.4 L685.2,575.0 L685.0,576.4 L684.8,577.0 L684.8,578.0 L684.5,578.6 L684.5,579.3 L684.3,580.0 L684.3,580.7 L684.1,581.4 L684.1,582.3 L683.9,583.0 L683.6,583.6 L683.6,584.3 L683.4,585.0 L683.4,585.7 L683.4,586.1 L683.2,586.4 L683.2,586.8 L683.2,587.0 L683.2,587.5 L683.2,587.7 L683.2,588.0 L683.0,588.0 L683.0,588.2 L683.0,588.2"/>
-  <line class="aim" x1="790.0" y1="200.3" x2="783.0" y2="233.5"/>
-  <circle class="spot side-CT" cx="790.0" cy="200.3" r="7"/>
+  <g class="places" font-size="19.0"><text x="892.3" y="354.5">Fundo</text><text x="778.2" y="540.7">Portas do Fundo</text><text x="752.3" y="232.7">Rampa do CT</text><text x="605.2" y="234.3">Base CT</text><text x="536.8" y="424.3">Varanda</text><text x="646.4" y="350.5">Escada da Varanda</text><text x="881.1" y="607.3">Bunker</text><text x="940.7" y="561.1">Altar</text></g>
+  <circle class="land land-smoke" cx="682.5" cy="588.0" r="33.0"/>
+  <path class="traj traj-smoke" d="M790.0,200.2 L788.4,208.2 L786.6,216.1 L785.0,224.1 L783.2,232.0 L781.4,240.2 L779.8,248.2 L778.0,256.1 L776.4,264.1 L774.5,272.0 L773.0,280.0 L771.1,288.0 L769.5,295.9 L767.7,303.9 L765.9,311.8 L764.3,319.8 L762.5,328.0 L760.9,335.9 L759.1,343.9 L757.5,351.8 L755.7,359.8 L754.1,367.7 L752.3,375.7 L750.5,383.6 L748.9,391.6 L747.0,399.5 L745.5,407.5 L743.6,415.5 L742.0,423.6 L740.2,431.6 L738.6,439.5 L736.8,447.5 L735.0,455.5 L733.4,463.4 L731.6,471.4 L730.0,479.3 L728.2,487.3 L726.6,495.2 L724.8,503.2 L723.2,511.1 L721.4,519.3 L719.5,527.3 L718.0,535.2 L716.1,543.2 L714.5,551.1 L712.7,559.1 L711.1,567.0 L709.3,575.0 L707.7,583.0 L705.9,590.9 L704.1,598.9 L702.5,607.0 L700.7,615.0 L699.1,623.0 L697.5,629.8 L696.6,626.1 L695.9,622.7 L695.0,619.1 L694.3,615.5 L693.6,611.8 L692.7,608.2 L692.0,604.8 L691.1,601.1 L690.5,597.5 L689.8,593.9 L688.9,590.2 L688.2,586.8 L687.3,583.2 L686.6,579.5 L685.9,575.9 L685.0,572.5 L684.8,573.4 L684.3,575.0 L684.1,576.4 L683.9,577.0 L683.9,577.7 L683.6,578.4 L683.6,579.3 L683.4,580.0 L683.4,580.7 L683.2,581.4 L683.2,582.0 L683.0,582.7 L683.0,583.4 L682.7,584.3 L682.7,585.0 L682.5,585.7 L682.5,586.1 L682.5,586.4 L682.3,586.6 L682.3,587.0 L682.3,587.3 L682.3,587.7 L682.3,587.7 L682.3,588.0 L682.3,588.2 L682.3,588.2"/>
+  <line class="aim" x1="790.0" y1="200.2" x2="782.9" y2="233.5"/>
+  <circle class="spot side-CT" cx="790.0" cy="200.2" r="7"/>
 </svg>
   <div class="card-body">
     <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-CT">CT</span><span class="badge diff-2">Médio</span><span class="badge">jump throw</span><span class="badge video">▶ vídeo</span><span class="badge">3 variações</span></div>
@@ -392,12 +359,12 @@
 </a><a class="card" href="/pt/dust2/smoke-mid-from-t-spawn-t/" data-id="smoke-mid-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="Middle" data-map="dust2"
    data-teams="falcons legacy" data-players="teses try"
-   data-diff="2" data-count="6" data-eff="-1">
-  <svg class="radar" viewBox="130.9 298.5 725.5 725.5" role="img" aria-label="Trajetória: Smoke Meio (de Base TR)">
+   data-diff="2" data-count="8" data-eff="-1">
+  <svg class="radar" viewBox="131.0 298.4 725.6 725.6" role="img" aria-label="Trajetória: Smoke Meio (de Base TR)">
   <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="24.2"><text x="395.2" y="896.8">Base TR</text><text x="642.7" y="746.8">Fora do Fundo</text><text x="475.7" y="660.0">Coqueiro</text><text x="480.9" y="461.8">Meio</text><text x="538.9" y="421.6">Varanda</text><text x="363.4" y="415.5">Escuro Baixo</text><text x="304.1" y="474.3">Escada do Escuro Baixo</text></g>
-  <circle class="land land-smoke" cx="493.3" cy="409.6" r="33.0"/>
-  <path class="traj traj-smoke" d="M494.5,995.0 L494.5,986.1 L494.5,977.3 L494.5,968.4 L494.5,959.5 L494.3,950.7 L494.3,941.8 L494.3,933.0 L494.3,923.9 L494.3,915.0 L494.3,906.1 L494.3,897.3 L494.3,888.4 L494.1,879.5 L494.1,870.7 L494.1,861.8 L494.1,853.0 L494.1,843.9 L494.1,835.0 L494.1,826.1 L494.1,817.3 L494.1,808.4 L493.9,799.5 L493.9,790.7 L493.9,781.8 L493.9,773.0 L493.9,763.9 L493.9,755.0 L493.9,746.1 L493.9,737.3 L493.6,728.4 L493.6,719.5 L493.6,710.7 L493.6,701.8 L493.6,692.7 L493.6,683.9 L493.6,675.0 L493.6,666.1 L493.6,657.3 L493.4,648.4 L493.4,639.5 L493.4,630.7 L493.4,621.8 L493.4,612.7 L493.4,603.9 L493.4,595.0 L493.4,586.1 L493.4,577.3 L493.2,568.4 L493.2,559.5 L493.2,550.7 L493.2,541.6 L493.2,532.7 L493.2,523.9 L493.2,515.0 L493.2,506.1 L493.2,497.3 L493.0,488.4 L493.0,479.5 L493.0,470.7 L493.0,463.2 L493.0,460.2 L493.0,457.0 L493.0,454.1 L493.0,450.9 L493.0,448.0 L493.0,444.8 L493.0,441.8 L493.0,438.6 L493.0,435.7 L493.0,432.5 L493.0,429.5 L493.0,426.4 L493.0,423.4 L493.0,420.2 L492.7,417.3 L492.7,415.2 L492.7,413.9 L492.7,412.5 L492.7,411.1 L492.7,410.5 L492.7,409.8 L492.7,409.5 L492.7,409.5"/>
+  <g class="places" font-size="24.2"><text x="398.0" y="899.5">Base TR</text><text x="642.7" y="746.8">Fora do Fundo</text><text x="475.7" y="660.0">Coqueiro</text><text x="477.7" y="469.5">Meio</text><text x="536.8" y="424.3">Varanda</text><text x="363.4" y="415.5">Escuro Baixo</text><text x="304.3" y="480.9">Escada do Escuro Baixo</text></g>
+  <circle class="land land-smoke" cx="493.1" cy="409.5" r="33.0"/>
+  <path class="traj traj-smoke" d="M494.5,995.0 L494.5,986.1 L494.5,977.3 L494.5,968.4 L494.5,959.5 L494.3,950.7 L494.3,941.8 L494.3,933.0 L494.3,923.9 L494.3,915.0 L494.3,906.1 L494.3,897.3 L494.3,888.4 L494.3,879.5 L494.3,870.7 L494.1,861.8 L494.1,853.0 L494.1,843.9 L494.1,835.0 L494.1,826.1 L494.1,817.3 L494.1,808.4 L494.1,799.5 L494.1,790.7 L494.1,781.8 L494.1,773.0 L493.9,763.9 L493.9,755.0 L493.9,746.1 L493.9,737.3 L493.9,728.4 L493.9,719.5 L493.9,710.7 L493.9,701.8 L493.9,692.7 L493.9,683.9 L493.6,675.0 L493.6,666.1 L493.6,657.3 L493.6,648.4 L493.6,639.5 L493.6,630.7 L493.6,621.8 L493.6,612.7 L493.6,603.9 L493.6,595.0 L493.6,586.1 L493.4,577.3 L493.4,568.4 L493.4,559.5 L493.4,550.7 L493.4,541.6 L493.4,532.7 L493.4,523.9 L493.4,515.0 L493.4,506.1 L493.4,497.3 L493.2,488.4 L493.2,479.5 L493.2,470.7 L493.2,463.6 L493.2,460.7 L493.2,457.5 L493.2,454.3 L493.2,451.4 L493.2,448.2 L493.2,445.2 L493.2,442.0 L493.2,439.1 L493.2,435.9 L493.2,433.0 L493.2,429.8 L493.2,426.8 L493.2,423.6 L493.2,420.5 L493.2,417.5 L493.2,415.5 L493.2,414.1 L493.2,412.7 L493.2,411.4 L493.2,410.7 L493.2,410.0 L493.2,409.8 L493.2,409.8"/>
   <line class="aim" x1="494.5" y1="995.1" x2="494.5" y2="961.1"/>
   <circle class="spot side-T" cx="494.5" cy="995.1" r="7"/>
 </svg>
@@ -408,15 +375,15 @@
   </div>
 </a><a class="card" href="/pt/dust2/smoke-under-a-from-short-stairs-t/" data-id="smoke-under-a-from-short-stairs-t"
    data-type="smoke" data-side="T" data-area="UnderA" data-map="dust2"
-   data-teams="falcons g2 legacy vitality" data-players="art flamez ksloks kyousuke nertz"
-   data-diff="1" data-count="7" data-eff="-1">
+   data-teams="falcons furia g2 legacy vitality" data-players="art flamez kscerato ksloks kyousuke nertz"
+   data-diff="1" data-count="10" data-eff="-1">
   <svg class="radar" viewBox="521.6 175.6 260 260" role="img" aria-label="Trajetória: Smoke Rampa do CT (de Escada da Varanda)">
   <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="8.7"><text x="605.2" y="234.3">Base CT</text><text x="650.0" y="348.6">Escada da Varanda</text></g>
-  <circle class="land land-smoke" cx="681.1" cy="262.1" r="33.0"/>
+  <g class="places" font-size="8.7"><text x="752.3" y="232.7">Rampa do CT</text><text x="605.2" y="234.3">Base CT</text><text x="646.4" y="350.5">Escada da Varanda</text></g>
+  <circle class="land land-smoke" cx="681.0" cy="262.2" r="33.0"/>
   <path class="traj traj-smoke" d="M656.1,349.1 L650.2,344.1 L644.5,339.3 L638.6,334.3 L632.7,329.3 L627.0,324.5 L621.1,319.5 L621.6,316.6 L624.1,314.3 L626.8,312.3 L629.3,310.0 L632.0,307.7 L634.5,305.7 L637.3,303.4 L640.0,301.1 L642.5,298.9 L645.2,296.6 L647.7,294.5 L650.5,292.3 L653.0,290.0 L655.7,288.0 L658.2,285.7 L660.9,283.4 L663.4,281.1 L666.1,278.9 L668.2,277.3 L669.3,276.4 L670.5,275.2 L671.8,274.3 L673.0,273.2 L674.1,272.3 L675.2,271.4 L676.4,270.2 L677.5,269.3 L678.9,268.2 L680.0,267.3 L681.1,266.4 L681.6,265.7 L681.8,265.2 L681.8,264.8 L681.8,264.3 L681.8,263.9 L681.8,263.4 L682.0,263.0 L681.8,262.7 L681.6,262.5 L681.4,262.3 L681.4,262.0 L681.4,262.0"/>
-  <line class="aim" x1="656.1" y1="349.1" x2="630.1" y2="327.2"/>
-  <circle class="spot side-T" cx="656.1" cy="349.1" r="7"/>
+  <line class="aim" x1="656.1" y1="349.0" x2="630.1" y2="327.1"/>
+  <circle class="spot side-T" cx="656.1" cy="349.0" r="7"/>
 </svg>
   <div class="card-body">
     <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">TR</span><span class="badge diff-1">Fácil</span><span class="badge video">▶ vídeo</span><span class="badge">2 variações</span></div>
@@ -425,82 +392,65 @@
   </div>
 </a><a class="card" href="/pt/dust2/molotov-catwalk-from-top-mid-t/" data-id="molotov-catwalk-from-top-mid-t"
    data-type="molotov" data-side="T" data-area="Catwalk" data-map="dust2"
-   data-teams="falcons furia g2 legacy vitality" data-players="apex art fallen heavygod hunter karrigan m0nesy molodoy try"
-   data-diff="3" data-count="16" data-eff="0.0">
-  <svg class="radar" viewBox="229.9 330.2 526.9 526.9" role="img" aria-label="Trajetória: Molotov Varanda (de Coqueiro)">
+   data-teams="falcons furia g2 legacy spirit vitality" data-players="apex art fallen heavygod hunter karrigan m0nesy magixx molodoy try"
+   data-diff="3" data-count="25" data-eff="0.0">
+  <svg class="radar" viewBox="229.8 329.5 526.5 526.5" role="img" aria-label="Trajetória: Molotov Varanda (de Coqueiro)">
   <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="17.6"><text x="642.7" y="746.8">Fora do Fundo</text><text x="475.7" y="660.0">Coqueiro</text><text x="480.9" y="461.8">Meio</text><text x="538.9" y="421.6">Varanda</text><text x="363.4" y="415.5">Escuro Baixo</text><text x="304.1" y="474.3">Escada do Escuro Baixo</text></g>
-  <circle class="land land-molotov" cx="529.7" cy="400.2" r="27.3"/>
-  <path class="traj traj-molotov" d="M454.3,787.0 L456.8,775.0 L459.1,763.0 L461.6,750.7 L464.1,738.6 L466.6,726.6 L469.1,714.5 L471.4,702.3 L473.9,690.2 L476.4,678.2 L478.9,666.1 L481.4,654.1 L483.9,641.8 L486.1,629.8 L488.6,617.7 L491.1,605.7 L493.6,593.4 L496.1,581.4 L498.6,569.3 L500.9,557.3 L503.4,545.2 L505.9,533.0 L508.4,520.9 L510.9,508.9 L513.2,496.8 L515.7,484.8 L518.2,472.5 L520.7,460.5 L523.2,448.4 L525.7,436.4 L528.0,424.1 L530.5,412.0 L532.3,403.0"/>
-  <line class="aim" x1="454.8" y1="786.0" x2="461.3" y2="752.6"/>
-  <circle class="spot side-T" cx="454.8" cy="786.0" r="7"/>
+  <g class="places" font-size="17.6"><text x="642.7" y="746.8">Fora do Fundo</text><text x="475.7" y="660.0">Coqueiro</text><text x="477.7" y="469.5">Meio</text><text x="536.8" y="424.3">Varanda</text><text x="363.4" y="415.5">Escuro Baixo</text><text x="304.3" y="480.9">Escada do Escuro Baixo</text></g>
+  <circle class="land land-molotov" cx="530.1" cy="400.0" r="27.3"/>
+  <path class="traj traj-molotov" d="M454.1,785.0 L456.6,773.0 L458.9,760.9 L461.4,748.9 L463.9,736.8 L466.4,724.8 L468.6,712.7 L471.1,700.7 L473.6,688.6 L475.9,676.6 L478.4,664.5 L480.9,652.5 L483.4,640.5 L485.7,628.4 L488.2,616.4 L490.7,604.3 L493.0,592.3 L495.5,580.2 L498.0,568.2 L500.5,556.1 L502.7,544.1 L505.2,532.0 L507.7,520.0 L510.0,508.0 L512.5,495.9 L515.0,483.9 L517.5,471.8 L519.8,459.8 L522.3,447.7 L524.8,435.7 L527.3,423.6 L529.5,411.6 L532.0,399.5"/>
+  <line class="aim" x1="454.7" y1="786.1" x2="461.2" y2="752.7"/>
+  <circle class="spot side-T" cx="454.7" cy="786.1" r="7"/>
 </svg>
   <div class="card-body">
     <div class="card-badges"><span class="badge type-molotov">Molotov</span><span class="badge side-T">TR</span><span class="badge diff-3">Difícil</span><span class="badge video">▶ vídeo</span></div>
     <h3>Molotov Varanda (de Coqueiro)</h3>
     <p class="muted">3 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/molotov-upper-tunnels-from-b-doors-ct/" data-id="molotov-upper-tunnels-from-b-doors-ct"
-   data-type="molotov" data-side="CT" data-area="UpperTunnel" data-map="dust2"
-   data-teams="falcons furia legacy vitality" data-players="ksloks mezii teses yuurih"
-   data-diff="3" data-count="7" data-eff="0.0">
-  <svg class="radar" viewBox="30.5 86.6 375.2 375.2" role="img" aria-label="Trajetória: Molotov Escuro Alto (de Portas do B)">
+</a><a class="card" href="/pt/dust2/molotov-long-doors-from-long-a-ct/" data-id="molotov-long-doors-from-long-a-ct"
+   data-type="molotov" data-side="CT" data-area="LongDoors" data-map="dust2"
+   data-teams="falcons furia g2 legacy vitality" data-players="art dumau fallen flamez heavygod hunter karrigan kscerato kyousuke matys niko zywoo"
+   data-diff="3" data-count="23" data-eff="0.0">
+  <svg class="radar" viewBox="611.8 372.5 312.5 312.5" role="img" aria-label="Trajetória: Molotov Portas do Fundo (de Fundo)">
   <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="12.5"><text x="177.3" y="220.2">Bomb B</text><text x="310.9" y="201.6">Portas do B</text><text x="363.4" y="415.5">Escuro Baixo</text><text x="266.4" y="128.0">Buraco</text></g>
-  <circle class="land land-molotov" cx="118.0" cy="361.7" r="27.3"/>
-  <path class="traj traj-molotov" d="M335.7,188.2 L325.0,195.0 L314.3,201.6 L303.9,208.4 L293.2,215.2 L282.5,221.8 L272.0,228.6 L261.4,235.2 L250.7,242.0 L240.2,248.9 L229.5,255.5 L219.1,262.3 L208.4,269.1 L197.7,275.7 L187.3,282.5 L176.6,289.1 L165.9,295.9 L155.5,302.7 L144.8,309.3 L134.1,316.1 L123.6,322.7 L113.0,329.5 L102.3,336.4 L100.5,340.9 L105.2,343.9 L110.0,347.0 L114.8,350.0 L119.5,353.0 L124.3,356.1 L124.5,358.0 L122.3,359.3 L120.2,360.7 L118.0,362.0"/>
-  <line class="aim" x1="335.0" y1="186.5" x2="306.4" y2="205.0"/>
-  <circle class="spot side-CT" cx="335.0" cy="186.5" r="7"/>
+  <g class="places" font-size="10.4"><text x="778.2" y="540.7">Portas do Fundo</text><text x="881.1" y="607.3">Bunker</text></g>
+  <circle class="land land-molotov" cx="690.1" cy="599.4" r="27.3"/>
+  <path class="traj traj-molotov" d="M854.3,457.0 L843.6,465.5 L832.7,473.6 L822.0,482.0 L811.1,490.5 L800.5,498.9 L789.5,507.3 L778.9,515.7 L768.2,524.1 L757.3,532.5 L746.6,540.7 L735.7,549.1 L725.0,557.5 L714.1,565.9 L703.4,574.3 L692.5,582.7 L681.8,591.1 L683.4,595.7 L688.2,599.5 L689.5,600.5"/>
+  <line class="aim" x1="853.8" y1="458.0" x2="825.6" y2="476.8"/>
+  <circle class="spot side-CT" cx="853.8" cy="458.0" r="7"/>
 </svg>
   <div class="card-body">
-    <div class="card-badges"><span class="badge type-molotov">Molotov</span><span class="badge side-CT">CT</span><span class="badge diff-3">Difícil</span><span class="badge video">▶ vídeo</span><span class="badge">2 variações</span></div>
-    <h3>Molotov Escuro Alto (de Portas do B)</h3>
-    <p class="muted">3 usos</p>
-  </div>
-</a><a class="card" href="/pt/dust2/smoke-long-doors-from-long-a-ct/" data-id="smoke-long-doors-from-long-a-ct"
-   data-type="smoke" data-side="CT" data-area="LongDoors" data-map="dust2"
-   data-teams="falcons furia g2 legacy vitality" data-players="dumau fallen flamez heavygod karrigan kyousuke m0nesy molodoy"
-   data-diff="3" data-count="14" data-eff="-1">
-  <svg class="radar" viewBox="610.2 356.1 328.8 328.8" role="img" aria-label="Trajetória: Smoke Portas do Fundo (de Fundo)">
-  <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="11.0"><text x="782.0" y="539.5">Portas do Fundo</text><text x="881.1" y="607.3">Bunker</text></g>
-  <circle class="land land-smoke" cx="687.0" cy="593.8" r="33.0"/>
-  <path class="traj traj-smoke" d="M867.5,446.4 L857.0,454.1 L846.6,462.0 L836.1,469.8 L825.7,477.7 L815.2,485.7 L804.8,493.4 L794.3,501.4 L783.9,509.3 L773.4,517.0 L763.0,525.0 L752.5,532.7 L742.0,540.7 L731.6,548.6 L721.1,556.4 L713.0,562.7 L708.2,566.1 L703.6,569.8 L698.9,573.4 L694.3,576.8 L689.5,580.5 L684.8,583.9 L680.2,587.5 L681.4,589.3 L683.4,590.9 L685.7,592.5 L686.6,593.2 L687.5,593.9 L688.4,594.5 L689.3,595.2 L689.8,595.7 L690.2,595.9 L690.2,595.9"/>
-  <line class="aim" x1="869.0" y1="445.0" x2="842.1" y2="465.8"/>
-  <circle class="spot side-CT" cx="869.0" cy="445.0" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-CT">CT</span><span class="badge diff-3">Difícil</span><span class="badge video">▶ vídeo</span><span class="badge">4 variações</span></div>
-    <h3>Smoke Portas do Fundo (de Fundo)</h3>
+    <div class="card-badges"><span class="badge type-molotov">Molotov</span><span class="badge side-CT">CT</span><span class="badge diff-3">Difícil</span><span class="badge video">▶ vídeo</span><span class="badge">6 variações</span></div>
+    <h3>Molotov Portas do Fundo (de Fundo)</h3>
     <p class="muted">3 usos</p>
   </div>
 </a><a class="card" href="/pt/dust2/flash-long-a-ct/" data-id="flash-long-a-ct"
    data-type="flash" data-side="CT" data-area="LongA" data-map="dust2"
-   data-teams="falcons furia g2 legacy vitality" data-players="apex fallen flamez hunter karrigan latto m0nesy molodoy r1nkle try yekindar zywoo"
-   data-diff="1" data-count="23" data-eff="0.57">
-  <svg class="radar" viewBox="708.2 206.8 303.8 303.8" role="img" aria-label="Trajetória: Flash Fundo">
+   data-teams="falcons furia g2 legacy spirit vitality" data-players="apex fallen flamez hunter karrigan kscerato latto m0nesy molodoy r1nkle sh1ro tn1r try yekindar zywoo"
+   data-diff="1" data-count="33" data-eff="0.42">
+  <svg class="radar" viewBox="707.2 206.9 304.7 304.7" role="img" aria-label="Trajetória: Flash Fundo">
   <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="10.1"><text x="893.9" y="355.7">Fundo</text></g>
-  <circle class="land land-flash" cx="871.4" cy="440.6" r="11.4"/>
-  <path class="traj traj-flash" d="M849.1,276.8 L850.0,283.2 L850.9,289.5 L851.8,295.9 L852.7,302.3 L853.4,308.4 L854.3,314.8 L855.2,321.1 L856.1,327.5 L856.8,333.9 L857.7,340.0 L858.6,346.4 L859.5,352.7 L860.5,359.1 L861.1,365.5 L862.0,371.6 L863.0,378.0 L863.9,384.3 L864.5,390.7 L865.5,397.0 L866.4,403.4 L867.3,409.5 L868.2,415.9 L868.9,422.3 L869.8,428.6 L870.7,435.0 L871.4,439.5"/>
-  <line class="aim" x1="848.8" y1="276.9" x2="853.5" y2="310.6"/>
-  <circle class="spot side-CT" cx="848.8" cy="276.9" r="7"/>
+  <g class="places" font-size="10.2"><text x="892.3" y="354.5">Fundo</text></g>
+  <circle class="land land-flash" cx="871.0" cy="440.9" r="11.4"/>
+  <path class="traj traj-flash" d="M847.7,277.0 L848.6,283.4 L849.5,289.8 L850.5,296.1 L851.4,302.5 L852.3,308.9 L853.2,315.2 L854.1,321.6 L855.0,328.2 L855.9,334.5 L856.8,340.9 L858.0,347.3 L858.9,353.6 L859.8,360.0 L860.7,366.4 L861.6,372.7 L862.5,379.1 L863.4,385.7 L864.3,392.0 L865.2,398.4 L866.1,404.8 L867.0,411.1 L868.0,417.5 L868.9,423.9 L869.8,430.2 L870.7,436.6 L871.4,441.6"/>
+  <line class="aim" x1="848.7" y1="276.9" x2="853.3" y2="310.6"/>
+  <circle class="spot side-CT" cx="848.7" cy="276.9" r="7"/>
 </svg>
   <div class="card-body">
     <div class="card-badges"><span class="badge type-flash">Flash</span><span class="badge side-CT">CT</span><span class="badge diff-1">Fácil</span><span class="badge video">▶ vídeo</span></div>
     <h3>Flash Fundo</h3>
-<p class="eff">cega 0,6 inimigo(s) por 1,3s em média</p>
+<p class="eff">cega 0,4 inimigo(s) por 1,0s em média</p>
     <p class="muted">2 usos</p>
   </div>
 </a><a class="card" href="/pt/dust2/smoke-ct-spawn-from-mid-t/" data-id="smoke-ct-spawn-from-mid-t"
    data-type="smoke" data-side="T" data-area="CTSpawn" data-map="dust2"
-   data-teams="falcons furia legacy vitality" data-players="apex art fallen flamez karrigan kscerato kyousuke m0nesy molodoy niko yekindar yuurih"
-   data-diff="2" data-count="19" data-eff="-1">
-  <svg class="radar" viewBox="310.5 160.7 335.3 335.3" role="img" aria-label="Trajetória: Smoke Base CT (de Meio)">
+   data-teams="falcons furia legacy spirit vitality" data-players="apex art fallen flamez karrigan kscerato kyousuke m0nesy magixx molodoy niko yekindar yuurih"
+   data-diff="2" data-count="31" data-eff="-1">
+  <svg class="radar" viewBox="310.8 160.7 335.3 335.3" role="img" aria-label="Trajetória: Smoke Base CT (de Meio)">
   <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="11.2"><text x="450.0" y="244.1">Portas do Meio</text><text x="605.2" y="234.3">Base CT</text><text x="538.9" y="421.6">Varanda</text><text x="363.4" y="415.5">Escuro Baixo</text></g>
-  <circle class="land land-smoke" cx="527.2" cy="234.0" r="33.0"/>
-  <path class="traj traj-smoke" d="M496.6,425.9 L490.9,419.1 L485.2,412.0 L479.3,405.2 L473.6,398.2 L468.0,391.4 L462.3,384.3 L456.6,377.3 L450.7,370.5 L445.0,363.4 L439.3,356.6 L433.6,349.5 L429.1,343.2 L431.6,340.0 L434.1,336.8 L436.8,333.9 L439.3,330.7 L441.8,327.5 L444.5,324.3 L447.0,321.4 L449.5,318.2 L452.3,315.0 L454.8,311.8 L457.3,308.9 L460.0,305.7 L462.5,302.5 L465.0,299.3 L467.7,296.1 L470.2,293.2 L472.7,290.0 L475.5,286.8 L478.0,283.6 L480.5,280.7 L483.2,277.5 L485.7,274.3 L488.2,271.1 L490.9,268.2 L493.4,265.0 L496.1,261.8 L498.6,258.6 L501.1,255.7 L503.9,252.5 L506.4,249.3 L508.9,246.1 L510.0,244.8 L511.1,243.6 L512.3,242.3 L513.4,240.9 L514.5,239.8 L515.7,238.4 L516.8,237.0 L518.0,235.9 L519.1,234.5 L520.2,233.2 L521.4,232.0 L522.5,230.7 L523.2,230.9 L523.9,231.4 L524.3,231.8 L525.0,232.3 L525.5,232.7 L525.9,233.0 L526.1,233.2 L526.4,233.2 L526.6,233.4 L526.8,233.6 L527.0,233.6 L527.0,233.9"/>
+  <g class="places" font-size="11.2"><text x="448.2" y="241.6">Portas do Meio</text><text x="605.2" y="234.3">Base CT</text><text x="536.8" y="424.3">Varanda</text><text x="363.4" y="415.5">Escuro Baixo</text></g>
+  <circle class="land land-smoke" cx="527.6" cy="233.4" r="33.0"/>
+  <path class="traj traj-smoke" d="M496.6,425.9 L490.7,419.1 L485.0,412.0 L479.3,405.0 L473.4,398.0 L467.7,391.1 L461.8,384.1 L456.1,377.0 L450.2,370.0 L444.5,363.0 L438.6,356.1 L433.0,349.1 L429.3,343.2 L431.8,340.0 L434.5,336.8 L437.0,333.6 L439.8,330.5 L442.3,327.3 L445.0,324.3 L447.5,321.1 L450.2,318.0 L452.7,314.8 L455.5,311.6 L458.0,308.4 L460.5,305.2 L463.2,302.3 L465.7,299.1 L468.4,295.9 L470.9,292.7 L473.6,289.5 L476.1,286.4 L478.9,283.4 L481.4,280.2 L484.1,277.0 L486.6,273.9 L489.3,270.7 L491.8,267.5 L494.3,264.3 L497.0,261.4 L499.5,258.2 L502.3,255.0 L504.8,251.8 L507.5,248.6 L509.3,246.4 L510.5,245.0 L511.6,243.9 L512.7,242.5 L513.9,241.1 L515.0,239.8 L516.1,238.6 L517.3,237.3 L518.4,235.9 L519.5,234.8 L520.7,233.4 L521.8,232.0 L523.0,230.7 L523.9,230.7 L524.5,231.1 L525.0,231.6 L525.7,232.0 L526.1,232.5 L526.4,232.7 L526.6,233.0 L527.0,233.0 L527.3,233.2 L527.3,233.4 L527.5,233.4 L527.5,233.4"/>
   <line class="aim" x1="496.6" y1="426.0" x2="474.9" y2="399.8"/>
   <circle class="spot side-T" cx="496.6" cy="426.0" r="7"/>
 </svg>
@@ -511,54 +461,105 @@
   </div>
 </a><a class="card" href="/pt/dust2/smoke-b-site-from-upper-tunnels-t/" data-id="smoke-b-site-from-upper-tunnels-t"
    data-type="smoke" data-side="T" data-area="BombsiteB" data-map="dust2"
-   data-teams="falcons furia g2 legacy vitality" data-players="heavygod hunter ksloks matys niko ropz yekindar yuurih zywoo"
-   data-diff="1" data-count="17" data-eff="-1">
-  <svg class="radar" viewBox="0 245.5 321.0 321.0" role="img" aria-label="Trajetória: Smoke Bomb B (de Escuro Alto)">
+   data-teams="falcons furia g2 legacy vitality" data-players="heavygod hunter ksloks matys molodoy niko ropz yekindar yuurih zywoo"
+   data-diff="1" data-count="29" data-eff="-1">
+  <svg class="radar" viewBox="0 245.5 321.2 321.2" role="img" aria-label="Trajetória: Smoke Bomb B (de Escuro Alto)">
   <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="10.7"><text x="163.2" y="470.2">Escuro Alto</text></g>
-  <circle class="land land-smoke" cx="116.4" cy="316.5" r="33.0"/>
+  <g class="places" font-size="10.7"><text x="163.0" y="466.1">Escuro Alto</text></g>
+  <circle class="land land-smoke" cx="116.2" cy="315.5" r="33.0"/>
   <path class="traj traj-smoke" d="M170.5,495.7 L165.9,488.0 L161.4,480.2 L156.8,472.7 L152.0,465.0 L147.5,457.3 L143.0,449.8 L138.4,442.0 L133.6,434.3 L129.1,426.8 L124.5,419.1 L120.0,411.4 L115.2,403.9 L110.7,396.1 L106.1,388.4 L101.6,380.9 L98.2,373.9 L100.2,370.5 L102.3,367.0 L104.3,363.6 L106.4,360.2 L108.4,356.8 L110.5,353.2 L112.7,349.8 L114.8,346.4 L116.8,343.0 L118.9,339.5 L120.9,336.1 L123.0,332.5 L124.5,329.5 L123.6,328.0 L123.0,326.4 L122.5,325.7 L122.0,325.0 L121.8,324.3 L121.4,323.6 L120.9,323.0 L120.5,322.3 L120.2,321.6 L119.8,320.9 L119.3,320.2 L118.9,319.3 L118.6,318.6 L118.4,318.4 L118.2,318.0 L118.0,317.7 L117.7,317.5 L117.7,317.0 L117.5,316.8 L117.3,316.4 L117.0,316.1 L117.0,315.9 L117.0,315.9 L116.8,315.7 L116.8,315.7 L116.8,315.7 L116.8,315.5 L116.8,315.5 L116.8,315.5"/>
-  <line class="aim" x1="170.5" y1="496.4" x2="153.0" y2="467.3"/>
-  <circle class="spot side-T" cx="170.5" cy="496.4" r="7"/>
+  <line class="aim" x1="170.6" y1="496.7" x2="153.1" y2="467.5"/>
+  <circle class="spot side-T" cx="170.6" cy="496.7" r="7"/>
 </svg>
   <div class="card-body">
     <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">TR</span><span class="badge diff-1">Fácil</span><span class="badge video">▶ vídeo</span><span class="badge">2 variações</span></div>
     <h3>Smoke Bomb B (de Escuro Alto)</h3>
     <p class="muted">2 usos</p>
   </div>
+</a><a class="card" href="/pt/dust2/smoke-b-doors-from-outside-tunnels-t/" data-id="smoke-b-doors-from-outside-tunnels-t"
+   data-type="smoke" data-side="T" data-area="BDoors" data-map="dust2"
+   data-teams="falcons furia legacy" data-players="karrigan molodoy teses try"
+   data-diff="3" data-count="9" data-eff="-1">
+  <svg class="radar" viewBox="0 49.8 657.3 657.3" role="img" aria-label="Trajetória: Smoke Portas do B (de Fora do Escuro)">
+  <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="21.9"><text x="174.1" y="222.0">Bomb B</text><text x="448.2" y="241.6">Portas do Meio</text><text x="163.0" y="466.1">Escuro Alto</text><text x="313.9" y="195.7">Portas do B</text><text x="477.7" y="469.5">Meio</text><text x="536.8" y="424.3">Varanda</text><text x="363.4" y="415.5">Escuro Baixo</text><text x="304.3" y="480.9">Escada do Escuro Baixo</text><text x="266.4" y="128.0">Buraco</text></g>
+  <circle class="land land-smoke" cx="281.5" cy="212.9" r="33.0"/>
+  <path class="traj traj-smoke" d="M246.8,637.0 L247.3,629.3 L247.7,621.6 L248.2,614.1 L248.4,606.4 L248.9,598.6 L249.3,590.9 L249.8,583.4 L250.2,575.7 L250.7,568.0 L251.1,560.2 L251.6,552.7 L251.8,545.0 L252.3,537.3 L252.7,529.5 L253.2,521.8 L253.6,514.3 L254.1,506.6 L254.5,498.9 L255.0,491.1 L255.2,483.6 L255.7,475.9 L256.1,468.2 L256.6,460.5 L257.0,453.0 L257.5,445.2 L258.0,437.5 L258.4,429.8 L258.6,422.0 L259.1,414.5 L259.5,406.8 L260.0,399.1 L260.5,391.4 L260.9,383.9 L261.4,376.1 L261.8,368.4 L262.3,360.7 L262.5,353.2 L263.0,345.5 L263.4,337.7 L263.9,330.0 L264.3,322.5 L264.8,314.8 L265.2,307.0 L265.7,299.3 L265.9,291.6 L266.4,284.1 L266.8,276.4 L267.3,268.6 L267.7,260.9 L268.2,253.4 L268.6,245.7 L269.1,238.0 L269.3,230.2 L269.8,222.5 L270.2,215.0 L270.7,207.3 L271.1,199.5 L271.6,191.8 L272.0,184.3 L272.5,176.6 L272.7,168.9 L273.2,161.1 L273.6,153.6 L274.1,145.9 L274.5,138.2 L275.0,130.5 L275.5,123.0 L275.7,119.8 L275.9,123.4 L276.1,126.8 L276.4,130.2 L276.6,133.6 L276.6,137.0 L276.8,140.7 L277.0,144.1 L277.3,147.5 L277.5,150.9 L277.7,154.3 L278.0,157.3 L278.2,160.5 L278.4,163.6 L278.6,166.8 L278.9,170.0 L279.1,173.0 L279.3,176.1 L279.5,179.3 L279.8,182.5 L280.0,185.7 L280.5,188.9 L280.7,191.8 L280.9,195.0 L281.1,198.2 L281.1,200.0 L281.1,201.8 L281.1,203.9 L281.4,205.7 L281.4,207.5 L281.4,209.1 L281.4,210.0 L281.4,210.9 L281.4,211.6 L281.4,212.0 L281.4,212.5"/>
+  <line class="aim" x1="246.8" y1="635.8" x2="248.6" y2="601.8"/>
+  <circle class="spot side-T" cx="246.8" cy="635.8" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">TR</span><span class="badge diff-3">Difícil</span><span class="badge">jump throw</span><span class="badge video">▶ vídeo</span></div>
+    <h3>Smoke Portas do B (de Fora do Escuro)</h3>
+    <p class="muted">2 usos</p>
+  </div>
 </a><a class="card" href="/pt/dust2/flash-b-site-from-upper-tunnels-t/" data-id="flash-b-site-from-upper-tunnels-t"
    data-type="flash" data-side="T" data-area="BombsiteB" data-map="dust2"
-   data-teams="falcons furia g2 legacy vitality" data-players="art flamez hunter kscerato m0nesy niko yekindar"
-   data-diff="2" data-count="16" data-eff="1.25">
+   data-teams="falcons furia g2 legacy spirit vitality" data-players="art fallen flamez heavygod hunter karrigan kscerato m0nesy molodoy niko sh1ro teses yekindar yuurih"
+   data-diff="2" data-count="28" data-eff="1.57">
   <svg class="radar" viewBox="0 227.7 350.3 350.3" role="img" aria-label="Trajetória: Flash Bomb B (de Escuro Alto)">
   <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="11.7"><text x="163.2" y="470.2">Escuro Alto</text><text x="304.1" y="474.3">Escada do Escuro Baixo</text></g>
+  <g class="places" font-size="11.7"><text x="163.0" y="466.1">Escuro Alto</text><text x="304.3" y="480.9">Escada do Escuro Baixo</text></g>
   <circle class="land land-flash" cx="86.1" cy="297.7" r="11.4"/>
   <path class="traj traj-flash" d="M143.4,508.0 L141.1,500.0 L138.6,492.0 L136.1,483.9 L133.9,475.9 L131.4,468.0 L128.9,460.0 L126.4,452.0 L124.1,444.1 L121.6,435.9 L119.1,428.0 L116.8,420.0 L114.3,412.0 L111.8,404.1 L109.5,396.1 L107.0,388.2 L104.5,380.0 L102.3,372.0 L99.8,364.1 L97.3,356.1 L95.0,348.2 L92.5,340.2 L90.0,332.0 L87.7,324.1 L85.2,316.1 L82.7,308.2 L80.9,302.3"/>
   <line class="aim" x1="143.6" y1="507.8" x2="134.6" y2="475.0"/>
   <circle class="spot side-T" cx="143.6" cy="507.8" r="7"/>
 </svg>
   <div class="card-body">
-    <div class="card-badges"><span class="badge type-flash">Flash</span><span class="badge side-T">TR</span><span class="badge diff-2">Médio</span><span class="badge">jump throw</span><span class="badge video">▶ vídeo</span><span class="badge">3 variações</span></div>
+    <div class="card-badges"><span class="badge type-flash">Flash</span><span class="badge side-T">TR</span><span class="badge diff-2">Médio</span><span class="badge">jump throw</span><span class="badge video">▶ vídeo</span><span class="badge">6 variações</span></div>
     <h3>Flash Bomb B (de Escuro Alto)</h3>
-<p class="eff">cega 1,2 inimigo(s) por 2,3s em média</p>
+<p class="eff">cega 1,6 inimigo(s) por 3,3s em média</p>
     <p class="muted">2 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/smoke-b-doors-from-outside-tunnels-t/" data-id="smoke-b-doors-from-outside-tunnels-t"
-   data-type="smoke" data-side="T" data-area="BDoors" data-map="dust2"
-   data-teams="falcons legacy" data-players="karrigan teses try"
-   data-diff="3" data-count="7" data-eff="-1">
-  <svg class="radar" viewBox="0 49.5 657.3 657.3" role="img" aria-label="Trajetória: Smoke Portas do B (de Fora do Escuro)">
+</a><a class="card" href="/pt/dust2/molotov-a-extended-from-catwalk-t/" data-id="molotov-a-extended-from-catwalk-t"
+   data-type="molotov" data-side="T" data-area="ExtendedA" data-map="dust2"
+   data-teams="falcons furia g2 legacy vitality" data-players="art fallen flamez karrigan kscerato ksloks kyousuke nertz"
+   data-diff="3" data-count="12" data-eff="0.0">
+  <svg class="radar" viewBox="477.0 214.0 286.2 286.2" role="img" aria-label="Trajetória: Molotov RKZ (de Varanda)">
   <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="21.9"><text x="177.3" y="220.2">Bomb B</text><text x="450.0" y="244.1">Portas do Meio</text><text x="163.2" y="470.2">Escuro Alto</text><text x="310.9" y="201.6">Portas do B</text><text x="480.9" y="461.8">Meio</text><text x="538.9" y="421.6">Varanda</text><text x="363.4" y="415.5">Escuro Baixo</text><text x="304.1" y="474.3">Escada do Escuro Baixo</text><text x="266.4" y="128.0">Buraco</text></g>
-  <circle class="land land-smoke" cx="282.4" cy="212.7" r="33.0"/>
-  <path class="traj traj-smoke" d="M246.8,636.8 L247.3,629.3 L247.7,621.6 L248.2,613.9 L248.6,606.4 L249.1,598.6 L249.5,590.9 L250.0,583.4 L250.2,575.7 L250.7,568.0 L251.1,560.2 L251.6,552.7 L252.0,545.0 L252.5,537.3 L253.0,529.8 L253.4,522.0 L253.9,514.3 L254.3,506.8 L254.8,499.1 L255.0,491.4 L255.5,483.6 L255.9,476.1 L256.4,468.4 L256.8,460.7 L257.3,453.2 L257.7,445.5 L258.2,437.7 L258.6,430.2 L259.1,422.5 L259.5,414.8 L260.0,407.0 L260.2,399.5 L260.7,391.8 L261.1,384.1 L261.6,376.6 L262.0,368.9 L262.5,361.1 L263.0,353.6 L263.4,345.9 L263.9,338.2 L264.3,330.7 L264.8,323.0 L265.2,315.2 L265.5,307.5 L265.9,300.0 L266.4,292.3 L266.8,284.5 L267.3,277.0 L267.7,269.3 L268.2,261.6 L268.6,254.1 L269.1,246.4 L269.5,238.6 L270.0,230.9 L270.5,223.4 L270.7,215.7 L271.1,208.0 L271.6,200.5 L272.0,192.7 L272.5,185.0 L273.0,177.5 L273.4,169.8 L273.9,162.0 L274.3,154.3 L274.8,146.8 L275.2,139.1 L275.7,131.4 L275.9,123.9 L276.4,119.5 L276.6,123.0 L276.8,126.4 L277.0,129.8 L277.3,133.2 L277.3,136.6 L277.5,140.2 L277.7,143.6 L278.0,147.0 L278.2,150.5 L278.4,153.9 L278.6,156.8 L278.9,160.0 L279.1,163.2 L279.3,166.4 L279.5,169.5 L279.8,172.5 L280.0,175.7 L280.2,178.9 L280.5,182.0 L280.9,185.2 L281.1,188.2 L281.4,191.4 L281.6,194.5 L281.8,197.7 L281.8,199.8 L282.0,201.6 L282.0,203.4 L282.3,205.2 L282.3,207.0 L282.5,208.9 L282.5,210.2 L282.5,211.1 L282.7,212.0 L282.7,212.7 L282.7,213.2 L282.7,213.4"/>
-  <line class="aim" x1="246.7" y1="636.3" x2="248.6" y2="602.4"/>
-  <circle class="spot side-T" cx="246.7" cy="636.3" r="7"/>
+  <g class="places" font-size="9.5"><text x="536.8" y="424.3">Varanda</text><text x="646.4" y="350.5">Escada da Varanda</text></g>
+  <circle class="land land-molotov" cx="667.9" cy="284.0" r="27.3"/>
+  <path class="traj traj-molotov" d="M572.3,404.5 L582.5,412.5 L592.7,420.7 L602.7,428.6 L609.1,430.2 L611.4,424.8 L613.4,419.3 L615.7,413.9 L617.7,408.4 L620.0,403.0 L622.0,397.5 L624.3,392.3 L626.4,386.8 L628.4,381.4 L630.7,375.9 L632.7,370.5 L635.0,365.0 L637.0,359.5 L639.3,354.1 L641.4,348.6 L643.6,343.2 L645.7,337.7 L648.0,332.3 L650.0,327.0 L652.3,321.6 L654.3,316.1 L656.6,310.7 L658.6,305.2 L660.7,299.8 L663.0,294.3 L665.0,288.9 L666.8,284.8"/>
+  <line class="aim" x1="573.4" y1="405.2" x2="600.1" y2="426.3"/>
+  <circle class="spot side-T" cx="573.4" cy="405.2" r="7"/>
 </svg>
   <div class="card-body">
-    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">TR</span><span class="badge diff-3">Difícil</span><span class="badge">jump throw</span><span class="badge video">▶ vídeo</span></div>
-    <h3>Smoke Portas do B (de Fora do Escuro)</h3>
+    <div class="card-badges"><span class="badge type-molotov">Molotov</span><span class="badge side-T">TR</span><span class="badge diff-3">Difícil</span><span class="badge">jump throw</span><span class="badge video">▶ vídeo</span><span class="badge">2 variações</span></div>
+    <h3>Molotov RKZ (de Varanda)</h3>
+    <p class="muted">2 usos</p>
+  </div>
+</a><a class="card" href="/pt/dust2/he-long-doors-from-long-a-ct/" data-id="he-long-doors-from-long-a-ct"
+   data-type="he" data-side="CT" data-area="LongDoors" data-map="dust2"
+   data-teams="falcons g2 legacy spirit" data-players="art dumau hunter kyousuke niko tn1r"
+   data-diff="3" data-count="8" data-eff="0.0">
+  <svg class="radar" viewBox="610.9 372.3 315.2 315.2" role="img" aria-label="Trajetória: HE Portas do Fundo (de Fundo)">
+  <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="10.5"><text x="778.2" y="540.7">Portas do Fundo</text><text x="881.1" y="607.3">Bunker</text></g>
+  <circle class="land land-he" cx="693.0" cy="602.9" r="15.9"/>
+  <path class="traj traj-he" d="M856.1,454.3 L845.5,463.0 L834.5,471.6 L823.9,480.0 L813.0,488.6 L802.0,497.3 L791.4,505.7 L780.5,514.3 L769.8,523.0 L758.9,531.6 L748.2,540.0 L737.3,548.6 L726.6,557.3 L715.7,565.7 L704.8,574.3 L694.1,583.0 L683.2,591.4 L680.9,595.5 L683.2,597.3 L685.2,598.9 L687.5,600.7 L689.5,602.3 L691.1,603.6 L692.0,604.3 L693.2,605.0 L693.6,605.5 L693.6,605.5"/>
+  <line class="aim" x1="855.3" y1="455.8" x2="828.3" y2="476.5"/>
+  <circle class="spot side-CT" cx="855.3" cy="455.8" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-he">HE</span><span class="badge side-CT">CT</span><span class="badge diff-3">Difícil</span><span class="badge video">▶ vídeo</span><span class="badge">2 variações</span></div>
+    <h3>HE Portas do Fundo (de Fundo)</h3>
+    <p class="muted">2 usos</p>
+  </div>
+</a><a class="card" href="/pt/dust2/molotov-upper-tunnels-from-b-doors-ct/" data-id="molotov-upper-tunnels-from-b-doors-ct"
+   data-type="molotov" data-side="CT" data-area="UpperTunnel" data-map="dust2"
+   data-teams="falcons legacy spirit vitality" data-players="donk ksloks kyousuke mezii"
+   data-diff="3" data-count="8" data-eff="0.0">
+  <svg class="radar" viewBox="28.0 127.5 331.4 331.4" role="img" aria-label="Trajetória: Molotov Escuro Alto (de Portas do B)">
+  <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="11.0"><text x="174.1" y="222.0">Bomb B</text><text x="313.9" y="195.7">Portas do B</text></g>
+  <circle class="land land-molotov" cx="107.9" cy="368.0" r="27.3"/>
+  <path class="traj traj-molotov" d="M289.3,219.8 L278.2,226.8 L266.8,233.6 L255.5,240.7 L244.1,247.7 L233.0,254.8 L221.6,261.6 L210.2,268.6 L199.1,275.7 L187.7,282.7 L176.4,289.5 L165.2,296.6 L153.9,303.6 L142.5,310.7 L131.1,317.5 L120.0,324.5 L108.6,331.6 L98.0,338.4 L103.0,341.6 L108.2,344.8 L113.2,348.0 L118.2,350.9 L123.4,354.1 L124.8,356.4 L122.5,358.0 L120.2,359.3 L118.0,360.7 L115.7,362.0 L113.4,363.4 L111.1,365.0 L108.9,366.4 L106.4,367.7"/>
+  <line class="aim" x1="289.2" y1="218.5" x2="260.5" y2="236.7"/>
+  <circle class="spot side-CT" cx="289.2" cy="218.5" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-molotov">Molotov</span><span class="badge side-CT">CT</span><span class="badge diff-3">Difícil</span><span class="badge video">▶ vídeo</span><span class="badge">2 variações</span></div>
+    <h3>Molotov Escuro Alto (de Portas do B)</h3>
     <p class="muted">2 usos</p>
   </div>
 </a><a class="card" href="/pt/dust2/molotov-short-stairs-from-catwalk-t/" data-id="molotov-short-stairs-from-catwalk-t"
@@ -567,7 +568,7 @@
    data-diff="2" data-count="4" data-eff="0.0">
   <svg class="radar" viewBox="480.0 254.4 260 260" role="img" aria-label="Trajetória: Molotov Escada da Varanda (de Varanda)">
   <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="8.7"><text x="538.9" y="421.6">Varanda</text><text x="650.0" y="348.6">Escada da Varanda</text></g>
+  <g class="places" font-size="8.7"><text x="536.8" y="424.3">Varanda</text><text x="646.4" y="350.5">Escada da Varanda</text></g>
   <circle class="land land-molotov" cx="644.0" cy="337.4" r="27.3"/>
   <path class="traj traj-molotov" d="M575.9,381.8 L579.8,390.2 L583.6,398.6 L587.3,406.8 L591.1,415.2 L594.8,423.6 L598.6,431.8 L600.7,430.9 L602.5,427.3 L604.1,423.4 L605.9,419.8 L607.5,415.9 L609.3,412.3 L610.9,408.4 L612.7,404.8 L614.3,400.9 L616.1,397.3 L617.7,393.4 L619.5,389.8 L621.1,385.9 L622.7,382.3 L624.5,378.4 L626.1,374.8 L628.0,370.9 L629.5,367.3 L631.4,363.4 L633.0,359.8 L634.8,355.9 L636.4,352.0 L638.2,348.4 L639.8,344.5 L641.6,340.9 L643.2,337.0"/>
   <line class="aim" x1="576.0" y1="381.9" x2="590.0" y2="412.8"/>
@@ -578,31 +579,48 @@
     <h3>Molotov Escada da Varanda (de Varanda)</h3>
     <p class="muted">2 usos</p>
   </div>
-</a><a class="card" href="/pt/dust2/smoke-upper-tunnels-from-b-site-ct/" data-id="smoke-upper-tunnels-from-b-site-ct"
-   data-type="smoke" data-side="CT" data-area="UpperTunnel" data-map="dust2"
-   data-teams="falcons furia legacy vitality" data-players="ksloks mezii teses yuurih"
-   data-diff="3" data-count="9" data-eff="-1">
-  <svg class="radar" viewBox="0 33.2 418.0 418.0" role="img" aria-label="Trajetória: Smoke Escuro Alto (de Bomb B)">
+</a><a class="card" href="/pt/dust2/smoke-mid-doors-from-t-spawn-t/" data-id="smoke-mid-doors-from-t-spawn-t"
+   data-type="smoke" data-side="T" data-area="MidDoors" data-map="dust2"
+   data-teams="g2 legacy" data-players="latto nertz"
+   data-diff="2" data-count="4" data-eff="-1">
+  <svg class="radar" viewBox="137.4 292.1 658.3 658.3" role="img" aria-label="Trajetória: Smoke Portas do Meio (de Base TR)">
   <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="13.9"><text x="177.3" y="220.2">Bomb B</text><text x="310.9" y="201.6">Portas do B</text><text x="266.4" y="128.0">Buraco</text></g>
-  <circle class="land land-smoke" cx="107.0" cy="381.2" r="33.0"/>
-  <path class="traj traj-smoke" d="M185.9,103.2 L182.0,114.3 L178.2,125.2 L174.1,136.4 L170.2,147.5 L166.4,158.6 L162.3,169.5 L158.4,180.7 L154.5,191.8 L150.5,203.0 L146.6,213.9 L142.7,225.0 L138.6,236.1 L134.8,247.3 L130.9,258.2 L126.8,269.3 L123.0,280.5 L119.1,291.6 L115.2,302.5 L111.1,313.6 L107.3,324.8 L103.4,335.9 L99.3,346.8 L98.9,354.5 L100.5,359.3 L101.8,363.2 L102.7,365.5 L103.6,367.7 L104.5,370.0 L105.5,372.3 L106.4,374.5 L107.3,376.6 L107.7,378.0 L108.2,379.1 L108.6,380.0 L108.9,380.7 L109.1,381.1 L109.1,381.1"/>
-  <line class="aim" x1="184.0" y1="103.7" x2="173.0" y2="135.8"/>
-  <circle class="spot side-CT" cx="184.0" cy="103.7" r="7"/>
+  <g class="places" font-size="21.9"><text x="642.7" y="746.8">Fora do Fundo</text><text x="475.7" y="660.0">Coqueiro</text><text x="477.7" y="469.5">Meio</text><text x="536.8" y="424.3">Varanda</text><text x="363.4" y="415.5">Escuro Baixo</text><text x="304.3" y="480.9">Escada do Escuro Baixo</text></g>
+  <circle class="land land-smoke" cx="460.0" cy="362.1" r="33.0"/>
+  <path class="traj traj-smoke" d="M460.0,880.5 L460.2,871.4 L460.5,862.3 L460.7,853.2 L460.9,844.1 L461.1,835.2 L461.4,826.1 L461.6,817.0 L461.8,808.0 L462.0,798.9 L462.3,789.8 L462.5,780.7 L462.7,771.6 L463.0,762.5 L463.2,753.4 L463.4,744.5 L463.6,735.5 L463.9,726.4 L464.1,717.3 L464.3,708.2 L464.5,699.1 L464.8,690.0 L465.0,680.9 L465.5,671.8 L465.7,663.0 L465.9,653.9 L466.1,644.8 L466.4,635.7 L466.6,626.6 L466.8,617.5 L467.0,608.4 L467.3,599.3 L467.5,590.2 L467.7,581.4 L468.0,572.3 L468.2,563.2 L468.4,554.1 L468.6,545.0 L468.9,535.9 L469.1,526.8 L469.3,517.7 L469.5,508.6 L469.8,499.8 L470.0,490.7 L470.2,481.6 L470.5,472.5 L470.7,463.4 L470.9,454.3 L471.1,445.2 L471.4,436.1 L471.6,427.0 L471.8,418.2 L472.0,409.1 L472.3,400.0 L472.5,390.9 L472.7,381.8 L473.0,372.7 L473.2,363.6 L471.1,362.7 L467.7,365.2 L466.1,366.8 L464.8,368.0 L463.4,369.3 L462.0,370.5 L460.7,371.6 L460.5,371.1 L460.5,370.5 L460.7,369.5 L460.7,368.9 L460.7,368.0 L460.9,367.0 L460.9,366.4 L460.9,365.5 L460.9,364.8 L460.9,364.5 L460.9,364.3 L460.9,363.9 L460.9,363.6 L460.9,363.2 L460.7,363.0 L460.7,362.7 L460.7,362.5 L460.7,362.3 L460.7,362.3 L460.7,362.3"/>
+  <line class="aim" x1="460.1" y1="880.4" x2="461.0" y2="846.4"/>
+  <circle class="spot side-T" cx="460.1" cy="880.4" r="7"/>
 </svg>
   <div class="card-body">
-    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-CT">CT</span><span class="badge diff-3">Difícil</span><span class="badge video">▶ vídeo</span><span class="badge">3 variações</span></div>
-    <h3>Smoke Escuro Alto (de Bomb B)</h3>
+    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">TR</span><span class="badge diff-2">Médio</span><span class="badge">jump throw</span><span class="badge video">▶ vídeo</span></div>
+    <h3>Smoke Portas do Meio (de Base TR)</h3>
+    <p class="muted">2 usos</p>
+  </div>
+</a><a class="card" href="/pt/dust2/molotov-b-site-from-upper-tunnels-t/" data-id="molotov-b-site-from-upper-tunnels-t"
+   data-type="molotov" data-side="T" data-area="BombsiteB" data-map="dust2"
+   data-teams="furia legacy" data-players="ksloks latto yekindar"
+   data-diff="3" data-count="3" data-eff="0.0">
+  <svg class="radar" viewBox="0 0 531.6 531.6" role="img" aria-label="Trajetória: Molotov Bomb B (de Escuro Alto)">
+  <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="17.7"><text x="174.1" y="222.0">Bomb B</text><text x="448.2" y="241.6">Portas do Meio</text><text x="163.0" y="466.1">Escuro Alto</text><text x="313.9" y="195.7">Portas do B</text><text x="363.4" y="415.5">Escuro Baixo</text><text x="266.4" y="128.0">Buraco</text></g>
+  <circle class="land land-molotov" cx="90.8" cy="35.8" r="27.3"/>
+  <path class="traj traj-molotov" d="M122.3,424.8 L120.9,411.8 L119.5,398.6 L118.2,385.7 L116.8,372.5 L115.5,359.5 L114.1,346.6 L113.0,333.4 L111.6,320.5 L110.2,307.3 L108.9,294.3 L107.5,281.1 L106.1,268.2 L104.8,255.2 L103.4,242.0 L102.0,229.1 L100.7,215.9 L99.3,203.0 L98.0,189.8 L96.8,176.8 L95.5,163.6 L94.1,150.7 L92.7,137.7 L91.4,124.5 L90.0,111.6 L88.6,98.4 L87.3,85.5 L85.9,72.3 L84.5,59.3 L83.2,46.1 L81.8,33.2"/>
+  <line class="aim" x1="122.4" y1="422.0" x2="119.6" y2="388.1"/>
+  <circle class="spot side-T" cx="122.4" cy="422.0" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-molotov">Molotov</span><span class="badge side-T">TR</span><span class="badge diff-3">Difícil</span><span class="badge video">▶ vídeo</span></div>
+    <h3>Molotov Bomb B (de Escuro Alto)</h3>
     <p class="muted">2 usos</p>
   </div>
 </a><a class="card" href="/pt/dust2/smoke-mid-doors-from-top-mid-t/" data-id="smoke-mid-doors-from-top-mid-t"
    data-type="smoke" data-side="T" data-area="MidDoors" data-map="dust2"
    data-teams="falcons furia g2 legacy" data-players="art fallen heavygod hunter karrigan m0nesy molodoy nertz teses"
-   data-diff="1" data-count="12" data-eff="-1">
+   data-diff="1" data-count="17" data-eff="-1">
   <svg class="radar" viewBox="183.9 293.0 560.0 560.0" role="img" aria-label="Trajetória: Smoke Portas do Meio (de Coqueiro)">
   <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="18.7"><text x="642.7" y="746.8">Fora do Fundo</text><text x="475.7" y="660.0">Coqueiro</text><text x="480.9" y="461.8">Meio</text><text x="538.9" y="421.6">Varanda</text><text x="363.4" y="415.5">Escuro Baixo</text><text x="304.1" y="474.3">Escada do Escuro Baixo</text></g>
-  <circle class="land land-smoke" cx="474.4" cy="364.7" r="33.0"/>
+  <g class="places" font-size="18.7"><text x="642.7" y="746.8">Fora do Fundo</text><text x="475.7" y="660.0">Coqueiro</text><text x="477.7" y="469.5">Meio</text><text x="536.8" y="424.3">Varanda</text><text x="363.4" y="415.5">Escuro Baixo</text><text x="304.3" y="480.9">Escada do Escuro Baixo</text></g>
+  <circle class="land land-smoke" cx="474.3" cy="364.6" r="33.0"/>
   <path class="traj traj-smoke" d="M451.1,783.0 L451.8,774.8 L452.3,766.8 L452.7,758.6 L453.2,750.7 L453.6,742.5 L454.1,734.5 L454.8,726.4 L455.2,718.4 L455.7,710.2 L456.1,702.3 L456.6,694.3 L457.3,686.1 L457.7,678.2 L458.2,670.0 L458.6,662.0 L459.1,653.9 L459.5,645.9 L460.2,637.7 L460.7,629.8 L461.1,621.6 L461.6,613.6 L462.0,605.5 L462.5,597.5 L463.2,589.3 L463.6,581.4 L464.1,573.2 L464.5,565.2 L465.0,557.3 L465.5,549.1 L466.1,541.1 L466.6,533.0 L467.0,525.0 L467.5,516.8 L468.0,508.9 L468.6,500.7 L469.1,492.7 L469.5,484.5 L470.0,476.6 L470.5,468.4 L470.9,460.5 L471.6,452.3 L472.0,444.3 L472.5,436.1 L472.7,431.4 L473.0,428.0 L473.2,424.5 L473.4,421.1 L473.4,417.7 L473.6,414.3 L473.9,410.9 L474.1,407.5 L474.3,404.1 L474.5,400.7 L474.5,397.3 L474.8,393.9 L475.0,390.5 L475.2,387.0 L475.5,383.4 L475.7,380.0 L475.7,376.6 L475.9,373.2 L476.1,371.4 L476.1,369.8 L476.1,368.2 L476.4,366.6 L476.4,365.0 L476.6,363.4 L476.4,363.0 L475.7,363.4 L475.2,363.9 L474.8,364.1 L474.5,364.3 L474.3,364.5 L474.1,364.5 L474.1,364.8"/>
   <line class="aim" x1="451.2" y1="782.9" x2="453.2" y2="748.9"/>
   <circle class="spot side-T" cx="451.2" cy="782.9" r="7"/>
@@ -615,12 +633,12 @@
 </a><a class="card" href="/pt/dust2/smoke-mid-doors-from-outside-long-t/" data-id="smoke-mid-doors-from-outside-long-t"
    data-type="smoke" data-side="T" data-area="MidDoors" data-map="dust2"
    data-teams="furia legacy vitality" data-players="fallen latto mezii yekindar"
-   data-diff="2" data-count="10" data-eff="-1">
-  <svg class="radar" viewBox="277.6 299.5 591.8 591.8" role="img" aria-label="Trajetória: Smoke Portas do Meio (de Fora do Fundo)">
+   data-diff="2" data-count="22" data-eff="-1">
+  <svg class="radar" viewBox="277.1 299.5 591.8 591.8" role="img" aria-label="Trajetória: Smoke Portas do Meio (de Fora do Fundo)">
   <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="19.7"><text x="642.7" y="746.8">Fora do Fundo</text><text x="782.0" y="539.5">Portas do Fundo</text><text x="475.7" y="660.0">Coqueiro</text><text x="480.9" y="461.8">Meio</text><text x="538.9" y="421.6">Varanda</text><text x="363.4" y="415.5">Escuro Baixo</text></g>
-  <circle class="land land-smoke" cx="456.7" cy="372.6" r="33.0"/>
-  <path class="traj traj-smoke" d="M690.2,821.4 L686.4,813.6 L682.5,805.9 L678.6,798.2 L674.8,790.5 L670.7,783.0 L666.8,775.2 L663.0,767.5 L659.1,759.8 L655.2,752.0 L651.1,744.5 L647.3,736.8 L643.4,729.1 L639.5,721.4 L635.7,713.6 L631.8,706.1 L627.7,698.4 L623.9,690.7 L620.0,683.0 L616.1,675.2 L612.3,667.7 L608.4,660.0 L604.3,652.3 L600.5,644.5 L596.6,636.8 L592.7,629.3 L588.9,621.6 L585.0,613.9 L580.9,606.1 L577.0,598.4 L573.2,590.9 L569.3,583.2 L565.5,575.5 L561.4,567.7 L557.5,560.0 L553.6,552.5 L549.8,544.8 L545.9,537.0 L542.0,529.3 L538.0,521.6 L534.1,514.1 L530.2,506.4 L526.4,498.6 L522.5,490.9 L518.6,483.2 L514.5,475.7 L510.7,468.0 L506.8,460.2 L503.0,452.5 L499.1,444.8 L495.2,437.3 L491.1,429.5 L487.3,421.8 L483.4,414.1 L479.5,406.4 L475.7,398.9 L471.8,391.1 L467.7,383.4 L463.9,375.7 L461.6,371.8 L460.2,369.5 L459.8,370.2 L459.5,370.9 L459.1,371.4 L458.6,371.8 L458.4,372.0 L458.2,372.3 L458.0,372.5 L457.7,373.0 L457.5,373.0 L457.3,373.2 L457.0,373.2 L457.0,373.2"/>
+  <g class="places" font-size="19.7"><text x="642.7" y="746.8">Fora do Fundo</text><text x="778.2" y="540.7">Portas do Fundo</text><text x="475.7" y="660.0">Coqueiro</text><text x="477.7" y="469.5">Meio</text><text x="536.8" y="424.3">Varanda</text><text x="363.4" y="415.5">Escuro Baixo</text></g>
+  <circle class="land land-smoke" cx="456.3" cy="371.9" r="33.0"/>
+  <path class="traj traj-smoke" d="M690.2,821.4 L686.4,813.6 L682.5,805.9 L678.4,798.2 L674.5,790.7 L670.7,783.0 L666.8,775.2 L662.7,767.5 L658.9,759.8 L655.0,752.3 L650.9,744.5 L647.0,736.8 L643.2,729.1 L639.3,721.4 L635.2,713.9 L631.4,706.1 L627.5,698.4 L623.6,690.7 L619.5,683.0 L615.7,675.5 L611.8,667.7 L607.7,660.0 L603.9,652.3 L600.0,644.8 L596.1,637.0 L592.0,629.3 L588.2,621.6 L584.3,613.9 L580.5,606.4 L576.4,598.6 L572.5,590.9 L568.6,583.2 L564.5,575.7 L560.7,568.0 L556.8,560.2 L553.0,552.5 L548.9,544.8 L545.0,537.3 L541.1,529.5 L537.0,521.8 L533.2,514.1 L529.3,506.4 L525.5,498.9 L521.4,491.1 L517.5,483.4 L513.6,475.7 L509.8,468.0 L505.7,460.5 L501.8,452.7 L498.0,445.0 L493.9,437.3 L490.0,429.8 L486.1,422.0 L482.3,414.3 L478.2,406.6 L474.3,398.9 L470.5,391.4 L466.6,383.6 L462.5,375.9 L460.5,372.7 L459.1,370.7 L458.2,369.5 L457.7,370.2 L457.3,370.7 L457.0,371.1 L456.8,371.4 L456.6,371.6 L456.4,371.6 L456.1,371.8 L455.9,371.8 L455.7,372.0 L455.7,372.0"/>
   <line class="aim" x1="690.3" y1="821.3" x2="674.8" y2="791.0"/>
   <circle class="spot side-T" cx="690.3" cy="821.3" r="7"/>
 </svg>
@@ -629,22 +647,38 @@
     <h3>Smoke Portas do Meio (de Fora do Fundo)</h3>
     <p class="muted">1 uso</p>
   </div>
-</a><a class="card" href="/pt/dust2/flash-mid-doors-from-top-mid-t/" data-id="flash-mid-doors-from-top-mid-t"
-   data-type="flash" data-side="T" data-area="MidDoors" data-map="dust2"
-   data-teams="falcons g2 legacy" data-players="dumau heavygod hunter karrigan nertz"
-   data-diff="3" data-count="5" data-eff="0.4">
-  <svg class="radar" viewBox="274.2 257.1 444.9 444.9" role="img" aria-label="Trajetória: Flash Portas do Meio (de Coqueiro)">
+</a><a class="card" href="/pt/dust2/smoke-long-doors-from-long-a-ct/" data-id="smoke-long-doors-from-long-a-ct"
+   data-type="smoke" data-side="CT" data-area="LongDoors" data-map="dust2"
+   data-teams="falcons furia legacy vitality" data-players="dumau fallen flamez karrigan molodoy yekindar"
+   data-diff="3" data-count="14" data-eff="-1">
+  <svg class="radar" viewBox="610.7 371.0 315.5 315.5" role="img" aria-label="Trajetória: Smoke Portas do Fundo (de Fundo)">
   <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="14.8"><text x="480.9" y="461.8">Meio</text><text x="538.9" y="421.6">Varanda</text><text x="650.0" y="348.6">Escada da Varanda</text><text x="363.4" y="415.5">Escuro Baixo</text></g>
-  <circle class="land land-flash" cx="458.6" cy="327.1" r="11.4"/>
-  <path class="traj traj-flash" d="M533.9,632.0 L531.1,620.2 L528.2,608.4 L525.2,596.6 L522.3,584.8 L519.3,573.0 L516.4,561.1 L513.6,549.3 L510.7,537.5 L507.7,525.7 L504.8,513.9 L501.8,502.3 L499.1,490.5 L496.1,478.6 L493.2,466.8 L490.2,455.0 L487.3,443.2 L484.5,431.4 L481.6,419.5 L478.6,407.7 L475.7,395.9 L472.7,384.1 L470.0,372.3 L467.0,360.7 L464.1,348.9 L461.1,337.0 L458.9,328.2"/>
-  <line class="aim" x1="534.8" y1="631.1" x2="526.5" y2="598.1"/>
-  <circle class="spot side-T" cx="534.8" cy="631.1" r="7"/>
+  <g class="places" font-size="10.5"><text x="778.2" y="540.7">Portas do Fundo</text><text x="881.1" y="607.3">Bunker</text></g>
+  <circle class="land land-smoke" cx="694.9" cy="600.8" r="33.0"/>
+  <path class="traj traj-smoke" d="M856.1,455.9 L845.9,463.6 L835.9,471.1 L825.9,478.6 L815.7,486.4 L805.7,493.9 L795.7,501.6 L785.5,509.1 L775.5,516.6 L765.5,524.3 L755.2,531.8 L745.2,539.3 L735.2,547.0 L725.0,554.5 L715.0,562.0 L705.0,569.8 L694.8,577.3 L686.1,583.9 L681.6,587.3 L680.7,589.8 L682.7,591.1 L684.8,592.7 L686.8,594.3 L688.9,595.9 L690.9,597.3 L692.3,598.4 L693.2,599.1 L694.1,599.8 L695.0,600.7 L695.9,601.1 L696.4,601.4 L696.6,601.6 L696.6,601.6"/>
+  <line class="aim" x1="855.1" y1="456.5" x2="827.9" y2="476.9"/>
+  <circle class="spot side-CT" cx="855.1" cy="456.5" r="7"/>
 </svg>
   <div class="card-body">
-    <div class="card-badges"><span class="badge type-flash">Flash</span><span class="badge side-T">TR</span><span class="badge diff-3">Difícil</span><span class="badge video">▶ vídeo</span></div>
-    <h3>Flash Portas do Meio (de Coqueiro)</h3>
-<p class="eff">cega 0,4 inimigo(s) por 1,8s em média</p>
+    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-CT">CT</span><span class="badge diff-3">Difícil</span><span class="badge video">▶ vídeo</span><span class="badge">3 variações</span></div>
+    <h3>Smoke Portas do Fundo (de Fundo)</h3>
+    <p class="muted">1 uso</p>
+  </div>
+</a><a class="card" href="/pt/dust2/smoke-ct-spawn-from-outside-tunnels-t/" data-id="smoke-ct-spawn-from-outside-tunnels-t"
+   data-type="smoke" data-side="T" data-area="CTSpawn" data-map="dust2"
+   data-teams="falcons furia g2 legacy" data-players="art matys niko yuurih"
+   data-diff="3" data-count="5" data-eff="-1">
+  <svg class="radar" viewBox="11.4 160.7 604.3 604.3" role="img" aria-label="Trajetória: Smoke Base CT (de Fora do Escuro)">
+  <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="20.1"><text x="448.2" y="241.6">Portas do Meio</text><text x="475.7" y="660.0">Coqueiro</text><text x="163.0" y="466.1">Escuro Alto</text><text x="182.0" y="669.1">Fora do Escuro</text><text x="477.7" y="469.5">Meio</text><text x="536.8" y="424.3">Varanda</text><text x="363.4" y="415.5">Escuro Baixo</text><text x="304.3" y="480.9">Escada do Escuro Baixo</text></g>
+  <circle class="land land-smoke" cx="525.3" cy="233.3" r="33.0"/>
+  <path class="traj traj-smoke" d="M101.6,695.0 L106.8,689.3 L111.8,683.6 L117.0,678.0 L122.3,672.3 L127.3,666.6 L132.5,661.1 L137.5,655.5 L142.7,649.8 L147.7,644.1 L153.0,638.4 L158.0,632.7 L163.2,627.0 L168.2,621.4 L173.4,615.7 L178.6,610.0 L183.6,604.5 L188.9,598.9 L193.9,593.2 L199.1,587.5 L204.1,581.8 L209.3,576.1 L214.3,570.5 L219.5,564.8 L224.5,559.1 L229.8,553.4 L235.0,547.7 L240.0,542.3 L245.2,536.6 L250.2,530.9 L255.5,525.2 L260.5,519.5 L265.7,513.9 L270.7,508.2 L275.9,502.5 L280.9,496.8 L286.1,491.1 L291.4,485.7 L296.4,480.0 L301.6,474.3 L306.6,468.6 L311.8,463.0 L316.8,457.3 L322.0,451.6 L327.0,445.9 L332.3,440.2 L337.3,434.5 L342.5,428.9 L347.7,423.4 L352.7,417.7 L358.0,412.0 L363.0,406.4 L368.2,400.7 L373.2,395.0 L378.4,389.3 L383.4,383.6 L388.6,378.0 L393.6,372.3 L398.9,366.8 L404.1,361.1 L409.1,355.5 L414.3,349.8 L419.3,344.1 L424.5,338.4 L429.5,332.7 L434.8,327.0 L439.8,321.4 L445.0,315.7 L450.0,310.2 L455.2,304.5 L460.5,298.9 L465.5,293.2 L470.7,287.5 L475.7,281.8 L480.9,276.1 L485.9,270.5 L491.1,264.8 L496.1,259.1 L498.9,256.4 L500.2,254.5 L501.6,253.0 L503.0,251.4 L504.3,249.8 L505.7,248.2 L507.3,246.6 L508.6,245.0 L510.0,243.4 L511.4,241.8 L512.7,240.2 L514.1,238.4 L515.5,236.8 L517.0,235.2 L518.4,233.6 L519.8,232.0 L521.1,230.7 L521.8,231.1 L522.5,231.8 L523.4,232.5 L523.6,232.7 L524.1,233.0 L524.5,233.2 L524.8,233.6 L525.0,233.9 L525.2,233.9 L525.5,234.1 L525.5,234.1"/>
+  <line class="aim" x1="101.7" y1="695.0" x2="124.5" y2="669.8"/>
+  <circle class="spot side-T" cx="101.7" cy="695.0" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">TR</span><span class="badge diff-3">Difícil</span><span class="badge">jump throw</span><span class="badge video">▶ vídeo</span></div>
+    <h3>Smoke Base CT (de Fora do Escuro)</h3>
     <p class="muted">1 uso</p>
   </div>
 </a><a class="card" href="/pt/dust2/flash-catwalk-from-top-mid-t/" data-id="flash-catwalk-from-top-mid-t"
@@ -653,7 +687,7 @@
    data-diff="1" data-count="4" data-eff="0.0">
   <svg class="radar" viewBox="317.1 356.6 333.5 333.5" role="img" aria-label="Trajetória: Flash Varanda (de Coqueiro)">
   <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="11.1"><text x="480.9" y="461.8">Meio</text><text x="538.9" y="421.6">Varanda</text><text x="363.4" y="415.5">Escuro Baixo</text></g>
+  <g class="places" font-size="11.1"><text x="477.7" y="469.5">Meio</text><text x="536.8" y="424.3">Varanda</text><text x="363.4" y="415.5">Escuro Baixo</text></g>
   <circle class="land land-flash" cx="544.7" cy="427.1" r="11.4"/>
   <path class="traj traj-flash" d="M423.9,619.1 L428.4,611.6 L433.2,604.3 L437.7,596.8 L442.5,589.3 L447.0,581.8 L451.8,574.3 L456.4,566.8 L461.1,559.3 L465.7,551.8 L470.5,544.3 L475.0,536.8 L479.8,529.3 L484.3,521.8 L489.1,514.3 L493.6,507.0 L498.4,499.5 L503.0,492.0 L507.7,484.5 L512.3,477.0 L517.0,469.5 L521.6,462.0 L526.4,454.5 L530.9,447.0 L535.7,439.5 L540.2,432.0 L543.9,426.6"/>
   <line class="aim" x1="423.0" y1="620.1" x2="441.1" y2="591.3"/>
@@ -664,123 +698,106 @@
     <h3>Flash Varanda (de Coqueiro)</h3>
     <p class="muted">1 uso</p>
   </div>
-</a><a class="card" href="/pt/dust2/he-mid-doors-ct/" data-id="he-mid-doors-ct"
-   data-type="he" data-side="CT" data-area="MidDoors" data-map="dust2"
-   data-teams="falcons legacy vitality" data-players="kyousuke mezii try"
-   data-diff="2" data-count="4" data-eff="0.0">
-  <svg class="radar" viewBox="267.4 93.5 350.6 350.6" role="img" aria-label="Trajetória: HE Portas do Meio">
+</a><a class="card" href="/pt/dust2/flash-under-a-from-short-stairs-t/" data-id="flash-under-a-from-short-stairs-t"
+   data-type="flash" data-side="T" data-area="UnderA" data-map="dust2"
+   data-teams="furia g2 legacy" data-players="kscerato molodoy r1nkle try"
+   data-diff="1" data-count="4" data-eff="1.0">
+  <svg class="radar" viewBox="501.6 122.5 334.1 334.1" role="img" aria-label="Trajetória: Flash Rampa do CT (de Escada da Varanda)">
   <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="11.7"><text x="450.0" y="244.1">Portas do Meio</text><text x="310.9" y="201.6">Portas do B</text></g>
-  <circle class="land land-he" cx="480.0" cy="368.8" r="15.9"/>
-  <path class="traj traj-he" d="M403.0,163.6 L405.7,173.4 L408.6,183.0 L411.6,192.7 L414.5,202.5 L417.5,212.3 L420.5,222.0 L423.2,231.8 L426.1,241.6 L429.1,251.4 L432.0,261.1 L435.0,270.9 L438.0,280.7 L440.7,290.5 L443.6,300.0 L446.6,309.8 L449.5,319.5 L452.5,329.3 L455.5,339.1 L458.2,348.9 L461.1,358.6 L464.1,368.4 L467.5,374.1 L471.8,372.5 L476.1,371.1 L480.5,369.5 L483.6,368.4"/>
-  <line class="aim" x1="401.9" y1="163.5" x2="411.5" y2="196.1"/>
-  <circle class="spot side-CT" cx="401.9" cy="163.5" r="7"/>
+  <g class="places" font-size="11.1"><text x="752.3" y="232.7">Rampa do CT</text><text x="605.2" y="234.3">Base CT</text><text x="667.7" y="181.4">RKZ</text><text x="646.4" y="350.5">Escada da Varanda</text></g>
+  <circle class="land land-flash" cx="712.5" cy="194.7" r="11.4"/>
+  <path class="traj traj-flash" d="M624.8,386.6 L628.4,378.4 L631.8,370.5 L635.5,362.3 L638.9,354.3 L642.5,346.1 L645.9,338.0 L649.5,330.0 L653.0,321.8 L656.6,313.9 L660.0,305.7 L663.6,297.7 L667.0,289.5 L670.7,281.6 L674.1,273.4 L677.7,265.2 L681.1,257.3 L684.8,249.1 L688.2,241.1 L691.8,233.0 L695.2,225.0 L698.9,216.8 L702.3,208.9 L705.9,200.7 L709.3,192.5 L711.4,194.1 L712.5,196.8"/>
+  <line class="aim" x1="624.7" y1="386.5" x2="638.2" y2="355.3"/>
+  <circle class="spot side-T" cx="624.7" cy="386.5" r="7"/>
 </svg>
   <div class="card-body">
-    <div class="card-badges"><span class="badge type-he">HE</span><span class="badge side-CT">CT</span><span class="badge diff-2">Médio</span><span class="badge video">▶ vídeo</span></div>
-    <h3>HE Portas do Meio</h3>
-    <p class="muted">1 uso</p>
-  </div>
-</a><a class="card" href="/pt/dust2/smoke-ct-spawn-from-outside-tunnels-t/" data-id="smoke-ct-spawn-from-outside-tunnels-t"
-   data-type="smoke" data-side="T" data-area="CTSpawn" data-map="dust2"
-   data-teams="falcons furia g2 legacy" data-players="art matys niko yuurih"
-   data-diff="3" data-count="4" data-eff="-1">
-  <svg class="radar" viewBox="11.4 160.7 604.3 604.3" role="img" aria-label="Trajetória: Smoke Base CT (de Fora do Escuro)">
-  <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="20.1"><text x="450.0" y="244.1">Portas do Meio</text><text x="475.7" y="660.0">Coqueiro</text><text x="163.2" y="470.2">Escuro Alto</text><text x="185.9" y="675.2">Fora do Escuro</text><text x="480.9" y="461.8">Meio</text><text x="538.9" y="421.6">Varanda</text><text x="363.4" y="415.5">Escuro Baixo</text><text x="304.1" y="474.3">Escada do Escuro Baixo</text></g>
-  <circle class="land land-smoke" cx="525.3" cy="233.5" r="33.0"/>
-  <path class="traj traj-smoke" d="M101.6,695.0 L106.8,689.3 L111.8,683.6 L117.0,678.0 L122.3,672.3 L127.3,666.6 L132.5,661.1 L137.5,655.5 L142.7,649.8 L147.7,644.1 L153.0,638.4 L158.0,632.7 L163.2,627.0 L168.2,621.4 L173.4,615.7 L178.6,610.0 L183.6,604.5 L188.9,598.9 L193.9,593.2 L199.1,587.5 L204.1,581.8 L209.3,576.1 L214.3,570.5 L219.5,564.8 L224.5,559.1 L229.8,553.4 L235.0,547.7 L240.0,542.3 L245.2,536.6 L250.2,530.9 L255.5,525.2 L260.5,519.5 L265.7,513.9 L270.7,508.2 L275.9,502.5 L280.9,496.8 L286.1,491.1 L291.4,485.7 L296.4,480.0 L301.6,474.3 L306.6,468.6 L311.8,463.0 L316.8,457.3 L322.0,451.6 L327.0,445.9 L332.3,440.2 L337.3,434.5 L342.5,428.9 L347.7,423.4 L352.7,417.7 L358.0,412.0 L363.0,406.4 L368.2,400.7 L373.2,395.0 L378.4,389.3 L383.4,383.6 L388.6,378.0 L393.6,372.3 L398.9,366.8 L404.1,361.1 L409.1,355.5 L414.3,349.8 L419.3,344.1 L424.5,338.4 L429.5,332.7 L434.8,327.0 L439.8,321.4 L445.0,315.7 L450.0,310.2 L455.2,304.5 L460.5,298.9 L465.5,293.2 L470.7,287.5 L475.7,281.8 L480.9,276.1 L485.9,270.5 L491.1,264.8 L496.1,259.1 L498.9,256.4 L500.2,254.5 L501.6,253.0 L503.0,251.4 L504.3,249.8 L505.7,248.2 L507.3,246.6 L508.6,245.0 L510.0,243.4 L511.4,241.8 L512.7,240.2 L514.1,238.4 L515.5,236.8 L517.0,235.2 L518.4,233.6 L519.8,232.0 L521.1,230.7 L521.8,231.1 L522.5,231.8 L523.4,232.5 L523.6,232.7 L524.1,233.0 L524.5,233.2 L524.8,233.6 L525.0,233.9 L525.2,233.9 L525.5,234.1 L525.5,234.1"/>
-  <line class="aim" x1="101.7" y1="695.0" x2="124.5" y2="669.8"/>
-  <circle class="spot side-T" cx="101.7" cy="695.0" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">TR</span><span class="badge diff-3">Difícil</span><span class="badge">jump throw</span><span class="badge video">▶ vídeo</span></div>
-    <h3>Smoke Base CT (de Fora do Escuro)</h3>
-    <p class="muted">1 uso</p>
-  </div>
-</a><a class="card" href="/pt/dust2/he-long-doors-from-long-a-ct/" data-id="he-long-doors-from-long-a-ct"
-   data-type="he" data-side="CT" data-area="LongDoors" data-map="dust2"
-   data-teams="falcons legacy" data-players="dumau kyousuke niko"
-   data-diff="3" data-count="3" data-eff="0.0">
-  <svg class="radar" viewBox="609.8 370.7 314.6 314.6" role="img" aria-label="Trajetória: HE Portas do Fundo (de Fundo)">
-  <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="10.5"><text x="782.0" y="539.5">Portas do Fundo</text><text x="881.1" y="607.3">Bunker</text></g>
-  <circle class="land land-he" cx="693.5" cy="599.5" r="15.9"/>
-  <path class="traj traj-he" d="M853.2,456.6 L842.5,464.3 L832.0,472.3 L821.6,480.0 L811.1,487.7 L800.7,495.5 L790.2,503.2 L779.5,511.1 L769.1,518.9 L758.6,526.6 L748.2,534.3 L737.7,542.3 L727.3,550.0 L716.6,557.7 L706.1,565.5 L695.7,573.2 L685.2,581.1 L679.8,585.5 L681.8,587.0 L684.1,588.6 L686.1,590.2 L688.2,591.8 L690.5,593.4 L692.0,594.5 L693.0,595.2 L693.9,595.9 L694.5,596.4"/>
-  <line class="aim" x1="854.4" y1="456.6" x2="827.2" y2="476.9"/>
-  <circle class="spot side-CT" cx="854.4" cy="456.6" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge type-he">HE</span><span class="badge side-CT">CT</span><span class="badge diff-3">Difícil</span><span class="badge video">▶ vídeo</span></div>
-    <h3>HE Portas do Fundo (de Fundo)</h3>
+    <div class="card-badges"><span class="badge type-flash">Flash</span><span class="badge side-T">TR</span><span class="badge diff-1">Fácil</span><span class="badge video">▶ vídeo</span></div>
+    <h3>Flash Rampa do CT (de Escada da Varanda)</h3>
+<p class="eff">cega 1,0 inimigo(s) por 2,2s em média</p>
     <p class="muted">1 uso</p>
   </div>
 </a><a class="card" href="/pt/dust2/smoke-short-stairs-from-a-ramp-ct/" data-id="smoke-short-stairs-from-a-ramp-ct"
    data-type="smoke" data-side="CT" data-area="ShortStairs" data-map="dust2"
    data-teams="falcons legacy" data-players="art m0nesy"
-   data-diff="1" data-count="3" data-eff="-1">
-  <svg class="radar" viewBox="560.7 52.9 363.2 363.2" role="img" aria-label="Trajetória: Smoke Escada da Varanda (de Rampa A)">
+   data-diff="1" data-count="4" data-eff="-1">
+  <svg class="radar" viewBox="560.7 53.5 363.0 363.0" role="img" aria-label="Trajetória: Smoke Escada da Varanda (de Rampa A)">
   <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="12.1"><text x="753.0" y="233.0">Rampa do CT</text><text x="605.2" y="234.3">Base CT</text><text x="665.0" y="183.0">RKZ</text><text x="810.7" y="142.3">Bomb A</text><text x="650.0" y="348.6">Escada da Varanda</text><text x="880.2" y="158.2">Rampa A</text></g>
-  <circle class="land land-smoke" cx="659.5" cy="294.0" r="33.0"/>
-  <path class="traj traj-smoke" d="M853.2,175.0 L845.5,178.6 L837.5,182.3 L829.5,185.9 L821.8,189.5 L813.9,193.2 L805.9,196.8 L798.2,200.5 L790.2,204.1 L782.3,207.7 L774.5,211.4 L766.6,215.0 L758.6,218.6 L750.7,222.3 L743.0,225.9 L735.0,229.5 L727.0,233.2 L719.3,236.8 L711.4,240.5 L703.4,243.9 L695.7,247.5 L687.7,251.1 L679.8,254.8 L672.0,258.4 L664.1,262.0 L656.1,265.7 L648.4,269.3 L640.5,273.0 L632.5,276.6 L630.7,279.1 L634.3,280.9 L638.0,282.5 L641.6,284.1 L643.4,285.0 L645.0,285.7 L646.8,286.4 L648.4,287.0 L650.2,288.0 L651.8,288.6 L653.6,289.3 L655.2,290.0 L656.1,290.5 L656.8,290.7 L657.7,291.1 L658.4,291.4 L658.6,291.6 L659.1,291.6 L659.1,291.6"/>
-  <line class="aim" x1="853.9" y1="175.8" x2="823.0" y2="190.1"/>
-  <circle class="spot side-CT" cx="853.9" cy="175.8" r="7"/>
+  <g class="places" font-size="12.1"><text x="752.3" y="232.7">Rampa do CT</text><text x="605.2" y="234.3">Base CT</text><text x="667.7" y="181.4">RKZ</text><text x="810.7" y="142.3">Bomb A</text><text x="646.4" y="350.5">Escada da Varanda</text><text x="880.2" y="158.2">Rampa A</text></g>
+  <circle class="land land-smoke" cx="659.0" cy="294.0" r="33.0"/>
+  <path class="traj traj-smoke" d="M853.2,176.1 L845.5,179.8 L837.5,183.4 L829.5,187.0 L821.8,190.7 L813.9,194.5 L805.9,198.2 L798.2,201.8 L790.2,205.5 L782.5,209.1 L774.5,213.0 L766.6,216.6 L758.9,220.2 L750.9,223.9 L743.0,227.5 L735.2,231.1 L727.3,235.0 L719.5,238.6 L711.6,242.3 L703.6,245.9 L695.9,249.5 L688.0,253.4 L680.0,257.0 L672.3,260.7 L664.3,264.3 L656.6,268.0 L648.6,271.8 L640.7,275.5 L633.0,279.1 L630.7,281.8 L634.1,283.4 L637.7,285.0 L640.7,286.4 L642.3,287.3 L643.9,288.0 L645.7,288.6 L647.3,289.3 L648.9,290.2 L650.5,290.9 L652.0,291.6 L653.6,292.5 L654.5,292.7 L655.2,293.2 L656.1,293.4 L656.8,293.9 L657.3,294.1 L657.5,294.1 L657.5,294.1"/>
+  <line class="aim" x1="853.7" y1="175.9" x2="822.9" y2="190.2"/>
+  <circle class="spot side-CT" cx="853.7" cy="175.9" r="7"/>
 </svg>
   <div class="card-body">
     <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-CT">CT</span><span class="badge diff-1">Fácil</span><span class="badge video">▶ vídeo</span></div>
     <h3>Smoke Escada da Varanda (de Rampa A)</h3>
     <p class="muted">1 uso</p>
   </div>
+</a><a class="card" href="/pt/dust2/molotov-lower-tunnels-from-short-stairs-ct/" data-id="molotov-lower-tunnels-from-short-stairs-ct"
+   data-type="molotov" data-side="CT" data-area="LowerTunnel" data-map="dust2"
+   data-teams="furia legacy spirit" data-players="art kscerato magixx"
+   data-diff="3" data-count="3" data-eff="0.0">
+  <svg class="radar" viewBox="276.2 195.1 419.1 419.1" role="img" aria-label="Trajetória: Molotov Escuro Baixo (de Escada da Varanda)">
+  <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="14.0"><text x="448.2" y="241.6">Portas do Meio</text><text x="477.7" y="469.5">Meio</text><text x="536.8" y="424.3">Varanda</text><text x="646.4" y="350.5">Escada da Varanda</text><text x="363.4" y="415.5">Escuro Baixo</text></g>
+  <circle class="land land-molotov" cx="346.2" cy="421.1" r="27.3"/>
+  <path class="traj traj-molotov" d="M624.3,388.4 L611.4,389.8 L598.4,391.4 L585.5,393.0 L572.5,394.5 L559.5,395.9 L546.6,397.5 L533.6,399.1 L520.7,400.7 L507.7,402.0 L494.8,403.6 L481.8,405.2 L468.6,406.6 L455.7,408.2 L442.7,409.8 L429.8,411.4 L416.8,412.7 L403.9,414.3 L390.9,415.9 L378.0,417.5 L365.0,418.9 L352.0,420.5 L348.6,420.9"/>
+  <line class="aim" x1="625.2" y1="388.3" x2="591.5" y2="392.2"/>
+  <circle class="spot side-CT" cx="625.2" cy="388.3" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-molotov">Molotov</span><span class="badge side-CT">CT</span><span class="badge diff-3">Difícil</span><span class="badge video">▶ vídeo</span></div>
+    <h3>Molotov Escuro Baixo (de Escada da Varanda)</h3>
+    <p class="muted">1 uso</p>
+  </div>
+</a><a class="card" href="/pt/dust2/molotov-b-doors-from-b-site-t/" data-id="molotov-b-doors-from-b-site-t"
+   data-type="molotov" data-side="T" data-area="BDoors" data-map="dust2"
+   data-teams="furia g2 legacy" data-players="ksloks matys yuurih"
+   data-diff="2" data-count="3" data-eff="0.0">
+  <svg class="radar" viewBox="136.1 78.2 274.7 274.7" role="img" aria-label="Trajetória: Molotov Portas do B (de Bomb B)">
+  <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="9.2"><text x="174.1" y="222.0">Bomb B</text><text x="313.9" y="195.7">Portas do B</text><text x="266.4" y="128.0">Buraco</text></g>
+  <circle class="land land-molotov" cx="305.7" cy="148.6" r="27.3"/>
+  <path class="traj traj-molotov" d="M239.8,280.2 L245.2,269.8 L250.7,259.5 L255.9,249.1 L261.4,238.9 L266.8,228.4 L272.3,218.2 L277.5,207.7 L283.0,197.3 L288.4,187.0 L293.9,176.6 L299.1,166.4 L304.5,155.9 L308.6,148.2"/>
+  <line class="aim" x1="238.3" y1="282.9" x2="253.5" y2="252.4"/>
+  <circle class="spot side-T" cx="238.3" cy="282.9" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-molotov">Molotov</span><span class="badge side-T">TR</span><span class="badge diff-2">Médio</span><span class="badge video">▶ vídeo</span></div>
+    <h3>Molotov Portas do B (de Bomb B)</h3>
+    <p class="muted">1 uso</p>
+  </div>
 </a></div>
   </details>
   <details class="tm-group">
-    <summary><b>Mirage</b> <span class="muted">· 20 lineups</span></summary>
+    <summary><b>Mirage</b> <span class="muted">· 21 lineups</span></summary>
     <div class="cards"><a class="card" href="/pt/mirage/smoke-sniper-s-nest-from-t-spawn-t/" data-id="smoke-sniper-s-nest-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="SnipersNest" data-map="mirage"
-   data-teams="falcons furia fut g2 legacy mouz spirit vitality" data-players="apex art coolio dem0n donk dumau dziugss flamez heavygod hunter karrigan ksloks kyousuke latto m0nesy magixx matys mezii nertz niko pr r1nkle ropz sh1ro spinx sunpayus torzsi try xelex xertion xfl0ud yekindar zont1x zywoo"
-   data-diff="3" data-count="99" data-eff="-1">
-  <svg class="radar" viewBox="323.6 117.8 647.4 647.4" role="img" aria-label="Trajetória: Smoke Janela (de Base TR)">
+   data-teams="falcons furia fut g2 legacy mouz spirit vitality" data-players="apex art coolio dem0n donk dumau dziugss fallen flamez heavygod hunter karrigan kscerato ksloks kyousuke latto m0nesy magixx matys mezii molodoy nertz niko pr r1nkle ropz sh1ro spinx sunpayus tn1r torzsi try xelex xertion xfl0ud yekindar zont1x zywoo"
+   data-diff="3" data-count="131" data-eff="-1">
+  <svg class="radar" viewBox="324.0 117.9 647.2 647.2" role="img" aria-label="Trajetória: Smoke Janela (de Base TR)">
   <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="21.6"><text x="889.2" y="404.0">Base TR</text><text x="543.8" y="478.6">Meio</text><text x="703.6" y="431.4">Top Mid</text><text x="495.6" y="403.4">L</text><text x="740.4" y="249.0">Entrada TV</text><text x="794.8" y="594.2">Entrada da Caverna</text><text x="463.2" y="297.2">Rato</text><text x="567.2" y="229.0">Saída do Rato</text><text x="517.4" y="558.4">Ligação</text><text x="719.6" y="662.4">Caverna</text><text x="446.2" y="626.6">Jungle</text><text x="410.8" y="471.0">Janela</text><text x="545.8" y="650.6">Cabecinha</text><text x="417.8" y="386.2">Moscow 5</text></g>
+  <g class="places" font-size="21.6"><text x="889.2" y="404.0">Base TR</text><text x="542.6" y="477.4">Meio</text><text x="702.4" y="426.4">Top Mid</text><text x="494.2" y="400.2">L</text><text x="740.4" y="249.0">Entrada TV</text><text x="796.6" y="590.6">Entrada da Caverna</text><text x="457.2" y="288.8">Rato</text><text x="567.2" y="229.0">Saída do Rato</text><text x="517.6" y="555.4">Ligação</text><text x="720.8" y="659.8">Caverna</text><text x="446.2" y="626.6">Jungle</text><text x="412.0" y="466.2">Janela</text><text x="418.0" y="383.6">Moscow 5</text><text x="546.2" y="652.4">Cabecinha</text></g>
   <circle class="land land-smoke" cx="407.1" cy="469.3" r="29.0"/>
-  <path class="traj traj-smoke" d="M901.0,413.4 L894.8,414.2 L888.8,414.8 L882.6,415.4 L876.6,416.0 L870.4,416.8 L864.4,417.4 L858.2,418.0 L852.2,418.8 L846.0,419.4 L840.0,420.0 L833.8,420.6 L827.8,421.4 L821.6,422.0 L815.6,422.6 L809.4,423.4 L803.2,424.0 L797.2,424.6 L791.0,425.4 L785.0,426.0 L778.8,426.6 L772.8,427.2 L766.6,428.0 L760.6,428.6 L754.4,429.2 L748.4,430.0 L742.2,430.6 L736.2,431.2 L730.0,431.8 L724.0,432.6 L717.8,433.2 L711.8,433.8 L705.6,434.6 L699.6,435.2 L693.4,435.8 L687.4,436.4 L681.2,437.2 L675.2,437.8 L669.0,438.4 L662.8,439.2 L656.8,439.8 L650.6,440.4 L644.6,441.0 L638.4,441.8 L632.4,442.4 L626.2,443.0 L620.2,443.8 L614.0,444.4 L608.0,445.0 L601.8,445.8 L595.8,446.4 L589.6,447.0 L583.6,447.6 L577.4,448.4 L571.4,449.0 L565.2,449.6 L559.2,450.4 L553.0,451.0 L547.0,451.6 L540.8,452.2 L534.8,453.0 L528.6,453.6 L522.6,454.2 L516.4,455.0 L510.4,455.6 L504.2,456.2 L498.0,456.8 L492.0,457.6 L485.8,458.2 L479.8,458.8 L473.6,459.6 L467.6,460.2 L461.4,460.8 L455.4,461.4 L449.2,462.2 L443.2,462.8 L437.0,463.4 L431.0,464.2 L424.8,464.8 L418.8,465.4 L416.6,465.6 L414.8,465.8 L413.0,466.0 L411.2,466.2 L409.4,466.4 L407.6,466.6 L406.0,466.8 L404.2,467.0 L402.4,467.2 L400.6,467.4 L398.8,467.6 L397.0,467.8 L395.2,468.0 L393.6,468.2 L394.4,468.2 L395.2,468.4 L396.0,468.4 L396.8,468.6 L397.6,468.6 L398.4,468.6 L399.2,468.8 L400.0,468.8 L400.8,469.0 L401.6,469.0 L402.2,469.0 L402.6,469.2 L403.0,469.2 L403.4,469.2 L403.8,469.2 L404.0,469.2 L404.4,469.4 L404.8,469.4 L405.2,469.4 L405.6,469.4 L405.8,469.4 L406.0,469.4 L406.2,469.6 L406.4,469.6 L406.6,469.6 L406.8,469.6 L406.8,469.6 L406.8,469.6 L407.0,469.6 L407.0,469.6"/>
+  <path class="traj traj-smoke" d="M901.2,413.4 L895.0,414.2 L888.8,414.8 L882.8,415.4 L876.6,416.0 L870.6,416.8 L864.4,417.4 L858.2,418.0 L852.2,418.8 L846.0,419.4 L839.8,420.0 L833.8,420.6 L827.6,421.4 L821.6,422.0 L815.4,422.6 L809.2,423.4 L803.2,424.0 L797.0,424.6 L790.8,425.4 L784.8,426.0 L778.6,426.6 L772.6,427.4 L766.4,428.0 L760.2,428.6 L754.2,429.2 L748.0,430.0 L741.8,430.6 L735.8,431.2 L729.6,432.0 L723.6,432.6 L717.4,433.2 L711.2,433.8 L705.2,434.6 L699.0,435.2 L692.8,435.8 L686.8,436.6 L680.6,437.2 L674.6,437.8 L668.4,438.6 L662.2,439.2 L656.2,439.8 L650.0,440.6 L644.0,441.2 L637.8,441.8 L631.6,442.4 L625.6,443.2 L619.4,443.8 L613.2,444.4 L607.2,445.2 L601.0,445.8 L595.0,446.4 L588.8,447.0 L582.6,447.8 L576.6,448.4 L570.4,449.0 L564.2,449.8 L558.2,450.4 L552.0,451.0 L546.0,451.8 L539.8,452.4 L533.6,453.0 L527.6,453.8 L521.4,454.4 L515.2,455.0 L509.2,455.6 L503.0,456.4 L497.0,457.0 L490.8,457.6 L484.6,458.4 L478.6,459.0 L472.4,459.6 L466.4,460.2 L460.2,461.0 L454.0,461.6 L448.0,462.2 L441.8,463.0 L435.6,463.6 L429.6,464.2 L423.4,465.0 L417.4,465.6 L415.8,465.8 L414.0,466.0 L412.2,466.2 L410.4,466.4 L408.6,466.6 L406.8,466.8 L405.0,467.0 L403.2,467.0 L401.4,467.2 L399.8,467.4 L398.0,467.6 L396.2,467.8 L394.4,468.0 L394.0,468.2 L394.8,468.2 L395.6,468.4 L396.4,468.4 L397.2,468.6 L398.0,468.6 L398.8,468.6 L399.6,468.8 L400.4,468.8 L401.2,469.0 L402.0,469.0 L402.6,469.2 L403.0,469.2 L403.4,469.2 L403.8,469.2 L404.0,469.2 L404.4,469.4 L404.8,469.4 L405.2,469.4 L405.6,469.4 L405.8,469.4 L406.2,469.4 L406.4,469.6 L406.6,469.6 L406.8,469.6 L406.8,469.6 L407.0,469.6 L407.2,469.6 L407.2,469.6 L407.2,469.6"/>
   <line class="aim" x1="901.0" y1="413.4" x2="867.2" y2="417.1"/>
   <circle class="spot side-T" cx="901.0" cy="413.4" r="7"/>
 </svg>
   <div class="card-body">
-    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">TR</span><span class="badge diff-3">Difícil</span><span class="badge">jump throw</span><span class="badge video">▶ vídeo</span><span class="badge">7 variações</span></div>
+    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">TR</span><span class="badge diff-3">Difícil</span><span class="badge">jump throw</span><span class="badge video">▶ vídeo</span><span class="badge">8 variações</span></div>
     <h3>Smoke Janela (de Base TR)</h3>
     <p class="muted">9 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-b-site-from-apartments-t/" data-id="flash-b-site-from-apartments-t"
-   data-type="flash" data-side="T" data-area="BombsiteB" data-map="mirage"
-   data-teams="fut g2 legacy mouz spirit vitality" data-players="dziugss ksloks magixx pr r1nkle ropz try xfl0ud"
-   data-diff="1" data-count="22" data-eff="1.36">
-  <svg class="radar" viewBox="123.7 78.4 313.7 313.7" role="img" aria-label="Trajetória: Flash Bomb B (de Tapete)">
-  <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="10.5"><text x="249.8" y="291.0">Bomb B</text><text x="328.6" y="197.4">Tapete</text><text x="207.6" y="196.6">Van</text></g>
-  <circle class="land land-flash" cx="193.7" cy="287.2" r="10.0"/>
-  <path class="traj traj-flash" d="M367.0,183.2 L360.2,187.2 L353.6,191.4 L346.8,195.4 L340.0,199.4 L333.4,203.6 L326.6,207.6 L320.0,211.6 L313.2,215.8 L306.4,219.8 L299.8,224.0 L293.0,228.0 L286.4,232.0 L279.6,236.2 L272.8,240.2 L266.2,244.2 L259.4,248.4 L252.6,252.4 L246.0,256.6 L239.2,260.6 L232.6,264.6 L225.8,268.8 L219.0,272.8 L212.4,276.8 L205.6,281.0 L198.8,285.0 L193.8,288.0"/>
-  <line class="aim" x1="367.4" y1="182.5" x2="338.2" y2="200.1"/>
-  <circle class="spot side-T" cx="367.4" cy="182.5" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge type-flash">Flash</span><span class="badge side-T">TR</span><span class="badge diff-1">Fácil</span><span class="badge video">▶ vídeo</span><span class="badge">3 variações</span></div>
-    <h3>Flash Bomb B (de Tapete)</h3>
-<p class="eff">cega 1,4 inimigo(s) por 3,8s em média</p>
-    <p class="muted">5 usos</p>
-  </div>
 </a><a class="card" href="/pt/mirage/smoke-catwalk-from-t-spawn-t/" data-id="smoke-catwalk-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="Catwalk" data-map="mirage"
-   data-teams="falcons fut g2 legacy mouz spirit vitality" data-players="dem0n dumau dziugss flamez heavygod ksloks kyousuke latto magixx mezii nertz pr r1nkle spinx torzsi try xelex xertion zywoo"
-   data-diff="2" data-count="33" data-eff="-1">
-  <svg class="radar" viewBox="570.0 218.7 386.6 386.6" role="img" aria-label="Trajetória: Smoke L (de Base TR)">
+   data-teams="falcons furia fut g2 legacy mouz spirit vitality" data-players="coolio dem0n dziugss fallen flamez heavygod ksloks kyousuke latto magixx mezii nertz pr r1nkle ropz spinx torzsi try xelex xertion xfl0ud yuurih zywoo"
+   data-diff="2" data-count="40" data-eff="-1">
+  <svg class="radar" viewBox="569.8 218.6 386.7 386.7" role="img" aria-label="Trajetória: Smoke L (de Base TR)">
   <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="12.9"><text x="889.2" y="404.0">Base TR</text><text x="703.6" y="431.4">Top Mid</text></g>
-  <circle class="land land-smoke" cx="640.1" cy="438.4" r="29.0"/>
+  <g class="places" font-size="12.9"><text x="889.2" y="404.0">Base TR</text><text x="702.4" y="426.4">Top Mid</text></g>
+  <circle class="land land-smoke" cx="639.8" cy="438.4" r="29.0"/>
   <path class="traj traj-smoke" d="M886.4,385.4 L883.2,386.2 L879.8,387.0 L876.6,387.8 L873.2,388.6 L870.0,389.2 L866.6,390.0 L863.4,390.8 L860.0,391.6 L856.8,392.4 L853.4,393.0 L850.2,393.8 L846.8,394.6 L843.6,395.4 L840.2,396.2 L837.0,397.0 L833.6,397.6 L830.4,398.4 L827.0,399.2 L823.8,400.0 L820.4,400.8 L817.2,401.6 L813.8,402.2 L810.6,403.0 L807.2,403.8 L804.0,404.6 L800.6,405.4 L797.4,406.2 L794.0,406.8 L790.8,407.6 L787.6,408.4 L784.2,409.2 L780.8,410.0 L777.6,410.6 L774.4,411.4 L771.0,412.2 L767.8,413.0 L764.4,413.8 L761.2,414.6 L757.8,415.2 L754.6,416.0 L751.2,416.8 L748.0,417.6 L744.6,418.4 L741.4,419.2 L738.0,419.8 L734.8,420.6 L731.4,421.4 L728.2,422.2 L724.8,423.0 L721.6,423.6 L718.2,424.4 L715.0,425.2 L711.6,426.0 L708.4,426.8 L705.0,427.6 L701.8,428.2 L698.4,429.0 L695.2,429.8 L691.8,430.6 L688.6,431.4 L685.2,432.2 L682.0,432.8 L678.6,433.6 L675.4,434.4 L673.4,434.6 L671.6,434.8 L670.0,435.0 L668.2,435.2 L666.4,435.4 L664.6,435.6 L662.8,435.8 L661.2,436.0 L659.4,436.2 L657.6,436.6 L655.8,436.6 L654.0,437.0 L652.4,437.2 L650.6,437.4 L648.8,437.6 L647.0,437.8 L645.8,437.8 L645.0,438.0 L644.2,438.0 L643.4,438.2 L642.6,438.2 L641.8,438.4 L641.0,438.4 L640.2,438.6 L640.0,438.6 L640.2,438.6 L640.2,438.6 L640.2,438.6"/>
-  <line class="aim" x1="886.6" y1="385.4" x2="853.4" y2="392.8"/>
+  <line class="aim" x1="886.6" y1="385.4" x2="853.4" y2="392.9"/>
   <circle class="spot side-T" cx="886.6" cy="385.4" r="7"/>
 </svg>
   <div class="card-body">
@@ -791,11 +808,11 @@
 </a><a class="card" href="/pt/mirage/smoke-sniper-s-nest-from-top-mid-t/" data-id="smoke-sniper-s-nest-from-top-mid-t"
    data-type="smoke" data-side="T" data-area="SnipersNest" data-map="mirage"
    data-teams="falcons fut g2 legacy mouz spirit" data-players="art coolio hunter m0nesy r1nkle sh1ro try xelex xertion"
-   data-diff="1" data-count="21" data-eff="-1">
+   data-diff="1" data-count="26" data-eff="-1">
   <svg class="radar" viewBox="323.8 239.5 457.2 457.2" role="img" aria-label="Trajetória: Smoke Janela (de Top Mid)">
   <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="15.2"><text x="543.8" y="478.6">Meio</text><text x="703.6" y="431.4">Top Mid</text><text x="495.6" y="403.4">L</text><text x="463.2" y="297.2">Rato</text><text x="517.4" y="558.4">Ligação</text><text x="446.2" y="626.6">Jungle</text><text x="410.8" y="471.0">Janela</text><text x="417.8" y="386.2">Moscow 5</text></g>
-  <circle class="land land-smoke" cx="405.1" cy="469.2" r="29.0"/>
+  <g class="places" font-size="15.2"><text x="542.6" y="477.4">Meio</text><text x="702.4" y="426.4">Top Mid</text><text x="494.2" y="400.2">L</text><text x="517.6" y="555.4">Ligação</text><text x="446.2" y="626.6">Jungle</text><text x="412.0" y="466.2">Janela</text><text x="418.0" y="383.6">Moscow 5</text></g>
+  <circle class="land land-smoke" cx="405.1" cy="469.0" r="29.0"/>
   <path class="traj traj-smoke" d="M711.0,467.0 L705.0,467.0 L699.0,467.0 L693.2,467.0 L687.2,467.2 L681.2,467.2 L675.4,467.2 L669.4,467.2 L663.4,467.2 L657.6,467.4 L651.6,467.4 L645.6,467.4 L639.8,467.4 L633.8,467.4 L627.8,467.4 L622.0,467.6 L616.0,467.6 L610.0,467.6 L604.2,467.6 L598.2,467.6 L592.2,467.8 L586.4,467.8 L580.4,467.8 L574.4,467.8 L568.6,467.8 L562.6,468.0 L556.6,468.0 L550.8,468.0 L544.8,468.0 L538.8,468.0 L533.0,468.2 L527.0,468.2 L521.2,468.2 L515.2,468.2 L509.2,468.2 L503.4,468.4 L497.4,468.4 L491.4,468.4 L485.6,468.4 L479.6,468.4 L473.6,468.6 L467.8,468.6 L461.8,468.6 L455.8,468.6 L450.0,468.6 L444.0,468.8 L438.0,468.8 L432.2,468.8 L426.2,468.8 L420.2,468.8 L415.6,469.0 L413.6,469.0 L411.6,469.0 L409.4,469.0 L407.4,469.0 L405.4,469.0 L403.4,469.0 L401.4,469.0 L399.4,469.0 L397.2,469.0 L395.2,469.0 L393.8,469.0 L394.8,469.0 L395.6,469.0 L396.6,469.0 L397.4,469.0 L398.4,469.0 L399.2,469.0 L400.2,469.0 L401.0,469.2 L401.4,469.2 L401.8,469.2 L402.2,469.2 L402.6,469.2 L403.0,469.2 L403.4,469.2 L403.8,469.2 L404.2,469.2 L404.4,469.2 L404.6,469.2 L404.8,469.2 L404.8,469.2 L404.8,469.2"/>
   <line class="aim" x1="710.9" y1="466.9" x2="676.9" y2="467.2"/>
   <circle class="spot side-T" cx="710.9" cy="466.9" r="7"/>
@@ -805,72 +822,142 @@
     <h3>Smoke Janela (de Top Mid)</h3>
     <p class="muted">3 usos</p>
   </div>
+</a><a class="card" href="/pt/mirage/flash-b-site-from-apartments-t/" data-id="flash-b-site-from-apartments-t"
+   data-type="flash" data-side="T" data-area="BombsiteB" data-map="mirage"
+   data-teams="fut legacy mouz" data-players="ksloks pr xfl0ud"
+   data-diff="1" data-count="6" data-eff="1.0">
+  <svg class="radar" viewBox="108.2 95.4 309.3 309.3" role="img" aria-label="Trajetória: Flash Bomb B (de Tapete)">
+  <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="10.3"><text x="249.8" y="291.0">Bomb B</text><text x="330.8" y="201.0">Tapete</text><text x="207.6" y="196.6">Van</text></g>
+  <circle class="land land-flash" cx="178.5" cy="309.9" r="10.0"/>
+  <path class="traj traj-flash" d="M347.4,190.4 L340.8,195.0 L334.4,199.8 L327.8,204.4 L321.2,209.0 L314.6,213.6 L308.0,218.2 L301.4,222.8 L294.8,227.4 L288.4,232.2 L281.8,236.8 L275.2,241.4 L268.6,246.0 L262.0,250.6 L255.4,255.2 L248.8,259.8 L242.2,264.6 L235.8,269.2 L229.2,273.8 L222.6,278.4 L216.0,283.0 L209.4,287.6 L202.8,292.2 L196.2,297.0 L189.6,301.6 L183.2,306.2 L178.2,309.6"/>
+  <line class="aim" x1="347.5" y1="190.1" x2="319.7" y2="209.8"/>
+  <circle class="spot side-T" cx="347.5" cy="190.1" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-flash">Flash</span><span class="badge side-T">TR</span><span class="badge diff-1">Fácil</span><span class="badge video">▶ vídeo</span><span class="badge">2 variações</span></div>
+    <h3>Flash Bomb B (de Tapete)</h3>
+<p class="eff">cega 1,0 inimigo(s) por 2,3s em média</p>
+    <p class="muted">3 usos</p>
+  </div>
+</a><a class="card" href="/pt/mirage/smoke-top-mid-from-t-spawn-t/" data-id="smoke-top-mid-from-t-spawn-t"
+   data-type="smoke" data-side="T" data-area="TopofMid" data-map="mirage"
+   data-teams="fut g2 legacy mouz spirit vitality" data-players="donk dumau dziugss heavygod ksloks magixx mezii pr r1nkle sh1ro spinx tn1r torzsi xelex xertion zont1x"
+   data-diff="1" data-count="47" data-eff="-1">
+  <svg class="radar" viewBox="576.6 177.6 420.6 420.6" role="img" aria-label="Trajetória: Smoke Top Mid (de Base TR)">
+  <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="14.0"><text x="889.2" y="404.0">Base TR</text><text x="702.4" y="426.4">Top Mid</text><text x="740.4" y="249.0">Entrada TV</text></g>
+  <circle class="land land-smoke" cx="653.7" cy="439.2" r="29.0"/>
+  <path class="traj traj-smoke" d="M927.2,336.6 L921.8,338.4 L916.6,340.4 L911.2,342.2 L905.8,344.2 L900.4,346.0 L895.2,348.0 L889.8,349.8 L884.4,351.8 L879.0,353.6 L873.8,355.6 L868.4,357.4 L863.0,359.4 L857.6,361.2 L852.4,363.2 L847.0,365.0 L841.6,367.0 L836.4,368.8 L831.0,370.8 L825.6,372.6 L820.2,374.6 L815.0,376.4 L809.6,378.4 L804.2,380.2 L798.8,382.2 L793.6,384.0 L788.2,386.0 L782.8,387.8 L777.4,389.8 L772.2,391.6 L766.8,393.6 L761.4,395.4 L756.0,397.4 L750.8,399.2 L745.4,401.2 L740.0,403.0 L734.6,405.0 L729.4,406.8 L724.0,408.8 L718.6,410.6 L713.2,412.6 L708.0,414.4 L702.6,416.4 L697.2,418.2 L692.0,420.2 L686.6,422.0 L681.2,424.0 L675.8,425.8 L670.6,427.8 L665.2,429.6 L659.8,431.6 L654.4,433.4 L649.2,435.4 L646.6,436.4 L647.2,436.6 L647.8,437.0 L648.4,437.2 L649.0,437.4 L649.6,437.8 L650.2,438.0 L650.8,438.2 L651.4,438.6 L652.0,438.6 L652.2,438.8 L652.4,439.0 L652.8,439.0 L653.0,439.2 L653.2,439.2 L653.2,439.4 L653.2,439.4 L653.0,439.4"/>
+  <line class="aim" x1="927.2" y1="336.5" x2="895.1" y2="347.7"/>
+  <circle class="spot side-T" cx="927.2" cy="336.5" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">TR</span><span class="badge diff-1">Fácil</span><span class="badge video">▶ vídeo</span><span class="badge">5 variações</span></div>
+    <h3>Smoke Top Mid (de Base TR)</h3>
+    <p class="muted">2 usos</p>
+  </div>
 </a><a class="card" href="/pt/mirage/smoke-stairs-from-t-spawn-t/" data-id="smoke-stairs-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="Stairs" data-map="mirage"
-   data-teams="fut g2 legacy mouz spirit vitality" data-players="hunter latto magixx mezii sunpayus torzsi"
-   data-diff="2" data-count="10" data-eff="-1">
+   data-teams="fut g2 legacy mouz spirit vitality" data-players="donk hunter latto magixx mezii sunpayus torzsi"
+   data-diff="2" data-count="11" data-eff="-1">
   <svg class="radar" viewBox="470.6 365.4 491.0 491.0" role="img" aria-label="Trajetória: Smoke Cabecinha (de Base TR)">
   <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="16.4"><text x="561.4" y="724.2">Bomb A</text><text x="749.2" y="753.2">Palacio</text><text x="543.8" y="478.6">Meio</text><text x="703.6" y="431.4">Top Mid</text><text x="794.8" y="594.2">Entrada da Caverna</text><text x="719.6" y="662.4">Caverna</text><text x="545.8" y="650.6">Cabecinha</text><text x="639.4" y="761.4">Areia</text></g>
-  <circle class="land land-smoke" cx="540.8" cy="652.5" r="29.0"/>
+  <g class="places" font-size="16.4"><text x="561.4" y="724.2">Bomb A</text><text x="749.2" y="753.2">Palacio</text><text x="542.6" y="477.4">Meio</text><text x="702.4" y="426.4">Top Mid</text><text x="796.6" y="590.6">Entrada da Caverna</text><text x="720.8" y="659.8">Caverna</text><text x="546.2" y="652.4">Cabecinha</text><text x="640.2" y="757.4">Areia</text></g>
+  <circle class="land land-smoke" cx="540.7" cy="652.8" r="29.0"/>
   <path class="traj traj-smoke" d="M891.6,568.8 L887.6,569.8 L883.8,570.6 L879.8,571.6 L876.0,572.6 L872.0,573.4 L868.2,574.4 L864.2,575.4 L860.4,576.2 L856.4,577.2 L852.6,578.2 L848.6,579.0 L844.8,580.0 L840.8,581.0 L837.0,581.8 L833.0,582.8 L829.2,583.8 L825.2,584.8 L821.4,585.6 L817.4,586.6 L813.6,587.6 L809.6,588.4 L805.8,589.4 L801.8,590.4 L798.0,591.2 L794.0,592.2 L790.2,593.2 L786.2,594.0 L782.4,595.0 L778.4,596.0 L774.6,596.8 L770.6,597.8 L766.8,598.8 L762.8,599.6 L758.8,600.6 L755.0,601.6 L751.2,602.6 L747.2,603.4 L743.2,604.4 L739.4,605.4 L735.4,606.2 L731.6,607.2 L727.6,608.2 L723.8,609.0 L719.8,610.0 L716.0,611.0 L712.0,611.8 L708.2,612.8 L704.2,613.8 L700.4,614.6 L696.4,615.6 L692.6,616.6 L688.6,617.4 L684.8,618.4 L680.8,619.4 L677.0,620.2 L673.0,621.2 L669.2,622.2 L665.2,623.0 L661.4,624.0 L657.4,625.0 L653.6,626.0 L649.6,626.8 L645.8,627.8 L641.8,628.8 L638.0,629.6 L634.0,630.6 L630.2,631.6 L626.2,632.4 L622.4,633.4 L618.4,634.4 L614.6,635.2 L610.6,636.2 L606.8,637.2 L602.8,638.0 L599.0,639.0 L595.0,640.0 L591.2,640.8 L588.4,641.6 L587.4,641.8 L586.2,642.0 L585.2,642.4 L584.2,642.6 L583.2,642.8 L582.2,643.0 L581.0,643.4 L580.0,643.6 L579.0,643.8 L578.0,644.0 L577.0,644.4 L575.8,644.6 L574.8,644.8 L573.8,645.0 L572.8,645.4 L571.8,645.6 L570.6,645.8 L569.6,646.0 L568.6,646.4 L567.6,646.6 L566.6,646.8 L565.4,647.0 L564.4,647.4 L563.4,647.6 L562.4,647.8 L561.2,648.0 L560.2,648.4 L559.2,648.6 L558.2,648.8 L557.2,649.0 L556.0,649.4 L555.0,649.6 L554.0,649.8 L553.4,650.0 L553.0,650.0 L552.4,650.2 L552.0,650.2 L551.6,650.4 L551.0,650.6 L550.6,650.6 L550.0,650.8 L549.6,650.8 L549.2,651.0 L548.6,651.0 L548.2,651.2 L547.8,651.4 L547.2,651.4 L546.8,651.6 L546.4,651.6 L545.8,651.8 L545.4,651.8 L545.0,652.0 L544.4,652.0 L544.0,652.2 L543.6,652.4 L543.2,652.4 L543.0,652.4 L542.8,652.6 L542.6,652.6 L542.4,652.6 L542.2,652.6 L542.0,652.8 L541.8,652.8 L541.4,652.8 L541.2,652.8 L541.2,653.0 L541.0,653.0 L541.0,653.0 L540.8,653.0 L540.8,653.0 L540.6,653.0 L540.6,653.0 L540.6,653.0 L540.6,653.0"/>
-  <line class="aim" x1="891.5" y1="568.8" x2="858.5" y2="576.7"/>
-  <circle class="spot side-T" cx="891.5" cy="568.8" r="7"/>
+  <line class="aim" x1="891.5" y1="568.7" x2="858.4" y2="576.7"/>
+  <circle class="spot side-T" cx="891.5" cy="568.7" r="7"/>
 </svg>
   <div class="card-body">
     <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">TR</span><span class="badge diff-2">Médio</span><span class="badge">jump throw</span><span class="badge video">▶ vídeo</span></div>
     <h3>Smoke Cabecinha (de Base TR)</h3>
     <p class="muted">2 usos</p>
   </div>
-</a><a class="card" href="/pt/mirage/smoke-connector-from-top-mid-t/" data-id="smoke-connector-from-top-mid-t"
-   data-type="smoke" data-side="T" data-area="Connector" data-map="mirage"
-   data-teams="falcons fut g2 legacy mouz spirit vitality" data-players="apex dumau flamez heavygod hunter karrigan magixx nertz niko sunpayus tn1r xertion"
-   data-diff="1" data-count="20" data-eff="-1">
-  <svg class="radar" viewBox="430.0 249.3 382.4 382.4" role="img" aria-label="Trajetória: Smoke Ligação (de Top Mid)">
+</a><a class="card" href="/pt/mirage/molotov-t-ramp-from-ct-spawn-ct/" data-id="molotov-t-ramp-from-ct-spawn-ct"
+   data-type="molotov" data-side="CT" data-area="TRamp" data-map="mirage"
+   data-teams="falcons furia fut legacy spirit" data-players="latto m0nesy sunpayus teses tn1r yekindar yuurih"
+   data-diff="3" data-count="26" data-eff="0.0">
+  <svg class="radar" viewBox="392.3 521.5 394.9 394.9" role="img" aria-label="Trajetória: Molotov Caverna (de Base CT)">
   <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="12.7"><text x="543.8" y="478.6">Meio</text><text x="703.6" y="431.4">Top Mid</text><text x="495.6" y="403.4">L</text><text x="517.4" y="558.4">Ligação</text></g>
-  <circle class="land land-smoke" cx="511.6" cy="522.4" r="29.0"/>
+  <g class="places" font-size="13.2"><text x="561.4" y="724.2">Bomb A</text><text x="720.8" y="659.8">Caverna</text><text x="446.2" y="626.6">Jungle</text><text x="546.2" y="652.4">Cabecinha</text><text x="640.2" y="757.4">Areia</text></g>
+  <circle class="land land-molotov" cx="715.4" cy="637.1" r="24.0"/>
+  <path class="traj traj-molotov" d="M463.4,810.6 L472.6,803.4 L482.0,796.4 L491.2,789.2 L500.6,782.0 L510.0,774.8 L519.2,767.8 L528.6,760.6 L537.8,753.4 L547.2,746.4 L556.4,739.2 L565.8,732.0 L575.2,725.0 L584.4,717.8 L593.8,710.6 L603.0,703.4 L612.4,696.4 L621.6,689.2 L631.0,682.0 L640.4,675.0 L649.6,667.8 L659.0,660.6 L668.2,653.6 L677.6,646.4 L686.8,639.2 L696.2,632.0 L704.6,626.8 L708.8,630.0 L713.0,633.2 L717.2,636.4"/>
+  <line class="aim" x1="462.3" y1="811.1" x2="489.1" y2="790.2"/>
+  <circle class="spot side-CT" cx="462.3" cy="811.1" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-molotov">Molotov</span><span class="badge side-CT">CT</span><span class="badge diff-3">Difícil</span><span class="badge video">▶ vídeo</span><span class="badge">4 variações</span></div>
+    <h3>Molotov Caverna (de Base CT)</h3>
+    <p class="muted">2 usos</p>
+  </div>
+</a><a class="card" href="/pt/mirage/flash-apartments-from-back-alley-t/" data-id="flash-apartments-from-back-alley-t"
+   data-type="flash" data-side="T" data-area="Apartments" data-map="mirage"
+   data-teams="furia fut legacy mouz spirit" data-players="art sh1ro spinx sunpayus torzsi try yuurih zont1x"
+   data-diff="1" data-count="14" data-eff="1.21">
+  <svg class="radar" viewBox="295.0 77.8 312.8 312.8" role="img" aria-label="Trajetória: Flash Tapete (de Saída do Rato)">
+  <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="10.4"><text x="330.8" y="201.0">Tapete</text><text x="457.2" y="288.8">Rato</text><text x="567.2" y="229.0">Saída do Rato</text></g>
+  <circle class="land land-flash" cx="365.1" cy="232.1" r="10.0"/>
+  <path class="traj traj-flash" d="M537.8,239.4 L531.0,239.0 L524.4,238.6 L517.6,238.2 L511.0,237.8 L504.2,237.4 L497.6,237.0 L490.8,236.4 L484.0,236.0 L477.4,235.6 L470.6,235.2 L464.0,234.8 L457.2,234.4 L450.6,233.8 L443.8,233.4 L437.0,233.0 L430.4,232.6 L423.6,232.2 L417.0,231.8 L410.2,231.2 L403.6,230.8 L396.8,230.4 L390.0,230.0 L383.4,229.6 L376.6,229.2 L370.0,228.8 L365.0,228.4"/>
+  <line class="aim" x1="537.8" y1="240.1" x2="503.8" y2="238.5"/>
+  <circle class="spot side-T" cx="537.8" cy="240.1" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-flash">Flash</span><span class="badge side-T">TR</span><span class="badge diff-1">Fácil</span><span class="badge video">▶ vídeo</span><span class="badge">4 variações</span></div>
+    <h3>Flash Tapete (de Saída do Rato)</h3>
+<p class="eff">cega 1,2 inimigo(s) por 3,2s em média</p>
+    <p class="muted">2 usos</p>
+  </div>
+</a><a class="card" href="/pt/mirage/smoke-mid-from-top-mid-t/" data-id="smoke-mid-from-top-mid-t"
+   data-type="smoke" data-side="T" data-area="Middle" data-map="mirage"
+   data-teams="falcons fut g2 legacy mouz spirit vitality" data-players="apex dumau flamez heavygod hunter karrigan magixx nertz niko sunpayus tn1r torzsi xertion"
+   data-diff="1" data-count="24" data-eff="-1">
+  <svg class="radar" viewBox="430.0 249.3 382.4 382.4" role="img" aria-label="Trajetória: Smoke Meio (de Top Mid)">
+  <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="12.7"><text x="542.6" y="477.4">Meio</text><text x="702.4" y="426.4">Top Mid</text><text x="494.2" y="400.2">L</text><text x="517.6" y="555.4">Ligação</text></g>
+  <circle class="land land-smoke" cx="511.4" cy="522.5" r="29.0"/>
   <path class="traj traj-smoke" d="M742.4,358.0 L735.8,362.4 L729.4,366.6 L722.8,370.8 L716.2,375.2 L709.6,379.4 L703.0,383.6 L696.4,387.8 L690.0,392.2 L683.4,396.4 L676.8,400.6 L670.2,405.0 L663.6,409.2 L657.0,413.4 L650.4,417.8 L644.0,422.0 L637.4,426.2 L630.8,430.4 L624.2,434.8 L617.6,439.0 L611.0,443.2 L604.6,447.6 L598.0,451.8 L591.4,456.0 L584.8,460.4 L578.2,464.6 L571.6,468.8 L565.2,473.0 L558.6,477.4 L552.0,481.6 L545.4,485.8 L538.8,490.2 L532.2,494.4 L525.6,498.6 L522.4,500.8 L519.6,502.6 L516.8,504.4 L514.0,506.2 L511.2,508.0 L508.4,509.8 L505.6,511.6 L502.8,513.4 L500.0,515.2 L500.0,516.4 L501.4,517.2 L502.6,518.0 L503.8,518.8 L505.2,519.6 L506.4,520.4 L507.6,521.2 L508.6,522.0 L509.2,522.4 L509.8,522.6 L510.4,523.0 L510.6,522.8 L510.8,522.6 L511.0,522.4 L511.2,522.4 L511.4,522.2 L511.4,522.2 L511.6,522.2 L511.6,522.2"/>
   <line class="aim" x1="742.4" y1="358.1" x2="713.9" y2="376.6"/>
   <circle class="spot side-T" cx="742.4" cy="358.1" r="7"/>
 </svg>
   <div class="card-body">
     <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">TR</span><span class="badge diff-1">Fácil</span><span class="badge video">▶ vídeo</span></div>
-    <h3>Smoke Ligação (de Top Mid)</h3>
+    <h3>Smoke Meio (de Top Mid)</h3>
     <p class="muted">1 uso</p>
   </div>
-</a><a class="card" href="/pt/mirage/molotov-t-ramp-from-ct-spawn-ct/" data-id="molotov-t-ramp-from-ct-spawn-ct"
-   data-type="molotov" data-side="CT" data-area="TRamp" data-map="mirage"
-   data-teams="falcons furia fut legacy mouz spirit" data-players="donk dziugss latto m0nesy teses tn1r xelex xfl0ud yekindar yuurih"
-   data-diff="3" data-count="26" data-eff="0.0">
-  <svg class="radar" viewBox="406.1 520.3 391.1 391.1" role="img" aria-label="Trajetória: Molotov Caverna (de Base CT)">
+</a><a class="card" href="/pt/mirage/smoke-a-site-from-t-ramp-t/" data-id="smoke-a-site-from-t-ramp-t"
+   data-type="smoke" data-side="T" data-area="BombsiteA" data-map="mirage"
+   data-teams="furia fut g2 legacy mouz spirit vitality" data-players="dem0n hunter kscerato latto magixx mezii sh1ro sunpayus torzsi yekindar"
+   data-diff="1" data-count="12" data-eff="-1">
+  <svg class="radar" viewBox="418.2 489.9 349.6 349.6" role="img" aria-label="Trajetória: Smoke Bomb A (de Caverna)">
   <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="13.0"><text x="561.4" y="724.2">Bomb A</text><text x="749.2" y="753.2">Palacio</text><text x="719.6" y="662.4">Caverna</text><text x="545.8" y="650.6">Cabecinha</text><text x="639.4" y="761.4">Areia</text></g>
-  <circle class="land land-molotov" cx="727.2" cy="653.2" r="24.0"/>
-  <path class="traj traj-molotov" d="M476.2,803.2 L485.2,795.8 L494.2,788.6 L503.2,781.2 L512.2,774.0 L521.2,766.6 L530.2,759.4 L539.2,752.2 L548.2,744.8 L557.2,737.6 L566.2,730.2 L575.2,723.0 L584.2,715.8 L593.2,708.4 L602.4,701.2 L611.4,693.8 L620.4,686.6 L629.4,679.4 L638.4,672.0 L647.4,664.8 L656.4,657.4 L665.4,650.2 L674.4,642.8 L683.4,635.6 L692.4,628.4 L697.4,629.4 L701.6,632.8 L705.6,636.0 L709.6,639.2 L713.6,642.6 L717.8,645.8 L721.8,649.2 L725.8,652.4"/>
-  <line class="aim" x1="476.1" y1="802.7" x2="502.6" y2="781.4"/>
-  <circle class="spot side-CT" cx="476.1" cy="802.7" r="7"/>
+  <g class="places" font-size="11.7"><text x="561.4" y="724.2">Bomb A</text><text x="517.6" y="555.4">Ligação</text><text x="720.8" y="659.8">Caverna</text><text x="546.2" y="652.4">Cabecinha</text><text x="640.2" y="757.4">Areia</text></g>
+  <circle class="land land-smoke" cx="520.7" cy="667.5" r="29.0"/>
+  <path class="traj traj-smoke" d="M697.8,662.0 L690.0,662.2 L682.2,662.4 L674.4,662.6 L666.6,662.6 L659.0,662.8 L651.2,663.0 L643.4,663.2 L635.6,663.4 L627.8,663.4 L620.0,663.6 L612.4,663.8 L604.6,664.0 L596.8,664.2 L589.0,664.2 L581.2,664.4 L573.6,664.6 L565.8,664.8 L558.0,665.0 L550.2,665.0 L542.4,665.2 L534.8,665.4 L527.0,665.6 L519.2,665.8 L511.4,665.8 L503.6,666.0 L495.8,666.2 L488.2,666.4 L489.2,666.4 L492.6,666.6 L496.2,666.6 L499.6,666.6 L502.2,666.8 L503.8,666.8 L505.4,666.8 L507.0,666.8 L508.4,666.8 L510.0,667.0 L511.6,667.0 L513.2,667.0 L514.8,667.0 L516.4,667.0 L517.4,667.0 L518.2,667.0 L518.8,667.0 L519.6,667.2 L520.2,667.2 L520.6,667.2 L521.0,667.2 L521.0,667.2"/>
+  <line class="aim" x1="697.8" y1="661.8" x2="663.8" y2="662.6"/>
+  <circle class="spot side-T" cx="697.8" cy="661.8" r="7"/>
 </svg>
   <div class="card-body">
-    <div class="card-badges"><span class="badge type-molotov">Molotov</span><span class="badge side-CT">CT</span><span class="badge diff-3">Difícil</span><span class="badge video">▶ vídeo</span><span class="badge">3 variações</span></div>
-    <h3>Molotov Caverna (de Base CT)</h3>
+    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">TR</span><span class="badge diff-1">Fácil</span><span class="badge video">▶ vídeo</span></div>
+    <h3>Smoke Bomb A (de Caverna)</h3>
     <p class="muted">1 uso</p>
   </div>
-</a><a class="card" href="/pt/mirage/smoke-top-mid-from-t-spawn-t/" data-id="smoke-top-mid-from-t-spawn-t"
-   data-type="smoke" data-side="T" data-area="TopofMid" data-map="mirage"
-   data-teams="fut g2 legacy mouz spirit vitality" data-players="dziugss heavygod ksloks magixx mezii pr r1nkle sh1ro spinx tn1r torzsi xelex xertion"
-   data-diff="1" data-count="26" data-eff="-1">
-  <svg class="radar" viewBox="576.6 177.6 420.6 420.6" role="img" aria-label="Trajetória: Smoke Top Mid (de Base TR)">
+</a><a class="card" href="/pt/mirage/molotov-stairs-from-t-ramp-t/" data-id="molotov-stairs-from-t-ramp-t"
+   data-type="molotov" data-side="T" data-area="Stairs" data-map="mirage"
+   data-teams="furia g2 legacy mouz spirit vitality" data-players="hunter kscerato latto magixx mezii sh1ro tn1r torzsi yekindar"
+   data-diff="1" data-count="11" data-eff="0.0">
+  <svg class="radar" viewBox="485.8 512.5 282.2 282.2" role="img" aria-label="Trajetória: Molotov Cabecinha (de Caverna)">
   <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="14.0"><text x="889.2" y="404.0">Base TR</text><text x="703.6" y="431.4">Top Mid</text><text x="740.4" y="249.0">Entrada TV</text></g>
-  <circle class="land land-smoke" cx="654.1" cy="439.1" r="29.0"/>
-  <path class="traj traj-smoke" d="M927.2,336.6 L921.8,338.4 L916.6,340.4 L911.2,342.2 L905.8,344.2 L900.4,346.0 L895.2,348.0 L889.8,349.8 L884.4,351.8 L879.0,353.6 L873.8,355.6 L868.4,357.4 L863.0,359.4 L857.6,361.2 L852.4,363.2 L847.0,365.0 L841.6,367.0 L836.4,368.8 L831.0,370.8 L825.6,372.6 L820.2,374.6 L815.0,376.4 L809.6,378.4 L804.2,380.2 L798.8,382.2 L793.6,384.0 L788.2,386.0 L782.8,387.8 L777.4,389.8 L772.2,391.6 L766.8,393.6 L761.4,395.4 L756.0,397.4 L750.8,399.2 L745.4,401.2 L740.0,403.0 L734.6,405.0 L729.4,406.8 L724.0,408.8 L718.6,410.6 L713.2,412.6 L708.0,414.4 L702.6,416.4 L697.2,418.2 L692.0,420.2 L686.6,422.0 L681.2,424.0 L675.8,425.8 L670.6,427.8 L665.2,429.6 L659.8,431.6 L654.4,433.4 L649.2,435.4 L646.6,436.4 L647.2,436.6 L647.8,437.0 L648.4,437.2 L649.0,437.4 L649.6,437.8 L650.2,438.0 L650.8,438.2 L651.4,438.6 L652.0,438.6 L652.2,438.8 L652.4,439.0 L652.8,439.0 L653.0,439.2 L653.2,439.2 L653.2,439.4 L653.2,439.4 L653.0,439.4"/>
-  <line class="aim" x1="927.2" y1="336.5" x2="895.1" y2="347.7"/>
-  <circle class="spot side-T" cx="927.2" cy="336.5" r="7"/>
+  <g class="places" font-size="9.4"><text x="561.4" y="724.2">Bomb A</text><text x="517.6" y="555.4">Ligação</text><text x="720.8" y="659.8">Caverna</text><text x="546.2" y="652.4">Cabecinha</text><text x="640.2" y="757.4">Areia</text></g>
+  <circle class="land land-molotov" cx="555.8" cy="651.4" r="24.0"/>
+  <path class="traj traj-molotov" d="M697.8,660.8 L690.4,659.6 L683.0,658.6 L675.4,657.4 L668.0,656.4 L660.4,655.2 L653.0,654.2 L645.6,653.0 L638.0,652.0 L630.6,651.0 L623.0,649.8 L615.6,648.8 L608.2,647.6 L600.6,646.6 L593.2,645.4 L589.6,645.8 L586.2,646.4 L582.8,646.8 L579.4,647.4 L576.2,647.8 L572.8,648.4 L569.4,648.8 L566.0,649.4 L562.6,649.8 L559.2,650.2 L556.0,650.8"/>
+  <line class="aim" x1="697.9" y1="661.8" x2="664.4" y2="656.5"/>
+  <circle class="spot side-T" cx="697.9" cy="661.8" r="7"/>
 </svg>
   <div class="card-body">
-    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">TR</span><span class="badge diff-1">Fácil</span><span class="badge video">▶ vídeo</span><span class="badge">4 variações</span></div>
-    <h3>Smoke Top Mid (de Base TR)</h3>
+    <div class="card-badges"><span class="badge type-molotov">Molotov</span><span class="badge side-T">TR</span><span class="badge diff-1">Fácil</span><span class="badge video">▶ vídeo</span></div>
+    <h3>Molotov Cabecinha (de Caverna)</h3>
     <p class="muted">1 uso</p>
   </div>
 </a><a class="card" href="/pt/mirage/he-sniper-s-nest-ct/" data-id="he-sniper-s-nest-ct"
@@ -879,7 +966,7 @@
    data-diff="1" data-count="9" data-eff="0.0">
   <svg class="radar" viewBox="280.6 304.0 260 260" role="img" aria-label="Trajetória: HE Janela">
   <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="8.7"><text x="495.6" y="403.4">L</text><text x="410.8" y="471.0">Janela</text><text x="417.8" y="386.2">Moscow 5</text></g>
+  <g class="places" font-size="8.7"><text x="494.2" y="400.2">L</text><text x="412.0" y="466.2">Janela</text><text x="418.0" y="383.6">Moscow 5</text></g>
   <circle class="land land-he" cx="412.0" cy="434.1" r="14.0"/>
   <path class="traj traj-he" d="M409.2,433.8 L409.4,433.8 L409.4,433.8 L409.4,433.8 L409.4,433.8 L409.4,433.8 L409.6,433.8 L409.6,433.8 L409.6,433.8 L409.6,433.8 L409.6,433.8 L409.8,433.8 L409.8,433.8 L409.8,433.8 L409.8,433.8 L409.8,433.8 L410.0,433.8 L410.0,433.8 L410.0,433.8 L410.0,433.8 L410.0,433.8 L410.0,433.8 L410.2,433.8 L410.2,433.8 L410.2,433.8 L410.2,433.8 L410.2,433.8"/>
   <line class="aim" x1="409.4" y1="433.9" x2="443.3" y2="435.3"/>
@@ -890,106 +977,72 @@
     <h3>HE Janela</h3>
     <p class="muted">1 uso</p>
   </div>
-</a><a class="card" href="/pt/mirage/smoke-a-site-from-t-ramp-t/" data-id="smoke-a-site-from-t-ramp-t"
-   data-type="smoke" data-side="T" data-area="BombsiteA" data-map="mirage"
-   data-teams="fut g2 legacy mouz spirit vitality" data-players="dem0n hunter latto magixx mezii sh1ro sunpayus torzsi"
-   data-diff="1" data-count="9" data-eff="-1">
-  <svg class="radar" viewBox="418.2 490.0 349.6 349.6" role="img" aria-label="Trajetória: Smoke Bomb A (de Caverna)">
-  <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="11.7"><text x="561.4" y="724.2">Bomb A</text><text x="517.4" y="558.4">Ligação</text><text x="719.6" y="662.4">Caverna</text><text x="545.8" y="650.6">Cabecinha</text><text x="639.4" y="761.4">Areia</text></g>
-  <circle class="land land-smoke" cx="520.7" cy="667.6" r="29.0"/>
-  <path class="traj traj-smoke" d="M697.8,662.0 L690.0,662.2 L682.2,662.4 L674.4,662.6 L666.6,662.6 L659.0,662.8 L651.2,663.0 L643.4,663.2 L635.6,663.4 L627.8,663.4 L620.0,663.6 L612.4,663.8 L604.6,664.0 L596.8,664.2 L589.0,664.2 L581.2,664.4 L573.6,664.6 L565.8,664.8 L558.0,665.0 L550.2,665.0 L542.4,665.2 L534.8,665.4 L527.0,665.6 L519.2,665.8 L511.4,665.8 L503.6,666.0 L495.8,666.2 L488.2,666.4 L489.2,666.4 L492.6,666.6 L496.2,666.6 L499.6,666.6 L502.2,666.8 L503.8,666.8 L505.4,666.8 L507.0,666.8 L508.4,666.8 L510.0,667.0 L511.6,667.0 L513.2,667.0 L514.8,667.0 L516.4,667.0 L517.4,667.0 L518.2,667.0 L518.8,667.0 L519.6,667.2 L520.2,667.2 L520.6,667.2 L521.0,667.2 L521.0,667.2"/>
-  <line class="aim" x1="697.8" y1="661.9" x2="663.8" y2="662.7"/>
-  <circle class="spot side-T" cx="697.8" cy="661.9" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">TR</span><span class="badge diff-1">Fácil</span><span class="badge video">▶ vídeo</span></div>
-    <h3>Smoke Bomb A (de Caverna)</h3>
-    <p class="muted">1 uso</p>
-  </div>
-</a><a class="card" href="/pt/mirage/molotov-stairs-from-t-ramp-t/" data-id="molotov-stairs-from-t-ramp-t"
-   data-type="molotov" data-side="T" data-area="Stairs" data-map="mirage"
-   data-teams="g2 legacy mouz spirit vitality" data-players="hunter latto magixx mezii sh1ro tn1r torzsi"
-   data-diff="1" data-count="8" data-eff="0.0">
-  <svg class="radar" viewBox="486.0 512.7 281.9 281.9" role="img" aria-label="Trajetória: Molotov Cabecinha (de Caverna)">
-  <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="9.4"><text x="561.4" y="724.2">Bomb A</text><text x="517.4" y="558.4">Ligação</text><text x="719.6" y="662.4">Caverna</text><text x="545.8" y="650.6">Cabecinha</text><text x="639.4" y="761.4">Areia</text></g>
-  <circle class="land land-molotov" cx="556.5" cy="651.1" r="24.0"/>
-  <path class="traj traj-molotov" d="M697.8,660.8 L690.4,659.6 L683.0,658.6 L675.4,657.4 L668.0,656.4 L660.4,655.2 L653.0,654.2 L645.6,653.0 L638.0,652.0 L630.6,651.0 L623.0,649.8 L615.6,648.8 L608.2,647.6 L600.6,646.6 L593.2,645.4 L589.6,645.8 L586.2,646.4 L582.8,646.8 L579.4,647.4 L576.2,647.8 L572.8,648.4 L569.4,648.8 L566.0,649.4 L562.6,649.8 L559.2,650.2 L556.0,650.8"/>
-  <line class="aim" x1="697.9" y1="661.9" x2="664.3" y2="656.6"/>
-  <circle class="spot side-T" cx="697.9" cy="661.9" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge type-molotov">Molotov</span><span class="badge side-T">TR</span><span class="badge diff-1">Fácil</span><span class="badge video">▶ vídeo</span></div>
-    <h3>Molotov Cabecinha (de Caverna)</h3>
-    <p class="muted">1 uso</p>
-  </div>
-</a><a class="card" href="/pt/mirage/molotov-stairs-from-palace-alley-t/" data-id="molotov-stairs-from-palace-alley-t"
-   data-type="molotov" data-side="T" data-area="Stairs" data-map="mirage"
-   data-teams="falcons furia legacy mouz" data-players="kscerato spinx teses torzsi try"
-   data-diff="3" data-count="7" data-eff="0.0">
-  <svg class="radar" viewBox="497.2 417.7 413.9 413.9" role="img" aria-label="Trajetória: Molotov Cabecinha (de Entrada da Caverna)">
-  <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="13.8"><text x="561.4" y="724.2">Bomb A</text><text x="749.2" y="753.2">Palacio</text><text x="543.8" y="478.6">Meio</text><text x="794.8" y="594.2">Entrada da Caverna</text><text x="719.6" y="662.4">Caverna</text><text x="545.8" y="650.6">Cabecinha</text><text x="639.4" y="761.4">Areia</text></g>
-  <circle class="land land-molotov" cx="567.3" cy="661.8" r="24.0"/>
-  <path class="traj traj-molotov" d="M841.0,586.2 L832.4,588.6 L823.8,591.0 L815.4,593.4 L806.8,595.8 L798.2,598.2 L789.6,600.6 L781.0,603.0 L772.6,605.4 L764.0,607.8 L755.4,610.2 L746.8,612.6 L738.2,615.0 L729.8,617.4 L721.2,619.8 L712.6,622.2 L704.0,624.6 L695.6,627.0 L687.0,629.4 L678.4,631.8 L669.8,634.2 L661.2,636.6 L652.8,639.0 L644.2,641.4 L635.6,643.8 L627.0,646.2 L618.4,648.6 L610.0,651.0 L601.4,653.4 L592.8,655.8 L584.2,658.2 L575.6,660.6 L567.2,663.0"/>
-  <line class="aim" x1="841.1" y1="586.3" x2="808.3" y2="595.3"/>
-  <circle class="spot side-T" cx="841.1" cy="586.3" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge type-molotov">Molotov</span><span class="badge side-T">TR</span><span class="badge diff-3">Difícil</span><span class="badge">jump throw</span><span class="badge video">▶ vídeo</span></div>
-    <h3>Molotov Cabecinha (de Entrada da Caverna)</h3>
-    <p class="muted">1 uso</p>
-  </div>
-</a><a class="card" href="/pt/mirage/smoke-apartments-from-truck-ct/" data-id="smoke-apartments-from-truck-ct"
-   data-type="smoke" data-side="CT" data-area="Apartments" data-map="mirage"
-   data-teams="falcons legacy mouz spirit vitality" data-players="karrigan ksloks magixx mezii pr"
-   data-diff="1" data-count="7" data-eff="-1">
-  <svg class="radar" viewBox="145.4 49.1 290.6 290.6" role="img" aria-label="Trajetória: Smoke Tapete (de Van)">
-  <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="9.7"><text x="249.8" y="291.0">Bomb B</text><text x="328.6" y="197.4">Tapete</text><text x="207.6" y="196.6">Van</text></g>
-  <circle class="land land-smoke" cx="358.4" cy="190.3" r="29.0"/>
-  <path class="traj traj-smoke" d="M217.0,180.2 L226.8,183.6 L236.6,187.0 L246.6,190.4 L256.4,193.8 L266.2,197.2 L276.0,200.6 L285.8,204.0 L295.6,207.6 L304.2,209.8 L308.6,208.4 L313.0,206.8 L317.4,205.2 L321.8,203.8 L326.2,202.2 L330.8,200.6 L335.2,199.0 L339.6,197.6 L344.0,196.0 L348.4,194.4 L352.8,193.0 L357.2,191.4 L361.6,189.8 L366.0,188.4 L360.2,189.2 L360.2,189.2"/>
-  <line class="aim" x1="215.4" y1="179.1" x2="247.4" y2="190.4"/>
-  <circle class="spot side-CT" cx="215.4" cy="179.1" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-CT">CT</span><span class="badge diff-1">Fácil</span><span class="badge video">▶ vídeo</span></div>
-    <h3>Smoke Tapete (de Van)</h3>
-    <p class="muted">1 uso</p>
-  </div>
 </a><a class="card" href="/pt/mirage/smoke-a-site-from-palace-alley-t/" data-id="smoke-a-site-from-palace-alley-t"
    data-type="smoke" data-side="T" data-area="BombsiteA" data-map="mirage"
-   data-teams="falcons furia fut g2 legacy mouz spirit vitality" data-players="dziugss heavygod hunter kscerato mezii ropz sh1ro spinx teses torzsi try"
-   data-diff="2" data-count="14" data-eff="-1">
-  <svg class="radar" viewBox="392.8 367.5 519.2 519.2" role="img" aria-label="Trajetória: Smoke Bomb A (de Entrada da Caverna)">
+   data-teams="falcons furia legacy mouz" data-players="kscerato spinx teses torzsi try xelex"
+   data-diff="2" data-count="12" data-eff="-1">
+  <svg class="radar" viewBox="392.8 367.2 519.2 519.2" role="img" aria-label="Trajetória: Smoke Bomb A (de Entrada da Caverna)">
   <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="17.3"><text x="561.4" y="724.2">Bomb A</text><text x="749.2" y="753.2">Palacio</text><text x="543.8" y="478.6">Meio</text><text x="703.6" y="431.4">Top Mid</text><text x="794.8" y="594.2">Entrada da Caverna</text><text x="517.4" y="558.4">Ligação</text><text x="719.6" y="662.4">Caverna</text><text x="545.8" y="650.6">Cabecinha</text><text x="639.4" y="761.4">Areia</text></g>
-  <circle class="land land-smoke" cx="514.5" cy="668.4" r="29.0"/>
-  <path class="traj traj-smoke" d="M842.0,585.6 L834.4,587.0 L826.8,588.4 L819.2,590.0 L811.4,591.4 L803.8,592.8 L796.2,594.4 L788.6,595.8 L781.0,597.2 L773.4,598.8 L765.6,600.2 L758.0,601.6 L750.4,603.2 L742.8,604.6 L735.2,606.0 L727.6,607.4 L720.0,609.0 L712.2,610.4 L704.6,611.8 L697.0,613.4 L689.4,614.8 L681.8,616.2 L674.2,617.8 L666.6,619.2 L658.8,620.6 L651.2,622.2 L643.6,623.6 L636.0,625.0 L628.4,626.6 L620.8,628.0 L613.2,629.4 L605.4,631.0 L597.8,632.4 L590.2,633.8 L582.6,635.4 L575.0,636.8 L567.4,638.2 L559.8,639.8 L552.0,641.2 L544.4,642.6 L536.8,644.2 L529.2,645.6 L521.6,647.0 L514.0,648.6 L506.4,650.0 L498.6,651.4 L491.0,652.8 L483.4,654.4 L475.8,655.8 L468.2,657.2 L463.4,658.2 L462.8,658.6 L464.2,658.8 L465.6,659.2 L467.0,659.4 L468.4,659.6 L469.8,660.0 L471.2,660.2 L472.6,660.6 L474.0,660.8 L475.4,661.0 L476.8,661.4 L478.2,661.6 L479.6,661.8 L481.0,662.2 L482.4,662.4 L483.8,662.6 L485.2,663.0 L486.6,663.2 L488.0,663.4 L489.4,663.8 L490.8,664.0 L492.2,664.2 L493.6,664.6 L495.0,664.8 L496.4,665.0 L497.8,665.4 L498.8,665.6 L499.4,665.6 L500.0,665.8 L500.6,665.8 L501.2,666.0 L501.8,666.2 L502.4,666.2 L503.2,666.4 L503.8,666.4 L504.4,666.6 L505.0,666.8 L505.6,666.8 L506.2,667.0 L507.0,667.0 L507.6,667.2 L508.2,667.4 L508.8,667.4 L509.4,667.6 L510.0,667.8 L510.8,667.8 L511.2,667.8 L511.4,668.0 L511.8,668.0 L512.0,668.0 L512.2,668.2 L512.6,668.2 L512.8,668.2 L513.2,668.2 L513.4,668.4 L513.6,668.4 L513.8,668.4 L514.0,668.4 L514.0,668.4 L514.2,668.4 L514.2,668.4 L514.2,668.6 L514.2,668.6"/>
+  <g class="places" font-size="17.3"><text x="561.4" y="724.2">Bomb A</text><text x="749.2" y="753.2">Palacio</text><text x="542.6" y="477.4">Meio</text><text x="702.4" y="426.4">Top Mid</text><text x="796.6" y="590.6">Entrada da Caverna</text><text x="517.6" y="555.4">Ligação</text><text x="720.8" y="659.8">Caverna</text><text x="546.2" y="652.4">Cabecinha</text><text x="640.2" y="757.4">Areia</text></g>
+  <circle class="land land-smoke" cx="514.5" cy="668.3" r="29.0"/>
+  <path class="traj traj-smoke" d="M842.0,585.4 L834.4,587.0 L826.8,588.4 L819.2,589.8 L811.4,591.4 L803.8,592.8 L796.2,594.2 L788.6,595.8 L781.0,597.2 L773.4,598.6 L765.6,600.2 L758.0,601.6 L750.4,603.0 L742.8,604.4 L735.2,606.0 L727.6,607.4 L719.8,608.8 L712.2,610.4 L704.6,611.8 L697.0,613.2 L689.4,614.8 L681.8,616.2 L674.2,617.6 L666.4,619.2 L658.8,620.6 L651.2,622.0 L643.6,623.4 L636.0,625.0 L628.4,626.4 L620.6,627.8 L613.0,629.4 L605.4,630.8 L597.8,632.2 L590.2,633.8 L582.6,635.2 L575.0,636.6 L567.2,638.2 L559.6,639.6 L552.0,641.0 L544.4,642.4 L536.8,644.0 L529.2,645.4 L521.4,646.8 L513.8,648.4 L506.2,649.8 L498.6,651.2 L491.0,652.8 L483.4,654.2 L475.8,655.6 L468.0,657.2 L463.4,658.0 L462.8,658.4 L464.2,658.6 L465.6,659.0 L467.0,659.2 L468.4,659.4 L469.8,659.8 L471.2,660.0 L472.6,660.4 L474.0,660.6 L475.4,660.8 L476.8,661.2 L478.2,661.4 L479.6,661.6 L481.0,662.0 L482.4,662.2 L483.8,662.4 L485.2,662.8 L486.6,663.0 L488.0,663.2 L489.4,663.6 L490.8,663.8 L492.2,664.0 L493.6,664.4 L495.2,664.6 L496.6,664.8 L498.0,665.2 L498.8,665.4 L499.4,665.4 L500.0,665.6 L500.6,665.6 L501.2,665.8 L502.0,666.0 L502.6,666.0 L503.2,666.2 L503.8,666.2 L504.4,666.4 L505.0,666.6 L505.6,666.6 L506.4,666.8 L507.0,666.8 L507.6,667.0 L508.2,667.2 L508.8,667.2 L509.4,667.4 L510.2,667.4 L510.8,667.6 L511.2,667.6 L511.4,667.8 L511.8,667.8 L512.0,667.8 L512.4,668.0 L512.6,668.0 L513.0,668.0 L513.2,668.0 L513.4,668.2 L513.8,668.2 L513.8,668.2 L514.0,668.2 L514.0,668.2 L514.2,668.2 L514.2,668.2 L514.4,668.2 L514.4,668.2"/>
   <line class="aim" x1="842.0" y1="585.6" x2="808.6" y2="592.0"/>
   <circle class="spot side-T" cx="842.0" cy="585.6" r="7"/>
 </svg>
   <div class="card-body">
-    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">TR</span><span class="badge diff-2">Médio</span><span class="badge">jump throw</span><span class="badge video">▶ vídeo</span><span class="badge">3 variações</span></div>
+    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">TR</span><span class="badge diff-2">Médio</span><span class="badge">jump throw</span><span class="badge video">▶ vídeo</span><span class="badge">2 variações</span></div>
     <h3>Smoke Bomb A (de Entrada da Caverna)</h3>
     <p class="muted">1 uso</p>
   </div>
 </a><a class="card" href="/pt/mirage/molotov-underpass-from-connector-ct/" data-id="molotov-underpass-from-connector-ct"
    data-type="molotov" data-side="CT" data-area="Underpass" data-map="mirage"
-   data-teams="falcons fut legacy mouz" data-players="art coolio niko xertion"
-   data-diff="2" data-count="6" data-eff="0.0">
-  <svg class="radar" viewBox="347.6 337.6 273.2 273.2" role="img" aria-label="Trajetória: Molotov Rato (de Ligação)">
+   data-teams="falcons fut legacy mouz spirit" data-players="art coolio donk niko xertion"
+   data-diff="2" data-count="8" data-eff="0.0">
+  <svg class="radar" viewBox="345.9 333.5 279.3 279.3" role="img" aria-label="Trajetória: Molotov Rato (de Ligação)">
   <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="9.1"><text x="543.8" y="478.6">Meio</text><text x="495.6" y="403.4">L</text><text x="517.4" y="558.4">Ligação</text><text x="410.8" y="471.0">Janela</text><text x="417.8" y="386.2">Moscow 5</text></g>
-  <circle class="land land-molotov" cx="447.4" cy="407.7" r="24.0"/>
-  <path class="traj traj-molotov" d="M534.0,540.4 L527.4,532.6 L520.6,524.8 L514.0,517.0 L507.2,509.2 L500.6,501.4 L493.8,493.6 L487.2,485.8 L480.4,478.0 L473.8,470.2 L467.2,462.4 L460.4,454.6 L453.8,446.8 L447.0,439.0 L440.4,431.2 L433.6,423.4 L436.6,419.8 L439.6,416.4 L442.6,412.8 L445.6,409.4 L447.2,407.6"/>
-  <line class="aim" x1="534.8" y1="540.8" x2="512.5" y2="515.1"/>
-  <circle class="spot side-CT" cx="534.8" cy="540.8" r="7"/>
+  <g class="places" font-size="9.3"><text x="542.6" y="477.4">Meio</text><text x="494.2" y="400.2">L</text><text x="517.6" y="555.4">Ligação</text><text x="412.0" y="466.2">Janela</text><text x="418.0" y="383.6">Moscow 5</text></g>
+  <circle class="land land-molotov" cx="450.2" cy="403.5" r="24.0"/>
+  <path class="traj traj-molotov" d="M536.2,542.8 L529.2,534.6 L522.2,526.4 L515.2,518.2 L508.2,510.0 L501.2,501.8 L494.0,493.6 L487.0,485.4 L480.0,477.2 L473.0,469.0 L466.0,460.8 L459.0,452.6 L452.0,444.4 L445.0,436.2 L437.8,428.0 L434.8,421.6 L438.0,417.8 L441.2,414.2 L444.4,410.4 L447.4,406.8 L449.8,404.0"/>
+  <line class="aim" x1="534.7" y1="541.3" x2="512.6" y2="515.4"/>
+  <circle class="spot side-CT" cx="534.7" cy="541.3" r="7"/>
 </svg>
   <div class="card-body">
     <div class="card-badges"><span class="badge type-molotov">Molotov</span><span class="badge side-CT">CT</span><span class="badge diff-2">Médio</span><span class="badge video">▶ vídeo</span></div>
     <h3>Molotov Rato (de Ligação)</h3>
+    <p class="muted">1 uso</p>
+  </div>
+</a><a class="card" href="/pt/mirage/molotov-connector-from-top-mid-t/" data-id="molotov-connector-from-top-mid-t"
+   data-type="molotov" data-side="T" data-area="Connector" data-map="mirage"
+   data-teams="furia fut g2 legacy" data-players="art coolio hunter yekindar"
+   data-diff="3" data-count="5" data-eff="0.0">
+  <svg class="radar" viewBox="430.4 282.0 340.0 340.0" role="img" aria-label="Trajetória: Molotov Ligação (de Top Mid)">
+  <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="11.3"><text x="542.6" y="477.4">Meio</text><text x="702.4" y="426.4">Top Mid</text><text x="494.2" y="400.2">L</text><text x="517.6" y="555.4">Ligação</text></g>
+  <circle class="land land-molotov" cx="514.2" cy="526.7" r="24.0"/>
+  <path class="traj traj-molotov" d="M700.0,378.8 L690.0,385.8 L680.0,392.6 L670.2,399.6 L660.2,406.4 L650.2,413.4 L640.2,420.2 L630.2,427.2 L620.2,434.2 L610.2,441.0 L600.2,448.0 L590.2,454.8 L580.2,461.8 L570.4,468.6 L560.4,475.6 L550.4,482.6 L540.4,489.4 L530.4,496.4 L520.4,503.2 L510.4,510.2 L500.4,517.2 L503.2,520.6 L507.6,523.8 L509.8,525.4"/>
+  <line class="aim" x1="700.4" y1="377.3" x2="672.5" y2="396.7"/>
+  <circle class="spot side-T" cx="700.4" cy="377.3" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-molotov">Molotov</span><span class="badge side-T">TR</span><span class="badge diff-3">Difícil</span><span class="badge video">▶ vídeo</span></div>
+    <h3>Molotov Ligação (de Top Mid)</h3>
+    <p class="muted">1 uso</p>
+  </div>
+</a><a class="card" href="/pt/mirage/smoke-catwalk-from-house-t/" data-id="smoke-catwalk-from-house-t"
+   data-type="smoke" data-side="T" data-area="Catwalk" data-map="mirage"
+   data-teams="furia legacy mouz vitality" data-players="apex art spinx yuurih"
+   data-diff="2" data-count="5" data-eff="-1">
+  <svg class="radar" viewBox="357.0 77.0 340.9 340.9" role="img" aria-label="Trajetória: Smoke L (de TV)">
+  <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="11.4"><text x="457.2" y="288.8">Rato</text><text x="567.2" y="229.0">Saída do Rato</text></g>
+  <circle class="land land-smoke" cx="427.0" cy="300.0" r="29.0"/>
+  <path class="traj traj-smoke" d="M627.8,170.8 L624.4,173.8 L621.0,176.8 L617.6,179.8 L614.4,182.8 L611.0,185.8 L607.6,188.8 L604.2,191.8 L600.8,194.8 L597.4,197.8 L594.0,200.8 L590.6,203.8 L587.2,206.8 L583.8,209.8 L580.4,212.8 L577.2,215.8 L573.8,218.8 L570.4,221.8 L567.0,224.8 L563.6,227.8 L560.2,230.8 L556.8,233.8 L553.4,236.8 L550.0,239.8 L546.6,242.8 L543.4,245.8 L540.0,248.8 L536.6,251.8 L533.2,254.8 L529.8,258.0 L526.4,261.0 L523.0,264.0 L519.6,267.0 L516.2,270.0 L512.8,273.0 L509.6,276.0 L506.2,279.0 L502.8,282.0 L499.4,285.0 L496.0,288.0 L492.6,291.0 L489.2,294.0 L485.8,297.0 L482.4,300.0 L479.0,303.0 L475.8,306.0 L472.4,309.0 L469.0,312.0 L465.6,315.0 L462.2,318.0 L458.8,321.0 L455.4,324.0 L453.6,323.6 L452.0,322.2 L450.4,320.8 L449.0,319.4 L447.4,318.2 L446.0,316.8 L444.4,315.4 L443.0,314.2 L442.2,313.4 L441.6,312.8 L441.0,312.2 L440.2,311.4 L439.6,310.8 L438.8,310.0 L438.2,309.4 L437.4,308.6 L436.8,308.0 L436.2,307.4 L435.4,306.6 L434.8,306.0 L434.0,305.2 L433.4,304.6 L432.6,304.0 L432.0,303.2 L431.4,302.6 L431.0,302.2 L430.6,301.8 L430.4,301.6 L430.0,301.2 L429.8,301.0 L429.4,300.6 L429.2,300.4 L428.8,300.0 L428.6,300.0 L428.6,299.8 L428.4,299.6 L428.2,299.6 L428.2,299.6"/>
+  <line class="aim" x1="627.9" y1="170.8" x2="602.3" y2="193.2"/>
+  <circle class="spot side-T" cx="627.9" cy="170.8" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">TR</span><span class="badge diff-2">Médio</span><span class="badge">jump throw</span><span class="badge video">▶ vídeo</span></div>
+    <h3>Smoke L (de TV)</h3>
     <p class="muted">1 uso</p>
   </div>
 </a><a class="card" href="/pt/mirage/smoke-palace-from-stairs-ct/" data-id="smoke-palace-from-stairs-ct"
@@ -998,7 +1051,7 @@
    data-diff="2" data-count="4" data-eff="-1">
   <svg class="radar" viewBox="454.8 572.6 303.4 303.4" role="img" aria-label="Trajetória: Smoke Palacio (de Cabecinha)">
   <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="10.1"><text x="561.4" y="724.2">Bomb A</text><text x="719.6" y="662.4">Caverna</text><text x="545.8" y="650.6">Cabecinha</text><text x="639.4" y="761.4">Areia</text></g>
+  <g class="places" font-size="10.1"><text x="561.4" y="724.2">Bomb A</text><text x="720.8" y="659.8">Caverna</text><text x="546.2" y="652.4">Cabecinha</text><text x="640.2" y="757.4">Areia</text></g>
   <circle class="land land-smoke" cx="655.9" cy="805.1" r="29.0"/>
   <path class="traj traj-smoke" d="M547.4,644.2 L554.4,653.0 L561.4,661.6 L568.4,670.4 L575.6,679.0 L582.6,687.8 L589.6,696.6 L596.6,705.2 L603.6,714.0 L610.6,722.6 L617.6,731.4 L624.6,740.2 L631.6,748.8 L638.6,757.6 L645.6,766.2 L652.6,775.0 L659.6,783.8 L666.6,792.4 L667.2,795.0 L665.8,796.8 L664.4,798.6 L663.0,800.4 L661.6,802.2 L660.4,803.4 L659.8,804.2 L659.2,805.0 L658.8,805.6 L658.4,806.0 L658.4,806.0"/>
   <line class="aim" x1="545.8" y1="642.6" x2="567.4" y2="668.8"/>
@@ -1015,7 +1068,7 @@
    data-diff="3" data-count="3" data-eff="1.33">
   <svg class="radar" viewBox="363.6 199.5 315.8 315.8" role="img" aria-label="Trajetória: Flash L">
   <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="10.5"><text x="543.8" y="478.6">Meio</text><text x="495.6" y="403.4">L</text><text x="463.2" y="297.2">Rato</text><text x="410.8" y="471.0">Janela</text><text x="417.8" y="386.2">Moscow 5</text></g>
+  <g class="places" font-size="10.5"><text x="542.6" y="477.4">Meio</text><text x="494.2" y="400.2">L</text><text x="457.2" y="288.8">Rato</text><text x="412.0" y="466.2">Janela</text><text x="418.0" y="383.6">Moscow 5</text></g>
   <circle class="land land-flash" cx="605.8" cy="409.5" r="10.0"/>
   <path class="traj traj-flash" d="M433.6,305.4 L440.4,309.4 L447.2,313.4 L454.0,317.2 L461.0,321.2 L467.8,325.2 L474.6,329.0 L481.4,333.0 L488.2,337.0 L495.0,340.8 L501.8,344.8 L508.6,348.8 L515.6,352.6 L522.4,356.6 L529.2,360.6 L536.0,364.4 L542.8,368.4 L549.6,372.4 L556.4,376.2 L563.2,380.2 L570.2,384.2 L577.0,388.2 L583.8,392.0 L590.6,396.0 L597.4,400.0 L604.2,403.8 L609.4,406.8"/>
   <line class="aim" x1="436.0" y1="306.8" x2="464.9" y2="324.7"/>
@@ -1033,7 +1086,7 @@
    data-diff="2" data-count="3" data-eff="0.0">
   <svg class="radar" viewBox="142.8 17.8 360.6 360.6" role="img" aria-label="Trajetória: Flash Tapete (de Van)">
   <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="12.0"><text x="249.8" y="291.0">Bomb B</text><text x="328.6" y="197.4">Tapete</text><text x="463.2" y="297.2">Rato</text><text x="207.6" y="196.6">Van</text></g>
+  <g class="places" font-size="12.0"><text x="249.8" y="291.0">Bomb B</text><text x="330.8" y="201.0">Tapete</text><text x="457.2" y="288.8">Rato</text><text x="207.6" y="196.6">Van</text></g>
   <circle class="land land-flash" cx="430.1" cy="217.3" r="10.0"/>
   <path class="traj traj-flash" d="M215.2,179.0 L223.8,180.4 L232.2,182.0 L240.8,183.4 L249.4,184.8 L257.8,186.2 L266.4,187.6 L275.0,189.0 L283.6,190.4 L292.0,191.8 L300.6,193.4 L309.2,194.8 L317.6,196.2 L326.2,197.6 L334.8,199.0 L343.2,200.4 L351.8,201.8 L360.4,203.4 L368.8,204.8 L377.4,206.2 L386.0,207.6 L394.4,209.0 L403.0,210.4 L411.6,211.8 L420.2,213.2 L428.6,214.8 L433.4,215.4"/>
   <line class="aim" x1="212.8" y1="179.8" x2="246.4" y2="185.2"/>
@@ -1044,39 +1097,39 @@
     <h3>Flash Tapete (de Van)</h3>
     <p class="muted">1 uso</p>
   </div>
-</a><a class="card" href="/pt/mirage/flash-apartments-from-back-alley-t/" data-id="flash-apartments-from-back-alley-t"
-   data-type="flash" data-side="T" data-area="Apartments" data-map="mirage"
-   data-teams="fut legacy" data-players="sunpayus try"
-   data-diff="2" data-count="3" data-eff="1.0">
-  <svg class="radar" viewBox="290.2 61.2 349.6 349.6" role="img" aria-label="Trajetória: Flash Tapete (de Saída do Rato)">
+</a><a class="card" href="/pt/mirage/flash-b-site-from-back-alley-t/" data-id="flash-b-site-from-back-alley-t"
+   data-type="flash" data-side="T" data-area="BombsiteB" data-map="mirage"
+   data-teams="legacy mouz vitality" data-players="dumau torzsi zywoo"
+   data-diff="3" data-count="6" data-eff="1.17">
+  <svg class="radar" viewBox="259.2 59.4 359.4 359.4" role="img" aria-label="Trajetória: Flash Bomb B (de Saída do Rato)">
   <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="11.7"><text x="463.2" y="297.2">Rato</text><text x="567.2" y="229.0">Saída do Rato</text></g>
-  <circle class="land land-flash" cx="361.0" cy="234.3" r="10.0"/>
-  <path class="traj traj-flash" d="M569.8,238.4 L561.6,238.2 L553.4,238.0 L545.4,238.0 L537.2,237.8 L529.0,237.6 L521.0,237.4 L512.8,237.2 L504.6,237.0 L496.6,236.8 L488.4,236.6 L480.2,236.4 L472.2,236.2 L464.0,236.0 L455.8,235.8 L447.6,235.6 L439.6,235.4 L431.4,235.4 L423.2,235.2 L415.2,235.0 L407.0,234.8 L398.8,234.6 L390.8,234.4 L382.6,234.2 L374.4,234.0 L366.4,233.8 L360.2,233.6"/>
-  <line class="aim" x1="569.4" y1="238.5" x2="535.4" y2="237.8"/>
-  <circle class="spot side-T" cx="569.4" cy="238.5" r="7"/>
+  <g class="places" font-size="12.0"><text x="330.8" y="201.0">Tapete</text><text x="457.2" y="288.8">Rato</text><text x="567.2" y="229.0">Saída do Rato</text></g>
+  <circle class="land land-flash" cx="329.4" cy="239.6" r="10.0"/>
+  <path class="traj traj-flash" d="M548.6,238.6 L540.0,238.6 L531.6,238.6 L523.0,238.8 L514.4,238.8 L506.0,238.8 L497.4,238.8 L489.0,238.8 L480.4,239.0 L472.0,239.0 L463.4,239.0 L454.8,239.0 L446.4,239.0 L437.8,239.0 L429.4,239.2 L420.8,239.2 L412.2,239.2 L403.8,239.2 L395.2,239.2 L386.8,239.4 L378.2,239.4 L369.8,239.4 L361.2,239.4 L352.6,239.4 L344.2,239.4 L335.6,239.6 L329.2,239.6"/>
+  <line class="aim" x1="548.6" y1="238.6" x2="514.6" y2="238.8"/>
+  <circle class="spot side-T" cx="548.6" cy="238.6" r="7"/>
 </svg>
   <div class="card-body">
-    <div class="card-badges"><span class="badge type-flash">Flash</span><span class="badge side-T">TR</span><span class="badge diff-2">Médio</span><span class="badge">jump throw</span><span class="badge video">▶ vídeo</span></div>
-    <h3>Flash Tapete (de Saída do Rato)</h3>
-<p class="eff">cega 1,0 inimigo(s) por 1,8s em média</p>
+    <div class="card-badges"><span class="badge type-flash">Flash</span><span class="badge side-T">TR</span><span class="badge diff-3">Difícil</span><span class="badge">jump throw</span><span class="badge video">▶ vídeo</span><span class="badge">2 variações</span></div>
+    <h3>Flash Bomb B (de Saída do Rato)</h3>
+<p class="eff">cega 1,2 inimigo(s) por 1,5s em média</p>
     <p class="muted">1 uso</p>
   </div>
-</a><a class="card" href="/pt/mirage/smoke-catwalk-from-house-t/" data-id="smoke-catwalk-from-house-t"
-   data-type="smoke" data-side="T" data-area="Catwalk" data-map="mirage"
-   data-teams="legacy vitality" data-players="apex art"
-   data-diff="2" data-count="3" data-eff="-1">
-  <svg class="radar" viewBox="356.4 76.5 341.6 341.6" role="img" aria-label="Trajetória: Smoke L (de TV)">
+</a><a class="card" href="/pt/mirage/molotov-underpass-from-catwalk-ct/" data-id="molotov-underpass-from-catwalk-ct"
+   data-type="molotov" data-side="CT" data-area="Underpass" data-map="mirage"
+   data-teams="legacy mouz spirit" data-players="dumau spinx zont1x"
+   data-diff="3" data-count="3" data-eff="0.0">
+  <svg class="radar" viewBox="311.5 274.2 298.6 298.6" role="img" aria-label="Trajetória: Molotov Rato (de L)">
   <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="11.4"><text x="463.2" y="297.2">Rato</text><text x="567.2" y="229.0">Saída do Rato</text></g>
-  <circle class="land land-smoke" cx="427.1" cy="300.6" r="29.0"/>
-  <path class="traj traj-smoke" d="M628.0,170.8 L624.4,173.8 L621.0,176.8 L617.6,179.8 L614.2,182.8 L610.6,185.8 L607.2,188.8 L603.8,191.8 L600.4,194.8 L596.8,197.8 L593.4,200.8 L590.0,203.8 L586.6,206.8 L583.0,209.8 L579.6,212.8 L576.2,215.8 L572.8,218.8 L569.2,221.8 L565.8,224.8 L562.4,227.8 L559.0,230.8 L555.4,233.8 L552.0,236.8 L548.6,239.8 L545.2,242.8 L541.6,245.8 L538.2,248.8 L534.8,251.8 L531.4,254.8 L528.0,257.8 L524.4,260.8 L521.0,263.8 L517.6,266.8 L514.2,269.8 L510.6,272.8 L507.2,275.8 L503.8,278.8 L500.4,281.8 L496.8,284.8 L493.4,287.8 L490.0,290.8 L486.6,293.8 L483.0,296.8 L479.6,299.8 L476.2,302.8 L472.8,305.8 L469.2,308.8 L465.8,311.8 L462.4,314.8 L459.0,317.8 L455.4,320.8 L452.0,323.8 L450.0,323.6 L448.4,322.2 L446.8,321.0 L445.2,319.6 L443.8,318.2 L442.2,316.8 L440.6,315.6 L440.0,314.8 L439.2,314.2 L438.6,313.4 L437.8,312.8 L437.2,312.2 L436.4,311.4 L435.8,310.8 L435.0,310.2 L434.4,309.4 L433.6,308.8 L433.0,308.0 L432.2,307.4 L431.6,306.8 L430.8,306.0 L430.2,305.4 L429.6,304.6 L429.0,304.2 L428.8,304.0 L428.4,303.6 L428.2,303.2 L427.8,303.0 L427.6,302.6 L427.2,302.2 L427.0,302.0 L426.8,301.8 L426.6,301.6 L426.6,301.6 L426.4,301.4"/>
-  <line class="aim" x1="627.9" y1="170.8" x2="602.4" y2="193.2"/>
-  <circle class="spot side-T" cx="627.9" cy="170.8" r="7"/>
+  <g class="places" font-size="10.0"><text x="542.6" y="477.4">Meio</text><text x="494.2" y="400.2">L</text><text x="412.0" y="466.2">Janela</text><text x="418.0" y="383.6">Moscow 5</text></g>
+  <circle class="land land-molotov" cx="437.1" cy="413.9" r="24.0"/>
+  <path class="traj traj-molotov" d="M487.6,344.2 L485.2,355.8 L482.8,367.2 L480.2,378.8 L477.8,390.2 L475.2,401.8 L472.8,413.2 L470.4,424.8 L467.8,436.2 L465.4,447.8 L463.0,459.2 L460.4,470.8 L458.0,482.4 L455.4,493.8 L453.2,502.8 L452.0,497.6 L451.0,492.4 L449.8,487.2 L448.8,482.0 L447.6,477.0 L446.6,471.8 L445.4,466.6 L444.2,461.4 L443.2,456.2 L442.0,451.0 L441.0,445.8 L439.8,440.6 L438.8,435.4 L437.6,430.2 L436.4,425.2 L435.4,420.0 L434.2,415.2 L434.0,417.0"/>
+  <line class="aim" x1="487.6" y1="344.3" x2="480.5" y2="377.6"/>
+  <circle class="spot side-CT" cx="487.6" cy="344.3" r="7"/>
 </svg>
   <div class="card-body">
-    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">TR</span><span class="badge diff-2">Médio</span><span class="badge">jump throw</span><span class="badge video">▶ vídeo</span></div>
-    <h3>Smoke L (de TV)</h3>
+    <div class="card-badges"><span class="badge type-molotov">Molotov</span><span class="badge side-CT">CT</span><span class="badge diff-3">Difícil</span><span class="badge video">▶ vídeo</span></div>
+    <h3>Molotov Rato (de L)</h3>
     <p class="muted">1 uso</p>
   </div>
 </a></div>
@@ -1107,9 +1160,10 @@
   <div class="foot-in">
     <p>Dados extraídos das demos oficiais das partidas. Demos: <a href="https://www.hltv.org/" rel="noopener" target="_blank">HLTV.org</a>.</p>
     <p>Projeto de fãs, gratuito. Não afiliado à Valve, HLTV, aos times ou aos organizadores dos torneios. Counter-Strike é marca da Valve Corporation.</p>
-    <p><a href="/pt/sobre/">Sobre e créditos</a> · atualizado em 2026-11-14</p>
+    <p><a href="/pt/sobre/">Sobre e créditos</a> · atualizado em 2026-11-15</p>
   </div>
 </footer>
 <script src="/static/app.js" defer></script>
+<script src="/static/accounts.js" defer></script>
 </body>
 </html>

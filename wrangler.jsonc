@@ -3,12 +3,28 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "prolineups",
   "compatibility_date": "2026-11-01",
+  "main": "worker.js",
   "assets": {
     "directory": "./public",
+    "binding": "ASSETS",
     "not_found_handling": "404-page",
-    "html_handling": "auto-trailing-slash"
+    "html_handling": "auto-trailing-slash",
+    "run_worker_first": [
+      "/auth/*",
+      "/api/*"
+    ]
   },
   "observability": {
     "enabled": true
-  }
+  },
+  "vars": {
+    "GOOGLE_CLIENT_ID": "889817363111-kpf2evhdlknp2f1poh4enr8ievj5nng8.apps.googleusercontent.com"
+  },
+  "keep_vars": true,
+  "kv_namespaces": [
+    {
+      "binding": "USERS",
+      "id": "6555969f65e6481080289699c957e528"
+    }
+  ]
 }

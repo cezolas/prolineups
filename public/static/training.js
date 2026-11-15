@@ -6,7 +6,7 @@
   const $ = s => root.querySelector(s);
   const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const store = { get: k => { try { return JSON.parse(localStorage.getItem(k) || "null"); } catch (e) { return null; } },
-                  set: (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} } };
+                  set: (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} window.PN && window.PN.push("plan"); } };
   let D = null;
   const pref = store.get("planPrefs") || {};
   fetch(`/dados/treino-${lang}.json`).then(r => r.json()).then(d => {
@@ -17,6 +17,7 @@
     if (pref.per) $("[data-p=per]").value = pref.per;
     render();
   });
+  document.addEventListener("pn:synced", () => render());
   root.addEventListener("change", e => {
     if (e.target.closest("[data-p]")) { store.set("planPrefs", { map: $("[data-p=map]").value, side: $("[data-p=side]").value, per: $("[data-p=per]").value }); render(); }
     const c = e.target.closest("[data-done]");
@@ -26,7 +27,7 @@
     const b = e.target.closest("[data-cfg]"); if (!b) return;
     const day = plan()[+b.dataset.cfg];
     const blob = new Blob([cfg(day, +b.dataset.cfg + 1)], { type: "text/plain" });
-    const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = `lineupspro_${$("[data-p=map]").value}_${S.day_file}${+b.dataset.cfg + 1}.cfg`;
+    const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = `pronades_${$("[data-p=map]").value}_${S.day_file}${+b.dataset.cfg + 1}.cfg`;
     document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
   });
   const key = () => `plan:${$("[data-p=map]").value}:${$("[data-p=side]").value}:${$("[data-p=per]").value}`;
@@ -59,7 +60,7 @@
     $("#planBar").style.width = (all.length ? 100 * ok / all.length : 0) + "%";
   }
   function cfg(items, n) {
-    const L = [`// Lineups Pro - ${S.cfg_title} ${n} (${items.length} lineups)`, "sv_cheats 1; sv_infinite_ammo 1; ammo_grenade_limit_total 5; sv_grenade_trajectory_prac_pipreview 1",
+    const L = [`// Pronades - ${S.cfg_title} ${n} (${items.length} lineups)`, "sv_cheats 1; sv_infinite_ammo 1; ammo_grenade_limit_total 5; sv_grenade_trajectory_prac_pipreview 1",
       "mp_warmup_end; mp_freezetime 0; mp_roundtime_defuse 60; mp_buy_anywhere 1; mp_buytime 9999; bot_kick",
       "give weapon_smokegrenade; give weapon_flashbang; give weapon_hegrenade; give weapon_molotov; give weapon_incgrenade", ""];
     items.forEach((l, i) => {

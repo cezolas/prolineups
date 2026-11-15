@@ -3,21 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pro Flashes on every map · Lineups Pro</title>
-<meta name="description" content="53 flashes lineups used by professional CS2 players on every map, with video and how to throw.">
+<title>Pro Flashes on every map · Pronades</title>
+<meta name="description" content="71 flashes lineups used by professional CS2 players on every map, with video and how to throw.">
 <link rel="canonical" href="https://prolineups.cezolas.workers.dev/en/flashes/">
 <link rel="alternate" hreflang="pt" href="https://prolineups.cezolas.workers.dev/pt/flashes/">
 <link rel="alternate" hreflang="en" href="https://prolineups.cezolas.workers.dev/en/flashes/">
 <link rel="alternate" hreflang="x-default" href="https://prolineups.cezolas.workers.dev/pt/flashes/">
 <meta property="og:title" content="Pro Flashes on every map">
-<meta property="og:description" content="53 flashes lineups used by professional CS2 players on every map, with video and how to throw.">
+<meta property="og:description" content="71 flashes lineups used by professional CS2 players on every map, with video and how to throw.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://prolineups.cezolas.workers.dev/static/og-en.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta property="og:locale" content="en_US">
-<meta property="og:site_name" content="Lineups Pro">
+<meta property="og:site_name" content="Pronades">
 <meta name="theme-color" content="#0b0f15">
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
   if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
@@ -29,13 +29,15 @@
 <header class="top">
   <div class="top-in">
     <button class="menu-btn" id="menuBtn" aria-label="Show or hide the menu" aria-controls="side" aria-expanded="false">☰</button>
-    <a class="logo" href="/en/"><span class="logo-mark">◎</span> Lineups Pro</a>
+    <a class="logo" href="/en/"><span class="logo-mark">◎</span> Pronades</a>
     <div class="search">
       <input id="q" type="search" placeholder="Search map, player, team, smoke…" autocomplete="off" aria-label="Search">
       <div id="results" class="results" hidden></div>
     </div>
     <nav class="langs" aria-label="Language">
 <a href="/pt/flashes/" hreflang="pt" lang="pt" title="Português">PT</a><a href="/en/flashes/" hreflang="en" lang="en" aria-current="true" title="English">EN</a>    </nav>
+    <a class="login-btn" id="loginBtn" href="/auth/google" hidden>Sign in</a>
+    <a class="me-btn" id="meBtn" href="/en/account/" hidden aria-label="My account"><img alt="" width="28" height="28" referrerpolicy="no-referrer" hidden><span>Account</span></a>
     <button class="theme-btn" id="themeBtn" type="button" aria-label="Toggle light/dark mode" title="Toggle light/dark mode"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.6"/><g stroke-width="2.2" stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></g></svg></button>
   </div>
 </header>
@@ -43,30 +45,29 @@
   <aside class="side" id="side" aria-label="Navigation">
     <nav>
       <a href="/en/"><span>Home</span></a>
+      <a href="/en/compare-my-demo/"><span>⇄ Compare my demo</span></a>
       <a href="/en/training-plan/"><span>🎯 Training plan</span></a>
       <a href="/en/roles/"><span>👥 Roles</span></a>
       <a href="/en/analytics/"><span>▤ Analytics</span></a>
       <a href="/en/my-list/"><span>★ My list</span><span class="n" id="favCount"></span></a>
-      <details class="nav-g" data-k="types" open>
-        <summary class="nav-h"><span>Grenades</span></summary>
-<a href="/en/smokes/"><span>Smokes</span><span class="n">104</span></a><a href="/en/flashes/" aria-current="page"><span>Flashes</span><span class="n">53</span></a><a href="/en/molotovs/"><span>Molotovs</span><span class="n">53</span></a><a href="/en/hes/"><span>HEs</span><span class="n">30</span></a>      </details>
-      <details class="nav-g" data-k="tactics" open>
-        <summary class="nav-h"><a href="/en/tactics/">Tactics</a></summary>
-<a href="/en/ancient/plays/"><span>Ancient</span><span class="n">36</span></a><a href="/en/anubis/plays/"><span>Anubis</span><span class="n">13</span></a><a href="/en/cache/plays/"><span>Cache</span><span class="n">37</span></a><a href="/en/dust2/plays/"><span>Dust2</span><span class="n">40</span></a><a href="/en/inferno/plays/"><span>Inferno</span><span class="n">17</span></a><a href="/en/mirage/plays/"><span>Mirage</span><span class="n">44</span></a><a href="/en/nuke/plays/"><span>Nuke</span><span class="n">32</span></a>      </details>
       <details class="nav-g" data-k="maps" open>
         <summary class="nav-h"><a href="/en/maps/">Maps</a></summary>
-<a href="/en/ancient/"><span>Ancient</span><span class="n">30</span></a><a href="/en/anubis/"><span>Anubis</span><span class="n">20</span></a><a href="/en/cache/"><span>Cache</span><span class="n">39</span></a><a href="/en/dust2/"><span>Dust2</span><span class="n">39</span></a><a href="/en/inferno/"><span>Inferno</span><span class="n">22</span></a><a href="/en/mirage/"><span>Mirage</span><span class="n">57</span></a><a href="/en/nuke/"><span>Nuke</span><span class="n">33</span></a>      </details>
+<a href="/en/ancient/"><span>Ancient</span><span class="n">51</span></a><a href="/en/anubis/"><span>Anubis</span><span class="n">20</span></a><a href="/en/cache/"><span>Cache</span><span class="n">39</span></a><a href="/en/dust2/"><span>Dust2</span><span class="n">53</span></a><a href="/en/inferno/"><span>Inferno</span><span class="n">22</span></a><a href="/en/mirage/"><span>Mirage</span><span class="n">74</span></a><a href="/en/nuke/"><span>Nuke</span><span class="n">33</span></a>      </details>
+      <details class="nav-g" data-k="tactics" open>
+        <summary class="nav-h"><a href="/en/tactics/">Tactics</a></summary>
+<a href="/en/ancient/plays/"><span>Ancient</span><span class="n">85</span></a><a href="/en/anubis/plays/"><span>Anubis</span><span class="n">13</span></a><a href="/en/cache/plays/"><span>Cache</span><span class="n">37</span></a><a href="/en/dust2/plays/"><span>Dust2</span><span class="n">61</span></a><a href="/en/inferno/plays/"><span>Inferno</span><span class="n">17</span></a><a href="/en/mirage/plays/"><span>Mirage</span><span class="n">67</span></a><a href="/en/nuke/plays/"><span>Nuke</span><span class="n">32</span></a>      </details>
+      <details class="nav-g" data-k="events" open>
+        <summary class="nav-h"><a href="/en/tournaments/">Tournaments</a></summary>
+<a href="/en/tournament/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      </details>
       <details class="nav-g" data-k="players" open>
         <summary class="nav-h"><a href="/en/players/">Players</a></summary>
 <a href="/en/player/apex/"><span><img class="flag" src="/static/flags/fr.svg" alt="France" title="France" width="16" height="12">apEX</span></a><a href="/en/player/art/"><span><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12">art</span></a><a href="/en/player/coolio/"><span>coolio</span></a><a href="/en/player/dem0n/"><span>dem0n</span></a><a href="/en/player/donk/"><span><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12">donk</span></a><a href="/en/player/dumau/"><span><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12">dumau</span></a><a href="/en/player/dziugss/"><span><img class="flag" src="/static/flags/lt.svg" alt="Lithuania" title="Lithuania" width="16" height="12">dziugss</span></a><a href="/en/player/fallen/"><span><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12">FalleN</span></a><a href="/en/player/flamez/"><span><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12">flameZ</span></a><a href="/en/player/heavygod/"><span><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12">HeavyGod</span></a><a href="/en/player/hunter/"><span><img class="flag" src="/static/flags/ba.svg" alt="Bosnia" title="Bosnia" width="16" height="12">huNter</span></a><a href="/en/player/karrigan/"><span><img class="flag" src="/static/flags/dk.svg" alt="Denmark" title="Denmark" width="16" height="12">karrigan</span></a><a class="more" href="/en/players/">see all (40)</a>      </details>
       <details class="nav-g" data-k="teams" open>
         <summary class="nav-h"><a href="/en/teams/">Teams</a></summary>
 <a href="/en/team/falcons/"><span><img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12">Falcons</span></a><a href="/en/team/furia/"><span><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12">FURIA</span></a><a href="/en/team/fut/"><span><img class="flag" src="/static/flags/tr.svg" alt="Turkey" title="Turkey" width="16" height="12">FUT</span></a><a href="/en/team/g2/"><span><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12">G2</span></a><a href="/en/team/legacy/"><span><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12">Legacy</span></a><a href="/en/team/mouz/"><span><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12">MOUZ</span></a><a href="/en/team/spirit/"><span><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12">Spirit</span></a><a href="/en/team/vitality/"><span><img class="flag" src="/static/flags/fr.svg" alt="France" title="France" width="16" height="12">Vitality</span></a>      </details>
-      <details class="nav-g" data-k="events" open>
-        <summary class="nav-h"><a href="/en/tournaments/">Tournaments</a></summary>
-<a href="/en/tournament/blast-rivals-2026-season-2/"><span>BLAST Rivals 2026 Season 2</span></a>      </details>
       <div class="nav-sep"></div>
       <a href="/en/about/"><span>About</span></a>
+      <a href="/en/privacy/"><span>Privacy</span></a>
     </nav>
     <script>
       /* collapsed sections are remembered in this browser; applied before paint */
@@ -86,7 +87,7 @@
   <main class="content">
 <nav class="crumbs"><a href="/en/">Home</a> › Grenades › Flashes</nav>
 <h1>Flashes</h1>
-<p class="muted">53 flashes lineups, from the most used by pros to the least.</p>
+<p class="muted">71 flashes lineups, from the most used by pros to the least.</p>
 <div class="filters" id="filters">
   <div class="seg" role="group" aria-label="Side">
     <button data-f="side" data-v="" class="on">T and CT</button>
@@ -101,7 +102,7 @@
 <option value="furia">FURIA</option><option value="fut">FUT</option><option value="falcons">Falcons</option><option value="g2">G2</option><option value="legacy">Legacy</option><option value="mouz">MOUZ</option><option value="spirit">Spirit</option><option value="vitality">Vitality</option>  </select>
   <select data-f="players" aria-label="Player">
     <option value="">All players</option>
-<option value="apex">apEX</option><option value="art">art</option><option value="coolio">coolio</option><option value="dem0n">dem0n</option><option value="donk">donk</option><option value="dumau">dumau</option><option value="dziugss">dziugss</option><option value="fallen">FalleN</option><option value="flamez">flameZ</option><option value="heavygod">HeavyGod</option><option value="hunter">huNter</option><option value="karrigan">karrigan</option><option value="kscerato">KSCERATO</option><option value="ksloks">ksloks</option><option value="kyousuke">kyousuke</option><option value="latto">latto</option><option value="m0nesy">m0NESY</option><option value="magixx">magixx</option><option value="matys">MATYS</option><option value="mezii">mezii</option><option value="molodoy">molodoy</option><option value="nertz">NertZ</option><option value="niko">NiKo</option><option value="pr">PR</option><option value="r1nkle">r1nkle</option><option value="ropz">ropz</option><option value="sh1ro">sh1ro</option><option value="spinx">Spinx</option><option value="sunpayus">SunPayus</option><option value="torzsi">torzsi</option><option value="try">try</option><option value="xelex">xelex</option><option value="xertion">xertioN</option><option value="xfl0ud">xfl0ud</option><option value="yekindar">YEKINDAR</option><option value="zont1x">zont1x</option><option value="zywoo">ZywOo</option>  </select>
+<option value="apex">apEX</option><option value="art">art</option><option value="coolio">coolio</option><option value="dem0n">dem0n</option><option value="donk">donk</option><option value="dumau">dumau</option><option value="dziugss">dziugss</option><option value="fallen">FalleN</option><option value="flamez">flameZ</option><option value="heavygod">HeavyGod</option><option value="hunter">huNter</option><option value="karrigan">karrigan</option><option value="kscerato">KSCERATO</option><option value="ksloks">ksloks</option><option value="kyousuke">kyousuke</option><option value="latto">latto</option><option value="m0nesy">m0NESY</option><option value="magixx">magixx</option><option value="matys">MATYS</option><option value="mezii">mezii</option><option value="molodoy">molodoy</option><option value="nertz">NertZ</option><option value="niko">NiKo</option><option value="pr">PR</option><option value="r1nkle">r1nkle</option><option value="sh1ro">sh1ro</option><option value="spinx">Spinx</option><option value="sunpayus">SunPayus</option><option value="teses">TeSeS</option><option value="tn1r">tN1R</option><option value="torzsi">torzsi</option><option value="try">try</option><option value="xertion">xertioN</option><option value="xfl0ud">xfl0ud</option><option value="yekindar">YEKINDAR</option><option value="yuurih">yuurih</option><option value="zont1x">zont1x</option><option value="zywoo">ZywOo</option>  </select>
   <select data-f="diff" aria-label="Difficulty">
     <option value="">Any difficulty</option>
 <option value="1">Easy</option><option value="2">Medium</option><option value="3">Hard</option>  </select>
@@ -115,57 +116,39 @@
 <div class="cards" id="cards">
 <a class="card" href="/en/dust2/flash-long-a-ct/" data-id="flash-long-a-ct"
    data-type="flash" data-side="CT" data-area="LongA" data-map="dust2"
-   data-teams="falcons furia g2 legacy vitality" data-players="apex fallen flamez hunter karrigan latto m0nesy molodoy r1nkle try yekindar zywoo"
-   data-diff="1" data-count="23" data-eff="0.57">
-  <svg class="radar" viewBox="708.2 206.8 303.8 303.8" role="img" aria-label="Trajectory: Flash Long A">
+   data-teams="falcons furia g2 legacy spirit vitality" data-players="apex fallen flamez hunter karrigan kscerato latto m0nesy molodoy r1nkle sh1ro tn1r try yekindar zywoo"
+   data-diff="1" data-count="33" data-eff="0.42">
+  <svg class="radar" viewBox="707.2 206.9 304.7 304.7" role="img" aria-label="Trajectory: Flash Long A">
   <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="10.1"><text x="893.9" y="355.7">Long A</text></g>
-  <circle class="land land-flash" cx="871.4" cy="440.6" r="11.4"/>
-  <path class="traj traj-flash" d="M849.1,276.8 L850.0,283.2 L850.9,289.5 L851.8,295.9 L852.7,302.3 L853.4,308.4 L854.3,314.8 L855.2,321.1 L856.1,327.5 L856.8,333.9 L857.7,340.0 L858.6,346.4 L859.5,352.7 L860.5,359.1 L861.1,365.5 L862.0,371.6 L863.0,378.0 L863.9,384.3 L864.5,390.7 L865.5,397.0 L866.4,403.4 L867.3,409.5 L868.2,415.9 L868.9,422.3 L869.8,428.6 L870.7,435.0 L871.4,439.5"/>
-  <line class="aim" x1="848.8" y1="276.9" x2="853.5" y2="310.6"/>
-  <circle class="spot side-CT" cx="848.8" cy="276.9" r="7"/>
+  <g class="places" font-size="10.2"><text x="892.3" y="354.5">Long A</text></g>
+  <circle class="land land-flash" cx="871.0" cy="440.9" r="11.4"/>
+  <path class="traj traj-flash" d="M847.7,277.0 L848.6,283.4 L849.5,289.8 L850.5,296.1 L851.4,302.5 L852.3,308.9 L853.2,315.2 L854.1,321.6 L855.0,328.2 L855.9,334.5 L856.8,340.9 L858.0,347.3 L858.9,353.6 L859.8,360.0 L860.7,366.4 L861.6,372.7 L862.5,379.1 L863.4,385.7 L864.3,392.0 L865.2,398.4 L866.1,404.8 L867.0,411.1 L868.0,417.5 L868.9,423.9 L869.8,430.2 L870.7,436.6 L871.4,441.6"/>
+  <line class="aim" x1="848.7" y1="276.9" x2="853.3" y2="310.6"/>
+  <circle class="spot side-CT" cx="848.7" cy="276.9" r="7"/>
 </svg>
   <div class="card-body">
     <div class="card-badges"><span class="badge">Dust2</span><span class="badge type-flash">Flash</span><span class="badge side-CT">CT</span><span class="badge diff-1">Easy</span><span class="badge video">▶ video</span></div>
     <h3>Flash Long A</h3>
-<p class="eff">blinds 0.6 enemy(ies) for 1.3s on average</p>
-    <p class="muted">23 uses · 5 teams · 56% rounds won</p>
-  </div>
-</a><a class="card" href="/en/mirage/flash-b-site-from-apartments-t/" data-id="flash-b-site-from-apartments-t"
-   data-type="flash" data-side="T" data-area="BombsiteB" data-map="mirage"
-   data-teams="fut g2 legacy mouz spirit vitality" data-players="dziugss ksloks magixx pr r1nkle ropz try xfl0ud"
-   data-diff="1" data-count="22" data-eff="1.36">
-  <svg class="radar" viewBox="123.7 78.4 313.7 313.7" role="img" aria-label="Trajectory: Flash B Site (from Apartments)">
-  <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="10.5"><text x="249.8" y="291.0">B Site</text><text x="328.6" y="197.4">Apartments</text><text x="207.6" y="196.6">Truck</text></g>
-  <circle class="land land-flash" cx="193.7" cy="287.2" r="10.0"/>
-  <path class="traj traj-flash" d="M367.0,183.2 L360.2,187.2 L353.6,191.4 L346.8,195.4 L340.0,199.4 L333.4,203.6 L326.6,207.6 L320.0,211.6 L313.2,215.8 L306.4,219.8 L299.8,224.0 L293.0,228.0 L286.4,232.0 L279.6,236.2 L272.8,240.2 L266.2,244.2 L259.4,248.4 L252.6,252.4 L246.0,256.6 L239.2,260.6 L232.6,264.6 L225.8,268.8 L219.0,272.8 L212.4,276.8 L205.6,281.0 L198.8,285.0 L193.8,288.0"/>
-  <line class="aim" x1="367.4" y1="182.5" x2="338.2" y2="200.1"/>
-  <circle class="spot side-T" cx="367.4" cy="182.5" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">Mirage</span><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-1">Easy</span><span class="badge video">▶ video</span><span class="badge">3 variants</span></div>
-    <h3>Flash B Site (from Apartments)</h3>
-<p class="eff">blinds 1.4 enemy(ies) for 3.8s on average</p>
-    <p class="muted">22 uses · 6 teams · 18% rounds won</p>
+<p class="eff">blinds 0.4 enemy(ies) for 1.0s on average</p>
+    <p class="muted">33 uses · 6 teams · 58% rounds won</p>
   </div>
 </a><a class="card" href="/en/dust2/flash-b-site-from-upper-tunnels-t/" data-id="flash-b-site-from-upper-tunnels-t"
    data-type="flash" data-side="T" data-area="BombsiteB" data-map="dust2"
-   data-teams="falcons furia g2 legacy vitality" data-players="art flamez hunter kscerato m0nesy niko yekindar"
-   data-diff="2" data-count="16" data-eff="1.25">
+   data-teams="falcons furia g2 legacy spirit vitality" data-players="art fallen flamez heavygod hunter karrigan kscerato m0nesy molodoy niko sh1ro teses yekindar yuurih"
+   data-diff="2" data-count="28" data-eff="1.57">
   <svg class="radar" viewBox="0 227.7 350.3 350.3" role="img" aria-label="Trajectory: Flash B Site (from Upper Tunnels)">
   <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="11.7"><text x="163.2" y="470.2">Upper Tunnels</text><text x="304.1" y="474.3">Tunnel Stairs</text></g>
+  <g class="places" font-size="11.7"><text x="163.0" y="466.1">Upper Tunnels</text><text x="304.3" y="480.9">Tunnel Stairs</text></g>
   <circle class="land land-flash" cx="86.1" cy="297.7" r="11.4"/>
   <path class="traj traj-flash" d="M143.4,508.0 L141.1,500.0 L138.6,492.0 L136.1,483.9 L133.9,475.9 L131.4,468.0 L128.9,460.0 L126.4,452.0 L124.1,444.1 L121.6,435.9 L119.1,428.0 L116.8,420.0 L114.3,412.0 L111.8,404.1 L109.5,396.1 L107.0,388.2 L104.5,380.0 L102.3,372.0 L99.8,364.1 L97.3,356.1 L95.0,348.2 L92.5,340.2 L90.0,332.0 L87.7,324.1 L85.2,316.1 L82.7,308.2 L80.9,302.3"/>
   <line class="aim" x1="143.6" y1="507.8" x2="134.6" y2="475.0"/>
   <circle class="spot side-T" cx="143.6" cy="507.8" r="7"/>
 </svg>
   <div class="card-body">
-    <div class="card-badges"><span class="badge">Dust2</span><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-2">Medium</span><span class="badge">jump throw</span><span class="badge video">▶ video</span><span class="badge">3 variants</span></div>
+    <div class="card-badges"><span class="badge">Dust2</span><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-2">Medium</span><span class="badge">jump throw</span><span class="badge video">▶ video</span><span class="badge">6 variants</span></div>
     <h3>Flash B Site (from Upper Tunnels)</h3>
-<p class="eff">blinds 1.2 enemy(ies) for 2.3s on average</p>
-    <p class="muted">16 uses · 5 teams · 25% rounds won</p>
+<p class="eff">blinds 1.6 enemy(ies) for 3.3s on average</p>
+    <p class="muted">28 uses · 6 teams · 39% rounds won</p>
   </div>
 </a><a class="card" href="/en/inferno/flash-banana-from-b-site-ct/" data-id="flash-banana-from-b-site-ct"
    data-type="flash" data-side="CT" data-area="Banana" data-map="inferno"
@@ -185,23 +168,59 @@
 <p class="eff">blinds 1.2 enemy(ies) for 3.3s on average</p>
     <p class="muted">16 uses · 4 teams · 62% rounds won</p>
   </div>
-</a><a class="card" href="/en/ancient/flash-mid-from-house-ct/" data-id="flash-mid-from-house-ct"
-   data-type="flash" data-side="CT" data-area="Middle" data-map="ancient"
-   data-teams="fut g2 mouz spirit" data-players="dziugss hunter r1nkle sunpayus xelex zont1x"
-   data-diff="1" data-count="11" data-eff="1.0">
-  <svg class="radar" viewBox="299.7 307.0 328.0 328.0" role="img" aria-label="Trajectory: Flash Mid (from House)">
-  <image href="/static/radars/ancient.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="10.9"><text x="481.4" y="512.6">Mid</text><text x="486.0" y="407.8">Top Mid</text></g>
-  <circle class="land land-flash" cx="430.7" cy="564.9" r="10.0"/>
-  <path class="traj traj-flash" d="M496.2,377.0 L493.8,384.2 L491.2,391.6 L488.6,398.8 L486.2,406.2 L483.6,413.4 L481.0,420.8 L478.6,428.0 L476.0,435.4 L473.4,442.6 L471.0,450.0 L468.4,457.2 L465.8,464.6 L463.4,471.8 L460.8,479.2 L458.2,486.4 L455.8,493.8 L453.2,501.2 L450.6,508.4 L448.2,515.6 L445.6,523.0 L443.0,530.4 L440.6,537.6 L438.0,545.0 L435.4,552.2 L433.0,559.6 L431.0,565.0"/>
-  <line class="aim" x1="496.7" y1="377.0" x2="485.4" y2="409.0"/>
-  <circle class="spot side-CT" cx="496.7" cy="377.0" r="7"/>
+</a><a class="card" href="/en/dust2/flash-mid-from-lower-tunnels-t/" data-id="flash-mid-from-lower-tunnels-t"
+   data-type="flash" data-side="T" data-area="Middle" data-map="dust2"
+   data-teams="falcons furia g2 spirit vitality" data-players="donk flamez kscerato nertz niko"
+   data-diff="1" data-count="14" data-eff="0.29">
+  <svg class="radar" viewBox="256.4 296.7 260 260" role="img" aria-label="Trajectory: Flash Mid (from Lower Tunnels)">
+  <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="8.7"><text x="477.7" y="469.5">Mid</text><text x="363.4" y="415.5">Lower Tunnels</text><text x="304.3" y="480.9">Tunnel Stairs</text></g>
+  <circle class="land land-flash" cx="443.6" cy="417.5" r="11.4"/>
+  <path class="traj traj-flash" d="M328.2,435.9 L332.7,435.2 L337.3,434.5 L341.8,433.9 L346.4,433.2 L350.9,432.5 L355.5,432.0 L360.0,431.4 L364.5,430.7 L368.9,430.0 L373.4,429.3 L378.0,428.6 L382.5,428.0 L387.0,427.5 L391.6,426.8 L396.1,426.1 L400.5,425.5 L405.0,424.8 L409.5,424.1 L414.1,423.4 L418.6,423.0 L423.2,422.3 L427.7,421.6 L432.3,420.9 L436.8,420.2 L441.1,419.5 L444.5,419.1"/>
+  <line class="aim" x1="328.3" y1="435.3" x2="361.9" y2="430.1"/>
+  <circle class="spot side-T" cx="328.3" cy="435.3" r="7"/>
 </svg>
   <div class="card-body">
-    <div class="card-badges"><span class="badge">Ancient</span><span class="badge type-flash">Flash</span><span class="badge side-CT">CT</span><span class="badge diff-1">Easy</span><span class="badge video">▶ video</span><span class="badge">2 variants</span></div>
-    <h3>Flash Mid (from House)</h3>
-<p class="eff">blinds 1.0 enemy(ies) for 2.2s on average</p>
-    <p class="muted">11 uses · 4 teams · 46% rounds won</p>
+    <div class="card-badges"><span class="badge">Dust2</span><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-1">Easy</span><span class="badge video">▶ video</span></div>
+    <h3>Flash Mid (from Lower Tunnels)</h3>
+<p class="eff">blinds 0.3 enemy(ies) for 0.8s on average</p>
+    <p class="muted">14 uses · 5 teams · 50% rounds won</p>
+  </div>
+</a><a class="card" href="/en/mirage/flash-apartments-from-back-alley-t/" data-id="flash-apartments-from-back-alley-t"
+   data-type="flash" data-side="T" data-area="Apartments" data-map="mirage"
+   data-teams="furia fut legacy mouz spirit" data-players="art sh1ro spinx sunpayus torzsi try yuurih zont1x"
+   data-diff="1" data-count="14" data-eff="1.21">
+  <svg class="radar" viewBox="295.0 77.8 312.8 312.8" role="img" aria-label="Trajectory: Flash Apartments (from Back Alley)">
+  <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="10.4"><text x="330.8" y="201.0">Apartments</text><text x="457.2" y="288.8">Underpass</text><text x="567.2" y="229.0">Back Alley</text></g>
+  <circle class="land land-flash" cx="365.1" cy="232.1" r="10.0"/>
+  <path class="traj traj-flash" d="M537.8,239.4 L531.0,239.0 L524.4,238.6 L517.6,238.2 L511.0,237.8 L504.2,237.4 L497.6,237.0 L490.8,236.4 L484.0,236.0 L477.4,235.6 L470.6,235.2 L464.0,234.8 L457.2,234.4 L450.6,233.8 L443.8,233.4 L437.0,233.0 L430.4,232.6 L423.6,232.2 L417.0,231.8 L410.2,231.2 L403.6,230.8 L396.8,230.4 L390.0,230.0 L383.4,229.6 L376.6,229.2 L370.0,228.8 L365.0,228.4"/>
+  <line class="aim" x1="537.8" y1="240.1" x2="503.8" y2="238.5"/>
+  <circle class="spot side-T" cx="537.8" cy="240.1" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge">Mirage</span><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-1">Easy</span><span class="badge video">▶ video</span><span class="badge">4 variants</span></div>
+    <h3>Flash Apartments (from Back Alley)</h3>
+<p class="eff">blinds 1.2 enemy(ies) for 3.2s on average</p>
+    <p class="muted">14 uses · 5 teams · 43% rounds won</p>
+  </div>
+</a><a class="card" href="/en/dust2/flash-long-doors-from-outside-long-t/" data-id="flash-long-doors-from-outside-long-t"
+   data-type="flash" data-side="T" data-area="LongDoors" data-map="dust2"
+   data-teams="falcons furia g2 vitality" data-players="hunter m0nesy r1nkle yekindar yuurih zywoo"
+   data-diff="3" data-count="12" data-eff="1.08">
+  <svg class="radar" viewBox="562.9 553.9 322.9 322.9" role="img" aria-label="Trajectory: Flash Long Doors (from Outside Long)">
+  <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="10.8"><text x="642.7" y="746.8">Outside Long</text></g>
+  <circle class="land land-flash" cx="811.4" cy="623.9" r="11.4"/>
+  <path class="traj traj-flash" d="M637.7,806.1 L644.3,799.1 L651.1,792.0 L658.0,785.0 L664.5,778.0 L671.4,771.1 L678.2,764.1 L685.0,757.0 L691.6,750.0 L698.4,743.0 L705.2,735.9 L711.8,728.9 L718.6,721.8 L725.5,714.8 L732.3,707.7 L738.9,700.7 L745.7,693.6 L752.5,686.6 L759.1,679.5 L765.9,672.5 L772.7,665.5 L779.3,658.4 L786.1,651.6 L793.0,644.5 L799.8,637.5 L806.4,630.5 L811.6,625.2"/>
+  <line class="aim" x1="637.2" y1="806.8" x2="660.7" y2="782.2"/>
+  <circle class="spot side-T" cx="637.2" cy="806.8" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge">Dust2</span><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-3">Hard</span><span class="badge">jump throw</span><span class="badge video">▶ video</span><span class="badge">4 variants</span></div>
+    <h3>Flash Long Doors (from Outside Long)</h3>
+<p class="eff">blinds 1.1 enemy(ies) for 2.5s on average</p>
+    <p class="muted">12 uses · 4 teams · 17% rounds won</p>
   </div>
 </a><a class="card" href="/en/inferno/flash-b-site-from-banana-t/" data-id="flash-b-site-from-banana-t"
    data-type="flash" data-side="T" data-area="BombsiteB" data-map="inferno"
@@ -221,6 +240,24 @@
 <p class="eff">blinds 0.9 enemy(ies) for 2.3s on average</p>
     <p class="muted">11 uses · 3 teams · 36% rounds won</p>
   </div>
+</a><a class="card" href="/en/ancient/flash-mid-from-house-ct/" data-id="flash-mid-from-house-ct"
+   data-type="flash" data-side="CT" data-area="Middle" data-map="ancient"
+   data-teams="falcons furia g2 mouz" data-players="hunter kscerato kyousuke molodoy torzsi xertion yekindar"
+   data-diff="3" data-count="10" data-eff="0.6">
+  <svg class="radar" viewBox="262.4 218.8 419.2 419.2" role="img" aria-label="Trajectory: Flash Mid (from House)">
+  <image href="/static/radars/ancient.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="14.0"><text x="483.8" y="515.8">Mid</text><text x="322.2" y="440.2">Side Hall</text><text x="499.4" y="282.8">House</text><text x="486.0" y="407.8">Top Mid</text></g>
+  <circle class="land land-flash" cx="451.0" cy="566.0" r="10.0"/>
+  <path class="traj traj-flash" d="M495.6,289.6 L493.6,301.0 L491.8,312.4 L489.8,323.8 L487.8,335.2 L486.0,346.6 L484.0,358.0 L482.0,369.4 L480.2,380.8 L478.2,392.0 L476.2,403.4 L474.4,414.8 L472.4,426.2 L470.4,437.6 L468.4,449.0 L466.6,460.4 L464.6,471.8 L462.6,483.0 L460.8,494.4 L458.8,505.8 L456.8,517.2 L455.0,528.6 L453.0,540.0 L451.0,551.4 L449.8,558.8 L449.0,564.0 L448.4,568.0"/>
+  <line class="aim" x1="494.7" y1="288.8" x2="489.3" y2="322.3"/>
+  <circle class="spot side-CT" cx="494.7" cy="288.8" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge">Ancient</span><span class="badge type-flash">Flash</span><span class="badge side-CT">CT</span><span class="badge diff-3">Hard</span><span class="badge video">▶ video</span><span class="badge">3 variants</span></div>
+    <h3>Flash Mid (from House)</h3>
+<p class="eff">blinds 0.6 enemy(ies) for 1.8s on average</p>
+    <p class="muted">10 uses · 4 teams · 50% rounds won</p>
+  </div>
 </a><a class="card" href="/en/cache/flash-b-site-from-sun-room-t/" data-id="flash-b-site-from-sun-room-t"
    data-type="flash" data-side="T" data-area="BombsiteB" data-map="cache"
    data-teams="fut mouz vitality" data-players="sunpayus torzsi zywoo"
@@ -238,24 +275,6 @@
     <h3>Flash B Site (from Sun Room)</h3>
 <p class="eff">blinds 1.1 enemy(ies) for 2.6s on average</p>
     <p class="muted">10 uses · 3 teams · 40% rounds won</p>
-  </div>
-</a><a class="card" href="/en/dust2/flash-lower-tunnels-t/" data-id="flash-lower-tunnels-t"
-   data-type="flash" data-side="T" data-area="LowerTunnel" data-map="dust2"
-   data-teams="falcons furia g2 vitality" data-players="flamez kscerato nertz niko"
-   data-diff="1" data-count="10" data-eff="0.2">
-  <svg class="radar" viewBox="256.4 297.0 260 260" role="img" aria-label="Trajectory: Flash Lower Tunnels">
-  <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="8.7"><text x="480.9" y="461.8">Mid</text><text x="363.4" y="415.5">Lower Tunnels</text><text x="304.1" y="474.3">Tunnel Stairs</text></g>
-  <circle class="land land-flash" cx="444.5" cy="418.2" r="11.4"/>
-  <path class="traj traj-flash" d="M328.2,435.9 L332.7,435.2 L337.3,434.5 L341.8,433.9 L346.4,433.2 L350.9,432.5 L355.5,432.0 L360.0,431.4 L364.5,430.7 L368.9,430.0 L373.4,429.3 L378.0,428.6 L382.5,428.0 L387.0,427.5 L391.6,426.8 L396.1,426.1 L400.5,425.5 L405.0,424.8 L409.5,424.1 L414.1,423.4 L418.6,423.0 L423.2,422.3 L427.7,421.6 L432.3,420.9 L436.8,420.2 L441.1,419.5 L444.5,419.1"/>
-  <line class="aim" x1="328.3" y1="435.3" x2="362.0" y2="430.4"/>
-  <circle class="spot side-T" cx="328.3" cy="435.3" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">Dust2</span><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-1">Easy</span><span class="badge video">▶ video</span></div>
-    <h3>Flash Lower Tunnels</h3>
-<p class="eff">blinds 0.2 enemy(ies) for 0.3s on average</p>
-    <p class="muted">10 uses · 4 teams · 60% rounds won</p>
   </div>
 </a><a class="card" href="/en/inferno/flash-banana-from-lower-mid-t/" data-id="flash-banana-from-lower-mid-t"
    data-type="flash" data-side="T" data-area="Banana" data-map="inferno"
@@ -275,23 +294,59 @@
 <p class="eff">blinds 0.6 enemy(ies) for 2.0s on average</p>
     <p class="muted">10 uses · 4 teams · 10% rounds won</p>
   </div>
-</a><a class="card" href="/en/dust2/flash-long-doors-from-outside-long-t/" data-id="flash-long-doors-from-outside-long-t"
-   data-type="flash" data-side="T" data-area="LongDoors" data-map="dust2"
-   data-teams="falcons g2 vitality" data-players="hunter m0nesy r1nkle zywoo"
-   data-diff="2" data-count="9" data-eff="0.56">
-  <svg class="radar" viewBox="460.6 454.1 367.4 367.4" role="img" aria-label="Trajectory: Flash Long Doors (from Outside Long)">
-  <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="12.2"><text x="642.7" y="746.8">Outside Long</text><text x="782.0" y="539.5">Long Doors</text></g>
-  <circle class="land land-flash" cx="673.5" cy="524.1" r="11.4"/>
-  <path class="traj traj-flash" d="M614.8,750.9 L617.0,742.0 L619.3,733.2 L621.6,724.3 L624.1,715.7 L626.4,706.8 L628.6,698.0 L630.9,689.1 L633.2,680.5 L635.5,671.6 L637.7,662.7 L640.0,653.9 L642.3,645.2 L644.8,636.4 L647.0,627.5 L649.3,618.6 L651.6,609.8 L653.9,601.1 L656.1,592.3 L658.4,583.4 L660.7,574.5 L663.0,565.9 L665.5,557.0 L667.7,548.2 L670.0,539.3 L672.3,530.7 L673.9,524.1"/>
-  <line class="aim" x1="615.3" y1="751.5" x2="623.8" y2="718.5"/>
-  <circle class="spot side-T" cx="615.3" cy="751.5" r="7"/>
+</a><a class="card" href="/en/mirage/flash-mid-from-ct-spawn-ct/" data-id="flash-mid-from-ct-spawn-ct"
+   data-type="flash" data-side="CT" data-area="Middle" data-map="mirage"
+   data-teams="falcons furia fut g2 mouz" data-players="coolio kscerato m0nesy nertz xertion xfl0ud yekindar"
+   data-diff="2" data-count="10" data-eff="1.2">
+  <svg class="radar" viewBox="285.3 367.6 260 260" role="img" aria-label="Trajectory: Flash Mid (from CT Spawn)">
+  <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="8.7"><text x="494.2" y="400.2">Catwalk</text><text x="412.0" y="466.2">Sniper&#39;s Nest</text></g>
+  <circle class="land land-flash" cx="431.9" cy="471.4" r="10.0"/>
+  <path class="traj traj-flash" d="M398.4,524.2 L399.6,522.2 L401.0,520.2 L402.4,518.0 L403.6,516.0 L405.0,514.0 L406.2,511.8 L407.6,509.8 L408.8,507.8 L410.2,505.6 L411.4,503.6 L412.8,501.4 L414.2,499.4 L415.4,497.4 L416.8,495.2 L418.0,493.2 L419.4,491.2 L420.6,489.0 L422.0,487.0 L423.2,485.0 L424.6,482.8 L425.8,480.8 L427.2,478.6 L428.6,476.6 L429.8,474.6 L431.2,472.4 L432.2,471.0"/>
+  <line class="aim" x1="398.4" y1="524.3" x2="416.5" y2="495.5"/>
+  <circle class="spot side-CT" cx="398.4" cy="524.3" r="7"/>
 </svg>
   <div class="card-body">
-    <div class="card-badges"><span class="badge">Dust2</span><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-2">Medium</span><span class="badge">jump throw</span><span class="badge video">▶ video</span><span class="badge">3 variants</span></div>
-    <h3>Flash Long Doors (from Outside Long)</h3>
-<p class="eff">blinds 0.6 enemy(ies) for 1.8s on average</p>
-    <p class="muted">9 uses · 3 teams · 11% rounds won</p>
+    <div class="card-badges"><span class="badge">Mirage</span><span class="badge type-flash">Flash</span><span class="badge side-CT">CT</span><span class="badge diff-2">Medium</span><span class="badge">jump throw</span><span class="badge video">▶ video</span></div>
+    <h3>Flash Mid (from CT Spawn)</h3>
+<p class="eff">blinds 1.2 enemy(ies) for 2.8s on average</p>
+    <p class="muted">10 uses · 5 teams · 80% rounds won</p>
+  </div>
+</a><a class="card" href="/en/ancient/flash-b-site-from-alley-ct/" data-id="flash-b-site-from-alley-ct"
+   data-type="flash" data-side="CT" data-area="BombsiteB" data-map="ancient"
+   data-teams="furia mouz spirit" data-players="tn1r xertion yuurih"
+   data-diff="2" data-count="9" data-eff="1.56">
+  <svg class="radar" viewBox="713.1 264.2 282.2 282.2" role="img" aria-label="Trajectory: Flash B Site (from Alley)">
+  <image href="/static/radars/ancient.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="9.4"><text x="783.0" y="416.8">B Site</text></g>
+  <circle class="land land-flash" cx="851.0" cy="475.0" r="10.0"/>
+  <path class="traj traj-flash" d="M857.0,334.2 L856.8,339.6 L856.6,345.2 L856.4,350.8 L856.2,356.2 L856.0,361.8 L855.8,367.4 L855.4,372.8 L855.2,378.4 L855.0,384.0 L854.8,389.4 L854.6,395.0 L854.4,400.4 L854.2,406.0 L854.0,411.6 L853.6,417.0 L853.4,422.6 L853.2,428.2 L853.0,433.6 L852.8,439.2 L852.6,444.8 L852.4,450.2 L852.0,455.8 L851.8,461.2 L851.6,466.8 L851.4,472.4 L851.2,476.4"/>
+  <line class="aim" x1="857.5" y1="334.2" x2="856.3" y2="368.1"/>
+  <circle class="spot side-CT" cx="857.5" cy="334.2" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge">Ancient</span><span class="badge type-flash">Flash</span><span class="badge side-CT">CT</span><span class="badge diff-2">Medium</span><span class="badge">jump throw</span><span class="badge video">▶ video</span></div>
+    <h3>Flash B Site (from Alley)</h3>
+<p class="eff">blinds 1.6 enemy(ies) for 5.9s on average</p>
+    <p class="muted">9 uses · 3 teams · 56% rounds won</p>
+  </div>
+</a><a class="card" href="/en/ancient/flash-b-site-from-ruins-t/" data-id="flash-b-site-from-ruins-t"
+   data-type="flash" data-side="T" data-area="BombsiteB" data-map="ancient"
+   data-teams="g2 mouz spirit" data-players="heavygod magixx xertion"
+   data-diff="3" data-count="9" data-eff="1.44">
+  <svg class="radar" viewBox="590.8 330.2 354.2 354.2" role="img" aria-label="Trajectory: Flash B Site (from Ruins)">
+  <image href="/static/radars/ancient.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="11.8"><text x="783.0" y="416.8">B Site</text><text x="666.8" y="465.4">Side Entrance</text><text x="755.6" y="578.8">TSide Lower</text><text x="846.6" y="544.8">Ramp</text></g>
+  <circle class="land land-flash" cx="735.3" cy="403.9" r="10.0"/>
+  <path class="traj traj-flash" d="M800.6,614.4 L798.2,606.0 L795.8,597.8 L793.4,589.4 L791.0,581.2 L788.4,572.8 L786.0,564.4 L783.6,556.2 L781.2,547.8 L778.6,539.6 L776.2,531.2 L773.8,522.8 L771.4,514.6 L769.0,506.2 L766.4,498.0 L764.0,489.6 L761.6,481.2 L759.2,473.0 L756.6,464.6 L754.2,456.4 L751.8,448.0 L749.4,439.6 L747.0,431.4 L744.4,423.0 L742.0,414.8 L739.6,406.4 L737.8,400.2"/>
+  <line class="aim" x1="800.6" y1="614.1" x2="790.1" y2="581.7"/>
+  <circle class="spot side-T" cx="800.6" cy="614.1" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge">Ancient</span><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-3">Hard</span><span class="badge">jump throw</span><span class="badge video">▶ video</span><span class="badge">2 variants</span></div>
+    <h3>Flash B Site (from Ruins)</h3>
+<p class="eff">blinds 1.4 enemy(ies) for 3.5s on average</p>
+    <p class="muted">9 uses · 3 teams · 56% rounds won</p>
   </div>
 </a><a class="card" href="/en/nuke/flash-rafters-from-roof-t/" data-id="flash-rafters-from-roof-t"
    data-type="flash" data-side="T" data-area="Rafters" data-map="nuke"
@@ -311,59 +366,23 @@
 <p class="eff">blinds 1.3 enemy(ies) for 1.7s on average</p>
     <p class="muted">9 uses · 3 teams · 22% rounds won</p>
   </div>
-</a><a class="card" href="/en/ancient/flash-b-site-from-ruins-t/" data-id="flash-b-site-from-ruins-t"
-   data-type="flash" data-side="T" data-area="BombsiteB" data-map="ancient"
-   data-teams="g2 spirit" data-players="heavygod magixx"
-   data-diff="3" data-count="8" data-eff="1.62">
-  <svg class="radar" viewBox="605.8 334.6 346.6 346.6" role="img" aria-label="Trajectory: Flash B Site (from Ruins)">
+</a><a class="card" href="/en/ancient/flash-mid-from-top-mid-ct/" data-id="flash-mid-from-top-mid-ct"
+   data-type="flash" data-side="CT" data-area="Middle" data-map="ancient"
+   data-teams="falcons furia g2 mouz spirit" data-players="donk nertz niko xertion yekindar zont1x"
+   data-diff="3" data-count="8" data-eff="1.38">
+  <svg class="radar" viewBox="288.4 360.0 314.4 314.4" role="img" aria-label="Trajectory: Flash Mid (from Top Mid)">
   <image href="/static/radars/ancient.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="11.6"><text x="783.0" y="416.8">B Site</text><text x="671.8" y="469.2">Side Entrance</text><text x="758.8" y="580.0">TSide Lower</text><text x="845.4" y="546.6">Ramp</text></g>
-  <circle class="land land-flash" cx="737.9" cy="404.6" r="10.0"/>
-  <path class="traj traj-flash" d="M820.4,611.2 L817.2,603.2 L814.0,595.2 L810.8,587.2 L807.6,579.0 L804.4,571.0 L801.2,563.0 L798.0,555.0 L794.8,547.0 L791.6,539.0 L788.4,531.0 L785.2,523.0 L782.0,515.0 L778.8,506.8 L775.6,498.8 L772.4,490.8 L769.2,482.8 L766.0,474.8 L762.8,466.8 L759.6,458.8 L756.4,450.8 L753.2,442.8 L749.8,434.6 L746.6,426.6 L743.4,418.6 L740.2,410.6 L737.8,404.6"/>
-  <line class="aim" x1="820.4" y1="611.2" x2="807.8" y2="579.6"/>
-  <circle class="spot side-T" cx="820.4" cy="611.2" r="7"/>
+  <g class="places" font-size="10.5"><text x="483.8" y="515.8">Mid</text><text x="486.0" y="407.8">Top Mid</text></g>
+  <circle class="land land-flash" cx="413.9" cy="563.6" r="10.0"/>
+  <path class="traj traj-flash" d="M478.2,430.0 L474.8,441.6 L471.6,453.0 L468.2,464.6 L465.0,476.0 L461.6,487.6 L458.4,499.0 L455.0,510.6 L451.8,522.2 L448.4,533.6 L445.2,545.2 L441.8,556.6 L438.6,568.2 L435.2,579.6 L432.0,591.2 L428.6,602.8 L426.4,604.4 L424.8,599.2 L423.4,594.0 L422.0,588.8 L420.4,583.6 L419.0,578.4 L417.4,573.2 L416.0,568.0 L414.4,562.8 L413.4,562.0 L413.0,563.6"/>
+  <line class="aim" x1="476.4" y1="430.0" x2="467.2" y2="462.7"/>
+  <circle class="spot side-CT" cx="476.4" cy="430.0" r="7"/>
 </svg>
   <div class="card-body">
-    <div class="card-badges"><span class="badge">Ancient</span><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-3">Hard</span><span class="badge">jump throw</span><span class="badge video">▶ video</span><span class="badge">2 variants</span></div>
-    <h3>Flash B Site (from Ruins)</h3>
-<p class="eff">blinds 1.6 enemy(ies) for 3.9s on average</p>
-    <p class="muted">8 uses · 2 teams · 50% rounds won</p>
-  </div>
-</a><a class="card" href="/en/mirage/flash-mid-from-ct-spawn-ct/" data-id="flash-mid-from-ct-spawn-ct"
-   data-type="flash" data-side="CT" data-area="Middle" data-map="mirage"
-   data-teams="falcons furia fut g2 mouz" data-players="coolio kscerato m0nesy nertz xertion xfl0ud"
-   data-diff="2" data-count="7" data-eff="1.0">
-  <svg class="radar" viewBox="285.3 367.6 260 260" role="img" aria-label="Trajectory: Flash Mid (from CT Spawn)">
-  <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="8.7"><text x="495.6" y="403.4">Catwalk</text><text x="410.8" y="471.0">Sniper&#39;s Nest</text></g>
-  <circle class="land land-flash" cx="432.2" cy="471.2" r="10.0"/>
-  <path class="traj traj-flash" d="M398.4,524.2 L399.6,522.2 L401.0,520.2 L402.4,518.0 L403.6,516.0 L405.0,514.0 L406.2,511.8 L407.6,509.8 L408.8,507.8 L410.2,505.6 L411.4,503.6 L412.8,501.6 L414.0,499.4 L415.4,497.4 L416.6,495.4 L418.0,493.2 L419.2,491.2 L420.6,489.2 L421.8,487.0 L423.2,485.0 L424.4,483.0 L425.8,480.8 L427.2,478.8 L428.4,476.8 L429.8,474.6 L431.0,472.6 L432.0,471.0"/>
-  <line class="aim" x1="398.4" y1="524.3" x2="416.6" y2="495.6"/>
-  <circle class="spot side-CT" cx="398.4" cy="524.3" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">Mirage</span><span class="badge type-flash">Flash</span><span class="badge side-CT">CT</span><span class="badge diff-2">Medium</span><span class="badge">jump throw</span><span class="badge video">▶ video</span></div>
-    <h3>Flash Mid (from CT Spawn)</h3>
-<p class="eff">blinds 1.0 enemy(ies) for 2.6s on average</p>
-    <p class="muted">7 uses · 5 teams · 86% rounds won</p>
-  </div>
-</a><a class="card" href="/en/mirage/flash-mid-from-jungle-ct/" data-id="flash-mid-from-jungle-ct"
-   data-type="flash" data-side="CT" data-area="Middle" data-map="mirage"
-   data-teams="fut mouz vitality" data-players="coolio dziugss torzsi zywoo"
-   data-diff="1" data-count="7" data-eff="1.57">
-  <svg class="radar" viewBox="380.6 457.1 282.4 282.4" role="img" aria-label="Trajectory: Flash Mid (from Jungle)">
-  <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="9.4"><text x="517.4" y="558.4">Connector</text><text x="446.2" y="626.6">Jungle</text><text x="545.8" y="650.6">Stairs</text></g>
-  <circle class="land land-flash" cx="593.0" cy="550.8" r="10.0"/>
-  <path class="traj traj-flash" d="M450.6,645.8 L456.2,642.2 L461.6,638.6 L467.2,635.0 L472.8,631.2 L478.2,627.6 L483.8,624.0 L489.2,620.2 L494.8,616.6 L500.4,613.0 L505.8,609.2 L511.4,605.6 L517.0,602.0 L522.4,598.2 L528.0,594.6 L533.4,591.0 L539.0,587.2 L544.6,583.6 L550.0,580.0 L555.6,576.2 L561.0,572.6 L566.6,569.0 L572.2,565.4 L577.6,561.6 L583.2,558.0 L588.6,554.4 L592.8,551.6"/>
-  <line class="aim" x1="450.6" y1="645.9" x2="478.9" y2="627.0"/>
-  <circle class="spot side-CT" cx="450.6" cy="645.9" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">Mirage</span><span class="badge type-flash">Flash</span><span class="badge side-CT">CT</span><span class="badge diff-1">Easy</span><span class="badge video">▶ video</span><span class="badge">2 variants</span></div>
-    <h3>Flash Mid (from Jungle)</h3>
-<p class="eff">blinds 1.6 enemy(ies) for 4.1s on average</p>
-    <p class="muted">7 uses · 3 teams · 43% rounds won</p>
+    <div class="card-badges"><span class="badge">Ancient</span><span class="badge type-flash">Flash</span><span class="badge side-CT">CT</span><span class="badge diff-3">Hard</span><span class="badge video">▶ video</span><span class="badge">2 variants</span></div>
+    <h3>Flash Mid (from Top Mid)</h3>
+<p class="eff">blinds 1.4 enemy(ies) for 4.8s on average</p>
+    <p class="muted">8 uses · 5 teams · 88% rounds won</p>
   </div>
 </a><a class="card" href="/en/nuke/flash-ramp-from-trophy-t/" data-id="flash-ramp-from-trophy-t"
    data-type="flash" data-side="T" data-area="Ramp" data-map="nuke"
@@ -389,7 +408,7 @@
    data-diff="2" data-count="6" data-eff="2.0">
   <svg class="radar" viewBox="370.9 553.0 333.6 333.6" role="img" aria-label="Trajectory: Flash Mid (from T Spawn)">
   <image href="/static/radars/ancient.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="11.1"><text x="485.2" y="822.8">T Spawn</text><text x="622.0" y="590.4">T Upper</text><text x="615.8" y="802.2">Tunnel</text></g>
+  <g class="places" font-size="11.1"><text x="483.6" y="823.8">T Spawn</text><text x="622.4" y="592.8">T Upper</text><text x="615.2" y="798.6">Tunnel</text></g>
   <circle class="land land-flash" cx="528.4" cy="623.0" r="10.0"/>
   <path class="traj traj-flash" d="M547.0,816.6 L546.4,809.4 L545.8,802.0 L545.2,794.6 L544.6,787.4 L544.0,780.0 L543.4,772.6 L542.6,765.4 L542.0,758.0 L541.4,750.6 L540.8,743.2 L540.2,736.0 L539.6,728.6 L539.0,721.2 L538.4,714.0 L537.8,706.6 L537.2,699.2 L536.6,692.0 L536.0,684.6 L535.4,677.2 L534.8,669.8 L534.2,662.6 L533.4,655.2 L532.8,647.8 L532.2,640.6 L531.6,633.2 L531.2,627.6"/>
   <line class="aim" x1="546.9" y1="815.6" x2="543.7" y2="781.7"/>
@@ -401,41 +420,77 @@
 <p class="eff">blinds 2.0 enemy(ies) for 6.5s on average</p>
     <p class="muted">6 uses · 2 teams · 33% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/flash-mid-from-side-alley-t/" data-id="flash-mid-from-side-alley-t"
-   data-type="flash" data-side="T" data-area="Middle" data-map="mirage"
-   data-teams="mouz spirit vitality" data-players="donk flamez magixx xertion"
-   data-diff="3" data-count="6" data-eff="0.83">
-  <svg class="radar" viewBox="498.9 269.0 302.0 302.0" role="img" aria-label="Trajectory: Flash Mid (from Side Alley)">
-  <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="10.1"><text x="543.8" y="478.6">Mid</text><text x="703.6" y="431.4">Top Mid</text></g>
-  <circle class="land land-flash" cx="584.5" cy="468.3" r="10.0"/>
-  <path class="traj traj-flash" d="M713.8,339.4 L707.6,349.6 L701.2,359.6 L695.0,369.8 L688.6,379.8 L682.4,390.0 L676.0,400.0 L669.8,410.0 L663.6,420.2 L657.2,430.2 L651.0,440.4 L644.6,450.4 L638.4,460.6 L632.0,470.6 L625.8,480.8 L619.4,490.8 L613.2,501.0 L609.4,500.6 L606.6,496.0 L603.6,491.4 L600.8,487.0 L598.0,482.4 L595.2,477.8 L592.4,473.4 L590.8,471.2 L589.4,469.2 L588.2,467.6"/>
-  <line class="aim" x1="715.4" y1="339.0" x2="696.3" y2="367.1"/>
-  <circle class="spot side-T" cx="715.4" cy="339.0" r="7"/>
+</a><a class="card" href="/en/ancient/flash-tside-lower-from-ruins-t/" data-id="flash-tside-lower-from-ruins-t"
+   data-type="flash" data-side="T" data-area="TSideLower" data-map="ancient"
+   data-teams="fut spirit" data-players="sh1ro sunpayus"
+   data-diff="2" data-count="6" data-eff="0.5">
+  <svg class="radar" viewBox="680.4 519.8 275.4 275.4" role="img" aria-label="Trajectory: Flash TSide Lower (from Ruins)">
+  <image href="/static/radars/ancient.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="9.2"><text x="793.0" y="700.8">Ruins</text><text x="755.6" y="578.8">TSide Lower</text></g>
+  <circle class="land land-flash" cx="831.4" cy="590.0" r="10.0"/>
+  <path class="traj traj-flash" d="M804.8,725.2 L805.8,720.0 L806.6,714.6 L807.6,709.4 L808.6,704.2 L809.4,699.0 L810.4,693.6 L811.4,688.4 L812.2,683.2 L813.2,677.8 L814.2,672.6 L815.0,667.4 L816.0,662.2 L817.0,656.8 L817.8,651.6 L818.8,646.4 L819.8,641.0 L820.6,635.8 L821.6,630.6 L822.6,625.4 L823.4,620.0 L824.4,614.8 L825.4,609.6 L826.2,604.2 L827.2,599.0 L828.2,593.8 L828.8,589.8"/>
+  <line class="aim" x1="804.8" y1="725.2" x2="811.4" y2="691.8"/>
+  <circle class="spot side-T" cx="804.8" cy="725.2" r="7"/>
 </svg>
   <div class="card-body">
-    <div class="card-badges"><span class="badge">Mirage</span><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-3">Hard</span><span class="badge video">▶ video</span></div>
-    <h3>Flash Mid (from Side Alley)</h3>
-<p class="eff">blinds 0.8 enemy(ies) for 2.0s on average</p>
-    <p class="muted">6 uses · 3 teams · 33% rounds won</p>
+    <div class="card-badges"><span class="badge">Ancient</span><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-2">Medium</span><span class="badge">jump throw</span><span class="badge video">▶ video</span><span class="badge">2 variants</span></div>
+    <h3>Flash TSide Lower (from Ruins)</h3>
+<p class="eff">blinds 0.5 enemy(ies) for 1.1s on average</p>
+    <p class="muted">6 uses · 2 teams · 33% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/flash-stairs-from-palace-alley-t/" data-id="flash-stairs-from-palace-alley-t"
-   data-type="flash" data-side="T" data-area="Stairs" data-map="mirage"
-   data-teams="g2 mouz" data-players="r1nkle spinx"
-   data-diff="3" data-count="6" data-eff="1.83">
-  <svg class="radar" viewBox="520.0 469.3 354.2 354.2" role="img" aria-label="Trajectory: Flash Stairs (from Palace Alley)">
-  <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="11.8"><text x="561.4" y="724.2">A Site</text><text x="749.2" y="753.2">Palace</text><text x="794.8" y="594.2">Palace Alley</text><text x="719.6" y="662.4">T Ramp</text><text x="639.4" y="761.4">Scaffolding</text></g>
-  <circle class="land land-flash" cx="596.0" cy="692.1" r="10.0"/>
-  <path class="traj traj-flash" d="M803.4,588.4 L795.0,592.8 L786.8,597.4 L778.6,601.8 L770.2,606.4 L762.0,610.8 L753.6,615.4 L745.4,619.8 L737.0,624.4 L728.8,628.8 L720.6,633.4 L712.2,637.8 L704.0,642.4 L695.6,646.8 L687.4,651.4 L679.0,655.8 L670.8,660.4 L662.4,665.0 L654.2,669.4 L646.0,674.0 L637.6,678.4 L629.4,683.0 L621.0,687.4 L612.8,692.0 L604.4,696.4 L596.2,701.0 L590.0,704.4"/>
-  <line class="aim" x1="804.2" y1="590.1" x2="773.8" y2="605.3"/>
-  <circle class="spot side-T" cx="804.2" cy="590.1" r="7"/>
+</a><a class="card" href="/en/ancient/flash-a-site-from-main-hall-t/" data-id="flash-a-site-from-main-hall-t"
+   data-type="flash" data-side="T" data-area="BombsiteA" data-map="ancient"
+   data-teams="falcons mouz" data-players="karrigan spinx teses"
+   data-diff="3" data-count="6" data-eff="0.33">
+  <svg class="radar" viewBox="83.8 290.8 298.2 298.2" role="img" aria-label="Trajectory: Flash A Site (from Main Hall)">
+  <image href="/static/radars/ancient.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="9.9"><text x="217.4" y="454.6">Main Hall</text><text x="322.2" y="440.2">Side Hall</text></g>
+  <circle class="land land-flash" cx="232.0" cy="363.1" r="10.0"/>
+  <path class="traj traj-flash" d="M231.6,519.0 L231.8,512.8 L231.8,506.6 L232.0,500.6 L232.0,494.4 L232.2,488.2 L232.2,482.0 L232.4,476.0 L232.4,469.8 L232.6,463.6 L232.6,457.6 L232.8,451.4 L232.8,445.2 L233.0,439.0 L233.0,433.0 L233.2,426.8 L233.2,420.6 L233.4,414.4 L233.4,408.4 L233.6,402.2 L233.6,396.0 L233.8,389.8 L233.8,383.8 L234.0,377.6 L234.0,371.4 L234.2,365.4 L234.2,360.8"/>
+  <line class="aim" x1="232.2" y1="517.4" x2="232.1" y2="483.4"/>
+  <circle class="spot side-T" cx="232.2" cy="517.4" r="7"/>
 </svg>
   <div class="card-body">
-    <div class="card-badges"><span class="badge">Mirage</span><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-3">Hard</span><span class="badge video">▶ video</span><span class="badge">2 variants</span></div>
-    <h3>Flash Stairs (from Palace Alley)</h3>
-<p class="eff">blinds 1.8 enemy(ies) for 2.8s on average</p>
-    <p class="muted">6 uses · 2 teams · 50% rounds won</p>
+    <div class="card-badges"><span class="badge">Ancient</span><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-3">Hard</span><span class="badge">2 variants</span></div>
+    <h3>Flash A Site (from Main Hall)</h3>
+<p class="eff">blinds 0.3 enemy(ies) for 0.7s on average</p>
+    <p class="muted">6 uses · 2 teams · 33% rounds won</p>
+  </div>
+</a><a class="card" href="/en/mirage/flash-b-site-from-apartments-t/" data-id="flash-b-site-from-apartments-t"
+   data-type="flash" data-side="T" data-area="BombsiteB" data-map="mirage"
+   data-teams="fut legacy mouz" data-players="ksloks pr xfl0ud"
+   data-diff="1" data-count="6" data-eff="1.0">
+  <svg class="radar" viewBox="108.2 95.4 309.3 309.3" role="img" aria-label="Trajectory: Flash B Site (from Apartments)">
+  <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="10.3"><text x="249.8" y="291.0">B Site</text><text x="330.8" y="201.0">Apartments</text><text x="207.6" y="196.6">Truck</text></g>
+  <circle class="land land-flash" cx="178.5" cy="309.9" r="10.0"/>
+  <path class="traj traj-flash" d="M347.4,190.4 L340.8,195.0 L334.4,199.8 L327.8,204.4 L321.2,209.0 L314.6,213.6 L308.0,218.2 L301.4,222.8 L294.8,227.4 L288.4,232.2 L281.8,236.8 L275.2,241.4 L268.6,246.0 L262.0,250.6 L255.4,255.2 L248.8,259.8 L242.2,264.6 L235.8,269.2 L229.2,273.8 L222.6,278.4 L216.0,283.0 L209.4,287.6 L202.8,292.2 L196.2,297.0 L189.6,301.6 L183.2,306.2 L178.2,309.6"/>
+  <line class="aim" x1="347.5" y1="190.1" x2="319.7" y2="209.8"/>
+  <circle class="spot side-T" cx="347.5" cy="190.1" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge">Mirage</span><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-1">Easy</span><span class="badge video">▶ video</span><span class="badge">2 variants</span></div>
+    <h3>Flash B Site (from Apartments)</h3>
+<p class="eff">blinds 1.0 enemy(ies) for 2.3s on average</p>
+    <p class="muted">6 uses · 3 teams · 17% rounds won</p>
+  </div>
+</a><a class="card" href="/en/mirage/flash-b-site-from-back-alley-t/" data-id="flash-b-site-from-back-alley-t"
+   data-type="flash" data-side="T" data-area="BombsiteB" data-map="mirage"
+   data-teams="legacy mouz vitality" data-players="dumau torzsi zywoo"
+   data-diff="3" data-count="6" data-eff="1.17">
+  <svg class="radar" viewBox="259.2 59.4 359.4 359.4" role="img" aria-label="Trajectory: Flash B Site (from Back Alley)">
+  <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="12.0"><text x="330.8" y="201.0">Apartments</text><text x="457.2" y="288.8">Underpass</text><text x="567.2" y="229.0">Back Alley</text></g>
+  <circle class="land land-flash" cx="329.4" cy="239.6" r="10.0"/>
+  <path class="traj traj-flash" d="M548.6,238.6 L540.0,238.6 L531.6,238.6 L523.0,238.8 L514.4,238.8 L506.0,238.8 L497.4,238.8 L489.0,238.8 L480.4,239.0 L472.0,239.0 L463.4,239.0 L454.8,239.0 L446.4,239.0 L437.8,239.0 L429.4,239.2 L420.8,239.2 L412.2,239.2 L403.8,239.2 L395.2,239.2 L386.8,239.4 L378.2,239.4 L369.8,239.4 L361.2,239.4 L352.6,239.4 L344.2,239.4 L335.6,239.6 L329.2,239.6"/>
+  <line class="aim" x1="548.6" y1="238.6" x2="514.6" y2="238.8"/>
+  <circle class="spot side-T" cx="548.6" cy="238.6" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge">Mirage</span><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-3">Hard</span><span class="badge">jump throw</span><span class="badge video">▶ video</span><span class="badge">2 variants</span></div>
+    <h3>Flash B Site (from Back Alley)</h3>
+<p class="eff">blinds 1.2 enemy(ies) for 1.5s on average</p>
+    <p class="muted">6 uses · 3 teams · 50% rounds won</p>
   </div>
 </a><a class="card" href="/en/cache/flash-garage-from-connector-ct/" data-id="flash-garage-from-connector-ct"
    data-type="flash" data-side="CT" data-area="Garage" data-map="cache"
@@ -472,23 +527,41 @@
     <h3>Flash AMain (from Truck)</h3>
     <p class="muted">5 uses · 2 teams · 60% rounds won</p>
   </div>
-</a><a class="card" href="/en/dust2/flash-mid-doors-from-top-mid-t/" data-id="flash-mid-doors-from-top-mid-t"
-   data-type="flash" data-side="T" data-area="MidDoors" data-map="dust2"
-   data-teams="falcons g2 legacy" data-players="dumau heavygod hunter karrigan nertz"
-   data-diff="3" data-count="5" data-eff="0.4">
-  <svg class="radar" viewBox="274.2 257.1 444.9 444.9" role="img" aria-label="Trajectory: Flash Mid Doors (from Top Mid)">
-  <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="14.8"><text x="480.9" y="461.8">Mid</text><text x="538.9" y="421.6">Catwalk</text><text x="650.0" y="348.6">Short Stairs</text><text x="363.4" y="415.5">Lower Tunnels</text></g>
-  <circle class="land land-flash" cx="458.6" cy="327.1" r="11.4"/>
-  <path class="traj traj-flash" d="M533.9,632.0 L531.1,620.2 L528.2,608.4 L525.2,596.6 L522.3,584.8 L519.3,573.0 L516.4,561.1 L513.6,549.3 L510.7,537.5 L507.7,525.7 L504.8,513.9 L501.8,502.3 L499.1,490.5 L496.1,478.6 L493.2,466.8 L490.2,455.0 L487.3,443.2 L484.5,431.4 L481.6,419.5 L478.6,407.7 L475.7,395.9 L472.7,384.1 L470.0,372.3 L467.0,360.7 L464.1,348.9 L461.1,337.0 L458.9,328.2"/>
-  <line class="aim" x1="534.8" y1="631.1" x2="526.5" y2="598.1"/>
-  <circle class="spot side-T" cx="534.8" cy="631.1" r="7"/>
+</a><a class="card" href="/en/mirage/flash-top-mid-from-side-alley-t/" data-id="flash-top-mid-from-side-alley-t"
+   data-type="flash" data-side="T" data-area="TopofMid" data-map="mirage"
+   data-teams="furia g2 vitality" data-players="fallen mezii r1nkle"
+   data-diff="1" data-count="5" data-eff="0.2">
+  <svg class="radar" viewBox="534.1 220.8 326.9 326.9" role="img" aria-label="Trajectory: Flash Top Mid (from Side Alley)">
+  <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="10.9"><text x="702.4" y="426.4">Top Mid</text></g>
+  <circle class="land land-flash" cx="674.6" cy="477.7" r="10.0"/>
+  <path class="traj traj-flash" d="M724.4,290.8 L722.2,298.0 L720.2,305.2 L718.2,312.4 L716.0,319.6 L714.0,326.6 L711.8,333.8 L709.8,341.0 L707.6,348.2 L705.6,355.4 L703.4,362.6 L701.4,369.8 L699.4,377.0 L697.2,384.2 L695.2,391.4 L693.0,398.6 L691.0,405.8 L688.8,413.0 L686.8,420.0 L684.8,427.2 L682.6,434.4 L680.6,441.6 L678.4,448.8 L676.4,456.0 L674.2,463.2 L672.2,470.4 L670.6,475.8"/>
+  <line class="aim" x1="724.3" y1="290.8" x2="716.2" y2="323.8"/>
+  <circle class="spot side-T" cx="724.3" cy="290.8" r="7"/>
 </svg>
   <div class="card-body">
-    <div class="card-badges"><span class="badge">Dust2</span><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-3">Hard</span><span class="badge video">▶ video</span></div>
-    <h3>Flash Mid Doors (from Top Mid)</h3>
-<p class="eff">blinds 0.4 enemy(ies) for 1.8s on average</p>
-    <p class="muted">5 uses · 3 teams · 20% rounds won</p>
+    <div class="card-badges"><span class="badge">Mirage</span><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-1">Easy</span><span class="badge video">▶ video</span></div>
+    <h3>Flash Top Mid (from Side Alley)</h3>
+<p class="eff">blinds 0.2 enemy(ies) for 0.7s on average</p>
+    <p class="muted">5 uses · 3 teams · 40% rounds won</p>
+  </div>
+</a><a class="card" href="/en/mirage/flash-a-site-from-palace-t/" data-id="flash-a-site-from-palace-t"
+   data-type="flash" data-side="T" data-area="BombsiteA" data-map="mirage"
+   data-teams="fut spirit vitality" data-players="apex dziugss magixx"
+   data-diff="1" data-count="5" data-eff="0.6">
+  <svg class="radar" viewBox="535.7 632.6 260 260" role="img" aria-label="Trajectory: Flash A Site (from Palace)">
+  <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="8.7"><text x="749.2" y="753.2">Palace</text><text x="640.2" y="757.4">Scaffolding</text></g>
+  <circle class="land land-flash" cx="677.1" cy="725.4" r="10.0"/>
+  <path class="traj traj-flash" d="M652.6,802.8 L655.0,794.6 L657.4,786.6 L659.8,778.4 L662.2,770.4 L664.6,762.2 L667.0,754.2 L669.2,746.2 L671.6,738.0 L674.0,730.0 L676.4,722.4 L677.4,726.0 L678.6,729.6 L679.0,732.4 L678.6,732.4 L678.4,731.8 L678.2,731.0 L678.0,730.2 L677.8,729.6 L677.6,728.8 L677.4,728.0 L677.2,727.4 L677.0,726.6 L676.8,725.8 L676.6,725.6 L676.6,725.2 L676.4,725.0"/>
+  <line class="aim" x1="652.4" y1="801.1" x2="662.2" y2="768.5"/>
+  <circle class="spot side-T" cx="652.4" cy="801.1" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge">Mirage</span><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-1">Easy</span><span class="badge video">▶ video</span></div>
+    <h3>Flash A Site (from Palace)</h3>
+<p class="eff">blinds 0.6 enemy(ies) for 1.5s on average</p>
+    <p class="muted">5 uses · 3 teams · 60% rounds won</p>
   </div>
 </a><a class="card" href="/en/mirage/flash-t-ramp-from-t-spawn-t/" data-id="flash-t-ramp-from-t-spawn-t"
    data-type="flash" data-side="T" data-area="TRamp" data-map="mirage"
@@ -496,7 +569,7 @@
    data-diff="1" data-count="5" data-eff="0.4">
   <svg class="radar" viewBox="679.6 443.0 284.2 284.2" role="img" aria-label="Trajectory: Flash T Ramp (from T Spawn)">
   <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="9.5"><text x="794.8" y="594.2">Palace Alley</text><text x="719.6" y="662.4">T Ramp</text></g>
+  <g class="places" font-size="9.5"><text x="796.6" y="590.6">Palace Alley</text><text x="720.8" y="659.8">T Ramp</text></g>
   <circle class="land land-flash" cx="754.8" cy="656.1" r="10.0"/>
   <path class="traj traj-flash" d="M890.6,513.0 L885.2,518.6 L880.0,524.2 L874.6,529.8 L869.2,535.4 L863.8,541.0 L858.6,546.6 L853.2,552.2 L847.8,557.8 L842.4,563.4 L837.2,569.0 L831.8,574.6 L826.4,580.2 L821.0,585.8 L815.8,591.4 L810.4,597.0 L805.0,602.6 L799.6,608.2 L794.4,613.8 L789.0,619.4 L783.6,625.0 L778.2,630.6 L773.0,636.2 L767.6,641.8 L762.2,647.4 L756.8,653.0 L752.8,657.2"/>
   <line class="aim" x1="890.6" y1="514.1" x2="866.9" y2="538.5"/>
@@ -507,6 +580,24 @@
     <h3>Flash T Ramp (from T Spawn)</h3>
 <p class="eff">blinds 0.4 enemy(ies) for 1.7s on average</p>
     <p class="muted">5 uses · 1 team · 0% rounds won</p>
+  </div>
+</a><a class="card" href="/en/ancient/flash-tside-lower-from-b-site-ct/" data-id="flash-tside-lower-from-b-site-ct"
+   data-type="flash" data-side="CT" data-area="TSideLower" data-map="ancient"
+   data-teams="furia fut" data-players="dem0n kscerato yuurih"
+   data-diff="1" data-count="4" data-eff="1.5">
+  <svg class="radar" viewBox="651.0 319.1 347.7 347.7" role="img" aria-label="Trajectory: Flash TSide Lower (from B Site)">
+  <image href="/static/radars/ancient.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="11.6"><text x="783.0" y="416.8">B Site</text><text x="755.6" y="578.8">TSide Lower</text><text x="846.6" y="544.8">Ramp</text></g>
+  <circle class="land land-flash" cx="822.8" cy="595.8" r="10.0"/>
+  <path class="traj traj-flash" d="M826.8,389.6 L826.6,397.6 L826.4,405.8 L826.4,413.8 L826.2,421.8 L826.0,429.8 L825.8,438.0 L825.8,446.0 L825.6,454.0 L825.4,462.0 L825.2,470.2 L825.2,478.2 L825.0,486.2 L824.8,494.2 L824.6,502.4 L824.6,510.4 L824.4,518.4 L824.2,526.4 L824.0,534.6 L824.0,542.6 L823.8,550.6 L823.6,558.6 L823.4,566.8 L823.4,574.8 L823.2,582.8 L823.0,590.8 L823.0,596.8"/>
+  <line class="aim" x1="826.6" y1="389.1" x2="826.0" y2="423.1"/>
+  <circle class="spot side-CT" cx="826.6" cy="389.1" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge">Ancient</span><span class="badge type-flash">Flash</span><span class="badge side-CT">CT</span><span class="badge diff-1">Easy</span><span class="badge video">▶ video</span></div>
+    <h3>Flash TSide Lower (from B Site)</h3>
+<p class="eff">blinds 1.5 enemy(ies) for 3.3s on average</p>
+    <p class="muted">4 uses · 2 teams · 25% rounds won</p>
   </div>
 </a><a class="card" href="/en/anubis/flash-a-site-from-canal-t/" data-id="flash-a-site-from-canal-t"
    data-type="flash" data-side="T" data-area="BombsiteA" data-map="anubis"
@@ -585,7 +676,7 @@
    data-diff="1" data-count="4" data-eff="0.0">
   <svg class="radar" viewBox="317.1 356.6 333.5 333.5" role="img" aria-label="Trajectory: Flash Catwalk (from Top Mid)">
   <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="11.1"><text x="480.9" y="461.8">Mid</text><text x="538.9" y="421.6">Catwalk</text><text x="363.4" y="415.5">Lower Tunnels</text></g>
+  <g class="places" font-size="11.1"><text x="477.7" y="469.5">Mid</text><text x="536.8" y="424.3">Catwalk</text><text x="363.4" y="415.5">Lower Tunnels</text></g>
   <circle class="land land-flash" cx="544.7" cy="427.1" r="11.4"/>
   <path class="traj traj-flash" d="M423.9,619.1 L428.4,611.6 L433.2,604.3 L437.7,596.8 L442.5,589.3 L447.0,581.8 L451.8,574.3 L456.4,566.8 L461.1,559.3 L465.7,551.8 L470.5,544.3 L475.0,536.8 L479.8,529.3 L484.3,521.8 L489.1,514.3 L493.6,507.0 L498.4,499.5 L503.0,492.0 L507.7,484.5 L512.3,477.0 L517.0,469.5 L521.6,462.0 L526.4,454.5 L530.9,447.0 L535.7,439.5 L540.2,432.0 L543.9,426.6"/>
   <line class="aim" x1="423.0" y1="620.1" x2="441.1" y2="591.3"/>
@@ -595,6 +686,24 @@
     <div class="card-badges"><span class="badge">Dust2</span><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-1">Easy</span><span class="badge video">▶ video</span></div>
     <h3>Flash Catwalk (from Top Mid)</h3>
     <p class="muted">4 uses · 4 teams · 75% rounds won</p>
+  </div>
+</a><a class="card" href="/en/dust2/flash-under-a-from-short-stairs-t/" data-id="flash-under-a-from-short-stairs-t"
+   data-type="flash" data-side="T" data-area="UnderA" data-map="dust2"
+   data-teams="furia g2 legacy" data-players="kscerato molodoy r1nkle try"
+   data-diff="1" data-count="4" data-eff="1.0">
+  <svg class="radar" viewBox="501.6 122.5 334.1 334.1" role="img" aria-label="Trajectory: Flash Under A (from Short Stairs)">
+  <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="11.1"><text x="752.3" y="232.7">Under A</text><text x="605.2" y="234.3">CT Spawn</text><text x="667.7" y="181.4">A Extended</text><text x="646.4" y="350.5">Short Stairs</text></g>
+  <circle class="land land-flash" cx="712.5" cy="194.7" r="11.4"/>
+  <path class="traj traj-flash" d="M624.8,386.6 L628.4,378.4 L631.8,370.5 L635.5,362.3 L638.9,354.3 L642.5,346.1 L645.9,338.0 L649.5,330.0 L653.0,321.8 L656.6,313.9 L660.0,305.7 L663.6,297.7 L667.0,289.5 L670.7,281.6 L674.1,273.4 L677.7,265.2 L681.1,257.3 L684.8,249.1 L688.2,241.1 L691.8,233.0 L695.2,225.0 L698.9,216.8 L702.3,208.9 L705.9,200.7 L709.3,192.5 L711.4,194.1 L712.5,196.8"/>
+  <line class="aim" x1="624.7" y1="386.5" x2="638.2" y2="355.3"/>
+  <circle class="spot side-T" cx="624.7" cy="386.5" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge">Dust2</span><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-1">Easy</span><span class="badge video">▶ video</span></div>
+    <h3>Flash Under A (from Short Stairs)</h3>
+<p class="eff">blinds 1.0 enemy(ies) for 2.2s on average</p>
+    <p class="muted">4 uses · 3 teams · 25% rounds won</p>
   </div>
 </a><a class="card" href="/en/inferno/flash-arch-from-second-mid-t/" data-id="flash-arch-from-second-mid-t"
    data-type="flash" data-side="T" data-area="Arch" data-map="inferno"
@@ -614,6 +723,60 @@
 <p class="eff">blinds 0.2 enemy(ies) for 1.0s on average</p>
     <p class="muted">4 uses · 1 team · 0% rounds won</p>
   </div>
+</a><a class="card" href="/en/mirage/flash-mid-from-a-site-ct/" data-id="flash-mid-from-a-site-ct"
+   data-type="flash" data-side="CT" data-area="Middle" data-map="mirage"
+   data-teams="furia spirit" data-players="tn1r yuurih"
+   data-diff="3" data-count="4" data-eff="0.75">
+  <svg class="radar" viewBox="296.3 411.6 422.1 422.1" role="img" aria-label="Trajectory: Flash Mid (from A Site)">
+  <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="14.1"><text x="561.4" y="724.2">A Site</text><text x="349.6" y="695.6">CT Spawn</text><text x="542.6" y="477.4">Mid</text><text x="517.6" y="555.4">Connector</text><text x="446.2" y="626.6">Jungle</text><text x="412.0" y="466.2">Sniper&#39;s Nest</text><text x="546.2" y="652.4">Stairs</text><text x="640.2" y="757.4">Scaffolding</text></g>
+  <circle class="land land-flash" cx="513.5" cy="484.6" r="10.0"/>
+  <path class="traj traj-flash" d="M502.0,761.2 L502.4,750.4 L502.8,739.6 L503.2,728.6 L503.6,717.8 L504.0,707.0 L504.4,696.0 L504.8,685.2 L505.2,674.4 L505.6,663.4 L506.0,652.6 L506.4,641.8 L506.8,631.0 L507.2,620.0 L507.6,609.2 L508.0,598.4 L508.4,587.4 L508.8,576.6 L509.2,565.8 L509.6,554.8 L510.0,544.0 L510.4,533.2 L510.8,522.2 L511.2,511.4 L511.6,500.6 L512.0,489.6 L512.4,481.6"/>
+  <line class="aim" x1="501.1" y1="763.7" x2="502.6" y2="729.7"/>
+  <circle class="spot side-CT" cx="501.1" cy="763.7" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge">Mirage</span><span class="badge type-flash">Flash</span><span class="badge side-CT">CT</span><span class="badge diff-3">Hard</span><span class="badge">jump throw</span><span class="badge video">▶ video</span></div>
+    <h3>Flash Mid (from A Site)</h3>
+<p class="eff">blinds 0.8 enemy(ies) for 2.1s on average</p>
+    <p class="muted">4 uses · 2 teams · 50% rounds won</p>
+  </div>
+</a><a class="card" href="/en/mirage/flash-mid-from-jungle-ct/" data-id="flash-mid-from-jungle-ct"
+   data-type="flash" data-side="CT" data-area="Middle" data-map="mirage"
+   data-teams="fut" data-players="dziugss"
+   data-diff="1" data-count="4" data-eff="1.0">
+  <svg class="radar" viewBox="380.6 457.1 282.4 282.4" role="img" aria-label="Trajectory: Flash Mid (from Jungle)">
+  <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="9.4"><text x="517.6" y="555.4">Connector</text><text x="446.2" y="626.6">Jungle</text><text x="546.2" y="652.4">Stairs</text></g>
+  <circle class="land land-flash" cx="593.0" cy="550.8" r="10.0"/>
+  <path class="traj traj-flash" d="M450.6,645.8 L456.2,642.2 L461.6,638.6 L467.2,635.0 L472.8,631.2 L478.2,627.6 L483.8,624.0 L489.2,620.2 L494.8,616.6 L500.4,613.0 L505.8,609.2 L511.4,605.6 L517.0,602.0 L522.4,598.2 L528.0,594.6 L533.4,591.0 L539.0,587.2 L544.6,583.6 L550.0,580.0 L555.6,576.2 L561.0,572.6 L566.6,569.0 L572.2,565.4 L577.6,561.6 L583.2,558.0 L588.6,554.4 L592.8,551.6"/>
+  <line class="aim" x1="450.6" y1="645.9" x2="478.9" y2="627.0"/>
+  <circle class="spot side-CT" cx="450.6" cy="645.9" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge">Mirage</span><span class="badge type-flash">Flash</span><span class="badge side-CT">CT</span><span class="badge diff-1">Easy</span><span class="badge video">▶ video</span></div>
+    <h3>Flash Mid (from Jungle)</h3>
+<p class="eff">blinds 1.0 enemy(ies) for 3.7s on average</p>
+    <p class="muted">4 uses · 1 team · 0% rounds won</p>
+  </div>
+</a><a class="card" href="/en/mirage/flash-ct-spawn-from-a-site-t/" data-id="flash-ct-spawn-from-a-site-t"
+   data-type="flash" data-side="T" data-area="CTSpawn" data-map="mirage"
+   data-teams="g2 mouz" data-players="pr r1nkle"
+   data-diff="2" data-count="4" data-eff="1.25">
+  <svg class="radar" viewBox="340.3 554.6 343.4 343.4" role="img" aria-label="Trajectory: Flash CT Spawn (from A Site)">
+  <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="11.4"><text x="561.4" y="724.2">A Site</text><text x="446.2" y="626.6">Jungle</text><text x="546.2" y="652.4">Stairs</text><text x="640.2" y="757.4">Scaffolding</text></g>
+  <circle class="land land-flash" cx="479.7" cy="819.1" r="10.0"/>
+  <path class="traj traj-flash" d="M544.8,625.0 L542.2,633.0 L539.6,640.8 L537.2,648.6 L534.6,656.6 L532.0,664.4 L529.4,672.4 L527.0,680.2 L524.4,688.2 L521.8,696.0 L519.2,703.8 L516.8,711.8 L514.2,719.6 L511.6,727.6 L509.2,735.4 L506.6,743.4 L504.0,751.2 L501.4,759.0 L499.0,767.0 L496.4,774.8 L493.8,782.8 L491.2,790.6 L488.8,798.6 L486.2,806.4 L483.6,814.2 L481.0,822.2 L479.2,828.0"/>
+  <line class="aim" x1="544.8" y1="624.6" x2="533.7" y2="656.7"/>
+  <circle class="spot side-T" cx="544.8" cy="624.6" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge">Mirage</span><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-2">Medium</span><span class="badge video">▶ video</span></div>
+    <h3>Flash CT Spawn (from A Site)</h3>
+<p class="eff">blinds 1.2 enemy(ies) for 2.1s on average</p>
+    <p class="muted">4 uses · 2 teams · 50% rounds won</p>
+  </div>
 </a><a class="card" href="/en/nuke/flash-a-site-from-lobby-t/" data-id="flash-a-site-from-lobby-t"
    data-type="flash" data-side="T" data-area="BombsiteA" data-map="nuke"
    data-teams="mouz spirit" data-players="magixx pr"
@@ -632,22 +795,76 @@
 <p class="eff">blinds 1.2 enemy(ies) for 3.2s on average</p>
     <p class="muted">4 uses · 2 teams · 0% rounds won</p>
   </div>
-</a><a class="card" href="/en/ancient/flash-ramp-from-ruins-t/" data-id="flash-ramp-from-ruins-t"
-   data-type="flash" data-side="T" data-area="Ramp" data-map="ancient"
-   data-teams="fut spirit" data-players="sh1ro sunpayus"
-   data-diff="2" data-count="3" data-eff="0.0">
-  <svg class="radar" viewBox="680.4 519.8 275.4 275.4" role="img" aria-label="Trajectory: Flash Ramp (from Ruins)">
+</a><a class="card" href="/en/ancient/flash-t-upper-from-mid-ct/" data-id="flash-t-upper-from-mid-ct"
+   data-type="flash" data-side="CT" data-area="TSideUpper" data-map="ancient"
+   data-teams="g2 spirit" data-players="heavygod zont1x"
+   data-diff="2" data-count="3" data-eff="0.67">
+  <svg class="radar" viewBox="346.6 387.3 299.2 299.2" role="img" aria-label="Trajectory: Flash T Upper (from Mid)">
   <image href="/static/radars/ancient.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="9.2"><text x="802.2" y="698.0">Ruins</text><text x="758.8" y="580.0">TSide Lower</text></g>
-  <circle class="land land-flash" cx="831.4" cy="590.0" r="10.0"/>
-  <path class="traj traj-flash" d="M804.8,725.2 L805.8,720.0 L806.6,714.6 L807.6,709.4 L808.6,704.2 L809.4,699.0 L810.4,693.6 L811.4,688.4 L812.2,683.2 L813.2,677.8 L814.2,672.6 L815.0,667.4 L816.0,662.2 L817.0,656.8 L817.8,651.6 L818.8,646.4 L819.8,641.0 L820.6,635.8 L821.6,630.6 L822.6,625.4 L823.4,620.0 L824.4,614.8 L825.4,609.6 L826.2,604.2 L827.2,599.0 L828.2,593.8 L828.8,589.8"/>
-  <line class="aim" x1="804.8" y1="725.2" x2="811.4" y2="691.8"/>
-  <circle class="spot side-T" cx="804.8" cy="725.2" r="7"/>
+  <g class="places" font-size="10.0"><text x="483.8" y="515.8">Mid</text></g>
+  <circle class="land land-flash" cx="574.4" cy="602.6" r="10.0"/>
+  <path class="traj traj-flash" d="M416.6,467.6 L422.8,473.0 L429.0,478.4 L435.2,483.8 L441.4,489.2 L447.6,494.6 L453.8,500.0 L459.8,505.4 L466.0,510.6 L472.2,516.0 L478.4,521.4 L484.6,526.8 L490.8,532.2 L497.0,537.6 L503.2,543.0 L509.4,548.4 L515.6,553.8 L521.6,559.0 L527.8,564.4 L534.0,569.8 L540.2,575.2 L546.4,580.6 L552.6,586.0 L558.8,591.4 L565.0,596.8 L571.2,602.2 L575.8,606.2"/>
+  <line class="aim" x1="417.9" y1="469.2" x2="443.8" y2="491.3"/>
+  <circle class="spot side-CT" cx="417.9" cy="469.2" r="7"/>
 </svg>
   <div class="card-body">
-    <div class="card-badges"><span class="badge">Ancient</span><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-2">Medium</span><span class="badge">jump throw</span><span class="badge video">▶ video</span></div>
-    <h3>Flash Ramp (from Ruins)</h3>
+    <div class="card-badges"><span class="badge">Ancient</span><span class="badge type-flash">Flash</span><span class="badge side-CT">CT</span><span class="badge diff-2">Medium</span></div>
+    <h3>Flash T Upper (from Mid)</h3>
+<p class="eff">blinds 0.7 enemy(ies) for 1.3s on average</p>
     <p class="muted">3 uses · 2 teams · 67% rounds won</p>
+  </div>
+</a><a class="card" href="/en/ancient/flash-house-from-alley-ct/" data-id="flash-house-from-alley-ct"
+   data-type="flash" data-side="CT" data-area="House" data-map="ancient"
+   data-teams="furia spirit" data-players="sh1ro yuurih"
+   data-diff="3" data-count="3" data-eff="2.0">
+  <svg class="radar" viewBox="346.4 79.8 392.4 392.4" role="img" aria-label="Trajectory: Flash House (from Alley)">
+  <image href="/static/radars/ancient.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="13.1"><text x="500.2" y="168.0">CT Spawn</text><text x="499.4" y="282.8">House</text><text x="486.0" y="407.8">Top Mid</text></g>
+  <circle class="land land-flash" cx="420.8" cy="293.2" r="10.0"/>
+  <path class="traj traj-flash" d="M668.8,260.6 L659.0,261.8 L649.2,263.0 L639.4,264.2 L629.6,265.4 L619.8,266.8 L610.0,268.0 L600.2,269.2 L590.4,270.4 L580.6,271.6 L570.8,272.8 L561.0,274.0 L551.2,275.2 L541.4,276.6 L531.6,277.8 L521.8,279.0 L512.0,280.2 L502.2,281.4 L492.4,282.6 L482.6,283.8 L472.8,285.2 L463.0,286.4 L453.2,287.6 L443.4,288.8 L433.6,290.0 L423.8,291.2 L416.4,292.2"/>
+  <line class="aim" x1="668.8" y1="258.7" x2="635.1" y2="263.8"/>
+  <circle class="spot side-CT" cx="668.8" cy="258.7" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge">Ancient</span><span class="badge type-flash">Flash</span><span class="badge side-CT">CT</span><span class="badge diff-3">Hard</span><span class="badge">jump throw</span><span class="badge video">▶ video</span></div>
+    <h3>Flash House (from Alley)</h3>
+<p class="eff">blinds 2.0 enemy(ies) for 4.5s on average</p>
+    <p class="muted">3 uses · 2 teams · 67% rounds won</p>
+  </div>
+</a><a class="card" href="/en/ancient/flash-main-hall-from-outside-t/" data-id="flash-main-hall-from-outside-t"
+   data-type="flash" data-side="T" data-area="MainHall" data-map="ancient"
+   data-teams="falcons spirit" data-players="donk kyousuke m0nesy"
+   data-diff="3" data-count="3" data-eff="0.0">
+  <svg class="radar" viewBox="70.8 421.8 352.8 352.8" role="img" aria-label="Trajectory: Flash Main Hall (from Outside)">
+  <image href="/static/radars/ancient.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="11.8"><text x="309.8" y="662.8">Outside</text></g>
+  <circle class="land land-flash" cx="195.2" cy="512.2" r="10.0"/>
+  <path class="traj traj-flash" d="M298.0,703.6 L293.4,693.0 L288.6,682.2 L284.0,671.6 L279.4,660.8 L274.6,650.2 L270.0,639.6 L265.4,628.8 L260.6,618.2 L256.0,607.4 L251.2,596.8 L246.6,586.0 L242.0,575.4 L237.2,564.6 L232.6,554.0 L228.0,543.4 L223.2,532.6 L218.6,522.0 L213.8,511.2 L209.2,500.6 L204.8,491.8 L202.8,496.6 L200.6,501.4 L198.6,506.2 L196.4,511.0 L195.4,513.4 L194.6,514.8"/>
+  <line class="aim" x1="299.7" y1="704.6" x2="285.9" y2="673.5"/>
+  <circle class="spot side-T" cx="299.7" cy="704.6" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge">Ancient</span><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-3">Hard</span><span class="badge video">▶ video</span></div>
+    <h3>Flash Main Hall (from Outside)</h3>
+    <p class="muted">3 uses · 2 teams · 33% rounds won</p>
+  </div>
+</a><a class="card" href="/en/ancient/flash-ramp-from-tside-lower-t/" data-id="flash-ramp-from-tside-lower-t"
+   data-type="flash" data-side="T" data-area="Ramp" data-map="ancient"
+   data-teams="furia mouz spirit" data-players="pr sh1ro yekindar"
+   data-diff="1" data-count="3" data-eff="0.67">
+  <svg class="radar" viewBox="711.8 417.5 268.9 268.9" role="img" aria-label="Trajectory: Flash Ramp (from TSide Lower)">
+  <image href="/static/radars/ancient.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="9.0"><text x="755.6" y="578.8">TSide Lower</text><text x="846.6" y="544.8">Ramp</text></g>
+  <circle class="land land-flash" cx="888.4" cy="487.5" r="10.0"/>
+  <path class="traj traj-flash" d="M804.2,616.4 L807.4,611.6 L810.6,606.8 L813.8,602.2 L817.0,597.4 L820.2,592.8 L823.4,588.0 L826.6,583.2 L829.8,578.6 L833.0,573.8 L836.2,569.2 L839.4,564.4 L842.6,559.6 L845.8,555.0 L849.0,550.2 L852.2,545.4 L855.4,540.8 L858.6,536.0 L861.8,531.4 L865.0,526.6 L868.2,521.8 L871.4,517.2 L874.8,512.4 L878.0,507.8 L881.2,503.0 L884.4,498.2 L886.8,494.8"/>
+  <line class="aim" x1="805.0" y1="615.4" x2="824.0" y2="587.3"/>
+  <circle class="spot side-T" cx="805.0" cy="615.4" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge">Ancient</span><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-1">Easy</span><span class="badge video">▶ video</span></div>
+    <h3>Flash Ramp (from TSide Lower)</h3>
+<p class="eff">blinds 0.7 enemy(ies) for 2.5s on average</p>
+    <p class="muted">3 uses · 3 teams · 67% rounds won</p>
   </div>
 </a><a class="card" href="/en/ancient/flash-b-site-from-tside-lower-t/" data-id="flash-b-site-from-tside-lower-t"
    data-type="flash" data-side="T" data-area="BombsiteB" data-map="ancient"
@@ -655,7 +872,7 @@
    data-diff="3" data-count="3" data-eff="1.33">
   <svg class="radar" viewBox="657.7 316.6 364.3 364.3" role="img" aria-label="Trajectory: Flash B Site (from TSide Lower)">
   <image href="/static/radars/ancient.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="12.1"><text x="783.0" y="416.8">B Site</text><text x="758.8" y="580.0">TSide Lower</text><text x="845.4" y="546.6">Ramp</text></g>
+  <g class="places" font-size="12.1"><text x="783.0" y="416.8">B Site</text><text x="755.6" y="578.8">TSide Lower</text><text x="846.6" y="544.8">Ramp</text></g>
   <circle class="land land-flash" cx="856.0" cy="386.8" r="10.0"/>
   <path class="traj traj-flash" d="M823.4,610.8 L824.6,602.0 L826.0,593.2 L827.2,584.6 L828.6,576.0 L829.8,567.2 L831.0,558.6 L832.4,549.8 L833.6,541.2 L835.0,532.4 L836.2,523.8 L837.4,515.0 L838.8,506.4 L840.0,497.6 L841.2,489.0 L842.6,480.2 L843.8,471.6 L845.2,462.8 L846.4,454.2 L847.6,445.4 L849.0,436.8 L850.2,428.0 L851.6,419.4 L852.8,410.6 L854.0,402.0 L855.4,393.2 L856.4,386.6"/>
   <line class="aim" x1="823.4" y1="610.9" x2="828.6" y2="577.3"/>
@@ -666,6 +883,42 @@
     <h3>Flash B Site (from TSide Lower)</h3>
 <p class="eff">blinds 1.3 enemy(ies) for 2.0s on average</p>
     <p class="muted">3 uses · 1 team · 0% rounds won</p>
+  </div>
+</a><a class="card" href="/en/ancient/flash-side-entrance-from-ramp-t/" data-id="flash-side-entrance-from-ramp-t"
+   data-type="flash" data-side="T" data-area="SideEntrance" data-map="ancient"
+   data-teams="furia mouz" data-players="fallen torzsi"
+   data-diff="1" data-count="3" data-eff="0.67">
+  <svg class="radar" viewBox="631.0 306.6 291.2 291.2" role="img" aria-label="Trajectory: Flash Side Entrance (from Ramp)">
+  <image href="/static/radars/ancient.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="9.7"><text x="783.0" y="416.8">B Site</text><text x="666.8" y="465.4">Side Entrance</text><text x="846.6" y="544.8">Ramp</text></g>
+  <circle class="land land-flash" cx="701.0" cy="393.2" r="10.0"/>
+  <path class="traj traj-flash" d="M852.2,511.2 L846.4,506.6 L840.6,502.0 L834.6,497.6 L828.8,493.0 L823.0,488.4 L817.2,484.0 L811.2,479.4 L805.4,474.8 L799.6,470.2 L793.6,465.8 L787.8,461.2 L782.0,456.6 L776.0,452.2 L770.2,447.6 L764.4,443.0 L758.4,438.4 L752.6,434.0 L746.8,429.4 L741.0,424.8 L735.0,420.4 L729.2,415.8 L723.4,411.2 L717.4,406.6 L711.6,402.2 L705.8,397.6 L701.4,394.2"/>
+  <line class="aim" x1="851.4" y1="511.1" x2="824.7" y2="490.1"/>
+  <circle class="spot side-T" cx="851.4" cy="511.1" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge">Ancient</span><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-1">Easy</span><span class="badge video">▶ video</span></div>
+    <h3>Flash Side Entrance (from Ramp)</h3>
+<p class="eff">blinds 0.7 enemy(ies) for 1.7s on average</p>
+    <p class="muted">3 uses · 2 teams · 67% rounds won</p>
+  </div>
+</a><a class="card" href="/en/ancient/flash-t-upper-from-tside-lower-t/" data-id="flash-t-upper-from-tside-lower-t"
+   data-type="flash" data-side="T" data-area="TSideUpper" data-map="ancient"
+   data-teams="falcons g2" data-players="matys niko"
+   data-diff="3" data-count="3" data-eff="0.67">
+  <svg class="radar" viewBox="545.0 453.3 276.0 276.0" role="img" aria-label="Trajectory: Flash T Upper (from TSide Lower)">
+  <image href="/static/radars/ancient.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="9.2"><text x="755.6" y="578.8">TSide Lower</text><text x="622.4" y="592.8">T Upper</text></g>
+  <circle class="land land-flash" cx="621.2" cy="581.1" r="10.0"/>
+  <path class="traj traj-flash" d="M751.0,568.0 L741.4,573.8 L731.6,579.6 L722.0,585.6 L712.2,591.4 L702.6,597.2 L693.0,603.0 L683.2,609.0 L673.6,614.8 L666.8,616.0 L662.4,613.4 L658.0,610.8 L653.8,608.2 L649.4,605.6 L645.0,602.8 L640.6,600.2 L636.4,597.6 L632.0,595.0 L627.6,592.4 L623.2,589.8 L619.0,587.0 L615.0,584.6 L616.8,583.4 L618.8,582.2 L620.8,581.0 L622.6,579.8 L624.0,579.0"/>
+  <line class="aim" x1="749.9" y1="566.6" x2="721.4" y2="585.1"/>
+  <circle class="spot side-T" cx="749.9" cy="566.6" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge">Ancient</span><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-3">Hard</span><span class="badge video">▶ video</span></div>
+    <h3>Flash T Upper (from TSide Lower)</h3>
+<p class="eff">blinds 0.7 enemy(ies) for 2.0s on average</p>
+    <p class="muted">3 uses · 2 teams · 0% rounds won</p>
   </div>
 </a><a class="card" href="/en/anubis/flash-canal-from-a-site-ct/" data-id="flash-canal-from-a-site-ct"
    data-type="flash" data-side="CT" data-area="Canal" data-map="anubis"
@@ -792,6 +1045,95 @@
 <p class="eff">blinds 1.3 enemy(ies) for 2.8s on average</p>
     <p class="muted">3 uses · 1 team · 100% rounds won</p>
   </div>
+</a><a class="card" href="/en/dust2/flash-upper-tunnels-from-b-site-ct/" data-id="flash-upper-tunnels-from-b-site-ct"
+   data-type="flash" data-side="CT" data-area="UpperTunnel" data-map="dust2"
+   data-teams="falcons g2 spirit" data-players="matys teses zont1x"
+   data-diff="3" data-count="3" data-eff="0.33">
+  <svg class="radar" viewBox="29.5 159.7 291.8 291.8" role="img" aria-label="Trajectory: Flash Upper Tunnels (from B Site)">
+  <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="9.7"><text x="174.1" y="222.0">B Site</text></g>
+  <circle class="land land-flash" cx="114.9" cy="366.6" r="11.4"/>
+  <path class="traj traj-flash" d="M251.4,243.2 L240.2,250.2 L228.9,257.5 L217.7,264.5 L206.4,271.6 L195.2,278.9 L183.9,285.9 L172.7,293.2 L161.4,300.2 L150.2,307.3 L138.9,314.5 L127.7,321.6 L116.4,328.9 L105.0,335.9 L99.5,341.6 L104.5,345.0 L109.5,348.2 L114.8,351.4 L119.8,354.5 L124.8,357.7 L124.1,359.5 L121.8,360.9 L119.5,362.5 L117.3,363.9 L115.0,365.2 L112.7,366.8 L110.9,368.0"/>
+  <line class="aim" x1="248.8" y1="244.9" x2="220.0" y2="263.0"/>
+  <circle class="spot side-CT" cx="248.8" cy="244.9" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge">Dust2</span><span class="badge type-flash">Flash</span><span class="badge side-CT">CT</span><span class="badge diff-3">Hard</span><span class="badge video">▶ video</span></div>
+    <h3>Flash Upper Tunnels (from B Site)</h3>
+<p class="eff">blinds 0.3 enemy(ies) for 1.5s on average</p>
+    <p class="muted">3 uses · 3 teams · 100% rounds won</p>
+  </div>
+</a><a class="card" href="/en/dust2/flash-upper-tunnels-from-b-doors-ct/" data-id="flash-upper-tunnels-from-b-doors-ct"
+   data-type="flash" data-side="CT" data-area="UpperTunnel" data-map="dust2"
+   data-teams="furia vitality" data-players="mezii yuurih"
+   data-diff="3" data-count="3" data-eff="0.0">
+  <svg class="radar" viewBox="30.0 87.1 364.1 364.1" role="img" aria-label="Trajectory: Flash Upper Tunnels (from B Doors)">
+  <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="12.1"><text x="174.1" y="222.0">B Site</text><text x="313.9" y="195.7">B Doors</text><text x="266.4" y="128.0">Hole</text></g>
+  <circle class="land land-flash" cx="111.0" cy="350.7" r="11.4"/>
+  <path class="traj traj-flash" d="M324.1,187.5 L314.3,194.1 L304.8,200.5 L295.0,207.0 L285.5,213.6 L275.9,220.0 L266.1,226.6 L256.6,233.2 L246.8,239.8 L237.3,246.1 L227.7,252.7 L218.0,259.3 L208.4,265.7 L198.9,272.3 L189.1,278.9 L179.5,285.2 L169.8,291.8 L160.2,298.4 L150.7,305.0 L140.9,311.4 L131.4,318.0 L121.8,324.5 L112.0,330.9 L102.5,337.5 L100.0,342.3 L104.3,345.2 L107.5,347.3"/>
+  <line class="aim" x1="323.8" y1="189.7" x2="295.6" y2="208.7"/>
+  <circle class="spot side-CT" cx="323.8" cy="189.7" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge">Dust2</span><span class="badge type-flash">Flash</span><span class="badge side-CT">CT</span><span class="badge diff-3">Hard</span><span class="badge video">▶ video</span></div>
+    <h3>Flash Upper Tunnels (from B Doors)</h3>
+    <p class="muted">3 uses · 2 teams · 100% rounds won</p>
+  </div>
+</a><a class="card" href="/en/dust2/flash-mid-doors-from-mid-t/" data-id="flash-mid-doors-from-mid-t"
+   data-type="flash" data-side="T" data-area="MidDoors" data-map="dust2"
+   data-teams="falcons furia" data-players="molodoy teses yekindar"
+   data-diff="2" data-count="3" data-eff="0.67">
+  <svg class="radar" viewBox="279.0 166.7 383.1 383.1" role="img" aria-label="Trajectory: Flash Mid Doors (from Mid)">
+  <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="12.8"><text x="448.2" y="241.6">Mid Doors</text><text x="605.2" y="234.3">CT Spawn</text><text x="477.7" y="469.5">Mid</text><text x="536.8" y="424.3">Catwalk</text><text x="363.4" y="415.5">Lower Tunnels</text></g>
+  <circle class="land land-flash" cx="491.4" cy="236.7" r="11.4"/>
+  <path class="traj traj-flash" d="M448.2,479.8 L450.0,470.2 L451.8,460.9 L453.4,451.6 L455.2,442.0 L457.0,432.7 L458.6,423.2 L460.5,413.9 L462.0,404.3 L463.9,395.0 L465.7,385.5 L467.3,376.1 L469.1,366.6 L470.9,357.3 L472.5,347.7 L474.3,338.4 L476.1,328.9 L477.7,319.5 L479.5,310.0 L481.1,300.7 L483.0,291.1 L484.8,281.8 L486.4,272.3 L488.2,263.0 L490.0,253.4 L491.6,244.1 L493.0,237.0"/>
+  <line class="aim" x1="448.3" y1="479.8" x2="454.2" y2="446.3"/>
+  <circle class="spot side-T" cx="448.3" cy="479.8" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge">Dust2</span><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-2">Medium</span><span class="badge">jump throw</span><span class="badge video">▶ video</span></div>
+    <h3>Flash Mid Doors (from Mid)</h3>
+<p class="eff">blinds 0.7 enemy(ies) for 2.6s on average</p>
+    <p class="muted">3 uses · 2 teams · 100% rounds won</p>
+  </div>
+</a><a class="card" href="/en/dust2/flash-mid-doors-from-top-mid-t/" data-id="flash-mid-doors-from-top-mid-t"
+   data-type="flash" data-side="T" data-area="MidDoors" data-map="dust2"
+   data-teams="g2" data-players="heavygod hunter nertz"
+   data-diff="3" data-count="3" data-eff="0.33">
+  <svg class="radar" viewBox="275.8 260.7 441.6 441.6" role="img" aria-label="Trajectory: Flash Mid Doors (from Top Mid)">
+  <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="14.7"><text x="477.7" y="469.5">Mid</text><text x="536.8" y="424.3">Catwalk</text><text x="646.4" y="350.5">Short Stairs</text><text x="363.4" y="415.5">Lower Tunnels</text></g>
+  <circle class="land land-flash" cx="459.8" cy="333.8" r="11.4"/>
+  <path class="traj traj-flash" d="M533.6,632.3 L530.5,620.2 L527.5,608.2 L524.5,596.1 L521.6,584.1 L518.6,572.0 L515.5,560.2 L512.5,548.2 L509.5,536.1 L506.6,524.1 L503.6,512.0 L500.5,500.0 L497.5,488.0 L494.5,475.9 L491.6,463.9 L488.4,451.8 L485.5,439.8 L482.5,427.7 L479.5,415.9 L476.6,403.9 L473.4,391.8 L470.5,379.8 L467.5,367.7 L464.5,355.7 L461.4,343.6 L459.3,334.8 L458.6,330.7"/>
+  <line class="aim" x1="534.5" y1="631.7" x2="526.3" y2="598.7"/>
+  <circle class="spot side-T" cx="534.5" cy="631.7" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge">Dust2</span><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-3">Hard</span><span class="badge video">▶ video</span></div>
+    <h3>Flash Mid Doors (from Top Mid)</h3>
+<p class="eff">blinds 0.3 enemy(ies) for 1.5s on average</p>
+    <p class="muted">3 uses · 1 team · 0% rounds won</p>
+  </div>
+</a><a class="card" href="/en/dust2/flash-mid-doors-from-catwalk-t/" data-id="flash-mid-doors-from-catwalk-t"
+   data-type="flash" data-side="T" data-area="MidDoors" data-map="dust2"
+   data-teams="furia" data-players="fallen kscerato"
+   data-diff="1" data-count="3" data-eff="0.67">
+  <svg class="radar" viewBox="291.7 190.1 357.6 357.6" role="img" aria-label="Trajectory: Flash Mid Doors (from Catwalk)">
+  <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="11.9"><text x="448.2" y="241.6">Mid Doors</text><text x="605.2" y="234.3">CT Spawn</text><text x="477.7" y="469.5">Mid</text><text x="536.8" y="424.3">Catwalk</text><text x="363.4" y="415.5">Lower Tunnels</text></g>
+  <circle class="land land-flash" cx="428.5" cy="260.1" r="11.4"/>
+  <path class="traj traj-flash" d="M512.5,477.7 L509.3,469.3 L505.9,460.9 L502.7,452.5 L499.5,444.1 L496.1,435.7 L493.0,427.0 L489.8,418.6 L486.4,410.2 L483.2,401.8 L480.0,393.4 L476.8,385.0 L473.4,376.6 L470.2,368.0 L467.0,359.5 L463.6,351.1 L460.5,342.7 L457.3,334.3 L453.9,325.9 L450.7,317.5 L447.5,308.9 L444.1,300.5 L440.9,292.0 L437.7,283.6 L434.3,275.2 L431.1,266.8 L428.6,260.5"/>
+  <line class="aim" x1="512.5" y1="477.1" x2="500.3" y2="445.4"/>
+  <circle class="spot side-T" cx="512.5" cy="477.1" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge">Dust2</span><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-1">Easy</span><span class="badge video">▶ video</span></div>
+    <h3>Flash Mid Doors (from Catwalk)</h3>
+<p class="eff">blinds 0.7 enemy(ies) for 1.4s on average</p>
+    <p class="muted">3 uses · 1 team · 67% rounds won</p>
+  </div>
 </a><a class="card" href="/en/dust2/flash-mid-from-outside-long-t/" data-id="flash-mid-from-outside-long-t"
    data-type="flash" data-side="T" data-area="Middle" data-map="dust2"
    data-teams="vitality" data-players="mezii"
@@ -810,24 +1152,6 @@
 <p class="eff">blinds 0.3 enemy(ies) for 0.8s on average</p>
     <p class="muted">3 uses · 1 team · 67% rounds won</p>
   </div>
-</a><a class="card" href="/en/dust2/flash-under-a-from-catwalk-t/" data-id="flash-under-a-from-catwalk-t"
-   data-type="flash" data-side="T" data-area="UnderA" data-map="dust2"
-   data-teams="furia" data-players="molodoy"
-   data-diff="3" data-count="3" data-eff="2.33">
-  <svg class="radar" viewBox="515.2 169.3 319.2 319.2" role="img" aria-label="Trajectory: Flash Under A (from Catwalk)">
-  <image href="/static/radars/dust2.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="10.6"><text x="753.0" y="233.0">Under A</text><text x="605.2" y="234.3">CT Spawn</text><text x="650.0" y="348.6">Short Stairs</text></g>
-  <circle class="land land-flash" cx="730.9" cy="239.3" r="11.4"/>
-  <path class="traj traj-flash" d="M618.6,418.4 L623.0,411.4 L627.3,404.5 L631.6,397.5 L635.9,390.7 L640.2,383.9 L644.5,376.8 L648.9,370.0 L653.2,363.0 L657.5,356.1 L661.8,349.1 L665.9,342.3 L670.2,335.5 L674.5,328.4 L678.9,321.6 L683.2,314.5 L687.5,307.7 L691.8,300.7 L696.1,293.9 L700.5,287.0 L704.8,280.0 L709.1,273.2 L713.4,266.1 L717.7,259.3 L722.0,252.3 L726.1,245.5 L729.5,240.2"/>
-  <line class="aim" x1="618.7" y1="418.5" x2="636.7" y2="389.7"/>
-  <circle class="spot side-T" cx="618.7" cy="418.5" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">Dust2</span><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-3">Hard</span><span class="badge">jump throw</span><span class="badge video">▶ video</span></div>
-    <h3>Flash Under A (from Catwalk)</h3>
-<p class="eff">blinds 2.3 enemy(ies) for 4.2s on average</p>
-    <p class="muted">3 uses · 1 team · 33% rounds won</p>
-  </div>
 </a><a class="card" href="/en/inferno/flash-banana-t/" data-id="flash-banana-t"
    data-type="flash" data-side="T" data-area="Banana" data-map="inferno"
    data-teams="mouz" data-players="torzsi"
@@ -845,40 +1169,58 @@
     <h3>Flash Banana</h3>
     <p class="muted">3 uses · 1 team · 0% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/flash-jungle-from-shop-ct/" data-id="flash-jungle-from-shop-ct"
-   data-type="flash" data-side="CT" data-area="Jungle" data-map="mirage"
-   data-teams="falcons g2 vitality" data-players="karrigan matys zywoo"
-   data-diff="3" data-count="3" data-eff="1.33">
-  <svg class="radar" viewBox="231.7 423.8 292.7 292.7" role="img" aria-label="Trajectory: Flash Jungle (from Shop)">
+</a><a class="card" href="/en/mirage/flash-shop-from-ct-spawn-ct/" data-id="flash-shop-from-ct-spawn-ct"
+   data-type="flash" data-side="CT" data-area="Shop" data-map="mirage"
+   data-teams="g2 spirit" data-players="nertz sh1ro"
+   data-diff="3" data-count="3" data-eff="1.0">
+  <svg class="radar" viewBox="68.7 300.3 352.5 352.5" role="img" aria-label="Trajectory: Flash Shop (from CT Spawn)">
   <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="9.8"><text x="446.2" y="626.6">Jungle</text><text x="410.8" y="471.0">Sniper&#39;s Nest</text></g>
-  <circle class="land land-flash" cx="428.3" cy="646.5" r="10.0"/>
-  <path class="traj traj-flash" d="M328.0,493.8 L331.6,499.6 L335.2,505.4 L338.6,511.4 L342.2,517.2 L345.6,523.0 L349.2,528.8 L352.8,534.6 L356.2,540.4 L359.8,546.4 L363.2,552.2 L366.8,558.0 L370.4,563.8 L373.8,569.6 L377.4,575.4 L380.8,581.2 L384.4,587.2 L388.0,593.0 L391.4,598.8 L395.0,604.6 L398.4,610.4 L402.0,616.2 L405.6,622.2 L409.0,628.0 L412.6,633.8 L416.0,639.6 L418.8,644.0"/>
-  <line class="aim" x1="327.9" y1="494.6" x2="347.5" y2="522.4"/>
-  <circle class="spot side-CT" cx="327.9" cy="494.6" r="7"/>
+  <g class="places" font-size="11.8"><text x="250.6" y="452.0">Shop</text></g>
+  <circle class="land land-flash" cx="138.7" cy="436.0" r="10.0"/>
+  <path class="traj traj-flash" d="M351.2,528.4 L343.0,524.4 L334.8,520.4 L326.6,516.2 L318.6,512.2 L310.4,508.2 L302.2,504.2 L294.0,500.2 L286.0,496.2 L277.8,492.0 L269.6,488.0 L261.6,484.0 L253.4,480.0 L245.2,476.0 L237.2,472.0 L229.0,467.8 L220.8,463.8 L212.6,459.8 L204.6,455.8 L196.4,451.8 L188.2,447.8 L180.2,443.6 L172.0,439.6 L163.8,435.6 L155.6,431.6 L147.6,427.6 L141.4,424.6"/>
+  <line class="aim" x1="349.8" y1="527.7" x2="318.5" y2="514.3"/>
+  <circle class="spot side-CT" cx="349.8" cy="527.7" r="7"/>
 </svg>
   <div class="card-body">
-    <div class="card-badges"><span class="badge">Mirage</span><span class="badge type-flash">Flash</span><span class="badge side-CT">CT</span><span class="badge diff-3">Hard</span><span class="badge video">▶ video</span></div>
-    <h3>Flash Jungle (from Shop)</h3>
-<p class="eff">blinds 1.3 enemy(ies) for 4.3s on average</p>
-    <p class="muted">3 uses · 3 teams · 67% rounds won</p>
+    <div class="card-badges"><span class="badge">Mirage</span><span class="badge type-flash">Flash</span><span class="badge side-CT">CT</span><span class="badge diff-3">Hard</span><span class="badge">jump throw</span><span class="badge video">▶ video</span></div>
+    <h3>Flash Shop (from CT Spawn)</h3>
+<p class="eff">blinds 1.0 enemy(ies) for 1.7s on average</p>
+    <p class="muted">3 uses · 2 teams · 67% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/flash-a-site-from-ct-spawn-ct/" data-id="flash-a-site-from-ct-spawn-ct"
-   data-type="flash" data-side="CT" data-area="BombsiteA" data-map="mirage"
-   data-teams="falcons g2" data-players="m0nesy matys niko"
+</a><a class="card" href="/en/mirage/flash-jungle-from-ct-spawn-ct/" data-id="flash-jungle-from-ct-spawn-ct"
+   data-type="flash" data-side="CT" data-area="Jungle" data-map="mirage"
+   data-teams="falcons g2 spirit" data-players="karrigan matys sh1ro"
    data-diff="3" data-count="3" data-eff="1.67">
-  <svg class="radar" viewBox="335.4 454.6 382.0 382.0" role="img" aria-label="Trajectory: Flash A Site (from CT Spawn)">
+  <svg class="radar" viewBox="241.2 424.4 278.3 278.3" role="img" aria-label="Trajectory: Flash Jungle (from CT Spawn)">
   <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="12.7"><text x="561.4" y="724.2">A Site</text><text x="517.4" y="558.4">Connector</text><text x="446.2" y="626.6">Jungle</text><text x="545.8" y="650.6">Stairs</text><text x="639.4" y="761.4">Scaffolding</text></g>
-  <circle class="land land-flash" cx="642.4" cy="690.6" r="10.0"/>
-  <path class="traj traj-flash" d="M405.4,598.2 L414.8,601.8 L424.2,605.4 L433.6,609.2 L443.0,612.8 L452.4,616.6 L461.8,620.2 L471.2,624.0 L480.6,627.6 L490.0,631.2 L499.4,635.0 L508.8,638.6 L518.2,642.4 L527.6,646.0 L537.0,649.8 L546.4,653.4 L555.8,657.0 L565.2,660.8 L574.6,664.4 L584.0,668.2 L593.4,671.8 L602.8,675.6 L612.2,679.2 L621.6,682.8 L631.0,686.6 L640.4,690.2 L647.4,693.0"/>
-  <line class="aim" x1="405.6" y1="599.6" x2="437.4" y2="611.8"/>
-  <circle class="spot side-CT" cx="405.6" cy="599.6" r="7"/>
+  <g class="places" font-size="9.3"><text x="446.2" y="626.6">Jungle</text><text x="412.0" y="466.2">Sniper&#39;s Nest</text></g>
+  <circle class="land land-flash" cx="427.4" cy="632.7" r="10.0"/>
+  <path class="traj traj-flash" d="M328.0,494.8 L332.2,500.0 L336.2,505.2 L340.2,510.4 L344.4,515.6 L348.4,521.0 L352.4,526.2 L356.6,531.4 L360.6,536.6 L364.6,541.8 L368.8,547.2 L372.8,552.4 L376.8,557.6 L381.0,562.8 L385.0,568.0 L389.0,573.4 L393.2,578.6 L397.2,583.8 L401.2,589.0 L405.4,594.2 L409.4,599.6 L413.6,604.8 L417.6,610.0 L421.6,615.2 L425.8,620.4 L429.8,625.8 L432.8,629.6"/>
+  <line class="aim" x1="329.3" y1="494.4" x2="349.9" y2="521.4"/>
+  <circle class="spot side-CT" cx="329.3" cy="494.4" r="7"/>
 </svg>
   <div class="card-body">
     <div class="card-badges"><span class="badge">Mirage</span><span class="badge type-flash">Flash</span><span class="badge side-CT">CT</span><span class="badge diff-3">Hard</span><span class="badge video">▶ video</span></div>
-    <h3>Flash A Site (from CT Spawn)</h3>
-<p class="eff">blinds 1.7 enemy(ies) for 4.1s on average</p>
+    <h3>Flash Jungle (from CT Spawn)</h3>
+<p class="eff">blinds 1.7 enemy(ies) for 5.3s on average</p>
+    <p class="muted">3 uses · 3 teams · 33% rounds won</p>
+  </div>
+</a><a class="card" href="/en/mirage/flash-top-mid-from-a-site-ct/" data-id="flash-top-mid-from-a-site-ct"
+   data-type="flash" data-side="CT" data-area="TopofMid" data-map="mirage"
+   data-teams="furia fut" data-players="coolio dziugss fallen"
+   data-diff="3" data-count="3" data-eff="1.67">
+  <svg class="radar" viewBox="407.9 433.0 418.8 418.8" role="img" aria-label="Trajectory: Flash Top Mid (from A Site)">
+  <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="14.0"><text x="561.4" y="724.2">A Site</text><text x="749.2" y="753.2">Palace</text><text x="517.6" y="555.4">Connector</text><text x="720.8" y="659.8">T Ramp</text><text x="546.2" y="652.4">Stairs</text><text x="640.2" y="757.4">Scaffolding</text></g>
+  <circle class="land land-flash" cx="662.6" cy="506.8" r="10.0"/>
+  <path class="traj traj-flash" d="M573.6,781.8 L577.0,771.0 L580.4,760.2 L583.8,749.4 L587.4,738.6 L590.8,727.8 L594.2,716.8 L597.6,706.0 L601.0,695.2 L604.4,684.4 L607.8,673.6 L611.4,662.8 L614.8,651.8 L618.2,641.0 L621.6,630.2 L625.0,619.4 L628.4,608.6 L631.8,597.8 L635.2,587.0 L638.8,576.0 L642.2,565.2 L645.6,554.4 L649.0,543.6 L652.4,532.8 L655.8,522.0 L659.2,511.2 L661.8,503.0"/>
+  <line class="aim" x1="572.0" y1="781.8" x2="582.5" y2="749.5"/>
+  <circle class="spot side-CT" cx="572.0" cy="781.8" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge">Mirage</span><span class="badge type-flash">Flash</span><span class="badge side-CT">CT</span><span class="badge diff-3">Hard</span><span class="badge">jump throw</span><span class="badge video">▶ video</span></div>
+    <h3>Flash Top Mid (from A Site)</h3>
+<p class="eff">blinds 1.7 enemy(ies) for 5.5s on average</p>
     <p class="muted">3 uses · 2 teams · 67% rounds won</p>
   </div>
 </a><a class="card" href="/en/mirage/flash-catwalk-ct/" data-id="flash-catwalk-ct"
@@ -887,7 +1229,7 @@
    data-diff="3" data-count="3" data-eff="1.33">
   <svg class="radar" viewBox="363.6 199.5 315.8 315.8" role="img" aria-label="Trajectory: Flash Catwalk">
   <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="10.5"><text x="543.8" y="478.6">Mid</text><text x="495.6" y="403.4">Catwalk</text><text x="463.2" y="297.2">Underpass</text><text x="410.8" y="471.0">Sniper&#39;s Nest</text><text x="417.8" y="386.2">Ladder</text></g>
+  <g class="places" font-size="10.5"><text x="542.6" y="477.4">Mid</text><text x="494.2" y="400.2">Catwalk</text><text x="457.2" y="288.8">Underpass</text><text x="412.0" y="466.2">Sniper&#39;s Nest</text><text x="418.0" y="383.6">Ladder</text></g>
   <circle class="land land-flash" cx="605.8" cy="409.5" r="10.0"/>
   <path class="traj traj-flash" d="M433.6,305.4 L440.4,309.4 L447.2,313.4 L454.0,317.2 L461.0,321.2 L467.8,325.2 L474.6,329.0 L481.4,333.0 L488.2,337.0 L495.0,340.8 L501.8,344.8 L508.6,348.8 L515.6,352.6 L522.4,356.6 L529.2,360.6 L536.0,364.4 L542.8,368.4 L549.6,372.4 L556.4,376.2 L563.2,380.2 L570.2,384.2 L577.0,388.2 L583.8,392.0 L590.6,396.0 L597.4,400.0 L604.2,403.8 L609.4,406.8"/>
   <line class="aim" x1="436.0" y1="306.8" x2="464.9" y2="324.7"/>
@@ -899,23 +1241,23 @@
 <p class="eff">blinds 1.3 enemy(ies) for 4.2s on average</p>
     <p class="muted">3 uses · 2 teams · 67% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/flash-b-site-from-shop-ct/" data-id="flash-b-site-from-shop-ct"
-   data-type="flash" data-side="CT" data-area="BombsiteB" data-map="mirage"
-   data-teams="furia fut mouz" data-players="sunpayus xertion yekindar"
-   data-diff="2" data-count="3" data-eff="1.33">
-  <svg class="radar" viewBox="146.9 219.4 294.7 294.7" role="img" aria-label="Trajectory: Flash B Site (from Shop)">
+</a><a class="card" href="/en/mirage/flash-a-site-from-ct-spawn-ct/" data-id="flash-a-site-from-ct-spawn-ct"
+   data-type="flash" data-side="CT" data-area="BombsiteA" data-map="mirage"
+   data-teams="falcons g2" data-players="m0nesy matys niko"
+   data-diff="3" data-count="3" data-eff="1.67">
+  <svg class="radar" viewBox="335.4 454.6 382.0 382.0" role="img" aria-label="Trajectory: Flash A Site (from CT Spawn)">
   <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="9.8"><text x="249.8" y="291.0">B Site</text><text x="250.6" y="452.0">Shop</text></g>
-  <circle class="land land-flash" cx="364.8" cy="289.4" r="10.0"/>
-  <path class="traj traj-flash" d="M224.2,443.0 L229.8,436.6 L235.4,430.2 L241.0,424.0 L246.8,417.6 L252.4,411.2 L258.0,405.0 L263.8,398.6 L269.4,392.4 L275.0,386.0 L280.6,379.6 L286.4,373.4 L292.0,367.0 L297.6,360.8 L303.4,354.4 L309.0,348.0 L314.6,341.8 L320.4,335.4 L326.0,329.0 L331.6,322.8 L337.2,316.4 L343.0,310.2 L348.6,303.8 L353.4,298.4 L356.0,295.6 L358.4,292.8 L360.4,290.6"/>
-  <line class="aim" x1="223.7" y1="444.1" x2="246.1" y2="418.5"/>
-  <circle class="spot side-CT" cx="223.7" cy="444.1" r="7"/>
+  <g class="places" font-size="12.7"><text x="561.4" y="724.2">A Site</text><text x="517.6" y="555.4">Connector</text><text x="446.2" y="626.6">Jungle</text><text x="546.2" y="652.4">Stairs</text><text x="640.2" y="757.4">Scaffolding</text></g>
+  <circle class="land land-flash" cx="642.4" cy="690.6" r="10.0"/>
+  <path class="traj traj-flash" d="M405.4,598.2 L414.8,601.8 L424.2,605.4 L433.6,609.2 L443.0,612.8 L452.4,616.6 L461.8,620.2 L471.2,624.0 L480.6,627.6 L490.0,631.2 L499.4,635.0 L508.8,638.6 L518.2,642.4 L527.6,646.0 L537.0,649.8 L546.4,653.4 L555.8,657.0 L565.2,660.8 L574.6,664.4 L584.0,668.2 L593.4,671.8 L602.8,675.6 L612.2,679.2 L621.6,682.8 L631.0,686.6 L640.4,690.2 L647.4,693.0"/>
+  <line class="aim" x1="405.6" y1="599.6" x2="437.4" y2="611.8"/>
+  <circle class="spot side-CT" cx="405.6" cy="599.6" r="7"/>
 </svg>
   <div class="card-body">
-    <div class="card-badges"><span class="badge">Mirage</span><span class="badge type-flash">Flash</span><span class="badge side-CT">CT</span><span class="badge diff-2">Medium</span><span class="badge video">▶ video</span></div>
-    <h3>Flash B Site (from Shop)</h3>
-<p class="eff">blinds 1.3 enemy(ies) for 5.9s on average</p>
-    <p class="muted">3 uses · 3 teams · 100% rounds won</p>
+    <div class="card-badges"><span class="badge">Mirage</span><span class="badge type-flash">Flash</span><span class="badge side-CT">CT</span><span class="badge diff-3">Hard</span><span class="badge video">▶ video</span></div>
+    <h3>Flash A Site (from CT Spawn)</h3>
+<p class="eff">blinds 1.7 enemy(ies) for 4.1s on average</p>
+    <p class="muted">3 uses · 2 teams · 67% rounds won</p>
   </div>
 </a><a class="card" href="/en/mirage/flash-apartments-from-truck-ct/" data-id="flash-apartments-from-truck-ct"
    data-type="flash" data-side="CT" data-area="Apartments" data-map="mirage"
@@ -923,7 +1265,7 @@
    data-diff="2" data-count="3" data-eff="0.0">
   <svg class="radar" viewBox="142.8 17.8 360.6 360.6" role="img" aria-label="Trajectory: Flash Apartments (from Truck)">
   <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="12.0"><text x="249.8" y="291.0">B Site</text><text x="328.6" y="197.4">Apartments</text><text x="463.2" y="297.2">Underpass</text><text x="207.6" y="196.6">Truck</text></g>
+  <g class="places" font-size="12.0"><text x="249.8" y="291.0">B Site</text><text x="330.8" y="201.0">Apartments</text><text x="457.2" y="288.8">Underpass</text><text x="207.6" y="196.6">Truck</text></g>
   <circle class="land land-flash" cx="430.1" cy="217.3" r="10.0"/>
   <path class="traj traj-flash" d="M215.2,179.0 L223.8,180.4 L232.2,182.0 L240.8,183.4 L249.4,184.8 L257.8,186.2 L266.4,187.6 L275.0,189.0 L283.6,190.4 L292.0,191.8 L300.6,193.4 L309.2,194.8 L317.6,196.2 L326.2,197.6 L334.8,199.0 L343.2,200.4 L351.8,201.8 L360.4,203.4 L368.8,204.8 L377.4,206.2 L386.0,207.6 L394.4,209.0 L403.0,210.4 L411.6,211.8 L420.2,213.2 L428.6,214.8 L433.4,215.4"/>
   <line class="aim" x1="212.8" y1="179.8" x2="246.4" y2="185.2"/>
@@ -934,93 +1276,76 @@
     <h3>Flash Apartments (from Truck)</h3>
     <p class="muted">3 uses · 2 teams · 67% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/flash-mid-from-top-mid-t/" data-id="flash-mid-from-top-mid-t"
-   data-type="flash" data-side="T" data-area="Middle" data-map="mirage"
-   data-teams="fut vitality" data-players="apex coolio xfl0ud"
-   data-diff="3" data-count="3" data-eff="0.0">
-  <svg class="radar" viewBox="495.6 284.4 288.4 288.4" role="img" aria-label="Trajectory: Flash Mid (from Top Mid)">
+</a><a class="card" href="/en/mirage/flash-stairs-from-palace-alley-t/" data-id="flash-stairs-from-palace-alley-t"
+   data-type="flash" data-side="T" data-area="Stairs" data-map="mirage"
+   data-teams="g2" data-players="r1nkle"
+   data-diff="3" data-count="3" data-eff="1.33">
+  <svg class="radar" viewBox="520.0 469.3 354.2 354.2" role="img" aria-label="Trajectory: Flash Stairs (from Palace Alley)">
   <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="9.6"><text x="543.8" y="478.6">Mid</text><text x="703.6" y="431.4">Top Mid</text></g>
-  <circle class="land land-flash" cx="577.0" cy="465.4" r="10.0"/>
-  <path class="traj traj-flash" d="M707.6,354.4 L700.6,364.2 L693.6,374.2 L686.4,384.0 L679.4,394.0 L672.4,403.8 L665.2,413.8 L658.2,423.6 L651.2,433.6 L644.0,443.4 L637.0,453.4 L630.0,463.2 L622.8,473.2 L615.8,483.0 L608.8,493.0 L601.6,502.8 L598.2,499.8 L595.0,495.2 L591.8,490.8 L588.6,486.4 L585.4,482.0 L582.2,477.4 L579.0,473.0 L575.8,468.6 L574.0,466.0 L572.4,464.0 L571.2,462.4"/>
-  <line class="aim" x1="708.4" y1="354.5" x2="688.9" y2="382.3"/>
-  <circle class="spot side-T" cx="708.4" cy="354.5" r="7"/>
+  <g class="places" font-size="11.8"><text x="561.4" y="724.2">A Site</text><text x="749.2" y="753.2">Palace</text><text x="796.6" y="590.6">Palace Alley</text><text x="720.8" y="659.8">T Ramp</text><text x="640.2" y="757.4">Scaffolding</text></g>
+  <circle class="land land-flash" cx="596.0" cy="692.1" r="10.0"/>
+  <path class="traj traj-flash" d="M803.4,588.4 L795.0,592.8 L786.8,597.4 L778.6,601.8 L770.2,606.4 L762.0,610.8 L753.6,615.4 L745.4,619.8 L737.0,624.4 L728.8,628.8 L720.6,633.4 L712.2,637.8 L704.0,642.4 L695.6,646.8 L687.4,651.4 L679.0,655.8 L670.8,660.4 L662.4,665.0 L654.2,669.4 L646.0,674.0 L637.6,678.4 L629.4,683.0 L621.0,687.4 L612.8,692.0 L604.4,696.4 L596.2,701.0 L590.0,704.4"/>
+  <line class="aim" x1="804.2" y1="590.1" x2="773.8" y2="605.3"/>
+  <circle class="spot side-T" cx="804.2" cy="590.1" r="7"/>
 </svg>
   <div class="card-body">
     <div class="card-badges"><span class="badge">Mirage</span><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-3">Hard</span><span class="badge video">▶ video</span></div>
-    <h3>Flash Mid (from Top Mid)</h3>
-    <p class="muted">3 uses · 2 teams · 67% rounds won</p>
+    <h3>Flash Stairs (from Palace Alley)</h3>
+<p class="eff">blinds 1.3 enemy(ies) for 2.7s on average</p>
+    <p class="muted">3 uses · 1 team · 33% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/flash-ct-spawn-from-a-site-t/" data-id="flash-ct-spawn-from-a-site-t"
-   data-type="flash" data-side="T" data-area="CTSpawn" data-map="mirage"
-   data-teams="g2 mouz" data-players="pr r1nkle"
-   data-diff="2" data-count="3" data-eff="1.33">
-  <svg class="radar" viewBox="340.5 555.0 343.0 343.0" role="img" aria-label="Trajectory: Flash CT Spawn (from A Site)">
-  <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="11.4"><text x="561.4" y="724.2">A Site</text><text x="446.2" y="626.6">Jungle</text><text x="545.8" y="650.6">Stairs</text><text x="639.4" y="761.4">Scaffolding</text></g>
-  <circle class="land land-flash" cx="480.0" cy="820.9" r="10.0"/>
-  <path class="traj traj-flash" d="M544.8,625.0 L542.2,633.0 L539.6,640.8 L537.2,648.6 L534.6,656.6 L532.0,664.4 L529.4,672.4 L527.0,680.2 L524.4,688.2 L521.8,696.0 L519.2,703.8 L516.8,711.8 L514.2,719.6 L511.6,727.6 L509.2,735.4 L506.6,743.4 L504.0,751.2 L501.4,759.0 L499.0,767.0 L496.4,774.8 L493.8,782.8 L491.2,790.6 L488.8,798.6 L486.2,806.4 L483.6,814.2 L481.0,822.2 L479.2,828.0"/>
-  <line class="aim" x1="544.7" y1="625.0" x2="533.7" y2="657.2"/>
-  <circle class="spot side-T" cx="544.7" cy="625.0" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">Mirage</span><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-2">Medium</span><span class="badge video">▶ video</span></div>
-    <h3>Flash CT Spawn (from A Site)</h3>
-<p class="eff">blinds 1.3 enemy(ies) for 2.4s on average</p>
-    <p class="muted">3 uses · 2 teams · 33% rounds won</p>
-  </div>
-</a><a class="card" href="/en/mirage/flash-a-site-from-palace-t/" data-id="flash-a-site-from-palace-t"
+</a><a class="card" href="/en/mirage/flash-a-site-from-palace-alley-t/" data-id="flash-a-site-from-palace-alley-t"
    data-type="flash" data-side="T" data-area="BombsiteA" data-map="mirage"
-   data-teams="fut vitality" data-players="apex dziugss"
-   data-diff="1" data-count="3" data-eff="0.0">
-  <svg class="radar" viewBox="535.8 632.6 260 260" role="img" aria-label="Trajectory: Flash A Site (from Palace)">
+   data-teams="mouz" data-players="spinx"
+   data-diff="3" data-count="3" data-eff="2.33">
+  <svg class="radar" viewBox="533.2 444.3 371.1 371.1" role="img" aria-label="Trajectory: Flash A Site (from Palace Alley)">
   <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="8.7"><text x="749.2" y="753.2">Palace</text><text x="719.6" y="662.4">T Ramp</text><text x="639.4" y="761.4">Scaffolding</text></g>
-  <circle class="land land-flash" cx="676.8" cy="724.2" r="10.0"/>
-  <path class="traj traj-flash" d="M652.6,802.8 L655.0,794.6 L657.4,786.6 L659.8,778.4 L662.2,770.4 L664.6,762.2 L667.0,754.2 L669.2,746.2 L671.6,738.0 L674.0,730.0 L676.4,722.4 L677.4,726.0 L678.6,729.6 L679.0,732.4 L678.6,732.4 L678.4,731.8 L678.2,731.0 L678.0,730.2 L677.8,729.6 L677.6,728.8 L677.4,728.0 L677.2,727.4 L677.0,726.6 L676.8,725.8 L676.6,725.6 L676.6,725.2 L676.4,725.0"/>
-  <line class="aim" x1="653.4" y1="802.5" x2="662.7" y2="769.8"/>
-  <circle class="spot side-T" cx="653.4" cy="802.5" r="7"/>
+  <g class="places" font-size="12.4"><text x="749.2" y="753.2">Palace</text><text x="796.6" y="590.6">Palace Alley</text><text x="720.8" y="659.8">T Ramp</text><text x="640.2" y="757.4">Scaffolding</text></g>
+  <circle class="land land-flash" cx="614.0" cy="673.4" r="10.0"/>
+  <path class="traj traj-flash" d="M834.0,586.8 L825.2,590.0 L816.2,593.4 L807.2,596.6 L798.2,599.8 L789.2,603.2 L780.2,606.4 L771.4,609.6 L762.4,613.0 L753.4,616.2 L744.4,619.4 L735.4,622.6 L726.4,626.0 L717.6,629.2 L708.6,632.4 L699.6,635.8 L690.6,639.0 L681.6,642.2 L672.6,645.6 L663.6,648.8 L654.8,652.0 L645.8,655.2 L636.8,658.6 L627.8,661.8 L618.8,665.0 L609.8,668.4 L603.2,670.8"/>
+  <line class="aim" x1="834.3" y1="586.3" x2="802.7" y2="598.9"/>
+  <circle class="spot side-T" cx="834.3" cy="586.3" r="7"/>
 </svg>
   <div class="card-body">
-    <div class="card-badges"><span class="badge">Mirage</span><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-1">Easy</span><span class="badge video">▶ video</span></div>
-    <h3>Flash A Site (from Palace)</h3>
+    <div class="card-badges"><span class="badge">Mirage</span><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-3">Hard</span><span class="badge video">▶ video</span></div>
+    <h3>Flash A Site (from Palace Alley)</h3>
+<p class="eff">blinds 2.3 enemy(ies) for 2.9s on average</p>
+    <p class="muted">3 uses · 1 team · 67% rounds won</p>
+  </div>
+</a><a class="card" href="/en/mirage/flash-underpass-from-back-alley-t/" data-id="flash-underpass-from-back-alley-t"
+   data-type="flash" data-side="T" data-area="Underpass" data-map="mirage"
+   data-teams="fut vitality" data-players="mezii xfl0ud"
+   data-diff="3" data-count="3" data-eff="0.0">
+  <svg class="radar" viewBox="373.0 119.9 280.2 280.2" role="img" aria-label="Trajectory: Flash Underpass (from Back Alley)">
+  <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="9.3"><text x="457.2" y="288.8">Underpass</text><text x="567.2" y="229.0">Back Alley</text></g>
+  <circle class="land land-flash" cx="443.0" cy="274.1" r="10.0"/>
+  <path class="traj traj-flash" d="M582.8,245.8 L576.8,246.8 L570.6,247.8 L564.6,249.0 L558.6,250.0 L552.6,251.0 L546.4,252.2 L540.4,253.2 L534.4,254.2 L528.4,255.4 L522.2,256.4 L516.2,257.6 L510.2,258.6 L504.2,259.6 L498.0,260.8 L492.0,261.8 L486.0,262.8 L480.0,264.0 L473.8,265.0 L467.8,266.0 L461.8,267.2 L458.0,267.8 L455.2,268.4 L452.6,268.8 L449.8,269.2 L447.0,269.8 L445.0,270.2"/>
+  <line class="aim" x1="583.1" y1="245.9" x2="549.3" y2="249.4"/>
+  <circle class="spot side-T" cx="583.1" cy="245.9" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge">Mirage</span><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-3">Hard</span><span class="badge video">▶ video</span></div>
+    <h3>Flash Underpass (from Back Alley)</h3>
     <p class="muted">3 uses · 2 teams · 33% rounds won</p>
   </div>
-</a><a class="card" href="/en/mirage/flash-apartments-from-back-alley-t/" data-id="flash-apartments-from-back-alley-t"
-   data-type="flash" data-side="T" data-area="Apartments" data-map="mirage"
-   data-teams="fut legacy" data-players="sunpayus try"
-   data-diff="2" data-count="3" data-eff="1.0">
-  <svg class="radar" viewBox="290.2 61.2 349.6 349.6" role="img" aria-label="Trajectory: Flash Apartments (from Back Alley)">
-  <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="11.7"><text x="463.2" y="297.2">Underpass</text><text x="567.2" y="229.0">Back Alley</text></g>
-  <circle class="land land-flash" cx="361.0" cy="234.3" r="10.0"/>
-  <path class="traj traj-flash" d="M569.8,238.4 L561.6,238.2 L553.4,238.0 L545.4,238.0 L537.2,237.8 L529.0,237.6 L521.0,237.4 L512.8,237.2 L504.6,237.0 L496.6,236.8 L488.4,236.6 L480.2,236.4 L472.2,236.2 L464.0,236.0 L455.8,235.8 L447.6,235.6 L439.6,235.4 L431.4,235.4 L423.2,235.2 L415.2,235.0 L407.0,234.8 L398.8,234.6 L390.8,234.4 L382.6,234.2 L374.4,234.0 L366.4,233.8 L360.2,233.6"/>
-  <line class="aim" x1="569.4" y1="238.5" x2="535.4" y2="237.8"/>
-  <circle class="spot side-T" cx="569.4" cy="238.5" r="7"/>
-</svg>
-  <div class="card-body">
-    <div class="card-badges"><span class="badge">Mirage</span><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-2">Medium</span><span class="badge">jump throw</span><span class="badge video">▶ video</span></div>
-    <h3>Flash Apartments (from Back Alley)</h3>
-<p class="eff">blinds 1.0 enemy(ies) for 1.8s on average</p>
-    <p class="muted">3 uses · 2 teams · 67% rounds won</p>
-  </div>
-</a><a class="card" href="/en/mirage/flash-b-site-from-back-alley-t/" data-id="flash-b-site-from-back-alley-t"
-   data-type="flash" data-side="T" data-area="BombsiteB" data-map="mirage"
-   data-teams="vitality" data-players="zywoo"
+</a><a class="card" href="/en/mirage/flash-a-site-from-top-mid-t/" data-id="flash-a-site-from-top-mid-t"
+   data-type="flash" data-side="T" data-area="BombsiteA" data-map="mirage"
+   data-teams="furia g2" data-players="hunter yuurih"
    data-diff="3" data-count="3" data-eff="0.33">
-  <svg class="radar" viewBox="259.2 59.4 359.4 359.4" role="img" aria-label="Trajectory: Flash B Site (from Back Alley)">
+  <svg class="radar" viewBox="412.2 330.8 362.6 362.6" role="img" aria-label="Trajectory: Flash A Site (from Top Mid)">
   <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
-  <g class="places" font-size="12.0"><text x="328.6" y="197.4">Apartments</text><text x="463.2" y="297.2">Underpass</text><text x="567.2" y="229.0">Back Alley</text></g>
-  <circle class="land land-flash" cx="329.4" cy="239.6" r="10.0"/>
-  <path class="traj traj-flash" d="M548.6,238.6 L540.0,238.6 L531.6,238.6 L523.0,238.8 L514.4,238.8 L506.0,238.8 L497.4,238.8 L489.0,238.8 L480.4,239.0 L472.0,239.0 L463.4,239.0 L454.8,239.0 L446.4,239.0 L437.8,239.0 L429.4,239.2 L420.8,239.2 L412.2,239.2 L403.8,239.2 L395.2,239.2 L386.8,239.4 L378.2,239.4 L369.8,239.4 L361.2,239.4 L352.6,239.4 L344.2,239.4 L335.6,239.6 L329.2,239.6"/>
-  <line class="aim" x1="548.6" y1="238.6" x2="514.6" y2="238.8"/>
-  <circle class="spot side-T" cx="548.6" cy="238.6" r="7"/>
+  <g class="places" font-size="12.1"><text x="542.6" y="477.4">Mid</text><text x="702.4" y="426.4">Top Mid</text><text x="494.2" y="400.2">Catwalk</text><text x="517.6" y="555.4">Connector</text><text x="546.2" y="652.4">Stairs</text></g>
+  <circle class="land land-flash" cx="508.0" cy="621.3" r="10.0"/>
+  <path class="traj traj-flash" d="M681.0,401.6 L674.2,410.2 L667.4,418.8 L660.6,427.4 L653.8,436.0 L647.0,444.6 L640.2,453.2 L633.4,461.8 L626.6,470.6 L619.8,479.2 L613.0,487.8 L606.2,496.4 L599.4,505.0 L592.6,513.6 L585.8,522.2 L579.0,530.8 L572.2,539.4 L565.4,548.0 L558.4,556.6 L551.6,565.4 L544.8,574.0 L538.0,582.6 L531.2,591.2 L524.4,599.8 L517.6,608.4 L510.8,617.0 L505.8,623.4"/>
+  <line class="aim" x1="681.1" y1="400.8" x2="660.1" y2="427.6"/>
+  <circle class="spot side-T" cx="681.1" cy="400.8" r="7"/>
 </svg>
   <div class="card-body">
     <div class="card-badges"><span class="badge">Mirage</span><span class="badge type-flash">Flash</span><span class="badge side-T">T</span><span class="badge diff-3">Hard</span><span class="badge">jump throw</span><span class="badge video">▶ video</span></div>
-    <h3>Flash B Site (from Back Alley)</h3>
-<p class="eff">blinds 0.3 enemy(ies) for 1.3s on average</p>
-    <p class="muted">3 uses · 1 team · 33% rounds won</p>
+    <h3>Flash A Site (from Top Mid)</h3>
+<p class="eff">blinds 0.3 enemy(ies) for 0.5s on average</p>
+    <p class="muted">3 uses · 2 teams · 67% rounds won</p>
   </div>
 </a><a class="card" href="/en/nuke/flash-outside-ct/" data-id="flash-outside-ct"
    data-type="flash" data-side="CT" data-area="Outside" data-map="nuke"
@@ -1065,9 +1390,10 @@
   <div class="foot-in">
     <p>Data extracted from official match demos. Demos: <a href="https://www.hltv.org/" rel="noopener" target="_blank">HLTV.org</a>.</p>
     <p>Free fan project. Not affiliated with Valve, HLTV, the teams or tournament organizers. Counter-Strike is a trademark of Valve Corporation.</p>
-    <p><a href="/en/about/">About and credits</a> · updated 2026-11-14</p>
+    <p><a href="/en/about/">About and credits</a> · updated 2026-11-15</p>
   </div>
 </footer>
 <script src="/static/app.js" defer></script>
+<script src="/static/accounts.js" defer></script>
 </body>
 </html>
