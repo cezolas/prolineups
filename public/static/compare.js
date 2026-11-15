@@ -148,12 +148,14 @@
     const fx = byType.flash || 0;
     const d1 = v => (v == null || isNaN(v) ? "–" : v.toFixed(2).replace(".", S.dec));
     const pct = v => (v == null || isNaN(v) ? "–" : Math.round(v * 100) + "%");
-    const cmp = (mine, avg) => {
-      if (mine == null || !avg) return "";
-      const r = mine / avg;
-      return r >= 1.15 ? ' <span class="up">▲</span>' : r <= 0.85 ? ' <span class="down">▼</span>' : "";
+    const cmp = (mine, avg, lower) => {
+      if (mine == null || avg == null) return "";
+      const r = avg ? mine / avg : (mine > 0 ? 2 : 1);
+      // ▲/▼ shows the direction; green/red shows whether that is good (for "lower is better" rows, less is green)
+      const good = (up) => (lower ? !up : up) ? "up" : "down";
+      return r >= 1.15 ? ` <span class="${good(true)}">▲</span>` : r <= 0.85 ? ` <span class="${good(false)}">▼</span>` : "";
     };
-    const row = (label, mine, avg, fmt = d1) => `<tr><td>${esc(label)}</td><td><b>${fmt(mine)}</b>${cmp(mine, avg)}</td><td>${avg == null ? "–" : fmt(avg)}</td></tr>`;
+    const row = (label, mine, avg, fmt = d1, lower = false) => `<tr><td>${esc(label)}</td><td><b>${fmt(mine)}</b>${cmp(mine, avg, lower)}</td><td>${avg == null ? "–" : fmt(avg)}</td></tr>`;
     return `<section class="cm-stats"><h2>${esc(S.vs_h)}</h2>
       <div class="kpis">
         <div class="kpi"><div class="kpi-v">${k.length}/${dd}</div><div class="kpi-l">${esc(S.k_kd)}</div><div class="kpi-s">K/D ${d1(dd ? k.length / dd : k.length)} · HS ${k.length ? Math.round(100 * hs / k.length) : 0}%</div></div>
@@ -164,7 +166,7 @@
         ${row(S.r_per_round, total / rounds, pro.per_round)}
         ${["smoke", "flash", "molotov", "he"].map(ty => row(`${S.types[ty]} ${S.r_per_round_short}`, byType[ty] / rounds, pro.per_type ? pro.per_type[ty] : null)).join("")}
         ${row(S.r_flash_enemies, fx ? enemyBl / fx : null, pro.flash_enemies)}
-        ${row(S.r_team_flash, fx ? teamFlashes / fx : null, pro.team_flash, pct)}
+        ${row(S.r_team_flash, fx ? teamFlashes / fx : null, pro.team_flash, pct, true)}
       </tbody></table></div>
       <p class="muted small">${esc(S.vs_help)}</p></section>`;
   }
@@ -246,21 +248,21 @@
   function roleBlock(who) {
     const R = DATA.roles; if (!R) return "";
     const me = myFeatures(who), role = guessRole(me); if (!role) return "";
-    const p = R.profiles[role], name = R.names[role];
+    const p = R.profiles[role], name = R.names[role], all = R.profiles.all || {};
     const pct = v => (v == null ? "–" : Math.round(v * 100) + "%");
     const num = (v, n = 2) => (v == null ? "–" : v.toFixed(n).replace(".", S.dec));
     const units = v => (v == null ? "–" : Math.round(v));
     const cmp = (a, b) => { if (a == null || !b) return ""; const r = a / b; return r >= 1.15 ? ' <span class="up">▲</span>' : r <= 0.85 ? ' <span class="down">▼</span>' : ""; };
-    const row = (l, a, b, fmt) => `<tr><td>${esc(l)}</td><td><b>${fmt(a)}</b>${cmp(a, b)}</td><td>${fmt(b)}</td></tr>`;
+    const row = (l, a, b, fmt, c) => `<tr><td>${esc(l)}</td><td><b>${fmt(a)}</b>${cmp(a, b)}</td><td>${fmt(b)}</td><td>${fmt(c)}</td></tr>`;
     const pros = (p.players || []).map(x => x.slug ? `<a href="/${lang}/${S.player_path}/${x.slug}/">${esc(x.name)}</a>` : esc(x.name)).join(", ");
     return `<section class="cm-role"><h2>${esc(S.role_h)}</h2>
       <p class="cm-role-name"><span class="role role-${role}">${esc(name)}</span> <span class="muted">${esc(S.role_why[role] || "")}</span></p>
       <p class="muted small">${esc(S.role_pros.replace("{r}", name))} ${pros}</p>
-      <div class="table-wrap"><table class="uses an-table cm-table"><thead><tr><th></th><th>${esc(S.you)}</th><th>${esc(S.role_avg.replace("{r}", name))}</th></tr></thead><tbody>
-        ${row(S.f_kpr, me.kpr, p.kpr, num)}${row("K/D", me.kd, p.kd, num)}${row("HS%", me.hs, p.hs, pct)}
-        ${row(S.f_open, me.open_t, p.open_t, pct)}${row(S.f_lurk, me.lurk, p.lurk, units)}${row(S.f_awp, me.awp, p.awp, pct)}
-        ${row(S.r_per_round, me.util, p.util, num)}
-        ${["smoke", "flash", "molotov", "he"].map(t => row(`${S.types[t]} ${S.r_per_round_short}`, me.per_type[t], p.per_type[t], num)).join("")}
+      <div class="table-wrap"><table class="uses an-table cm-table"><thead><tr><th></th><th>${esc(S.you)}</th><th>${esc(S.role_avg.replace("{r}", name))}</th><th>${esc(S.all_avg)}</th></tr></thead><tbody>
+        ${row(S.f_kpr, me.kpr, p.kpr, num, all.kpr)}${row("K/D", me.kd, p.kd, num, all.kd)}${row("HS%", me.hs, p.hs, pct, all.hs)}
+        ${row(S.f_open, me.open_t, p.open_t, pct, all.open_t)}${row(S.f_lurk, me.lurk, p.lurk, units, all.lurk)}${row(S.f_awp, me.awp, p.awp, pct, all.awp)}
+        ${row(S.r_per_round, me.util, p.util, num, all.util)}
+        ${["smoke", "flash", "molotov", "he"].map(t => row(`${S.types[t]} ${S.r_per_round_short}`, me.per_type[t], p.per_type[t], num, (all.per_type || {})[t])).join("")}
       </tbody></table></div>
       <p class="muted small">${esc(S.role_help)}</p></section>`;
   }

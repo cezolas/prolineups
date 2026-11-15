@@ -805,3 +805,8 @@ td.up { color: var(--good); } td.down { color: var(--bad); }
 :root:not([data-theme="light"]) { --link: #f5c451; }
 :root[data-theme="light"] { --link: #a16207; }
 .card:hover { border-color: var(--link); }
+
+/* back button under the breadcrumbs */
+.back-btn { display: inline-flex; align-items: center; gap: 4px; margin: 6px 0 2px; padding: 4px 12px; font-size: 13px; font-weight: 600;
+  border: 1px solid var(--line); border-radius: 99px; color: var(--text); background: var(--panel); }
+.back-btn:hover { border-color: var(--link); color: var(--link); text-decoration: none; }
