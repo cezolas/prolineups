@@ -750,3 +750,8 @@ td.up { color: var(--good); } td.down { color: var(--bad); }
 .cm-heat .hm { stroke: #000; }
 .cm-heat.hide-me .g-me, .cm-heat.hide-pro .g-pro { display: none; }
 .cm-heat.hide-smoke .t-smoke, .cm-heat.hide-flash .t-flash, .cm-heat.hide-molotov .t-molotov, .cm-heat.hide-he .t-he { display: none; }
+/* little cartoon HE after the wordmark */
+.wordmark { display: inline-flex; align-items: center; }
+.he-buddy { width: 26px; height: 26px; margin-left: 5px; transform: rotate(-12deg) translateY(-1px); transition: transform .25s ease; filter: drop-shadow(0 1px 1px rgba(0,0,0,.4)); }
+.wordmark:hover .he-buddy { transform: rotate(10deg) translateY(-3px) scale(1.08); }
+@media (prefers-reduced-motion: reduce) { .he-buddy { transition: none; } }
