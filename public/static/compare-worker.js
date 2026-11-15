@@ -1,6 +1,6 @@
 // Parses the player's demo in the browser (demoparser2 compiled to WebAssembly). Nothing is uploaded.
 /* global wasm_bindgen */
-importScripts("/static/vendor/demoparser2/demoparser2.js");
+importScripts("/static/vendor/demoparser2/demoparser2.js", "/static/vendor/fzstd/fzstd.js");
 let ready = null;
 const init = () => (ready = ready || wasm_bindgen("/static/vendor/demoparser2/demoparser2_bg.wasm"));
 
@@ -15,6 +15,8 @@ self.onmessage = async (e) => {
     await init();
     let bytes = new Uint8Array(e.data.buf);
     if (bytes[0] === 0x1f && bytes[1] === 0x8b) { self.postMessage({ stage: "unzip" }); bytes = await gunzip(bytes); }
+    // FACEIT now serves .dem.zst (Zstandard): decompress with fzstd (MIT, vendored)
+    if (bytes[0] === 0x28 && bytes[1] === 0xb5 && bytes[2] === 0x2f && bytes[3] === 0xfd) { self.postMessage({ stage: "unzip" }); bytes = fzstd.decompress(bytes); }
     if (bytes[0] === 0x42 && bytes[1] === 0x5a && bytes[2] === 0x68) throw new Error("bz2");
     self.postMessage({ stage: "header" });
     const header = wasm_bindgen.parseHeader(bytes);
@@ -24,6 +26,15 @@ self.onmessage = async (e) => {
       "hegrenade_detonate", "inferno_startburn", "player_death", "player_blind", "round_end"], ["X", "Y", "Z", "team_num"], []);
     const plain = x => (x instanceof Map ? Object.fromEntries(x) : x);
     const events = ev.map(plain);
+    // some demos (e.g. FACEIT) have no grenade_thrown: rebuild it from weapon_fire of the grenade weapons
+    if (!events.some(x => x.event_name === "grenade_thrown")) {
+      const NADES = new Set(["weapon_smokegrenade", "weapon_flashbang", "weapon_hegrenade", "weapon_molotov", "weapon_incgrenade"]);
+      const fires = wasm_bindgen.parseEvents(bytes, ["weapon_fire"], ["X", "Y", "Z", "team_num"], []);
+      for (const f0 of fires) {
+        const f = plain(f0);
+        if (NADES.has(f.weapon)) events.push({ ...f, event_name: "grenade_thrown", weapon: f.weapon.replace("weapon_", "") });
+      }
+    }
     // CS2 demos don't carry player_blind: read everyone's flash_duration right before/after each flashbang detonation
     const flashes = events.filter(x => x.event_name === "flashbang_detonate");
     if (flashes.length) {
