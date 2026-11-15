@@ -666,3 +666,30 @@ h1 img.flag { width: 24px; height: 18px; vertical-align: 0; }
 .acc-list { list-style: none; padding: 0; }
 .google-btn { background: #fff; color: #1f1f1f; border-color: #dadce0; font-weight: 600; }
 .btn.danger { border-color: var(--bad); color: var(--bad); background: transparent; }
+
+/* match page: horizontal tabs */
+.mt-head { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; margin: 6px 0; font-size: 20px; }
+.mt-team.r { text-align: right; } .mt-team.win b { color: var(--good); }
+.mt-score { display: flex; gap: 10px; align-items: baseline; font-size: 34px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.mt-score small { font-size: 18px; color: var(--muted); }
+.mt-sub { text-align: center; }
+.tabs { display: flex; gap: 2px; border-bottom: 1px solid var(--line); margin: 14px 0 0; overflow-x: auto; scrollbar-width: thin; }
+.tabs button { background: none; border: 0; border-bottom: 3px solid transparent; color: var(--muted); font: inherit; font-weight: 600;
+  padding: 10px 16px; cursor: pointer; white-space: nowrap; }
+.tabs button:hover { color: var(--text); }
+.tabs button.on { color: var(--text); border-bottom-color: var(--accent); }
+.tab-panel { padding-top: 12px; }
+.content > section.tab-panel { background: transparent; border: 0; margin-top: 0; }
+.mt-flow { display: flex; flex-wrap: wrap; gap: 3px; margin: 6px 12px; }
+.rf { display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 22px; font-size: 11px; font-weight: 700; border-radius: 3px; color: #111; }
+.rf.w1 { background: var(--t); } .rf.w2 { background: var(--ct); }
+td.up { color: var(--good); } td.down { color: var(--bad); }
+/* tournament: series list */
+.series-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; padding: 0 12px; }
+.series-card { background: var(--panel2); border: 1px solid var(--line); border-radius: var(--radius); padding: 10px 12px; }
+.series-head { margin-bottom: 6px; } .series-head .win b { color: var(--good); }
+.series-card ul { list-style: none; margin: 0; padding: 0; }
+.series-card li a { display: flex; gap: 8px; align-items: baseline; padding: 6px 0; border-top: 1px solid var(--side-line); color: var(--text); text-decoration: none; }
+.series-card li a:hover b { color: var(--link); }
+.mt-mini { font-variant-numeric: tabular-nums; font-weight: 700; margin-left: auto; }
+@media (max-width: 600px) { .mt-head { font-size: 15px; gap: 8px; } .mt-score { font-size: 26px; } }
