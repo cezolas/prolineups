@@ -5,7 +5,7 @@
   const S = JSON.parse(root.dataset.i18n), lang = root.dataset.lang;
   const $ = s => root.querySelector(s);
   const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-  let DATA = null, FLIGHTS = [], MAP = null;
+  let DATA = null, FLIGHTS = [], MAP = null, EV = [];
   const dist = (a, b) => Math.hypot(a[0] - b[0], a[1] - b[1], (a[2] - b[2]) * 0.5);
   const clock = t => { const s = Math.floor(t / 64); return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`; };
   const status = (msg, err) => { const el = $("#cmpStatus"); el.textContent = msg; el.classList.toggle("err", !!err); el.hidden = !msg; };
@@ -31,7 +31,8 @@
       MAP = (d.header && d.header.map_name) || "";
       if (!DATA) DATA = await (await fetch(`/dados/comparar-${lang}.json`)).json();
       if (!DATA.maps[MAP]) { status(S.err_map.replace("{m}", MAP || "?"), true); return; }
-      FLIGHTS = flights(d.events || []);
+      EV = d.events || [];
+      FLIGHTS = flights(EV);
       if (!FLIGHTS.length) { status(S.err_none, true); return; }
       status("");
       players();
@@ -99,7 +100,7 @@
       return `<li class="cm none">${head}<div><b>${esc(S.none_t)}</b></div><div class="muted small">${esc(S.none_d)}</div></li>`;
     };
     const section = (k, title) => mine.some(x => x.m.kind === k) ? `<section><h2>${esc(title)} (${n(k)})</h2><ul class="cm-list">${mine.filter(x => x.m.kind === k).map(card).join("")}</ul></section>` : "";
-    $("#cmpOut").innerHTML = `
+    $("#cmpOut").innerHTML = statsBlock(who) + heatBlock(mine) + `
       <div class="kpis">
         <div class="kpi"><div class="kpi-v">${mine.length}</div><div class="kpi-l">${esc(S.k_total)}</div></div>
         <div class="kpi"><div class="kpi-v">${n("same")}</div><div class="kpi-l">${esc(S.k_same)}</div></div>
@@ -108,4 +109,69 @@
       </div>
       ${section("same", S.sec_same)}${section("dest", S.sec_dest)}${section("none", S.sec_none)}`;
   }
+
+  // ---------------------------------------------------------------- you vs the pros: numbers
+  function statsBlock(who) {
+    const M = DATA.maps[MAP], pro = M.pro || {};
+    const rounds = Math.max(1, EV.filter(e => e.event_name === "round_end").length);
+    const deaths = EV.filter(e => e.event_name === "player_death");
+    const k = deaths.filter(e => e.attacker_name === who && e.user_name !== who && e.attacker_team_num !== e.user_team_num);
+    const dd = deaths.filter(e => e.user_name === who).length;
+    const hs = k.filter(e => e.headshot).length;
+    const byType = { smoke: 0, flash: 0, molotov: 0, he: 0 };
+    EV.filter(e => e.event_name === "grenade_thrown" && e.user_name === who).forEach(e => { const ty = THROWN[e.weapon]; if (ty) byType[ty]++; });
+    const total = Object.values(byType).reduce((a, b) => a + b, 0);
+    const blinds = EV.filter(e => e.event_name === "player_blind" && e.attacker_name === who && e.user_name !== who && (e.blind_duration || 0) > 0);
+    const enemyBl = blinds.filter(e => e.attacker_team_num !== e.user_team_num).length;
+    // a flash that blinded a teammate for 1 s or more (same rule as the pros' "team flash")
+    const teamFlashes = new Set(blinds.filter(e => e.attacker_team_num === e.user_team_num && e.blind_duration >= 1).map(e => e.tick)).size;
+    const fx = byType.flash || 0;
+    const d1 = v => (v == null || isNaN(v) ? "–" : v.toFixed(2).replace(".", S.dec));
+    const pct = v => (v == null || isNaN(v) ? "–" : Math.round(v * 100) + "%");
+    const cmp = (mine, avg) => {
+      if (mine == null || !avg) return "";
+      const r = mine / avg;
+      return r >= 1.15 ? ' <span class="up">▲</span>' : r <= 0.85 ? ' <span class="down">▼</span>' : "";
+    };
+    const row = (label, mine, avg, fmt = d1) => `<tr><td>${esc(label)}</td><td><b>${fmt(mine)}</b>${cmp(mine, avg)}</td><td>${avg == null ? "–" : fmt(avg)}</td></tr>`;
+    return `<section class="cm-stats"><h2>${esc(S.vs_h)}</h2>
+      <div class="kpis">
+        <div class="kpi"><div class="kpi-v">${k.length}/${dd}</div><div class="kpi-l">${esc(S.k_kd)}</div><div class="kpi-s">K/D ${d1(dd ? k.length / dd : k.length)} · HS ${k.length ? Math.round(100 * hs / k.length) : 0}%</div></div>
+        <div class="kpi"><div class="kpi-v">${total}</div><div class="kpi-l">${esc(S.k_nades)}</div><div class="kpi-s">${esc(S.k_rounds.replace("{n}", rounds))}</div></div>
+        <div class="kpi"><div class="kpi-v">${enemyBl}</div><div class="kpi-l">${esc(S.k_blinded)}</div><div class="kpi-s">${esc(S.k_teamfl.replace("{n}", teamFlashes))}</div></div>
+      </div>
+      <div class="table-wrap"><table class="uses an-table cm-table"><thead><tr><th></th><th>${esc(S.you)}</th><th>${esc(S.pro_avg)}</th></tr></thead><tbody>
+        ${row(S.r_per_round, total / rounds, pro.per_round)}
+        ${["smoke", "flash", "molotov", "he"].map(ty => row(`${S.types[ty]} ${S.r_per_round_short}`, byType[ty] / rounds, pro.per_type ? pro.per_type[ty] : null)).join("")}
+        ${row(S.r_flash_enemies, fx ? enemyBl / fx : null, pro.flash_enemies)}
+        ${row(S.r_team_flash, fx ? teamFlashes / fx : null, pro.team_flash, pct)}
+      </tbody></table></div>
+      <p class="muted small">${esc(S.vs_help)}</p></section>`;
+  }
+
+  // ---------------------------------------------------------------- you vs the pros: heat map on the radar
+  function heatBlock(mine) {
+    const M = DATA.maps[MAP], R = M.radar; if (!R) return "";
+    const k = 1024 / (R.size || 1024);
+    const px = p => [((p[0] - R.pos_x) / R.scale) * k, ((R.pos_y - p[1]) / R.scale) * k];
+    const T = ["smoke", "flash", "molotov", "he"];
+    const pro = M.lineups.map(l => { const [x, y] = px(l.l); return `<circle class="hp t-${l.type}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${Math.min(22, 7 + 2.2 * Math.sqrt(l.n || 1)).toFixed(1)}"/>`; }).join("");
+    const me = mine.map(({ f }) => { const [x, y] = px(f.l); return `<circle class="hm t-${f.type}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="9"/>`; }).join("");
+    return `<section class="cm-heat"><h2>${esc(S.heat_h)}</h2>
+      <div class="cm-heat-ctl small">
+        <label class="ov-tg"><input type="checkbox" data-h="me" checked> ● ${esc(S.you)}</label>
+        <label class="ov-tg"><input type="checkbox" data-h="pro" checked> ○ ${esc(S.pros)}</label>
+        ${T.map(t => `<label class="ov-tg tg-${t}"><input type="checkbox" data-ht="${t}" checked> ${esc(S.types[t])}</label>`).join("")}
+      </div>
+      <svg class="cm-heat-svg" viewBox="0 0 1024 1024" role="img" aria-label="${esc(S.heat_h)}">
+        <image href="/static/radars/${R.slug}.webp" x="0" y="0" width="1024" height="1024"/>
+        <g class="g-pro">${pro}</g><g class="g-me">${me}</g>
+      </svg>
+      <p class="muted small">${esc(S.heat_help)}</p></section>`;
+  }
+  root.addEventListener("change", e => {
+    const c = e.target, box = root.querySelector(".cm-heat"); if (!box) return;
+    if (c.dataset.h) box.classList.toggle("hide-" + c.dataset.h, !c.checked);
+    if (c.dataset.ht) box.classList.toggle("hide-" + c.dataset.ht, !c.checked);
+  });
 })();

@@ -737,3 +737,16 @@ td.up { color: var(--good); } td.down { color: var(--bad); }
 :root[data-theme="light"] { --brand-a: #d99a12; --brand-b: #b7791f; --brand-grad: linear-gradient(90deg, #c27c0e, #d99a12 50%, #e0a82e); }
 .btn.cta { color: #1b1405; }
 :root[data-theme="light"] .hero-v2 .eyebrow { color: #a16207; }
+
+/* compare my demo: you vs the pros */
+.cm-table td:nth-child(2), .cm-table td:nth-child(3) { text-align: right; }
+.cm-table .up { color: var(--good); font-size: 10px; } .cm-table .down { color: var(--bad); font-size: 10px; }
+.cm-heat-ctl { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 12px 8px; }
+.cm-heat-svg { width: min(100% - 24px, 720px); display: block; margin: 0 12px; background: var(--radar-bg); border-radius: 4px; }
+.cm-heat .hp { fill-opacity: .16; stroke-opacity: .6; stroke-width: 2; stroke-dasharray: 4 3; }
+.cm-heat .hm { fill-opacity: .92; stroke-width: 2.5; }
+.cm-heat .t-smoke { fill: var(--smoke); stroke: var(--smoke); } .cm-heat .t-flash { fill: var(--flash); stroke: var(--flash); }
+.cm-heat .t-molotov { fill: var(--molotov); stroke: var(--molotov); } .cm-heat .t-he { fill: var(--he); stroke: var(--he); }
+.cm-heat .hm { stroke: #000; }
+.cm-heat.hide-me .g-me, .cm-heat.hide-pro .g-pro { display: none; }
+.cm-heat.hide-smoke .t-smoke, .cm-heat.hide-flash .t-flash, .cm-heat.hide-molotov .t-molotov, .cm-heat.hide-he .t-he { display: none; }

@@ -21,9 +21,29 @@ self.onmessage = async (e) => {
     self.postMessage({ stage: "grenades" });
     // events, not parseGrenades: the WASM binding of parseGrenades returns the player table, not the projectiles
     const ev = wasm_bindgen.parseEvents(bytes, ["grenade_thrown", "smokegrenade_detonate", "flashbang_detonate",
-      "hegrenade_detonate", "inferno_startburn"], ["X", "Y", "Z"], []);
+      "hegrenade_detonate", "inferno_startburn", "player_death", "player_blind", "round_end"], ["X", "Y", "Z", "team_num"], []);
     const plain = x => (x instanceof Map ? Object.fromEntries(x) : x);
-    self.postMessage({ done: true, header: plain(header), events: ev.map(plain) });
+    const events = ev.map(plain);
+    // CS2 demos don't carry player_blind: read everyone's flash_duration right before/after each flashbang detonation
+    const flashes = events.filter(x => x.event_name === "flashbang_detonate");
+    if (flashes.length) {
+      self.postMessage({ stage: "flashes" });
+      const ticks = new Int32Array([...new Set(flashes.flatMap(f => [f.tick - 1, f.tick + 3]))].sort((a, b) => a - b));
+      const rows = wasm_bindgen.parseTicks(bytes, ["flash_duration", "team_num"], ticks).map(plain);
+      const at = new Map(rows.map(r => [r.tick + ":" + r.steamid, r]));
+      for (const f of flashes) {
+        const thrower = at.get((f.tick - 1) + ":" + f.user_steamid);
+        for (const r of rows) {
+          if (r.tick !== f.tick + 3 || String(r.steamid) === String(f.user_steamid)) continue;
+          const before = at.get((f.tick - 1) + ":" + r.steamid);
+          const dur = (r.flash_duration || 0) - (before ? before.flash_duration || 0 : 0);
+          if (dur > 0.05) events.push({ event_name: "player_blind", tick: f.tick, blind_duration: r.flash_duration,
+            attacker_name: f.user_name, attacker_team_num: thrower ? thrower.team_num : f.user_team_num,
+            user_name: r.name, user_team_num: r.team_num });
+        }
+      }
+    }
+    self.postMessage({ done: true, header: plain(header), events });
   } catch (err) {
     self.postMessage({ error: String(err && err.message || err) });
   }
