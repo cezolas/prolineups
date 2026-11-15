@@ -27,15 +27,15 @@
     location.replace("https://" + main + location.pathname + location.search + location.hash); })();</script>
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
   if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
-<link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/static/style.css">
+<link rel="icon" href="/static/favicon.svg?v=091aa30de7" type="image/svg+xml">
+<link rel="stylesheet" href="/static/style.css?v=a3bab22373">
 <script>window.I18N = {"copied": "Copiado!", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "open": "Abrir", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "throws_in": "lan\u00e7a em {s}s"}; window.LANG = "pt";</script>
 </head>
 <body>
 <header class="top">
   <div class="top-in">
     <button class="menu-btn" id="menuBtn" aria-label="Mostrar ou ocultar o menu" aria-controls="side" aria-expanded="false">☰</button>
-    <a class="logo wordmark" href="/pt/" aria-label="Pronades">Pro<span>nades</span><img class="he-buddy" src="/static/brand/he-buddy.svg" alt="" width="26" height="26"></a>
+    <a class="logo wordmark" href="/pt/" aria-label="Pronades">Pro<span>nades</span><img class="he-buddy" src="/static/brand/he-buddy.svg?v=714ec3503f" alt="" width="22" height="22"></a>
     <div class="search">
       <input id="q" type="search" placeholder="Buscar mapa, jogador, time, smoke…" autocomplete="off" aria-label="Buscar">
       <div id="results" class="results" hidden></div>
@@ -102,6 +102,8 @@
     <div class="ro-col">
       <h3><span class="role role-entry">Entry</span></h3>
       <ol class="start-list">
+        <li><a href="/pt/mirage/molotov-palace-t/"><span class="start-name">Molotov Palacio</span><span class="badge type-molotov">Molotov</span><span class="badge diff-3">Difícil</span>
+          <span class="muted small">2 usos de entrys</span></a></li>
         <li><a href="/pt/mirage/molotov-catwalk-from-top-mid-t/"><span class="start-name">Molotov L (de Top Mid)</span><span class="badge type-molotov">Molotov</span><span class="badge diff-3">Difícil</span>
           <span class="muted small">2 usos de entrys</span></a></li>
       </ol>
@@ -115,6 +117,8 @@
           <span class="muted small">5 usos de suportes</span></a></li>
         <li><a href="/pt/mirage/flash-a-site-from-palace-t/"><span class="start-name">Flash Bomb A (de Palacio)</span><span class="badge type-flash">Flash</span><span class="badge diff-1">Fácil</span>
           <span class="muted small">4 usos de suportes</span></a></li>
+        <li><a href="/pt/mirage/molotov-a-site-from-palace-alley-t/"><span class="start-name">Molotov Bomb A (de Entrada da Caverna)</span><span class="badge type-molotov">Molotov</span><span class="badge diff-1">Fácil</span>
+          <span class="muted small">3 usos de suportes</span></a></li>
         <li><a href="/pt/mirage/molotov-a-site-from-palace-t/"><span class="start-name">Molotov Bomb A (de Palacio)</span><span class="badge type-molotov">Molotov</span><span class="badge diff-1">Fácil</span>
           <span class="muted small">2 usos de suportes</span></a></li>
         <li><a href="/pt/mirage/smoke-catwalk-from-house-t/"><span class="start-name">Smoke L (de TV)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-2">Médio</span>
@@ -123,21 +127,17 @@
           <span class="muted small">3 usos de suportes</span></a></li>
         <li><a href="/pt/mirage/smoke-jungle-from-palace-alley-t/"><span class="start-name">Smoke Jungle (de Entrada da Caverna)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-2">Médio</span>
           <span class="muted small">2 usos de suportes</span></a></li>
-        <li><a href="/pt/mirage/smoke-ct-spawn-from-a-site-t/"><span class="start-name">Smoke Base CT (de Bomb A)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-3">Difícil</span>
-          <span class="muted small">4 usos de suportes</span></a></li>
       </ol>
     </div>
     <div class="ro-col">
       <h3><span class="role role-lurker">Lurker</span></h3>
       <ol class="start-list">
-        <li><a href="/pt/mirage/molotov-a-site-from-palace-alley-t/"><span class="start-name">Molotov Bomb A (de Entrada da Caverna)</span><span class="badge type-molotov">Molotov</span><span class="badge diff-1">Fácil</span>
-          <span class="muted small">3 usos de lurkers</span></a></li>
         <li><a href="/pt/mirage/flash-b-site-from-apartments-t/"><span class="start-name">Flash Bomb B (de Tapete)</span><span class="badge type-flash">Flash</span><span class="badge diff-1">Fácil</span>
           <span class="muted small">3 usos de lurkers</span></a></li>
-        <li><a href="/pt/mirage/smoke-a-site-from-palace-alley-t/"><span class="start-name">Smoke Bomb A (de Entrada da Caverna)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-2">Médio</span>
-          <span class="muted small">5 usos de lurkers</span></a></li>
         <li><a href="/pt/mirage/molotov-stairs-from-palace-alley-t/"><span class="start-name">Molotov Cabecinha (de Entrada da Caverna)</span><span class="badge type-molotov">Molotov</span><span class="badge diff-3">Difícil</span>
-          <span class="muted small">5 usos de lurkers</span></a></li>
+          <span class="muted small">4 usos de lurkers</span></a></li>
+        <li><a href="/pt/mirage/molotov-stairs-from-t-spawn-t/"><span class="start-name">Molotov Cabecinha (de Base TR)</span><span class="badge type-molotov">Molotov</span><span class="badge diff-3">Difícil</span>
+          <span class="muted small">3 usos de lurkers</span></a></li>
         <li><a href="/pt/mirage/molotov-b-site-from-apartments-t/"><span class="start-name">Molotov Bomb B (de Tapete)</span><span class="badge type-molotov">Molotov</span><span class="badge diff-3">Difícil</span>
           <span class="muted small">3 usos de lurkers</span></a></li>
         <li><a href="/pt/mirage/flash-a-site-from-palace-alley-t/"><span class="start-name">Flash Bomb A (de Entrada da Caverna)</span><span class="badge type-flash">Flash</span><span class="badge diff-3">Difícil</span>
@@ -182,22 +182,22 @@
     <div class="ro-col">
       <h3><span class="role role-entry">Entry</span></h3>
       <ol class="start-list">
-        <li><a href="/pt/mirage/smoke-mid-from-a-site-ct/"><span class="start-name">Smoke Meio (de Bomb A)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-1">Fácil</span>
-          <span class="muted small">11 usos de entrys</span></a></li>
         <li><a href="/pt/mirage/smoke-palace-from-a-site-ct/"><span class="start-name">Smoke Palacio (de Bomb A)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-1">Fácil</span>
-          <span class="muted small">9 usos de entrys</span></a></li>
-        <li><a href="/pt/mirage/flash-mid-from-jungle-ct/"><span class="start-name">Flash Meio (de Jungle)</span><span class="badge type-flash">Flash</span><span class="badge diff-1">Fácil</span>
-          <span class="muted small">4 usos de entrys</span></a></li>
+          <span class="muted small">17 usos de entrys</span></a></li>
+        <li><a href="/pt/mirage/smoke-mid-from-a-site-ct/"><span class="start-name">Smoke Meio (de Bomb A)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-1">Fácil</span>
+          <span class="muted small">10 usos de entrys</span></a></li>
         <li><a href="/pt/mirage/molotov-underpass-from-ct-spawn-ct/"><span class="start-name">Molotov Rato (de Base CT)</span><span class="badge type-molotov">Molotov</span><span class="badge diff-1">Fácil</span>
           <span class="muted small">3 usos de entrys</span></a></li>
-        <li><a href="/pt/mirage/smoke-underpass-from-connector-ct/"><span class="start-name">Smoke Rato (de Ligação)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-1">Fácil</span>
-          <span class="muted small">2 usos de entrys</span></a></li>
         <li><a href="/pt/mirage/he-underpass-from-ct-spawn-ct/"><span class="start-name">HE Rato (de Base CT)</span><span class="badge type-he">HE</span><span class="badge diff-2">Médio</span>
           <span class="muted small">7 usos de entrys</span></a></li>
         <li><a href="/pt/mirage/flash-mid-from-ct-spawn-ct/"><span class="start-name">Flash Meio (de Base CT)</span><span class="badge type-flash">Flash</span><span class="badge diff-2">Médio</span>
-          <span class="muted small">5 usos de entrys</span></a></li>
+          <span class="muted small">6 usos de entrys</span></a></li>
         <li><a href="/pt/mirage/molotov-underpass-from-connector-ct/"><span class="start-name">Molotov Rato (de Ligação)</span><span class="badge type-molotov">Molotov</span><span class="badge diff-2">Médio</span>
-          <span class="muted small">5 usos de entrys</span></a></li>
+          <span class="muted small">4 usos de entrys</span></a></li>
+        <li><a href="/pt/mirage/he-palace-alley-from-jungle-ct/"><span class="start-name">HE Entrada da Caverna (de Jungle)</span><span class="badge type-he">HE</span><span class="badge diff-3">Difícil</span>
+          <span class="muted small">3 usos de entrys</span></a></li>
+        <li><a href="/pt/mirage/molotov-underpass-from-catwalk-ct/"><span class="start-name">Molotov Rato (de L)</span><span class="badge type-molotov">Molotov</span><span class="badge diff-3">Difícil</span>
+          <span class="muted small">2 usos de entrys</span></a></li>
       </ol>
     </div>
     <div class="ro-col">
@@ -220,10 +220,16 @@
           <span class="muted small">10 usos de lurkers</span></a></li>
         <li><a href="/pt/mirage/smoke-mid-from-underpass-ct/"><span class="start-name">Smoke Meio (de Rato)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-1">Fácil</span>
           <span class="muted small">4 usos de lurkers</span></a></li>
+        <li><a href="/pt/mirage/flash-mid-from-jungle-ct/"><span class="start-name">Flash Meio (de Jungle)</span><span class="badge type-flash">Flash</span><span class="badge diff-1">Fácil</span>
+          <span class="muted small">4 usos de lurkers</span></a></li>
         <li><a href="/pt/mirage/molotov-t-ramp-from-ct-spawn-ct/"><span class="start-name">Molotov Caverna (de Base CT)</span><span class="badge type-molotov">Molotov</span><span class="badge diff-3">Difícil</span>
-          <span class="muted small">20 usos de lurkers</span></a></li>
+          <span class="muted small">18 usos de lurkers</span></a></li>
         <li><a href="/pt/mirage/flash-mid-from-a-site-ct/"><span class="start-name">Flash Meio (de Bomb A)</span><span class="badge type-flash">Flash</span><span class="badge diff-3">Difícil</span>
           <span class="muted small">4 usos de lurkers</span></a></li>
+        <li><a href="/pt/mirage/he-top-mid-from-sniper-s-nest-ct/"><span class="start-name">HE Top Mid (de Janela)</span><span class="badge type-he">HE</span><span class="badge diff-3">Difícil</span>
+          <span class="muted small">2 usos de lurkers</span></a></li>
+        <li><a href="/pt/mirage/flash-a-site-from-ct-spawn-ct/"><span class="start-name">Flash Bomb A (de Base CT)</span><span class="badge type-flash">Flash</span><span class="badge diff-3">Difícil</span>
+          <span class="muted small">2 usos de lurkers</span></a></li>
       </ol>
     </div>
     <div class="ro-col">
@@ -267,7 +273,7 @@
     <p><a href="/pt/sobre/">Sobre e créditos</a> · atualizado em 2026-11-15</p>
   </div>
 </footer>
-<script src="/static/app.js" defer></script>
-<script src="/static/accounts.js" defer></script>
+<script src="/static/app.js?v=8b5d4be2d7" defer></script>
+<script src="/static/accounts.js?v=9e0472e7bb" defer></script>
 </body>
 </html>

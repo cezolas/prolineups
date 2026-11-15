@@ -755,3 +755,16 @@ td.up { color: var(--good); } td.down { color: var(--bad); }
 .he-buddy { width: 26px; height: 26px; margin-left: 5px; transform: rotate(-12deg) translateY(-1px); transition: transform .25s ease; filter: drop-shadow(0 1px 1px rgba(0,0,0,.4)); }
 .wordmark:hover .he-buddy { transform: rotate(10deg) translateY(-3px) scale(1.08); }
 @media (prefers-reduced-motion: reduce) { .he-buddy { transition: none; } }
+/* hero as a thin strip (user's request): compact text, small gold drawing on the right */
+.hero.hero-v2 { grid-template-columns: minmax(0, 1fr) 200px; gap: 16px; padding: 16px 22px; }
+.hero-v2 .eyebrow { margin-bottom: 4px; font-size: 11px; }
+.hero-v2 h1 { font-size: clamp(22px, 2.6vw, 32px); margin-bottom: 6px; }
+.hero-v2 .lead { font-size: 14.5px; margin-bottom: 10px; max-width: 760px; }
+.hero-cta { margin-bottom: 10px; gap: 8px; }
+.hero-cta .btn { padding: 7px 12px; font-size: 13.5px; }
+.hero-stats { gap: 4px 18px; font-size: 13px; }
+.hero-stats b { font-size: 16px; }
+.hero-art { max-height: 130px; }
+.hero-pts circle { fill: var(--brand-a); }
+@media (max-width: 760px) { .hero.hero-v2 { grid-template-columns: 1fr; padding: 16px; } .hero-art { display: none; } }
+.he-buddy { width: 22px; height: 22px; margin-left: 4px; }

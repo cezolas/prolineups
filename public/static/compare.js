@@ -22,7 +22,7 @@
     $("#cmpOut").innerHTML = ""; $("#cmpPick").hidden = true;
     status(S.reading.replace("{mb}", Math.round(file.size / 1e6)));
     const buf = await file.arrayBuffer();
-    const w = new Worker("/static/compare-worker.js");
+    const w = new Worker(root.dataset.worker || "/static/compare-worker.js");
     w.onmessage = async e => {
       const d = e.data;
       if (d.stage) { status(S["stage_" + d.stage] || S.reading); return; }
