@@ -28,7 +28,7 @@
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
   if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg?v=714ec3503f" type="image/svg+xml">
-<link rel="stylesheet" href="/static/style.css?v=10c9da3914">
+<link rel="stylesheet" href="/static/style.css?v=8b809c14e3">
 <script>window.I18N = {"copied": "Copied!", "dec": ".", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "open": "Open", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s", "v_back": "Back 2 seconds", "v_frame_back": "Previous frame", "v_frame_fwd": "Next frame", "v_fwd": "Forward 2 seconds", "v_play": "Play / pause"}; window.LANG = "en";</script>
 </head>
 <body>
@@ -41,7 +41,7 @@
       <div id="results" class="results" hidden></div>
     </div>
     <nav class="langs" aria-label="Language">
-<a href="/pt/funcoes/" hreflang="pt" lang="pt" title="Português">PT</a><a href="/en/roles/" hreflang="en" lang="en" aria-current="true" title="English">EN</a>    </nav>
+<a href="/pt/funcoes/" hreflang="pt" lang="pt" title="Português" aria-label="Português"><img class="lang-flag" src="/static/flags/br.svg?v=17969b5ac0" alt="Português" width="24" height="18"></a><a href="/en/roles/" hreflang="en" lang="en" aria-current="true" title="English" aria-label="English"><img class="lang-flag" src="/static/flags/gb.svg?v=161ee20a0a" alt="English" width="24" height="18"></a>    </nav>
     <a class="login-btn" id="loginBtn" href="/auth/google" hidden>Sign in</a>
     <a class="me-btn" id="meBtn" href="/en/account/" hidden aria-label="My account"><img alt="" width="28" height="28" referrerpolicy="no-referrer" hidden><span>Account</span></a>
     <button class="theme-btn" id="themeBtn" type="button" aria-label="Toggle light/dark mode" title="Toggle light/dark mode"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.6"/><g stroke-width="2.2" stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></g></svg></button>
@@ -150,21 +150,21 @@
         <td><span class="role role-awp">AWP</span></td>
         <td>42%</td><td>12%</td><td>437</td><td>2.2</td></tr>
       <tr><td></td>
-        <td> <a href="/en/player/coolio/">coolio</a></td>
+        <td><img class="flag" src="/static/flags/tr.svg" alt="Turkey" title="Turkey" width="16" height="12"> <a href="/en/player/xfl0ud/">xfl0ud</a></td>
         <td><span class="role role-entry">Entry</span></td>
-        <td>1%</td><td>7%</td><td>571</td><td>1.9</td></tr>
+        <td>2%</td><td>7%</td><td>518</td><td>2.2</td></tr>
       <tr><td></td>
         <td><img class="flag" src="/static/flags/lt.svg" alt="Lithuania" title="Lithuania" width="16" height="12"> <a href="/en/player/dziugss/">dziugss</a></td>
         <td><span class="role role-lurker">Lurker</span></td>
         <td>0%</td><td>7%</td><td>694</td><td>2.0</td></tr>
       <tr><td></td>
-        <td><img class="flag" src="/static/flags/tr.svg" alt="Turkey" title="Turkey" width="16" height="12"> <a href="/en/player/xfl0ud/">xfl0ud</a></td>
-        <td><span class="role role-support">Support</span></td>
-        <td>2%</td><td>7%</td><td>518</td><td>2.2</td></tr>
-      <tr><td></td>
         <td> <a href="/en/player/dem0n/">dem0n</a></td>
-        <td><span class="role role-rifler">Rifler</span></td>
+        <td><span class="role role-support">Support</span></td>
         <td>0%</td><td>4%</td><td>454</td><td>2.0</td></tr>
+      <tr><td></td>
+        <td> <a href="/en/player/coolio/">coolio</a></td>
+        <td><span class="role role-rifler">Rifler</span></td>
+        <td>1%</td><td>7%</td><td>571</td><td>1.9</td></tr>
       <tr><td><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12"> <a href="/en/team/g2/">G2</a></td>
         <td><img class="flag" src="/static/flags/ua.svg" alt="Ukraine" title="Ukraine" width="16" height="12"> <a href="/en/player/r1nkle/">r1nkle</a></td>
         <td><span class="role role-awp">AWP</span></td>

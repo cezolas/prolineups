@@ -779,3 +779,8 @@ td.up { color: var(--good); } td.down { color: var(--bad); }
 .cm-saved { padding: 8px 12px; background: var(--panel2); border: 1px solid var(--line); border-radius: var(--radius); display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 .cm-role-name { margin: 0 12px 4px; font-size: 15px; } .cm-role-name .role { font-size: 13px; padding: 2px 8px; }
 .cm-role > p.small { margin: 0 12px 8px; }
+/* language switch as flags */
+.langs a { padding: 4px; display: inline-flex; border-radius: 5px; border: 2px solid transparent; opacity: .55; transition: opacity .15s; }
+.langs a:hover { opacity: 1; border-color: transparent; }
+.langs a[aria-current] { background: none; opacity: 1; border-color: var(--accent); }
+.lang-flag { width: 24px; height: 18px; border-radius: 2px; display: block; object-fit: cover; box-shadow: 0 0 0 1px rgba(0,0,0,.3); }
