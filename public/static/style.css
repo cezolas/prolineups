@@ -801,3 +801,7 @@ td.up { color: var(--good); } td.down { color: var(--bad); }
 .map-pick { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 10px 0; position: sticky; top: 58px; z-index: 4;
   background: var(--bg); padding: 6px 0; }
 .map-pick .ov-tg .muted { font-size: 11px; }
+/* brand colour for links and names (was blue): gold like the logo */
+:root:not([data-theme="light"]) { --link: #f5c451; }
+:root[data-theme="light"] { --link: #a16207; }
+.card:hover { border-color: var(--link); }
