@@ -28,7 +28,7 @@
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
   if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg?v=714ec3503f" type="image/svg+xml">
-<link rel="stylesheet" href="/static/style.css?v=8b809c14e3">
+<link rel="stylesheet" href="/static/style.css?v=6e4c0b7bea">
 <script>window.I18N = {"copied": "Copied!", "dec": ".", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "open": "Open", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s", "v_back": "Back 2 seconds", "v_frame_back": "Previous frame", "v_frame_fwd": "Next frame", "v_fwd": "Forward 2 seconds", "v_play": "Play / pause"}; window.LANG = "en";</script>
 </head>
 <body>
@@ -42,7 +42,7 @@
     </div>
     <nav class="langs" aria-label="Language">
 <a href="/pt/jogador/donk/" hreflang="pt" lang="pt" title="Português" aria-label="Português"><img class="lang-flag" src="/static/flags/br.svg?v=17969b5ac0" alt="Português" width="24" height="18"></a><a href="/en/player/donk/" hreflang="en" lang="en" aria-current="true" title="English" aria-label="English"><img class="lang-flag" src="/static/flags/gb.svg?v=161ee20a0a" alt="English" width="24" height="18"></a>    </nav>
-    <a class="login-btn" id="loginBtn" href="/auth/google" hidden>Sign in</a>
+    <a class="login-btn" id="loginBtn" href="/en/account/" data-account="account" hidden>Sign in</a>
     <a class="me-btn" id="meBtn" href="/en/account/" hidden aria-label="My account"><img alt="" width="28" height="28" referrerpolicy="no-referrer" hidden><span>Account</span></a>
     <button class="theme-btn" id="themeBtn" type="button" aria-label="Toggle light/dark mode" title="Toggle light/dark mode"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.6"/><g stroke-width="2.2" stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></g></svg></button>
   </div>
@@ -51,6 +51,7 @@
   <aside class="side" id="side" aria-label="Navigation">
     <nav>
       <a href="/en/"><span class="nl">Home</span></a>
+      <a href="/en/my-faceit/"><span>◉ My FACEIT</span></a>
       <a href="/en/compare-my-demo/"><span>⇄ Compare my demo</span></a>
       <a href="/en/training-plan/"><span>🎯 Training plan</span></a>
       <a href="/en/roles/"><span>👥 Roles</span></a>
@@ -412,7 +413,11 @@
 })();
 </script>
 
-<section>
+<div class="map-pick" data-map-pick role="group" aria-label="Maps">
+  <span class="muted small">Maps:</span>
+<label class="ov-tg"><input type="checkbox" data-mp="ancient" checked> Ancient <span class="muted">7</span></label><label class="ov-tg"><input type="checkbox" data-mp="cache" checked> Cache <span class="muted">3</span></label><label class="ov-tg"><input type="checkbox" data-mp="dust2" checked> Dust2 <span class="muted">2</span></label><label class="ov-tg"><input type="checkbox" data-mp="mirage" checked> Mirage <span class="muted">11</span></label><label class="ov-tg"><input type="checkbox" data-mp="nuke" checked> Nuke <span class="muted">3</span></label>  <button type="button" class="btn small" data-mp-all>All</button>
+</div>
+<section data-mp-group="ancient">
   <h2 class="sec"><a href="/en/ancient/">Ancient</a> <span class="muted">· 7 lineups</span></h2>
   <div class="cards"><a class="card" href="/en/ancient/molotov-mid-from-house-ct/" data-id="molotov-mid-from-house-ct"
    data-type="molotov" data-side="CT" data-area="Middle" data-map="ancient"
@@ -536,7 +541,7 @@
   </div>
 </a></div>
 </section>
-<section>
+<section data-mp-group="cache">
   <h2 class="sec"><a href="/en/cache/">Cache</a> <span class="muted">· 3 lineups</span></h2>
   <div class="cards"><a class="card" href="/en/cache/molotov-boost-from-mid-ct/" data-id="molotov-boost-from-mid-ct"
    data-type="molotov" data-side="CT" data-area="Boost" data-map="cache"
@@ -591,7 +596,7 @@
   </div>
 </a></div>
 </section>
-<section>
+<section data-mp-group="dust2">
   <h2 class="sec"><a href="/en/dust2/">Dust2</a> <span class="muted">· 2 lineups</span></h2>
   <div class="cards"><a class="card" href="/en/dust2/flash-mid-from-lower-tunnels-t/" data-id="flash-mid-from-lower-tunnels-t"
    data-type="flash" data-side="T" data-area="Middle" data-map="dust2"
@@ -630,7 +635,7 @@
   </div>
 </a></div>
 </section>
-<section>
+<section data-mp-group="mirage">
   <h2 class="sec"><a href="/en/mirage/">Mirage</a> <span class="muted">· 11 lineups</span></h2>
   <div class="cards"><a class="card" href="/en/mirage/smoke-sniper-s-nest-from-t-spawn-t/" data-id="smoke-sniper-s-nest-from-t-spawn-t"
    data-type="smoke" data-side="T" data-area="SnipersNest" data-map="mirage"
@@ -821,7 +826,7 @@
   </div>
 </a></div>
 </section>
-<section>
+<section data-mp-group="nuke">
   <h2 class="sec"><a href="/en/nuke/">Nuke</a> <span class="muted">· 3 lineups</span></h2>
   <div class="cards"><a class="card" href="/en/nuke/smoke-outside-t/" data-id="smoke-outside-t"
    data-type="smoke" data-side="T" data-area="Outside" data-map="nuke"
@@ -886,8 +891,8 @@
     <p><a href="/en/about/">About and credits</a> · updated 2026-11-15</p>
   </div>
 </footer>
-<script src="/static/app.js?v=8b5d4be2d7" defer></script>
-<script src="/static/accounts.js?v=9e0472e7bb" defer></script>
+<script src="/static/app.js?v=79dff6c310" defer></script>
+<script src="/static/accounts.js?v=4a294cfd8e" defer></script>
 <script src="/static/video.js?v=59be808746" defer></script>
 </body>
 </html>

@@ -28,7 +28,7 @@
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
   if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg?v=714ec3503f" type="image/svg+xml">
-<link rel="stylesheet" href="/static/style.css?v=8b809c14e3">
+<link rel="stylesheet" href="/static/style.css?v=6e4c0b7bea">
 <script>window.I18N = {"copied": "Copiado!", "dec": ",", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "open": "Abrir", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "throws_in": "lan\u00e7a em {s}s", "v_back": "Voltar 2 segundos", "v_frame_back": "Quadro anterior", "v_frame_fwd": "Pr\u00f3ximo quadro", "v_fwd": "Avan\u00e7ar 2 segundos", "v_play": "Reproduzir / pausar"}; window.LANG = "pt";</script>
 </head>
 <body>
@@ -42,7 +42,7 @@
     </div>
     <nav class="langs" aria-label="Idioma">
 <a href="/pt/conta/" hreflang="pt" lang="pt" aria-current="true" title="Português" aria-label="Português"><img class="lang-flag" src="/static/flags/br.svg?v=17969b5ac0" alt="Português" width="24" height="18"></a><a href="/en/account/" hreflang="en" lang="en" title="English" aria-label="English"><img class="lang-flag" src="/static/flags/gb.svg?v=161ee20a0a" alt="English" width="24" height="18"></a>    </nav>
-    <a class="login-btn" id="loginBtn" href="/auth/google" hidden>Entrar</a>
+    <a class="login-btn" id="loginBtn" href="/pt/conta/" data-account="conta" hidden>Entrar</a>
     <a class="me-btn" id="meBtn" href="/pt/conta/" hidden aria-label="Minha conta"><img alt="" width="28" height="28" referrerpolicy="no-referrer" hidden><span>Conta</span></a>
     <button class="theme-btn" id="themeBtn" type="button" aria-label="Alternar modo claro/escuro" title="Alternar modo claro/escuro"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.6"/><g stroke-width="2.2" stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></g></svg></button>
   </div>
@@ -51,6 +51,7 @@
   <aside class="side" id="side" aria-label="Navegação">
     <nav>
       <a href="/pt/"><span class="nl">Início</span></a>
+      <a href="/pt/minha-faceit/"><span>◉ Minha FACEIT</span></a>
       <a href="/pt/comparar-minha-demo/"><span>⇄ Comparar minha demo</span></a>
       <a href="/pt/plano-de-treino/"><span>🎯 Plano de treino</span></a>
       <a href="/pt/funcoes/"><span>👥 Funções</span></a>
@@ -96,13 +97,17 @@
 <div id="acc">
   <section class="acc-out" id="accOut" hidden>
     <p>Entre com sua conta Google para guardar suas granadas favoritas e o progresso do plano de treino, e acessar de qualquer aparelho.</p>
-    <a class="btn google-btn" id="accLogin" href="/auth/google?next=/pt/conta/">Entrar com Google</a>
+    <div class="acc-btns">
+      <a class="btn google-btn" id="accLogin" href="/auth/google?next=/pt/conta/">Entrar com Google</a>
+      <a class="btn faceit-btn" href="/auth/faceit?next=/pt/minha-faceit/">Entrar com FACEIT</a>
+    </div>
     <p class="muted small">Guardamos só seu nome, e-mail, foto do Google e o que você salvar aqui. <a href="/pt/privacidade/">Política de privacidade</a></p>
   </section>
   <section class="acc-in" id="accIn" hidden>
     <div class="acc-card"><img id="accPic" alt="" width="56" height="56" referrerpolicy="no-referrer" hidden>
       <div><b id="accName"></b><div class="muted small" id="accEmail"></div><div class="muted small" id="accSince"></div></div></div>
     <p>Sua lista de granadas e o progresso do plano de treino ficam salvos na sua conta e sincronizam entre aparelhos.</p>
+    <p class="acc-faceit" id="accFaceit"></p>
     <ul class="acc-list"><li>★ <a href="/pt/minha-lista/">Minha lista</a></li><li>🎯 <a href="/pt/plano-de-treino/">Plano de treino</a></li></ul>
     <p><a class="btn" href="/auth/logout?lang=pt">Sair</a>
        <button class="btn danger" id="accDelete" type="button">Excluir minha conta</button></p>
@@ -119,8 +124,8 @@
     <p><a href="/pt/sobre/">Sobre e créditos</a> · atualizado em 2026-11-15</p>
   </div>
 </footer>
-<script src="/static/app.js?v=8b5d4be2d7" defer></script>
-<script src="/static/accounts.js?v=9e0472e7bb" defer></script>
+<script src="/static/app.js?v=79dff6c310" defer></script>
+<script src="/static/accounts.js?v=4a294cfd8e" defer></script>
 <script src="/static/video.js?v=59be808746" defer></script>
 <script>
 document.addEventListener("pn:me", function (e) {
@@ -129,7 +134,14 @@ document.addEventListener("pn:me", function (e) {
     $("accIn").hidden = false; $("accName").textContent = u.name || ""; $("accEmail").textContent = u.email || "";
     if (u.created) $("accSince").textContent = "Conta criada em {d}".replace("{d}", new Date(u.created).toLocaleDateString("pt-BR"));
     if (u.picture) { $("accPic").src = u.picture; $("accPic").hidden = false; }
-  } else if (document.getElementById("loginBtn") && !document.getElementById("loginBtn").hidden) { $("accOut").hidden = false; }
+    $("accFaceit").innerHTML = u.faceit
+      ? "FACEIT conectada: {n}".replace("{n}", "<b>" + String(u.faceit.nickname || "").replace(/[<>&]/g, "") + "</b>") + ' · <a href="/pt/minha-faceit/">Minha FACEIT →</a>'
+      : '<a class="btn faceit-btn" href="/auth/faceit?next=/pt/minha-faceit/">Conectar minha FACEIT</a>';
+  } else if (document.getElementById("loginBtn") && !document.getElementById("loginBtn").hidden) {
+    $("accOut").hidden = false;
+    var nx = new URLSearchParams(location.search).get("next");
+    if (nx && /^\/[a-z]{2}\//.test(nx)) $("accLogin").href = "/auth/google?next=" + encodeURIComponent(nx);
+  }
   else { $("accOff").hidden = false; }
 });
 document.addEventListener("click", function (e) {

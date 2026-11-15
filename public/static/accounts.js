@@ -53,7 +53,8 @@
       sync();
     } else if (r.status === 401 && j.configured !== false && login) {
       login.hidden = false;
-      login.href = `/auth/google?next=${encodeURIComponent(location.pathname)}`;
+      login.href = `/${document.documentElement.lang.startsWith("pt") ? "pt" : "en"}/${login.dataset.account}/?next=${encodeURIComponent(location.pathname)}`;
+      PN.loginOptions = { google: j.google !== false, faceit: !!j.faceit_login };
       document.dispatchEvent(new CustomEvent("pn:me", { detail: null }));
     } else {
       document.dispatchEvent(new CustomEvent("pn:me", { detail: null }));

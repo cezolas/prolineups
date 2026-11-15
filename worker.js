@@ -4,10 +4,14 @@
 //   /auth/logout            -> clear the session
 //   /api/me                 -> GET: who is signed in (401 if nobody) · DELETE: delete the account and its data (LGPD)
 //   /api/data/<favs|plan>   -> GET/PUT: the user's saved favourites / training-plan progress (JSON, max 100 KB)
-// Settings: vars GOOGLE_CLIENT_ID; secrets GOOGLE_CLIENT_SECRET, SESSION_SECRET; KV binding USERS.
+//   /auth/faceit            -> FACEIT sign-in (OAuth2 + PKCE); links to the signed-in account or creates a FACEIT one
+//   /auth/faceit/callback   -> exchange the code, read the FACEIT profile, set the session
+//   /api/faceit             -> GET: the user's FACEIT profile, lifetime + per-map stats and last matches (Data API, cached 10 min)
+// Settings: vars GOOGLE_CLIENT_ID, FACEIT_CLIENT_ID; secrets GOOGLE_CLIENT_SECRET, SESSION_SECRET, FACEIT_CLIENT_SECRET,
+// FACEIT_API_KEY; KV binding USERS.
 // Stored per user (KV): Google id (sub), name, e-mail, photo URL, created/last login, favourites, plan progress.
 
-const COOKIE = "pn_s", STATE = "pn_st", DAY = 86400;
+const COOKIE = "pn_s", STATE = "pn_st", FSTATE = "pn_fst", DAY = 86400;
 const SESSION_DAYS = 30, DATA_KEYS = new Set(["favs", "plan"]), MAX_DATA = 100 * 1024;
 
 const json = (obj, status = 200, headers = {}) =>
@@ -94,17 +98,116 @@ async function authCallback(req, env, url) {
   return new Response(null, { status: 302, headers: h });
 }
 
+
+// ---------------------------------------------------------------- FACEIT
+const faceitReady = (env) => !!(env.FACEIT_CLIENT_ID && env.FACEIT_CLIENT_SECRET && env.SESSION_SECRET && env.USERS);
+async function sha256b64url(text) {
+  return b64url(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text)));
+}
+async function faceitStart(req, env, url) {
+  if (!faceitReady(env)) return new Response("Login FACEIT ainda não configurado.", { status: 503 });
+  const state = b64url(crypto.getRandomValues(new Uint8Array(24)));
+  const verifier = b64url(crypto.getRandomValues(new Uint8Array(48)));
+  const next = safeNext(url.searchParams.get("next"));
+  const go = new URL("https://accounts.faceit.com");
+  go.search = new URLSearchParams({
+    response_type: "code", client_id: env.FACEIT_CLIENT_ID, redirect_uri: `${url.origin}/auth/faceit/callback`,
+    scope: "openid profile email", state, code_challenge: await sha256b64url(verifier), code_challenge_method: "S256",
+    redirect_popup: "true",
+  }).toString();
+  return new Response(null, { status: 302, headers: { location: go.toString(), "set-cookie": setCookie(FSTATE, `${state}|${verifier}|${next}`, 600) } });
+}
+async function faceitCallback(req, env, url) {
+  if (!faceitReady(env)) return new Response("Login FACEIT ainda não configurado.", { status: 503 });
+  const [state, verifier, next] = (cookies(req)[FSTATE] || "").split("|");
+  const code = url.searchParams.get("code");
+  if (!code || !state || !safeEqual(state, url.searchParams.get("state") || "")) return new Response("Login inválido, tente de novo.", { status: 400 });
+  const tok = await fetch("https://api.faceit.com/auth/v1/oauth/token", {
+    method: "POST",
+    headers: { "content-type": "application/x-www-form-urlencoded", authorization: "Basic " + btoa(`${env.FACEIT_CLIENT_ID}:${env.FACEIT_CLIENT_SECRET}`) },
+    body: new URLSearchParams({ grant_type: "authorization_code", code, code_verifier: verifier, redirect_uri: `${url.origin}/auth/faceit/callback` }),
+  }).then((r) => r.json()).catch(() => ({}));
+  if (!tok.access_token) return new Response("A FACEIT não confirmou o login.", { status: 400 });
+  const me = await fetch("https://api.faceit.com/auth/v1/resources/userinfo", { headers: { authorization: `Bearer ${tok.access_token}` } })
+    .then((r) => r.json()).catch(() => ({}));
+  const fid = me.guid || me.sub;
+  if (!fid) return new Response("Não consegui ler seu perfil FACEIT.", { status: 400 });
+  const faceit = { id: fid, nickname: me.nickname || null, picture: me.picture || null, linked: new Date().toISOString() };
+  // already signed in (e.g. Google)? link FACEIT to that account; otherwise use/create the FACEIT account
+  let sub = await readSession(env, req);
+  const now = new Date().toISOString();
+  if (!sub) {
+    sub = (await env.USERS.get(`faceit:${fid}`)) || `faceit:${fid}`;
+  }
+  const key = `user:${sub}`;
+  const old = (await env.USERS.get(key, "json")) || { sub, created: now, name: me.nickname || null, email: me.email || null, picture: me.picture || null };
+  old.faceit = faceit; old.last_login = now;
+  await env.USERS.put(key, JSON.stringify(old));
+  await env.USERS.put(`faceit:${fid}`, sub);  // FACEIT id -> account, so a later FACEIT sign-in finds it
+  const h = new Headers({ location: safeNext(next) });
+  h.append("set-cookie", setCookie(COOKIE, await makeSession(env, sub), SESSION_DAYS * DAY));
+  h.append("set-cookie", setCookie(FSTATE, "", 0));
+  return new Response(null, { status: 302, headers: h });
+}
+async function faceitData(env, fid) {
+  const cacheKey = `fcache:${fid}`;
+  const cached = await env.USERS.get(cacheKey, "json");
+  if (cached && cached.at > Date.now() - 10 * 60 * 1000) return cached.data;
+  const api = (p) => fetch(`https://open.faceit.com/data/v4${p}`, { headers: { authorization: `Bearer ${env.FACEIT_API_KEY}` } })
+    .then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const [player, stats, hist] = await Promise.all([api(`/players/${fid}`), api(`/players/${fid}/stats/cs2`), api(`/players/${fid}/history?game=cs2&limit=10`)]);
+  const items = (hist && hist.items) || [];
+  const matches = await Promise.all(items.map(async (m) => {
+    const st = await api(`/matches/${m.match_id}/stats`);
+    const round = st && st.rounds && st.rounds[0];
+    if (!round) return { id: m.match_id, at: m.finished_at || m.started_at };
+    let mine = null, myTeam = null;
+    for (const t of round.teams || []) for (const p of t.players || []) if (p.player_id === fid) { mine = p.player_stats; myTeam = t; }
+    const rs = round.round_stats || {};
+    return { id: m.match_id, at: m.finished_at || m.started_at, map: rs.Map, score: rs.Score, rounds: +rs.Rounds || null,
+             won: myTeam ? (myTeam.team_stats || {})["Team Win"] === "1" : null,
+             k: mine ? +mine.Kills : null, d: mine ? +mine.Deaths : null, a: mine ? +mine.Assists : null,
+             kd: mine ? +mine["K/D Ratio"] : null, kr: mine ? +mine["K/R Ratio"] : null, hs: mine ? +mine["Headshots %"] : null,
+             adr: mine ? +(mine.ADR || mine["ADR"] || 0) || null : null, mvps: mine ? +mine.MVPs : null };
+  }));
+  const life = (stats && stats.lifetime) || {};
+  const data = {
+    nickname: player && player.nickname, avatar: player && player.avatar, country: player && player.country,
+    level: player && player.games && player.games.cs2 && player.games.cs2.skill_level,
+    elo: player && player.games && player.games.cs2 && player.games.cs2.faceit_elo,
+    lifetime: { matches: +life.Matches || null, winrate: +life["Win Rate %"] || null, kd: +life["Average K/D Ratio"] || null,
+                hs: +life["Average Headshots %"] || null, streak: +life["Longest Win Streak"] || null, recent: life["Recent Results"] || [] },
+    maps: ((stats && stats.segments) || []).filter((s) => s.type === "Map" && s.mode === "5v5").map((s) => ({
+      map: s.label, matches: +s.stats.Matches || 0, winrate: +s.stats["Win Rate %"] || null, kd: +s.stats["Average K/D Ratio"] || null,
+      hs: +s.stats["Average Headshots %"] || null })).sort((a, b) => b.matches - a.matches),
+    matches,
+  };
+  await env.USERS.put(cacheKey, JSON.stringify({ at: Date.now(), data }), { expirationTtl: 3600 });
+  return data;
+}
+
 async function api(req, env, url) {
   const sub = await readSession(env, req);
   if (url.pathname === "/api/me") {
-    if (!sub) return json({ error: "not signed in", configured: configured(env) }, 401);
+    if (!sub) return json({ error: "not signed in", configured: configured(env) || faceitReady(env), google: configured(env), faceit_login: faceitReady(env) }, 401);
     if (req.method === "DELETE") {  // LGPD: delete the account and everything stored for it
-      await Promise.all([env.USERS.delete(`user:${sub}`), ...[...DATA_KEYS].map((k) => env.USERS.delete(`data:${sub}:${k}`))]);
+      const u = await env.USERS.get(`user:${sub}`, "json");
+      const extra = u && u.faceit ? [env.USERS.delete(`faceit:${u.faceit.id}`), env.USERS.delete(`fcache:${u.faceit.id}`)] : [];
+      await Promise.all([env.USERS.delete(`user:${sub}`), ...extra, ...[...DATA_KEYS].map((k) => env.USERS.delete(`data:${sub}:${k}`))]);
       return json({ deleted: true }, 200, { "set-cookie": setCookie(COOKIE, "", 0) });
     }
     const u = await env.USERS.get(`user:${sub}`, "json");
     if (!u) return json({ error: "not signed in" }, 401, { "set-cookie": setCookie(COOKIE, "", 0) });
-    return json({ user: { name: u.name, email: u.email, picture: u.picture, created: u.created } });
+    return json({ user: { name: u.name, email: u.email, picture: u.picture, created: u.created,
+                          faceit: u.faceit ? { nickname: u.faceit.nickname, picture: u.faceit.picture } : null },
+                  faceit_login: faceitReady(env) });
+  }
+  if (url.pathname === "/api/faceit") {
+    if (!sub) return json({ error: "not signed in" }, 401);
+    const u = await env.USERS.get(`user:${sub}`, "json");
+    if (!u || !u.faceit) return json({ error: "faceit not linked", faceit_login: faceitReady(env) }, 404);
+    if (!env.FACEIT_API_KEY) return json({ error: "not configured" }, 503);
+    return json({ faceit: await faceitData(env, u.faceit.id) });
   }
   const m = url.pathname.match(/^\/api\/data\/([a-z]+)$/);
   if (m && DATA_KEYS.has(m[1])) {
@@ -128,6 +231,8 @@ export default {
     try {
       if (url.pathname === "/auth/google") return authStart(req, env, url);
       if (url.pathname === "/auth/google/callback") return authCallback(req, env, url);
+      if (url.pathname === "/auth/faceit") return faceitStart(req, env, url);
+      if (url.pathname === "/auth/faceit/callback") return faceitCallback(req, env, url);
       if (url.pathname === "/auth/logout") {
         const lang = (url.searchParams.get("lang") || "pt").slice(0, 2);
         return new Response(null, { status: 302, headers: { location: `/${lang}/`, "set-cookie": setCookie(COOKIE, "", 0) } });

@@ -217,3 +217,20 @@
   paint();
   document.addEventListener("pn:synced", paint);
 })();
+
+// map picker on pages that list grenades by map: tick the maps to show (remembered per browser)
+(function () {
+  const box = document.querySelector("[data-map-pick]"); if (!box) return;
+  const KEY = "mapPick";
+  const groups = [...document.querySelectorAll("[data-mp-group]")];
+  let off = []; try { off = JSON.parse(localStorage.getItem(KEY) || "[]"); } catch (e) {}
+  const apply = () => {
+    const hidden = new Set([...box.querySelectorAll("[data-mp]")].filter((c) => !c.checked).map((c) => c.dataset.mp));
+    groups.forEach((g) => { g.hidden = hidden.has(g.dataset.mpGroup); });
+    try { localStorage.setItem(KEY, JSON.stringify([...hidden])); } catch (e) {}
+  };
+  box.querySelectorAll("[data-mp]").forEach((c) => { if (off.includes(c.dataset.mp)) c.checked = false; });
+  box.addEventListener("change", apply);
+  box.querySelector("[data-mp-all]").addEventListener("click", () => { box.querySelectorAll("[data-mp]").forEach((c) => { c.checked = true; }); apply(); });
+  apply();
+})();

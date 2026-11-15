@@ -18,7 +18,8 @@
     "enabled": true
   },
   "vars": {
-    "GOOGLE_CLIENT_ID": "889817363111-kpf2evhdlknp2f1poh4enr8ievj5nng8.apps.googleusercontent.com"
+    "GOOGLE_CLIENT_ID": "889817363111-kpf2evhdlknp2f1poh4enr8ievj5nng8.apps.googleusercontent.com",
+    "FACEIT_CLIENT_ID": "b784ac81-6b53-4c0f-9e86-6ee17e21e59c"
   },
   "keep_vars": true,
   "kv_namespaces": [

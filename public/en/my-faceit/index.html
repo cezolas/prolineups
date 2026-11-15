@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My FACEIT · Pronades</title>
+<meta name="description" content="Connect your FACEIT account and see your level, ELO, per-map stats and your last matches, side by side with what the pros do.">
+<link rel="canonical" href="https://pronades.com.br/en/my-faceit/">
+<link rel="alternate" hreflang="pt" href="https://pronades.com.br/pt/minha-faceit/">
+<link rel="alternate" hreflang="en" href="https://pronades.com.br/en/my-faceit/">
+<link rel="alternate" hreflang="x-default" href="https://pronades.com.br/pt/minha-faceit/">
+<meta property="og:title" content="My FACEIT">
+<meta property="og:description" content="Connect your FACEIT account and see your level, ELO, per-map stats and your last matches, side by side with what the pros do.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://pronades.com.br/static/og-en.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Pronades">
+<meta name="theme-color" content="#0b0f15">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&display=swap">
+<script>/* one address: www and the old workers.dev address go to the main domain */
+(function () { var h = location.hostname, main = "pronades.com.br";
+  if (h !== main && h !== "localhost" && h !== "127.0.0.1" && (h === "www." + main || /\.workers\.dev$/.test(h)))
+    location.replace("https://" + main + location.pathname + location.search + location.hash); })();</script>
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
+  if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
+<link rel="icon" href="/static/favicon.svg?v=714ec3503f" type="image/svg+xml">
+<link rel="stylesheet" href="/static/style.css?v=6e4c0b7bea">
+<script>window.I18N = {"copied": "Copied!", "dec": ".", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "open": "Open", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s", "v_back": "Back 2 seconds", "v_frame_back": "Previous frame", "v_frame_fwd": "Next frame", "v_fwd": "Forward 2 seconds", "v_play": "Play / pause"}; window.LANG = "en";</script>
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <button class="menu-btn" id="menuBtn" aria-label="Show or hide the menu" aria-controls="side" aria-expanded="false">☰</button>
+    <a class="logo wordmark" href="/en/" aria-label="Pronades">Pro<span>nades</span><img class="he-buddy" src="/static/brand/he-buddy.svg?v=714ec3503f" alt="" width="22" height="22"></a>
+    <div class="search">
+      <input id="q" type="search" placeholder="Search map, player, team, smoke…" autocomplete="off" aria-label="Search">
+      <div id="results" class="results" hidden></div>
+    </div>
+    <nav class="langs" aria-label="Language">
+<a href="/pt/minha-faceit/" hreflang="pt" lang="pt" title="Português" aria-label="Português"><img class="lang-flag" src="/static/flags/br.svg?v=17969b5ac0" alt="Português" width="24" height="18"></a><a href="/en/my-faceit/" hreflang="en" lang="en" aria-current="true" title="English" aria-label="English"><img class="lang-flag" src="/static/flags/gb.svg?v=161ee20a0a" alt="English" width="24" height="18"></a>    </nav>
+    <a class="login-btn" id="loginBtn" href="/en/account/" data-account="account" hidden>Sign in</a>
+    <a class="me-btn" id="meBtn" href="/en/account/" hidden aria-label="My account"><img alt="" width="28" height="28" referrerpolicy="no-referrer" hidden><span>Account</span></a>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="Toggle light/dark mode" title="Toggle light/dark mode"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.6"/><g stroke-width="2.2" stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></g></svg></button>
+  </div>
+</header>
+<div class="layout">
+  <aside class="side" id="side" aria-label="Navigation">
+    <nav>
+      <a href="/en/"><span class="nl">Home</span></a>
+      <a href="/en/my-faceit/" aria-current="page"><span>◉ My FACEIT</span></a>
+      <a href="/en/compare-my-demo/"><span>⇄ Compare my demo</span></a>
+      <a href="/en/training-plan/"><span>🎯 Training plan</span></a>
+      <a href="/en/roles/"><span>👥 Roles</span></a>
+      <a href="/en/analytics/"><span>▤ Analytics</span></a>
+      <a href="/en/my-list/"><span>★ My list</span><span class="n" id="favCount"></span></a>
+      <details class="nav-g" data-k="maps" open>
+        <summary class="nav-h"><a href="/en/maps/">Maps</a></summary>
+<a href="/en/ancient/"><span class="nl">Ancient</span><span class="n">51</span></a><a href="/en/anubis/"><span class="nl">Anubis</span><span class="n">20</span></a><a href="/en/cache/"><span class="nl">Cache</span><span class="n">39</span></a><a href="/en/dust2/"><span class="nl">Dust2</span><span class="n">53</span></a><a href="/en/inferno/"><span class="nl">Inferno</span><span class="n">22</span></a><a href="/en/mirage/"><span class="nl">Mirage</span><span class="n">74</span></a><a href="/en/nuke/"><span class="nl">Nuke</span><span class="n">33</span></a>      </details>
+      <details class="nav-g" data-k="tactics" open>
+        <summary class="nav-h"><a href="/en/tactics/">Tactics</a></summary>
+<a href="/en/ancient/plays/"><span class="nl">Ancient</span><span class="n">85</span></a><a href="/en/anubis/plays/"><span class="nl">Anubis</span><span class="n">13</span></a><a href="/en/cache/plays/"><span class="nl">Cache</span><span class="n">37</span></a><a href="/en/dust2/plays/"><span class="nl">Dust2</span><span class="n">61</span></a><a href="/en/inferno/plays/"><span class="nl">Inferno</span><span class="n">17</span></a><a href="/en/mirage/plays/"><span class="nl">Mirage</span><span class="n">67</span></a><a href="/en/nuke/plays/"><span class="nl">Nuke</span><span class="n">32</span></a>      </details>
+      <details class="nav-g" data-k="events" open>
+        <summary class="nav-h"><a href="/en/tournaments/">Tournaments</a></summary>
+<a href="/en/tournament/blast-rivals-2026-season-2/"><span class="nl">BLAST Rivals 2026 Season 2</span></a>      </details>
+      <details class="nav-g" data-k="players" open>
+        <summary class="nav-h"><a href="/en/players/">Players</a></summary>
+<a href="/en/player/apex/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/fr.svg" alt="France" title="France" width="16" height="12"></span>apEX</span></a><a href="/en/player/art/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"></span>art</span></a><a href="/en/player/coolio/"><span class="nl"><span class="nav-flag"></span>coolio</span></a><a href="/en/player/dem0n/"><span class="nl"><span class="nav-flag"></span>dem0n</span></a><a href="/en/player/donk/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12"></span>donk</span></a><a href="/en/player/dumau/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"></span>dumau</span></a><a href="/en/player/dziugss/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/lt.svg" alt="Lithuania" title="Lithuania" width="16" height="12"></span>dziugss</span></a><a href="/en/player/fallen/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"></span>FalleN</span></a><a href="/en/player/flamez/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12"></span>flameZ</span></a><a href="/en/player/heavygod/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12"></span>HeavyGod</span></a><a href="/en/player/hunter/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/ba.svg" alt="Bosnia" title="Bosnia" width="16" height="12"></span>huNter</span></a><a href="/en/player/karrigan/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/dk.svg" alt="Denmark" title="Denmark" width="16" height="12"></span>karrigan</span></a><a class="more" href="/en/players/">see all (40)</a>      </details>
+      <details class="nav-g" data-k="teams" open>
+        <summary class="nav-h"><a href="/en/teams/">Teams</a></summary>
+<a href="/en/team/falcons/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12"></span>Falcons</span></a><a href="/en/team/furia/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"></span>FURIA</span></a><a href="/en/team/fut/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/tr.svg" alt="Turkey" title="Turkey" width="16" height="12"></span>FUT</span></a><a href="/en/team/g2/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12"></span>G2</span></a><a href="/en/team/legacy/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"></span>Legacy</span></a><a href="/en/team/mouz/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12"></span>MOUZ</span></a><a href="/en/team/spirit/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12"></span>Spirit</span></a><a href="/en/team/vitality/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/fr.svg" alt="France" title="France" width="16" height="12"></span>Vitality</span></a>      </details>
+      <div class="nav-sep"></div>
+      <a href="/en/about/"><span class="nl">About</span></a>
+      <a href="/en/privacy/"><span class="nl">Privacy</span></a>
+    </nav>
+    <script>
+      /* collapsed sections are remembered in this browser; applied before paint */
+      (function () {
+        var c = []; try { c = JSON.parse(localStorage.getItem("navClosed") || "[]"); } catch (e) {}
+        document.querySelectorAll(".nav-g").forEach(function (d) {
+          if (c.indexOf(d.dataset.k) >= 0 && !d.querySelector("[aria-current]")) d.open = false;
+          d.addEventListener("toggle", function () {
+            var s = []; document.querySelectorAll(".nav-g").forEach(function (x) { if (!x.open) s.push(x.dataset.k); });
+            try { localStorage.setItem("navClosed", JSON.stringify(s)); } catch (e) {}
+          });
+        });
+      })();
+    </script>
+  </aside>
+  <div class="scrim" id="scrim" hidden></div>
+  <main class="content">
+<nav class="crumbs"><a href="/en/">Home</a> › My FACEIT</nav>
+<h1>My FACEIT</h1>
+<div id="fc" data-lang="en" data-i18n='{"compare_link": "Compare my demo", "compare_path": "compare-my-demo", "connect": "Connect my FACEIT", "dec": ".", "demo_help": "To analyse a match\u0027s grenades: open it on FACEIT, download the demo (.dem.zst) and load it in Compare my demo. One click is coming soon.", "desc": "Connect your FACEIT account and see your level, ELO, per-map stats and your last matches, side by side with what the pros do.", "error": "Couldn\u0027t load your FACEIT data right now. Try again in a few minutes.", "k_matches": "Matches", "k_streak": "Longest streak", "k_winrate": "Win rate", "l": "L", "level": "Level", "link_lead": "Your account isn\u0027t connected to FACEIT yet. Connect it to see your stats here.", "linked": "FACEIT connected: {n}", "lost": "Loss", "maps": {"ancient": "/en/ancient/", "anubis": "/en/anubis/", "cache": "/en/cache/", "dust2": "/en/dust2/", "inferno": "/en/inferno/", "mirage": "/en/mirage/", "nuke": "/en/nuke/"}, "maps_h": "Your maps", "maps_help": "Click a map to see the pros\u0027 grenades on it.", "matches_h": "Last matches", "note": "Data comes from the official FACEIT API and refreshes every 10 minutes. We only read what is public on your profile.", "open_room": "Open on FACEIT", "out_lead": "Sign in with your FACEIT account to see your level, ELO, per-map stats and your last matches.", "signin": "Sign in with FACEIT", "th_date": "Date", "th_map": "Map", "th_result": "Result", "title": "My FACEIT", "w": "W", "won": "Win"}'>
+  <section class="fc-state" id="fcOut" hidden>
+    <p>Sign in with your FACEIT account to see your level, ELO, per-map stats and your last matches.</p>
+    <a class="btn faceit-btn" href="/auth/faceit?next=/en/my-faceit/">Connect my FACEIT</a>
+  </section>
+  <section class="fc-state" id="fcLink" hidden>
+    <p>Your account isn&#39;t connected to FACEIT yet. Connect it to see your stats here.</p>
+    <a class="btn faceit-btn" href="/auth/faceit?next=/en/my-faceit/">Connect my FACEIT</a>
+  </section>
+  <p class="muted" id="fcLoading">Loading data…</p>
+  <div id="fcOutBox"></div>
+  <p class="muted small">Data comes from the official FACEIT API and refreshes every 10 minutes. We only read what is public on your profile.</p>
+</div>
+  </main>
+</div>
+<footer class="foot">
+  <div class="foot-in">
+    <p>Data extracted from official match demos. Demos: <a href="https://www.hltv.org/" rel="noopener" target="_blank">HLTV.org</a>.</p>
+    <p>Free fan project. Not affiliated with Valve, HLTV, the teams or tournament organizers. Counter-Strike is a trademark of Valve Corporation.</p>
+    <p><a href="/en/about/">About and credits</a> · updated 2026-11-15</p>
+  </div>
+</footer>
+<script src="/static/app.js?v=79dff6c310" defer></script>
+<script src="/static/accounts.js?v=4a294cfd8e" defer></script>
+<script src="/static/video.js?v=59be808746" defer></script>
+<script src="/static/faceit.js?v=d4da1ce9e2" defer></script></body>
+</html>
