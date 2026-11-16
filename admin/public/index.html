@@ -69,6 +69,14 @@
   @media (max-width: 900px) { .shell { grid-template-columns: 1fr; } .grid { grid-template-columns: 1fr; } .mapbox { position: static; } }
 .pill { display:inline-block; padding:1px 8px; border-radius:10px; border:1px solid #556; font-size:12px; }
 .pill.ok { border-color:#3a8; color:#5c9; }
+.so-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); gap: 12px; margin-top: 10px; }
+.so-card { display: flex; gap: 12px; padding: 10px; border: 1px solid #2a2f3a; border-radius: 10px; background: #151922; }
+.so-card img { width: 96px; height: 170px; object-fit: cover; border-radius: 6px; background: #000; }
+.so-body { flex: 1; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.so-nets { display: flex; gap: 10px; font-size: 13px; }
+.so-body textarea { width: 100%; font: inherit; font-size: 13px; }
+.so-links { display: flex; gap: 6px; } .so-links input { flex: 1; min-width: 0; font-size: 12px; }
+.so-act { display: flex; gap: 6px; flex-wrap: wrap; }
 </style>
 </head>
 <body>
@@ -81,6 +89,7 @@
     <a href="#roadmap" data-view="roadmap">Roadmap</a>
     <a href="#reports" data-view="reports">Reports e granadas</a>
     <a href="#meta" data-view="meta">Meta Grenades</a>
+    <a href="#social" data-view="social">Curadoria social</a>
     <div class="h">Pessoas</div>
     <a href="#usuarios" data-view="users">Usuários e atividade</a>
     <div class="h">Histórico</div>
@@ -151,6 +160,20 @@
       <div><h3 style="margin:0 0 6px">Fixadas</h3><table><tbody id="mtPin"></tbody></table></div>
       <div><h3 style="margin:0 0 6px">Escondidas</h3><table><tbody id="mtHide"></tbody></table></div>
     </div>
+  </section>
+  <section id="view-social" hidden>
+    <h2>Curadoria social</h2>
+    <div class="muted">Granadas com vídeo que podem virar Short / Reel / TikTok (vídeo ensinando + chamada para o site).
+      <b>Aprovar</b> põe na fila: no PC, <code>python pipeline/social.py --approved</code> gera o vídeo 9:16 com legenda e o texto do post.
+      Depois de postar, marque <b>Publicado</b> com os links. A ordem sugerida começa pelas Meta Grenades.</div>
+    <div class="bar">
+      <select id="soStatus" aria-label="Status"><option value="">Para decidir</option><option value="aprovado">Aprovados (fila)</option><option value="publicado">Publicados</option><option value="pulado">Pulados</option></select>
+      <select id="soMap" aria-label="Mapa"><option value="">Todos os mapas</option></select>
+      <select id="soType" aria-label="Tipo"><option value="">Todos os tipos</option><option value="smoke">Smoke</option><option value="flash">Flash</option><option value="molotov">Molotov</option><option value="he">HE</option></select>
+      <button id="soReload" type="button">Atualizar</button>
+      <span id="soInfo" class="muted"></span>
+    </div>
+    <div id="soList" class="so-list"></div>
   </section>
   <section id="view-roadmap" hidden>
     <h2>Roadmap</h2>
@@ -325,10 +348,12 @@ cv.addEventListener("click", e => {
 
 // ---------------------------------------------------------------- views
 function showView() {
-  const v = location.hash === "#roadmap" ? "roadmap" : location.hash === "#usuarios" ? "users" : location.hash === "#reports" ? "reports" : location.hash === "#meta" ? "meta" : "depara";
+  const v = location.hash === "#roadmap" ? "roadmap" : location.hash === "#usuarios" ? "users" : location.hash === "#reports" ? "reports" : location.hash === "#meta" ? "meta" : location.hash === "#social" ? "social" : "depara";
   $("view-roadmap").hidden = v !== "roadmap"; $("view-depara").hidden = v !== "depara"; $("view-users").hidden = v !== "users";
   $("view-reports").hidden = v !== "reports";
   $("view-meta").hidden = v !== "meta";
+  $("view-social").hidden = v !== "social";
+  if (v === "social") loadSocial();
   if (v === "meta") loadMeta();
   if (v === "reports") loadReports();
   if (v === "users") loadUsers();
@@ -414,6 +439,55 @@ $("mtForm").addEventListener("submit", async e => {
 $("view-meta").addEventListener("click", async e => {
   const b = e.target.closest("button[data-unmeta]"); if (!b) return;
   try { await loadMeta(await api("/api/meta", { k: b.dataset.unmeta, list: null })); } catch (err) { alert(err.message); }
+});
+
+// ---------------------------------------------------------------- social media curation
+const SO = { items: [], dec: {} };
+const NETS = { yt: "YouTube", ig: "Instagram", tt: "TikTok" };
+const SO_ST = { aprovado: "Aprovado", publicado: "Publicado", pulado: "Pulado" };
+async function loadSocial() {
+  const d = await api("/api/social");
+  SO.items = d.items; SO.dec = d.decisions;
+  const maps = [...new Set(d.items.map(x => x.map))].sort();
+  const cur = $("soMap").value;
+  $("soMap").innerHTML = '<option value="">Todos os mapas</option>' + maps.map(m => `<option${m === cur ? " selected" : ""}>${esc(m)}</option>`).join("");
+  renderSocial();
+}
+function renderSocial() {
+  const c = { "": 0, aprovado: 0, publicado: 0, pulado: 0 };
+  for (const x of SO.items) c[(SO.dec[x.k] || {}).status || ""]++;
+  $("soInfo").textContent = `${SO.items.length} candidatas · ${c[""]} para decidir · ${c.aprovado} na fila · ${c.publicado} publicadas`;
+  const st = $("soStatus").value, mp = $("soMap").value, ty = $("soType").value;
+  const rows = SO.items.filter(x => ((SO.dec[x.k] || {}).status || "") === st && (!mp || x.map === mp) && (!ty || x.type === ty)).slice(0, 60);
+  $("soList").innerHTML = rows.map(x => { const dd = SO.dec[x.k] || {}, nets = dd.nets || ["yt", "ig", "tt"];
+    return `<div class="so-card" data-k="${esc(x.k)}">
+      <a href="https://pronades.com.br/media/${esc(x.clip)}" target="_blank" rel="noopener" title="Ver o vídeo">${x.poster ? `<img src="https://pronades.com.br/media/${esc(x.poster)}" alt="" loading="lazy">` : ""}</a>
+      <div class="so-body">
+        <b><a href="https://pronades.com.br${esc(x.url)}" target="_blank" rel="noopener" style="color:inherit">${esc(x.title)}</a></b>
+        <div class="muted" style="font-size:12px">${esc(x.map)} · ${esc(x.type)} · ${esc(x.side)} · ${x.uses} usos · ${x.teams} times${x.meta ? ` · <b style="color:#f5c64a">Meta #${x.meta}</b>` : ""}${x.player ? ` · vídeo do ${esc(x.player)}` : ""}</div>
+        ${dd.status ? `<div style="font-size:12px;margin-top:2px"><span class="pill${dd.status === "publicado" ? " ok" : ""}">${SO_ST[dd.status]}</span> <span class="muted">${esc(dd.by || "")}</span></div>` : ""}
+        <div class="so-nets">${Object.entries(NETS).map(([n, l]) => `<label><input type="checkbox" data-net="${n}"${nets.includes(n) ? " checked" : ""}> ${l}</label>`).join("")}</div>
+        <textarea data-cap rows="2" placeholder="Texto do post (opcional: vazio = texto padrão com o link; use {url} para o link)">${esc(dd.caption || "")}</textarea>
+        ${dd.status === "aprovado" || dd.status === "publicado" ? `<div class="so-links">${Object.entries(NETS).map(([n, l]) => `<input data-link="${n}" placeholder="link ${l}" value="${esc((dd.links || {})[n] || "")}">`).join("")}</div>` : ""}
+        <div class="so-act">
+          ${dd.status !== "aprovado" ? '<button data-so="aprovado">Aprovar</button>' : ""}
+          ${dd.status === "aprovado" || dd.status === "publicado" ? '<button data-so="publicado">' + (dd.status === "publicado" ? "Salvar links" : "Marcar publicado") + "</button>" : ""}
+          ${dd.status !== "pulado" ? '<button data-so="pulado">Pular</button>' : ""}
+          ${dd.status ? '<button data-so="">Voltar p/ decidir</button>' : ""}
+        </div>
+      </div></div>`; }).join("") || '<div class="muted">Nada aqui.</div>';
+}
+["soStatus", "soMap", "soType"].forEach(id => $(id).addEventListener("change", renderSocial));
+$("soReload").addEventListener("click", loadSocial);
+$("soList").addEventListener("click", async e => {
+  const b = e.target.closest("button[data-so]"); if (!b) return;
+  const card = b.closest(".so-card"), k = card.dataset.k;
+  const body = { k, status: b.dataset.so || null, caption: card.querySelector("[data-cap]").value,
+                 nets: [...card.querySelectorAll("[data-net]:checked")].map(x => x.dataset.net), links: {} };
+  card.querySelectorAll("[data-link]").forEach(i => { body.links[i.dataset.link] = i.value; });
+  b.disabled = true;
+  try { const r = await api("/api/social", body); if (r.item) SO.dec[k] = r.item; else delete SO.dec[k]; renderSocial(); }
+  catch (err) { alert(err.message); b.disabled = false; }
 });
 
 // ---------------------------------------------------------------- roadmap

@@ -19,6 +19,9 @@
 //        regravação, mirrored to KV "rerecord" for pipeline/rerecord.py; done = resolvido/regravado)
 //   GET/POST /api/meta          -> Meta Grenades adjustments { pin: [{k, title}], hide: [{k, title}] } (KV "meta");
 //        POST { k, title, list: "pin"|"hide"|null } puts a grenade in one list (null = back to automatic). Applied on the next export.
+//   GET  /api/social            -> social media candidates (the site's /dados/social.json) + curation decisions (KV "social")
+//   POST /api/social            -> { k, status: "aprovado"|"pulado"|"publicado"|null, caption?, nets?, links? }
+//        pipeline/social.py renders the approved ones (1080x1920 video with captions + post text) on the studio PC.
 //   POST /api/resolve           -> { url } -> the like/report key of a public page (read from the page itself)
 //   POST /api/remove            -> { k, title, restore? }  remove a grenade/tactic from the site (or put it back).
 //        Hidden right away by the page script (D1 "removed"); the studio pulls KV "removed" and drops it on the next export.
@@ -305,6 +308,31 @@ export default {
       return json({ ok: true, removed: entry });
     }
 
+    if (url.pathname === "/api/social" && request.method === "GET") {
+      let cands = { items: [] };
+      try { const r = await fetch("https://pronades.com.br/dados/social.json", { cf: { cacheTtl: 300 } }); if (r.ok) cands = await r.json(); } catch {}
+      const items = cands.items.map(({ lang, ...x }) => ({ ...x, title: lang.pt && lang.pt.title, url: lang.pt && lang.pt.url }));
+      return json({ built: cands.built, total: cands.total, items, decisions: (await readJSON(env, "social", { items: {} })).items || {} });
+    }
+    if (url.pathname === "/api/social" && request.method === "POST") {
+      const b = await request.json().catch(() => ({}));
+      if (!/^g:[a-z0-9_]{2,40}\/[a-z0-9-]{1,120}$/.test(b.k || "")) return json({ error: "chave inválida" }, 400);
+      if (b.status != null && !["aprovado", "pulado", "publicado"].includes(b.status)) return json({ error: "status inválido" }, 400);
+      const data = await readJSON(env, "social", { items: {} });
+      data.items = data.items || {};
+      if (b.status == null) delete data.items[b.k];
+      else {
+        const old = data.items[b.k] || {};
+        const nets = Array.isArray(b.nets) ? b.nets.filter(n => ["yt", "ig", "tt"].includes(n)) : (old.nets || ["yt", "ig", "tt"]);
+        const links = { ...(old.links || {}) };
+        for (const n of ["yt", "ig", "tt"]) if (b.links && typeof b.links[n] === "string") links[n] = b.links[n].trim().slice(0, 300);
+        data.items[b.k] = { ...old, status: b.status, nets, links, by: identity.email, at: new Date().toISOString(),
+                            caption: typeof b.caption === "string" ? b.caption.slice(0, 2200) : (old.caption || "") };
+      }
+      data.at = new Date().toISOString();
+      await env.ADMIN.put("social", JSON.stringify(data));
+      return json({ ok: true, item: data.items[b.k] || null });
+    }
     if (url.pathname === "/api/meta" && request.method === "GET") return json(await readJSON(env, "meta", { pin: [], hide: [] }));
     if (url.pathname === "/api/meta" && request.method === "POST") {
       const b = await request.json().catch(() => ({}));
