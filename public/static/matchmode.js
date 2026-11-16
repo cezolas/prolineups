@@ -167,15 +167,8 @@
     const dots = $("mmDots"), sel = $("mmSel"), svg = $("mmSvg");
     dots.textContent = ""; sel.textContent = "";
     const s = st.sel && byId[st.sel];
-    // zoom on the selected grenade (whole trajectory), otherwise on everything in view
-    let box = [0, 0, 1024, 1024];
-    if (s && s.b) box = s.b;
-    else if (items.length) {
-      const xs = items.flatMap((l) => [l.l[0], l.t[0]]), ys = items.flatMap((l) => [l.l[1], l.t[1]]);
-      const pad = 60, x0 = Math.min(...xs) - pad, x1 = Math.max(...xs) + pad, y0 = Math.min(...ys) - pad, y1 = Math.max(...ys) + pad;
-      const size = Math.min(1024, Math.max(x1 - x0, y1 - y0, 420)), cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
-      box = [Math.min(Math.max(cx - size / 2, 0), 1024 - size), Math.min(Math.max(cy - size / 2, 0), 1024 - size), size, size];
-    }
+    // the whole map; zoom only on a selected grenade (its whole trajectory), "mapa inteiro" goes back
+    const box = s && s.b ? s.b : [0, 0, 1024, 1024];
     svg.setAttribute("viewBox", box.map((v) => Math.round(v)).join(" "));
     const k = box[2] / 1024; // keep markers the same size on screen when zoomed
     $("mmFull").hidden = !s;

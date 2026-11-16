@@ -857,14 +857,14 @@ body.mm-page { overflow: hidden; overscroll-behavior: none; }
 .mm-types button[aria-pressed="true"] { border-color: var(--brand-a, #f5b83d); background: color-mix(in srgb, var(--brand-a, #f5b83d) 18%, var(--panel2)); }
 .mm-types i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
 .mm-body { flex: 1; min-height: 0; overflow-y: auto; padding: 8px 10px; padding-bottom: max(10px, env(safe-area-inset-bottom)); }
-.mm-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.mm-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; }
 .mm-list button { width: 100%; display: flex; align-items: center; gap: 10px; text-align: left; padding: 10px; min-height: 56px;
   border-radius: 12px; border: 1px solid var(--line); background: var(--panel2); color: var(--text); font: inherit; cursor: pointer; }
 .mm-num { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%;
   background: var(--c, var(--brand-a, #f5b83d)); color: #111; font-weight: 800; font-size: 15px; border: 2px solid #0b0d10; }
 .mm-row-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
 .mm-row-main b { font-size: 16px; line-height: 1.25; }
-.mm-row-main .small { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mm-row-main .small { overflow-wrap: anywhere; }
 .mm-diff { flex: none; font-size: 11px; letter-spacing: 1px; color: var(--muted); }
 .mm-diff.d1 { color: var(--good, #4caf50); }
 .mm-diff.d3 { color: var(--bad, #e05555); }
