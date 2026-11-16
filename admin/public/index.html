@@ -67,6 +67,8 @@
   .ulog { max-height: 70vh; overflow: auto; }
   @media (max-width: 900px) { .two { grid-template-columns: 1fr; } }
   @media (max-width: 900px) { .shell { grid-template-columns: 1fr; } .grid { grid-template-columns: 1fr; } .mapbox { position: static; } }
+.pill { display:inline-block; padding:1px 8px; border-radius:10px; border:1px solid #556; font-size:12px; }
+.pill.ok { border-color:#3a8; color:#5c9; }
 </style>
 </head>
 <body>
@@ -112,14 +114,17 @@
   </section>
   <section id="view-reports" hidden>
     <h2>Reports e granadas</h2>
-    <div class="muted">Problemas reportados pelos visitantes nas páginas de granadas e táticas. <b>Remover</b> esconde a jogada na hora
+    <div class="muted">Problemas reportados pelos visitantes nas páginas de granadas e táticas.
+      <b>Revisado</b> = você olhou e não tem nada de errado. <b>Regravar</b> = entra na fila de regravação: quando você der o OK,
+      o Claude regrava os vídeos dessas páginas no PC e publica; aí aparece "Regravado" e você marca como resolvido.
+      Uma decisão vale para todos os reports abertos da mesma página. <b>Remover</b> esconde a jogada na hora
       (a página mostra o aviso de removida) e ela sai de vez do site na próxima publicação.</div>
     <form id="rvForm" class="bar">
       <input id="rvUrl" placeholder="Cole o link de uma granada ou tática do pronades.com.br" style="min-width:420px" aria-label="Link">
       <button type="submit">Remover do site</button>
       <span id="rvMsg" class="muted"></span>
     </form>
-    <div class="bar"><select id="rpStatus" aria-label="Status"><option value="open">Abertos</option><option value="done">Resolvidos</option><option value="dismissed">Ignorados</option></select>
+    <div class="bar"><select id="rpStatus" aria-label="Status"><option value="open">Abertos</option><option value="rerecord">Regravar</option><option value="reviewed">Revisados</option><option value="done">Resolvidos</option></select>
       <button id="rpReload" type="button">Atualizar</button></div>
     <div class="tablewrap"><table><thead><tr><th>Quando</th><th>Página</th><th>Motivo</th><th>Detalhes</th><th>Ações</th></tr></thead><tbody id="rpRows"></tbody></table></div>
     <div class="two" style="margin-top:18px">
@@ -314,21 +319,26 @@ window.addEventListener("hashchange", showView);
 
 // ---------------------------------------------------------------- reports, likes, removals
 const RP_REASON = { video: "Vídeo quebrado", wrong: "Lineup não funciona", outdated: "Mapa mudou", other: "Outro" };
-const KIND = { g: "Granada", e: "Execução", p: "Jogada" };
-const keyLabel = k => `${KIND[k[0]] || "?"} · ${esc(k.slice(2))}`;
-const when = ts => new Date(ts).toLocaleString("pt-BR", { dateStyle: "short", timeStyle: "short" });
+const RKIND = { g: "Granada", e: "Execução", p: "Jogada" };
+const keyLabel = k => `${RKIND[k[0]] || "?"} · ${esc(k.slice(2))}`;
+const rwhen = ts => new Date(ts).toLocaleString("pt-BR", { dateStyle: "short", timeStyle: "short" });
 async function loadReports() {
-  const { reports, likes, removed } = await api(`/api/reports?status=${$("rpStatus").value}`);
+  const { reports, likes, removed, counts = {}, rerecorded = {} } = await api(`/api/reports?status=${$("rpStatus").value}`);
+  const rr = Object.fromEntries(Object.entries(rerecorded).map(([k, v]) => [k, Date.parse(v)]));
+  const LBL = { open: "Abertos", rerecord: "Regravar", reviewed: "Revisados", done: "Resolvidos" };
+  for (const o of $("rpStatus").options) o.textContent = `${LBL[o.value]} (${counts[o.value] || 0})`;
   const gone = new Set(removed.map(r => r.k));
-  $("rpRows").innerHTML = reports.map(r => `<tr><td>${when(r.ts)}</td>
+  $("rpRows").innerHTML = reports.map(r => `<tr><td>${rwhen(r.ts)}</td>
     <td>${r.url ? `<a href="https://pronades.com.br${esc(r.url)}" target="_blank" rel="noopener">${keyLabel(r.k)}</a>` : keyLabel(r.k)}</td>
     <td>${RP_REASON[r.reason] || esc(r.reason)}</td><td>${esc(r.note || "")}</td>
     <td style="white-space:nowrap">${r.k[0] === "g" && !gone.has(r.k) ? `<button data-rm="${esc(r.k)}" data-title="${esc(r.k.slice(2))}">Remover granada</button> ` : ""}
-      ${r.status === "open" ? `<button data-st="done" data-id="${r.id}">Resolvido</button> <button data-st="dismissed" data-id="${r.id}">Ignorar</button>`
-                            : `<button data-st="open" data-id="${r.id}">Reabrir</button>`}</td></tr>`).join("")
+      ${r.status === "open" ? `<button data-st="reviewed" data-id="${r.id}">Revisado</button> <button data-st="rerecord" data-id="${r.id}">Regravar</button>`
+        : r.status === "rerecord" ? (rr[r.k] && rr[r.k] > r.ts ? `<span class="pill ok">Regravado ${rwhen(rr[r.k])}</span> ` : `<span class="pill">Na fila</span> `)
+            + `<button data-st="done" data-id="${r.id}">Resolvido</button> <button data-st="open" data-id="${r.id}">Voltar p/ abertos</button>`
+        : `<button data-st="open" data-id="${r.id}">Reabrir</button>`}</td></tr>`).join("")
     || `<tr><td colspan="5" class="muted">Nenhum report aqui.</td></tr>`;
   $("rmvRows").innerHTML = removed.map(r => `<tr><td>${esc(r.title || r.k.slice(2))}<div class="muted" style="font-size:12px">${keyLabel(r.k)}</div></td>
-    <td>${when(r.ts)}</td><td>${esc(r.by || "")}</td><td><button data-restore="${esc(r.k)}">Restaurar</button></td></tr>`).join("")
+    <td>${rwhen(r.ts)}</td><td>${esc(r.by || "")}</td><td><button data-restore="${esc(r.k)}">Restaurar</button></td></tr>`).join("")
     || `<tr><td colspan="4" class="muted">Nada removido.</td></tr>`;
   $("lkRows").innerHTML = likes.map(l => `<tr><td>${keyLabel(l.k)}</td><td>${l.n}</td></tr>`).join("") || `<tr><td colspan="2" class="muted">Sem likes ainda.</td></tr>`;
 }
@@ -352,7 +362,7 @@ $("rvForm").addEventListener("submit", async e => {
   $("rvMsg").textContent = "Procurando a página…";
   try {
     const r = await api("/api/resolve", { url: $("rvUrl").value });
-    if (r.k[0] !== "g" && !confirm(`Esse link é de uma tática (${KIND[r.k[0]]}), não de uma granada. Remover mesmo assim?`)) { $("rvMsg").textContent = ""; return; }
+    if (r.k[0] !== "g" && !confirm(`Esse link é de uma tática (${RKIND[r.k[0]]}), não de uma granada. Remover mesmo assim?`)) { $("rvMsg").textContent = ""; return; }
     if (!confirm(`Remover "${r.title}" do site?
 Dá para restaurar depois na lista de removidas.`)) { $("rvMsg").textContent = ""; return; }
     await api("/api/remove", { k: r.k, title: r.title });

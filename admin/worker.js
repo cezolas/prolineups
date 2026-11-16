@@ -15,7 +15,8 @@
 //   GET/POST /api/roadmap, POST /api/roadmap/<id>  -> ideas board (status, notes, priority, delete)
 //   GET  /api/export            -> all overrides (used by pipeline/admin_sync.py on the studio PC)
 //   GET  /api/reports           -> "report a problem" messages from the site (D1) + likes ranking + removed items
-//   POST /api/reports/<id>      -> { status: "open"|"done"|"dismissed" }
+//   POST /api/reports/<id>      -> { status: "open"|"reviewed"|"rerecord"|"done" }  (revisado = nada errado; regravar = fila de
+//        regravação, mirrored to KV "rerecord" for pipeline/rerecord.py; done = resolvido/regravado)
 //   POST /api/resolve           -> { url } -> the like/report key of a public page (read from the page itself)
 //   POST /api/remove            -> { k, title, restore? }  remove a grenade/tactic from the site (or put it back).
 //        Hidden right away by the page script (D1 "removed"); the studio pulls KV "removed" and drops it on the next export.
@@ -104,6 +105,13 @@ async function knownPlaces(env, request, map) {
   if (!r.ok) return null;
   const d = await r.json();
   return { places: new Set((d.places || []).map(p => p.place)), langs: d.langs || ["pt"] };
+}
+
+// KV "rerecord": the pages whose reports are in "regravar" (read by pipeline/rerecord.py on the studio PC)
+async function syncRerecord(env, by) {
+  const rows = (await env.DB.prepare(`SELECT k, MIN(url) url, COUNT(*) n, MAX(ts) ts FROM reports WHERE status = 'rerecord'
+      GROUP BY k ORDER BY ts`).all()).results || [];
+  await env.ADMIN.put("rerecord", JSON.stringify({ at: new Date().toISOString(), by, items: rows }));
 }
 
 async function readJSON(env, key, fallback) {
@@ -224,13 +232,21 @@ export default {
         .bind(status).all()).results || [];
       const likes = (await env.DB.prepare("SELECT k, COUNT(*) n FROM likes GROUP BY k ORDER BY n DESC LIMIT 30").all()).results || [];
       const removed = (await env.DB.prepare("SELECT k, ts, by, title FROM removed ORDER BY ts DESC").all()).results || [];
-      return json({ reports, likes, removed });
+      const counts = Object.fromEntries(((await env.DB.prepare("SELECT status, COUNT(*) n FROM reports GROUP BY status").all()).results || []).map(x => [x.status, x.n]));
+      let rerecorded = {};  // written by the studio after a re-recording, published with the site
+      try { const r = await fetch("https://pronades.com.br/dados/regravados.json", { cf: { cacheTtl: 60 } }); if (r.ok) rerecorded = await r.json(); } catch {}
+      return json({ reports, likes, removed, counts, rerecorded });
     }
     const rp = url.pathname.match(/^\/api\/reports\/(\d{1,12})$/);
     if (rp && request.method === "POST") {
       const b = await request.json().catch(() => ({}));
-      if (!["open", "done", "dismissed"].includes(b.status)) return json({ error: "status inválido" }, 400);
-      await env.DB.prepare("UPDATE reports SET status = ? WHERE id = ?").bind(b.status, +rp[1]).run();
+      if (!["open", "reviewed", "rerecord", "done"].includes(b.status)) return json({ error: "status inválido" }, 400);
+      const row = await env.DB.prepare("SELECT k FROM reports WHERE id = ?").bind(+rp[1]).first();
+      if (!row) return json({ error: "report não encontrado" }, 404);
+      // a decision is about the page, so it applies to every report of that page still waiting in the same queue
+      await env.DB.prepare("UPDATE reports SET status = ? WHERE k = ? AND status IN ('open', 'rerecord', 'reviewed') AND (id = ? OR status = 'open')")
+        .bind(b.status, row.k, +rp[1]).run();
+      await syncRerecord(env, identity.email);
       return json({ ok: true });
     }
     if (url.pathname === "/api/resolve" && request.method === "POST") {
@@ -258,7 +274,8 @@ export default {
       }
       const entry = { k: b.k, title: String(b.title || "").slice(0, 200), by: identity.email, at: new Date().toISOString() };
       await env.DB.prepare("INSERT OR REPLACE INTO removed (k, ts, by, title) VALUES (?, ?, ?, ?)").bind(b.k, Date.now(), entry.by, entry.title).run();
-      await env.DB.prepare("UPDATE reports SET status = 'done' WHERE k = ? AND status = 'open'").bind(b.k).run();
+      await env.DB.prepare("UPDATE reports SET status = 'done' WHERE k = ? AND status IN ('open', 'rerecord')").bind(b.k).run();
+      await syncRerecord(env, identity.email);
       rest.unshift(entry);
       await env.ADMIN.put("removed", JSON.stringify(rest.slice(0, 2000)));
       return json({ ok: true, removed: entry });
