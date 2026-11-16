@@ -49,7 +49,44 @@
     });
   }
 
+  // Captions of the style-v2 grenade videos: the video has no text, the page draws it in its own language
+  // (list of {a: start s, b: end s, x: text, h: words in gold}), sized to the picture actually shown.
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+  function caps(v, list) {
+    v._caps = list || [];
+    const box = v.parentElement;
+    if (getComputedStyle(box).position === "static") box.style.position = "relative";
+    let el = box.querySelector(":scope > .vcap");
+    if (!el) { el = document.createElement("div"); el.className = "vcap"; el.setAttribute("aria-hidden", "true"); box.appendChild(el); }
+    const place = () => {
+      const vw = v.videoWidth || 9, vh = v.videoHeight || 16;
+      const dw = Math.min(v.clientWidth, v.clientHeight * vw / vh), dh = dw * vh / vw;
+      el.style.left = `${v.offsetLeft + (v.clientWidth - dw) / 2}px`;
+      el.style.width = `${dw}px`;
+      el.style.top = `${v.offsetTop + (v.clientHeight - dh) / 2 + dh * 0.15}px`;
+      el.style.fontSize = `${Math.max(12, dw * 0.068)}px`;
+      el.style.setProperty("--stroke", `${Math.max(2, dw * 0.009)}px`);
+    };
+    const draw = () => {
+      const t = v.currentTime, c = v._caps.find((x) => t >= x.a && t < x.b);
+      const html = c ? (c.h ? esc(c.x).replace(esc(c.h), `<b>${esc(c.h)}</b>`) : esc(c.x)) : "";
+      if (el._h !== html) { el.innerHTML = html; el._h = html; }
+    };
+    if (!v._capsBound) {
+      v._capsBound = true;
+      const loop = () => { draw(); if (!v.paused) requestAnimationFrame(loop); };
+      v.addEventListener("play", () => { place(); loop(); });
+      v.addEventListener("seeked", draw);
+      v.addEventListener("timeupdate", draw);
+      v.addEventListener("loadedmetadata", () => { place(); draw(); });
+      addEventListener("resize", place);
+    }
+    place(); draw();
+  }
+  window.PNcaps = caps;
+
   function attach(v) {
+    if (v.dataset.caps) { try { caps(v, JSON.parse(v.dataset.caps)); } catch (e) {} }
     toolbar(v);
     v.addEventListener("play", () => makeSeekable(v));
     v.addEventListener("seeking", () => makeSeekable(v));

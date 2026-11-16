@@ -155,6 +155,8 @@
   function openVideo(l) {
     const box = $("mmVideo"), v = box.querySelector("video");
     v.poster = l.po || ""; v.src = l.v; box.hidden = false;
+    box.classList.toggle("vert", !!l.vv);
+    if (window.PNcaps) window.PNcaps(v, l.vc || []);
     v.play().catch(() => {});
   }
   function closeVideo() { const box = $("mmVideo"), v = box.querySelector("video"); if (!box.hidden) { v.pause(); v.removeAttribute("src"); v.load(); box.hidden = true; } }
