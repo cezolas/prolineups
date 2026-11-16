@@ -93,11 +93,10 @@
     body.scrollTop = 0;
   }
 
-  const diffDots = (d) => `<span class="mm-diff d${d}" title="${esc(S.diff[d] || "")}">${"●".repeat(d)}${"○".repeat(3 - d)}</span>`;
   const row = (l, i) => `<li><button type="button" data-id="${l.id}">
       <span class="mm-num" style="--c:${COL[l.ty]}">${i + 1}</span>
       <span class="mm-row-main"><b>${esc(l.n)}</b><span class="muted small">${esc(l.fr)}${l.te ? " · " + esc(l.te) : ""}</span></span>
-      ${l.at != null ? `<span class="mm-at">${l.at > 0 ? "+" : ""}${String(l.at).replace(".", root.dataset.lang === "pt" ? "," : ".")}s</span>` : diffDots(l.d)}
+      ${l.at != null ? `<span class="mm-at">${l.at > 0 ? "+" : ""}${String(l.at).replace(".", root.dataset.lang === "pt" ? "," : ".")}s</span>` : ""}
     </button></li>`;
 
   function execList() {
@@ -126,7 +125,7 @@
         <div><dt>${esc(S.to)}</dt><dd>${esc(l.to || "?")}</dd></div>
         <div class="wide"><dt>${esc(S.tech)}</dt><dd>${esc(l.te || "?")}</dd></div>
       </dl>
-      <p class="muted small">${diffDots(l.d)} ${esc(S.diff[l.d] || "")} · ${esc(S.used.replace("{n}", l.c))}</p>
+      <p class="muted small">${esc(S.used.replace("{n}", l.c))}</p>
       <div class="mm-actions">
         ${l.v ? `<button type="button" class="btn mm-play" data-video>${esc(S.video)}</button>` : ""}
         ${l.cmd ? `<button type="button" class="btn" data-copycmd>${esc(S.copy)}</button>` : ""}

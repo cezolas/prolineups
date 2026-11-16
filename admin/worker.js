@@ -20,7 +20,7 @@
 //   GET/POST /api/meta          -> Meta Grenades adjustments { pin: [{k, title}], hide: [{k, title}] } (KV "meta");
 //        POST { k, title, list: "pin"|"hide"|null } puts a grenade in one list (null = back to automatic). Applied on the next export.
 //   GET  /api/social            -> social media candidates (the site's /dados/social.json) + curation decisions (KV "social")
-//   POST /api/social            -> { k, status: "aprovado"|"pulado"|"publicado"|null, caption?, nets?, links? }
+//   POST /api/social            -> { k, status: "aprovado"|"pulado"|"publicado"|null, title?, caption?, nets?, links? }
 //        pipeline/social.py renders the approved ones (1080x1920 video with captions + post text) on the studio PC.
 //   POST /api/resolve           -> { url } -> the like/report key of a public page (read from the page itself)
 //   POST /api/remove            -> { k, title, restore? }  remove a grenade/tactic from the site (or put it back).
@@ -327,7 +327,8 @@ export default {
         const links = { ...(old.links || {}) };
         for (const n of ["yt", "ig", "tt"]) if (b.links && typeof b.links[n] === "string") links[n] = b.links[n].trim().slice(0, 300);
         data.items[b.k] = { ...old, status: b.status, nets, links, by: identity.email, at: new Date().toISOString(),
-                            caption: typeof b.caption === "string" ? b.caption.slice(0, 2200) : (old.caption || "") };
+                            caption: typeof b.caption === "string" ? b.caption.slice(0, 2200) : (old.caption || ""),
+                            title: typeof b.title === "string" ? b.title.trim().slice(0, 100) : (old.title || "") };
       }
       data.at = new Date().toISOString();
       await env.ADMIN.put("social", JSON.stringify(data));

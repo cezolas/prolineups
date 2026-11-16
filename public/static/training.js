@@ -35,7 +35,7 @@
   function plan() {
     const m = D.maps.find(x => x.slug === $("[data-p=map]").value), side = $("[data-p=side]").value, per = +$("[data-p=per]").value;
     const pool = m.lineups.filter(l => !side || l.side === side).sort((a, b) => b.count - a.count).slice(0, per * 6)
-      .sort((a, b) => a.diff - b.diff || b.count - a.count);
+      .sort((a, b) => b.count - a.count);
     const days = [];
     for (let i = 0; i < 6; i++) days.push(pool.slice(i * per, (i + 1) * per));
     // review day: the hardest one of each previous day
@@ -50,7 +50,7 @@
         <button class="btn small" data-cfg="${i}" type="button">⬇ ${esc(S.cfg)}</button></h3>
         <ul>${d.map(l => `<li><label><input type="checkbox" data-done="${i}:${l.id}"${done[`${i}:${l.id}`] ? " checked" : ""}>
           <a href="${l.url}">${esc(l.name)}</a></label>
-          <span class="badge diff-${l.diff}">${esc(S.diff[l.diff])}</span><span class="badge side-${l.side}">${esc(S.side[l.side])}</span>
+          <span class="badge side-${l.side}">${esc(S.side[l.side])}</span>
           <span class="muted small">${esc(l.tech || "")}</span></li>`).join("")}</ul></section>`).join("");
     progress();
   }

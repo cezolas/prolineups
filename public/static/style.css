@@ -983,3 +983,12 @@ body:not(.is-premium) .pr-sec .pr-body { opacity: .35; filter: blur(2px); pointe
 .acc-prov.g { background: #fff; color: #4285f4; border: 1px solid #dadce0; }
 .acc-prov.f { background: #ff5500; color: #fff; }
 .acc-ok { color: var(--good, #4caf50); font-weight: 700; }
+.side-collapse { display: block; width: calc(100% - 16px); margin: 14px 8px 18px; padding: 8px 10px; text-align: left; font: inherit; font-size: 13px;
+  color: var(--muted); background: transparent; border: 1px solid var(--line); border-radius: 8px; cursor: pointer; }
+.side-collapse:hover { color: var(--text); border-color: var(--muted); }
+
+/* roles page: legend chips filter by role */
+.ro-legend button.chip { font: inherit; cursor: pointer; background: var(--panel); color: var(--text); }
+.ro-legend button.chip.on { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
+.ro-team-rep { display: none; }
+.ro-filtered .ro-team-rep { display: inline; }

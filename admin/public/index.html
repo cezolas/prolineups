@@ -74,7 +74,8 @@
 .so-card img { width: 96px; height: 170px; object-fit: cover; border-radius: 6px; background: #000; }
 .so-body { flex: 1; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
 .so-nets { display: flex; gap: 10px; font-size: 13px; }
-.so-body textarea { width: 100%; font: inherit; font-size: 13px; }
+.so-body textarea, .so-body input[data-title] { width: 100%; font: inherit; font-size: 13px; }
+.so-body input[data-title] { font-weight: 700; }
 .so-links { display: flex; gap: 6px; } .so-links input { flex: 1; min-width: 0; font-size: 12px; }
 .so-act { display: flex; gap: 6px; flex-wrap: wrap; }
 </style>
@@ -463,10 +464,11 @@ function renderSocial() {
     return `<div class="so-card" data-k="${esc(x.k)}">
       <a href="https://pronades.com.br/media/${esc(x.clip)}" target="_blank" rel="noopener" title="Ver o vídeo">${x.poster ? `<img src="https://pronades.com.br/media/${esc(x.poster)}" alt="" loading="lazy">` : ""}</a>
       <div class="so-body">
-        <b><a href="https://pronades.com.br${esc(x.url)}" target="_blank" rel="noopener" style="color:inherit">${esc(x.title)}</a></b>
+        <b><a href="https://pronades.com.br${esc(x.url)}" target="_blank" rel="noopener" style="color:inherit">${esc(x.title)}</a>${dd.title ? ` <span class="muted" style="font-weight:400">→ post: ${esc(dd.title)}</span>` : ""}</b>
         <div class="muted" style="font-size:12px">${esc(x.map)} · ${esc(x.type)} · ${esc(x.side)} · ${x.uses} usos · ${x.teams} times${x.meta ? ` · <b style="color:#f5c64a">Meta #${x.meta}</b>` : ""}${x.player ? ` · vídeo do ${esc(x.player)}` : ""}</div>
         ${dd.status ? `<div style="font-size:12px;margin-top:2px"><span class="pill${dd.status === "publicado" ? " ok" : ""}">${SO_ST[dd.status]}</span> <span class="muted">${esc(dd.by || "")}</span></div>` : ""}
         <div class="so-nets">${Object.entries(NETS).map(([n, l]) => `<label><input type="checkbox" data-net="${n}"${nets.includes(n) ? " checked" : ""}> ${l}</label>`).join("")}</div>
+        <input data-title maxlength="100" value="${esc(dd.title || x.title)}" placeholder="Nome da postagem" aria-label="Nome da postagem" title="Nome da postagem (título do vídeo e do post)">
         <textarea data-cap rows="2" placeholder="Texto do post (opcional: vazio = texto padrão com o link; use {url} para o link)">${esc(dd.caption || "")}</textarea>
         ${dd.status === "aprovado" || dd.status === "publicado" ? `<div class="so-links">${Object.entries(NETS).map(([n, l]) => `<input data-link="${n}" placeholder="link ${l}" value="${esc((dd.links || {})[n] || "")}">`).join("")}</div>` : ""}
         <div class="so-act">
@@ -482,7 +484,9 @@ $("soReload").addEventListener("click", loadSocial);
 $("soList").addEventListener("click", async e => {
   const b = e.target.closest("button[data-so]"); if (!b) return;
   const card = b.closest(".so-card"), k = card.dataset.k;
+  const t = card.querySelector("[data-title]").value.trim(), x = SO.items.find(i => i.k === k);
   const body = { k, status: b.dataset.so || null, caption: card.querySelector("[data-cap]").value,
+                 title: x && t === x.title ? "" : t,  // empty = the site's name
                  nets: [...card.querySelectorAll("[data-net]:checked")].map(x => x.dataset.net), links: {} };
   card.querySelectorAll("[data-link]").forEach(i => { body.links[i.dataset.link] = i.value; });
   b.disabled = true;

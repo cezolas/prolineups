@@ -46,8 +46,8 @@
   // ---------------------------------------------------------------- map filters
   const filters = $("#filters");
   if (filters) {
-    const state = { type: "", side: "", area: "", teams: "", players: "", map: "", diff: "", sort: "" };
-    const names = { type: "tipo", side: "lado", area: "onde", teams: "time", players: "jogador", map: "mapa", diff: "dificuldade", sort: "ordem" };
+    const state = { type: "", side: "", area: "", teams: "", players: "", map: "", sort: "" };
+    const names = { type: "tipo", side: "lado", area: "onde", teams: "time", players: "jogador", map: "mapa", sort: "ordem" };
     const params = new URLSearchParams(location.search);
     for (const k of Object.keys(state)) state[k] = params.get(names[k]) || "";
     const cards = $$("#cards .card"), box = $("#cards");
@@ -81,7 +81,6 @@
     const original = cards.slice();
     const SORT = {
       eff: (a, b) => (+b.dataset.eff) - (+a.dataset.eff) || (+b.dataset.count) - (+a.dataset.count),
-      easy: (a, b) => (+a.dataset.diff) - (+b.dataset.diff) || (+b.dataset.count) - (+a.dataset.count),
     };
     function apply() {
       let shown = 0;
@@ -90,7 +89,6 @@
           (!state.area || c.dataset.area === state.area) && (!state.map || c.dataset.map === state.map) &&
           (!state.teams || c.dataset.teams.split(" ").includes(state.teams)) &&
           (!state.players || c.dataset.players.split(" ").includes(state.players)) &&
-          (!state.diff || c.dataset.diff === state.diff) &&
           (!ovOff.has(c.dataset.type) && !ovOff.has(c.dataset.side));
         c.hidden = !ok; if (ok) shown++;
         const g = ovItems.get(c.dataset.id); if (g) g.classList.toggle("off", !ok);
@@ -116,7 +114,7 @@
       }
       const c = e.target.closest("[data-quick]"); if (!c) return;
       const [ty, area] = c.dataset.quick.split("|");
-      Object.assign(state, { type: ty, area, side: "", teams: "", players: "", diff: "", sort: "easy" });
+      Object.assign(state, { type: ty, area, side: "", teams: "", players: "", sort: "" });
       $$("[data-quick]", quick).forEach(x => x.classList.toggle("on", x === c));
       apply();
       filters.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -143,6 +141,8 @@
       menu(!side.classList.contains("open"));
     });
     if (desktop()) menuBtn.setAttribute("aria-expanded", String(!document.documentElement.classList.contains("side-off")));
+    // "Recolher menu" at the bottom of the sidebar: same as the ☰ button (desktop: hide the sidebar; phone: close the drawer)
+    $("#sideCollapse")?.addEventListener("click", () => { if (desktop()) menuBtn.click(); else menu(false); });
     scrim.addEventListener("click", () => menu(false));
     document.addEventListener("keydown", e => { if (e.key === "Escape") menu(false); });
     side.querySelector("[aria-current]")?.scrollIntoView({ block: "center" });
