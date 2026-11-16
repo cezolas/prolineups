@@ -28,7 +28,7 @@
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
   if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg?v=714ec3503f" type="image/svg+xml">
-<link rel="stylesheet" href="/static/style.css?v=40e478eff1">
+<link rel="stylesheet" href="/static/style.css?v=66f82b3eb9">
 <script>window.I18N = {"copied": "Copied!", "dec": ".", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "open": "Open", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "report_fail": "Couldn\u0027t send it right now, try again later.", "report_limit": "You\u0027ve already sent several reports today.", "report_thanks": "Thanks! We\u0027ll take a look.", "throws_in": "throws in {s}s", "v_back": "Back 2 seconds", "v_frame_back": "Previous frame", "v_frame_fwd": "Next frame", "v_fwd": "Forward 2 seconds", "v_play": "Play / pause"}; window.LANG = "en";</script>
 </head>
 <body class="">
@@ -44,7 +44,18 @@
     <nav class="langs" aria-label="Language">
 <a href="/pt/conta/" hreflang="pt" lang="pt" title="Português" aria-label="Português"><img class="lang-flag" src="/static/flags/br.svg?v=17969b5ac0" alt="Português" width="24" height="18"></a><a href="/en/account/" hreflang="en" lang="en" aria-current="true" title="English" aria-label="English"><img class="lang-flag" src="/static/flags/gb.svg?v=161ee20a0a" alt="English" width="24" height="18"></a>    </nav>
     <a class="login-btn" id="loginBtn" href="/en/account/" data-account="account" hidden>Sign in</a>
-    <a class="me-btn" id="meBtn" href="/en/account/" hidden aria-label="My account"><img alt="" width="28" height="28" referrerpolicy="no-referrer" hidden><span>Account</span></a>
+    <div class="me-wrap">
+      <a class="me-btn" id="meBtn" href="/en/account/" hidden aria-label="My account" aria-haspopup="menu" aria-expanded="false" aria-controls="meMenu"><img alt="" width="28" height="28" referrerpolicy="no-referrer" hidden><span>Account</span><span class="me-caret" aria-hidden="true">▾</span></a>
+      <div class="me-menu" id="meMenu" role="menu" hidden>
+        <div class="me-head"><b id="meName"></b><span class="muted small" id="meMail"></span><span class="me-plan" id="mePlan" data-free="Free plan" data-premium="♛ Premium"></span></div>
+        <a role="menuitem" href="/en/account/">👤 My account</a>
+        <a role="menuitem" href="/en/my-faceit/">◉ My FACEIT</a>
+        <a role="menuitem" href="/en/my-list/">★ My list</a>
+        <a role="menuitem" href="/en/premium/">♛ Premium Area</a>
+        <div class="me-sep"></div>
+        <a role="menuitem" class="me-out" href="/auth/logout?lang=en">⎋ Sign out</a>
+      </div>
+    </div>
     <button class="theme-btn" id="themeBtn" type="button" aria-label="Toggle light/dark mode" title="Toggle light/dark mode"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.6"/><g stroke-width="2.2" stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></g></svg></button>
   </div>
 </header>
@@ -52,7 +63,6 @@
   <aside class="side" id="side" aria-label="Navigation">
     <nav>
       <a href="/en/"><span class="nl">Home</span></a>
-      <a class="nav-premium" href="/en/premium/"><span>♛ Premium Area</span></a>
       <a href="/en/match-mode/"><span>📱 Match mode</span></a>
       <a href="/en/my-faceit/"><span>◉ My FACEIT</span></a>
       <a href="/en/roles/"><span>👥 Roles</span></a>
@@ -66,10 +76,17 @@
 <a href="/en/tournament/blast-rivals-2026-season-2/"><span class="nl">BLAST Rivals 2026 Season 2</span></a>      </details>
       <details class="nav-g" data-k="players">
         <summary class="nav-h"><a href="/en/players/">Players</a></summary>
-<a href="/en/player/apex/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/fr.svg" alt="France" title="France" width="16" height="12"></span>apEX <span class="role role-support sm">Support</span></span></a><a href="/en/player/art/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"></span>art <span class="role role-support sm">Support</span></span></a><a href="/en/player/coolio/"><span class="nl"><span class="nav-flag"></span>coolio <span class="role role-entry sm">Entry</span></span></a><a href="/en/player/dem0n/"><span class="nl"><span class="nav-flag"></span>dem0n <span class="role role-rifler sm">Rifler</span></span></a><a href="/en/player/donk/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12"></span>donk <span class="role role-rifler sm">Rifler</span></span></a><a href="/en/player/dumau/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"></span>dumau <span class="role role-entry sm">Entry</span></span></a><a href="/en/player/dziugss/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/lt.svg" alt="Lithuania" title="Lithuania" width="16" height="12"></span>dziugss <span class="role role-lurker sm">Lurker</span></span></a><a href="/en/player/fallen/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"></span>FalleN <span class="role role-support sm">Support</span></span></a><a href="/en/player/flamez/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12"></span>flameZ <span class="role role-entry sm">Entry</span></span></a><a href="/en/player/heavygod/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12"></span>HeavyGod <span class="role role-entry sm">Entry</span></span></a><a href="/en/player/hunter/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/ba.svg" alt="Bosnia" title="Bosnia" width="16" height="12"></span>huNter <span class="role role-support sm">Support</span></span></a><a href="/en/player/karrigan/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/dk.svg" alt="Denmark" title="Denmark" width="16" height="12"></span>karrigan <span class="role role-support sm">Support</span></span></a><a class="more" href="/en/players/">see all (40)</a>      </details>
+<a href="/en/player/apex/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/fr.svg" alt="France" title="France" width="16" height="12"></span>apEX <span class="role role-support sm">Support</span></span></a><a href="/en/player/art/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"></span>art <span class="role role-support sm">Support</span></span></a><a href="/en/player/coolio/"><span class="nl"><span class="nav-flag"></span>coolio <span class="role role-lurker sm">Lurker</span></span></a><a href="/en/player/dem0n/"><span class="nl"><span class="nav-flag"></span>dem0n <span class="role role-rifler sm">Rifler</span></span></a><a href="/en/player/donk/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12"></span>donk <span class="role role-rifler sm">Rifler</span></span></a><a href="/en/player/dumau/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"></span>dumau <span class="role role-entry sm">Entry</span></span></a><a href="/en/player/dziugss/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/lt.svg" alt="Lithuania" title="Lithuania" width="16" height="12"></span>dziugss <span class="role role-entry sm">Entry</span></span></a><a href="/en/player/fallen/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"></span>FalleN <span class="role role-support sm">Support</span></span></a><a href="/en/player/flamez/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12"></span>flameZ <span class="role role-entry sm">Entry</span></span></a><a href="/en/player/heavygod/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12"></span>HeavyGod <span class="role role-entry sm">Entry</span></span></a><a href="/en/player/hunter/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/ba.svg" alt="Bosnia" title="Bosnia" width="16" height="12"></span>huNter <span class="role role-support sm">Support</span></span></a><a href="/en/player/karrigan/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/dk.svg" alt="Denmark" title="Denmark" width="16" height="12"></span>karrigan <span class="role role-support sm">Support</span></span></a><a class="more" href="/en/players/">see all (40)</a>      </details>
       <details class="nav-g" data-k="teams">
         <summary class="nav-h"><a href="/en/teams/">Teams</a></summary>
 <a href="/en/team/falcons/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12"></span>Falcons</span></a><a href="/en/team/furia/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"></span>FURIA</span></a><a href="/en/team/fut/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/tr.svg" alt="Turkey" title="Turkey" width="16" height="12"></span>FUT</span></a><a href="/en/team/g2/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12"></span>G2</span></a><a href="/en/team/legacy/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"></span>Legacy</span></a><a href="/en/team/mouz/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12"></span>MOUZ</span></a><a href="/en/team/spirit/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12"></span>Spirit</span></a><a href="/en/team/vitality/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/fr.svg" alt="France" title="France" width="16" height="12"></span>Vitality</span></a>      </details>
+      <details class="nav-g nav-premium" data-k="premium">
+        <summary class="nav-h"><a href="/en/premium/">♛ Premium Area</a></summary>
+        <a href="/en/compare-my-demo/"><span class="nl"><span class="nav-flag">⇄</span>Compare my demo</span></a>
+        <a href="/en/training-plan/"><span class="nl"><span class="nav-flag">🎯</span>Training plan</span></a>
+        <a href="/en/tactics/"><span class="nl"><span class="nav-flag">♟</span>Tactics</span></a>
+        <a href="/en/meta-grenades/"><span class="nl"><span class="nav-flag">🔥</span>Meta Grenades</span></a>
+      </details>
       <div class="nav-sep"></div>
       <a href="/en/about/"><span class="nl">About</span></a>
       <a href="/en/privacy/"><span class="nl">Privacy</span></a>
@@ -93,19 +110,29 @@
 <a class="back-btn" id="backBtn" href="/en/">← Back</a><nav class="crumbs"><a href="/en/">Home</a> › My account</nav>
 <h1>My account</h1>
 <div id="acc">
+  <div class="warn-box" id="accErr" role="alert" hidden></div>
   <section class="acc-out" id="accOut" hidden>
-    <p>Sign in with your Google account to keep your favourite grenades and training-plan progress, on any device.</p>
-    <div class="acc-btns">
-      <a class="btn google-btn" id="accLogin" href="/auth/google?next=/en/account/">Sign in with Google</a>
-      <a class="btn faceit-btn" href="/auth/faceit?next=/en/my-faceit/">Sign in with FACEIT</a>
+    <div class="login-card">
+      <h2>Sign in to Pronades</h2>
+      <p class="muted">Use the account you prefer: Google or FACEIT. You don&#39;t need both.</p>
+      <div class="login-opts">
+        <a class="btn google-btn login-opt" data-auth="google" href="/auth/google?next=/en/account/"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="#4285F4" d="M22.6 12.3c0-.8-.1-1.5-.2-2.3H12v4.3h6a5.1 5.1 0 0 1-2.2 3.4v2.8h3.6c2.1-2 3.2-4.9 3.2-8.2z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.3-2.7l-3.6-2.8c-1 .7-2.2 1.1-3.7 1.1-2.9 0-5.3-1.9-6.2-4.5H2.1v2.9A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.8 14.1a6.6 6.6 0 0 1 0-4.2V7H2.1a11 11 0 0 0 0 10l3.7-2.9z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3.1.6 4.2 1.7l3.2-3.2A11 11 0 0 0 2.1 7l3.7 2.9C6.7 7.3 9.1 5.4 12 5.4z"/></svg> Sign in with Google</a>
+        <a class="btn faceit-btn login-opt" data-auth="faceit" href="/auth/faceit?next=/en/account/"><span class="fc-mark" aria-hidden="true">▶</span> Sign in with FACEIT</a>
+      </div>
+      <p class="muted small">Later, in My account, you can link the other one and sign in with either.</p>
+      <p class="muted small">We only store your name, e-mail, Google photo and what you save here. <a href="/en/privacy/">Privacy policy</a></p>
     </div>
-    <p class="muted small">We only store your name, e-mail, Google photo and what you save here. <a href="/en/privacy/">Privacy policy</a></p>
   </section>
   <section class="acc-in" id="accIn" hidden>
     <div class="acc-card"><img id="accPic" alt="" width="56" height="56" referrerpolicy="no-referrer" hidden>
       <div><b id="accName"></b><div class="muted small" id="accEmail"></div><div class="muted small" id="accSince"></div></div></div>
     <p>Your grenade list and training-plan progress are saved in your account and sync between devices.</p>
-    <p class="acc-faceit" id="accFaceit"></p>
+    <h2 class="acc-h">Linked accounts</h2>
+    <p class="muted small">Sign in with any of your linked accounts.</p>
+    <ul class="acc-links">
+      <li id="accGoogle"></li>
+      <li id="accFaceit"></li>
+    </ul>
     <ul class="acc-list"><li>★ <a href="/en/my-list/">My list</a></li><li>🎯 <a href="/en/training-plan/">Training plan</a></li></ul>
     <p><a class="btn" href="/auth/logout?lang=en">Sign out</a>
        <button class="btn danger" id="accDelete" type="button">Delete my account</button></p>
@@ -130,23 +157,32 @@
   </div>
 </footer>
 <script src="/static/app.js?v=79dff6c310" defer></script>
-<script src="/static/accounts.js?v=5b0e67dad2" defer></script>
+<script src="/static/accounts.js?v=5dc65a892c" defer></script>
 <script src="/static/video.js?v=52b42fe5aa" defer></script>
 <script src="/static/react.js?v=ba1c25c1ad" defer></script>
 <script>
+(function () { // linking an account that belongs to someone else
+  var err = new URLSearchParams(location.search).get("link_error"), box = document.getElementById("accErr");
+  var msg = { google: "This Google account is already linked to another Pronades account. Sign in with it or use another Google account.", faceit: "This FACEIT is already linked to another Pronades account. Sign in with it or use another FACEIT." }[err];
+  if (msg) { box.textContent = msg; box.hidden = false; }
+})();
 document.addEventListener("pn:me", function (e) {
   var u = e.detail, $ = function (id) { return document.getElementById(id); };
   if (u) {
     $("accIn").hidden = false; $("accName").textContent = u.name || ""; $("accEmail").textContent = u.email || "";
     if (u.created) $("accSince").textContent = "Account created on {d}".replace("{d}", new Date(u.created).toLocaleDateString("en"));
     if (u.picture) { $("accPic").src = u.picture; $("accPic").hidden = false; }
+    var esc = function (x) { return String(x || "").replace(/[<>&"]/g, ""); };
+    $("accGoogle").innerHTML = u.google
+      ? '<span class="acc-prov g">G</span> ' + "Google connected: {n}".replace("{n}", "<b>" + esc(u.google.email) + "</b>") + ' <span class="acc-ok">✓</span>'
+      : '<span class="acc-prov g">G</span> <a class="btn small google-btn" href="/auth/google?next=/en/account/">Link my Google account</a>';
     $("accFaceit").innerHTML = u.faceit
-      ? "FACEIT connected: {n}".replace("{n}", "<b>" + String(u.faceit.nickname || "").replace(/[<>&]/g, "") + "</b>") + ' · <a href="/en/my-faceit/">My FACEIT →</a>'
-      : '<a class="btn faceit-btn" href="/auth/faceit?next=/en/my-faceit/">Connect my FACEIT</a>';
+      ? '<span class="acc-prov f">F</span> ' + "FACEIT connected: {n}".replace("{n}", "<b>" + esc(u.faceit.nickname) + "</b>") + ' <span class="acc-ok">✓</span> · <a href="/en/my-faceit/">My FACEIT →</a>'
+      : '<span class="acc-prov f">F</span> <a class="btn small faceit-btn" href="/auth/faceit?next=/en/account/">Link my FACEIT</a>';
   } else if (document.getElementById("loginBtn") && !document.getElementById("loginBtn").hidden) {
     $("accOut").hidden = false;
     var nx = new URLSearchParams(location.search).get("next");
-    if (nx && /^\/[a-z]{2}\//.test(nx)) $("accLogin").href = "/auth/google?next=" + encodeURIComponent(nx);
+    if (nx && /^\/[a-z]{2}\//.test(nx)) document.querySelectorAll("[data-auth]").forEach(function (a) { a.href = "/auth/" + a.dataset.auth + "?next=" + encodeURIComponent(nx); });
   }
   else { $("accOff").hidden = false; }
 });

@@ -64,6 +64,13 @@ async function readSession(env, req) {
 const safeNext = (n) => (typeof n === "string" && /^\/[a-z]{2}\/[^\s]*$/.test(n) && !n.startsWith("//") ? n : "/");
 const configured = (env) => !!(env.GOOGLE_CLIENT_ID && env.GOOGLE_CLIENT_SECRET && env.SESSION_SECRET && env.USERS);
 
+// linking an account that already belongs to another Pronades account: back to the page with ?link_error=<provider>
+function linkError(next, provider) {
+  const to = safeNext(next);
+  return new Response(null, { status: 302, headers: { location: `${to}${to.includes("?") ? "&" : "?"}link_error=${provider}`,
+                                                      "cache-control": "no-store" } });
+}
+
 async function authStart(req, env, url) {
   if (!configured(env)) return new Response("Login ainda não configurado.", { status: 503 });
   const state = b64url(crypto.getRandomValues(new Uint8Array(24)));
@@ -92,16 +99,25 @@ async function authCallback(req, env, url) {
   const okIss = claims.iss === "https://accounts.google.com" || claims.iss === "accounts.google.com";
   if (!okIss || claims.aud !== env.GOOGLE_CLIENT_ID || !claims.sub || claims.exp < Date.now() / 1000)
     return new Response("Login inválido.", { status: 400 });
-  const key = `user:${claims.sub}`, now = new Date().toISOString();
+  // Which account does this Google login belong to? KV "google:<sub>" -> account (set when Google was linked to a
+  // FACEIT-first account); older accounts are keyed by the Google sub itself.
+  const gsub = claims.sub, now = new Date().toISOString();
+  const owner = (await env.USERS.get(`google:${gsub}`)) || ((await env.USERS.get(`user:${gsub}`)) ? gsub : null);
+  const current = await readSession(env, req);
+  if (current && owner && owner !== current) return linkError(next, "google");  // that Google account is someone else's
+  const sub = current || owner || gsub, linking = !!current && !owner;
+  const key = `user:${sub}`;
   const old = await env.USERS.get(key, "json");
+  const google = { sub: gsub, email: claims.email || null, name: claims.name || null, picture: claims.picture || null };
   await env.USERS.put(key, JSON.stringify({
     ...(old || {}),  // keep what other sign-ins stored (FACEIT link…)
-    sub: claims.sub, email: claims.email || null, name: claims.name || null, picture: claims.picture || null,
-    created: old?.created || now, last_login: now,
+    sub, google, email: claims.email || old?.email || null, name: old?.name || claims.name || null,
+    picture: claims.picture || old?.picture || null, created: old?.created || now, last_login: now,
   }));
-  await logEvent(env, req, claims.sub, "login", null, "google");
+  if (sub !== gsub) await env.USERS.put(`google:${gsub}`, sub);
+  await logEvent(env, req, sub, linking ? "google_link" : "login", null, "google");
   const h = new Headers({ location: safeNext(next) });
-  h.append("set-cookie", setCookie(COOKIE, await makeSession(env, claims.sub), SESSION_DAYS * DAY));
+  h.append("set-cookie", setCookie(COOKIE, await makeSession(env, sub), SESSION_DAYS * DAY));
   h.append("set-cookie", setCookie(STATE, "", 0));
   return new Response(null, { status: 302, headers: h });
 }
@@ -145,9 +161,9 @@ async function faceitCallback(req, env, url) {
   let sub = await readSession(env, req);
   const signedIn = !!sub;
   const now = new Date().toISOString();
-  if (!sub) {
-    sub = (await env.USERS.get(`faceit:${fid}`)) || `faceit:${fid}`;
-  }
+  const owner = (await env.USERS.get(`faceit:${fid}`)) || ((await env.USERS.get(`user:faceit:${fid}`)) ? `faceit:${fid}` : null);
+  if (signedIn && owner && owner !== sub) return linkError(next, "faceit");  // that FACEIT account is someone else's
+  if (!sub) sub = owner || `faceit:${fid}`;
   const key = `user:${sub}`;
   const old = (await env.USERS.get(key, "json")) || { sub, created: now, name: me.nickname || null, email: me.email || null, picture: me.picture || null };
   old.faceit = faceit; old.last_login = now;
@@ -197,7 +213,7 @@ async function faceitData(env, fid) {
 }
 
 // ---------------------------------------------------------------- activity log (D1, signed-in users only)
-const LOG_KINDS = new Set(["page", "video", "copy", "download", "demo", "login", "faceit_link", "matchmode", "share", "fav"]);
+const LOG_KINDS = new Set(["page", "video", "copy", "download", "demo", "login", "faceit_link", "google_link", "matchmode", "share", "fav"]);
 function device(req) {
   const ua = req.headers.get("user-agent") || "";
   return /iPad|Tablet/i.test(ua) ? "tablet" : /Mobi|Android|iPhone/i.test(ua) ? "mobile" : "desktop";
@@ -283,6 +299,7 @@ async function api(req, env, url) {
     if (req.method === "DELETE") {  // LGPD: delete the account and everything stored for it
       const u = await env.USERS.get(`user:${sub}`, "json");
       const extra = u && u.faceit ? [env.USERS.delete(`faceit:${u.faceit.id}`), env.USERS.delete(`fcache:${u.faceit.id}`)] : [];
+      if (u && u.google && u.google.sub) extra.push(env.USERS.delete(`google:${u.google.sub}`));
       if (env.DB) await env.DB.prepare("DELETE FROM events WHERE sub = ?").bind(sub).run().catch(() => {});
       await Promise.all([env.USERS.delete(`user:${sub}`), env.USERS.delete(`premium:${sub}`), ...extra, ...[...DATA_KEYS].map((k) => env.USERS.delete(`data:${sub}:${k}`))]);
       return json({ deleted: true }, 200, { "set-cookie": setCookie(COOKIE, "", 0) });
@@ -291,6 +308,7 @@ async function api(req, env, url) {
     if (!u) return json({ error: "not signed in" }, 401, { "set-cookie": setCookie(COOKIE, "", 0) });
     return json({ user: { name: u.name, email: u.email, picture: u.picture, created: u.created,
                           faceit: u.faceit ? { nickname: u.faceit.nickname, picture: u.faceit.picture } : null,
+                          google: u.google ? { email: u.google.email } : (String(sub).startsWith("faceit:") ? null : { email: u.email }),
                           premium: await isPremium(env, sub) },
                   faceit_login: faceitReady(env) });
   }

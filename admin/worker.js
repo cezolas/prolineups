@@ -197,7 +197,7 @@ export default {
         const faceitOnly = String(u.sub || "").startsWith("faceit:");
         return {
           sub: u.sub, name: u.name, email: u.email, picture: u.picture, created: u.created, last_login: u.last_login,
-          type: faceitOnly ? "faceit" : (u.faceit ? "google+faceit" : "google"),
+          type: faceitOnly ? (u.google ? "google+faceit" : "faceit") : (u.faceit ? "google+faceit" : "google"),
           faceit: u.faceit ? u.faceit.nickname : null, plan: premium.has(u.sub) ? "premium" : "free", premium_source: premium.get(u.sub) || null,
           stats: stats[u.sub] || null,
         };

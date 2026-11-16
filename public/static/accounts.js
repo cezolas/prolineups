@@ -77,6 +77,21 @@
   document.addEventListener("pn:me", () => { meKnown = true; if (PN.me) flush(); else queue = []; });
   addEventListener("pagehide", flush);
 
+  // account button -> dropdown (my account, FACEIT, my list, Premium Area, sign out); without JS it stays a link
+  function accountMenu(u) {
+    const menu = document.getElementById("meMenu");
+    if (!menu || !meBtn) return;
+    const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v || ""; };
+    set("meName", u.name || (u.faceit && u.faceit.nickname) || "");
+    set("meMail", u.email || "");
+    const plan = document.getElementById("mePlan");
+    if (plan) { plan.textContent = u.premium ? plan.dataset.premium : plan.dataset.free; plan.classList.toggle("on", !!u.premium); }
+    const open = (v) => { menu.hidden = !v; meBtn.setAttribute("aria-expanded", v ? "true" : "false"); };
+    meBtn.addEventListener("click", (e) => { e.preventDefault(); open(menu.hidden); if (!menu.hidden) menu.querySelector("a")?.focus(); });
+    document.addEventListener("click", (e) => { if (!menu.hidden && !e.target.closest(".me-wrap")) open(false); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !menu.hidden) { open(false); meBtn.focus(); } });
+  }
+
   fetch("/api/me").then(async (r) => {
     const j = await r.json().catch(() => ({}));
     if (r.ok && j.user) {
@@ -86,6 +101,7 @@
         const img = meBtn.querySelector("img");
         if (j.user.picture && img) { img.src = j.user.picture; img.hidden = false; }
         meBtn.title = j.user.name || j.user.email || "";
+        accountMenu(j.user);
       }
       document.body.classList.toggle("is-premium", !!j.user.premium);
       document.dispatchEvent(new CustomEvent("pn:me", { detail: j.user }));
