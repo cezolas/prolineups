@@ -234,3 +234,45 @@
   box.querySelector("[data-mp-all]").addEventListener("click", () => { box.querySelectorAll("[data-mp]").forEach((c) => { c.checked = true; }); apply(); });
   apply();
 })();
+
+// ---------------------------------------------------------------- sortable tables
+// Click a column header to sort its table (biggest first; click again for the other way). Works for every table on
+// the site, including the ones scripts build later (analyses, FACEIT, matches). Comparison tables (you vs. pros) and
+// headers without text are left alone. Rows are sorted inside each <tbody>.
+(function () {
+  const SKIP = ".sig-table, .cm-table, .no-sort";
+  function key(td) {
+    if (!td) return null;
+    if (td.dataset.sort != null) { const n = parseFloat(td.dataset.sort); return isNaN(n) ? td.dataset.sort.toLowerCase() : n; }
+    const s = td.textContent.trim();
+    if (!s || /^[–—-]+%?$/.test(s)) return null;                              // "–", "—", "–%": no value, always last
+    let m = s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/);                         // dd/mm/yyyy
+    if (m) return +m[3] * 10000 + +m[2] * 100 + +m[1];
+    m = s.match(/^(\d{4})-(\d{2})-(\d{2})/);                                    // yyyy-mm-dd
+    if (m) return +m[1] * 10000 + +m[2] * 100 + +m[3];
+    m = s.match(/^([+\-–−]?)\s*(\d+(?:[.,]\d+)?)/);                            // 1,28 · 48% · 23–18–6 · +3 · –2
+    if (m) return (m[1] && m[1] !== "+" ? -1 : 1) * parseFloat(m[2].replace(",", "."));
+    m = s.match(/^[A-ZÀ-Ý]{3,}\s+(\d+(?:[.,]\d+)?)/);                         // "VITÓRIA 11 / 13" -> 11
+    if (m) return parseFloat(m[1].replace(",", "."));
+    return s.toLowerCase();
+  }
+  document.addEventListener("click", (e) => {
+    const th = e.target.closest("thead th");
+    if (!th || e.target.closest("a, button, input, select")) return;
+    const table = th.closest("table");
+    if (!table || table.matches(SKIP) || !th.textContent.trim()) return;
+    const col = [...th.parentElement.children].indexOf(th);
+    const desc = th.getAttribute("aria-sort") !== "descending";                // first click: biggest first
+    th.parentElement.querySelectorAll("th").forEach((h) => h.removeAttribute("aria-sort"));
+    th.setAttribute("aria-sort", desc ? "descending" : "ascending");
+    for (const tb of table.tBodies) {
+      const rows = [...tb.rows].filter((r) => r.cells.length > col);
+      rows.map((r, i) => ({ r, i, k: key(r.cells[col]) })).sort((a, b) => {
+        if (a.k === null || b.k === null) return a.k === b.k ? a.i - b.i : a.k === null ? 1 : -1;
+        const c = typeof a.k === "number" && typeof b.k === "number" ? a.k - b.k : String(a.k).localeCompare(String(b.k), undefined, { numeric: true });
+        return (desc ? -c : c) || a.i - b.i;
+      }).forEach((x) => tb.appendChild(x.r));
+    }
+    table.classList.add("is-sorted");
+  });
+})();

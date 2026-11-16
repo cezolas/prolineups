@@ -1028,3 +1028,11 @@ body:not(.is-premium) .pr-sec .pr-body { opacity: .35; filter: blur(2px); pointe
 .foot-social .soc-youtube:hover { color: #fff; background: #ff0033; border-color: #ff0033; }
 .foot-social .soc-instagram:hover { color: #fff; background: linear-gradient(45deg, #f9a825, #e1306c, #833ab4); border-color: #e1306c; }
 .foot-social .soc-tiktok:hover { color: #fff; background: #000; border-color: #25f4ee; box-shadow: 2px 2px 0 #fe2c55; }
+
+/* sortable tables: clickable headers with an arrow on the sorted column */
+table:not(.sig-table):not(.cm-table):not(.no-sort) thead th { cursor: pointer; user-select: none; }
+table:not(.sig-table):not(.cm-table):not(.no-sort) thead th:empty { cursor: default; }
+table:not(.sig-table):not(.cm-table):not(.no-sort) thead th:hover { color: var(--text); }
+thead th[aria-sort]::after { content: " ▼"; font-size: .8em; color: var(--accent); }
+thead th[aria-sort="ascending"]::after { content: " ▲"; }
+.is-sorted .ro-team-rep { display: inline; }
