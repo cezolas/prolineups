@@ -95,7 +95,7 @@
 
   const row = (l, i) => `<li><button type="button" data-id="${l.id}">
       <span class="mm-num" style="--c:${COL[l.ty]}">${i + 1}</span>
-      <span class="mm-row-main"><b>${esc(l.n)}</b><span class="muted small">${esc(l.fr)}${l.te ? " · " + esc(l.te) : ""}</span></span>
+      <span class="mm-row-main"><b>${esc(l.n)}</b><span class="muted small">${esc(l.fr)}${l.te ? " · " + esc(l.te) : ""}${l.mc && window.PNmouse ? " " + window.PNmouse(l.mc) : ""}</span></span>
       ${l.at != null ? `<span class="mm-at">${l.at > 0 ? "+" : ""}${String(l.at).replace(".", root.dataset.lang === "pt" ? "," : ".")}s</span>` : ""}
     </button></li>`;
 
@@ -123,7 +123,7 @@
       <dl class="mm-facts">
         <div><dt>${esc(S.from)}</dt><dd>${esc(l.fr || "?")}</dd></div>
         <div><dt>${esc(S.to)}</dt><dd>${esc(l.to || "?")}</dd></div>
-        <div class="wide"><dt>${esc(S.tech)}</dt><dd>${esc(l.te || "?")}</dd></div>
+        <div class="wide"><dt>${esc(S.tech)}</dt><dd>${esc(l.te || "?")} ${l.mc && window.PNmouse ? window.PNmouse(l.mc) : ""}</dd></div>
       </dl>
       <p class="muted small">${esc(S.used.replace("{n}", l.c))}</p>
       <div class="mm-actions">

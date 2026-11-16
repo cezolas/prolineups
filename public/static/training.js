@@ -51,7 +51,7 @@
         <ul>${d.map(l => `<li><label><input type="checkbox" data-done="${i}:${l.id}"${done[`${i}:${l.id}`] ? " checked" : ""}>
           <a href="${l.url}">${esc(l.name)}</a></label>
           <span class="badge side-${l.side}">${esc(S.side[l.side])}</span>
-          <span class="muted small">${esc(l.tech || "")}</span></li>`).join("")}</ul></section>`).join("");
+          <span class="muted small">${esc(l.tech || "")} ${l.click && window.PNmouse ? window.PNmouse(l.click) : ""}</span></li>`).join("")}</ul></section>`).join("");
     progress();
   }
   function progress() {

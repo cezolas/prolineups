@@ -52,6 +52,17 @@
   // Captions of the style-v2 grenade videos: the video has no text, the page draws it in its own language
   // (list of {a: start s, b: end s, x: text, h: words in gold}), sized to the picture actually shown.
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+  // mouse with the button(s) to press in red (same drawing as the pages and the social videos)
+  function mouse(click, label) {
+    if (!/^(left|right|both)$/.test(click || "")) return "";
+    const R = "#e53935", W = "#fff", lf = click !== "right" ? R : W, rf = click !== "left" ? R : W;
+    const body = "M12 1.5C6.2 1.5 2 5.7 2 11.5v11C2 28.3 6.2 32.5 12 32.5s10-4.2 10-10v-11C22 5.7 17.8 1.5 12 1.5z";
+    return `<svg class="mouse-ic" viewBox="0 0 24 34" role="img" aria-label="${esc(label || click)}"><path d="${body}" fill="${W}"/>` +
+      `<path d="M12 1.5C6.2 1.5 2 5.7 2 11.5V13h10z" fill="${lf}"/><path d="M12 1.5c5.8 0 10 4.2 10 10V13H12z" fill="${rf}"/>` +
+      `<path d="${body}M12 1.5V13M2 13h20" fill="none" stroke="#111" stroke-width="2" stroke-linejoin="round"/></svg>`;
+  }
+  window.PNmouse = mouse;
+
   function caps(v, list) {
     v._caps = list || [];
     const box = v.parentElement;
@@ -69,7 +80,7 @@
     };
     const draw = () => {
       const t = v.currentTime, c = v._caps.find((x) => t >= x.a && t < x.b);
-      const html = c ? (c.h ? esc(c.x).replace(esc(c.h), `<b>${esc(c.h)}</b>`) : esc(c.x)) : "";
+      const html = c ? (c.h ? esc(c.x).replace(esc(c.h), `<b>${esc(c.h)}</b>`) : esc(c.x)) + (c.m ? " " + mouse(c.m) : "") : "";
       if (el._h !== html) { el.innerHTML = html; el._h = html; }
     };
     if (!v._capsBound) {
