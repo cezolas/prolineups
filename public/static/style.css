@@ -992,3 +992,23 @@ body:not(.is-premium) .pr-sec .pr-body { opacity: .35; filter: blur(2px); pointe
 .ro-legend button.chip.on { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
 .ro-team-rep { display: none; }
 .ro-filtered .ro-team-rep { display: inline; }
+
+/* phone header: logo + buttons on a single row (the search box takes the row below) */
+@media (max-width: 560px) {
+  .top-in { gap: 6px; padding: 6px 10px; }
+  .menu-btn { width: 34px; height: 34px; font-size: 16px; }
+  .wordmark { font-size: 19px; }
+  .he-buddy { width: 18px; height: 18px; margin-left: 3px; }
+  .premium-btn { padding: 6px 9px; margin-left: auto; }
+  .langs { margin-left: 0; gap: 0; }
+  .langs a { padding: 2px; }
+  .lang-flag { width: 20px; height: 15px; }
+  .me-btn img { width: 26px; height: 26px; }
+  .me-caret { display: none; }
+  .theme-btn { width: 30px; min-width: 0; height: 30px; padding: 0; margin-left: 0; }
+}
+@media (max-width: 380px) {
+  .top-in { gap: 4px; padding: 6px 8px; }
+  .wordmark { font-size: 17px; }
+  .he-buddy { display: none; }
+}
