@@ -892,3 +892,13 @@ body.mm-page { overflow: hidden; overscroll-behavior: none; }
   .mm-panel { border-top: 0; border-left: 1px solid var(--line); }
 }
 .mm-open { border-color: var(--brand-a, #f5b83d); font-weight: 700; }
+
+/* role badge next to player names (small) + tactics on team/player pages */
+.role.sm { font-size: 9.5px; padding: 0 4px; vertical-align: 1px; margin-left: 2px; }
+h1 .role { font-size: 13px; padding: 2px 8px; vertical-align: 4px; }
+.side .role.sm { font-size: 8.5px; padding: 0 3px; opacity: .9; }
+.ent-tac-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.ent-tac h3 { font-size: 15px; margin: 6px 0 8px; }
+.ent-tac-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.ent-tac-list li { display: flex; flex-direction: column; gap: 2px; padding: 8px 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; }
+.ent-tac-list a { font-weight: 600; }
