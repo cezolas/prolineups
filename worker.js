@@ -10,7 +10,7 @@
 //   /api/react?k=<key>      -> GET: likes of one grenade/tactic, whether this visitor liked it, whether the admin removed it
 //   /api/like               -> POST {k}: toggle this visitor's like (signed-in user, or an anonymous hash of the IP)
 //   /api/report             -> POST {k, url, reason, note, lang}: "this is broken" report (max 5 per visitor per day)
-// Premium Area: compare-my-demo, training plan and tactics (tactics hub, team plays, executes and their replay data) are served
+// Premium Area: compare-my-demo, training plan, tactics, Meta Grenades (tactics hub, team plays, executes and their replay data) are served
 // only to Premium users (KV "premium:<sub>", set in the online Admin); others go to /<lang>/premium/?from=<page>.
 // deploy.py routes exactly these paths through this Worker (assets.run_worker_first).
 // Settings: vars GOOGLE_CLIENT_ID, FACEIT_CLIENT_ID; secrets GOOGLE_CLIENT_SECRET, SESSION_SECRET, FACEIT_CLIENT_SECRET,
@@ -327,7 +327,7 @@ async function api(req, env, url) {
 }
 
 // ---------------------------------------------------------------- Premium Area
-const PREMIUM_PAGE = /^\/(pt|en)\/(?:(?:comparar-minha-demo|compare-my-demo|plano-de-treino|training-plan|taticas|tactics)|[a-z0-9]+\/(?:jogadas|plays|execucoes|executes))(?:\/|$)/;
+const PREMIUM_PAGE = /^\/(pt|en)\/(?:(?:comparar-minha-demo|compare-my-demo|plano-de-treino|training-plan|taticas|tactics|meta-grenades)|[a-z0-9]+\/(?:jogadas|plays|execucoes|executes))(?:\/|$)/;
 const PREMIUM_DATA = /^\/dados\/jogadas\//;
 const isPremium = async (env, sub) => !!(sub && env.USERS && (await env.USERS.get(`premium:${sub}`)));
 async function premiumGate(req, env, url) {

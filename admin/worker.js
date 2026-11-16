@@ -17,6 +17,8 @@
 //   GET  /api/reports           -> "report a problem" messages from the site (D1) + likes ranking + removed items
 //   POST /api/reports/<id>      -> { status: "open"|"reviewed"|"rerecord"|"done" }  (revisado = nada errado; regravar = fila de
 //        regravação, mirrored to KV "rerecord" for pipeline/rerecord.py; done = resolvido/regravado)
+//   GET/POST /api/meta          -> Meta Grenades adjustments { pin: [{k, title}], hide: [{k, title}] } (KV "meta");
+//        POST { k, title, list: "pin"|"hide"|null } puts a grenade in one list (null = back to automatic). Applied on the next export.
 //   POST /api/resolve           -> { url } -> the like/report key of a public page (read from the page itself)
 //   POST /api/remove            -> { k, title, restore? }  remove a grenade/tactic from the site (or put it back).
 //        Hidden right away by the page script (D1 "removed"); the studio pulls KV "removed" and drops it on the next export.
@@ -153,7 +155,7 @@ export default {
       const maps = {};
       const list = await env.ADMIN.list({ prefix: "places:" });
       for (const k of list.keys) maps[k.name.slice(7)] = await readJSON(env, k.name, {});
-      return json({ maps, removed: await readJSON(env, "removed", []), exported_at: new Date().toISOString() });
+      return json({ maps, removed: await readJSON(env, "removed", []), meta: await readJSON(env, "meta", null), exported_at: new Date().toISOString() });
     }
     if (who !== "admin") return json({ error: "token de sincronização só pode exportar" }, 403);
 
@@ -172,11 +174,12 @@ export default {
         for (const u of vals) if (u) users.push(u);
         cursor = page.list_complete ? null : page.cursor;
       } while (cursor && users.length < 5000);
-      const premium = new Set();  // KV "premium:<sub>" = { by, at }
+      const premium = new Map();  // KV "premium:<sub>" = { by, at, source: "manual" | billing provider }
       let pc;
       do {
         const page = await env.USERS.list({ prefix: "premium:", cursor: pc, limit: 1000 });
-        for (const k of page.keys) premium.add(k.name.slice(8));
+        const vals = await Promise.all(page.keys.map(k => env.USERS.get(k.name, "json").catch(() => null)));
+        page.keys.forEach((k, i) => premium.set(k.name.slice(8), (vals[i] && vals[i].source) || "manual"));
         pc = page.list_complete ? null : page.cursor;
       } while (pc);
       const stats = {};
@@ -195,7 +198,7 @@ export default {
         return {
           sub: u.sub, name: u.name, email: u.email, picture: u.picture, created: u.created, last_login: u.last_login,
           type: faceitOnly ? "faceit" : (u.faceit ? "google+faceit" : "google"),
-          faceit: u.faceit ? u.faceit.nickname : null, plan: premium.has(u.sub) ? "premium" : "free",
+          faceit: u.faceit ? u.faceit.nickname : null, plan: premium.has(u.sub) ? "premium" : "free", premium_source: premium.get(u.sub) || null,
           stats: stats[u.sub] || null,
         };
       });
@@ -215,7 +218,8 @@ export default {
       const b = await request.json().catch(() => ({}));
       const sub = String(b.sub || "");
       if (!sub || sub.length > 120 || !(await env.USERS.get(`user:${sub}`))) return json({ error: "usuário não encontrado" }, 404);
-      if (b.on) await env.USERS.put(`premium:${sub}`, JSON.stringify({ by: identity.email, at: new Date().toISOString() }));
+      // source "manual" = set here; the billing integration will write its own source (and expiry) in the same key
+      if (b.on) await env.USERS.put(`premium:${sub}`, JSON.stringify({ by: identity.email, at: new Date().toISOString(), source: "manual" }));
       else await env.USERS.delete(`premium:${sub}`);
       const audit = await readJSON(env, "audit", []);
       audit.unshift({ at: new Date().toISOString(), by: identity.email, map: "-", place: `premium ${b.on ? "liberado" : "removido"}`, lang: "-", display: sub });
@@ -238,7 +242,7 @@ export default {
 
     // ---------------------------------------------------------------- reports, likes, removals (D1 shared with the site)
     const REACT_KEY = /^[gep]:[a-z0-9_]{2,40}\/[a-z0-9-]{1,120}$/;
-    if (url.pathname.startsWith("/api/reports") || url.pathname === "/api/remove" || url.pathname === "/api/resolve") {
+    if (url.pathname.startsWith("/api/reports") || url.pathname === "/api/remove") {
       if (!env.DB) return json({ error: "DB não ligado neste Worker" }, 503);
       await env.DB.batch([
         env.DB.prepare("CREATE TABLE IF NOT EXISTS likes (k TEXT NOT NULL, who TEXT NOT NULL, ts INTEGER NOT NULL, PRIMARY KEY (k, who))"),
@@ -299,6 +303,18 @@ export default {
       rest.unshift(entry);
       await env.ADMIN.put("removed", JSON.stringify(rest.slice(0, 2000)));
       return json({ ok: true, removed: entry });
+    }
+
+    if (url.pathname === "/api/meta" && request.method === "GET") return json(await readJSON(env, "meta", { pin: [], hide: [] }));
+    if (url.pathname === "/api/meta" && request.method === "POST") {
+      const b = await request.json().catch(() => ({}));
+      if (!/^g:[a-z0-9_]{2,40}\/[a-z0-9-]{1,120}$/.test(b.k || "")) return json({ error: "use o link de uma granada" }, 400);
+      if (b.list != null && !["pin", "hide"].includes(b.list)) return json({ error: "lista inválida" }, 400);
+      const meta = await readJSON(env, "meta", { pin: [], hide: [] });
+      meta.pin = (meta.pin || []).filter(x => x.k !== b.k); meta.hide = (meta.hide || []).filter(x => x.k !== b.k);
+      if (b.list) meta[b.list].push({ k: b.k, title: String(b.title || "").slice(0, 200), by: identity.email, at: new Date().toISOString() });
+      await env.ADMIN.put("meta", JSON.stringify(meta));
+      return json(meta);
     }
 
     // ---- roadmap: ideas board (KV key "roadmap"); Claude reads/updates it from the studio via the Cloudflare API

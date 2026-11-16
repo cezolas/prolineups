@@ -80,6 +80,7 @@
     <a class="on" href="#de-para" data-view="depara">De-Para de lugares</a>
     <a href="#roadmap" data-view="roadmap">Roadmap</a>
     <a href="#reports" data-view="reports">Reports e granadas</a>
+    <a href="#meta" data-view="meta">Meta Grenades</a>
     <div class="h">Pessoas</div>
     <a href="#usuarios" data-view="users">Usuários e atividade</a>
     <div class="h">Histórico</div>
@@ -133,6 +134,22 @@
         <table><thead><tr><th>Jogada</th><th>Quando</th><th>Por</th><th></th></tr></thead><tbody id="rmvRows"></tbody></table></div>
       <div><h3 style="margin:0 0 6px">Mais curtidas</h3>
         <table><thead><tr><th>Jogada</th><th>Likes</th></tr></thead><tbody id="lkRows"></tbody></table></div>
+    </div>
+  </section>
+  <section id="view-meta" hidden>
+    <h2>Meta Grenades</h2>
+    <div class="muted">A página Meta Grenades (Área Premium) monta sozinha as granadas mais usadas nos últimos 90 dias, por mapa
+      (muito usadas e por vários times). Aqui você ajusta: <b>Fixar</b> põe a granada no topo com "★ Escolha da equipe";
+      <b>Esconder</b> tira ela da lista. Vale na próxima publicação do site.</div>
+    <form id="mtForm" class="bar">
+      <input id="mtUrl" placeholder="Cole o link de uma granada do pronades.com.br" style="min-width:420px" aria-label="Link">
+      <button type="submit" data-list="pin">Fixar</button>
+      <button type="submit" data-list="hide">Esconder</button>
+      <span id="mtMsg" class="muted"></span>
+    </form>
+    <div class="two">
+      <div><h3 style="margin:0 0 6px">Fixadas</h3><table><tbody id="mtPin"></tbody></table></div>
+      <div><h3 style="margin:0 0 6px">Escondidas</h3><table><tbody id="mtHide"></tbody></table></div>
     </div>
   </section>
   <section id="view-roadmap" hidden>
@@ -308,9 +325,11 @@ cv.addEventListener("click", e => {
 
 // ---------------------------------------------------------------- views
 function showView() {
-  const v = location.hash === "#roadmap" ? "roadmap" : location.hash === "#usuarios" ? "users" : location.hash === "#reports" ? "reports" : "depara";
+  const v = location.hash === "#roadmap" ? "roadmap" : location.hash === "#usuarios" ? "users" : location.hash === "#reports" ? "reports" : location.hash === "#meta" ? "meta" : "depara";
   $("view-roadmap").hidden = v !== "roadmap"; $("view-depara").hidden = v !== "depara"; $("view-users").hidden = v !== "users";
   $("view-reports").hidden = v !== "reports";
+  $("view-meta").hidden = v !== "meta";
+  if (v === "meta") loadMeta();
   if (v === "reports") loadReports();
   if (v === "users") loadUsers();
   document.querySelectorAll(".menu a[data-view]").forEach(a => a.classList.toggle("on", a.dataset.view === v));
@@ -370,6 +389,31 @@ Dá para restaurar depois na lista de removidas.`)) { $("rvMsg").textContent = "
     $("rvMsg").textContent = `Removida: ${r.title}`; $("rvUrl").value = "";
     loadReports();
   } catch (err) { $("rvMsg").textContent = err.message; }
+});
+
+// ---------------------------------------------------------------- Meta Grenades adjustments
+function metaRows(list) {
+  return list.map(x => `<tr><td>${esc(x.title || x.k.slice(2))}<div class="muted" style="font-size:12px">${esc(x.k.slice(2))}</div></td>
+    <td><button data-unmeta="${esc(x.k)}">Voltar ao automático</button></td></tr>`).join("") || `<tr><td class="muted">Nenhuma.</td></tr>`;
+}
+async function loadMeta(meta) {
+  meta = meta || await api("/api/meta");
+  $("mtPin").innerHTML = metaRows(meta.pin || []); $("mtHide").innerHTML = metaRows(meta.hide || []);
+}
+$("mtForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  const list = (e.submitter && e.submitter.dataset.list) || "pin";
+  $("mtMsg").textContent = "Procurando a página…";
+  try {
+    const r = await api("/api/resolve", { url: $("mtUrl").value });
+    if (r.k[0] !== "g") throw new Error("esse link não é de uma granada");
+    await loadMeta(await api("/api/meta", { k: r.k, title: r.title, list }));
+    $("mtMsg").textContent = `${list === "pin" ? "Fixada" : "Escondida"}: ${r.title}`; $("mtUrl").value = "";
+  } catch (err) { $("mtMsg").textContent = err.message; }
+});
+$("view-meta").addEventListener("click", async e => {
+  const b = e.target.closest("button[data-unmeta]"); if (!b) return;
+  try { await loadMeta(await api("/api/meta", { k: b.dataset.unmeta, list: null })); } catch (err) { alert(err.message); }
 });
 
 // ---------------------------------------------------------------- roadmap
@@ -450,8 +494,9 @@ function renderUsers() {
   $("uRows").innerHTML = rows.map(u => { const s = u.stats || {}; const dv = s.devices ? Object.entries(s.devices).sort((a, b) => b[1] - a[1]).map(([k]) => k).join(", ") : "–";
     return `<tr class="click${u.sub === U.sub ? " sel" : ""}" data-sub="${esc(u.sub)}">
       <td class="u">${u.picture ? `<img src="${esc(u.picture)}" alt="" referrerpolicy="no-referrer">` : ""}<b>${esc(u.name || u.faceit || "(sem nome)")}</b><div class="muted" style="font-size:12px">${esc(u.email || "")}${u.faceit ? ` · FACEIT: ${esc(u.faceit)}` : ""}</div></td>
-      <td>${TYPE_TAG[u.type] || esc(u.type)}</td><td style="white-space:nowrap"><span class="tag ${esc(u.plan)}">${u.plan === "premium" ? "♛ Premium" : "Gratuita"}</span>
-        <button class="pm-btn" type="button" data-pm="${esc(u.sub)}" data-on="${u.plan === "premium" ? 0 : 1}">${u.plan === "premium" ? "Tirar Premium" : "Dar Premium"}</button></td>
+      <td>${TYPE_TAG[u.type] || esc(u.type)}</td><td style="white-space:nowrap"><select class="pm-sel ${esc(u.plan)}" data-pm="${esc(u.sub)}" aria-label="Plano">
+        <option value="free"${u.plan === "premium" ? "" : " selected"}>Gratuito</option><option value="premium"${u.plan === "premium" ? " selected" : ""}>♛ Premium</option></select>
+        ${u.premium_source && u.premium_source !== "manual" ? `<div class="muted" style="font-size:11px">via ${esc(u.premium_source)}</div>` : ""}</td>
       <td>${when(u.created)}</td><td title="${when(s.last || u.last_login)}">${ago(s.last || u.last_login)}</td>
       <td>${s.pages || 0}</td><td>${s.videos || 0}</td><td>${(s.copies || 0) + (s.downloads || 0)}</td><td>${s.demos || 0}</td><td>${s.days || 0}</td><td>${s.n7 || 0}</td><td>${esc(dv)}</td></tr>`; }).join("")
     || '<tr><td colspan="12" class="muted">nenhuma conta ainda</td></tr>';
@@ -469,15 +514,15 @@ async function loadLog(reset) {
     || (reset ? '<tr><td colspan="5" class="muted">nada registrado ainda</td></tr>' : ""));
 }
 $("uPlan").addEventListener("change", () => renderUsers());
-$("uRows").addEventListener("click", async e => {
-  const b = e.target.closest("button[data-pm]"); if (!b) return;
-  e.stopPropagation();
-  const u = U.users.find(x => x.sub === b.dataset.pm), on = b.dataset.on === "1";
-  if (!confirm(`${on ? "Liberar" : "Tirar"} o Premium de ${u ? (u.name || u.email || u.faceit) : "este usuário"}?`)) return;
-  b.disabled = true;
-  try { await api("/api/users/premium", { sub: b.dataset.pm, on }); if (u) u.plan = on ? "premium" : "free"; renderUsers(); }
-  catch (err) { alert(err.message); b.disabled = false; }
-}, true);
+$("uRows").addEventListener("click", e => { if (e.target.closest("select[data-pm]")) e.stopPropagation(); }, true);
+$("uRows").addEventListener("change", async e => {
+  const sel = e.target.closest("select[data-pm]"); if (!sel) return;
+  const u = U.users.find(x => x.sub === sel.dataset.pm), on = sel.value === "premium";
+  if (!confirm(`Mudar ${u ? (u.name || u.email || u.faceit) : "este usuário"} para ${on ? "Premium" : "Gratuito"}?`)) { sel.value = on ? "free" : "premium"; return; }
+  sel.disabled = true;
+  try { await api("/api/users/premium", { sub: sel.dataset.pm, on }); if (u) { u.plan = on ? "premium" : "free"; u.premium_source = on ? "manual" : null; } renderUsers(); }
+  catch (err) { alert(err.message); sel.value = on ? "free" : "premium"; sel.disabled = false; }
+});
 $("uRows").addEventListener("click", e => { const tr = e.target.closest("tr[data-sub]"); if (!tr) return;
   U.sub = tr.dataset.sub; const u = U.bySub[U.sub] || {};
   $("uLogTitle").textContent = `Atividade de ${u.name || u.faceit || "usuário"}`; $("uAll").hidden = false; renderUsers(); loadLog(true); });
