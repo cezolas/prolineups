@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Modo partida · Pronades</title>
+<meta name="description" content="Deixe aberto no celular durante a partida: escolha mapa e lado e veja as granadas essenciais e as execuções dos pros no radar, com técnica, vídeo e comando.">
+<link rel="canonical" href="https://pronades.com.br/pt/modo-partida/">
+<link rel="alternate" hreflang="pt" href="https://pronades.com.br/pt/modo-partida/">
+<link rel="alternate" hreflang="en" href="https://pronades.com.br/en/match-mode/">
+<link rel="alternate" hreflang="x-default" href="https://pronades.com.br/pt/modo-partida/">
+<meta property="og:title" content="Modo partida">
+<meta property="og:description" content="Deixe aberto no celular durante a partida: escolha mapa e lado e veja as granadas essenciais e as execuções dos pros no radar, com técnica, vídeo e comando.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://pronades.com.br/static/og-pt.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Pronades">
+<meta name="theme-color" content="#0b0f15">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&display=swap">
+<script>/* one address: www and the old workers.dev address go to the main domain */
+(function () { var h = location.hostname, main = "pronades.com.br";
+  if (h !== main && h !== "localhost" && h !== "127.0.0.1" && (h === "www." + main || /\.workers\.dev$/.test(h)))
+    location.replace("https://" + main + location.pathname + location.search + location.hash); })();</script>
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
+  if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
+<link rel="icon" href="/static/favicon.svg?v=714ec3503f" type="image/svg+xml">
+<link rel="stylesheet" href="/static/style.css?v=9ede557e6b">
+<script>window.I18N = {"copied": "Copiado!", "dec": ",", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "open": "Abrir", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "throws_in": "lan\u00e7a em {s}s", "v_back": "Voltar 2 segundos", "v_frame_back": "Quadro anterior", "v_frame_fwd": "Pr\u00f3ximo quadro", "v_fwd": "Avan\u00e7ar 2 segundos", "v_play": "Reproduzir / pausar"}; window.LANG = "pt";</script>
+</head>
+<body class="mm-page">
+<header class="top">
+  <div class="top-in">
+    <button class="menu-btn" id="menuBtn" aria-label="Mostrar ou ocultar o menu" aria-controls="side" aria-expanded="false">☰</button>
+    <a class="logo wordmark" href="/pt/" aria-label="Pronades">Pro<span>nades</span><img class="he-buddy" src="/static/brand/he-buddy.svg?v=714ec3503f" alt="" width="22" height="22"></a>
+    <div class="search">
+      <input id="q" type="search" placeholder="Buscar mapa, jogador, time, smoke…" autocomplete="off" aria-label="Buscar">
+      <div id="results" class="results" hidden></div>
+    </div>
+    <nav class="langs" aria-label="Idioma">
+<a href="/pt/modo-partida/" hreflang="pt" lang="pt" aria-current="true" title="Português" aria-label="Português"><img class="lang-flag" src="/static/flags/br.svg?v=17969b5ac0" alt="Português" width="24" height="18"></a><a href="/en/match-mode/" hreflang="en" lang="en" title="English" aria-label="English"><img class="lang-flag" src="/static/flags/gb.svg?v=161ee20a0a" alt="English" width="24" height="18"></a>    </nav>
+    <a class="login-btn" id="loginBtn" href="/pt/conta/" data-account="conta" hidden>Entrar</a>
+    <a class="me-btn" id="meBtn" href="/pt/conta/" hidden aria-label="Minha conta"><img alt="" width="28" height="28" referrerpolicy="no-referrer" hidden><span>Conta</span></a>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="Alternar modo claro/escuro" title="Alternar modo claro/escuro"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.6"/><g stroke-width="2.2" stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></g></svg></button>
+  </div>
+</header>
+<div class="layout">
+  <aside class="side" id="side" aria-label="Navegação">
+    <nav>
+      <a href="/pt/"><span class="nl">Início</span></a>
+      <a href="/pt/modo-partida/" aria-current="page"><span>📱 Modo partida</span></a>
+      <a href="/pt/minha-faceit/"><span>◉ Minha FACEIT</span></a>
+      <a href="/pt/comparar-minha-demo/"><span>⇄ Comparar minha demo</span></a>
+      <a href="/pt/plano-de-treino/"><span>🎯 Plano de treino</span></a>
+      <a href="/pt/funcoes/"><span>👥 Funções</span></a>
+      <a href="/pt/analises/"><span>▤ Análises</span></a>
+      <a href="/pt/minha-lista/"><span>★ Minha lista</span><span class="n" id="favCount"></span></a>
+      <details class="nav-g" data-k="maps" open>
+        <summary class="nav-h"><a href="/pt/mapas/">Mapas</a></summary>
+<a href="/pt/ancient/"><span class="nl">Ancient</span><span class="n">51</span></a><a href="/pt/anubis/"><span class="nl">Anubis</span><span class="n">20</span></a><a href="/pt/cache/"><span class="nl">Cache</span><span class="n">39</span></a><a href="/pt/dust2/"><span class="nl">Dust2</span><span class="n">53</span></a><a href="/pt/inferno/"><span class="nl">Inferno</span><span class="n">22</span></a><a href="/pt/mirage/"><span class="nl">Mirage</span><span class="n">74</span></a><a href="/pt/nuke/"><span class="nl">Nuke</span><span class="n">33</span></a>      </details>
+      <details class="nav-g" data-k="tactics" open>
+        <summary class="nav-h"><a href="/pt/taticas/">Táticas</a></summary>
+<a href="/pt/ancient/jogadas/"><span class="nl">Ancient</span><span class="n">85</span></a><a href="/pt/anubis/jogadas/"><span class="nl">Anubis</span><span class="n">13</span></a><a href="/pt/cache/jogadas/"><span class="nl">Cache</span><span class="n">37</span></a><a href="/pt/dust2/jogadas/"><span class="nl">Dust2</span><span class="n">61</span></a><a href="/pt/inferno/jogadas/"><span class="nl">Inferno</span><span class="n">17</span></a><a href="/pt/mirage/jogadas/"><span class="nl">Mirage</span><span class="n">67</span></a><a href="/pt/nuke/jogadas/"><span class="nl">Nuke</span><span class="n">32</span></a>      </details>
+      <details class="nav-g" data-k="events" open>
+        <summary class="nav-h"><a href="/pt/torneios/">Torneios</a></summary>
+<a href="/pt/torneio/blast-rivals-2026-season-2/"><span class="nl">BLAST Rivals 2026 Season 2</span></a>      </details>
+      <details class="nav-g" data-k="players" open>
+        <summary class="nav-h"><a href="/pt/jogadores/">Jogadores</a></summary>
+<a href="/pt/jogador/apex/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12"></span>apEX</span></a><a href="/pt/jogador/art/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>art</span></a><a href="/pt/jogador/coolio/"><span class="nl"><span class="nav-flag"></span>coolio</span></a><a href="/pt/jogador/dem0n/"><span class="nl"><span class="nav-flag"></span>dem0n</span></a><a href="/pt/jogador/donk/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12"></span>donk</span></a><a href="/pt/jogador/dumau/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>dumau</span></a><a href="/pt/jogador/dziugss/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/lt.svg" alt="Lituânia" title="Lituânia" width="16" height="12"></span>dziugss</span></a><a href="/pt/jogador/fallen/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>FalleN</span></a><a href="/pt/jogador/flamez/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12"></span>flameZ</span></a><a href="/pt/jogador/heavygod/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12"></span>HeavyGod</span></a><a href="/pt/jogador/hunter/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/ba.svg" alt="Bósnia" title="Bósnia" width="16" height="12"></span>huNter</span></a><a href="/pt/jogador/karrigan/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/dk.svg" alt="Dinamarca" title="Dinamarca" width="16" height="12"></span>karrigan</span></a><a class="more" href="/pt/jogadores/">ver todos (40)</a>      </details>
+      <details class="nav-g" data-k="teams" open>
+        <summary class="nav-h"><a href="/pt/times/">Times</a></summary>
+<a href="/pt/time/falcons/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/sa.svg" alt="Arábia Saudita" title="Arábia Saudita" width="16" height="12"></span>Falcons</span></a><a href="/pt/time/furia/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>FURIA</span></a><a href="/pt/time/fut/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/tr.svg" alt="Turquia" title="Turquia" width="16" height="12"></span>FUT</span></a><a href="/pt/time/g2/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"></span>G2</span></a><a href="/pt/time/legacy/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>Legacy</span></a><a href="/pt/time/mouz/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"></span>MOUZ</span></a><a href="/pt/time/spirit/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12"></span>Spirit</span></a><a href="/pt/time/vitality/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12"></span>Vitality</span></a>      </details>
+      <div class="nav-sep"></div>
+      <a href="/pt/sobre/"><span class="nl">Sobre</span></a>
+      <a href="/pt/privacidade/"><span class="nl">Privacidade</span></a>
+    </nav>
+    <script>
+      /* collapsed sections are remembered in this browser; applied before paint */
+      (function () {
+        var c = []; try { c = JSON.parse(localStorage.getItem("navClosed") || "[]"); } catch (e) {}
+        document.querySelectorAll(".nav-g").forEach(function (d) {
+          if (c.indexOf(d.dataset.k) >= 0 && !d.querySelector("[aria-current]")) d.open = false;
+          d.addEventListener("toggle", function () {
+            var s = []; document.querySelectorAll(".nav-g").forEach(function (x) { if (!x.open) s.push(x.dataset.k); });
+            try { localStorage.setItem("navClosed", JSON.stringify(s)); } catch (e) {}
+          });
+        });
+      })();
+    </script>
+  </aside>
+  <div class="scrim" id="scrim" hidden></div>
+  <main class="content">
+<a class="back-btn" id="backBtn" href="/pt/">← Voltar</a><h1 class="sr-only">Modo partida</h1>
+<div id="mm" class="mm" data-lang="pt" data-src="/dados/partida-pt.json"
+     data-i18n='{"all": "Todas", "awake": "Tela sempre acesa", "close": "Fechar", "copied": "Copiado!", "copy": "Copiar comando", "desc": "Deixe aberto no celular durante a partida: escolha mapa e lado e veja as granadas essenciais e as execu\u00e7\u00f5es dos pros no radar, com t\u00e9cnica, v\u00eddeo e comando.", "diff": ["", "F\u00e1cil", "M\u00e9dio", "Dif\u00edcil"], "ess": "Essenciais", "execs": "Execu\u00e7\u00f5es", "exit": "Sair do modo partida", "from": "De", "full": "Mapa inteiro", "list": "\u2039 Lista", "map": "Mapa", "nav": "Modo partida", "none": "Nada aqui para esse lado ainda.", "open": "P\u00e1gina completa", "seen": "{n}\u00d7 pelos pros", "side": {"CT": "CT", "T": "TR"}, "tech": "T\u00e9cnica", "tip": "Toque numa granada no radar ou na lista.", "title": "Modo partida", "to": "Cai em", "types": {"all": "Todas", "flash": "Flash", "he": "HE", "molotov": "Molotov", "smoke": "Smoke"}, "used": "usada {n}\u00d7", "video": "\u25b6 V\u00eddeo", "win": "{p}% vit\u00f3ria"}'>
+  <div class="mm-bar">
+    <a class="mm-exit" id="mmExit" href="/pt/" aria-label="Sair do modo partida" title="Sair do modo partida">←</a>
+    <select class="mm-map" id="mmMap" aria-label="Mapa">
+<option value="ancient">Ancient</option><option value="anubis">Anubis</option><option value="cache">Cache</option><option value="dust2">Dust2</option><option value="inferno">Inferno</option><option value="mirage">Mirage</option><option value="nuke">Nuke</option>    </select>
+    <div class="mm-side" role="group" aria-label="TR/CT">
+      <button type="button" data-side="T" class="side-T">TR</button><button type="button" data-side="CT" class="side-CT">CT</button>
+    </div>
+    <button type="button" class="mm-wake" id="mmWake" aria-pressed="false" title="Tela sempre acesa" aria-label="Tela sempre acesa">☀</button>
+  </div>
+  <div class="mm-stage">
+    <div class="mm-radar" id="mmRadar">
+      <svg viewBox="0 0 1024 1024" id="mmSvg" aria-label="Mapa">
+        <image id="mmImg" x="0" y="0" width="1024" height="1024" href=""></image>
+        <g id="mmSel"></g><g id="mmDots"></g>
+      </svg>
+      <button type="button" class="mm-full" id="mmFull" hidden>Mapa inteiro</button>
+      <div class="mm-video" id="mmVideo" hidden><video playsinline muted loop controls preload="none"></video>
+        <button type="button" class="mm-vclose" id="mmVclose" aria-label="Fechar">✕</button></div>
+    </div>
+    <div class="mm-panel">
+      <div class="mm-tabs" role="tablist">
+        <button type="button" role="tab" data-tab="ess" aria-selected="true">Essenciais</button>
+        <button type="button" role="tab" data-tab="all" aria-selected="false">Todas</button>
+        <button type="button" role="tab" data-tab="execs" aria-selected="false">Execuções</button>
+      </div>
+      <div class="mm-types" id="mmTypes" hidden></div>
+      <div class="mm-body" id="mmBody"><p class="muted">Carregando dados…</p></div>
+    </div>
+  </div>
+</div>
+<script>
+(function () { // back button: always to the previous page (home if there is none); placed right under the breadcrumbs
+  var b = document.getElementById("backBtn"); if (!b) return;
+  var c = document.querySelector("main.content .crumbs"); if (c) c.insertAdjacentElement("afterend", b);
+  b.addEventListener("click", function (e) { if (history.length > 1) { e.preventDefault(); history.back(); } });
+})();
+</script>
+  </main>
+</div>
+<footer class="foot">
+  <div class="foot-in">
+    <p>Dados extraídos das demos oficiais das partidas. Demos: <a href="https://www.hltv.org/" rel="noopener" target="_blank">HLTV.org</a>.</p>
+    <p>Projeto de fãs, gratuito. Não afiliado à Valve, HLTV, aos times ou aos organizadores dos torneios. Counter-Strike é marca da Valve Corporation.</p>
+    <p><a href="/pt/sobre/">Sobre e créditos</a> · atualizado em 2026-11-15</p>
+  </div>
+</footer>
+<script src="/static/app.js?v=79dff6c310" defer></script>
+<script src="/static/accounts.js?v=4a294cfd8e" defer></script>
+<script src="/static/video.js?v=59be808746" defer></script>
+<script src="/static/matchmode.js?v=6b007f63f1" defer></script></body>
+</html>

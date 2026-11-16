@@ -28,10 +28,10 @@
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
   if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg?v=714ec3503f" type="image/svg+xml">
-<link rel="stylesheet" href="/static/style.css?v=5cebc3a026">
+<link rel="stylesheet" href="/static/style.css?v=9ede557e6b">
 <script>window.I18N = {"copied": "Copied!", "dec": ".", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "open": "Open", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "throws_in": "throws in {s}s", "v_back": "Back 2 seconds", "v_frame_back": "Previous frame", "v_frame_fwd": "Next frame", "v_fwd": "Forward 2 seconds", "v_play": "Play / pause"}; window.LANG = "en";</script>
 </head>
-<body>
+<body class="">
 <header class="top">
   <div class="top-in">
     <button class="menu-btn" id="menuBtn" aria-label="Show or hide the menu" aria-controls="side" aria-expanded="false">☰</button>
@@ -51,6 +51,7 @@
   <aside class="side" id="side" aria-label="Navigation">
     <nav>
       <a href="/en/"><span class="nl">Home</span></a>
+      <a href="/en/match-mode/"><span>📱 Match mode</span></a>
       <a href="/en/my-faceit/"><span>◉ My FACEIT</span></a>
       <a href="/en/compare-my-demo/"><span>⇄ Compare my demo</span></a>
       <a href="/en/training-plan/" aria-current="page"><span>🎯 Training plan</span></a>

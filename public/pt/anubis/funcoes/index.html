@@ -28,10 +28,10 @@
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
   if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg?v=714ec3503f" type="image/svg+xml">
-<link rel="stylesheet" href="/static/style.css?v=5cebc3a026">
+<link rel="stylesheet" href="/static/style.css?v=9ede557e6b">
 <script>window.I18N = {"copied": "Copiado!", "dec": ",", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "open": "Abrir", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "throws_in": "lan\u00e7a em {s}s", "v_back": "Voltar 2 segundos", "v_frame_back": "Quadro anterior", "v_frame_fwd": "Pr\u00f3ximo quadro", "v_fwd": "Avan\u00e7ar 2 segundos", "v_play": "Reproduzir / pausar"}; window.LANG = "pt";</script>
 </head>
-<body>
+<body class="">
 <header class="top">
   <div class="top-in">
     <button class="menu-btn" id="menuBtn" aria-label="Mostrar ou ocultar o menu" aria-controls="side" aria-expanded="false">☰</button>
@@ -51,6 +51,7 @@
   <aside class="side" id="side" aria-label="Navegação">
     <nav>
       <a href="/pt/"><span class="nl">Início</span></a>
+      <a href="/pt/modo-partida/"><span>📱 Modo partida</span></a>
       <a href="/pt/minha-faceit/"><span>◉ Minha FACEIT</span></a>
       <a href="/pt/comparar-minha-demo/"><span>⇄ Comparar minha demo</span></a>
       <a href="/pt/plano-de-treino/"><span>🎯 Plano de treino</span></a>
@@ -148,13 +149,6 @@
   <h2><span class="badge side-CT">CT</span> granadas de cada função</h2>
   <div class="ro-cols">
     <div class="ro-col">
-      <h3><span class="role role-entry">Entry</span></h3>
-      <ol class="start-list">
-        <li><a href="/pt/anubis/smoke-bridge-from-mid-ct/"><span class="start-name">Smoke Meio TR (de Meio/Liga)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-1">Fácil</span>
-          <span class="muted small">2 usos de entrys</span></a></li>
-      </ol>
-    </div>
-    <div class="ro-col">
       <h3><span class="role role-support">Suporte</span></h3>
       <ol class="start-list">
         <li><a href="/pt/anubis/molotov-connector-from-b-site-ct/"><span class="start-name">Molotov Rato (de Bomb B)</span><span class="badge type-molotov">Molotov</span><span class="badge diff-1">Fácil</span>
@@ -164,6 +158,8 @@
     <div class="ro-col">
       <h3><span class="role role-lurker">Lurker</span></h3>
       <ol class="start-list">
+        <li><a href="/pt/anubis/smoke-bridge-from-mid-ct/"><span class="start-name">Smoke Meio TR (de Meio/Liga)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-1">Fácil</span>
+          <span class="muted small">2 usos de lurkers</span></a></li>
         <li><a href="/pt/anubis/smoke-canal-from-b-site-ct/"><span class="start-name">Smoke Agua (de Bomb B)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-2">Médio</span>
           <span class="muted small">4 usos de lurkers</span></a></li>
         <li><a href="/pt/anubis/flash-connector-from-b-site-ct/"><span class="start-name">Flash Rato (de Bomb B)</span><span class="badge type-flash">Flash</span><span class="badge diff-2">Médio</span>

@@ -28,10 +28,10 @@
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
   if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg?v=714ec3503f" type="image/svg+xml">
-<link rel="stylesheet" href="/static/style.css?v=5cebc3a026">
+<link rel="stylesheet" href="/static/style.css?v=9ede557e6b">
 <script>window.I18N = {"copied": "Copiado!", "dec": ",", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "open": "Abrir", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "throws_in": "lan\u00e7a em {s}s", "v_back": "Voltar 2 segundos", "v_frame_back": "Quadro anterior", "v_frame_fwd": "Pr\u00f3ximo quadro", "v_fwd": "Avan\u00e7ar 2 segundos", "v_play": "Reproduzir / pausar"}; window.LANG = "pt";</script>
 </head>
-<body>
+<body class="">
 <header class="top">
   <div class="top-in">
     <button class="menu-btn" id="menuBtn" aria-label="Mostrar ou ocultar o menu" aria-controls="side" aria-expanded="false">☰</button>
@@ -51,6 +51,7 @@
   <aside class="side" id="side" aria-label="Navegação">
     <nav>
       <a href="/pt/"><span class="nl">Início</span></a>
+      <a href="/pt/modo-partida/"><span>📱 Modo partida</span></a>
       <a href="/pt/minha-faceit/"><span>◉ Minha FACEIT</span></a>
       <a href="/pt/comparar-minha-demo/"><span>⇄ Comparar minha demo</span></a>
       <a href="/pt/plano-de-treino/"><span>🎯 Plano de treino</span></a>
@@ -103,12 +104,12 @@
     <div class="ro-col">
       <h3><span class="role role-entry">Entry</span></h3>
       <ol class="start-list">
-        <li><a href="/pt/cache/smoke-bmain-from-bhalls-t/"><span class="start-name">Smoke Garagem da B (de Saguão B)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-3">Difícil</span>
+        <li><a href="/pt/cache/molotov-b-site-from-sun-room-t/"><span class="start-name">Molotov Bomb B (de Tóxico)</span><span class="badge type-molotov">Molotov</span><span class="badge diff-2">Médio</span>
+          <span class="muted small">2 usos de entrys</span></a></li>
+        <li><a href="/pt/cache/molotov-sandbags-from-outside-a-t/"><span class="start-name">Molotov Areia (de Outside A)</span><span class="badge type-molotov">Molotov</span><span class="badge diff-3">Difícil</span>
           <span class="muted small">4 usos de entrys</span></a></li>
-        <li><a href="/pt/cache/molotov-corner-from-amain-t/"><span class="start-name">Molotov Escanteio (de Garagem)</span><span class="badge type-molotov">Molotov</span><span class="badge diff-3">Difícil</span>
-          <span class="muted small">2 usos de entrys</span></a></li>
         <li><a href="/pt/cache/smoke-a-site-from-tyard-t/"><span class="start-name">Smoke Bomb A (de TYard)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-3">Difícil</span>
-          <span class="muted small">2 usos de entrys</span></a></li>
+          <span class="muted small">3 usos de entrys</span></a></li>
       </ol>
     </div>
     <div class="ro-col">
@@ -127,16 +128,16 @@
     <div class="ro-col">
       <h3><span class="role role-lurker">Lurker</span></h3>
       <ol class="start-list">
-        <li><a href="/pt/cache/molotov-b-site-from-sun-room-t/"><span class="start-name">Molotov Bomb B (de Tóxico)</span><span class="badge type-molotov">Molotov</span><span class="badge diff-2">Médio</span>
-          <span class="muted small">2 usos de lurkers</span></a></li>
         <li><a href="/pt/cache/smoke-b-site-from-t-spawn-t/"><span class="start-name">Smoke Bomb B (de Base TR)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-3">Difícil</span>
-          <span class="muted small">8 usos de lurkers</span></a></li>
+          <span class="muted small">10 usos de lurkers</span></a></li>
         <li><a href="/pt/cache/smoke-b-site-from-bhalls-t/"><span class="start-name">Smoke Bomb B (de Saguão B)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-3">Difícil</span>
-          <span class="muted small">5 usos de lurkers</span></a></li>
-        <li><a href="/pt/cache/molotov-sandbags-from-outside-a-t/"><span class="start-name">Molotov Areia (de Outside A)</span><span class="badge type-molotov">Molotov</span><span class="badge diff-3">Difícil</span>
-          <span class="muted small">3 usos de lurkers</span></a></li>
+          <span class="muted small">6 usos de lurkers</span></a></li>
+        <li><a href="/pt/cache/smoke-bmain-from-bhalls-t/"><span class="start-name">Smoke Garagem da B (de Saguão B)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-3">Difícil</span>
+          <span class="muted small">4 usos de lurkers</span></a></li>
         <li><a href="/pt/cache/smoke-bmain-from-t-spawn-t/"><span class="start-name">Smoke Garagem da B (de Base TR)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-3">Difícil</span>
           <span class="muted small">3 usos de lurkers</span></a></li>
+        <li><a href="/pt/cache/molotov-corner-from-amain-t/"><span class="start-name">Molotov Escanteio (de Garagem)</span><span class="badge type-molotov">Molotov</span><span class="badge diff-3">Difícil</span>
+          <span class="muted small">2 usos de lurkers</span></a></li>
       </ol>
     </div>
     <div class="ro-col">
@@ -175,13 +176,6 @@
   <h2><span class="badge side-CT">CT</span> granadas de cada função</h2>
   <div class="ro-cols">
     <div class="ro-col">
-      <h3><span class="role role-entry">Entry</span></h3>
-      <ol class="start-list">
-        <li><a href="/pt/cache/smoke-mid-from-highway-ct/"><span class="start-name">Smoke Meio (de Rua)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-1">Fácil</span>
-          <span class="muted small">3 usos de entrys</span></a></li>
-      </ol>
-    </div>
-    <div class="ro-col">
       <h3><span class="role role-support">Suporte</span></h3>
       <ol class="start-list">
         <li><a href="/pt/cache/flash-bmain-from-tree-room-ct/"><span class="start-name">Flash Garagem da B (de CT da A)</span><span class="badge type-flash">Flash</span><span class="badge diff-2">Médio</span>
@@ -199,6 +193,8 @@
     <div class="ro-col">
       <h3><span class="role role-lurker">Lurker</span></h3>
       <ol class="start-list">
+        <li><a href="/pt/cache/smoke-mid-from-highway-ct/"><span class="start-name">Smoke Meio (de Rua)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-1">Fácil</span>
+          <span class="muted small">2 usos de lurkers</span></a></li>
         <li><a href="/pt/cache/molotov-bmain-from-rafters-ct/"><span class="start-name">Molotov Garagem da B (de Simple)</span><span class="badge type-molotov">Molotov</span><span class="badge diff-1">Fácil</span>
           <span class="muted small">2 usos de lurkers</span></a></li>
         <li><a href="/pt/cache/smoke-garage-from-bus-stop-ct/"><span class="start-name">Smoke Garagem do meio (de Ônibus)</span><span class="badge type-smoke">Smoke</span><span class="badge diff-3">Difícil</span>
