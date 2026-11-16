@@ -188,14 +188,35 @@ async function faceitData(env, fid) {
   const cacheKey = `fcache:${fid}`;
   const cached = await env.USERS.get(cacheKey, "json");
   if (cached && cached.at > Date.now() - 10 * 60 * 1000) return cached.data;
-  const api = (p) => fetch(`https://open.faceit.com/data/v4${p}`, { headers: { authorization: `Bearer ${env.FACEIT_API_KEY}` } })
-    .then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  // FACEIT refuses bursts (429): retry a couple of times, and fetch the match stats a few at a time
+  const api = async (p) => {
+    for (let i = 0; i < 3; i++) {
+      const r = await fetch(`https://open.faceit.com/data/v4${p}`, { headers: { authorization: `Bearer ${env.FACEIT_API_KEY}` } }).catch(() => null);
+      if (r && r.ok) return r.json().catch(() => null);
+      if (r && r.status !== 429 && r.status < 500) return null;  // 404 etc.: no point retrying
+      await new Promise((ok) => setTimeout(ok, 400 * (i + 1)));
+    }
+    return null;
+  };
   const [player, stats, hist] = await Promise.all([api(`/players/${fid}`), api(`/players/${fid}/stats/cs2`), api(`/players/${fid}/history?game=cs2&limit=10`)]);
   const items = (hist && hist.items) || [];
-  const matches = await Promise.all(items.map(async (m) => {
-    const st = await api(`/matches/${m.match_id}/stats`);
+  const statsOf = new Array(items.length).fill(null);
+  for (let i = 0; i < items.length; i += 3) {
+    const part = await Promise.all(items.slice(i, i + 3).map((m) => api(`/matches/${m.match_id}/stats`)));
+    part.forEach((x, j) => { statsOf[i + j] = x; });
+  }
+  let incomplete = false;
+  const matches = items.map((m, idx) => {
+    const st = statsOf[idx];
     const round = st && st.rounds && st.rounds[0];
-    if (!round) return { id: m.match_id, at: m.finished_at || m.started_at };
+    if (!round) {  // no stats (yet): still show win / loss and the score from the match history
+      incomplete = true;
+      const res = m.results || {}, teams = m.teams || {};
+      const mySide = Object.keys(teams).find((f) => ((teams[f] || {}).players || []).some((p) => p.player_id === fid));
+      const sc = res.score || {};
+      return { id: m.match_id, at: m.finished_at || m.started_at, won: mySide && res.winner ? res.winner === mySide : null,
+               score: mySide && sc[mySide] != null ? `${sc[mySide]} / ${Object.entries(sc).filter(([f]) => f !== mySide).map(([, v]) => v)[0]}` : null };
+    }
     let mine = null, myTeam = null;
     for (const t of round.teams || []) for (const p of t.players || []) if (p.player_id === fid) { mine = p.player_stats; myTeam = t; }
     const rs = round.round_stats || {};
@@ -204,7 +225,7 @@ async function faceitData(env, fid) {
              k: mine ? +mine.Kills : null, d: mine ? +mine.Deaths : null, a: mine ? +mine.Assists : null,
              kd: mine ? +mine["K/D Ratio"] : null, kr: mine ? +mine["K/R Ratio"] : null, hs: mine ? +mine["Headshots %"] : null,
              adr: mine ? +(mine.ADR || mine["ADR"] || 0) || null : null, mvps: mine ? +mine.MVPs : null };
-  }));
+  });
   const life = (stats && stats.lifetime) || {};
   const data = {
     nickname: player && player.nickname, avatar: player && player.avatar, country: player && player.country,
@@ -217,7 +238,8 @@ async function faceitData(env, fid) {
       hs: +s.stats["Average Headshots %"] || null })).sort((a, b) => b.matches - a.matches),
     matches,
   };
-  try { await env.USERS.put(cacheKey, JSON.stringify({ at: Date.now(), data }), { expirationTtl: 3600 }); }
+  const at = incomplete ? Date.now() - 8 * 60 * 1000 : Date.now();
+  try { await env.USERS.put(cacheKey, JSON.stringify({ at, data }), { expirationTtl: 3600 }); }
   catch (e) { console.warn("FACEIT cache not saved:", e && e.message); }  // the page still gets its data
   return data;
 }

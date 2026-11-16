@@ -1019,3 +1019,12 @@ body:not(.is-premium) .pr-sec .pr-body { opacity: .35; filter: blur(2px); pointe
 
 .me-menu .me-admin { color: var(--accent); font-weight: 700; }
 .me-menu .me-admin[hidden] { display: none; }
+
+/* footer: social profiles */
+.foot-social { display: flex; align-items: center; gap: 10px; margin: 0 0 12px; flex-wrap: wrap; }
+.foot-social .soc { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 10px;
+  border: 1px solid var(--line); color: var(--text); background: var(--panel2); transition: color .15s, border-color .15s, background .15s; }
+.foot-social .soc svg { width: 19px; height: 19px; }
+.foot-social .soc-youtube:hover { color: #fff; background: #ff0033; border-color: #ff0033; }
+.foot-social .soc-instagram:hover { color: #fff; background: linear-gradient(45deg, #f9a825, #e1306c, #833ab4); border-color: #e1306c; }
+.foot-social .soc-tiktok:hover { color: #fff; background: #000; border-color: #25f4ee; box-shadow: 2px 2px 0 #fe2c55; }
