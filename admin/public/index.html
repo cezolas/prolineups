@@ -51,6 +51,21 @@
   .rm-item .acts select, .rm-item .acts button { font-size: 12px; padding: 3px 6px; }
   .rm-note { font-size: 12px; margin-top: 6px; padding: 6px 8px; background: #1b2028; border-radius: 4px; white-space: pre-wrap; }
   .hint { font-size: 12px; margin-top: 8px; }
+  .kpis { display: flex; gap: 10px; flex-wrap: wrap; margin: 12px 0; }
+  .kpi { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; min-width: 130px; }
+  .kpi b { display: block; font-size: 22px; } .kpi span { font-size: 12px; color: var(--muted); }
+  .users td { white-space: nowrap; } .users td.u { white-space: normal; min-width: 200px; }
+  .users img { width: 28px; height: 28px; border-radius: 50%; vertical-align: middle; margin-right: 8px; }
+  .users tr.click { cursor: pointer; } .users tr.click:hover td { background: #1c2230; }
+  .tag { display: inline-block; padding: 1px 7px; border-radius: 99px; font-size: 11px; font-weight: 700; margin-right: 3px; }
+  .tag.google { background: #1f3a5f; color: #9cc3ff; } .tag.faceit { background: #ff5500; color: #fff; } .tag.free { background: #2a2f3a; color: #c9cdd6; }
+  .tag.premium { background: var(--accent); color: #1b1406; }
+  .k-page { color: #c9cdd6; } .k-video { color: var(--accent); } .k-login { color: var(--ok); } .k-demo { color: #c084fc; } .k-copy, .k-download { color: #7dd3fc; }
+  .spark { display: flex; align-items: flex-end; gap: 2px; height: 60px; margin: 6px 0 14px; }
+  .spark i { flex: 1; background: var(--accent); opacity: .8; border-radius: 2px 2px 0 0; min-height: 1px; }
+  .two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px; }
+  .ulog { max-height: 70vh; overflow: auto; }
+  @media (max-width: 900px) { .two { grid-template-columns: 1fr; } }
   @media (max-width: 900px) { .shell { grid-template-columns: 1fr; } .grid { grid-template-columns: 1fr; } .mapbox { position: static; } }
 </style>
 </head>
@@ -62,12 +77,38 @@
     <div class="h">Conteúdo</div>
     <a class="on" href="#de-para" data-view="depara">De-Para de lugares</a>
     <a href="#roadmap" data-view="roadmap">Roadmap</a>
+    <div class="h">Pessoas</div>
+    <a href="#usuarios" data-view="users">Usuários e atividade</a>
     <div class="h">Histórico</div>
     <a href="#" id="auditLink">Últimas alterações</a>
     <div class="h">Site</div>
     <a href="https://pronades.com.br" target="_blank" rel="noopener">Abrir o site</a>
   </nav>
   <main>
+  <section id="view-users" hidden>
+    <h2>Usuários e atividade</h2>
+    <div class="muted">Quem tem conta, o tipo de conta e o que cada um fez no site (páginas, vídeos, comandos copiados, demos enviadas).
+      Só registramos quem está logado; o log é apagado após 180 dias ou quando a pessoa apaga a conta.</div>
+    <div class="kpis" id="uKpis"></div>
+    <div class="muted" style="font-size:12px">Eventos por dia (30 dias)</div>
+    <div class="spark" id="uSpark"></div>
+    <div class="bar">
+      <input id="uFilter" placeholder="Filtrar por nome, e-mail ou nick" style="min-width:260px" aria-label="Filtrar">
+      <select id="uType" aria-label="Tipo"><option value="">Todos os tipos</option><option value="google">Google</option><option value="faceit">FACEIT</option><option value="google+faceit">Google + FACEIT</option></select>
+      <button id="uReload" type="button">Atualizar</button>
+    </div>
+    <div class="tablewrap"><table class="users"><thead><tr><th>Usuário</th><th>Tipo de conta</th><th>Plano</th><th>Criada</th><th>Último acesso</th>
+      <th>Páginas</th><th>Vídeos</th><th>Comandos</th><th>Demos</th><th>Dias ativos</th><th>7 dias</th><th>Aparelho</th></tr></thead><tbody id="uRows"></tbody></table></div>
+    <div class="two" style="margin-top:18px">
+      <div><h3 id="uLogTitle" style="margin:0 0 6px">Atividade recente (todos)</h3>
+        <div class="bar" style="margin:4px 0"><select id="uKind" aria-label="Evento"><option value="">Todos os eventos</option><option value="page">Páginas</option><option value="video">Vídeos</option><option value="copy">Comandos copiados</option><option value="download">Downloads</option><option value="demo">Demos</option><option value="login">Logins</option><option value="fav">Favoritos</option></select>
+          <button id="uAll" type="button" hidden>Ver todos</button></div>
+        <div class="ulog"><table><thead><tr><th>Quando</th><th>Quem</th><th>Evento</th><th>Página / detalhe</th><th>Aparelho</th></tr></thead><tbody id="uLog"></tbody></table></div>
+        <button id="uMore" type="button" style="margin-top:8px">Carregar mais</button></div>
+      <div><h3 style="margin:0 0 6px">Páginas mais vistas por quem tem conta (30 dias)</h3>
+        <table><thead><tr><th>Página</th><th>Views</th><th>Pessoas</th></tr></thead><tbody id="uTop"></tbody></table></div>
+    </div>
+  </section>
   <section id="view-roadmap" hidden>
     <h2>Roadmap</h2>
     <div class="muted">Ideias para o site. O Claude trabalha nos itens <b>Aprovados</b>: implementa, testa e devolve como
@@ -241,8 +282,9 @@ cv.addEventListener("click", e => {
 
 // ---------------------------------------------------------------- views
 function showView() {
-  const v = location.hash === "#roadmap" ? "roadmap" : "depara";
-  $("view-roadmap").hidden = v !== "roadmap"; $("view-depara").hidden = v !== "depara";
+  const v = location.hash === "#roadmap" ? "roadmap" : location.hash === "#usuarios" ? "users" : "depara";
+  $("view-roadmap").hidden = v !== "roadmap"; $("view-depara").hidden = v !== "depara"; $("view-users").hidden = v !== "users";
+  if (v === "users") loadUsers();
   document.querySelectorAll(".menu a[data-view]").forEach(a => a.classList.toggle("on", a.dataset.view === v));
   if (v === "roadmap") loadRoadmap();
 }
@@ -294,6 +336,61 @@ $("rmBoard").addEventListener("click", async e => {
   }
   loadRoadmap();
 });
+
+// ---------------------------------------------------------------- users + activity
+const U = { users: [], bySub: {}, sub: null, kind: "", last: null };
+const TYPE_TAG = { google: '<span class="tag google">Google</span>', faceit: '<span class="tag faceit">FACEIT</span>',
+  "google+faceit": '<span class="tag google">Google</span><span class="tag faceit">FACEIT</span>' };
+const KIND = { page: "página", video: "vídeo", copy: "copiou comando", download: "download", demo: "demo enviada", login: "login", faceit_link: "conectou FACEIT", fav: "favorito", matchmode: "modo partida", share: "compartilhou" };
+const tsOf = ts => (typeof ts === "number" ? ts : Date.parse(ts));
+const when = ts => { if (!ts) return "–"; return new Date(tsOf(ts)).toLocaleString("pt-BR", { day: "2-digit", month: "2-digit", year: "2-digit", hour: "2-digit", minute: "2-digit" }); };
+const ago = ts => { if (!ts) return "–"; const s = (Date.now() - tsOf(ts)) / 1000;
+  return s < 3600 ? `${Math.max(1, Math.round(s / 60))} min` : s < 86400 ? `${Math.round(s / 3600)} h` : `${Math.round(s / 86400)} d`; };
+async function loadUsers() {
+  const d = await api("/api/users").catch(err => { $("uRows").innerHTML = `<tr><td colspan="12" class="err">${esc(err.message)}</td></tr>`; return null; });
+  if (!d) return;
+  U.users = d.users; U.bySub = Object.fromEntries(d.users.map(u => [u.sub, u]));
+  const act7 = d.users.filter(u => u.stats && u.stats.n7 > 0).length;
+  const cnt = t => d.users.filter(u => u.type === t).length;
+  const sum = k => d.users.reduce((a, u) => a + ((u.stats && u.stats[k]) || 0), 0);
+  $("uKpis").innerHTML = [[d.users.length, "contas"], [act7, "ativos em 7 dias"], [cnt("google"), "só Google"], [cnt("faceit"), "só FACEIT"],
+    [cnt("google+faceit"), "Google + FACEIT"], [sum("videos"), "vídeos vistos"], [sum("demos"), "demos enviadas"]]
+    .map(([v, l]) => `<div class="kpi"><b>${v}</b><span>${l}</span></div>`).join("") + (d.log_enabled ? "" : '<div class="kpi"><b>–</b><span class="err">log desligado (sem banco D1)</span></div>');
+  const mx = Math.max(1, ...d.daily.map(x => x.n));
+  $("uSpark").innerHTML = d.daily.map(x => `<i style="height:${Math.round(100 * x.n / mx)}%" title="${x.d}: ${x.n} eventos, ${x.u} pessoas, ${x.v || 0} vídeos"></i>`).join("") || '<span class="muted">sem dados ainda</span>';
+  $("uTop").innerHTML = d.top.map(x => `<tr><td><a href="https://pronades.com.br${esc(x.path)}" target="_blank" rel="noopener" style="color:#c9cdd6">${esc(x.path)}</a></td><td>${x.n}</td><td>${x.u}</td></tr>`).join("") || '<tr><td colspan="3" class="muted">sem dados ainda</td></tr>';
+  renderUsers(); loadLog(true);
+}
+function renderUsers() {
+  const q = $("uFilter").value.trim().toLowerCase(), ty = $("uType").value;
+  const rows = U.users.filter(u => (!ty || u.type === ty) && (!q || [u.name, u.email, u.faceit].some(x => (x || "").toLowerCase().includes(q))));
+  $("uRows").innerHTML = rows.map(u => { const s = u.stats || {}; const dv = s.devices ? Object.entries(s.devices).sort((a, b) => b[1] - a[1]).map(([k]) => k).join(", ") : "–";
+    return `<tr class="click${u.sub === U.sub ? " sel" : ""}" data-sub="${esc(u.sub)}">
+      <td class="u">${u.picture ? `<img src="${esc(u.picture)}" alt="" referrerpolicy="no-referrer">` : ""}<b>${esc(u.name || u.faceit || "(sem nome)")}</b><div class="muted" style="font-size:12px">${esc(u.email || "")}${u.faceit ? ` · FACEIT: ${esc(u.faceit)}` : ""}</div></td>
+      <td>${TYPE_TAG[u.type] || esc(u.type)}</td><td><span class="tag ${esc(u.plan)}">${u.plan === "free" ? "Gratuita" : esc(u.plan)}</span></td>
+      <td>${when(u.created)}</td><td title="${when(s.last || u.last_login)}">${ago(s.last || u.last_login)}</td>
+      <td>${s.pages || 0}</td><td>${s.videos || 0}</td><td>${(s.copies || 0) + (s.downloads || 0)}</td><td>${s.demos || 0}</td><td>${s.days || 0}</td><td>${s.n7 || 0}</td><td>${esc(dv)}</td></tr>`; }).join("")
+    || '<tr><td colspan="12" class="muted">nenhuma conta ainda</td></tr>';
+}
+async function loadLog(reset) {
+  if (reset) { U.last = null; $("uLog").innerHTML = ""; }
+  const p = new URLSearchParams(); if (U.sub) p.set("sub", U.sub); if (U.kind) p.set("kind", U.kind); if (U.last) p.set("before", U.last);
+  const { items } = await api(`/api/users/log?${p}`).catch(() => ({ items: [] }));
+  if (items.length) U.last = items[items.length - 1].ts;
+  $("uMore").hidden = items.length < 200;
+  $("uLog").insertAdjacentHTML("beforeend", items.map(e => { const u = U.bySub[e.sub] || {};
+    return `<tr><td class="num">${when(e.ts)}</td><td>${esc(u.name || u.faceit || e.sub.slice(0, 10))}</td><td class="k-${esc(e.kind)}">${esc(KIND[e.kind] || e.kind)}</td>
+      <td>${e.path ? `<a href="https://pronades.com.br${esc(e.path)}" target="_blank" rel="noopener" style="color:#c9cdd6">${esc(e.path)}</a>` : ""}${e.detail ? ` <span class="muted">${esc(e.detail)}</span>` : ""}</td>
+      <td class="num">${esc(e.device || "")}${e.country ? " · " + esc(e.country) : ""}</td></tr>`; }).join("")
+    || (reset ? '<tr><td colspan="5" class="muted">nada registrado ainda</td></tr>' : ""));
+}
+$("uRows").addEventListener("click", e => { const tr = e.target.closest("tr[data-sub]"); if (!tr) return;
+  U.sub = tr.dataset.sub; const u = U.bySub[U.sub] || {};
+  $("uLogTitle").textContent = `Atividade de ${u.name || u.faceit || "usuário"}`; $("uAll").hidden = false; renderUsers(); loadLog(true); });
+$("uAll").onclick = () => { U.sub = null; $("uLogTitle").textContent = "Atividade recente (todos)"; $("uAll").hidden = true; renderUsers(); loadLog(true); };
+$("uKind").onchange = () => { U.kind = $("uKind").value; loadLog(true); };
+$("uMore").onclick = () => loadLog(false);
+$("uFilter").oninput = renderUsers; $("uType").onchange = renderUsers; $("uReload").onclick = loadUsers;
 
 showView();
 init().catch(e => document.body.insertAdjacentHTML("afterbegin", `<pre style="color:#f87171;padding:16px">${esc(e.message)}</pre>`));

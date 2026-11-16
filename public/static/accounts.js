@@ -39,6 +39,44 @@
     document.dispatchEvent(new CustomEvent("pn:synced"));
   }
 
+  // ---------------------------------------------------------------- activity log (signed-in users only; see privacy policy)
+  // events wait until we know the visitor is signed in; anonymous visits are never sent
+  const lang = document.documentElement.lang.startsWith("pt") ? "pt" : "en";
+  let queue = [], meKnown = false, seenVideo = new Set();
+  const flush = () => {
+    if (!PN.me || !queue.length) return;
+    const body = JSON.stringify(queue.splice(0, 10));
+    if (!(navigator.sendBeacon && navigator.sendBeacon("/api/log", new Blob([body], { type: "application/json" }))))
+      fetch("/api/log", { method: "POST", headers: { "content-type": "application/json" }, body, keepalive: true }).catch(() => {});
+    if (queue.length) flush();
+  };
+  PN.log = (k, d) => {
+    if (meKnown && !PN.me) return;
+    queue.push({ k, p: location.pathname, d: d ? String(d).slice(0, 200) : undefined, l: lang });
+    if (meKnown) flush();
+  };
+  PN.log("page", document.title.split(" · ")[0]);
+  document.addEventListener("play", (e) => {
+    const v = e.target; if (!(v instanceof HTMLVideoElement)) return;
+    const src = (v.currentSrc || v.src || "").split("?")[0].split("/").pop();
+    if (src && !src.startsWith("blob:") && !seenVideo.has(src)) { seenVideo.add(src); PN.log("video", src); }
+  }, true);
+  document.addEventListener("click", (e) => {
+    const c = e.target.closest("[data-copy], [data-copycmd]");
+    if (c) return PN.log("copy", document.querySelector(".mm-detail h2, h1")?.textContent?.trim());
+    const a = e.target.closest('a[href$=".cfg"], a[download]');
+    if (a) return PN.log("download", a.getAttribute("href"));
+    const f = e.target.closest("#favBtn, [data-fav]");
+    if (f) PN.log("fav", (() => { try { return JSON.parse(f.dataset.fav || "{}").name; } catch (x) { return ""; } })());
+  }, true);
+  document.addEventListener("change", (e) => {
+    const i = e.target; if (!(i instanceof HTMLInputElement) || i.type !== "file" || !i.files || !i.files[0]) return;
+    const fl = i.files[0];  // never the file name: only its type and size
+    PN.log("demo", `${(fl.name.match(/\.(dem(\.(zst|gz|bz2))?|zip|gz|zst)$/i) || ["?"])[0].toLowerCase()} · ${(fl.size / 1048576).toFixed(0)} MB`);
+  }, true);
+  document.addEventListener("pn:me", () => { meKnown = true; if (PN.me) flush(); else queue = []; });
+  addEventListener("pagehide", flush);
+
   fetch("/api/me").then(async (r) => {
     const j = await r.json().catch(() => ({}));
     if (r.ok && j.user) {

@@ -27,5 +27,12 @@
       "binding": "USERS",
       "id": "6555969f65e6481080289699c957e528"
     }
+  ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "pronades-activity",
+      "database_id": "9844689b-5ce5-4ae3-8dcd-0e47af7b5226"
+    }
   ]
 }

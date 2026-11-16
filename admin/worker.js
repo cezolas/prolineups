@@ -148,6 +148,61 @@ export default {
 
     if (url.pathname === "/api/audit") return json({ items: await readJSON(env, "audit", []) });
 
+    // ---------------------------------------------------------------- users + activity log (read-only)
+    if (url.pathname === "/api/users" && request.method === "GET") {
+      if (!env.USERS) return json({ error: "USERS não ligado neste Worker" }, 503);
+      const users = [];
+      let cursor;
+      do {
+        const page = await env.USERS.list({ prefix: "user:", cursor, limit: 1000 });
+        const vals = await Promise.all(page.keys.map(k => env.USERS.get(k.name, "json")));
+        for (const u of vals) if (u) users.push(u);
+        cursor = page.list_complete ? null : page.cursor;
+      } while (cursor && users.length < 5000);
+      const stats = {};
+      if (env.DB) {
+        // keep the log for 180 days (privacy policy)
+        await env.DB.prepare("DELETE FROM events WHERE ts < ?").bind(Date.now() - 180 * 864e5).run().catch(() => {});
+        const r = await env.DB.prepare(`SELECT sub, COUNT(*) n, MAX(ts) last, SUM(kind='page') pages, SUM(kind='video') videos,
+            SUM(kind='copy') copies, SUM(kind='demo') demos, SUM(kind='download') downloads,
+            SUM(ts > ?) n7, COUNT(DISTINCT date(ts/1000, 'unixepoch')) days FROM events GROUP BY sub`).bind(Date.now() - 7 * 864e5).all();
+        for (const x of r.results || []) stats[x.sub] = x;
+        const dev = await env.DB.prepare("SELECT sub, device, COUNT(*) n FROM events GROUP BY sub, device").all();
+        for (const x of dev.results || []) { const s = stats[x.sub]; if (s) (s.devices = s.devices || {})[x.device || "?"] = x.n; }
+      }
+      const out = users.map(u => {
+        const faceitOnly = String(u.sub || "").startsWith("faceit:");
+        return {
+          sub: u.sub, name: u.name, email: u.email, picture: u.picture, created: u.created, last_login: u.last_login,
+          type: faceitOnly ? "faceit" : (u.faceit ? "google+faceit" : "google"),
+          faceit: u.faceit ? u.faceit.nickname : null, plan: u.plan || "free",
+          stats: stats[u.sub] || null,
+        };
+      });
+      out.sort((a, b) => ((b.stats && b.stats.last) || Date.parse(b.last_login || 0) || 0) - ((a.stats && a.stats.last) || Date.parse(a.last_login || 0) || 0));
+      let daily = [], top = [];
+      if (env.DB) {
+        daily = (await env.DB.prepare(`SELECT date(ts/1000, 'unixepoch', '-3 hours') d, COUNT(*) n, COUNT(DISTINCT sub) u,
+            SUM(kind='video') v FROM events WHERE ts > ? GROUP BY d ORDER BY d`).bind(Date.now() - 30 * 864e5).all()).results || [];
+        top = (await env.DB.prepare(`SELECT path, COUNT(*) n, COUNT(DISTINCT sub) u FROM events WHERE kind='page' AND ts > ?
+            GROUP BY path ORDER BY n DESC LIMIT 15`).bind(Date.now() - 30 * 864e5).all()).results || [];
+      }
+      return json({ users: out, daily, top, log_enabled: !!env.DB });
+    }
+    const ul = url.pathname.match(/^\/api\/users\/log$/);
+    if (ul && request.method === "GET") {
+      if (!env.DB) return json({ items: [] });
+      const sub = url.searchParams.get("sub"), kind = url.searchParams.get("kind");
+      const before = +url.searchParams.get("before") || Date.now() + 1;
+      let q = "SELECT id, ts, sub, kind, path, detail, lang, device, country FROM events WHERE ts < ?";
+      const args = [before];
+      if (sub) { q += " AND sub = ?"; args.push(sub); }
+      if (kind) { q += " AND kind = ?"; args.push(kind); }
+      q += " ORDER BY ts DESC LIMIT 200";
+      const r = await env.DB.prepare(q).bind(...args).all();
+      return json({ items: r.results || [] });
+    }
+
     // ---- roadmap: ideas board (KV key "roadmap"); Claude reads/updates it from the studio via the Cloudflare API
     if (url.pathname === "/api/roadmap" && request.method === "GET") {
       return json({ items: await readJSON(env, "roadmap", []), statuses: ROADMAP_STATUSES });

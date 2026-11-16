@@ -92,6 +92,7 @@ async function authCallback(req, env, url) {
     sub: claims.sub, email: claims.email || null, name: claims.name || null, picture: claims.picture || null,
     created: old?.created || now, last_login: now,
   }));
+  await logEvent(env, req, claims.sub, "login", null, "google");
   const h = new Headers({ location: safeNext(next) });
   h.append("set-cookie", setCookie(COOKIE, await makeSession(env, claims.sub), SESSION_DAYS * DAY));
   h.append("set-cookie", setCookie(STATE, "", 0));
@@ -135,6 +136,7 @@ async function faceitCallback(req, env, url) {
   const faceit = { id: fid, nickname: me.nickname || null, picture: me.picture || null, linked: new Date().toISOString() };
   // already signed in (e.g. Google)? link FACEIT to that account; otherwise use/create the FACEIT account
   let sub = await readSession(env, req);
+  const signedIn = !!sub;
   const now = new Date().toISOString();
   if (!sub) {
     sub = (await env.USERS.get(`faceit:${fid}`)) || `faceit:${fid}`;
@@ -144,6 +146,7 @@ async function faceitCallback(req, env, url) {
   old.faceit = faceit; old.last_login = now;
   await env.USERS.put(key, JSON.stringify(old));
   await env.USERS.put(`faceit:${fid}`, sub);  // FACEIT id -> account, so a later FACEIT sign-in finds it
+  await logEvent(env, req, sub, signedIn ? "faceit_link" : "login", null, "faceit");
   const h = new Headers({ location: safeNext(next) });
   h.append("set-cookie", setCookie(COOKIE, await makeSession(env, sub), SESSION_DAYS * DAY));
   h.append("set-cookie", setCookie(FSTATE, "", 0));
@@ -186,6 +189,21 @@ async function faceitData(env, fid) {
   return data;
 }
 
+// ---------------------------------------------------------------- activity log (D1, signed-in users only)
+const LOG_KINDS = new Set(["page", "video", "copy", "download", "demo", "login", "faceit_link", "matchmode", "share", "fav"]);
+function device(req) {
+  const ua = req.headers.get("user-agent") || "";
+  return /iPad|Tablet/i.test(ua) ? "tablet" : /Mobi|Android|iPhone/i.test(ua) ? "mobile" : "desktop";
+}
+async function logEvent(env, req, sub, kind, path, detail, lang) {
+  if (!env.DB || !sub || !LOG_KINDS.has(kind)) return;
+  try {
+    await env.DB.prepare("INSERT INTO events (ts, sub, kind, path, detail, lang, device, country) VALUES (?, ?, ?, ?, ?, ?, ?, ?)")
+      .bind(Date.now(), sub, kind, String(path || "").slice(0, 300) || null, String(detail || "").slice(0, 300) || null,
+            String(lang || "").slice(0, 5) || null, device(req), (req.cf && req.cf.country) || null).run();
+  } catch (e) { /* the log must never break the site */ }
+}
+
 async function api(req, env, url) {
   const sub = await readSession(env, req);
   if (url.pathname === "/api/me") {
@@ -193,6 +211,7 @@ async function api(req, env, url) {
     if (req.method === "DELETE") {  // LGPD: delete the account and everything stored for it
       const u = await env.USERS.get(`user:${sub}`, "json");
       const extra = u && u.faceit ? [env.USERS.delete(`faceit:${u.faceit.id}`), env.USERS.delete(`fcache:${u.faceit.id}`)] : [];
+      if (env.DB) await env.DB.prepare("DELETE FROM events WHERE sub = ?").bind(sub).run().catch(() => {});
       await Promise.all([env.USERS.delete(`user:${sub}`), ...extra, ...[...DATA_KEYS].map((k) => env.USERS.delete(`data:${sub}:${k}`))]);
       return json({ deleted: true }, 200, { "set-cookie": setCookie(COOKIE, "", 0) });
     }
@@ -201,6 +220,15 @@ async function api(req, env, url) {
     return json({ user: { name: u.name, email: u.email, picture: u.picture, created: u.created,
                           faceit: u.faceit ? { nickname: u.faceit.nickname, picture: u.faceit.picture } : null },
                   faceit_login: faceitReady(env) });
+  }
+  if (url.pathname === "/api/log" && req.method === "POST") {
+    if (!sub) return new Response(null, { status: 204 });
+    const raw = await req.text();
+    if (raw.length > 4000) return json({ error: "too large" }, 413);
+    let items = [];
+    try { const b = JSON.parse(raw); items = Array.isArray(b) ? b : [b]; } catch { return json({ error: "invalid json" }, 400); }
+    for (const it of items.slice(0, 10)) await logEvent(env, req, sub, it && it.k, it && it.p, it && it.d, it && it.l);
+    return new Response(null, { status: 204 });
   }
   if (url.pathname === "/api/faceit") {
     if (!sub) return json({ error: "not signed in" }, 401);
