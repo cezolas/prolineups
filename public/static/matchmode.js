@@ -150,7 +150,12 @@
     body.scrollTop = 0;
   }
 
-  function select(id) { st.sel = id; render(); }
+  // tapping a grenade plays its video right away over the radar (no video: the radar zooms on where it's thrown)
+  function select(id) {
+    st.sel = id; render();
+    const l = byId[id];
+    if (l && l.v) openVideo(l); else closeVideo();
+  }
 
   function openVideo(l) {
     const box = $("mmVideo"), v = box.querySelector("video");
