@@ -374,27 +374,50 @@ async function premiumGate(req, env, url) {
     location: `/${page[1]}/premium/?from=${encodeURIComponent(url.pathname)}`, "cache-control": "no-store" } });
 }
 
+// Errors: every route is awaited inside the try, so a failure becomes a handled 500 (not Cloudflare's "Error 1101").
+// The last 30 are kept in KV "log:errors" (time, method, path without query, message) to find the cause; no user data.
+async function recordError(env, req, url, e) {
+  console.error(url.pathname, e && e.stack || e);
+  if (!env.USERS) return;
+  try {
+    const list = (await env.USERS.get("log:errors", "json")) || [];
+    list.unshift({ at: new Date().toISOString(), method: req.method, path: url.pathname.slice(0, 200),
+                   error: String((e && e.message) || e).slice(0, 300), stack: String((e && e.stack) || "").split("\n").slice(0, 4).join(" | ").slice(0, 600) });
+    await env.USERS.put("log:errors", JSON.stringify(list.slice(0, 30)), { expirationTtl: 30 * DAY });
+  } catch { /* logging must never fail the response */ }
+}
+function errorPage(url) {
+  if (url.pathname.startsWith("/api/")) return json({ error: "server error" }, 500);
+  const lang = /^\/en\//.test(url.pathname) ? "en" : "pt";
+  const msg = lang === "en" ? "Something went wrong on our side. Please try again in a moment." : "Algo deu errado do nosso lado. Tente de novo em instantes.";
+  return new Response(`<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pronades</title>
+<body style="font-family:system-ui,sans-serif;background:#0f1218;color:#e8eaee;display:grid;place-items:center;min-height:100vh;margin:0">
+<div style="text-align:center;padding:24px"><h1 style="margin:0 0 8px">Pronades</h1><p>${msg}</p><p><a style="color:#f5b83d" href="/${lang}/">${lang === "en" ? "Back to the home page" : "Voltar para o início"}</a></p></div>`,
+    { status: 500, headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-store" } });
+}
+
 export default {
   async fetch(req, env) {
     const url = new URL(req.url);
     try {
-      if (url.pathname === "/auth/google") return authStart(req, env, url);
-      if (url.pathname === "/auth/google/callback") return authCallback(req, env, url);
-      if (url.pathname === "/auth/faceit") return faceitStart(req, env, url);
-      if (url.pathname === "/auth/faceit/callback") return faceitCallback(req, env, url);
+      if (url.pathname === "/auth/google") return await authStart(req, env, url);
+      if (url.pathname === "/auth/google/callback") return await authCallback(req, env, url);
+      if (url.pathname === "/auth/faceit") return await faceitStart(req, env, url);
+      if (url.pathname === "/auth/faceit/callback") return await faceitCallback(req, env, url);
       if (url.pathname === "/auth/logout") {
         const lang = (url.searchParams.get("lang") || "pt").slice(0, 2);
         return new Response(null, { status: 302, headers: { location: `/${lang}/`, "set-cookie": setCookie(COOKIE, "", 0) } });
       }
       if (url.pathname.startsWith("/api/")) {
         if (!env.USERS) return json({ error: "not configured" }, 503);
-        return api(req, env, url);
+        return await api(req, env, url);
       }
       const gated = await premiumGate(req, env, url);
       if (gated) return gated;
+      return await env.ASSETS.fetch(req);
     } catch (e) {
-      return json({ error: "server error" }, 500);
+      await recordError(env, req, url, e);
+      return errorPage(url);
     }
-    return env.ASSETS.fetch(req);
   },
 };
