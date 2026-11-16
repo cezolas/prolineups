@@ -18,13 +18,14 @@
     .then((j) => { if (j.data != null) last[key] = JSON.stringify(j.data); return j.data; }).catch(() => null);
   const favKey = (u) => String(u || "").replace(/^\/[a-z]{2}\//, "/");
   const localFavs = () => { try { return JSON.parse(ls.get("favs") || "[]"); } catch (e) { return []; } };
+  const localTactics = () => { try { const v = JSON.parse(ls.get("tactics") || "null"); return v && Array.isArray(v.items) ? v : { items: [], del: [] }; } catch (e) { return { items: [], del: [] }; } };
   const localPlan = () => Object.fromEntries(ls.keys().filter((k) => k.startsWith("plan:") || k === "planPrefs").map((k) => [k, ls.get(k)]));
 
   let timers = {};
   PN.push = (key) => {
     if (!PN.me) return;
     clearTimeout(timers[key]);
-    timers[key] = setTimeout(() => put(key, key === "favs" ? localFavs() : localPlan()), 600);
+    timers[key] = setTimeout(() => put(key, key === "favs" ? localFavs() : key === "tactics" ? localTactics() : localPlan()), 600);
   };
 
   async function sync() {
@@ -42,7 +43,13 @@
       for (const [x, on] of Object.entries(b)) if (on) merged[x] = true;
       ls.set(k, JSON.stringify(merged));
     }
-    await Promise.all([put("favs", favs), put("plan", localPlan())]);
+    // "My tactics" executes: union by id (newest edit wins), minus the ones deleted on any device
+    const stc = (await get("tactics")) || { items: [], del: [] }, ltc = localTactics();
+    const del = [...new Set([...(stc.del || []), ...(ltc.del || [])])].slice(-200), gone = new Set(del), byId = {};
+    for (const x of [...(stc.items || []), ...ltc.items]) if (!gone.has(x.id) && (!byId[x.id] || (x.at || 0) > (byId[x.id].at || 0))) byId[x.id] = x;
+    const tactics = { items: Object.values(byId).sort((a, b) => (b.at || 0) - (a.at || 0)).slice(0, 100), del };
+    ls.set("tactics", JSON.stringify(tactics));
+    await Promise.all([put("favs", favs), put("plan", localPlan()), (tactics.items.length || del.length) ? put("tactics", tactics) : null]);
     document.dispatchEvent(new CustomEvent("pn:synced"));
   }
 

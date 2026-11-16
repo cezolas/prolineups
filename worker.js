@@ -18,7 +18,7 @@
 // Stored per user (KV): Google id (sub), name, e-mail, photo URL, created/last login, favourites, plan progress.
 
 const COOKIE = "pn_s", STATE = "pn_st", FSTATE = "pn_fst", DAY = 86400;
-const SESSION_DAYS = 30, DATA_KEYS = new Set(["favs", "plan"]), MAX_DATA = 100 * 1024;
+const SESSION_DAYS = 30, DATA_KEYS = new Set(["favs", "plan", "tactics"]), MAX_DATA = 100 * 1024;
 
 const json = (obj, status = 200, headers = {}) =>
   new Response(JSON.stringify(obj), { status, headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store", ...headers } });

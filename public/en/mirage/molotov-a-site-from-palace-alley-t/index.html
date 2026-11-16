@@ -30,7 +30,7 @@
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
   if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg?v=714ec3503f" type="image/svg+xml">
-<link rel="stylesheet" href="/static/style.css?v=bbffd31f25">
+<link rel="stylesheet" href="/static/style.css?v=870db449bb">
 <script>window.I18N = {"copied": "Copied!", "dec": ".", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "open": "Open", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "report_fail": "Couldn\u0027t send it right now, try again later.", "report_limit": "You\u0027ve already sent several reports today.", "report_thanks": "Thanks! We\u0027ll take a look.", "throws_in": "throws in {s}s", "v_back": "Back 2 seconds", "v_frame_back": "Previous frame", "v_frame_fwd": "Next frame", "v_fwd": "Forward 2 seconds", "v_play": "Play / pause"}; window.LANG = "en";</script>
 </head>
 <body class="">
@@ -52,7 +52,7 @@
         <div class="me-head"><b id="meName"></b><span class="muted small" id="meMail"></span><span class="me-plan" id="mePlan" data-free="Free plan" data-premium="♛ Premium"></span></div>
         <a role="menuitem" href="/en/account/">👤 My account</a>
         <a role="menuitem" href="/en/my-faceit/">◉ My FACEIT</a>
-        <a role="menuitem" href="/en/my-list/">★ My list</a>
+        <a role="menuitem" href="/en/my-tactics/">★ My tactics</a>
         <a role="menuitem" href="/en/premium/">♛ Premium Area</a>
         <a role="menuitem" href="https://prolineups-admin.cezolas.workers.dev" id="meAdmin" class="me-admin" target="_blank" rel="noopener" hidden>⚙ Admin panel</a>
         <div class="me-sep"></div>
@@ -77,7 +77,7 @@
 <a href="/en/tournament/blast-rivals-2026-season-2/"><span class="nl">BLAST Rivals 2026 Season 2</span></a>      </details>
       <details class="nav-g" data-k="players">
         <summary class="nav-h"><a href="/en/players/">Players</a></summary>
-<a href="/en/player/apex/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/fr.svg" alt="France" title="France" width="16" height="12"></span>apEX <span class="role role-support sm">Support</span></span></a><a href="/en/player/art/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"></span>art <span class="role role-support sm">Support</span></span></a><a href="/en/player/coolio/"><span class="nl"><span class="nav-flag"></span>coolio <span class="role role-rifler sm">Rifler</span></span></a><a href="/en/player/dem0n/"><span class="nl"><span class="nav-flag"></span>dem0n <span class="role role-support sm">Support</span></span></a><a href="/en/player/donk/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12"></span>donk <span class="role role-rifler sm">Rifler</span></span></a><a href="/en/player/dumau/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"></span>dumau <span class="role role-entry sm">Entry</span></span></a><a href="/en/player/dziugss/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/lt.svg" alt="Lithuania" title="Lithuania" width="16" height="12"></span>dziugss <span class="role role-lurker sm">Lurker</span></span></a><a href="/en/player/fallen/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"></span>FalleN <span class="role role-support sm">Support</span></span></a><a href="/en/player/flamez/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12"></span>flameZ <span class="role role-entry sm">Entry</span></span></a><a href="/en/player/heavygod/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12"></span>HeavyGod <span class="role role-entry sm">Entry</span></span></a><a href="/en/player/hunter/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/ba.svg" alt="Bosnia" title="Bosnia" width="16" height="12"></span>huNter <span class="role role-support sm">Support</span></span></a><a href="/en/player/karrigan/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/dk.svg" alt="Denmark" title="Denmark" width="16" height="12"></span>karrigan <span class="role role-support sm">Support</span></span></a><a class="more" href="/en/players/">see all (40)</a>      </details>
+<a href="/en/player/apex/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/fr.svg" alt="France" title="France" width="16" height="12"></span>apEX <span class="role role-support sm">Support</span></span></a><a href="/en/player/art/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"></span>art <span class="role role-rifler sm">Rifler</span></span></a><a href="/en/player/coolio/"><span class="nl"><span class="nav-flag"></span>coolio <span class="role role-entry sm">Entry</span></span></a><a href="/en/player/dem0n/"><span class="nl"><span class="nav-flag"></span>dem0n <span class="role role-rifler sm">Rifler</span></span></a><a href="/en/player/donk/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12"></span>donk <span class="role role-rifler sm">Rifler</span></span></a><a href="/en/player/dumau/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"></span>dumau <span class="role role-entry sm">Entry</span></span></a><a href="/en/player/dziugss/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/lt.svg" alt="Lithuania" title="Lithuania" width="16" height="12"></span>dziugss <span class="role role-lurker sm">Lurker</span></span></a><a href="/en/player/fallen/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"></span>FalleN <span class="role role-support sm">Support</span></span></a><a href="/en/player/flamez/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12"></span>flameZ <span class="role role-entry sm">Entry</span></span></a><a href="/en/player/heavygod/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12"></span>HeavyGod <span class="role role-entry sm">Entry</span></span></a><a href="/en/player/hunter/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/ba.svg" alt="Bosnia" title="Bosnia" width="16" height="12"></span>huNter <span class="role role-support sm">Support</span></span></a><a href="/en/player/karrigan/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/dk.svg" alt="Denmark" title="Denmark" width="16" height="12"></span>karrigan <span class="role role-support sm">Support</span></span></a><a class="more" href="/en/players/">see all (40)</a>      </details>
       <details class="nav-g" data-k="teams">
         <summary class="nav-h"><a href="/en/teams/">Teams</a></summary>
 <a href="/en/team/falcons/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12"></span>Falcons</span></a><a href="/en/team/furia/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"></span>FURIA</span></a><a href="/en/team/fut/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/tr.svg" alt="Turkey" title="Turkey" width="16" height="12"></span>FUT</span></a><a href="/en/team/g2/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12"></span>G2</span></a><a href="/en/team/legacy/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"></span>Legacy</span></a><a href="/en/team/mouz/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12"></span>MOUZ</span></a><a href="/en/team/spirit/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12"></span>Spirit</span></a><a href="/en/team/vitality/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/fr.svg" alt="France" title="France" width="16" height="12"></span>Vitality</span></a>      </details>
@@ -121,7 +121,7 @@
     <div class="card-badges"><span class="badge type-molotov">Molotov</span><span class="badge side-T">T</span><span class="badge">Mirage</span>
       <button class="btn small fav-btn" id="favBtn" type="button" aria-pressed="false"
               data-fav='{"map": "Mirage", "name": "Molotov A Site (from Palace Alley)", "side": "T", "type": "molotov", "url": "/en/mirage/molotov-a-site-from-palace-alley-t/"}'
-              data-on="In my list" data-off="Save to my list">☆ Save to my list</button></div>
+              data-on="In My tactics" data-off="Save to My tactics">☆ Save to My tactics</button></div>
     <h1>Molotov A Site (from Palace Alley)</h1>
     <div class="sub">Used 7 times by 5 players</div>
     <div class="react" data-k="g:de_mirage/molotov-a-site-from-palace-alley-t">
@@ -205,7 +205,7 @@
     <thead><tr><th>Player</th><th>Team</th><th>Tournament</th><th>Round</th><th></th><th></th></tr></thead>
     <tbody>
       <tr>
-        <td> <a href="/en/player/coolio/">coolio</a> <span class="role role-rifler sm">Rifler</span></td>
+        <td> <a href="/en/player/coolio/">coolio</a> <span class="role role-entry sm">Entry</span></td>
         <td><img class="flag" src="/static/flags/tr.svg" alt="Turkey" title="Turkey" width="16" height="12"> <a href="/en/team/fut/">FUT</a></td>
         <td><a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>14</td>
@@ -241,7 +241,7 @@
 <code hidden id="cmd-4">sv_cheats 1; setpos 831.510 -1255.159 -108.969; setang -19.8993 -164.9755 0</code><button class="btn small" data-copy="#cmd-4">copy command</button></td>
       </tr>
       <tr>
-        <td><img class="flag" src="/static/flags/tr.svg" alt="Turkey" title="Turkey" width="16" height="12"> <a href="/en/player/xfl0ud/">xfl0ud</a> <span class="role role-entry sm">Entry</span></td>
+        <td><img class="flag" src="/static/flags/tr.svg" alt="Turkey" title="Turkey" width="16" height="12"> <a href="/en/player/xfl0ud/">xfl0ud</a> <span class="role role-support sm">Support</span></td>
         <td><img class="flag" src="/static/flags/tr.svg" alt="Turkey" title="Turkey" width="16" height="12"> <a href="/en/team/fut/">FUT</a></td>
         <td><a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>14</td>
@@ -250,7 +250,7 @@
 <code hidden id="cmd-5">sv_cheats 1; setpos 824.321 -1237.295 -64.016; setang 3.6739 -150.5305 0</code><button class="btn small" data-copy="#cmd-5">copy command</button></td>
       </tr>
       <tr>
-        <td><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12"> <a href="/en/player/tn1r/">tN1R</a> <span class="role role-lurker sm">Lurker</span></td>
+        <td><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12"> <a href="/en/player/tn1r/">tN1R</a> <span class="role role-entry sm">Entry</span></td>
         <td><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12"> <a href="/en/team/spirit/">Spirit</a></td>
         <td><a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>6</td>
@@ -259,7 +259,7 @@
 <code hidden id="cmd-6">sv_cheats 1; setpos 832.592 -1234.335 -71.453; setang 3.6629 -151.1808 0</code><button class="btn small" data-copy="#cmd-6">copy command</button></td>
       </tr>
       <tr>
-        <td><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12"> <a href="/en/player/tn1r/">tN1R</a> <span class="role role-lurker sm">Lurker</span></td>
+        <td><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12"> <a href="/en/player/tn1r/">tN1R</a> <span class="role role-entry sm">Entry</span></td>
         <td><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12"> <a href="/en/team/spirit/">Spirit</a></td>
         <td><a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>16</td>
@@ -351,7 +351,7 @@
   </div>
 </footer>
 <script src="/static/app.js?v=7303160fca" defer></script>
-<script src="/static/accounts.js?v=87b20e0d54" defer></script>
+<script src="/static/accounts.js?v=5336965d3d" defer></script>
 <script src="/static/video.js?v=58a69c88b1" defer></script>
 <script src="/static/react.js?v=ba1c25c1ad" defer></script>
 <script src="/static/replay.js?v=65e2dac786" defer></script></body>
