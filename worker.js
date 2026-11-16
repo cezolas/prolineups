@@ -7,6 +7,9 @@
 //   /auth/faceit            -> FACEIT sign-in (OAuth2 + PKCE); links to the signed-in account or creates a FACEIT one
 //   /auth/faceit/callback   -> exchange the code, read the FACEIT profile, set the session
 //   /api/faceit             -> GET: the user's FACEIT profile, lifetime + per-map stats and last matches (Data API, cached 10 min)
+//   /api/react?k=<key>      -> GET: likes of one grenade/tactic, whether this visitor liked it, whether the admin removed it
+//   /api/like               -> POST {k}: toggle this visitor's like (signed-in user, or an anonymous hash of the IP)
+//   /api/report             -> POST {k, url, reason, note, lang}: "this is broken" report (max 5 per visitor per day)
 // Settings: vars GOOGLE_CLIENT_ID, FACEIT_CLIENT_ID; secrets GOOGLE_CLIENT_SECRET, SESSION_SECRET, FACEIT_CLIENT_SECRET,
 // FACEIT_API_KEY; KV binding USERS.
 // Stored per user (KV): Google id (sub), name, e-mail, photo URL, created/last login, favourites, plan progress.
@@ -204,8 +207,73 @@ async function logEvent(env, req, sub, kind, path, detail, lang) {
   } catch (e) { /* the log must never break the site */ }
 }
 
+// ---------------------------------------------------------------- likes + reports (D1, open to everyone)
+// key = "<g|e|p>:<map>/<slug>"  (g = grenade category, e = execute, p = team play)
+const REACT_KEY = /^[gep]:[a-z0-9_]{2,40}\/[a-z0-9-]{1,120}$/;
+const REPORT_REASONS = new Set(["video", "wrong", "outdated", "other"]);
+let schemaReady = false;
+async function ensureSchema(env) {
+  if (schemaReady) return;
+  await env.DB.batch([
+    env.DB.prepare("CREATE TABLE IF NOT EXISTS likes (k TEXT NOT NULL, who TEXT NOT NULL, ts INTEGER NOT NULL, PRIMARY KEY (k, who))"),
+    env.DB.prepare("CREATE TABLE IF NOT EXISTS reports (id INTEGER PRIMARY KEY AUTOINCREMENT, k TEXT NOT NULL, url TEXT, reason TEXT, note TEXT, who TEXT, lang TEXT, ts INTEGER NOT NULL, status TEXT NOT NULL DEFAULT 'open')"),
+    env.DB.prepare("CREATE TABLE IF NOT EXISTS removed (k TEXT PRIMARY KEY, ts INTEGER NOT NULL, by TEXT, title TEXT)"),
+    env.DB.prepare("CREATE INDEX IF NOT EXISTS reports_status ON reports (status, ts)"),
+  ]);
+  schemaReady = true;
+}
+async function visitor(env, req, sub) {
+  if (sub) return `u:${sub}`;
+  const ip = req.headers.get("cf-connecting-ip") || "?";
+  return `a:${(await hmac(env.SESSION_SECRET || "pronades", `ip:${ip}`)).slice(0, 22)}`;  // never store the raw IP
+}
+async function readBody(req, max = 2000) {
+  const raw = await req.text();
+  if (raw.length > max) return null;
+  try { const b = JSON.parse(raw); return b && typeof b === "object" ? b : null; } catch { return null; }
+}
+async function reactApi(req, env, url, sub) {
+  if (!env.DB) return json({ error: "not configured" }, 503);
+  await ensureSchema(env);
+  const who = await visitor(env, req, sub);
+  if (url.pathname === "/api/react" && req.method === "GET") {
+    const k = url.searchParams.get("k") || "";
+    if (!REACT_KEY.test(k)) return json({ error: "bad key" }, 400);
+    const [n, mine, rm] = await env.DB.batch([
+      env.DB.prepare("SELECT COUNT(*) AS n FROM likes WHERE k = ?").bind(k),
+      env.DB.prepare("SELECT 1 AS x FROM likes WHERE k = ? AND who = ?").bind(k, who),
+      env.DB.prepare("SELECT 1 AS x FROM removed WHERE k = ?").bind(k),
+    ]);
+    return json({ likes: n.results[0].n, liked: mine.results.length > 0, removed: rm.results.length > 0 });
+  }
+  if (url.pathname === "/api/like" && req.method === "POST") {
+    const b = await readBody(req);
+    if (!b || !REACT_KEY.test(b.k || "")) return json({ error: "bad key" }, 400);
+    const had = await env.DB.prepare("SELECT 1 FROM likes WHERE k = ? AND who = ?").bind(b.k, who).first();
+    if (had) await env.DB.prepare("DELETE FROM likes WHERE k = ? AND who = ?").bind(b.k, who).run();
+    else await env.DB.prepare("INSERT OR IGNORE INTO likes (k, who, ts) VALUES (?, ?, ?)").bind(b.k, who, Date.now()).run();
+    const n = await env.DB.prepare("SELECT COUNT(*) AS n FROM likes WHERE k = ?").bind(b.k).first();
+    return json({ likes: n.n, liked: !had });
+  }
+  if (url.pathname === "/api/report" && req.method === "POST") {
+    const b = await readBody(req);
+    if (!b || !REACT_KEY.test(b.k || "") || !REPORT_REASONS.has(b.reason)) return json({ error: "invalid" }, 400);
+    const recent = await env.DB.prepare("SELECT COUNT(*) AS n FROM reports WHERE who = ? AND ts > ?").bind(who, Date.now() - DAY * 1000).first();
+    if (recent.n >= 5) return json({ error: "too many" }, 429);
+    const path = typeof b.url === "string" && /^\/[a-z]{2}\/[^\s]{1,250}$/.test(b.url) ? b.url : null;
+    await env.DB.prepare("INSERT INTO reports (k, url, reason, note, who, lang, ts) VALUES (?, ?, ?, ?, ?, ?, ?)")
+      .bind(b.k, path, b.reason, String(b.note || "").slice(0, 500) || null, who, String(b.lang || "").slice(0, 5) || null, Date.now()).run();
+    return json({ ok: true });
+  }
+  return null;
+}
+
 async function api(req, env, url) {
   const sub = await readSession(env, req);
+  if (["/api/react", "/api/like", "/api/report"].includes(url.pathname)) {
+    const r = await reactApi(req, env, url, sub);
+    if (r) return r;
+  }
   if (url.pathname === "/api/me") {
     if (!sub) return json({ error: "not signed in", configured: configured(env) || faceitReady(env), google: configured(env), faceit_login: faceitReady(env) }, 401);
     if (req.method === "DELETE") {  // LGPD: delete the account and everything stored for it

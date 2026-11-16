@@ -14,6 +14,11 @@
 //   GET  /api/audit             -> recent changes
 //   GET/POST /api/roadmap, POST /api/roadmap/<id>  -> ideas board (status, notes, priority, delete)
 //   GET  /api/export            -> all overrides (used by pipeline/admin_sync.py on the studio PC)
+//   GET  /api/reports           -> "report a problem" messages from the site (D1) + likes ranking + removed items
+//   POST /api/reports/<id>      -> { status: "open"|"done"|"dismissed" }
+//   POST /api/resolve           -> { url } -> the like/report key of a public page (read from the page itself)
+//   POST /api/remove            -> { k, title, restore? }  remove a grenade/tactic from the site (or put it back).
+//        Hidden right away by the page script (D1 "removed"); the studio pulls KV "removed" and drops it on the next export.
 // Everything else is served from ./public (the admin page, radars, place lists).
 
 const MAP_RE = /^[a-z0-9_]{2,40}$/;
@@ -140,7 +145,7 @@ export default {
       const maps = {};
       const list = await env.ADMIN.list({ prefix: "places:" });
       for (const k of list.keys) maps[k.name.slice(7)] = await readJSON(env, k.name, {});
-      return json({ maps, exported_at: new Date().toISOString() });
+      return json({ maps, removed: await readJSON(env, "removed", []), exported_at: new Date().toISOString() });
     }
     if (who !== "admin") return json({ error: "token de sincronização só pode exportar" }, 403);
 
@@ -201,6 +206,62 @@ export default {
       q += " ORDER BY ts DESC LIMIT 200";
       const r = await env.DB.prepare(q).bind(...args).all();
       return json({ items: r.results || [] });
+    }
+
+    // ---------------------------------------------------------------- reports, likes, removals (D1 shared with the site)
+    const REACT_KEY = /^[gep]:[a-z0-9_]{2,40}\/[a-z0-9-]{1,120}$/;
+    if (url.pathname.startsWith("/api/reports") || url.pathname === "/api/remove" || url.pathname === "/api/resolve") {
+      if (!env.DB) return json({ error: "DB não ligado neste Worker" }, 503);
+      await env.DB.batch([
+        env.DB.prepare("CREATE TABLE IF NOT EXISTS likes (k TEXT NOT NULL, who TEXT NOT NULL, ts INTEGER NOT NULL, PRIMARY KEY (k, who))"),
+        env.DB.prepare("CREATE TABLE IF NOT EXISTS reports (id INTEGER PRIMARY KEY AUTOINCREMENT, k TEXT NOT NULL, url TEXT, reason TEXT, note TEXT, who TEXT, lang TEXT, ts INTEGER NOT NULL, status TEXT NOT NULL DEFAULT 'open')"),
+        env.DB.prepare("CREATE TABLE IF NOT EXISTS removed (k TEXT PRIMARY KEY, ts INTEGER NOT NULL, by TEXT, title TEXT)"),
+      ]);
+    }
+    if (url.pathname === "/api/reports" && request.method === "GET") {
+      const status = url.searchParams.get("status") || "open";
+      const reports = (await env.DB.prepare("SELECT id, k, url, reason, note, lang, ts, status FROM reports WHERE status = ? ORDER BY ts DESC LIMIT 300")
+        .bind(status).all()).results || [];
+      const likes = (await env.DB.prepare("SELECT k, COUNT(*) n FROM likes GROUP BY k ORDER BY n DESC LIMIT 30").all()).results || [];
+      const removed = (await env.DB.prepare("SELECT k, ts, by, title FROM removed ORDER BY ts DESC").all()).results || [];
+      return json({ reports, likes, removed });
+    }
+    const rp = url.pathname.match(/^\/api\/reports\/(\d{1,12})$/);
+    if (rp && request.method === "POST") {
+      const b = await request.json().catch(() => ({}));
+      if (!["open", "done", "dismissed"].includes(b.status)) return json({ error: "status inválido" }, 400);
+      await env.DB.prepare("UPDATE reports SET status = ? WHERE id = ?").bind(b.status, +rp[1]).run();
+      return json({ ok: true });
+    }
+    if (url.pathname === "/api/resolve" && request.method === "POST") {
+      const b = await request.json().catch(() => ({}));
+      let u;
+      try { u = new URL(String(b.url || "").trim(), cfg.site_url || "https://pronades.com.br"); } catch { return json({ error: "URL inválida" }, 400); }
+      if (!/(^|\.)pronades\.com\.br$/.test(u.hostname)) return json({ error: "use um link do pronades.com.br" }, 400);
+      const r = await fetch(`https://pronades.com.br${u.pathname}`, { headers: { "user-agent": "pronades-admin" } });
+      if (!r.ok) return json({ error: `a página respondeu ${r.status}` }, 400);
+      const html = await r.text();
+      const k = (html.match(/class="react" data-k="([^"]+)"/) || [])[1];
+      const title = ((html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/) || [])[1] || "").replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+      if (!k) return json({ error: "essa página não é de uma granada ou tática" }, 400);
+      return json({ k, title, path: u.pathname });
+    }
+    if (url.pathname === "/api/remove" && request.method === "POST") {
+      const b = await request.json().catch(() => ({}));
+      if (!REACT_KEY.test(b.k || "")) return json({ error: "chave inválida" }, 400);
+      const list = await readJSON(env, "removed", []);
+      const rest = list.filter(x => x.k !== b.k);
+      if (b.restore) {
+        await env.DB.prepare("DELETE FROM removed WHERE k = ?").bind(b.k).run();
+        await env.ADMIN.put("removed", JSON.stringify(rest));
+        return json({ ok: true, restored: b.k });
+      }
+      const entry = { k: b.k, title: String(b.title || "").slice(0, 200), by: identity.email, at: new Date().toISOString() };
+      await env.DB.prepare("INSERT OR REPLACE INTO removed (k, ts, by, title) VALUES (?, ?, ?, ?)").bind(b.k, Date.now(), entry.by, entry.title).run();
+      await env.DB.prepare("UPDATE reports SET status = 'done' WHERE k = ? AND status = 'open'").bind(b.k).run();
+      rest.unshift(entry);
+      await env.ADMIN.put("removed", JSON.stringify(rest.slice(0, 2000)));
+      return json({ ok: true, removed: entry });
     }
 
     // ---- roadmap: ideas board (KV key "roadmap"); Claude reads/updates it from the studio via the Cloudflare API
