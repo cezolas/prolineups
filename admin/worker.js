@@ -272,10 +272,12 @@ export default {
         .bind(status).all()).results || [];
       const likes = (await env.DB.prepare("SELECT k, COUNT(*) n FROM likes GROUP BY k ORDER BY n DESC LIMIT 30").all()).results || [];
       const removed = (await env.DB.prepare("SELECT k, ts, by, title FROM removed ORDER BY ts DESC").all()).results || [];
+      let errors = [];  // site errors (public Worker writes them to D1 "errors")
+      try { errors = (await env.DB.prepare("SELECT ts, method, path, error, stack FROM errors ORDER BY ts DESC LIMIT 20").all()).results || []; } catch {}
       const counts = Object.fromEntries(((await env.DB.prepare("SELECT status, COUNT(*) n FROM reports GROUP BY status").all()).results || []).map(x => [x.status, x.n]));
       let rerecorded = {};  // written by the studio after a re-recording, published with the site
       try { const r = await fetch("https://pronades.com.br/dados/regravados.json", { cf: { cacheTtl: 60 } }); if (r.ok) rerecorded = await r.json(); } catch {}
-      return json({ reports, likes, removed, counts, rerecorded });
+      return json({ reports, likes, removed, counts, rerecorded, errors });
     }
     const rp = url.pathname.match(/^\/api\/reports\/(\d{1,12})$/);
     if (rp && request.method === "POST") {

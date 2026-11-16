@@ -142,6 +142,8 @@
     <div class="two" style="margin-top:18px">
       <div><h3 style="margin:0 0 6px">Removidas</h3>
         <table><thead><tr><th>Jogada</th><th>Quando</th><th>Por</th><th></th></tr></thead><tbody id="rmvRows"></tbody></table></div>
+      <div><h3 style="margin:0 0 6px">Erros do site (últimos 20)</h3>
+        <table><thead><tr><th>Quando</th><th>Página</th><th>Erro</th></tr></thead><tbody id="errRows"></tbody></table></div>
       <div><h3 style="margin:0 0 6px">Mais curtidas</h3>
         <table><thead><tr><th>Jogada</th><th>Likes</th></tr></thead><tbody id="lkRows"></tbody></table></div>
     </div>
@@ -369,7 +371,9 @@ const RKIND = { g: "Granada", e: "Execução", p: "Jogada" };
 const keyLabel = k => `${RKIND[k[0]] || "?"} · ${esc(k.slice(2))}`;
 const rwhen = ts => new Date(ts).toLocaleString("pt-BR", { dateStyle: "short", timeStyle: "short" });
 async function loadReports() {
-  const { reports, likes, removed, counts = {}, rerecorded = {} } = await api(`/api/reports?status=${$("rpStatus").value}`);
+  const { reports, likes, removed, counts = {}, rerecorded = {}, errors = [] } = await api(`/api/reports?status=${$("rpStatus").value}`);
+  $("errRows").innerHTML = errors.map(e => `<tr><td>${rwhen(e.ts)}</td><td>${esc(e.method)} ${esc(e.path)}</td><td title="${esc(e.stack || "")}">${esc(e.error)}</td></tr>`).join("")
+    || '<tr><td colspan="3" class="muted">Nenhum erro.</td></tr>';
   const rr = Object.fromEntries(Object.entries(rerecorded).map(([k, v]) => [k, Date.parse(v)]));
   const LBL = { open: "Abertos", rerecord: "Regravar", reviewed: "Revisados", done: "Resolvidos" };
   for (const o of $("rpStatus").options) o.textContent = `${LBL[o.value]} (${counts[o.value] || 0})`;

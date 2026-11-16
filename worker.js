@@ -64,6 +64,13 @@ async function readSession(env, req) {
 const safeNext = (n) => (typeof n === "string" && /^\/[a-z]{2}\/[^\s]*$/.test(n) && !n.startsWith("//") ? n : "/");
 const configured = (env) => !!(env.GOOGLE_CLIENT_ID && env.GOOGLE_CLIENT_SECRET && env.SESSION_SECRET && env.USERS);
 
+// KV write that may fail without breaking a sign-in: when "optional" (an existing account, only last_login changes),
+// a failure (e.g. the free plan's daily write limit) is logged and ignored; otherwise it throws as usual
+async function softPut(env, key, value, optional) {
+  try { await env.USERS.put(key, value); }
+  catch (e) { if (!optional) throw e; console.warn("KV write skipped:", key.split(":")[0], e && e.message); }
+}
+
 // linking an account that already belongs to another Pronades account: back to the page with ?link_error=<provider>
 function linkError(next, provider) {
   const to = safeNext(next);
@@ -109,12 +116,12 @@ async function authCallback(req, env, url) {
   const key = `user:${sub}`;
   const old = await env.USERS.get(key, "json");
   const google = { sub: gsub, email: claims.email || null, name: claims.name || null, picture: claims.picture || null };
-  await env.USERS.put(key, JSON.stringify({
+  await softPut(env, key, JSON.stringify({
     ...(old || {}),  // keep what other sign-ins stored (FACEIT link…)
     sub, google, email: claims.email || old?.email || null, name: old?.name || claims.name || null,
     picture: claims.picture || old?.picture || null, created: old?.created || now, last_login: now,
-  }));
-  if (sub !== gsub) await env.USERS.put(`google:${gsub}`, sub);
+  }), !!old);
+  if (sub !== gsub && (await env.USERS.get(`google:${gsub}`)) !== sub) await env.USERS.put(`google:${gsub}`, sub);
   await logEvent(env, req, sub, linking ? "google_link" : "login", null, "google");
   const h = new Headers({ location: safeNext(next) });
   h.append("set-cookie", setCookie(COOKIE, await makeSession(env, sub), SESSION_DAYS * DAY));
@@ -165,10 +172,12 @@ async function faceitCallback(req, env, url) {
   if (signedIn && owner && owner !== sub) return linkError(next, "faceit");  // that FACEIT account is someone else's
   if (!sub) sub = owner || `faceit:${fid}`;
   const key = `user:${sub}`;
-  const old = (await env.USERS.get(key, "json")) || { sub, created: now, name: me.nickname || null, email: me.email || null, picture: me.picture || null };
-  old.faceit = faceit; old.last_login = now;
-  await env.USERS.put(key, JSON.stringify(old));
-  await env.USERS.put(`faceit:${fid}`, sub);  // FACEIT id -> account, so a later FACEIT sign-in finds it
+  const stored = await env.USERS.get(key, "json");
+  const old = stored || { sub, created: now, name: me.nickname || null, email: me.email || null, picture: me.picture || null };
+  const sameLink = !!(old.faceit && old.faceit.id === fid);
+  old.faceit = { ...faceit, linked: sameLink ? old.faceit.linked : faceit.linked }; old.last_login = now;
+  await softPut(env, key, JSON.stringify(old), !!stored && sameLink);
+  if (owner !== sub) await env.USERS.put(`faceit:${fid}`, sub);  // FACEIT id -> account, so a later FACEIT sign-in finds it
   await logEvent(env, req, sub, signedIn ? "faceit_link" : "login", null, "faceit");
   const h = new Headers({ location: safeNext(next) });
   h.append("set-cookie", setCookie(COOKIE, await makeSession(env, sub), SESSION_DAYS * DAY));
@@ -208,7 +217,8 @@ async function faceitData(env, fid) {
       hs: +s.stats["Average Headshots %"] || null })).sort((a, b) => b.matches - a.matches),
     matches,
   };
-  await env.USERS.put(cacheKey, JSON.stringify({ at: Date.now(), data }), { expirationTtl: 3600 });
+  try { await env.USERS.put(cacheKey, JSON.stringify({ at: Date.now(), data }), { expirationTtl: 3600 }); }
+  catch (e) { console.warn("FACEIT cache not saved:", e && e.message); }  // the page still gets its data
   return data;
 }
 
@@ -337,6 +347,7 @@ async function api(req, env, url) {
       const body = await req.text();
       if (body.length > MAX_DATA) return json({ error: "too large" }, 413);
       try { JSON.parse(body); } catch { return json({ error: "invalid json" }, 400); }
+      if ((await env.USERS.get(key)) === body) return json({ ok: true, unchanged: true });
       await env.USERS.put(key, body);
       return json({ ok: true });
     }
@@ -375,15 +386,16 @@ async function premiumGate(req, env, url) {
 }
 
 // Errors: every route is awaited inside the try, so a failure becomes a handled 500 (not Cloudflare's "Error 1101").
-// The last 30 are kept in KV "log:errors" (time, method, path without query, message) to find the cause; no user data.
+// They are kept 30 days in D1 table "errors" (time, method, path without query, message) to find the cause; no user data.
 async function recordError(env, req, url, e) {
   console.error(url.pathname, e && e.stack || e);
-  if (!env.USERS) return;
+  if (!env.DB) return;
   try {
-    const list = (await env.USERS.get("log:errors", "json")) || [];
-    list.unshift({ at: new Date().toISOString(), method: req.method, path: url.pathname.slice(0, 200),
-                   error: String((e && e.message) || e).slice(0, 300), stack: String((e && e.stack) || "").split("\n").slice(0, 4).join(" | ").slice(0, 600) });
-    await env.USERS.put("log:errors", JSON.stringify(list.slice(0, 30)), { expirationTtl: 30 * DAY });
+    await env.DB.prepare("CREATE TABLE IF NOT EXISTS errors (ts INTEGER NOT NULL, method TEXT, path TEXT, error TEXT, stack TEXT)").run();
+    await env.DB.prepare("INSERT INTO errors (ts, method, path, error, stack) VALUES (?, ?, ?, ?, ?)")
+      .bind(Date.now(), req.method, url.pathname.slice(0, 200), String((e && e.message) || e).slice(0, 300),
+            String((e && e.stack) || "").split("\n").slice(0, 4).join(" | ").slice(0, 600)).run();
+    await env.DB.prepare("DELETE FROM errors WHERE ts < ?").bind(Date.now() - 30 * DAY * 1000).run();
   } catch { /* logging must never fail the response */ }
 }
 function errorPage(url) {

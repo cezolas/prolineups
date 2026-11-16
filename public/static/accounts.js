@@ -7,8 +7,15 @@
   const login = document.getElementById("loginBtn"), meBtn = document.getElementById("meBtn");
   const PN = (window.PN = { me: null, push: () => {} });
 
-  const put = (key, data) => fetch(`/api/data/${key}`, { method: "PUT", headers: { "content-type": "application/json" }, body: JSON.stringify(data) }).catch(() => {});
-  const get = (key) => fetch(`/api/data/${key}`).then((r) => (r.ok ? r.json() : { data: null })).then((j) => j.data).catch(() => null);
+  const last = {};  // what the server holds now, per key (JSON); a PUT only goes out when it changed
+  const put = (key, data) => {
+    const body = JSON.stringify(data);
+    if (last[key] === body) return Promise.resolve();
+    return fetch(`/api/data/${key}`, { method: "PUT", headers: { "content-type": "application/json" }, body })
+      .then((r) => { if (r.ok) last[key] = body; }).catch(() => {});
+  };
+  const get = (key) => fetch(`/api/data/${key}`).then((r) => (r.ok ? r.json() : { data: null }))
+    .then((j) => { if (j.data != null) last[key] = JSON.stringify(j.data); return j.data; }).catch(() => null);
   const favKey = (u) => String(u || "").replace(/^\/[a-z]{2}\//, "/");
   const localFavs = () => { try { return JSON.parse(ls.get("favs") || "[]"); } catch (e) { return []; } };
   const localPlan = () => Object.fromEntries(ls.keys().filter((k) => k.startsWith("plan:") || k === "planPrefs").map((k) => [k, ls.get(k)]));
