@@ -86,6 +86,8 @@
     set("meMail", u.email || "");
     const plan = document.getElementById("mePlan");
     if (plan) { plan.textContent = u.premium ? plan.dataset.premium : plan.dataset.free; plan.classList.toggle("on", !!u.premium); }
+    const adm = document.getElementById("meAdmin");
+    if (adm && u.admin && adm.getAttribute("href")) adm.hidden = false;
     const open = (v) => { menu.hidden = !v; meBtn.setAttribute("aria-expanded", v ? "true" : "false"); };
     meBtn.addEventListener("click", (e) => { e.preventDefault(); open(menu.hidden); if (!menu.hidden) menu.querySelector("a")?.focus(); });
     document.addEventListener("click", (e) => { if (!menu.hidden && !e.target.closest(".me-wrap")) open(false); });

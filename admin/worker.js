@@ -98,6 +98,11 @@ async function verifyAccess(request, cfg) {
   return { identity: payload };
 }
 
+async function sha256hex(text) {
+  const d = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(String(text).trim().toLowerCase()));
+  return [...new Uint8Array(d)].map(b => b.toString(16).padStart(2, "0")).join("");
+}
+
 function role(identity, cfg) {
   if (!identity) return null;
   if (identity.email && cfg.admins.includes(String(identity.email).toLowerCase())) return "admin";
@@ -162,7 +167,15 @@ export default {
     }
     if (who !== "admin") return json({ error: "token de sincronização só pode exportar" }, 403);
 
-    if (url.pathname === "/api/me") return json({ email: identity.email });
+    if (url.pathname === "/api/me") {
+      // the public site shows "Painel Admin" in the account menu to these people: it only gets SHA-256 hashes of the
+      // ADMIN_EMAILS (kept up to date whenever an admin opens this panel)
+      if (env.USERS) {
+        const hashes = (await Promise.all(cfg.admins.map(sha256hex))).sort();
+        if (JSON.stringify(hashes) !== await env.USERS.get("cfg:admins")) await env.USERS.put("cfg:admins", JSON.stringify(hashes));
+      }
+      return json({ email: identity.email });
+    }
 
     if (url.pathname === "/api/audit") return json({ items: await readJSON(env, "audit", []) });
 

@@ -30,7 +30,7 @@
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
   if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg?v=714ec3503f" type="image/svg+xml">
-<link rel="stylesheet" href="/static/style.css?v=745ad18dda">
+<link rel="stylesheet" href="/static/style.css?v=2b1c43d816">
 <script>window.I18N = {"copied": "Copied!", "dec": ".", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "open": "Open", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "report_fail": "Couldn\u0027t send it right now, try again later.", "report_limit": "You\u0027ve already sent several reports today.", "report_thanks": "Thanks! We\u0027ll take a look.", "throws_in": "throws in {s}s", "v_back": "Back 2 seconds", "v_frame_back": "Previous frame", "v_frame_fwd": "Next frame", "v_fwd": "Forward 2 seconds", "v_play": "Play / pause"}; window.LANG = "en";</script>
 </head>
 <body class="">
@@ -54,6 +54,7 @@
         <a role="menuitem" href="/en/my-faceit/">◉ My FACEIT</a>
         <a role="menuitem" href="/en/my-list/">★ My list</a>
         <a role="menuitem" href="/en/premium/">♛ Premium Area</a>
+        <a role="menuitem" href="https://prolineups-admin.cezolas.workers.dev" id="meAdmin" class="me-admin" target="_blank" rel="noopener" hidden>⚙ Admin panel</a>
         <div class="me-sep"></div>
         <a role="menuitem" class="me-out" href="/auth/logout?lang=en">⎋ Sign out</a>
       </div>
@@ -232,7 +233,7 @@
 <code hidden id="cmd-3">sv_cheats 1; setpos 1323.045 516.152 163.859; setang 9.2841 -90.9232 0</code><button class="btn small" data-copy="#cmd-3">copy command</button></td>
       </tr>
       <tr>
-        <td><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12"> <a href="/en/player/tn1r/">tN1R</a> <span class="role role-entry sm">Entry</span></td>
+        <td><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12"> <a href="/en/player/tn1r/">tN1R</a> <span class="role role-lurker sm">Lurker</span></td>
         <td><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12"> <a href="/en/team/spirit/">Spirit</a></td>
         <td><a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>16</td>
@@ -241,7 +242,7 @@
 <code hidden id="cmd-4">sv_cheats 1; setpos 1330.580 516.065 177.359; setang 8.9693 -92.4939 0</code><button class="btn small" data-copy="#cmd-4">copy command</button></td>
       </tr>
       <tr>
-        <td><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12"> <a href="/en/player/tn1r/">tN1R</a> <span class="role role-entry sm">Entry</span></td>
+        <td><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12"> <a href="/en/player/tn1r/">tN1R</a> <span class="role role-lurker sm">Lurker</span></td>
         <td><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12"> <a href="/en/team/spirit/">Spirit</a></td>
         <td><a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>21</td>
@@ -250,7 +251,7 @@
 <code hidden id="cmd-5">sv_cheats 1; setpos 1338.545 516.149 171.875; setang 7.8408 -92.3758 0</code><button class="btn small" data-copy="#cmd-5">copy command</button></td>
       </tr>
       <tr>
-        <td><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12"> <a href="/en/player/tn1r/">tN1R</a> <span class="role role-entry sm">Entry</span></td>
+        <td><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12"> <a href="/en/player/tn1r/">tN1R</a> <span class="role role-lurker sm">Lurker</span></td>
         <td><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12"> <a href="/en/team/spirit/">Spirit</a></td>
         <td><a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>16</td>
@@ -259,7 +260,7 @@
 <code hidden id="cmd-6">sv_cheats 1; setpos 1337.362 516.064 176.297; setang 9.2467 -93.1277 0</code><button class="btn small" data-copy="#cmd-6">copy command</button></td>
       </tr>
       <tr>
-        <td><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12"> <a href="/en/player/tn1r/">tN1R</a> <span class="role role-entry sm">Entry</span></td>
+        <td><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12"> <a href="/en/player/tn1r/">tN1R</a> <span class="role role-lurker sm">Lurker</span></td>
         <td><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12"> <a href="/en/team/spirit/">Spirit</a></td>
         <td><a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>10</td>
@@ -268,7 +269,7 @@
 <code hidden id="cmd-7">sv_cheats 1; setpos 1337.644 516.063 160.203; setang 9.7219 -93.4058 0</code><button class="btn small" data-copy="#cmd-7">copy command</button></td>
       </tr>
       <tr>
-        <td><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12"> <a href="/en/player/tn1r/">tN1R</a> <span class="role role-entry sm">Entry</span></td>
+        <td><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12"> <a href="/en/player/tn1r/">tN1R</a> <span class="role role-lurker sm">Lurker</span></td>
         <td><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12"> <a href="/en/team/spirit/">Spirit</a></td>
         <td><a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>11</td>
@@ -277,7 +278,7 @@
 <code hidden id="cmd-8">sv_cheats 1; setpos 1332.978 516.063 166.422; setang 8.8505 -91.5645 0</code><button class="btn small" data-copy="#cmd-8">copy command</button></td>
       </tr>
       <tr>
-        <td><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12"> <a href="/en/player/tn1r/">tN1R</a> <span class="role role-entry sm">Entry</span></td>
+        <td><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12"> <a href="/en/player/tn1r/">tN1R</a> <span class="role role-lurker sm">Lurker</span></td>
         <td><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12"> <a href="/en/team/spirit/">Spirit</a></td>
         <td><a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>23</td>
@@ -366,7 +367,7 @@
   </div>
 </footer>
 <script src="/static/app.js?v=44c26c44ad" defer></script>
-<script src="/static/accounts.js?v=5dc65a892c" defer></script>
+<script src="/static/accounts.js?v=7ef04ca37a" defer></script>
 <script src="/static/video.js?v=58a69c88b1" defer></script>
 <script src="/static/react.js?v=ba1c25c1ad" defer></script>
 <script src="/static/replay.js?v=65e2dac786" defer></script></body>

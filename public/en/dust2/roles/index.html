@@ -28,7 +28,7 @@
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
   if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg?v=714ec3503f" type="image/svg+xml">
-<link rel="stylesheet" href="/static/style.css?v=745ad18dda">
+<link rel="stylesheet" href="/static/style.css?v=2b1c43d816">
 <script>window.I18N = {"copied": "Copied!", "dec": ".", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "open": "Open", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "report_fail": "Couldn\u0027t send it right now, try again later.", "report_limit": "You\u0027ve already sent several reports today.", "report_thanks": "Thanks! We\u0027ll take a look.", "throws_in": "throws in {s}s", "v_back": "Back 2 seconds", "v_frame_back": "Previous frame", "v_frame_fwd": "Next frame", "v_fwd": "Forward 2 seconds", "v_play": "Play / pause"}; window.LANG = "en";</script>
 </head>
 <body class="">
@@ -52,6 +52,7 @@
         <a role="menuitem" href="/en/my-faceit/">◉ My FACEIT</a>
         <a role="menuitem" href="/en/my-list/">★ My list</a>
         <a role="menuitem" href="/en/premium/">♛ Premium Area</a>
+        <a role="menuitem" href="https://prolineups-admin.cezolas.workers.dev" id="meAdmin" class="me-admin" target="_blank" rel="noopener" hidden>⚙ Admin panel</a>
         <div class="me-sep"></div>
         <a role="menuitem" class="me-out" href="/auth/logout?lang=en">⎋ Sign out</a>
       </div>
@@ -124,14 +125,6 @@
           <span class="muted small">3 uses by entrys</span></a></li>
         <li><a href="/en/dust2/smoke-mid-doors-from-outside-long-t/"><span class="start-name">Smoke Mid Doors (from Outside Long)</span><span class="badge type-smoke">Smoke</span>
           <span class="muted small">9 uses by entrys</span></a></li>
-        <li><a href="/en/dust2/smoke-under-a-from-long-doors-t/"><span class="start-name">Smoke Under A (from Long Doors)</span><span class="badge type-smoke">Smoke</span>
-          <span class="muted small">5 uses by entrys</span></a></li>
-        <li><a href="/en/dust2/smoke-mid-from-t-spawn-t/"><span class="start-name">Smoke Mid (from T Spawn)</span><span class="badge type-smoke">Smoke</span>
-          <span class="muted small">4 uses by entrys</span></a></li>
-        <li><a href="/en/dust2/flash-mid-doors-from-mid-t/"><span class="start-name">Flash Mid Doors (from Mid)</span><span class="badge type-flash">Flash</span>
-          <span class="muted small">2 uses by entrys</span></a></li>
-        <li><a href="/en/dust2/smoke-long-a-from-t-spawn-t/"><span class="start-name">Smoke Long A (from T Spawn)</span><span class="badge type-smoke">Smoke</span>
-          <span class="muted small">2 uses by entrys</span></a></li>
       </ol>
     </div>
     <div class="ro-col" data-role="support">
@@ -155,13 +148,19 @@
       <h3><span class="role role-lurker">Lurker</span></h3>
       <ol class="start-list">
         <li><a href="/en/dust2/smoke-b-site-from-upper-tunnels-t/"><span class="start-name">Smoke B Site (from Upper Tunnels)</span><span class="badge type-smoke">Smoke</span>
-          <span class="muted small">20 uses by lurkers</span></a></li>
+          <span class="muted small">13 uses by lurkers</span></a></li>
+        <li><a href="/en/dust2/smoke-under-a-from-long-doors-t/"><span class="start-name">Smoke Under A (from Long Doors)</span><span class="badge type-smoke">Smoke</span>
+          <span class="muted small">6 uses by lurkers</span></a></li>
+        <li><a href="/en/dust2/smoke-mid-from-t-spawn-t/"><span class="start-name">Smoke Mid (from T Spawn)</span><span class="badge type-smoke">Smoke</span>
+          <span class="muted small">4 uses by lurkers</span></a></li>
         <li><a href="/en/dust2/molotov-b-doors-from-b-site-t/"><span class="start-name">Molotov B Doors (from B Site)</span><span class="badge type-molotov">Molotov</span>
           <span class="muted small">3 uses by lurkers</span></a></li>
+        <li><a href="/en/dust2/smoke-long-a-from-t-spawn-t/"><span class="start-name">Smoke Long A (from T Spawn)</span><span class="badge type-smoke">Smoke</span>
+          <span class="muted small">2 uses by lurkers</span></a></li>
         <li><a href="/en/dust2/he-b-site-from-upper-tunnels-t/"><span class="start-name">HE B Site (from Upper Tunnels)</span><span class="badge type-he">HE</span>
-          <span class="muted small">5 uses by lurkers</span></a></li>
+          <span class="muted small">3 uses by lurkers</span></a></li>
         <li><a href="/en/dust2/smoke-ct-spawn-from-outside-tunnels-t/"><span class="start-name">Smoke CT Spawn (from Outside Tunnels)</span><span class="badge type-smoke">Smoke</span>
-          <span class="muted small">4 uses by lurkers</span></a></li>
+          <span class="muted small">3 uses by lurkers</span></a></li>
       </ol>
     </div>
     <div class="ro-col" data-role="awp">
@@ -206,10 +205,18 @@
     <div class="ro-col" data-role="entry">
       <h3><span class="role role-entry">Entry</span></h3>
       <ol class="start-list">
+        <li><a href="/en/dust2/molotov-catwalk-from-short-stairs-ct/"><span class="start-name">Molotov Catwalk (from Short Stairs)</span><span class="badge type-molotov">Molotov</span>
+          <span class="muted small">4 uses by entrys</span></a></li>
         <li><a href="/en/dust2/smoke-long-a-from-under-a-ct/"><span class="start-name">Smoke Long A (from Under A)</span><span class="badge type-smoke">Smoke</span>
           <span class="muted small">3 uses by entrys</span></a></li>
-        <li><a href="/en/dust2/smoke-upper-tunnels-from-b-site-ct/"><span class="start-name">Smoke Upper Tunnels (from B Site)</span><span class="badge type-smoke">Smoke</span>
-          <span class="muted small">3 uses by entrys</span></a></li>
+        <li><a href="/en/dust2/he-catwalk-from-under-a-ct/"><span class="start-name">HE Catwalk (from Under A)</span><span class="badge type-he">HE</span>
+          <span class="muted small">2 uses by entrys</span></a></li>
+        <li><a href="/en/dust2/he-long-doors-from-long-a-ct/"><span class="start-name">HE Long Doors (from Long A)</span><span class="badge type-he">HE</span>
+          <span class="muted small">4 uses by entrys</span></a></li>
+        <li><a href="/en/dust2/he-catwalk-from-a-extended-ct/"><span class="start-name">HE Catwalk (from A Extended)</span><span class="badge type-he">HE</span>
+          <span class="muted small">2 uses by entrys</span></a></li>
+        <li><a href="/en/dust2/smoke-a-extended-from-a-ramp-ct/"><span class="start-name">Smoke A Extended (from A Ramp)</span><span class="badge type-smoke">Smoke</span>
+          <span class="muted small">2 uses by entrys</span></a></li>
       </ol>
     </div>
     <div class="ro-col" data-role="support">
@@ -224,12 +231,10 @@
       <ol class="start-list">
         <li><a href="/en/dust2/he-mid-doors-from-ct-spawn-ct/"><span class="start-name">HE Mid Doors (from CT Spawn)</span><span class="badge type-he">HE</span>
           <span class="muted small">4 uses by lurkers</span></a></li>
-        <li><a href="/en/dust2/molotov-catwalk-from-short-stairs-ct/"><span class="start-name">Molotov Catwalk (from Short Stairs)</span><span class="badge type-molotov">Molotov</span>
-          <span class="muted small">4 uses by lurkers</span></a></li>
-        <li><a href="/en/dust2/he-catwalk-from-under-a-ct/"><span class="start-name">HE Catwalk (from Under A)</span><span class="badge type-he">HE</span>
+        <li><a href="/en/dust2/molotov-upper-tunnels-from-b-site-ct/"><span class="start-name">Molotov Upper Tunnels (from B Site)</span><span class="badge type-molotov">Molotov</span>
           <span class="muted small">2 uses by lurkers</span></a></li>
-        <li><a href="/en/dust2/he-catwalk-from-a-extended-ct/"><span class="start-name">HE Catwalk (from A Extended)</span><span class="badge type-he">HE</span>
-          <span class="muted small">2 uses by lurkers</span></a></li>
+        <li><a href="/en/dust2/smoke-upper-tunnels-from-b-site-ct/"><span class="start-name">Smoke Upper Tunnels (from B Site)</span><span class="badge type-smoke">Smoke</span>
+          <span class="muted small">5 uses by lurkers</span></a></li>
         <li><a href="/en/dust2/flash-upper-tunnels-from-b-site-ct/"><span class="start-name">Flash Upper Tunnels (from B Site)</span><span class="badge type-flash">Flash</span>
           <span class="muted small">2 uses by lurkers</span></a></li>
         <li><a href="/en/dust2/flash-upper-tunnels-from-b-doors-ct/"><span class="start-name">Flash Upper Tunnels (from B Doors)</span><span class="badge type-flash">Flash</span>
@@ -277,7 +282,7 @@
   </div>
 </footer>
 <script src="/static/app.js?v=44c26c44ad" defer></script>
-<script src="/static/accounts.js?v=5dc65a892c" defer></script>
+<script src="/static/accounts.js?v=7ef04ca37a" defer></script>
 <script src="/static/video.js?v=58a69c88b1" defer></script>
 <script src="/static/react.js?v=ba1c25c1ad" defer></script>
 <script>

@@ -30,7 +30,7 @@
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
   if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg?v=714ec3503f" type="image/svg+xml">
-<link rel="stylesheet" href="/static/style.css?v=745ad18dda">
+<link rel="stylesheet" href="/static/style.css?v=2b1c43d816">
 <script>window.I18N = {"copied": "Copied!", "dec": ".", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "open": "Open", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "report_fail": "Couldn\u0027t send it right now, try again later.", "report_limit": "You\u0027ve already sent several reports today.", "report_thanks": "Thanks! We\u0027ll take a look.", "throws_in": "throws in {s}s", "v_back": "Back 2 seconds", "v_frame_back": "Previous frame", "v_frame_fwd": "Next frame", "v_fwd": "Forward 2 seconds", "v_play": "Play / pause"}; window.LANG = "en";</script>
 </head>
 <body class="">
@@ -54,6 +54,7 @@
         <a role="menuitem" href="/en/my-faceit/">◉ My FACEIT</a>
         <a role="menuitem" href="/en/my-list/">★ My list</a>
         <a role="menuitem" href="/en/premium/">♛ Premium Area</a>
+        <a role="menuitem" href="https://prolineups-admin.cezolas.workers.dev" id="meAdmin" class="me-admin" target="_blank" rel="noopener" hidden>⚙ Admin panel</a>
         <div class="me-sep"></div>
         <a role="menuitem" class="me-out" href="/auth/logout?lang=en">⎋ Sign out</a>
       </div>
@@ -222,7 +223,7 @@
 <code hidden id="cmd-2">sv_cheats 1; setpos 1004.969 2379.967 72.031; setang -24.6423 -102.0596 0</code><button class="btn small" data-copy="#cmd-2">copy command</button></td>
       </tr>
       <tr>
-        <td><img class="flag" src="/static/flags/ba.svg" alt="Bosnia" title="Bosnia" width="16" height="12"> <a href="/en/player/niko/">NiKo</a> <span class="role role-lurker sm">Lurker</span></td>
+        <td><img class="flag" src="/static/flags/ba.svg" alt="Bosnia" title="Bosnia" width="16" height="12"> <a href="/en/player/niko/">NiKo</a> <span class="role role-entry sm">Entry</span></td>
         <td><img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12"> <a href="/en/team/falcons/">Falcons</a></td>
         <td><a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>4</td>
@@ -240,7 +241,7 @@
 <code hidden id="cmd-4">sv_cheats 1; setpos 1004.957 2379.949 60.516; setang -24.6928 -102.2322 0</code><button class="btn small" data-copy="#cmd-4">copy command</button></td>
       </tr>
       <tr>
-        <td><img class="flag" src="/static/flags/ba.svg" alt="Bosnia" title="Bosnia" width="16" height="12"> <a href="/en/player/niko/">NiKo</a> <span class="role role-lurker sm">Lurker</span></td>
+        <td><img class="flag" src="/static/flags/ba.svg" alt="Bosnia" title="Bosnia" width="16" height="12"> <a href="/en/player/niko/">NiKo</a> <span class="role role-entry sm">Entry</span></td>
         <td><img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12"> <a href="/en/team/falcons/">Falcons</a></td>
         <td><a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>7</td>
@@ -312,7 +313,7 @@
 <code hidden id="cmd-12">sv_cheats 1; setpos 1004.969 2379.967 63.844; setang -24.7038 -102.1189 0</code><button class="btn small" data-copy="#cmd-12">copy command</button></td>
       </tr>
       <tr>
-        <td><img class="flag" src="/static/flags/ba.svg" alt="Bosnia" title="Bosnia" width="16" height="12"> <a href="/en/player/niko/">NiKo</a> <span class="role role-lurker sm">Lurker</span></td>
+        <td><img class="flag" src="/static/flags/ba.svg" alt="Bosnia" title="Bosnia" width="16" height="12"> <a href="/en/player/niko/">NiKo</a> <span class="role role-entry sm">Entry</span></td>
         <td><img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12"> <a href="/en/team/falcons/">Falcons</a></td>
         <td><a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>14</td>
@@ -339,7 +340,7 @@
 <code hidden id="cmd-15">sv_cheats 1; setpos 1004.970 2379.969 72.578; setang -24.3241 -101.9885 0</code><button class="btn small" data-copy="#cmd-15">copy command</button></td>
       </tr>
       <tr>
-        <td><img class="flag" src="/static/flags/ba.svg" alt="Bosnia" title="Bosnia" width="16" height="12"> <a href="/en/player/niko/">NiKo</a> <span class="role role-lurker sm">Lurker</span></td>
+        <td><img class="flag" src="/static/flags/ba.svg" alt="Bosnia" title="Bosnia" width="16" height="12"> <a href="/en/player/niko/">NiKo</a> <span class="role role-entry sm">Entry</span></td>
         <td><img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12"> <a href="/en/team/falcons/">Falcons</a></td>
         <td><a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>21</td>
@@ -348,7 +349,7 @@
 <code hidden id="cmd-16">sv_cheats 1; setpos 1004.965 2379.841 59.062; setang -24.3979 -102.0177 0</code><button class="btn small" data-copy="#cmd-16">copy command</button></td>
       </tr>
       <tr>
-        <td><img class="flag" src="/static/flags/ba.svg" alt="Bosnia" title="Bosnia" width="16" height="12"> <a href="/en/player/niko/">NiKo</a> <span class="role role-lurker sm">Lurker</span></td>
+        <td><img class="flag" src="/static/flags/ba.svg" alt="Bosnia" title="Bosnia" width="16" height="12"> <a href="/en/player/niko/">NiKo</a> <span class="role role-entry sm">Entry</span></td>
         <td><img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12"> <a href="/en/team/falcons/">Falcons</a></td>
         <td><a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>23</td>
@@ -357,7 +358,7 @@
 <code hidden id="cmd-17">sv_cheats 1; setpos 1004.964 2379.958 56.344; setang -24.4199 -102.0760 0</code><button class="btn small" data-copy="#cmd-17">copy command</button></td>
       </tr>
       <tr>
-        <td><img class="flag" src="/static/flags/ba.svg" alt="Bosnia" title="Bosnia" width="16" height="12"> <a href="/en/player/niko/">NiKo</a> <span class="role role-lurker sm">Lurker</span></td>
+        <td><img class="flag" src="/static/flags/ba.svg" alt="Bosnia" title="Bosnia" width="16" height="12"> <a href="/en/player/niko/">NiKo</a> <span class="role role-entry sm">Entry</span></td>
         <td><img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12"> <a href="/en/team/falcons/">Falcons</a></td>
         <td><a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>24</td>
@@ -375,7 +376,7 @@
 <code hidden id="cmd-19">sv_cheats 1; setpos 1004.970 2379.943 73.625; setang -21.6314 -101.2009 0</code><button class="btn small" data-copy="#cmd-19">copy command</button></td>
       </tr>
       <tr>
-        <td><img class="flag" src="/static/flags/ba.svg" alt="Bosnia" title="Bosnia" width="16" height="12"> <a href="/en/player/niko/">NiKo</a> <span class="role role-lurker sm">Lurker</span></td>
+        <td><img class="flag" src="/static/flags/ba.svg" alt="Bosnia" title="Bosnia" width="16" height="12"> <a href="/en/player/niko/">NiKo</a> <span class="role role-entry sm">Entry</span></td>
         <td><img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12"> <a href="/en/team/falcons/">Falcons</a></td>
         <td><a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>15</td>
@@ -393,7 +394,7 @@
 <code hidden id="cmd-21">sv_cheats 1; setpos 1004.969 2379.969 56.094; setang -24.5915 -102.1450 0</code><button class="btn small" data-copy="#cmd-21">copy command</button></td>
       </tr>
       <tr>
-        <td><img class="flag" src="/static/flags/ba.svg" alt="Bosnia" title="Bosnia" width="16" height="12"> <a href="/en/player/niko/">NiKo</a> <span class="role role-lurker sm">Lurker</span></td>
+        <td><img class="flag" src="/static/flags/ba.svg" alt="Bosnia" title="Bosnia" width="16" height="12"> <a href="/en/player/niko/">NiKo</a> <span class="role role-entry sm">Entry</span></td>
         <td><img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12"> <a href="/en/team/falcons/">Falcons</a></td>
         <td><a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>19</td>
@@ -402,7 +403,7 @@
 <code hidden id="cmd-22">sv_cheats 1; setpos 1004.938 2379.856 55.000; setang -24.3759 -102.0386 0</code><button class="btn small" data-copy="#cmd-22">copy command</button></td>
       </tr>
       <tr>
-        <td><img class="flag" src="/static/flags/ba.svg" alt="Bosnia" title="Bosnia" width="16" height="12"> <a href="/en/player/niko/">NiKo</a> <span class="role role-lurker sm">Lurker</span></td>
+        <td><img class="flag" src="/static/flags/ba.svg" alt="Bosnia" title="Bosnia" width="16" height="12"> <a href="/en/player/niko/">NiKo</a> <span class="role role-entry sm">Entry</span></td>
         <td><img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12"> <a href="/en/team/falcons/">Falcons</a></td>
         <td><a href="/en/tournament/blast-rivals-2026-season-2/">BLAST Rivals 2026 Season 2</a></td>
         <td>21</td>
@@ -635,7 +636,7 @@
   </div>
 </footer>
 <script src="/static/app.js?v=44c26c44ad" defer></script>
-<script src="/static/accounts.js?v=5dc65a892c" defer></script>
+<script src="/static/accounts.js?v=7ef04ca37a" defer></script>
 <script src="/static/video.js?v=58a69c88b1" defer></script>
 <script src="/static/react.js?v=ba1c25c1ad" defer></script>
 <script src="/static/replay.js?v=65e2dac786" defer></script></body>

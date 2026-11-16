@@ -28,7 +28,7 @@
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
   if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg?v=714ec3503f" type="image/svg+xml">
-<link rel="stylesheet" href="/static/style.css?v=745ad18dda">
+<link rel="stylesheet" href="/static/style.css?v=2b1c43d816">
 <script>window.I18N = {"copied": "Copiado!", "dec": ",", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "open": "Abrir", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "report_fail": "N\u00e3o deu para enviar agora, tente mais tarde.", "report_limit": "Voc\u00ea j\u00e1 enviou v\u00e1rios reports hoje.", "report_thanks": "Obrigado! Vamos revisar.", "throws_in": "lan\u00e7a em {s}s", "v_back": "Voltar 2 segundos", "v_frame_back": "Quadro anterior", "v_frame_fwd": "Pr\u00f3ximo quadro", "v_fwd": "Avan\u00e7ar 2 segundos", "v_play": "Reproduzir / pausar"}; window.LANG = "pt";</script>
 </head>
 <body class="">
@@ -52,6 +52,7 @@
         <a role="menuitem" href="/pt/minha-faceit/">◉ Minha FACEIT</a>
         <a role="menuitem" href="/pt/minha-lista/">★ Minha lista</a>
         <a role="menuitem" href="/pt/premium/">♛ Área Premium</a>
+        <a role="menuitem" href="https://prolineups-admin.cezolas.workers.dev" id="meAdmin" class="me-admin" target="_blank" rel="noopener" hidden>⚙ Painel Admin</a>
         <div class="me-sep"></div>
         <a role="menuitem" class="me-out" href="/auth/logout?lang=pt">⎋ Sair</a>
       </div>
@@ -149,24 +150,24 @@
       <div class="kit-head">
         <span class="kit-n">Jogador 2</span>
         <span class="kit-t">+2,9s</span>
-        <span class="badge type-smoke">Smoke</span>
+        <span class="badge type-molotov">Molotov</span>
       </div>
-      <a class="kit-name" href="/pt/mirage/smoke-a-site-from-t-spawn-t/">Smoke Bomb A (de Base TR)</a>
-      <div class="vbox"><video data-tools data-caps="[{&#34;a&#34;:0.0,&#34;b&#34;:2.2,&#34;x&#34;:&#34;Fique em Base TR&#34;,&#34;h&#34;:&#34;Base TR&#34;},{&#34;a&#34;:2.2,&#34;b&#34;:5.5,&#34;x&#34;:&#34;Mire nesse pixel&#34;,&#34;h&#34;:&#34;nesse pixel&#34;},{&#34;a&#34;:5.5,&#34;b&#34;:7.83,&#34;x&#34;:&#34;Andando (W) + jump throw&#34;,&#34;h&#34;:&#34;Andando (W) + jump throw&#34;,&#34;m&#34;:&#34;left&#34;},{&#34;a&#34;:7.83,&#34;b&#34;:11.63,&#34;x&#34;:&#34;Smoke na Bomb A&#34;,&#34;h&#34;:&#34;Bomb A&#34;}]" class="vv" src="/media/fut-vs-mouz-m2-mirage/54030-76561198355739212.mp4" poster="/media/fut-vs-mouz-m2-mirage/54030-76561198355739212.jpg" muted loop playsinline controls preload="none"></video></div>
-      <div class="muted small">Posição: Base TR · andando (W) + jump throw <svg class="mouse-ic" viewBox="0 0 24 34" role="img" aria-label="clique esquerdo"><title>clique esquerdo</title><path d="M12 1.5C6.2 1.5 2 5.7 2 11.5v11C2 28.3 6.2 32.5 12 32.5s10-4.2 10-10v-11C22 5.7 17.8 1.5 12 1.5z" fill="#ffffff"/><path d="M12 1.5C6.2 1.5 2 5.7 2 11.5V13h10z" fill="#e53935"/><path d="M12 1.5c5.8 0 10 4.2 10 10V13H12z" fill="#ffffff"/><path d="M12 1.5C6.2 1.5 2 5.7 2 11.5v11C2 28.3 6.2 32.5 12 32.5s10-4.2 10-10v-11C22 5.7 17.8 1.5 12 1.5zM12 1.5V13M2 13h20" fill="none" stroke="#111111" stroke-width="2" stroke-linejoin="round"/></svg></div>
-      <code id="kc-2">sv_cheats 1; setpos 1235.829 -1128.765 -219.234; setang -20.9218 -169.2039 0</code>
+      <a class="kit-name" href="/pt/mirage/molotov-a-site-from-palace-alley-t/">Molotov Bomb A (de Entrada da Caverna)</a>
+      <div class="vbox"><video data-tools data-caps="[{&#34;a&#34;:0.0,&#34;b&#34;:2.2,&#34;x&#34;:&#34;Fique em Entrada da Caverna&#34;,&#34;h&#34;:&#34;Entrada da Caverna&#34;},{&#34;a&#34;:2.2,&#34;b&#34;:5.77,&#34;x&#34;:&#34;Mire nesse pixel&#34;,&#34;h&#34;:&#34;nesse pixel&#34;},{&#34;a&#34;:5.77,&#34;b&#34;:7.47,&#34;x&#34;:&#34;Throw&#34;,&#34;h&#34;:&#34;Throw&#34;,&#34;m&#34;:&#34;left&#34;},{&#34;a&#34;:7.47,&#34;b&#34;:10.8,&#34;x&#34;:&#34;Molotov na Bomb A&#34;,&#34;h&#34;:&#34;Bomb A&#34;}]" class="vv" src="/media/spirit-vs-g2-m1-mirage/178228-76561199063238565.mp4" poster="/media/spirit-vs-g2-m1-mirage/178228-76561199063238565.jpg" muted loop playsinline controls preload="none"></video></div>
+      <div class="muted small">Posição: Entrada da Caverna · throw <svg class="mouse-ic" viewBox="0 0 24 34" role="img" aria-label="clique esquerdo"><title>clique esquerdo</title><path d="M12 1.5C6.2 1.5 2 5.7 2 11.5v11C2 28.3 6.2 32.5 12 32.5s10-4.2 10-10v-11C22 5.7 17.8 1.5 12 1.5z" fill="#ffffff"/><path d="M12 1.5C6.2 1.5 2 5.7 2 11.5V13h10z" fill="#e53935"/><path d="M12 1.5c5.8 0 10 4.2 10 10V13H12z" fill="#ffffff"/><path d="M12 1.5C6.2 1.5 2 5.7 2 11.5v11C2 28.3 6.2 32.5 12 32.5s10-4.2 10-10v-11C22 5.7 17.8 1.5 12 1.5zM12 1.5V13M2 13h20" fill="none" stroke="#111111" stroke-width="2" stroke-linejoin="round"/></svg></div>
+      <code id="kc-2">sv_cheats 1; setpos 831.510 -1255.159 -108.969; setang -19.8993 -164.9755 0</code>
       <button class="btn small" data-copy="#kc-2">copiar comando</button>
     </li>
     <li class="kit-part">
       <div class="kit-head">
         <span class="kit-n">Jogador 3</span>
         <span class="kit-t">+2,9s</span>
-        <span class="badge type-molotov">Molotov</span>
+        <span class="badge type-smoke">Smoke</span>
       </div>
-      <a class="kit-name" href="/pt/mirage/molotov-a-site-from-palace-alley-t/">Molotov Bomb A (de Entrada da Caverna)</a>
-      <div class="vbox"><video data-tools data-caps="[{&#34;a&#34;:0.0,&#34;b&#34;:2.2,&#34;x&#34;:&#34;Fique em Entrada da Caverna&#34;,&#34;h&#34;:&#34;Entrada da Caverna&#34;},{&#34;a&#34;:2.2,&#34;b&#34;:5.77,&#34;x&#34;:&#34;Mire nesse pixel&#34;,&#34;h&#34;:&#34;nesse pixel&#34;},{&#34;a&#34;:5.77,&#34;b&#34;:7.47,&#34;x&#34;:&#34;Throw&#34;,&#34;h&#34;:&#34;Throw&#34;,&#34;m&#34;:&#34;left&#34;},{&#34;a&#34;:7.47,&#34;b&#34;:10.8,&#34;x&#34;:&#34;Molotov na Bomb A&#34;,&#34;h&#34;:&#34;Bomb A&#34;}]" class="vv" src="/media/spirit-vs-g2-m1-mirage/178228-76561199063238565.mp4" poster="/media/spirit-vs-g2-m1-mirage/178228-76561199063238565.jpg" muted loop playsinline controls preload="none"></video></div>
-      <div class="muted small">Posição: Entrada da Caverna · throw <svg class="mouse-ic" viewBox="0 0 24 34" role="img" aria-label="clique esquerdo"><title>clique esquerdo</title><path d="M12 1.5C6.2 1.5 2 5.7 2 11.5v11C2 28.3 6.2 32.5 12 32.5s10-4.2 10-10v-11C22 5.7 17.8 1.5 12 1.5z" fill="#ffffff"/><path d="M12 1.5C6.2 1.5 2 5.7 2 11.5V13h10z" fill="#e53935"/><path d="M12 1.5c5.8 0 10 4.2 10 10V13H12z" fill="#ffffff"/><path d="M12 1.5C6.2 1.5 2 5.7 2 11.5v11C2 28.3 6.2 32.5 12 32.5s10-4.2 10-10v-11C22 5.7 17.8 1.5 12 1.5zM12 1.5V13M2 13h20" fill="none" stroke="#111111" stroke-width="2" stroke-linejoin="round"/></svg></div>
-      <code id="kc-3">sv_cheats 1; setpos 831.510 -1255.159 -108.969; setang -19.8993 -164.9755 0</code>
+      <a class="kit-name" href="/pt/mirage/smoke-a-site-from-t-spawn-t/">Smoke Bomb A (de Base TR)</a>
+      <div class="vbox"><video data-tools data-caps="[{&#34;a&#34;:0.0,&#34;b&#34;:2.2,&#34;x&#34;:&#34;Fique em Base TR&#34;,&#34;h&#34;:&#34;Base TR&#34;},{&#34;a&#34;:2.2,&#34;b&#34;:5.5,&#34;x&#34;:&#34;Mire nesse pixel&#34;,&#34;h&#34;:&#34;nesse pixel&#34;},{&#34;a&#34;:5.5,&#34;b&#34;:7.83,&#34;x&#34;:&#34;Andando (W) + jump throw&#34;,&#34;h&#34;:&#34;Andando (W) + jump throw&#34;,&#34;m&#34;:&#34;left&#34;},{&#34;a&#34;:7.83,&#34;b&#34;:11.63,&#34;x&#34;:&#34;Smoke na Bomb A&#34;,&#34;h&#34;:&#34;Bomb A&#34;}]" class="vv" src="/media/fut-vs-mouz-m2-mirage/54030-76561198355739212.mp4" poster="/media/fut-vs-mouz-m2-mirage/54030-76561198355739212.jpg" muted loop playsinline controls preload="none"></video></div>
+      <div class="muted small">Posição: Base TR · andando (W) + jump throw <svg class="mouse-ic" viewBox="0 0 24 34" role="img" aria-label="clique esquerdo"><title>clique esquerdo</title><path d="M12 1.5C6.2 1.5 2 5.7 2 11.5v11C2 28.3 6.2 32.5 12 32.5s10-4.2 10-10v-11C22 5.7 17.8 1.5 12 1.5z" fill="#ffffff"/><path d="M12 1.5C6.2 1.5 2 5.7 2 11.5V13h10z" fill="#e53935"/><path d="M12 1.5c5.8 0 10 4.2 10 10V13H12z" fill="#ffffff"/><path d="M12 1.5C6.2 1.5 2 5.7 2 11.5v11C2 28.3 6.2 32.5 12 32.5s10-4.2 10-10v-11C22 5.7 17.8 1.5 12 1.5zM12 1.5V13M2 13h20" fill="none" stroke="#111111" stroke-width="2" stroke-linejoin="round"/></svg></div>
+      <code id="kc-3">sv_cheats 1; setpos 1235.829 -1128.765 -219.234; setang -20.9218 -169.2039 0</code>
       <button class="btn small" data-copy="#kc-3">copiar comando</button>
     </li>
     <li class="kit-part">
@@ -217,7 +218,7 @@
   </div>
 </footer>
 <script src="/static/app.js?v=44c26c44ad" defer></script>
-<script src="/static/accounts.js?v=5dc65a892c" defer></script>
+<script src="/static/accounts.js?v=7ef04ca37a" defer></script>
 <script src="/static/video.js?v=58a69c88b1" defer></script>
 <script src="/static/react.js?v=ba1c25c1ad" defer></script>
 <script>

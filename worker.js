@@ -309,7 +309,7 @@ async function api(req, env, url) {
     return json({ user: { name: u.name, email: u.email, picture: u.picture, created: u.created,
                           faceit: u.faceit ? { nickname: u.faceit.nickname, picture: u.faceit.picture } : null,
                           google: u.google ? { email: u.google.email } : (String(sub).startsWith("faceit:") ? null : { email: u.email }),
-                          premium: await isPremium(env, sub) },
+                          premium: await isPremium(env, sub), admin: await isAdmin(env, u) },
                   faceit_login: faceitReady(env) });
   }
   if (url.pathname === "/api/log" && req.method === "POST") {
@@ -347,6 +347,18 @@ async function api(req, env, url) {
 // ---------------------------------------------------------------- Premium Area
 const PREMIUM_PAGE = /^\/(pt|en)\/(?:(?:comparar-minha-demo|compare-my-demo|plano-de-treino|training-plan|taticas|tactics|meta-grenades)|[a-z0-9]+\/(?:jogadas|plays|execucoes|executes))(?:\/|$)/;
 const PREMIUM_DATA = /^\/dados\/jogadas\//;
+// admins: the online Admin mirrors SHA-256 hashes of its ADMIN_EMAILS into KV "cfg:admins" (no e-mails stored here)
+async function isAdmin(env, u) {
+  const emails = [u && u.email, u && u.google && u.google.email].filter(Boolean).map((e) => String(e).trim().toLowerCase());
+  if (!emails.length || !env.USERS) return false;
+  const list = (await env.USERS.get("cfg:admins", "json")) || [];
+  if (!list.length) return false;
+  for (const e of emails) {
+    const d = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(e));
+    if (list.includes([...new Uint8Array(d)].map((b) => b.toString(16).padStart(2, "0")).join(""))) return true;
+  }
+  return false;
+}
 const isPremium = async (env, sub) => !!(sub && env.USERS && (await env.USERS.get(`premium:${sub}`)));
 async function premiumGate(req, env, url) {
   const page = url.pathname.match(PREMIUM_PAGE);
