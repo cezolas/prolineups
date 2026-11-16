@@ -10,6 +10,9 @@
 //   /api/react?k=<key>      -> GET: likes of one grenade/tactic, whether this visitor liked it, whether the admin removed it
 //   /api/like               -> POST {k}: toggle this visitor's like (signed-in user, or an anonymous hash of the IP)
 //   /api/report             -> POST {k, url, reason, note, lang}: "this is broken" report (max 5 per visitor per day)
+// Premium Area: compare-my-demo, training plan and tactics (tactics hub, team plays, executes and their replay data) are served
+// only to Premium users (KV "premium:<sub>", set in the online Admin); others go to /<lang>/premium/?from=<page>.
+// deploy.py routes exactly these paths through this Worker (assets.run_worker_first).
 // Settings: vars GOOGLE_CLIENT_ID, FACEIT_CLIENT_ID; secrets GOOGLE_CLIENT_SECRET, SESSION_SECRET, FACEIT_CLIENT_SECRET,
 // FACEIT_API_KEY; KV binding USERS.
 // Stored per user (KV): Google id (sub), name, e-mail, photo URL, created/last login, favourites, plan progress.
@@ -92,6 +95,7 @@ async function authCallback(req, env, url) {
   const key = `user:${claims.sub}`, now = new Date().toISOString();
   const old = await env.USERS.get(key, "json");
   await env.USERS.put(key, JSON.stringify({
+    ...(old || {}),  // keep what other sign-ins stored (FACEIT link…)
     sub: claims.sub, email: claims.email || null, name: claims.name || null, picture: claims.picture || null,
     created: old?.created || now, last_login: now,
   }));
@@ -280,13 +284,14 @@ async function api(req, env, url) {
       const u = await env.USERS.get(`user:${sub}`, "json");
       const extra = u && u.faceit ? [env.USERS.delete(`faceit:${u.faceit.id}`), env.USERS.delete(`fcache:${u.faceit.id}`)] : [];
       if (env.DB) await env.DB.prepare("DELETE FROM events WHERE sub = ?").bind(sub).run().catch(() => {});
-      await Promise.all([env.USERS.delete(`user:${sub}`), ...extra, ...[...DATA_KEYS].map((k) => env.USERS.delete(`data:${sub}:${k}`))]);
+      await Promise.all([env.USERS.delete(`user:${sub}`), env.USERS.delete(`premium:${sub}`), ...extra, ...[...DATA_KEYS].map((k) => env.USERS.delete(`data:${sub}:${k}`))]);
       return json({ deleted: true }, 200, { "set-cookie": setCookie(COOKIE, "", 0) });
     }
     const u = await env.USERS.get(`user:${sub}`, "json");
     if (!u) return json({ error: "not signed in" }, 401, { "set-cookie": setCookie(COOKIE, "", 0) });
     return json({ user: { name: u.name, email: u.email, picture: u.picture, created: u.created,
-                          faceit: u.faceit ? { nickname: u.faceit.nickname, picture: u.faceit.picture } : null },
+                          faceit: u.faceit ? { nickname: u.faceit.nickname, picture: u.faceit.picture } : null,
+                          premium: await isPremium(env, sub) },
                   faceit_login: faceitReady(env) });
   }
   if (url.pathname === "/api/log" && req.method === "POST") {
@@ -321,6 +326,24 @@ async function api(req, env, url) {
   return json({ error: "not found" }, 404);
 }
 
+// ---------------------------------------------------------------- Premium Area
+const PREMIUM_PAGE = /^\/(pt|en)\/(?:(?:comparar-minha-demo|compare-my-demo|plano-de-treino|training-plan|taticas|tactics)|[a-z0-9]+\/(?:jogadas|plays|execucoes|executes))(?:\/|$)/;
+const PREMIUM_DATA = /^\/dados\/jogadas\//;
+const isPremium = async (env, sub) => !!(sub && env.USERS && (await env.USERS.get(`premium:${sub}`)));
+async function premiumGate(req, env, url) {
+  const page = url.pathname.match(PREMIUM_PAGE);
+  if (!page && !PREMIUM_DATA.test(url.pathname)) return null;
+  if (await isPremium(env, await readSession(env, req))) {
+    const r = await env.ASSETS.fetch(req);
+    const out = new Response(r.body, r);
+    out.headers.set("cache-control", "private, no-store");  // never cached for other visitors
+    return out;
+  }
+  if (!page) return json({ error: "premium" }, 403);
+  return new Response(null, { status: 302, headers: {
+    location: `/${page[1]}/premium/?from=${encodeURIComponent(url.pathname)}`, "cache-control": "no-store" } });
+}
+
 export default {
   async fetch(req, env) {
     const url = new URL(req.url);
@@ -337,6 +360,8 @@ export default {
         if (!env.USERS) return json({ error: "not configured" }, 503);
         return api(req, env, url);
       }
+      const gated = await premiumGate(req, env, url);
+      if (gated) return gated;
     } catch (e) {
       return json({ error: "server error" }, 500);
     }

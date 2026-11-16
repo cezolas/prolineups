@@ -98,9 +98,10 @@
     <div class="bar">
       <input id="uFilter" placeholder="Filtrar por nome, e-mail ou nick" style="min-width:260px" aria-label="Filtrar">
       <select id="uType" aria-label="Tipo"><option value="">Todos os tipos</option><option value="google">Google</option><option value="faceit">FACEIT</option><option value="google+faceit">Google + FACEIT</option></select>
+      <select id="uPlan" aria-label="Plano"><option value="">Todos os planos</option><option value="premium">Premium</option><option value="free">Gratuita</option></select>
       <button id="uReload" type="button">Atualizar</button>
     </div>
-    <div class="tablewrap"><table class="users"><thead><tr><th>Usuário</th><th>Tipo de conta</th><th>Plano</th><th>Criada</th><th>Último acesso</th>
+    <div class="tablewrap"><table class="users"><thead><tr><th>Usuário</th><th>Tipo de conta</th><th>Plano (Área Premium)</th><th>Criada</th><th>Último acesso</th>
       <th>Páginas</th><th>Vídeos</th><th>Comandos</th><th>Demos</th><th>Dias ativos</th><th>7 dias</th><th>Aparelho</th></tr></thead><tbody id="uRows"></tbody></table></div>
     <div class="two" style="margin-top:18px">
       <div><h3 id="uLogTitle" style="margin:0 0 6px">Atividade recente (todos)</h3>
@@ -444,11 +445,13 @@ async function loadUsers() {
 }
 function renderUsers() {
   const q = $("uFilter").value.trim().toLowerCase(), ty = $("uType").value;
-  const rows = U.users.filter(u => (!ty || u.type === ty) && (!q || [u.name, u.email, u.faceit].some(x => (x || "").toLowerCase().includes(q))));
+  const pl = $("uPlan").value;
+  const rows = U.users.filter(u => (!ty || u.type === ty) && (!pl || u.plan === pl) && (!q || [u.name, u.email, u.faceit].some(x => (x || "").toLowerCase().includes(q))));
   $("uRows").innerHTML = rows.map(u => { const s = u.stats || {}; const dv = s.devices ? Object.entries(s.devices).sort((a, b) => b[1] - a[1]).map(([k]) => k).join(", ") : "–";
     return `<tr class="click${u.sub === U.sub ? " sel" : ""}" data-sub="${esc(u.sub)}">
       <td class="u">${u.picture ? `<img src="${esc(u.picture)}" alt="" referrerpolicy="no-referrer">` : ""}<b>${esc(u.name || u.faceit || "(sem nome)")}</b><div class="muted" style="font-size:12px">${esc(u.email || "")}${u.faceit ? ` · FACEIT: ${esc(u.faceit)}` : ""}</div></td>
-      <td>${TYPE_TAG[u.type] || esc(u.type)}</td><td><span class="tag ${esc(u.plan)}">${u.plan === "free" ? "Gratuita" : esc(u.plan)}</span></td>
+      <td>${TYPE_TAG[u.type] || esc(u.type)}</td><td style="white-space:nowrap"><span class="tag ${esc(u.plan)}">${u.plan === "premium" ? "♛ Premium" : "Gratuita"}</span>
+        <button class="pm-btn" type="button" data-pm="${esc(u.sub)}" data-on="${u.plan === "premium" ? 0 : 1}">${u.plan === "premium" ? "Tirar Premium" : "Dar Premium"}</button></td>
       <td>${when(u.created)}</td><td title="${when(s.last || u.last_login)}">${ago(s.last || u.last_login)}</td>
       <td>${s.pages || 0}</td><td>${s.videos || 0}</td><td>${(s.copies || 0) + (s.downloads || 0)}</td><td>${s.demos || 0}</td><td>${s.days || 0}</td><td>${s.n7 || 0}</td><td>${esc(dv)}</td></tr>`; }).join("")
     || '<tr><td colspan="12" class="muted">nenhuma conta ainda</td></tr>';
@@ -465,6 +468,16 @@ async function loadLog(reset) {
       <td class="num">${esc(e.device || "")}${e.country ? " · " + esc(e.country) : ""}</td></tr>`; }).join("")
     || (reset ? '<tr><td colspan="5" class="muted">nada registrado ainda</td></tr>' : ""));
 }
+$("uPlan").addEventListener("change", () => renderUsers());
+$("uRows").addEventListener("click", async e => {
+  const b = e.target.closest("button[data-pm]"); if (!b) return;
+  e.stopPropagation();
+  const u = U.users.find(x => x.sub === b.dataset.pm), on = b.dataset.on === "1";
+  if (!confirm(`${on ? "Liberar" : "Tirar"} o Premium de ${u ? (u.name || u.email || u.faceit) : "este usuário"}?`)) return;
+  b.disabled = true;
+  try { await api("/api/users/premium", { sub: b.dataset.pm, on }); if (u) u.plan = on ? "premium" : "free"; renderUsers(); }
+  catch (err) { alert(err.message); b.disabled = false; }
+}, true);
 $("uRows").addEventListener("click", e => { const tr = e.target.closest("tr[data-sub]"); if (!tr) return;
   U.sub = tr.dataset.sub; const u = U.bySub[U.sub] || {};
   $("uLogTitle").textContent = `Atividade de ${u.name || u.faceit || "usuário"}`; $("uAll").hidden = false; renderUsers(); loadLog(true); });

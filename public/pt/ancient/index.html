@@ -28,7 +28,7 @@
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
   if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg?v=714ec3503f" type="image/svg+xml">
-<link rel="stylesheet" href="/static/style.css?v=d15bf81152">
+<link rel="stylesheet" href="/static/style.css?v=c240b37721">
 <script>window.I18N = {"copied": "Copiado!", "dec": ",", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "open": "Abrir", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "report_fail": "N\u00e3o deu para enviar agora, tente mais tarde.", "report_limit": "Voc\u00ea j\u00e1 enviou v\u00e1rios reports hoje.", "report_thanks": "Obrigado! Vamos revisar.", "throws_in": "lan\u00e7a em {s}s", "v_back": "Voltar 2 segundos", "v_frame_back": "Quadro anterior", "v_frame_fwd": "Pr\u00f3ximo quadro", "v_fwd": "Avan\u00e7ar 2 segundos", "v_play": "Reproduzir / pausar"}; window.LANG = "pt";</script>
 </head>
 <body class="">
@@ -40,6 +40,7 @@
       <input id="q" type="search" placeholder="Buscar mapa, jogador, time, smoke…" autocomplete="off" aria-label="Buscar">
       <div id="results" class="results" hidden></div>
     </div>
+    <a class="premium-btn" href="/pt/premium/" title="Área Premium"><span aria-hidden="true">♛</span><span class="pb-l">Área Premium</span></a>
     <nav class="langs" aria-label="Idioma">
 <a href="/pt/ancient/" hreflang="pt" lang="pt" aria-current="true" title="Português" aria-label="Português"><img class="lang-flag" src="/static/flags/br.svg?v=17969b5ac0" alt="Português" width="24" height="18"></a><a href="/en/ancient/" hreflang="en" lang="en" title="English" aria-label="English"><img class="lang-flag" src="/static/flags/gb.svg?v=161ee20a0a" alt="English" width="24" height="18"></a>    </nav>
     <a class="login-btn" id="loginBtn" href="/pt/conta/" data-account="conta" hidden>Entrar</a>
@@ -51,26 +52,22 @@
   <aside class="side" id="side" aria-label="Navegação">
     <nav>
       <a href="/pt/"><span class="nl">Início</span></a>
+      <a class="nav-premium" href="/pt/premium/"><span>♛ Área Premium</span></a>
       <a href="/pt/modo-partida/"><span>📱 Modo partida</span></a>
       <a href="/pt/minha-faceit/"><span>◉ Minha FACEIT</span></a>
-      <a href="/pt/comparar-minha-demo/"><span>⇄ Comparar minha demo</span></a>
-      <a href="/pt/plano-de-treino/"><span>🎯 Plano de treino</span></a>
       <a href="/pt/funcoes/"><span>👥 Funções</span></a>
       <a href="/pt/analises/"><span>▤ Análises</span></a>
       <a href="/pt/minha-lista/"><span>★ Minha lista</span><span class="n" id="favCount"></span></a>
-      <details class="nav-g" data-k="maps" open>
+      <details class="nav-g" data-k="maps">
         <summary class="nav-h"><a href="/pt/mapas/">Mapas</a></summary>
 <a href="/pt/ancient/" aria-current="page"><span class="nl">Ancient</span><span class="n">51</span></a><a href="/pt/anubis/"><span class="nl">Anubis</span><span class="n">20</span></a><a href="/pt/cache/"><span class="nl">Cache</span><span class="n">39</span></a><a href="/pt/dust2/"><span class="nl">Dust2</span><span class="n">53</span></a><a href="/pt/inferno/"><span class="nl">Inferno</span><span class="n">22</span></a><a href="/pt/mirage/"><span class="nl">Mirage</span><span class="n">74</span></a><a href="/pt/nuke/"><span class="nl">Nuke</span><span class="n">33</span></a>      </details>
-      <details class="nav-g" data-k="tactics" open>
-        <summary class="nav-h"><a href="/pt/taticas/">Táticas</a></summary>
-<a href="/pt/ancient/jogadas/"><span class="nl">Ancient</span><span class="n">85</span></a><a href="/pt/anubis/jogadas/"><span class="nl">Anubis</span><span class="n">13</span></a><a href="/pt/cache/jogadas/"><span class="nl">Cache</span><span class="n">37</span></a><a href="/pt/dust2/jogadas/"><span class="nl">Dust2</span><span class="n">61</span></a><a href="/pt/inferno/jogadas/"><span class="nl">Inferno</span><span class="n">17</span></a><a href="/pt/mirage/jogadas/"><span class="nl">Mirage</span><span class="n">67</span></a><a href="/pt/nuke/jogadas/"><span class="nl">Nuke</span><span class="n">32</span></a>      </details>
-      <details class="nav-g" data-k="events" open>
+      <details class="nav-g" data-k="events">
         <summary class="nav-h"><a href="/pt/torneios/">Torneios</a></summary>
 <a href="/pt/torneio/blast-rivals-2026-season-2/"><span class="nl">BLAST Rivals 2026 Season 2</span></a>      </details>
-      <details class="nav-g" data-k="players" open>
+      <details class="nav-g" data-k="players">
         <summary class="nav-h"><a href="/pt/jogadores/">Jogadores</a></summary>
-<a href="/pt/jogador/apex/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12"></span>apEX <span class="role role-support sm">Suporte</span></span></a><a href="/pt/jogador/art/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>art <span class="role role-support sm">Suporte</span></span></a><a href="/pt/jogador/coolio/"><span class="nl"><span class="nav-flag"></span>coolio <span class="role role-entry sm">Entry</span></span></a><a href="/pt/jogador/dem0n/"><span class="nl"><span class="nav-flag"></span>dem0n <span class="role role-rifler sm">Rifler</span></span></a><a href="/pt/jogador/donk/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12"></span>donk <span class="role role-rifler sm">Rifler</span></span></a><a href="/pt/jogador/dumau/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>dumau <span class="role role-entry sm">Entry</span></span></a><a href="/pt/jogador/dziugss/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/lt.svg" alt="Lituânia" title="Lituânia" width="16" height="12"></span>dziugss <span class="role role-lurker sm">Lurker</span></span></a><a href="/pt/jogador/fallen/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>FalleN <span class="role role-support sm">Suporte</span></span></a><a href="/pt/jogador/flamez/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12"></span>flameZ <span class="role role-entry sm">Entry</span></span></a><a href="/pt/jogador/heavygod/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12"></span>HeavyGod <span class="role role-entry sm">Entry</span></span></a><a href="/pt/jogador/hunter/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/ba.svg" alt="Bósnia" title="Bósnia" width="16" height="12"></span>huNter <span class="role role-support sm">Suporte</span></span></a><a href="/pt/jogador/karrigan/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/dk.svg" alt="Dinamarca" title="Dinamarca" width="16" height="12"></span>karrigan <span class="role role-support sm">Suporte</span></span></a><a class="more" href="/pt/jogadores/">ver todos (40)</a>      </details>
-      <details class="nav-g" data-k="teams" open>
+<a href="/pt/jogador/apex/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12"></span>apEX <span class="role role-support sm">Suporte</span></span></a><a href="/pt/jogador/art/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>art <span class="role role-rifler sm">Rifler</span></span></a><a href="/pt/jogador/coolio/"><span class="nl"><span class="nav-flag"></span>coolio <span class="role role-rifler sm">Rifler</span></span></a><a href="/pt/jogador/dem0n/"><span class="nl"><span class="nav-flag"></span>dem0n <span class="role role-support sm">Suporte</span></span></a><a href="/pt/jogador/donk/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12"></span>donk <span class="role role-rifler sm">Rifler</span></span></a><a href="/pt/jogador/dumau/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>dumau <span class="role role-entry sm">Entry</span></span></a><a href="/pt/jogador/dziugss/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/lt.svg" alt="Lituânia" title="Lituânia" width="16" height="12"></span>dziugss <span class="role role-lurker sm">Lurker</span></span></a><a href="/pt/jogador/fallen/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>FalleN <span class="role role-support sm">Suporte</span></span></a><a href="/pt/jogador/flamez/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12"></span>flameZ <span class="role role-entry sm">Entry</span></span></a><a href="/pt/jogador/heavygod/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12"></span>HeavyGod <span class="role role-entry sm">Entry</span></span></a><a href="/pt/jogador/hunter/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/ba.svg" alt="Bósnia" title="Bósnia" width="16" height="12"></span>huNter <span class="role role-support sm">Suporte</span></span></a><a href="/pt/jogador/karrigan/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/dk.svg" alt="Dinamarca" title="Dinamarca" width="16" height="12"></span>karrigan <span class="role role-support sm">Suporte</span></span></a><a class="more" href="/pt/jogadores/">ver todos (40)</a>      </details>
+      <details class="nav-g" data-k="teams">
         <summary class="nav-h"><a href="/pt/times/">Times</a></summary>
 <a href="/pt/time/falcons/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/sa.svg" alt="Arábia Saudita" title="Arábia Saudita" width="16" height="12"></span>Falcons</span></a><a href="/pt/time/furia/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>FURIA</span></a><a href="/pt/time/fut/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/tr.svg" alt="Turquia" title="Turquia" width="16" height="12"></span>FUT</span></a><a href="/pt/time/g2/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"></span>G2</span></a><a href="/pt/time/legacy/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>Legacy</span></a><a href="/pt/time/mouz/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"></span>MOUZ</span></a><a href="/pt/time/spirit/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12"></span>Spirit</span></a><a href="/pt/time/vitality/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12"></span>Vitality</span></a>      </details>
       <div class="nav-sep"></div>
@@ -78,14 +75,14 @@
       <a href="/pt/privacidade/"><span class="nl">Privacidade</span></a>
     </nav>
     <script>
-      /* collapsed sections are remembered in this browser; applied before paint */
+      /* sections start collapsed; the ones opened here are remembered, and the one holding this page opens */
       (function () {
-        var c = []; try { c = JSON.parse(localStorage.getItem("navClosed") || "[]"); } catch (e) {}
+        var o = []; try { o = JSON.parse(localStorage.getItem("navOpen") || "[]"); } catch (e) {}
         document.querySelectorAll(".nav-g").forEach(function (d) {
-          if (c.indexOf(d.dataset.k) >= 0 && !d.querySelector("[aria-current]")) d.open = false;
+          if (o.indexOf(d.dataset.k) >= 0 || d.querySelector("[aria-current]")) d.open = true;
           d.addEventListener("toggle", function () {
-            var s = []; document.querySelectorAll(".nav-g").forEach(function (x) { if (!x.open) s.push(x.dataset.k); });
-            try { localStorage.setItem("navClosed", JSON.stringify(s)); } catch (e) {}
+            var s = []; document.querySelectorAll(".nav-g").forEach(function (x) { if (x.open) s.push(x.dataset.k); });
+            try { localStorage.setItem("navOpen", JSON.stringify(s)); } catch (e) {}
           });
         });
       })();
@@ -97,7 +94,7 @@
 <h1>Granadas da Ancient</h1>
 <div class="map-actions">
   <a class="btn mm-open" href="/pt/modo-partida/?map=ancient">📱 Modo partida</a>
-<a class="btn" href="/pt/ancient/jogadas/">▶ Ver jogadas dos times (replay do round)</a>  <a class="btn" href="/pt/ancient/funcoes/">👥 Granadas por função</a>
+<a class="btn" href="/pt/ancient/jogadas/">🔒 ▶ Ver jogadas dos times (replay do round)</a>  <a class="btn" href="/pt/ancient/funcoes/">👥 Granadas por função</a>
   <a class="btn" href="/static/treino/pt/pronades_ancient.cfg" download>⬇ Baixar treino (.cfg)</a>
   <details class="cfg-help"><summary>Como usar o treino</summary>
     <ol><li>Baixe o arquivo e copie para <code>Counter-Strike Global Offensive/game/csgo/cfg/</code>.</li><li>No CS2, abra <b>Jogar → Praticar</b> (servidor offline) no mapa.</li><li>No console, digite <code>exec pronades_ancient</code>.</li><li>Digite <code>bind ] lp_next; bind [ lp_prev</code> e use <b>]</b> e <b>[</b> para pular de uma lineup para a outra: você vai para o ponto exato do pro, já mirando.</li><li>Use só em servidor offline, nunca em partidas online.</li></ol>
@@ -115,301 +112,6 @@
   <div class="q-areas" data-qt-panel="he" hidden>
 <button class="chip" data-quick="he|TSideLower">TR Inferior <span class="muted">· 1</span></button><button class="chip" data-quick="he|Ramp">Rampa <span class="muted">· 1</span></button><button class="chip" data-quick="he|Middle">Meio <span class="muted">· 1</span></button><button class="chip" data-quick="he|BombsiteB">Bomb B <span class="muted">· 1</span></button>  </div>
   <p class="muted small">Escolha o tipo e o lugar onde ela tem que cair: aparecem todas as formas de jogar lá, da mais fácil para a mais difícil. O número é quantas lineups diferentes existem.</p>
-</section>
-<section class="start-here" id="comece">
-  <h2>Comece por aqui</h2>
-  <p class="muted">As granadas que os pros mais usam neste mapa, da mais fácil para a mais difícil. Aprenda estas primeiro.</p>
-  <div class="start-cols">
-    <div class="start-col">
-      <h3><span class="badge side-T">TR</span> Lado TR</h3>
-      <ol class="start-list">
-        <li><a href="/pt/ancient/smoke-t-upper-from-t-spawn-t/">
-          <span class="start-name">Smoke TR Superior (de Base TR)</span>
-          <span class="badge diff-2">Médio</span>
-          <span class="muted small">39 usos · jump throw · parado · clique esquerdo</span>
-        </a></li>
-        <li><a href="/pt/ancient/smoke-b-site-from-ruins-t/">
-          <span class="start-name">Smoke Bomb B (de Ruínas)</span>
-          <span class="badge diff-2">Médio</span>
-          <span class="muted small">20 usos · jump throw · parado · clique esquerdo</span>
-        </a></li>
-        <li><a href="/pt/ancient/smoke-mid-from-t-spawn-t/">
-          <span class="start-name">Smoke Meio (de Base TR)</span>
-          <span class="badge diff-3">Difícil</span>
-          <span class="muted small">54 usos · jump throw · andando · clique esquerdo</span>
-        </a></li>
-        <li><a href="/pt/ancient/smoke-house-from-t-spawn-t/">
-          <span class="start-name">Smoke Casa (de Base TR)</span>
-          <span class="badge diff-3">Difícil</span>
-          <span class="muted small">54 usos · jump throw · andando · clique esquerdo</span>
-        </a></li>
-        <li><a href="/pt/ancient/smoke-top-mid-from-t-spawn-t/">
-          <span class="start-name">Smoke Top Mid (de Base TR)</span>
-          <span class="badge diff-3">Difícil</span>
-          <span class="muted small">27 usos · jump throw · andando · clique esquerdo</span>
-        </a></li>
-        <li><a href="/pt/ancient/molotov-b-site-from-ruins-t/">
-          <span class="start-name">Molotov Bomb B (de Ruínas)</span>
-          <span class="badge diff-3">Difícil</span>
-          <span class="muted small">26 usos · correndo · clique esquerdo</span>
-        </a></li>
-      </ol>
-    </div>
-    <div class="start-col">
-      <h3><span class="badge side-CT">CT</span> Lado CT</h3>
-      <ol class="start-list">
-        <li><a href="/pt/ancient/smoke-t-upper-from-side-entrance-ct/">
-          <span class="start-name">Smoke TR Superior (de Entrada Lateral)</span>
-          <span class="badge diff-1">Fácil</span>
-          <span class="muted small">18 usos · parado · clique esquerdo</span>
-        </a></li>
-        <li><a href="/pt/ancient/molotov-ramp-from-alley-ct/">
-          <span class="start-name">Molotov Rampa (de Beco)</span>
-          <span class="badge diff-2">Médio</span>
-          <span class="muted small">35 usos · jump throw · parado · clique esquerdo</span>
-        </a></li>
-        <li><a href="/pt/ancient/smoke-outside-from-ct-spawn-ct/">
-          <span class="start-name">Smoke Fora (de Base CT)</span>
-          <span class="badge diff-3">Difícil</span>
-          <span class="muted small">113 usos · jump throw · andando · clique esquerdo</span>
-        </a></li>
-        <li><a href="/pt/ancient/smoke-ruins-from-ct-spawn-ct/">
-          <span class="start-name">Smoke Ruínas (de Base CT)</span>
-          <span class="badge diff-3">Difícil</span>
-          <span class="muted small">26 usos · jump throw · correndo · clique esquerdo</span>
-        </a></li>
-        <li><a href="/pt/ancient/molotov-mid-from-house-ct/">
-          <span class="start-name">Molotov Meio (de Casa)</span>
-          <span class="badge diff-3">Difícil</span>
-          <span class="muted small">25 usos · correndo · clique esquerdo</span>
-        </a></li>
-        <li><a href="/pt/ancient/molotov-tside-lower-from-alley-ct/">
-          <span class="start-name">Molotov TR Inferior (de Beco)</span>
-          <span class="badge diff-3">Difícil</span>
-          <span class="muted small">18 usos · jump throw · correndo · clique duplo (esq. + dir.)</span>
-        </a></li>
-      </ol>
-    </div>
-  </div>
-</section>
-<section class="execs" id="execucoes">
-  <h2>Execuções dos pros</h2>
-  <p class="muted">Granadas que o mesmo time joga junto no mesmo round, na ordem e no tempo em que saem. Detectadas automaticamente nas partidas.</p>
-  <div class="exec-list">
-    <div class="exec">
-      <div class="exec-head">
-        <span class="badge side-CT">CT</span>
-        <b>Defesa: Fora + Ruínas</b>
-      </div>
-      <div class="muted small">vista 12 vezes · round ganho em 58% ·
-Spirit (7), G2 (2), FURIA (1), Falcons (1), MOUZ (1)</div>
-      <div class="muted small">Em: <span class="mref">FURIA vs Falcons <b>16–14</b> · mapa 1</span>; <span class="mref">G2 vs MOUZ <b>16–14</b> · mapa 2</span>; <span class="mref">FURIA vs Spirit <b>13–11</b> · mapa 1</span>; <span class="mref">Spirit vs FUT <b>13–5</b> · mapa 3</span>; <span class="mref">Spirit vs G2 <b>13–5</b> · mapa 3</span>; <span class="mref">Spirit vs MOUZ <b>13–11</b> · mapa 2</span></div>
-      <a class="small" href="/pt/ancient/execucoes/ct-68f4fb/">Kit para o seu time (quem joga cada granada) →</a>
-      <ol class="exec-parts">
-        <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-outside-from-ct-spawn-ct/">Smoke Fora (de Base CT)</a></li>
-        <li><span class="exec-t">+0.8s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-ruins-from-ct-spawn-ct/">Smoke Ruínas (de Base CT)</a></li>
-        <li><span class="exec-t">+5.0s</span><span class="badge type-molotov">Molotov</span><a href="/pt/ancient/molotov-mid-from-house-ct/">Molotov Meio (de Casa)</a></li>
-        <li><span class="exec-t">+8.1s</span><span class="badge type-molotov">Molotov</span><a href="/pt/ancient/molotov-ramp-from-alley-ct/">Molotov Rampa (de Beco)</a></li>
-      </ol>
-    </div>
-    <div class="exec">
-      <div class="exec-head">
-        <span class="badge side-CT">CT</span>
-        <b>Defesa: TR Inferior + Fora</b>
-      </div>
-      <div class="muted small">vista 9 vezes · round ganho em 89% ·
-MOUZ (5), Falcons (3), Spirit (1)</div>
-      <div class="muted small">Em: <span class="mref">FURIA vs Falcons <b>16–14</b> · mapa 1</span>; <span class="mref">G2 vs MOUZ <b>16–14</b> · mapa 2</span>; <span class="mref">FURIA vs Spirit <b>13–11</b> · mapa 1</span>; <span class="mref">Spirit vs MOUZ <b>13–11</b> · mapa 2</span></div>
-      <a class="small" href="/pt/ancient/execucoes/ct-474483/">Kit para o seu time (quem joga cada granada) →</a>
-      <ol class="exec-parts">
-        <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-outside-from-ct-spawn-ct/">Smoke Fora (de Base CT)</a></li>
-        <li><span class="exec-t">+7.6s</span><span class="badge type-molotov">Molotov</span><a href="/pt/ancient/molotov-tside-lower-from-alley-ct/">Molotov TR Inferior (de Beco)</a></li>
-        <li><span class="exec-t">+8.8s</span><span class="badge type-he">HE</span><a href="/pt/ancient/he-tside-lower-from-b-site-ct/">HE TR Inferior (de Bomb B)</a></li>
-      </ol>
-    </div>
-    <div class="exec">
-      <div class="exec-head">
-        <span class="badge side-CT">CT</span>
-        <b>Defesa: Fora + Meio</b>
-      </div>
-      <div class="muted small">vista 9 vezes · round ganho em 44% ·
-Spirit (4), FURIA (3), MOUZ (2)</div>
-      <div class="muted small">Em: <span class="mref">FURIA vs Falcons <b>16–14</b> · mapa 1</span>; <span class="mref">G2 vs MOUZ <b>16–14</b> · mapa 2</span>; <span class="mref">FURIA vs Spirit <b>13–11</b> · mapa 1</span>; <span class="mref">Spirit vs FUT <b>13–5</b> · mapa 3</span>; <span class="mref">Spirit vs G2 <b>13–5</b> · mapa 3</span>; <span class="mref">Spirit vs MOUZ <b>13–11</b> · mapa 2</span></div>
-      <a class="small" href="/pt/ancient/execucoes/ct-7f1fdf/">Kit para o seu time (quem joga cada granada) →</a>
-      <ol class="exec-parts">
-        <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-outside-from-ct-spawn-ct/">Smoke Fora (de Base CT)</a></li>
-        <li><span class="exec-t">+5.1s</span><span class="badge type-molotov">Molotov</span><a href="/pt/ancient/molotov-mid-from-house-ct/">Molotov Meio (de Casa)</a></li>
-        <li><span class="exec-t">+7.2s</span><span class="badge type-molotov">Molotov</span><a href="/pt/ancient/molotov-ramp-from-alley-ct/">Molotov Rampa (de Beco)</a></li>
-      </ol>
-    </div>
-    <div class="exec">
-      <div class="exec-head">
-        <span class="badge side-T">TR</span>
-        <b>Execução: Bomb B + Beco</b>
-      </div>
-      <div class="muted small">vista 7 vezes · round ganho em 57% ·
-FURIA (4), G2 (3)</div>
-      <div class="muted small">Em: <span class="mref">FURIA vs Falcons <b>16–14</b> · mapa 1</span>; <span class="mref">G2 vs MOUZ <b>16–14</b> · mapa 2</span>; <span class="mref">FURIA vs Spirit <b>13–11</b> · mapa 1</span>; <span class="mref">Spirit vs G2 <b>13–5</b> · mapa 3</span></div>
-      <a class="small" href="/pt/ancient/execucoes/t-fe1d41/">Kit para o seu time (quem joga cada granada) →</a>
-      <ol class="exec-parts">
-        <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-alley-from-ruins-t/">Smoke Beco (de Ruínas)</a></li>
-        <li><span class="exec-t">+2.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-b-site-from-ruins-t/">Smoke Bomb B (de Ruínas)</a></li>
-        <li><span class="exec-t">+4.1s</span><span class="badge type-molotov">Molotov</span><a href="/pt/ancient/molotov-b-site-from-ruins-t/">Molotov Bomb B (de Ruínas)</a></li>
-      </ol>
-    </div>
-    <div class="exec">
-      <div class="exec-head">
-        <span class="badge side-T">TR</span>
-        <b>Execução: Top Mid + TR Superior</b>
-      </div>
-      <div class="muted small">vista 6 vezes · round ganho em 83% ·
-Spirit (4), Falcons (1), G2 (1)</div>
-      <div class="muted small">Em: <span class="mref">FURIA vs Falcons <b>16–14</b> · mapa 1</span>; <span class="mref">FURIA vs Spirit <b>13–11</b> · mapa 1</span>; <span class="mref">Spirit vs FUT <b>13–5</b> · mapa 3</span>; <span class="mref">Spirit vs G2 <b>13–5</b> · mapa 3</span></div>
-      <a class="small" href="/pt/ancient/execucoes/t-11387b/">Kit para o seu time (quem joga cada granada) →</a>
-      <ol class="exec-parts">
-        <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-top-mid-from-t-spawn-t/">Smoke Top Mid (de Base TR)</a></li>
-        <li><span class="exec-t">+0.6s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-t-upper-from-t-spawn-t/">Smoke TR Superior (de Base TR)</a></li>
-        <li><span class="exec-t">+1.2s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-mid-from-t-spawn-t/">Smoke Meio (de Base TR)</a></li>
-      </ol>
-    </div>
-    <div class="exec">
-      <div class="exec-head">
-        <span class="badge side-T">TR</span>
-        <b>Execução: Casa + Entrada Lateral</b>
-      </div>
-      <div class="muted small">vista 4 vezes · round ganho em 25% ·
-FURIA (2), Falcons (1), Spirit (1)</div>
-      <div class="muted small">Em: <span class="mref">FURIA vs Falcons <b>16–14</b> · mapa 1</span>; <span class="mref">FURIA vs Spirit <b>13–11</b> · mapa 1</span></div>
-      <a class="small" href="/pt/ancient/execucoes/t-ef0379/">Kit para o seu time (quem joga cada granada) →</a>
-      <ol class="exec-parts">
-        <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-house-from-t-spawn-t/">Smoke Casa (de Base TR)</a></li>
-        <li><span class="exec-t">+1.5s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-side-entrance-from-t-spawn-t/">Smoke Entrada Lateral (de Base TR)</a></li>
-        <li><span class="exec-t">+2.1s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-mid-from-t-spawn-t/">Smoke Meio (de Base TR)</a></li>
-        <li><span class="exec-t">+7.7s</span><span class="badge type-molotov">Molotov</span><a href="/pt/ancient/molotov-ramp-from-ruins-t/">Molotov Rampa (de Ruínas)</a></li>
-      </ol>
-    </div>
-    <div class="exec">
-      <div class="exec-head">
-        <span class="badge side-CT">CT</span>
-        <b>Defesa: Fora + Meio</b>
-      </div>
-      <div class="muted small">vista 4 vezes · round ganho em 50% ·
-Spirit (3), Falcons (1)</div>
-      <div class="muted small">Em: <span class="mref">FURIA vs Falcons <b>16–14</b> · mapa 1</span>; <span class="mref">FURIA vs Spirit <b>13–11</b> · mapa 1</span>; <span class="mref">Spirit vs FUT <b>13–5</b> · mapa 3</span></div>
-      <a class="small" href="/pt/ancient/execucoes/ct-12f685/">Kit para o seu time (quem joga cada granada) →</a>
-      <ol class="exec-parts">
-        <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-outside-from-ct-spawn-ct/">Smoke Fora (de Base CT)</a></li>
-        <li><span class="exec-t">+7.0s</span><span class="badge type-flash">Flash</span><a href="/pt/ancient/flash-mid-from-top-mid-ct/">Flash Meio (de Top Mid)</a></li>
-        <li><span class="exec-t">+7.1s</span><span class="badge type-molotov">Molotov</span><a href="/pt/ancient/molotov-ramp-from-alley-ct/">Molotov Rampa (de Beco)</a></li>
-        <li><span class="exec-t">+15.2s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-t-upper-from-side-entrance-ct/">Smoke TR Superior (de Entrada Lateral)</a></li>
-      </ol>
-    </div>
-    <div class="exec">
-      <div class="exec-head">
-        <span class="badge side-CT">CT</span>
-        <b>Defesa: Fora + Rampa</b>
-      </div>
-      <div class="muted small">vista 4 vezes · round ganho em 50% ·
-FURIA (1), G2 (1), Spirit (1), MOUZ (1)</div>
-      <div class="muted small">Em: <span class="mref">FURIA vs Falcons <b>16–14</b> · mapa 1</span>; <span class="mref">G2 vs MOUZ <b>16–14</b> · mapa 2</span>; <span class="mref">Spirit vs G2 <b>13–5</b> · mapa 3</span>; <span class="mref">Spirit vs MOUZ <b>13–11</b> · mapa 2</span></div>
-      <a class="small" href="/pt/ancient/execucoes/ct-48f457/">Kit para o seu time (quem joga cada granada) →</a>
-      <ol class="exec-parts">
-        <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-outside-from-ct-spawn-ct/">Smoke Fora (de Base CT)</a></li>
-        <li><span class="exec-t">+6.9s</span><span class="badge type-molotov">Molotov</span><a href="/pt/ancient/molotov-ramp-from-alley-ct/">Molotov Rampa (de Beco)</a></li>
-        <li><span class="exec-t">+13.5s</span><span class="badge type-flash">Flash</span><a href="/pt/ancient/flash-b-site-from-alley-ct/">Flash Bomb B (de Beco)</a></li>
-      </ol>
-    </div>
-    <div class="exec">
-      <div class="exec-head">
-        <span class="badge side-T">TR</span>
-        <b>Execução: Casa + TR Superior</b>
-      </div>
-      <div class="muted small">vista 4 vezes · round ganho em 50% ·
-G2 (2), Spirit (2)</div>
-      <div class="muted small">Em: <span class="mref">G2 vs MOUZ <b>16–14</b> · mapa 2</span>; <span class="mref">Spirit vs G2 <b>13–5</b> · mapa 3</span>; <span class="mref">Spirit vs MOUZ <b>13–11</b> · mapa 2</span></div>
-      <a class="small" href="/pt/ancient/execucoes/t-2cadf8/">Kit para o seu time (quem joga cada granada) →</a>
-      <ol class="exec-parts">
-        <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-house-from-t-spawn-t/">Smoke Casa (de Base TR)</a></li>
-        <li><span class="exec-t">+2.4s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-t-upper-from-t-spawn-t/">Smoke TR Superior (de Base TR)</a></li>
-        <li><span class="exec-t">+2.9s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-mid-from-t-spawn-t/">Smoke Meio (de Base TR)</a></li>
-      </ol>
-    </div>
-    <div class="exec">
-      <div class="exec-head">
-        <span class="badge side-CT">CT</span>
-        <b>Defesa: Fora + Rampa</b>
-      </div>
-      <div class="muted small">vista 3 vezes · round ganho em 100% ·
-Spirit (2), Falcons (1)</div>
-      <div class="muted small">Em: <span class="mref">FURIA vs Falcons <b>16–14</b> · mapa 1</span>; <span class="mref">Spirit vs MOUZ <b>13–11</b> · mapa 2</span></div>
-      <a class="small" href="/pt/ancient/execucoes/ct-f9dc8b/">Kit para o seu time (quem joga cada granada) →</a>
-      <ol class="exec-parts">
-        <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-outside-from-ct-spawn-ct/">Smoke Fora (de Base CT)</a></li>
-        <li><span class="exec-t">+7.4s</span><span class="badge type-molotov">Molotov</span><a href="/pt/ancient/molotov-ramp-from-alley-ct/">Molotov Rampa (de Beco)</a></li>
-        <li><span class="exec-t">+11.4s</span><span class="badge type-molotov">Molotov</span><a href="/pt/ancient/molotov-t-upper-from-side-entrance-ct/">Molotov TR Superior (de Entrada Lateral)</a></li>
-      </ol>
-    </div>
-    <div class="exec">
-      <div class="exec-head">
-        <span class="badge side-T">TR</span>
-        <b>Execução: Top Mid + TR Superior</b>
-      </div>
-      <div class="muted small">vista 2 vezes · round ganho em 0% ·
-G2 (2)</div>
-      <div class="muted small">Em: <span class="mref">G2 vs MOUZ <b>16–14</b> · mapa 2</span>; <span class="mref">Spirit vs G2 <b>13–5</b> · mapa 3</span></div>
-      <a class="small" href="/pt/ancient/execucoes/t-88b5de/">Kit para o seu time (quem joga cada granada) →</a>
-      <ol class="exec-parts">
-        <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-top-mid-from-t-spawn-t/">Smoke Top Mid (de Base TR)</a></li>
-        <li><span class="exec-t">+1.6s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-t-upper-from-t-spawn-t/">Smoke TR Superior (de Base TR)</a></li>
-        <li><span class="exec-t">+5.6s</span><span class="badge type-molotov">Molotov</span><a href="/pt/ancient/molotov-mid-from-outside-t/">Molotov Meio (de Fora)</a></li>
-      </ol>
-    </div>
-    <div class="exec">
-      <div class="exec-head">
-        <span class="badge side-T">TR</span>
-        <b>Execução: TR Superior + Meio</b>
-      </div>
-      <div class="muted small">vista 2 vezes · round ganho em 50% ·
-Spirit (2)</div>
-      <div class="muted small">Em: <span class="mref">FURIA vs Spirit <b>13–11</b> · mapa 1</span>; <span class="mref">Spirit vs FUT <b>13–5</b> · mapa 3</span></div>
-      <a class="small" href="/pt/ancient/execucoes/t-14d089/">Kit para o seu time (quem joga cada granada) →</a>
-      <ol class="exec-parts">
-        <li><span class="exec-t">+0.4s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-t-upper-from-t-spawn-t/">Smoke TR Superior (de Base TR)</a></li>
-        <li><span class="exec-t">+1.6s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-mid-from-t-spawn-t/">Smoke Meio (de Base TR)</a></li>
-        <li><span class="exec-t">+7.5s</span><span class="badge type-molotov">Molotov</span><a href="/pt/ancient/molotov-b-site-from-ruins-t/">Molotov Bomb B (de Ruínas)</a></li>
-      </ol>
-    </div>
-    <div class="exec">
-      <div class="exec-head">
-        <span class="badge side-T">TR</span>
-        <b>Execução: Bomb B + Entrada Lateral</b>
-      </div>
-      <div class="muted small">vista 2 vezes · round ganho em 0% ·
-G2 (2)</div>
-      <div class="muted small">Em: <span class="mref">G2 vs MOUZ <b>16–14</b> · mapa 2</span>; <span class="mref">Spirit vs G2 <b>13–5</b> · mapa 3</span></div>
-      <a class="small" href="/pt/ancient/execucoes/t-ccc49f/">Kit para o seu time (quem joga cada granada) →</a>
-      <ol class="exec-parts">
-        <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-side-entrance-from-water-t/">Smoke Entrada Lateral (de Água)</a></li>
-        <li><span class="exec-t">+2.4s</span><span class="badge type-molotov">Molotov</span><a href="/pt/ancient/molotov-b-site-from-ruins-t/">Molotov Bomb B (de Ruínas)</a></li>
-        <li><span class="exec-t">+3.7s</span><span class="badge type-flash">Flash</span><a href="/pt/ancient/flash-b-site-from-tside-lower-t/">Flash Bomb B (de TR Inferior)</a></li>
-      </ol>
-    </div>
-    <div class="exec">
-      <div class="exec-head">
-        <span class="badge side-T">TR</span>
-        <b>Execução: Casa + Meio</b>
-      </div>
-      <div class="muted small">vista 2 vezes · round ganho em 50% ·
-Spirit (1), FURIA (1)</div>
-      <div class="muted small">Em: <span class="mref">FURIA vs Spirit <b>13–11</b> · mapa 1</span></div>
-      <a class="small" href="/pt/ancient/execucoes/t-ead4a4/">Kit para o seu time (quem joga cada granada) →</a>
-      <ol class="exec-parts">
-        <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-house-from-t-spawn-t/">Smoke Casa (de Base TR)</a></li>
-        <li><span class="exec-t">+2.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-mid-from-t-spawn-t/">Smoke Meio (de Base TR)</a></li>
-        <li><span class="exec-t">+9.7s</span><span class="badge type-molotov">Molotov</span><a href="/pt/ancient/molotov-b-site-from-ruins-t/">Molotov Bomb B (de Ruínas)</a></li>
-      </ol>
-    </div>
-  </div>
 </section>
 <div class="filters" id="filters">
   <div class="seg" role="group" aria-label="Tipo">
@@ -1323,6 +1025,303 @@ Spirit (1), FURIA (1)</div>
   </div>
 </a></div>
 <p class="empty muted" id="empty" hidden>Nenhuma lineup com esses filtros.</p>
+<section class="start-here pr-sec" id="comece">
+  <h2><span class="pr-lockico" title="Área Premium">🔒</span> Comece por aqui <a class="pr-tag" href="/pt/premium/">♛ Premium</a></h2>
+  <p class="muted">As granadas que os pros mais usam neste mapa, da mais fácil para a mais difícil. Aprenda estas primeiro.</p>
+  <div class="pr-gate"><span>🔒 Só para usuários Premium.</span> <a class="btn small cta" href="/pt/premium/">♛ Área Premium</a></div>
+  <div class="start-cols pr-body">
+    <div class="start-col">
+      <h3><span class="badge side-T">TR</span> Lado TR</h3>
+      <ol class="start-list">
+        <li><a href="/pt/ancient/smoke-t-upper-from-t-spawn-t/">
+          <span class="start-name">Smoke TR Superior (de Base TR)</span>
+          <span class="badge diff-2">Médio</span>
+          <span class="muted small">39 usos · jump throw · parado · clique esquerdo</span>
+        </a></li>
+        <li><a href="/pt/ancient/smoke-b-site-from-ruins-t/">
+          <span class="start-name">Smoke Bomb B (de Ruínas)</span>
+          <span class="badge diff-2">Médio</span>
+          <span class="muted small">20 usos · jump throw · parado · clique esquerdo</span>
+        </a></li>
+        <li><a href="/pt/ancient/smoke-mid-from-t-spawn-t/">
+          <span class="start-name">Smoke Meio (de Base TR)</span>
+          <span class="badge diff-3">Difícil</span>
+          <span class="muted small">54 usos · jump throw · andando · clique esquerdo</span>
+        </a></li>
+        <li><a href="/pt/ancient/smoke-house-from-t-spawn-t/">
+          <span class="start-name">Smoke Casa (de Base TR)</span>
+          <span class="badge diff-3">Difícil</span>
+          <span class="muted small">54 usos · jump throw · andando · clique esquerdo</span>
+        </a></li>
+        <li><a href="/pt/ancient/smoke-top-mid-from-t-spawn-t/">
+          <span class="start-name">Smoke Top Mid (de Base TR)</span>
+          <span class="badge diff-3">Difícil</span>
+          <span class="muted small">27 usos · jump throw · andando · clique esquerdo</span>
+        </a></li>
+        <li><a href="/pt/ancient/molotov-b-site-from-ruins-t/">
+          <span class="start-name">Molotov Bomb B (de Ruínas)</span>
+          <span class="badge diff-3">Difícil</span>
+          <span class="muted small">26 usos · correndo · clique esquerdo</span>
+        </a></li>
+      </ol>
+    </div>
+    <div class="start-col">
+      <h3><span class="badge side-CT">CT</span> Lado CT</h3>
+      <ol class="start-list">
+        <li><a href="/pt/ancient/smoke-t-upper-from-side-entrance-ct/">
+          <span class="start-name">Smoke TR Superior (de Entrada Lateral)</span>
+          <span class="badge diff-1">Fácil</span>
+          <span class="muted small">18 usos · parado · clique esquerdo</span>
+        </a></li>
+        <li><a href="/pt/ancient/molotov-ramp-from-alley-ct/">
+          <span class="start-name">Molotov Rampa (de Beco)</span>
+          <span class="badge diff-2">Médio</span>
+          <span class="muted small">35 usos · jump throw · parado · clique esquerdo</span>
+        </a></li>
+        <li><a href="/pt/ancient/smoke-outside-from-ct-spawn-ct/">
+          <span class="start-name">Smoke Fora (de Base CT)</span>
+          <span class="badge diff-3">Difícil</span>
+          <span class="muted small">113 usos · jump throw · andando · clique esquerdo</span>
+        </a></li>
+        <li><a href="/pt/ancient/smoke-ruins-from-ct-spawn-ct/">
+          <span class="start-name">Smoke Ruínas (de Base CT)</span>
+          <span class="badge diff-3">Difícil</span>
+          <span class="muted small">26 usos · jump throw · correndo · clique esquerdo</span>
+        </a></li>
+        <li><a href="/pt/ancient/molotov-mid-from-house-ct/">
+          <span class="start-name">Molotov Meio (de Casa)</span>
+          <span class="badge diff-3">Difícil</span>
+          <span class="muted small">25 usos · correndo · clique esquerdo</span>
+        </a></li>
+        <li><a href="/pt/ancient/molotov-tside-lower-from-alley-ct/">
+          <span class="start-name">Molotov TR Inferior (de Beco)</span>
+          <span class="badge diff-3">Difícil</span>
+          <span class="muted small">18 usos · jump throw · correndo · clique duplo (esq. + dir.)</span>
+        </a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+<section class="execs pr-sec" id="execucoes">
+  <h2><span class="pr-lockico" title="Área Premium">🔒</span> Execuções dos pros <a class="pr-tag" href="/pt/premium/">♛ Premium</a></h2>
+  <p class="muted">Granadas que o mesmo time joga junto no mesmo round, na ordem e no tempo em que saem. Detectadas automaticamente nas partidas.</p>
+  <div class="pr-gate"><span>🔒 Só para usuários Premium.</span> <a class="btn small cta" href="/pt/premium/">♛ Área Premium</a></div>
+  <div class="exec-list pr-body">
+    <div class="exec">
+      <div class="exec-head">
+        <span class="badge side-CT">CT</span>
+        <b>Defesa: Fora + Ruínas</b>
+      </div>
+      <div class="muted small">vista 12 vezes · round ganho em 58% ·
+Spirit (7), G2 (2), FURIA (1), Falcons (1), MOUZ (1)</div>
+      <div class="muted small">Em: <span class="mref">FURIA vs Falcons <b>16–14</b> · mapa 1</span>; <span class="mref">G2 vs MOUZ <b>16–14</b> · mapa 2</span>; <span class="mref">FURIA vs Spirit <b>13–11</b> · mapa 1</span>; <span class="mref">Spirit vs FUT <b>13–5</b> · mapa 3</span>; <span class="mref">Spirit vs G2 <b>13–5</b> · mapa 3</span>; <span class="mref">Spirit vs MOUZ <b>13–11</b> · mapa 2</span></div>
+      <a class="small" href="/pt/ancient/execucoes/ct-68f4fb/">Kit para o seu time (quem joga cada granada) →</a>
+      <ol class="exec-parts">
+        <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-outside-from-ct-spawn-ct/">Smoke Fora (de Base CT)</a></li>
+        <li><span class="exec-t">+0.8s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-ruins-from-ct-spawn-ct/">Smoke Ruínas (de Base CT)</a></li>
+        <li><span class="exec-t">+5.0s</span><span class="badge type-molotov">Molotov</span><a href="/pt/ancient/molotov-mid-from-house-ct/">Molotov Meio (de Casa)</a></li>
+        <li><span class="exec-t">+8.1s</span><span class="badge type-molotov">Molotov</span><a href="/pt/ancient/molotov-ramp-from-alley-ct/">Molotov Rampa (de Beco)</a></li>
+      </ol>
+    </div>
+    <div class="exec">
+      <div class="exec-head">
+        <span class="badge side-CT">CT</span>
+        <b>Defesa: TR Inferior + Fora</b>
+      </div>
+      <div class="muted small">vista 9 vezes · round ganho em 89% ·
+MOUZ (5), Falcons (3), Spirit (1)</div>
+      <div class="muted small">Em: <span class="mref">FURIA vs Falcons <b>16–14</b> · mapa 1</span>; <span class="mref">G2 vs MOUZ <b>16–14</b> · mapa 2</span>; <span class="mref">FURIA vs Spirit <b>13–11</b> · mapa 1</span>; <span class="mref">Spirit vs MOUZ <b>13–11</b> · mapa 2</span></div>
+      <a class="small" href="/pt/ancient/execucoes/ct-474483/">Kit para o seu time (quem joga cada granada) →</a>
+      <ol class="exec-parts">
+        <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-outside-from-ct-spawn-ct/">Smoke Fora (de Base CT)</a></li>
+        <li><span class="exec-t">+7.6s</span><span class="badge type-molotov">Molotov</span><a href="/pt/ancient/molotov-tside-lower-from-alley-ct/">Molotov TR Inferior (de Beco)</a></li>
+        <li><span class="exec-t">+8.8s</span><span class="badge type-he">HE</span><a href="/pt/ancient/he-tside-lower-from-b-site-ct/">HE TR Inferior (de Bomb B)</a></li>
+      </ol>
+    </div>
+    <div class="exec">
+      <div class="exec-head">
+        <span class="badge side-CT">CT</span>
+        <b>Defesa: Fora + Meio</b>
+      </div>
+      <div class="muted small">vista 9 vezes · round ganho em 44% ·
+Spirit (4), FURIA (3), MOUZ (2)</div>
+      <div class="muted small">Em: <span class="mref">FURIA vs Falcons <b>16–14</b> · mapa 1</span>; <span class="mref">G2 vs MOUZ <b>16–14</b> · mapa 2</span>; <span class="mref">FURIA vs Spirit <b>13–11</b> · mapa 1</span>; <span class="mref">Spirit vs FUT <b>13–5</b> · mapa 3</span>; <span class="mref">Spirit vs G2 <b>13–5</b> · mapa 3</span>; <span class="mref">Spirit vs MOUZ <b>13–11</b> · mapa 2</span></div>
+      <a class="small" href="/pt/ancient/execucoes/ct-7f1fdf/">Kit para o seu time (quem joga cada granada) →</a>
+      <ol class="exec-parts">
+        <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-outside-from-ct-spawn-ct/">Smoke Fora (de Base CT)</a></li>
+        <li><span class="exec-t">+5.1s</span><span class="badge type-molotov">Molotov</span><a href="/pt/ancient/molotov-mid-from-house-ct/">Molotov Meio (de Casa)</a></li>
+        <li><span class="exec-t">+7.2s</span><span class="badge type-molotov">Molotov</span><a href="/pt/ancient/molotov-ramp-from-alley-ct/">Molotov Rampa (de Beco)</a></li>
+      </ol>
+    </div>
+    <div class="exec">
+      <div class="exec-head">
+        <span class="badge side-T">TR</span>
+        <b>Execução: Bomb B + Beco</b>
+      </div>
+      <div class="muted small">vista 7 vezes · round ganho em 57% ·
+FURIA (4), G2 (3)</div>
+      <div class="muted small">Em: <span class="mref">FURIA vs Falcons <b>16–14</b> · mapa 1</span>; <span class="mref">G2 vs MOUZ <b>16–14</b> · mapa 2</span>; <span class="mref">FURIA vs Spirit <b>13–11</b> · mapa 1</span>; <span class="mref">Spirit vs G2 <b>13–5</b> · mapa 3</span></div>
+      <a class="small" href="/pt/ancient/execucoes/t-fe1d41/">Kit para o seu time (quem joga cada granada) →</a>
+      <ol class="exec-parts">
+        <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-alley-from-ruins-t/">Smoke Beco (de Ruínas)</a></li>
+        <li><span class="exec-t">+2.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-b-site-from-ruins-t/">Smoke Bomb B (de Ruínas)</a></li>
+        <li><span class="exec-t">+4.1s</span><span class="badge type-molotov">Molotov</span><a href="/pt/ancient/molotov-b-site-from-ruins-t/">Molotov Bomb B (de Ruínas)</a></li>
+      </ol>
+    </div>
+    <div class="exec">
+      <div class="exec-head">
+        <span class="badge side-T">TR</span>
+        <b>Execução: Top Mid + TR Superior</b>
+      </div>
+      <div class="muted small">vista 6 vezes · round ganho em 83% ·
+Spirit (4), Falcons (1), G2 (1)</div>
+      <div class="muted small">Em: <span class="mref">FURIA vs Falcons <b>16–14</b> · mapa 1</span>; <span class="mref">FURIA vs Spirit <b>13–11</b> · mapa 1</span>; <span class="mref">Spirit vs FUT <b>13–5</b> · mapa 3</span>; <span class="mref">Spirit vs G2 <b>13–5</b> · mapa 3</span></div>
+      <a class="small" href="/pt/ancient/execucoes/t-11387b/">Kit para o seu time (quem joga cada granada) →</a>
+      <ol class="exec-parts">
+        <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-top-mid-from-t-spawn-t/">Smoke Top Mid (de Base TR)</a></li>
+        <li><span class="exec-t">+0.6s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-t-upper-from-t-spawn-t/">Smoke TR Superior (de Base TR)</a></li>
+        <li><span class="exec-t">+1.2s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-mid-from-t-spawn-t/">Smoke Meio (de Base TR)</a></li>
+      </ol>
+    </div>
+    <div class="exec">
+      <div class="exec-head">
+        <span class="badge side-T">TR</span>
+        <b>Execução: Casa + Entrada Lateral</b>
+      </div>
+      <div class="muted small">vista 4 vezes · round ganho em 25% ·
+FURIA (2), Falcons (1), Spirit (1)</div>
+      <div class="muted small">Em: <span class="mref">FURIA vs Falcons <b>16–14</b> · mapa 1</span>; <span class="mref">FURIA vs Spirit <b>13–11</b> · mapa 1</span></div>
+      <a class="small" href="/pt/ancient/execucoes/t-ef0379/">Kit para o seu time (quem joga cada granada) →</a>
+      <ol class="exec-parts">
+        <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-house-from-t-spawn-t/">Smoke Casa (de Base TR)</a></li>
+        <li><span class="exec-t">+1.5s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-side-entrance-from-t-spawn-t/">Smoke Entrada Lateral (de Base TR)</a></li>
+        <li><span class="exec-t">+2.1s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-mid-from-t-spawn-t/">Smoke Meio (de Base TR)</a></li>
+        <li><span class="exec-t">+7.7s</span><span class="badge type-molotov">Molotov</span><a href="/pt/ancient/molotov-ramp-from-ruins-t/">Molotov Rampa (de Ruínas)</a></li>
+      </ol>
+    </div>
+    <div class="exec">
+      <div class="exec-head">
+        <span class="badge side-CT">CT</span>
+        <b>Defesa: Fora + Meio</b>
+      </div>
+      <div class="muted small">vista 4 vezes · round ganho em 50% ·
+Spirit (3), Falcons (1)</div>
+      <div class="muted small">Em: <span class="mref">FURIA vs Falcons <b>16–14</b> · mapa 1</span>; <span class="mref">FURIA vs Spirit <b>13–11</b> · mapa 1</span>; <span class="mref">Spirit vs FUT <b>13–5</b> · mapa 3</span></div>
+      <a class="small" href="/pt/ancient/execucoes/ct-12f685/">Kit para o seu time (quem joga cada granada) →</a>
+      <ol class="exec-parts">
+        <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-outside-from-ct-spawn-ct/">Smoke Fora (de Base CT)</a></li>
+        <li><span class="exec-t">+7.0s</span><span class="badge type-flash">Flash</span><a href="/pt/ancient/flash-mid-from-top-mid-ct/">Flash Meio (de Top Mid)</a></li>
+        <li><span class="exec-t">+7.1s</span><span class="badge type-molotov">Molotov</span><a href="/pt/ancient/molotov-ramp-from-alley-ct/">Molotov Rampa (de Beco)</a></li>
+        <li><span class="exec-t">+15.2s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-t-upper-from-side-entrance-ct/">Smoke TR Superior (de Entrada Lateral)</a></li>
+      </ol>
+    </div>
+    <div class="exec">
+      <div class="exec-head">
+        <span class="badge side-CT">CT</span>
+        <b>Defesa: Fora + Rampa</b>
+      </div>
+      <div class="muted small">vista 4 vezes · round ganho em 50% ·
+FURIA (1), G2 (1), Spirit (1), MOUZ (1)</div>
+      <div class="muted small">Em: <span class="mref">FURIA vs Falcons <b>16–14</b> · mapa 1</span>; <span class="mref">G2 vs MOUZ <b>16–14</b> · mapa 2</span>; <span class="mref">Spirit vs G2 <b>13–5</b> · mapa 3</span>; <span class="mref">Spirit vs MOUZ <b>13–11</b> · mapa 2</span></div>
+      <a class="small" href="/pt/ancient/execucoes/ct-48f457/">Kit para o seu time (quem joga cada granada) →</a>
+      <ol class="exec-parts">
+        <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-outside-from-ct-spawn-ct/">Smoke Fora (de Base CT)</a></li>
+        <li><span class="exec-t">+6.9s</span><span class="badge type-molotov">Molotov</span><a href="/pt/ancient/molotov-ramp-from-alley-ct/">Molotov Rampa (de Beco)</a></li>
+        <li><span class="exec-t">+13.5s</span><span class="badge type-flash">Flash</span><a href="/pt/ancient/flash-b-site-from-alley-ct/">Flash Bomb B (de Beco)</a></li>
+      </ol>
+    </div>
+    <div class="exec">
+      <div class="exec-head">
+        <span class="badge side-T">TR</span>
+        <b>Execução: Casa + TR Superior</b>
+      </div>
+      <div class="muted small">vista 4 vezes · round ganho em 50% ·
+G2 (2), Spirit (2)</div>
+      <div class="muted small">Em: <span class="mref">G2 vs MOUZ <b>16–14</b> · mapa 2</span>; <span class="mref">Spirit vs G2 <b>13–5</b> · mapa 3</span>; <span class="mref">Spirit vs MOUZ <b>13–11</b> · mapa 2</span></div>
+      <a class="small" href="/pt/ancient/execucoes/t-2cadf8/">Kit para o seu time (quem joga cada granada) →</a>
+      <ol class="exec-parts">
+        <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-house-from-t-spawn-t/">Smoke Casa (de Base TR)</a></li>
+        <li><span class="exec-t">+2.4s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-t-upper-from-t-spawn-t/">Smoke TR Superior (de Base TR)</a></li>
+        <li><span class="exec-t">+2.9s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-mid-from-t-spawn-t/">Smoke Meio (de Base TR)</a></li>
+      </ol>
+    </div>
+    <div class="exec">
+      <div class="exec-head">
+        <span class="badge side-CT">CT</span>
+        <b>Defesa: Fora + Rampa</b>
+      </div>
+      <div class="muted small">vista 3 vezes · round ganho em 100% ·
+Spirit (2), Falcons (1)</div>
+      <div class="muted small">Em: <span class="mref">FURIA vs Falcons <b>16–14</b> · mapa 1</span>; <span class="mref">Spirit vs MOUZ <b>13–11</b> · mapa 2</span></div>
+      <a class="small" href="/pt/ancient/execucoes/ct-f9dc8b/">Kit para o seu time (quem joga cada granada) →</a>
+      <ol class="exec-parts">
+        <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-outside-from-ct-spawn-ct/">Smoke Fora (de Base CT)</a></li>
+        <li><span class="exec-t">+7.4s</span><span class="badge type-molotov">Molotov</span><a href="/pt/ancient/molotov-ramp-from-alley-ct/">Molotov Rampa (de Beco)</a></li>
+        <li><span class="exec-t">+11.4s</span><span class="badge type-molotov">Molotov</span><a href="/pt/ancient/molotov-t-upper-from-side-entrance-ct/">Molotov TR Superior (de Entrada Lateral)</a></li>
+      </ol>
+    </div>
+    <div class="exec">
+      <div class="exec-head">
+        <span class="badge side-T">TR</span>
+        <b>Execução: Top Mid + TR Superior</b>
+      </div>
+      <div class="muted small">vista 2 vezes · round ganho em 0% ·
+G2 (2)</div>
+      <div class="muted small">Em: <span class="mref">G2 vs MOUZ <b>16–14</b> · mapa 2</span>; <span class="mref">Spirit vs G2 <b>13–5</b> · mapa 3</span></div>
+      <a class="small" href="/pt/ancient/execucoes/t-88b5de/">Kit para o seu time (quem joga cada granada) →</a>
+      <ol class="exec-parts">
+        <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-top-mid-from-t-spawn-t/">Smoke Top Mid (de Base TR)</a></li>
+        <li><span class="exec-t">+1.6s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-t-upper-from-t-spawn-t/">Smoke TR Superior (de Base TR)</a></li>
+        <li><span class="exec-t">+5.6s</span><span class="badge type-molotov">Molotov</span><a href="/pt/ancient/molotov-mid-from-outside-t/">Molotov Meio (de Fora)</a></li>
+      </ol>
+    </div>
+    <div class="exec">
+      <div class="exec-head">
+        <span class="badge side-T">TR</span>
+        <b>Execução: TR Superior + Meio</b>
+      </div>
+      <div class="muted small">vista 2 vezes · round ganho em 50% ·
+Spirit (2)</div>
+      <div class="muted small">Em: <span class="mref">FURIA vs Spirit <b>13–11</b> · mapa 1</span>; <span class="mref">Spirit vs FUT <b>13–5</b> · mapa 3</span></div>
+      <a class="small" href="/pt/ancient/execucoes/t-14d089/">Kit para o seu time (quem joga cada granada) →</a>
+      <ol class="exec-parts">
+        <li><span class="exec-t">+0.4s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-t-upper-from-t-spawn-t/">Smoke TR Superior (de Base TR)</a></li>
+        <li><span class="exec-t">+1.6s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-mid-from-t-spawn-t/">Smoke Meio (de Base TR)</a></li>
+        <li><span class="exec-t">+7.5s</span><span class="badge type-molotov">Molotov</span><a href="/pt/ancient/molotov-b-site-from-ruins-t/">Molotov Bomb B (de Ruínas)</a></li>
+      </ol>
+    </div>
+    <div class="exec">
+      <div class="exec-head">
+        <span class="badge side-T">TR</span>
+        <b>Execução: Bomb B + Entrada Lateral</b>
+      </div>
+      <div class="muted small">vista 2 vezes · round ganho em 0% ·
+G2 (2)</div>
+      <div class="muted small">Em: <span class="mref">G2 vs MOUZ <b>16–14</b> · mapa 2</span>; <span class="mref">Spirit vs G2 <b>13–5</b> · mapa 3</span></div>
+      <a class="small" href="/pt/ancient/execucoes/t-ccc49f/">Kit para o seu time (quem joga cada granada) →</a>
+      <ol class="exec-parts">
+        <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-side-entrance-from-water-t/">Smoke Entrada Lateral (de Água)</a></li>
+        <li><span class="exec-t">+2.4s</span><span class="badge type-molotov">Molotov</span><a href="/pt/ancient/molotov-b-site-from-ruins-t/">Molotov Bomb B (de Ruínas)</a></li>
+        <li><span class="exec-t">+3.7s</span><span class="badge type-flash">Flash</span><a href="/pt/ancient/flash-b-site-from-tside-lower-t/">Flash Bomb B (de TR Inferior)</a></li>
+      </ol>
+    </div>
+    <div class="exec">
+      <div class="exec-head">
+        <span class="badge side-T">TR</span>
+        <b>Execução: Casa + Meio</b>
+      </div>
+      <div class="muted small">vista 2 vezes · round ganho em 50% ·
+Spirit (1), FURIA (1)</div>
+      <div class="muted small">Em: <span class="mref">FURIA vs Spirit <b>13–11</b> · mapa 1</span></div>
+      <a class="small" href="/pt/ancient/execucoes/t-ead4a4/">Kit para o seu time (quem joga cada granada) →</a>
+      <ol class="exec-parts">
+        <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-house-from-t-spawn-t/">Smoke Casa (de Base TR)</a></li>
+        <li><span class="exec-t">+2.0s</span><span class="badge type-smoke">Smoke</span><a href="/pt/ancient/smoke-mid-from-t-spawn-t/">Smoke Meio (de Base TR)</a></li>
+        <li><span class="exec-t">+9.7s</span><span class="badge type-molotov">Molotov</span><a href="/pt/ancient/molotov-b-site-from-ruins-t/">Molotov Bomb B (de Ruínas)</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
 <script>
 (function () { // back button: always to the previous page (home if there is none); placed right under the breadcrumbs
   var b = document.getElementById("backBtn"); if (!b) return;
@@ -1340,7 +1339,7 @@ Spirit (1), FURIA (1)</div>
   </div>
 </footer>
 <script src="/static/app.js?v=79dff6c310" defer></script>
-<script src="/static/accounts.js?v=90dc06a817" defer></script>
+<script src="/static/accounts.js?v=5b0e67dad2" defer></script>
 <script src="/static/video.js?v=52b42fe5aa" defer></script>
 <script src="/static/react.js?v=ba1c25c1ad" defer></script>
 </body>

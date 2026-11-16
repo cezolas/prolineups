@@ -28,7 +28,7 @@
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
   if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg?v=714ec3503f" type="image/svg+xml">
-<link rel="stylesheet" href="/static/style.css?v=d15bf81152">
+<link rel="stylesheet" href="/static/style.css?v=c240b37721">
 <script>window.I18N = {"copied": "Copiado!", "dec": ",", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "open": "Abrir", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "report_fail": "N\u00e3o deu para enviar agora, tente mais tarde.", "report_limit": "Voc\u00ea j\u00e1 enviou v\u00e1rios reports hoje.", "report_thanks": "Obrigado! Vamos revisar.", "throws_in": "lan\u00e7a em {s}s", "v_back": "Voltar 2 segundos", "v_frame_back": "Quadro anterior", "v_frame_fwd": "Pr\u00f3ximo quadro", "v_fwd": "Avan\u00e7ar 2 segundos", "v_play": "Reproduzir / pausar"}; window.LANG = "pt";</script>
 </head>
 <body class="">
@@ -40,6 +40,7 @@
       <input id="q" type="search" placeholder="Buscar mapa, jogador, time, smoke…" autocomplete="off" aria-label="Buscar">
       <div id="results" class="results" hidden></div>
     </div>
+    <a class="premium-btn" href="/pt/premium/" title="Área Premium"><span aria-hidden="true">♛</span><span class="pb-l">Área Premium</span></a>
     <nav class="langs" aria-label="Idioma">
 <a href="/pt/cache/jogadas/vitality-a/" hreflang="pt" lang="pt" aria-current="true" title="Português" aria-label="Português"><img class="lang-flag" src="/static/flags/br.svg?v=17969b5ac0" alt="Português" width="24" height="18"></a><a href="/en/cache/plays/vitality-a/" hreflang="en" lang="en" title="English" aria-label="English"><img class="lang-flag" src="/static/flags/gb.svg?v=161ee20a0a" alt="English" width="24" height="18"></a>    </nav>
     <a class="login-btn" id="loginBtn" href="/pt/conta/" data-account="conta" hidden>Entrar</a>
@@ -51,26 +52,22 @@
   <aside class="side" id="side" aria-label="Navegação">
     <nav>
       <a href="/pt/"><span class="nl">Início</span></a>
+      <a class="nav-premium" href="/pt/premium/"><span>♛ Área Premium</span></a>
       <a href="/pt/modo-partida/"><span>📱 Modo partida</span></a>
       <a href="/pt/minha-faceit/"><span>◉ Minha FACEIT</span></a>
-      <a href="/pt/comparar-minha-demo/"><span>⇄ Comparar minha demo</span></a>
-      <a href="/pt/plano-de-treino/"><span>🎯 Plano de treino</span></a>
       <a href="/pt/funcoes/"><span>👥 Funções</span></a>
       <a href="/pt/analises/"><span>▤ Análises</span></a>
       <a href="/pt/minha-lista/"><span>★ Minha lista</span><span class="n" id="favCount"></span></a>
-      <details class="nav-g" data-k="maps" open>
+      <details class="nav-g" data-k="maps">
         <summary class="nav-h"><a href="/pt/mapas/">Mapas</a></summary>
 <a href="/pt/ancient/"><span class="nl">Ancient</span><span class="n">51</span></a><a href="/pt/anubis/"><span class="nl">Anubis</span><span class="n">20</span></a><a href="/pt/cache/" aria-current="page"><span class="nl">Cache</span><span class="n">39</span></a><a href="/pt/dust2/"><span class="nl">Dust2</span><span class="n">53</span></a><a href="/pt/inferno/"><span class="nl">Inferno</span><span class="n">22</span></a><a href="/pt/mirage/"><span class="nl">Mirage</span><span class="n">74</span></a><a href="/pt/nuke/"><span class="nl">Nuke</span><span class="n">33</span></a>      </details>
-      <details class="nav-g" data-k="tactics" open>
-        <summary class="nav-h"><a href="/pt/taticas/">Táticas</a></summary>
-<a href="/pt/ancient/jogadas/"><span class="nl">Ancient</span><span class="n">85</span></a><a href="/pt/anubis/jogadas/"><span class="nl">Anubis</span><span class="n">13</span></a><a href="/pt/cache/jogadas/" aria-current="page"><span class="nl">Cache</span><span class="n">37</span></a><a href="/pt/dust2/jogadas/"><span class="nl">Dust2</span><span class="n">61</span></a><a href="/pt/inferno/jogadas/"><span class="nl">Inferno</span><span class="n">17</span></a><a href="/pt/mirage/jogadas/"><span class="nl">Mirage</span><span class="n">67</span></a><a href="/pt/nuke/jogadas/"><span class="nl">Nuke</span><span class="n">32</span></a>      </details>
-      <details class="nav-g" data-k="events" open>
+      <details class="nav-g" data-k="events">
         <summary class="nav-h"><a href="/pt/torneios/">Torneios</a></summary>
 <a href="/pt/torneio/blast-rivals-2026-season-2/"><span class="nl">BLAST Rivals 2026 Season 2</span></a>      </details>
-      <details class="nav-g" data-k="players" open>
+      <details class="nav-g" data-k="players">
         <summary class="nav-h"><a href="/pt/jogadores/">Jogadores</a></summary>
-<a href="/pt/jogador/apex/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12"></span>apEX <span class="role role-support sm">Suporte</span></span></a><a href="/pt/jogador/art/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>art <span class="role role-support sm">Suporte</span></span></a><a href="/pt/jogador/coolio/"><span class="nl"><span class="nav-flag"></span>coolio <span class="role role-entry sm">Entry</span></span></a><a href="/pt/jogador/dem0n/"><span class="nl"><span class="nav-flag"></span>dem0n <span class="role role-rifler sm">Rifler</span></span></a><a href="/pt/jogador/donk/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12"></span>donk <span class="role role-rifler sm">Rifler</span></span></a><a href="/pt/jogador/dumau/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>dumau <span class="role role-entry sm">Entry</span></span></a><a href="/pt/jogador/dziugss/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/lt.svg" alt="Lituânia" title="Lituânia" width="16" height="12"></span>dziugss <span class="role role-lurker sm">Lurker</span></span></a><a href="/pt/jogador/fallen/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>FalleN <span class="role role-support sm">Suporte</span></span></a><a href="/pt/jogador/flamez/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12"></span>flameZ <span class="role role-entry sm">Entry</span></span></a><a href="/pt/jogador/heavygod/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12"></span>HeavyGod <span class="role role-entry sm">Entry</span></span></a><a href="/pt/jogador/hunter/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/ba.svg" alt="Bósnia" title="Bósnia" width="16" height="12"></span>huNter <span class="role role-support sm">Suporte</span></span></a><a href="/pt/jogador/karrigan/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/dk.svg" alt="Dinamarca" title="Dinamarca" width="16" height="12"></span>karrigan <span class="role role-support sm">Suporte</span></span></a><a class="more" href="/pt/jogadores/">ver todos (40)</a>      </details>
-      <details class="nav-g" data-k="teams" open>
+<a href="/pt/jogador/apex/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12"></span>apEX <span class="role role-support sm">Suporte</span></span></a><a href="/pt/jogador/art/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>art <span class="role role-rifler sm">Rifler</span></span></a><a href="/pt/jogador/coolio/"><span class="nl"><span class="nav-flag"></span>coolio <span class="role role-rifler sm">Rifler</span></span></a><a href="/pt/jogador/dem0n/"><span class="nl"><span class="nav-flag"></span>dem0n <span class="role role-support sm">Suporte</span></span></a><a href="/pt/jogador/donk/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12"></span>donk <span class="role role-rifler sm">Rifler</span></span></a><a href="/pt/jogador/dumau/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>dumau <span class="role role-entry sm">Entry</span></span></a><a href="/pt/jogador/dziugss/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/lt.svg" alt="Lituânia" title="Lituânia" width="16" height="12"></span>dziugss <span class="role role-lurker sm">Lurker</span></span></a><a href="/pt/jogador/fallen/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>FalleN <span class="role role-support sm">Suporte</span></span></a><a href="/pt/jogador/flamez/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12"></span>flameZ <span class="role role-entry sm">Entry</span></span></a><a href="/pt/jogador/heavygod/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12"></span>HeavyGod <span class="role role-entry sm">Entry</span></span></a><a href="/pt/jogador/hunter/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/ba.svg" alt="Bósnia" title="Bósnia" width="16" height="12"></span>huNter <span class="role role-support sm">Suporte</span></span></a><a href="/pt/jogador/karrigan/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/dk.svg" alt="Dinamarca" title="Dinamarca" width="16" height="12"></span>karrigan <span class="role role-support sm">Suporte</span></span></a><a class="more" href="/pt/jogadores/">ver todos (40)</a>      </details>
+      <details class="nav-g" data-k="teams">
         <summary class="nav-h"><a href="/pt/times/">Times</a></summary>
 <a href="/pt/time/falcons/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/sa.svg" alt="Arábia Saudita" title="Arábia Saudita" width="16" height="12"></span>Falcons</span></a><a href="/pt/time/furia/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>FURIA</span></a><a href="/pt/time/fut/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/tr.svg" alt="Turquia" title="Turquia" width="16" height="12"></span>FUT</span></a><a href="/pt/time/g2/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"></span>G2</span></a><a href="/pt/time/legacy/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>Legacy</span></a><a href="/pt/time/mouz/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"></span>MOUZ</span></a><a href="/pt/time/spirit/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12"></span>Spirit</span></a><a href="/pt/time/vitality/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12"></span>Vitality</span></a>      </details>
       <div class="nav-sep"></div>
@@ -78,14 +75,14 @@
       <a href="/pt/privacidade/"><span class="nl">Privacidade</span></a>
     </nav>
     <script>
-      /* collapsed sections are remembered in this browser; applied before paint */
+      /* sections start collapsed; the ones opened here are remembered, and the one holding this page opens */
       (function () {
-        var c = []; try { c = JSON.parse(localStorage.getItem("navClosed") || "[]"); } catch (e) {}
+        var o = []; try { o = JSON.parse(localStorage.getItem("navOpen") || "[]"); } catch (e) {}
         document.querySelectorAll(".nav-g").forEach(function (d) {
-          if (c.indexOf(d.dataset.k) >= 0 && !d.querySelector("[aria-current]")) d.open = false;
+          if (o.indexOf(d.dataset.k) >= 0 || d.querySelector("[aria-current]")) d.open = true;
           d.addEventListener("toggle", function () {
-            var s = []; document.querySelectorAll(".nav-g").forEach(function (x) { if (!x.open) s.push(x.dataset.k); });
-            try { localStorage.setItem("navClosed", JSON.stringify(s)); } catch (e) {}
+            var s = []; document.querySelectorAll(".nav-g").forEach(function (x) { if (x.open) s.push(x.dataset.k); });
+            try { localStorage.setItem("navOpen", JSON.stringify(s)); } catch (e) {}
           });
         });
       })();
@@ -206,7 +203,7 @@
   </div>
 </footer>
 <script src="/static/app.js?v=79dff6c310" defer></script>
-<script src="/static/accounts.js?v=90dc06a817" defer></script>
+<script src="/static/accounts.js?v=5b0e67dad2" defer></script>
 <script src="/static/video.js?v=52b42fe5aa" defer></script>
 <script src="/static/react.js?v=ba1c25c1ad" defer></script>
 <script src="/static/jogada.js?v=5dfa8a6f81" defer></script></body>

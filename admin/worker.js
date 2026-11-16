@@ -172,6 +172,13 @@ export default {
         for (const u of vals) if (u) users.push(u);
         cursor = page.list_complete ? null : page.cursor;
       } while (cursor && users.length < 5000);
+      const premium = new Set();  // KV "premium:<sub>" = { by, at }
+      let pc;
+      do {
+        const page = await env.USERS.list({ prefix: "premium:", cursor: pc, limit: 1000 });
+        for (const k of page.keys) premium.add(k.name.slice(8));
+        pc = page.list_complete ? null : page.cursor;
+      } while (pc);
       const stats = {};
       if (env.DB) {
         // keep the log for 180 days (privacy policy)
@@ -188,7 +195,7 @@ export default {
         return {
           sub: u.sub, name: u.name, email: u.email, picture: u.picture, created: u.created, last_login: u.last_login,
           type: faceitOnly ? "faceit" : (u.faceit ? "google+faceit" : "google"),
-          faceit: u.faceit ? u.faceit.nickname : null, plan: u.plan || "free",
+          faceit: u.faceit ? u.faceit.nickname : null, plan: premium.has(u.sub) ? "premium" : "free",
           stats: stats[u.sub] || null,
         };
       });
@@ -201,6 +208,19 @@ export default {
             GROUP BY path ORDER BY n DESC LIMIT 15`).bind(Date.now() - 30 * 864e5).all()).results || [];
       }
       return json({ users: out, daily, top, log_enabled: !!env.DB });
+    }
+    // Premium Area access: the public site serves the premium pages only when KV "premium:<sub>" exists
+    if (url.pathname === "/api/users/premium" && request.method === "POST") {
+      if (!env.USERS) return json({ error: "USERS não ligado neste Worker" }, 503);
+      const b = await request.json().catch(() => ({}));
+      const sub = String(b.sub || "");
+      if (!sub || sub.length > 120 || !(await env.USERS.get(`user:${sub}`))) return json({ error: "usuário não encontrado" }, 404);
+      if (b.on) await env.USERS.put(`premium:${sub}`, JSON.stringify({ by: identity.email, at: new Date().toISOString() }));
+      else await env.USERS.delete(`premium:${sub}`);
+      const audit = await readJSON(env, "audit", []);
+      audit.unshift({ at: new Date().toISOString(), by: identity.email, map: "-", place: `premium ${b.on ? "liberado" : "removido"}`, lang: "-", display: sub });
+      await env.ADMIN.put("audit", JSON.stringify(audit.slice(0, 300)));
+      return json({ ok: true, sub, premium: !!b.on });
     }
     const ul = url.pathname.match(/^\/api\/users\/log$/);
     if (ul && request.method === "GET") {

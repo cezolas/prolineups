@@ -87,6 +87,7 @@
         if (j.user.picture && img) { img.src = j.user.picture; img.hidden = false; }
         meBtn.title = j.user.name || j.user.email || "";
       }
+      document.body.classList.toggle("is-premium", !!j.user.premium);
       document.dispatchEvent(new CustomEvent("pn:me", { detail: j.user }));
       sync();
     } else if (r.status === 401 && j.configured !== false && login) {

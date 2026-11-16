@@ -28,7 +28,7 @@
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
   if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg?v=714ec3503f" type="image/svg+xml">
-<link rel="stylesheet" href="/static/style.css?v=d15bf81152">
+<link rel="stylesheet" href="/static/style.css?v=c240b37721">
 <script>window.I18N = {"copied": "Copied!", "dec": ".", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "open": "Open", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "report_fail": "Couldn\u0027t send it right now, try again later.", "report_limit": "You\u0027ve already sent several reports today.", "report_thanks": "Thanks! We\u0027ll take a look.", "throws_in": "throws in {s}s", "v_back": "Back 2 seconds", "v_frame_back": "Previous frame", "v_frame_fwd": "Next frame", "v_fwd": "Forward 2 seconds", "v_play": "Play / pause"}; window.LANG = "en";</script>
 </head>
 <body class="">
@@ -40,6 +40,7 @@
       <input id="q" type="search" placeholder="Search map, player, team, smoke…" autocomplete="off" aria-label="Search">
       <div id="results" class="results" hidden></div>
     </div>
+    <a class="premium-btn" href="/en/premium/" title="Premium Area"><span aria-hidden="true">♛</span><span class="pb-l">Premium Area</span></a>
     <nav class="langs" aria-label="Language">
 <a href="/pt/mirage/" hreflang="pt" lang="pt" title="Português" aria-label="Português"><img class="lang-flag" src="/static/flags/br.svg?v=17969b5ac0" alt="Português" width="24" height="18"></a><a href="/en/mirage/" hreflang="en" lang="en" aria-current="true" title="English" aria-label="English"><img class="lang-flag" src="/static/flags/gb.svg?v=161ee20a0a" alt="English" width="24" height="18"></a>    </nav>
     <a class="login-btn" id="loginBtn" href="/en/account/" data-account="account" hidden>Sign in</a>
@@ -51,26 +52,22 @@
   <aside class="side" id="side" aria-label="Navigation">
     <nav>
       <a href="/en/"><span class="nl">Home</span></a>
+      <a class="nav-premium" href="/en/premium/"><span>♛ Premium Area</span></a>
       <a href="/en/match-mode/"><span>📱 Match mode</span></a>
       <a href="/en/my-faceit/"><span>◉ My FACEIT</span></a>
-      <a href="/en/compare-my-demo/"><span>⇄ Compare my demo</span></a>
-      <a href="/en/training-plan/"><span>🎯 Training plan</span></a>
       <a href="/en/roles/"><span>👥 Roles</span></a>
       <a href="/en/analytics/"><span>▤ Analytics</span></a>
       <a href="/en/my-list/"><span>★ My list</span><span class="n" id="favCount"></span></a>
-      <details class="nav-g" data-k="maps" open>
+      <details class="nav-g" data-k="maps">
         <summary class="nav-h"><a href="/en/maps/">Maps</a></summary>
 <a href="/en/ancient/"><span class="nl">Ancient</span><span class="n">51</span></a><a href="/en/anubis/"><span class="nl">Anubis</span><span class="n">20</span></a><a href="/en/cache/"><span class="nl">Cache</span><span class="n">39</span></a><a href="/en/dust2/"><span class="nl">Dust2</span><span class="n">53</span></a><a href="/en/inferno/"><span class="nl">Inferno</span><span class="n">22</span></a><a href="/en/mirage/" aria-current="page"><span class="nl">Mirage</span><span class="n">74</span></a><a href="/en/nuke/"><span class="nl">Nuke</span><span class="n">33</span></a>      </details>
-      <details class="nav-g" data-k="tactics" open>
-        <summary class="nav-h"><a href="/en/tactics/">Tactics</a></summary>
-<a href="/en/ancient/plays/"><span class="nl">Ancient</span><span class="n">85</span></a><a href="/en/anubis/plays/"><span class="nl">Anubis</span><span class="n">13</span></a><a href="/en/cache/plays/"><span class="nl">Cache</span><span class="n">37</span></a><a href="/en/dust2/plays/"><span class="nl">Dust2</span><span class="n">61</span></a><a href="/en/inferno/plays/"><span class="nl">Inferno</span><span class="n">17</span></a><a href="/en/mirage/plays/"><span class="nl">Mirage</span><span class="n">67</span></a><a href="/en/nuke/plays/"><span class="nl">Nuke</span><span class="n">32</span></a>      </details>
-      <details class="nav-g" data-k="events" open>
+      <details class="nav-g" data-k="events">
         <summary class="nav-h"><a href="/en/tournaments/">Tournaments</a></summary>
 <a href="/en/tournament/blast-rivals-2026-season-2/"><span class="nl">BLAST Rivals 2026 Season 2</span></a>      </details>
-      <details class="nav-g" data-k="players" open>
+      <details class="nav-g" data-k="players">
         <summary class="nav-h"><a href="/en/players/">Players</a></summary>
-<a href="/en/player/apex/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/fr.svg" alt="France" title="France" width="16" height="12"></span>apEX <span class="role role-support sm">Support</span></span></a><a href="/en/player/art/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"></span>art <span class="role role-support sm">Support</span></span></a><a href="/en/player/coolio/"><span class="nl"><span class="nav-flag"></span>coolio <span class="role role-entry sm">Entry</span></span></a><a href="/en/player/dem0n/"><span class="nl"><span class="nav-flag"></span>dem0n <span class="role role-rifler sm">Rifler</span></span></a><a href="/en/player/donk/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12"></span>donk <span class="role role-rifler sm">Rifler</span></span></a><a href="/en/player/dumau/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"></span>dumau <span class="role role-entry sm">Entry</span></span></a><a href="/en/player/dziugss/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/lt.svg" alt="Lithuania" title="Lithuania" width="16" height="12"></span>dziugss <span class="role role-lurker sm">Lurker</span></span></a><a href="/en/player/fallen/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"></span>FalleN <span class="role role-support sm">Support</span></span></a><a href="/en/player/flamez/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12"></span>flameZ <span class="role role-entry sm">Entry</span></span></a><a href="/en/player/heavygod/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12"></span>HeavyGod <span class="role role-entry sm">Entry</span></span></a><a href="/en/player/hunter/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/ba.svg" alt="Bosnia" title="Bosnia" width="16" height="12"></span>huNter <span class="role role-support sm">Support</span></span></a><a href="/en/player/karrigan/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/dk.svg" alt="Denmark" title="Denmark" width="16" height="12"></span>karrigan <span class="role role-support sm">Support</span></span></a><a class="more" href="/en/players/">see all (40)</a>      </details>
-      <details class="nav-g" data-k="teams" open>
+<a href="/en/player/apex/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/fr.svg" alt="France" title="France" width="16" height="12"></span>apEX <span class="role role-support sm">Support</span></span></a><a href="/en/player/art/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"></span>art <span class="role role-rifler sm">Rifler</span></span></a><a href="/en/player/coolio/"><span class="nl"><span class="nav-flag"></span>coolio <span class="role role-rifler sm">Rifler</span></span></a><a href="/en/player/dem0n/"><span class="nl"><span class="nav-flag"></span>dem0n <span class="role role-support sm">Support</span></span></a><a href="/en/player/donk/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12"></span>donk <span class="role role-rifler sm">Rifler</span></span></a><a href="/en/player/dumau/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"></span>dumau <span class="role role-entry sm">Entry</span></span></a><a href="/en/player/dziugss/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/lt.svg" alt="Lithuania" title="Lithuania" width="16" height="12"></span>dziugss <span class="role role-lurker sm">Lurker</span></span></a><a href="/en/player/fallen/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"></span>FalleN <span class="role role-support sm">Support</span></span></a><a href="/en/player/flamez/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12"></span>flameZ <span class="role role-entry sm">Entry</span></span></a><a href="/en/player/heavygod/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/il.svg" alt="Israel" title="Israel" width="16" height="12"></span>HeavyGod <span class="role role-entry sm">Entry</span></span></a><a href="/en/player/hunter/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/ba.svg" alt="Bosnia" title="Bosnia" width="16" height="12"></span>huNter <span class="role role-support sm">Support</span></span></a><a href="/en/player/karrigan/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/dk.svg" alt="Denmark" title="Denmark" width="16" height="12"></span>karrigan <span class="role role-support sm">Support</span></span></a><a class="more" href="/en/players/">see all (40)</a>      </details>
+      <details class="nav-g" data-k="teams">
         <summary class="nav-h"><a href="/en/teams/">Teams</a></summary>
 <a href="/en/team/falcons/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/sa.svg" alt="Saudi Arabia" title="Saudi Arabia" width="16" height="12"></span>Falcons</span></a><a href="/en/team/furia/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"></span>FURIA</span></a><a href="/en/team/fut/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/tr.svg" alt="Turkey" title="Turkey" width="16" height="12"></span>FUT</span></a><a href="/en/team/g2/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12"></span>G2</span></a><a href="/en/team/legacy/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brazil" title="Brazil" width="16" height="12"></span>Legacy</span></a><a href="/en/team/mouz/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/de.svg" alt="Germany" title="Germany" width="16" height="12"></span>MOUZ</span></a><a href="/en/team/spirit/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/ru.svg" alt="Russia" title="Russia" width="16" height="12"></span>Spirit</span></a><a href="/en/team/vitality/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/fr.svg" alt="France" title="France" width="16" height="12"></span>Vitality</span></a>      </details>
       <div class="nav-sep"></div>
@@ -78,14 +75,14 @@
       <a href="/en/privacy/"><span class="nl">Privacy</span></a>
     </nav>
     <script>
-      /* collapsed sections are remembered in this browser; applied before paint */
+      /* sections start collapsed; the ones opened here are remembered, and the one holding this page opens */
       (function () {
-        var c = []; try { c = JSON.parse(localStorage.getItem("navClosed") || "[]"); } catch (e) {}
+        var o = []; try { o = JSON.parse(localStorage.getItem("navOpen") || "[]"); } catch (e) {}
         document.querySelectorAll(".nav-g").forEach(function (d) {
-          if (c.indexOf(d.dataset.k) >= 0 && !d.querySelector("[aria-current]")) d.open = false;
+          if (o.indexOf(d.dataset.k) >= 0 || d.querySelector("[aria-current]")) d.open = true;
           d.addEventListener("toggle", function () {
-            var s = []; document.querySelectorAll(".nav-g").forEach(function (x) { if (!x.open) s.push(x.dataset.k); });
-            try { localStorage.setItem("navClosed", JSON.stringify(s)); } catch (e) {}
+            var s = []; document.querySelectorAll(".nav-g").forEach(function (x) { if (x.open) s.push(x.dataset.k); });
+            try { localStorage.setItem("navOpen", JSON.stringify(s)); } catch (e) {}
           });
         });
       })();
@@ -97,7 +94,7 @@
 <h1>Mirage grenades</h1>
 <div class="map-actions">
   <a class="btn mm-open" href="/en/match-mode/?map=mirage">📱 Match mode</a>
-<a class="btn" href="/en/mirage/plays/">▶ See team plays (round replay)</a>  <a class="btn" href="/en/mirage/roles/">👥 Grenades by role</a>
+<a class="btn" href="/en/mirage/plays/">🔒 ▶ See team plays (round replay)</a>  <a class="btn" href="/en/mirage/roles/">👥 Grenades by role</a>
   <a class="btn" href="/static/treino/en/pronades_mirage.cfg" download>⬇ Download practice pack (.cfg)</a>
   <details class="cfg-help"><summary>How to use the practice pack</summary>
     <ol><li>Download the file and copy it to <code>Counter-Strike Global Offensive/game/csgo/cfg/</code>.</li><li>In CS2, open <b>Play → Practice</b> (offline server) on the map.</li><li>In the console, type <code>exec pronades_mirage</code>.</li><li>Type <code>bind ] lp_next; bind [ lp_prev</code> and use <b>]</b> and <b>[</b> to jump between lineups: you land on the pro's exact spot, already aiming.</li><li>Offline servers only, never in online matches.</li></ol>
@@ -115,166 +112,6 @@
   <div class="q-areas" data-qt-panel="he" hidden>
 <button class="chip" data-quick="he|TopofMid">Top Mid <span class="muted">· 3</span></button><button class="chip" data-quick="he|Underpass">Underpass <span class="muted">· 2</span></button><button class="chip" data-quick="he|PalaceAlley">Palace Alley <span class="muted">· 2</span></button><button class="chip" data-quick="he|SnipersNest">Sniper&#39;s Nest <span class="muted">· 1</span></button><button class="chip" data-quick="he|TRamp">T Ramp <span class="muted">· 1</span></button><button class="chip" data-quick="he|Apartments">Apartments <span class="muted">· 1</span></button><button class="chip" data-quick="he|BombsiteA">A Site <span class="muted">· 1</span></button>  </div>
   <p class="muted small">Pick the type and where it has to land: you get every way to throw it there, easiest first. The number is how many different lineups exist.</p>
-</section>
-<section class="start-here" id="comece">
-  <h2>Start here</h2>
-  <p class="muted">The grenades pros use most on this map, easiest first. Learn these before anything else.</p>
-  <div class="start-cols">
-    <div class="start-col">
-      <h3><span class="badge side-T">T</span> T side</h3>
-      <ol class="start-list">
-        <li><a href="/en/mirage/smoke-top-mid-from-t-spawn-t/">
-          <span class="start-name">Smoke Top Mid (from T Spawn)</span>
-          <span class="badge diff-1">Easy</span>
-          <span class="muted small">47 uses · standing · left click</span>
-        </a></li>
-        <li><a href="/en/mirage/smoke-sniper-s-nest-from-top-mid-t/">
-          <span class="start-name">Smoke Sniper&#39;s Nest (from Top Mid)</span>
-          <span class="badge diff-1">Easy</span>
-          <span class="muted small">26 uses · crouched · standing · left click</span>
-        </a></li>
-        <li><a href="/en/mirage/smoke-mid-from-top-mid-t/">
-          <span class="start-name">Smoke Mid (from Top Mid)</span>
-          <span class="badge diff-1">Easy</span>
-          <span class="muted small">24 uses · standing · left click</span>
-        </a></li>
-        <li><a href="/en/mirage/smoke-catwalk-from-t-spawn-t/">
-          <span class="start-name">Smoke Catwalk (from T Spawn)</span>
-          <span class="badge diff-2">Medium</span>
-          <span class="muted small">40 uses · jump throw · standing · left + right click</span>
-        </a></li>
-        <li><a href="/en/mirage/smoke-sniper-s-nest-from-t-spawn-t/">
-          <span class="start-name">Smoke Sniper&#39;s Nest (from T Spawn)</span>
-          <span class="badge diff-3">Hard</span>
-          <span class="muted small">131 uses · jump throw · walking · left click</span>
-        </a></li>
-        <li><a href="/en/mirage/smoke-a-site-from-t-spawn-t/">
-          <span class="start-name">Smoke A Site (from T Spawn)</span>
-          <span class="badge diff-3">Hard</span>
-          <span class="muted small">18 uses · jump throw · walking · left click</span>
-        </a></li>
-      </ol>
-    </div>
-    <div class="start-col">
-      <h3><span class="badge side-CT">CT</span> CT side</h3>
-      <ol class="start-list">
-        <li><a href="/en/mirage/smoke-palace-from-a-site-ct/">
-          <span class="start-name">Smoke Palace (from A Site)</span>
-          <span class="badge diff-1">Easy</span>
-          <span class="muted small">22 uses · standing · left click</span>
-        </a></li>
-        <li><a href="/en/mirage/smoke-mid-from-a-site-ct/">
-          <span class="start-name">Smoke Mid (from A Site)</span>
-          <span class="badge diff-1">Easy</span>
-          <span class="muted small">16 uses · standing · left click</span>
-        </a></li>
-        <li><a href="/en/mirage/smoke-t-ramp-from-a-site-ct/">
-          <span class="start-name">Smoke T Ramp (from A Site)</span>
-          <span class="badge diff-1">Easy</span>
-          <span class="muted small">14 uses · standing · left click</span>
-        </a></li>
-        <li><a href="/en/mirage/molotov-t-ramp-from-ct-spawn-ct/">
-          <span class="start-name">Molotov T Ramp (from CT Spawn)</span>
-          <span class="badge diff-3">Hard</span>
-          <span class="muted small">26 uses · running · left click</span>
-        </a></li>
-        <li><a href="/en/mirage/smoke-apartments-from-b-site-ct/">
-          <span class="start-name">Smoke Apartments (from B Site)</span>
-          <span class="badge diff-3">Hard</span>
-          <span class="muted small">15 uses · running · left click</span>
-        </a></li>
-        <li><a href="/en/mirage/molotov-top-mid-from-sniper-s-nest-ct/">
-          <span class="start-name">Molotov Top Mid (from Sniper&#39;s Nest)</span>
-          <span class="badge diff-3">Hard</span>
-          <span class="muted small">12 uses · running · left click</span>
-        </a></li>
-      </ol>
-    </div>
-  </div>
-</section>
-<section class="execs" id="execucoes">
-  <h2>Pro executes</h2>
-  <p class="muted">Grenades the same team throws together in one round, in the order and timing they go out. Detected automatically from the matches.</p>
-  <div class="exec-list">
-    <div class="exec">
-      <div class="exec-head">
-        <span class="badge side-T">T</span>
-        <b>Execute: Stairs + CT Spawn</b>
-      </div>
-      <div class="muted small">seen 4 times · round won 25% ·
-Vitality (3), MOUZ (1)</div>
-      <div class="muted small">In: <span class="mref">FURIA vs Vitality <b>13–0</b> · map 3</span>; <span class="mref">MOUZ vs FUT <b>16–14</b> · map 2</span>; <span class="mref">MOUZ vs Vitality <b>13–8</b> · map 1</span></div>
-      <a class="small" href="/en/mirage/executes/t-b4a51a/">Kit for your team (who throws what) →</a>
-      <ol class="exec-parts">
-        <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/en/mirage/smoke-stairs-from-t-spawn-t/">Smoke Stairs (from T Spawn)</a></li>
-        <li><span class="exec-t">+0.5s</span><span class="badge type-smoke">Smoke</span><a href="/en/mirage/smoke-ct-spawn-from-palace-alley-t/">Smoke CT Spawn (from Palace Alley)</a></li>
-        <li><span class="exec-t">+2.5s</span><span class="badge type-smoke">Smoke</span><a href="/en/mirage/smoke-a-site-from-t-spawn-t/">Smoke A Site (from T Spawn)</a></li>
-      </ol>
-    </div>
-    <div class="exec">
-      <div class="exec-head">
-        <span class="badge side-T">T</span>
-        <b>Execute: A Site + Stairs</b>
-      </div>
-      <div class="muted small">seen 4 times · round won 25% ·
-MOUZ (4)</div>
-      <div class="muted small">In: <span class="mref">MOUZ vs FUT <b>16–14</b> · map 2</span>; <span class="mref">Spirit vs MOUZ <b>13–7</b> · map 1</span>; <span class="mref">MOUZ vs Vitality <b>13–8</b> · map 1</span></div>
-      <a class="small" href="/en/mirage/executes/t-4fe848/">Kit for your team (who throws what) →</a>
-      <ol class="exec-parts">
-        <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/en/mirage/smoke-a-site-from-palace-alley-t/">Smoke A Site (from Palace Alley)</a></li>
-        <li><span class="exec-t">+2.5s</span><span class="badge type-molotov">Molotov</span><a href="/en/mirage/molotov-stairs-from-palace-alley-t/">Molotov Stairs (from Palace Alley)</a></li>
-        <li><span class="exec-t">+3.9s</span><span class="badge type-flash">Flash</span><a href="/en/mirage/flash-a-site-from-palace-alley-t/">Flash A Site (from Palace Alley)</a></li>
-      </ol>
-    </div>
-    <div class="exec">
-      <div class="exec-head">
-        <span class="badge side-T">T</span>
-        <b>Execute: A Site + Stairs</b>
-      </div>
-      <div class="muted small">seen 3 times · round won 67% ·
-Spirit (2), FUT (1)</div>
-      <div class="muted small">In: <span class="mref">MOUZ vs FUT <b>16–14</b> · map 2</span>; <span class="mref">FURIA vs Spirit <b>13–8</b> · map 3</span>; <span class="mref">G2 vs Spirit <b>13–9</b> · map 1</span></div>
-      <a class="small" href="/en/mirage/executes/t-7ffd65/">Kit for your team (who throws what) →</a>
-      <ol class="exec-parts">
-        <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/en/mirage/smoke-stairs-from-t-spawn-t/">Smoke Stairs (from T Spawn)</a></li>
-        <li><span class="exec-t">+2.9s</span><span class="badge type-molotov">Molotov</span><a href="/en/mirage/molotov-a-site-from-palace-alley-t/">Molotov A Site (from Palace Alley)</a></li>
-        <li><span class="exec-t">+2.9s</span><span class="badge type-smoke">Smoke</span><a href="/en/mirage/smoke-a-site-from-t-spawn-t/">Smoke A Site (from T Spawn)</a></li>
-        <li><span class="exec-t">+7.1s</span><span class="badge type-molotov">Molotov</span><a href="/en/mirage/molotov-a-site-from-palace-t/">Molotov A Site (from Palace)</a></li>
-        <li><span class="exec-t">+8.3s</span><span class="badge type-flash">Flash</span><a href="/en/mirage/flash-a-site-from-palace-t/">Flash A Site (from Palace)</a></li>
-      </ol>
-    </div>
-    <div class="exec">
-      <div class="exec-head">
-        <span class="badge side-T">T</span>
-        <b>Execute: B Site + Catwalk</b>
-      </div>
-      <div class="muted small">seen 3 times · round won 67% ·
-Vitality (2), FURIA (1)</div>
-      <div class="muted small">In: <span class="mref">FURIA vs Vitality <b>13–0</b> · map 3</span>; <span class="mref">FURIA vs Spirit <b>13–8</b> · map 3</span>; <span class="mref">MOUZ vs Vitality <b>13–8</b> · map 1</span></div>
-      <a class="small" href="/en/mirage/executes/t-db5a11/">Kit for your team (who throws what) →</a>
-      <ol class="exec-parts">
-        <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/en/mirage/smoke-catwalk-from-house-t/">Smoke Catwalk (from House)</a></li>
-        <li><span class="exec-t">+0.1s</span><span class="badge type-smoke">Smoke</span><a href="/en/mirage/smoke-shop-from-back-alley-t/">Smoke Shop (from Back Alley)</a></li>
-        <li><span class="exec-t">+3.0s</span><span class="badge type-flash">Flash</span><a href="/en/mirage/flash-b-site-from-back-alley-t/">Flash B Site (from Back Alley)</a></li>
-        <li><span class="exec-t">+4.5s</span><span class="badge type-molotov">Molotov</span><a href="/en/mirage/molotov-b-site-from-apartments-t/">Molotov B Site (from Apartments)</a></li>
-      </ol>
-    </div>
-    <div class="exec">
-      <div class="exec-head">
-        <span class="badge side-T">T</span>
-        <b>Execute: Sniper&#39;s Nest + Catwalk</b>
-      </div>
-      <div class="muted small">seen 2 times · round won 50% ·
-Legacy (1), G2 (1)</div>
-      <div class="muted small">In: <span class="mref">Falcons vs Legacy <b>13–6</b> · map 2</span>; <span class="mref">G2 vs Spirit <b>13–9</b> · map 1</span></div>
-      <a class="small" href="/en/mirage/executes/t-968414/">Kit for your team (who throws what) →</a>
-      <ol class="exec-parts">
-        <li><span class="exec-t">+0.1s</span><span class="badge type-smoke">Smoke</span><a href="/en/mirage/smoke-sniper-s-nest-from-t-spawn-t/">Smoke Sniper&#39;s Nest (from T Spawn)</a></li>
-        <li><span class="exec-t">+0.1s</span><span class="badge type-smoke">Smoke</span><a href="/en/mirage/smoke-catwalk-from-t-spawn-t/">Smoke Catwalk (from T Spawn)</a></li>
-        <li><span class="exec-t">+7.0s</span><span class="badge type-molotov">Molotov</span><a href="/en/mirage/molotov-connector-from-top-mid-t/">Molotov Connector (from Top Mid)</a></li>
-      </ol>
-    </div>
-  </div>
 </section>
 <div class="filters" id="filters">
   <div class="seg" role="group" aria-label="Type">
@@ -1583,6 +1420,168 @@ Legacy (1), G2 (1)</div>
   </div>
 </a></div>
 <p class="empty muted" id="empty" hidden>No lineups match these filters.</p>
+<section class="start-here pr-sec" id="comece">
+  <h2><span class="pr-lockico" title="Premium Area">🔒</span> Start here <a class="pr-tag" href="/en/premium/">♛ Premium</a></h2>
+  <p class="muted">The grenades pros use most on this map, easiest first. Learn these before anything else.</p>
+  <div class="pr-gate"><span>🔒 Premium users only.</span> <a class="btn small cta" href="/en/premium/">♛ Premium Area</a></div>
+  <div class="start-cols pr-body">
+    <div class="start-col">
+      <h3><span class="badge side-T">T</span> T side</h3>
+      <ol class="start-list">
+        <li><a href="/en/mirage/smoke-top-mid-from-t-spawn-t/">
+          <span class="start-name">Smoke Top Mid (from T Spawn)</span>
+          <span class="badge diff-1">Easy</span>
+          <span class="muted small">47 uses · standing · left click</span>
+        </a></li>
+        <li><a href="/en/mirage/smoke-sniper-s-nest-from-top-mid-t/">
+          <span class="start-name">Smoke Sniper&#39;s Nest (from Top Mid)</span>
+          <span class="badge diff-1">Easy</span>
+          <span class="muted small">26 uses · crouched · standing · left click</span>
+        </a></li>
+        <li><a href="/en/mirage/smoke-mid-from-top-mid-t/">
+          <span class="start-name">Smoke Mid (from Top Mid)</span>
+          <span class="badge diff-1">Easy</span>
+          <span class="muted small">24 uses · standing · left click</span>
+        </a></li>
+        <li><a href="/en/mirage/smoke-catwalk-from-t-spawn-t/">
+          <span class="start-name">Smoke Catwalk (from T Spawn)</span>
+          <span class="badge diff-2">Medium</span>
+          <span class="muted small">40 uses · jump throw · standing · left + right click</span>
+        </a></li>
+        <li><a href="/en/mirage/smoke-sniper-s-nest-from-t-spawn-t/">
+          <span class="start-name">Smoke Sniper&#39;s Nest (from T Spawn)</span>
+          <span class="badge diff-3">Hard</span>
+          <span class="muted small">131 uses · jump throw · walking · left click</span>
+        </a></li>
+        <li><a href="/en/mirage/smoke-a-site-from-t-spawn-t/">
+          <span class="start-name">Smoke A Site (from T Spawn)</span>
+          <span class="badge diff-3">Hard</span>
+          <span class="muted small">18 uses · jump throw · walking · left click</span>
+        </a></li>
+      </ol>
+    </div>
+    <div class="start-col">
+      <h3><span class="badge side-CT">CT</span> CT side</h3>
+      <ol class="start-list">
+        <li><a href="/en/mirage/smoke-palace-from-a-site-ct/">
+          <span class="start-name">Smoke Palace (from A Site)</span>
+          <span class="badge diff-1">Easy</span>
+          <span class="muted small">22 uses · standing · left click</span>
+        </a></li>
+        <li><a href="/en/mirage/smoke-mid-from-a-site-ct/">
+          <span class="start-name">Smoke Mid (from A Site)</span>
+          <span class="badge diff-1">Easy</span>
+          <span class="muted small">16 uses · standing · left click</span>
+        </a></li>
+        <li><a href="/en/mirage/smoke-t-ramp-from-a-site-ct/">
+          <span class="start-name">Smoke T Ramp (from A Site)</span>
+          <span class="badge diff-1">Easy</span>
+          <span class="muted small">14 uses · standing · left click</span>
+        </a></li>
+        <li><a href="/en/mirage/molotov-t-ramp-from-ct-spawn-ct/">
+          <span class="start-name">Molotov T Ramp (from CT Spawn)</span>
+          <span class="badge diff-3">Hard</span>
+          <span class="muted small">26 uses · running · left click</span>
+        </a></li>
+        <li><a href="/en/mirage/smoke-apartments-from-b-site-ct/">
+          <span class="start-name">Smoke Apartments (from B Site)</span>
+          <span class="badge diff-3">Hard</span>
+          <span class="muted small">15 uses · running · left click</span>
+        </a></li>
+        <li><a href="/en/mirage/molotov-top-mid-from-sniper-s-nest-ct/">
+          <span class="start-name">Molotov Top Mid (from Sniper&#39;s Nest)</span>
+          <span class="badge diff-3">Hard</span>
+          <span class="muted small">12 uses · running · left click</span>
+        </a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+<section class="execs pr-sec" id="execucoes">
+  <h2><span class="pr-lockico" title="Premium Area">🔒</span> Pro executes <a class="pr-tag" href="/en/premium/">♛ Premium</a></h2>
+  <p class="muted">Grenades the same team throws together in one round, in the order and timing they go out. Detected automatically from the matches.</p>
+  <div class="pr-gate"><span>🔒 Premium users only.</span> <a class="btn small cta" href="/en/premium/">♛ Premium Area</a></div>
+  <div class="exec-list pr-body">
+    <div class="exec">
+      <div class="exec-head">
+        <span class="badge side-T">T</span>
+        <b>Execute: Stairs + CT Spawn</b>
+      </div>
+      <div class="muted small">seen 4 times · round won 25% ·
+Vitality (3), MOUZ (1)</div>
+      <div class="muted small">In: <span class="mref">FURIA vs Vitality <b>13–0</b> · map 3</span>; <span class="mref">MOUZ vs FUT <b>16–14</b> · map 2</span>; <span class="mref">MOUZ vs Vitality <b>13–8</b> · map 1</span></div>
+      <a class="small" href="/en/mirage/executes/t-b4a51a/">Kit for your team (who throws what) →</a>
+      <ol class="exec-parts">
+        <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/en/mirage/smoke-stairs-from-t-spawn-t/">Smoke Stairs (from T Spawn)</a></li>
+        <li><span class="exec-t">+0.5s</span><span class="badge type-smoke">Smoke</span><a href="/en/mirage/smoke-ct-spawn-from-palace-alley-t/">Smoke CT Spawn (from Palace Alley)</a></li>
+        <li><span class="exec-t">+2.5s</span><span class="badge type-smoke">Smoke</span><a href="/en/mirage/smoke-a-site-from-t-spawn-t/">Smoke A Site (from T Spawn)</a></li>
+      </ol>
+    </div>
+    <div class="exec">
+      <div class="exec-head">
+        <span class="badge side-T">T</span>
+        <b>Execute: A Site + Stairs</b>
+      </div>
+      <div class="muted small">seen 4 times · round won 25% ·
+MOUZ (4)</div>
+      <div class="muted small">In: <span class="mref">MOUZ vs FUT <b>16–14</b> · map 2</span>; <span class="mref">Spirit vs MOUZ <b>13–7</b> · map 1</span>; <span class="mref">MOUZ vs Vitality <b>13–8</b> · map 1</span></div>
+      <a class="small" href="/en/mirage/executes/t-4fe848/">Kit for your team (who throws what) →</a>
+      <ol class="exec-parts">
+        <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/en/mirage/smoke-a-site-from-palace-alley-t/">Smoke A Site (from Palace Alley)</a></li>
+        <li><span class="exec-t">+2.5s</span><span class="badge type-molotov">Molotov</span><a href="/en/mirage/molotov-stairs-from-palace-alley-t/">Molotov Stairs (from Palace Alley)</a></li>
+        <li><span class="exec-t">+3.9s</span><span class="badge type-flash">Flash</span><a href="/en/mirage/flash-a-site-from-palace-alley-t/">Flash A Site (from Palace Alley)</a></li>
+      </ol>
+    </div>
+    <div class="exec">
+      <div class="exec-head">
+        <span class="badge side-T">T</span>
+        <b>Execute: A Site + Stairs</b>
+      </div>
+      <div class="muted small">seen 3 times · round won 67% ·
+Spirit (2), FUT (1)</div>
+      <div class="muted small">In: <span class="mref">MOUZ vs FUT <b>16–14</b> · map 2</span>; <span class="mref">FURIA vs Spirit <b>13–8</b> · map 3</span>; <span class="mref">G2 vs Spirit <b>13–9</b> · map 1</span></div>
+      <a class="small" href="/en/mirage/executes/t-7ffd65/">Kit for your team (who throws what) →</a>
+      <ol class="exec-parts">
+        <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/en/mirage/smoke-stairs-from-t-spawn-t/">Smoke Stairs (from T Spawn)</a></li>
+        <li><span class="exec-t">+2.9s</span><span class="badge type-smoke">Smoke</span><a href="/en/mirage/smoke-a-site-from-t-spawn-t/">Smoke A Site (from T Spawn)</a></li>
+        <li><span class="exec-t">+2.9s</span><span class="badge type-molotov">Molotov</span><a href="/en/mirage/molotov-a-site-from-palace-alley-t/">Molotov A Site (from Palace Alley)</a></li>
+        <li><span class="exec-t">+7.1s</span><span class="badge type-molotov">Molotov</span><a href="/en/mirage/molotov-a-site-from-palace-t/">Molotov A Site (from Palace)</a></li>
+        <li><span class="exec-t">+8.3s</span><span class="badge type-flash">Flash</span><a href="/en/mirage/flash-a-site-from-palace-t/">Flash A Site (from Palace)</a></li>
+      </ol>
+    </div>
+    <div class="exec">
+      <div class="exec-head">
+        <span class="badge side-T">T</span>
+        <b>Execute: B Site + Catwalk</b>
+      </div>
+      <div class="muted small">seen 3 times · round won 67% ·
+Vitality (2), FURIA (1)</div>
+      <div class="muted small">In: <span class="mref">FURIA vs Vitality <b>13–0</b> · map 3</span>; <span class="mref">FURIA vs Spirit <b>13–8</b> · map 3</span>; <span class="mref">MOUZ vs Vitality <b>13–8</b> · map 1</span></div>
+      <a class="small" href="/en/mirage/executes/t-db5a11/">Kit for your team (who throws what) →</a>
+      <ol class="exec-parts">
+        <li><span class="exec-t">+0.0s</span><span class="badge type-smoke">Smoke</span><a href="/en/mirage/smoke-catwalk-from-house-t/">Smoke Catwalk (from House)</a></li>
+        <li><span class="exec-t">+0.1s</span><span class="badge type-smoke">Smoke</span><a href="/en/mirage/smoke-shop-from-back-alley-t/">Smoke Shop (from Back Alley)</a></li>
+        <li><span class="exec-t">+3.0s</span><span class="badge type-flash">Flash</span><a href="/en/mirage/flash-b-site-from-back-alley-t/">Flash B Site (from Back Alley)</a></li>
+        <li><span class="exec-t">+4.5s</span><span class="badge type-molotov">Molotov</span><a href="/en/mirage/molotov-b-site-from-apartments-t/">Molotov B Site (from Apartments)</a></li>
+      </ol>
+    </div>
+    <div class="exec">
+      <div class="exec-head">
+        <span class="badge side-T">T</span>
+        <b>Execute: Sniper&#39;s Nest + Catwalk</b>
+      </div>
+      <div class="muted small">seen 2 times · round won 50% ·
+Legacy (1), G2 (1)</div>
+      <div class="muted small">In: <span class="mref">Falcons vs Legacy <b>13–6</b> · map 2</span>; <span class="mref">G2 vs Spirit <b>13–9</b> · map 1</span></div>
+      <a class="small" href="/en/mirage/executes/t-968414/">Kit for your team (who throws what) →</a>
+      <ol class="exec-parts">
+        <li><span class="exec-t">+0.1s</span><span class="badge type-smoke">Smoke</span><a href="/en/mirage/smoke-sniper-s-nest-from-t-spawn-t/">Smoke Sniper&#39;s Nest (from T Spawn)</a></li>
+        <li><span class="exec-t">+0.1s</span><span class="badge type-smoke">Smoke</span><a href="/en/mirage/smoke-catwalk-from-t-spawn-t/">Smoke Catwalk (from T Spawn)</a></li>
+        <li><span class="exec-t">+7.0s</span><span class="badge type-molotov">Molotov</span><a href="/en/mirage/molotov-connector-from-top-mid-t/">Molotov Connector (from Top Mid)</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
 <script>
 (function () { // back button: always to the previous page (home if there is none); placed right under the breadcrumbs
   var b = document.getElementById("backBtn"); if (!b) return;
@@ -1600,7 +1599,7 @@ Legacy (1), G2 (1)</div>
   </div>
 </footer>
 <script src="/static/app.js?v=79dff6c310" defer></script>
-<script src="/static/accounts.js?v=90dc06a817" defer></script>
+<script src="/static/accounts.js?v=5b0e67dad2" defer></script>
 <script src="/static/video.js?v=52b42fe5aa" defer></script>
 <script src="/static/react.js?v=ba1c25c1ad" defer></script>
 </body>

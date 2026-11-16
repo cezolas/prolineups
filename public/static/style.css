@@ -922,3 +922,30 @@ h1 .role { font-size: 13px; padding: 2px 8px; vertical-align: 4px; }
 .rep-form textarea { font: inherit; font-size: 14px; background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; resize: vertical; }
 .rep-title { font-weight: 700; }
 .rep-actions { display: flex; gap: 8px; }
+
+/* premium area */
+.premium-btn { display: inline-flex; align-items: center; gap: 6px; flex: none; padding: 6px 12px; border-radius: 8px; font-size: 13px; font-weight: 700;
+  text-decoration: none; color: #1a1205; background: linear-gradient(135deg, #f5c64a, #e09a1c); }
+.premium-btn:hover, .premium-btn[aria-current] { filter: brightness(1.08); }
+@media (max-width: 860px) { .premium-btn .pb-l { display: none; } }
+.nav-premium span { color: var(--accent); font-weight: 700; }
+.pr-status { margin: 14px 0; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel2); }
+.pr-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; margin: 16px 0; }
+.pr-card { display: flex; flex-direction: column; gap: 8px; padding: 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--panel);
+  color: var(--text); text-decoration: none; }
+.pr-card:hover { border-color: var(--accent); }
+.pr-ico { font-size: 26px; }
+.pr-name { font-weight: 700; font-size: 17px; }
+.pr-go { margin-top: auto; font-size: 13px; font-weight: 700; }
+.pr-open { display: none; color: var(--accent); }
+.pr-lock { color: var(--muted); }
+.is-premium .pr-open { display: inline; }
+.is-premium .pr-lock { display: none; }
+.pr-sec { margin-top: 28px; }
+.pr-sec h2 { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.pr-tag { font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 10px; text-decoration: none; color: #1a1205;
+  background: linear-gradient(135deg, #f5c64a, #e09a1c); }
+.pr-gate { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 8px 0 12px; padding: 10px 12px;
+  border: 1px dashed var(--accent); border-radius: 8px; }
+body:not(.is-premium) .pr-sec .pr-body { opacity: .35; filter: blur(2px); pointer-events: none; user-select: none; max-height: 260px; overflow: hidden; }
+.is-premium .pr-gate, .is-premium .pr-lockico { display: none; }
