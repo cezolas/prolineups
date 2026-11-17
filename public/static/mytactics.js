@@ -31,6 +31,7 @@
     if (q) shared = JSON.parse(decodeURIComponent(escape(atob(q.replace(/-/g, "+").replace(/_/g, "/")))));
   } catch (e) { shared = null; }
 
+  const openId = new URLSearchParams(location.search).get("open");
   fetch(root.dataset.src).then((r) => r.json()).then((d) => {
     DATA = d;
     for (const m of d.maps) for (const l of m.lineups) byKey[key(l.u)] = { m: m.slug, l };
@@ -40,6 +41,11 @@
       drafts[`${st.map}:${st.side}`] = { id: null, n: String(shared.n || "").slice(0, 60),
         parts: (shared.p || []).map(([id, p, at]) => ({ id: String(id), p: +p || 1, at: +at || 0 })) };
       $("mtShared").hidden = false;
+    } else if (openId && tacs().items.some((x) => x.id === openId)) {
+      const x = tacs().items.find((y) => y.id === openId);
+      st.map = x.m; st.side = x.s;
+      drafts[`${st.map}:${st.side}`] = { id: x.id, n: x.n, parts: x.p.map(([id, p, at]) => ({ id, p, at })) };
+      history.replaceState(null, "", location.pathname);
     } else {
       const pref = ls.get("mtMap");
       st.map = [pref, ...saved, d.maps[0].slug].find((s) => s && d.maps.some((m) => m.slug === s));

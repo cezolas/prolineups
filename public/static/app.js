@@ -276,3 +276,36 @@
     table.classList.add("is-sorted");
   });
 })();
+
+// pro execute -> "My tactics" (Premium execute pages): saved as an execute + its grenades join the saved list
+(function () {
+  const btns = () => document.querySelectorAll("[data-save-exe]");
+  if (!btns().length) return;
+  const get = (k, d) => { try { return JSON.parse(localStorage.getItem(k) || "null") || d; } catch (e) { return d; } };
+  const set = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} window.PN && window.PN.push && window.PN.push(k); };
+  const key = (u) => String(u || "").replace(/^\/[a-z]{2}\//, "/");
+  const paint = () => {
+    const have = new Set((get("tactics", { items: [] }).items || []).map((x) => x.id));
+    btns().forEach((b) => {
+      const on = have.has(JSON.parse(b.dataset.saveExe).id);
+      b.textContent = on ? b.dataset.on : b.dataset.off; b.classList.toggle("on", on);
+      const a = b.nextElementSibling; if (a) a.hidden = !on;
+    });
+  };
+  document.addEventListener("click", (ev) => {
+    const b = ev.target.closest("[data-save-exe]"); if (!b) return;
+    const x = JSON.parse(b.dataset.saveExe), v = get("tactics", { items: [], del: [] });
+    v.items = v.items || []; v.del = (v.del || []).filter((id) => id !== x.id);
+    if (v.items.some((y) => y.id === x.id)) { v.items = v.items.filter((y) => y.id !== x.id); v.del.push(x.id); }  // second click: remove
+    else {
+      v.items.unshift({ id: x.id, m: x.m, s: x.s, n: x.n, p: x.p, at: Date.now() });
+      const f = get("favs", []), seen = new Set(f.map((y) => key(y.url)));
+      const add = x.f.filter((y) => !seen.has(key(y.url)));
+      if (add.length) set("favs", [...add, ...f]);
+      window.PN && window.PN.log && window.PN.log("fav", x.n);
+    }
+    set("tactics", v); paint();
+  });
+  paint();
+  document.addEventListener("pn:synced", paint);
+})();

@@ -1078,3 +1078,9 @@ thead th[aria-sort="ascending"]::after { content: " ▲"; }
 .mt-how { margin-top: 10px; font-size: 14px; } .mt-how summary { cursor: pointer; color: var(--muted); }
 @media (max-width: 860px) { .mt-grid { grid-template-columns: 1fr; } .mt-radar { position: static; max-width: 520px; } }
 .mt-part .mt-txt { flex: 1 1 170px; }
+
+/* pro execute -> My tactics */
+.save-exe { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.save-exe .btn.on { color: var(--accent); border-color: var(--accent); }
+.save-exe a[hidden] { display: none; }
+.exec-acts { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 4px 0; }
