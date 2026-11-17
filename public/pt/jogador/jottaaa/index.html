@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Granadas de jottAAA no CS2 · Pronades</title>
+<meta name="description" content="Granadas de jottAAA: smokes, flashes e molotovs tiradas das demos, separadas por mapa, com vídeo e como jogar.">
+<link rel="canonical" href="https://pronades.com.br/pt/jogador/jottaaa/">
+<link rel="alternate" hreflang="pt" href="https://pronades.com.br/pt/jogador/jottaaa/">
+<link rel="alternate" hreflang="en" href="https://pronades.com.br/en/player/jottaaa/">
+<link rel="alternate" hreflang="x-default" href="https://pronades.com.br/pt/jogador/jottaaa/">
+<meta property="og:title" content="Granadas de jottAAA no CS2">
+<meta property="og:description" content="Granadas de jottAAA: smokes, flashes e molotovs tiradas das demos, separadas por mapa, com vídeo e como jogar.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://pronades.com.br/static/og-pt.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Pronades">
+<meta name="theme-color" content="#0b0f15">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&display=swap">
+<script>/* one address: www and the old workers.dev address go to the main domain */
+(function () { var h = location.hostname, main = "pronades.com.br";
+  if (h !== main && h !== "localhost" && h !== "127.0.0.1" && (h === "www." + main || /\.workers\.dev$/.test(h)))
+    location.replace("https://" + main + location.pathname + location.search + location.hash); })();</script>
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
+  if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
+<link rel="icon" href="/static/favicon.svg?v=714ec3503f" type="image/svg+xml">
+<link rel="stylesheet" href="/static/style.css?v=803fe059ab">
+<script>window.I18N = {"copied": "Copiado!", "dec": ",", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "open": "Abrir", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "report_fail": "N\u00e3o deu para enviar agora, tente mais tarde.", "report_limit": "Voc\u00ea j\u00e1 enviou v\u00e1rios reports hoje.", "report_thanks": "Obrigado! Vamos revisar.", "throws_in": "lan\u00e7a em {s}s", "v_back": "Voltar 2 segundos", "v_frame_back": "Quadro anterior", "v_frame_fwd": "Pr\u00f3ximo quadro", "v_fwd": "Avan\u00e7ar 2 segundos", "v_play": "Reproduzir / pausar"}; window.LANG = "pt";</script>
+</head>
+<body class="">
+<header class="top">
+  <div class="top-in">
+    <button class="menu-btn" id="menuBtn" aria-label="Mostrar ou ocultar o menu" aria-controls="side" aria-expanded="false">☰</button>
+    <a class="logo wordmark" href="/pt/" aria-label="Pronades">Pro<span>nades</span><img class="he-buddy" src="/static/brand/he-buddy.svg?v=714ec3503f" alt="" width="22" height="22"></a>
+    <div class="search">
+      <input id="q" type="search" placeholder="Buscar mapa, jogador, time, smoke…" autocomplete="off" aria-label="Buscar">
+      <div id="results" class="results" hidden></div>
+    </div>
+    <a class="premium-btn" href="/pt/modo-partida/" title="Modo partida"><span aria-hidden="true">📱</span><span class="pb-l">Modo partida</span></a>
+    <nav class="langs" aria-label="Idioma">
+<a href="/pt/jogador/jottaaa/" hreflang="pt" lang="pt" aria-current="true" title="Português" aria-label="Português"><img class="lang-flag" src="/static/flags/br.svg?v=17969b5ac0" alt="Português" width="24" height="18"></a><a href="/en/player/jottaaa/" hreflang="en" lang="en" title="English" aria-label="English"><img class="lang-flag" src="/static/flags/gb.svg?v=161ee20a0a" alt="English" width="24" height="18"></a>    </nav>
+    <a class="login-btn" id="loginBtn" href="/pt/conta/" data-account="conta" hidden>Entrar</a>
+    <div class="me-wrap">
+      <a class="me-btn" id="meBtn" href="/pt/conta/" hidden aria-label="Minha conta" aria-haspopup="menu" aria-expanded="false" aria-controls="meMenu"><img alt="" width="28" height="28" referrerpolicy="no-referrer" hidden><span>Conta</span><span class="me-caret" aria-hidden="true">▾</span></a>
+      <div class="me-menu" id="meMenu" role="menu" hidden>
+        <div class="me-head"><b id="meName"></b><span class="muted small" id="meMail"></span><span class="me-plan" id="mePlan" data-free="Plano Gratuito" data-premium="♛ Premium"></span></div>
+        <a role="menuitem" href="/pt/conta/">👤 Minha conta</a>
+        <a role="menuitem" href="/pt/minha-faceit/">◉ Minha FACEIT</a>
+        <a role="menuitem" href="/pt/minhas-taticas/">★ Minhas táticas</a>
+        <a role="menuitem" href="/pt/premium/">♛ Área Premium</a>
+        <a role="menuitem" href="https://prolineups-admin.cezolas.workers.dev" id="meAdmin" class="me-admin" target="_blank" rel="noopener" hidden>⚙ Painel Admin</a>
+        <div class="me-sep"></div>
+        <a role="menuitem" class="me-out" href="/auth/logout?lang=pt">⎋ Sair</a>
+      </div>
+    </div>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="Alternar modo claro/escuro" title="Alternar modo claro/escuro"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.6"/><g stroke-width="2.2" stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></g></svg></button>
+  </div>
+</header>
+<div class="layout">
+  <aside class="side" id="side" aria-label="Navegação">
+    <nav>
+      <a href="/pt/"><span class="nl">Início</span></a>
+      <a href="/pt/minha-faceit/"><span>◉ Minha FACEIT</span></a>
+      <a href="/pt/funcoes/"><span>👥 Funções</span></a>
+      <a href="/pt/analises/"><span>▤ Análises</span></a>
+      <details class="nav-g" data-k="maps">
+        <summary class="nav-h"><a href="/pt/mapas/">Mapas</a></summary>
+<a href="/pt/ancient/"><span class="nl">Ancient</span><span class="n">63</span></a><a href="/pt/anubis/"><span class="nl">Anubis</span><span class="n">20</span></a><a href="/pt/cache/"><span class="nl">Cache</span><span class="n">47</span></a><a href="/pt/dust2/"><span class="nl">Dust2</span><span class="n">53</span></a><a href="/pt/inferno/"><span class="nl">Inferno</span><span class="n">22</span></a><a href="/pt/mirage/"><span class="nl">Mirage</span><span class="n">80</span></a><a href="/pt/nuke/"><span class="nl">Nuke</span><span class="n">33</span></a>      </details>
+      <details class="nav-g" data-k="events">
+        <summary class="nav-h"><a href="/pt/torneios/">Torneios</a></summary>
+<a href="/pt/torneio/pgl-cluj-napoca-2027-closed-qualifier/"><span class="nl">PGL Cluj Napoca 2027 Closed Qualifier</span></a><a href="/pt/torneio/blast-rivals-2026-season-2/"><span class="nl">BLAST Rivals 2026 Season 2</span></a>      </details>
+      <details class="nav-g" data-k="players">
+        <summary class="nav-h"><a href="/pt/jogadores/">Jogadores</a></summary>
+<a href="/pt/jogador/21zweih/"><span class="nl"><span class="nav-flag"></span>21zweih <span class="role role-entry sm">Entry</span></span></a><a href="/pt/jogador/apex/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12"></span>apEX <span class="role role-support sm">Suporte</span></span></a><a href="/pt/jogador/art/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>art <span class="role role-support sm">Suporte</span></span></a><a href="/pt/jogador/awwwww/"><span class="nl"><span class="nav-flag"></span>AWwwww <span class="role role-rifler sm">Rifler</span></span></a><a href="/pt/jogador/brollan/"><span class="nl"><span class="nav-flag"></span>Brollan <span class="role role-entry sm">Entry</span></span></a><a href="/pt/jogador/chr1zn/"><span class="nl"><span class="nav-flag"></span>Chr1zN <span class="role role-lurker sm">Lurker</span></span></a><a href="/pt/jogador/coolio/"><span class="nl"><span class="nav-flag"></span>coolio <span class="role role-entry sm">Entry</span></span></a><a href="/pt/jogador/dem0n/"><span class="nl"><span class="nav-flag"></span>dem0n <span class="role role-rifler sm">Rifler</span></span></a><a href="/pt/jogador/donk/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12"></span>donk <span class="role role-rifler sm">Rifler</span></span></a><a href="/pt/jogador/dumau/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>dumau <span class="role role-entry sm">Entry</span></span></a><a href="/pt/jogador/dziugss/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/lt.svg" alt="Lituânia" title="Lituânia" width="16" height="12"></span>dziugss <span class="role role-lurker sm">Lurker</span></span></a><a href="/pt/jogador/fallen/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>FalleN <span class="role role-support sm">Suporte</span></span></a><a class="more" href="/pt/jogadores/">ver todos (60)</a>      </details>
+      <details class="nav-g" data-k="teams">
+        <summary class="nav-h"><a href="/pt/times/">Times</a></summary>
+<a href="/pt/time/eternal-fire/"><span class="nl"><span class="nav-flag"></span>Eternal Fire</span></a><a href="/pt/time/falcons/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/sa.svg" alt="Arábia Saudita" title="Arábia Saudita" width="16" height="12"></span>Falcons</span></a><a href="/pt/time/furia/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>FURIA</span></a><a href="/pt/time/fut/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/tr.svg" alt="Turquia" title="Turquia" width="16" height="12"></span>FUT</span></a><a href="/pt/time/g2/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"></span>G2</span></a><a href="/pt/time/heroic/"><span class="nl"><span class="nav-flag"></span>Heroic</span></a><a href="/pt/time/legacy/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>Legacy</span></a><a href="/pt/time/magic/"><span class="nl"><span class="nav-flag"></span>Magic</span></a><a href="/pt/time/mouz/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"></span>MOUZ</span></a><a href="/pt/time/parivision/"><span class="nl"><span class="nav-flag"></span>PARIVISION</span></a><a href="/pt/time/spirit/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12"></span>Spirit</span></a><a href="/pt/time/vitality/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12"></span>Vitality</span></a>      </details>
+      <details class="nav-g nav-premium" data-k="premium">
+        <summary class="nav-h"><a href="/pt/premium/">♛ Área Premium</a></summary>
+        <a href="/pt/comparar-minha-demo/"><span class="nl"><span class="nav-flag">⇄</span>Comparar minha demo</span></a>
+        <a href="/pt/plano-de-treino/"><span class="nl"><span class="nav-flag">🎯</span>Plano de treino</span></a>
+        <a href="/pt/taticas/"><span class="nl"><span class="nav-flag">♟</span>Táticas</span></a>
+        <a href="/pt/meta-grenades/"><span class="nl"><span class="nav-flag">🔥</span>Meta Grenades</span></a>
+      </details>
+      <div class="nav-sep"></div>
+      <a href="/pt/sobre/"><span class="nl">Sobre</span></a>
+      <a href="/pt/privacidade/"><span class="nl">Privacidade</span></a>
+      <button type="button" class="side-collapse" id="sideCollapse" aria-controls="side">« Recolher menu</button>
+    </nav>
+    <script>
+      /* sections start collapsed; the ones opened here are remembered, and the one holding this page opens */
+      (function () {
+        var o = []; try { o = JSON.parse(localStorage.getItem("navOpen") || "[]"); } catch (e) {}
+        document.querySelectorAll(".nav-g").forEach(function (d) {
+          if (o.indexOf(d.dataset.k) >= 0 || d.querySelector("[aria-current]")) d.open = true;
+          d.addEventListener("toggle", function () {
+            var s = []; document.querySelectorAll(".nav-g").forEach(function (x) { if (x.open) s.push(x.dataset.k); });
+            try { localStorage.setItem("navOpen", JSON.stringify(s)); } catch (e) {}
+          });
+        });
+      })();
+    </script>
+  </aside>
+  <div class="scrim" id="scrim" hidden></div>
+  <main class="content">
+<a class="back-btn" id="backBtn" href="/pt/">← Voltar</a><nav class="crumbs"><a href="/pt/">Início</a> › <a href="/pt/jogadores/">Jogadores</a> › jottAAA</nav>
+<h1> Granadas de jottAAA <span class="role role-lurker">Lurker</span></h1>
+<p class="muted">
+<span class="pl-team">Eternal Fire</span> · 13 granadas em 2 mapas
+</p>
+<section class="perf-sec"><h2>Perfil de desempenho</h2>
+  <div class="perf-card">
+  <div class="perf-rating" title="Cada categoria vai de 0 a 100 e mostra onde o jogador fica entre todos os pros das nossas demos (100 = o melhor da base). Nota Pronades: 1,00 = jogador médio. Calculado direto das demos, sem dano/ADR."><span>Nota Pronades</span>
+    <b class="bad">0,86</b></div>
+  <div class="perf-row" title="Abates por round e rounds com 2+ abates"><span>Poder de fogo</span><b>48<small>/100</small></b>
+    <i class="perf-bar"><i style="width:48%" class=""></i></i></div>
+  <div class="perf-row" title="Vezes em que foi o primeiro TR a pisar no bomb, e quanto das suas mortes foram trocadas"><span>Entrada</span><b>60<small>/100</small></b>
+    <i class="perf-bar"><i style="width:60%" class=""></i></i></div>
+  <div class="perf-row" title="Abates que vingam um companheiro em até 5 s"><span>Trocas</span><b>86<small>/100</small></b>
+    <i class="perf-bar"><i style="width:86%" class="hi"></i></i></div>
+  <div class="perf-row" title="Primeiros abates do round e % de duelos de abertura vencidos"><span>Abertura</span><b>47<small>/100</small></b>
+    <i class="perf-bar"><i style="width:47%" class=""></i></i></div>
+  <div class="perf-row" title="Abates depois da 3ª morte do round e clutches vencidos"><span>Fim de round</span><b>24<small>/100</small></b>
+    <i class="perf-bar"><i style="width:24%" class="lo"></i></i></div>
+  <div class="perf-row" title="Abates com rifles de precisão (AWP, Scout, autos) por round"><span>AWP</span><b>0<small>/100</small></b>
+    <i class="perf-bar"><i style="width:0%" class="lo"></i></i></div>
+  <div class="perf-row" title="Granadas por round, inimigos cegados e abates com granada"><span>Utilitário</span><b>17<small>/100</small></b>
+    <i class="perf-bar"><i style="width:17%" class="lo"></i></i></div>
+<div class="muted small perf-based">40 rounds em 2 partidas</div></div>
+  <p class="muted small">Cada categoria vai de 0 a 100 e mostra onde o jogador fica entre todos os pros das nossas demos (100 = o melhor da base). Nota Pronades: 1,00 = jogador médio. Calculado direto das demos, sem dano/ADR.</p></section>
+<section class="ent-tac" id="tac-list">
+  <h2>Táticas</h2>
+  <p class="muted small">As entradas em que o jogador estava no time atacante e as execuções em que jogou pelo menos uma das granadas.</p>
+  <div class="ent-tac-cols">
+    <div><h3>Entradas no bomb <span class="muted small">(4)</span></h3>
+      <ul class="ent-tac-list">
+        <li><a href="/pt/ancient/jogadas/eternal-fire-a/">▶  Entrada A da Eternal Fire</a>
+          <span class="muted small">Ancient · jogou 5 de 5 rounds · round ganho em 80%</span></li>
+        <li><a href="/pt/mirage/jogadas/eternal-fire-a/">▶  Entrada A da Eternal Fire</a>
+          <span class="muted small">Mirage · jogou 3 de 3 rounds · round ganho em 33%</span></li>
+        <li><a href="/pt/ancient/jogadas/eternal-fire-b/">▶  Entrada B da Eternal Fire</a>
+          <span class="muted small">Ancient · jogou 1 de 1 rounds · round ganho em 100%</span></li>
+        <li><a href="/pt/mirage/jogadas/eternal-fire-b/">▶  Entrada B da Eternal Fire</a>
+          <span class="muted small">Mirage · jogou 1 de 1 rounds · round ganho em 0%</span></li>
+      </ul></div>
+    <div><h3>Execuções de granadas <span class="muted small">(3)</span></h3>
+      <ul class="ent-tac-list">
+        <li><a href="/pt/ancient/execucoes/t-9f63eb/">Execução: Meio + Casa</a>
+          <span class="muted small">Ancient · 4 granadas · 1× com ele · round ganho em 44%</span></li>
+        <li><a href="/pt/mirage/execucoes/t-b4a51a/">Execução: Cabecinha + Base CT</a>
+          <span class="muted small">Mirage · 3 granadas · 1× com ele · round ganho em 20%</span></li>
+        <li><a href="/pt/mirage/execucoes/ct-d7518c/">Defesa: Caverna + Palacio</a>
+          <span class="muted small">Mirage · 3 granadas · 1× com ele · round ganho em 67%</span></li>
+      </ul></div>
+  </div>
+</section>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="g-smoke" viewBox="0 0 24 24">
+      <rect x="7" y="6" width="10" height="16" rx="2.5" fill="#c9d0d8" stroke="#111" stroke-width="1.6"/>
+      <rect x="7" y="11" width="10" height="3" fill="#7b8794"/>
+      <rect x="9" y="2.5" width="6" height="4" rx="1" fill="#9aa5b1" stroke="#111" stroke-width="1.4"/>
+      <path d="M15 4 h4 v3" fill="none" stroke="#111" stroke-width="1.4"/>
+    </symbol>
+    <symbol id="g-flash" viewBox="0 0 24 24">
+      <rect x="7" y="6" width="10" height="16" rx="2.5" fill="#f4f1e6" stroke="#111" stroke-width="1.6"/>
+      <path d="M13 9 l-3 5 h2.5 l-1.5 5 l4-6 h-2.5 z" fill="#f2c200" stroke="#111" stroke-width=".8"/>
+      <rect x="9" y="2.5" width="6" height="4" rx="1" fill="#b9b39d" stroke="#111" stroke-width="1.4"/>
+      <path d="M15 4 h4 v3" fill="none" stroke="#111" stroke-width="1.4"/>
+    </symbol>
+    <symbol id="g-molotov" viewBox="0 0 24 24">
+      <path d="M10 8 h4 v3 l2.5 3 v7.5 a1.5 1.5 0 0 1 -1.5 1.5 h-6 a1.5 1.5 0 0 1 -1.5 -1.5 v-7.5 l2.5 -3 z" fill="#8a5a2b" stroke="#111" stroke-width="1.5"/>
+      <rect x="8" y="15" width="8" height="4" fill="#d9c08a"/>
+      <path d="M12 1.5 c2.5 2 2.8 4 1.5 6 c-.3-1.2-1-1.8-1.6-2.2 c.2 1.3-.6 2-1.4 2.2 c-1-1.7-.6-3.8 1.5-6 z" fill="#ff8a1f" stroke="#7a2c00" stroke-width=".8"/>
+    </symbol>
+    <symbol id="g-he" viewBox="0 0 24 24">
+      <circle cx="12" cy="14" r="7.5" fill="#5b6b3a" stroke="#111" stroke-width="1.6"/>
+      <path d="M7 12 h10 M7 16 h10 M10 7.5 v13 M14 7.5 v13" stroke="#3d4a25" stroke-width="1"/>
+      <rect x="10" y="3.5" width="4" height="4" rx="1" fill="#9aa5b1" stroke="#111" stroke-width="1.3"/>
+      <path d="M14 5 h4 l-1 4" fill="none" stroke="#111" stroke-width="1.4"/>
+      <circle cx="12" cy="14" r="2.2" fill="#e0605a"/>
+    </symbol>
+  </defs>
+</svg><section class="sig" id="assinatura">
+  <h2>Assinatura de utilitária</h2>  <p class="muted">Todas as granadas que ele jogou nas partidas (não só as lineups publicadas), por mapa e lado, comparadas com a média dos jogadores no mesmo mapa e lado. ▲/▼ = 15% acima/abaixo da média.</p>
+  <div class="seg sig-maps" role="tablist"><button role="tab" data-sig="mirage" class="on">Mirage</button><button role="tab" data-sig="ancient">Ancient</button></div>
+  <div class="sig-map" data-sig-panel="mirage">
+    <div class="sig-cols">
+    <div class="sig-col">
+      <h3><span class="badge side-T">TR</span> 8 rounds · 10 granadas</h3>
+      <div class="mix" title="Mix de granadas"><span class="mix-smoke" style="width: 50.0%">50%</span><span class="mix-flash" style="width: 10.0%">10%</span><span class="mix-molotov" style="width: 30.0%">30%</span><span class="mix-he" style="width: 10.0%">10%</span></div>
+      <div class="mix-legend muted small"><span><i class="dot-nade type-smoke"></i>Smokes</span><span><i class="dot-nade type-flash"></i>Flashes</span><span><i class="dot-nade type-molotov"></i>Molotovs</span><span><i class="dot-nade type-he"></i>HEs</span></div>
+      <table class="sig-table">
+        <thead><tr><th></th><th>jottAAA</th><th>Média dos jogadores</th></tr></thead>
+        <tbody>
+          <tr><td>Granadas por round</td><td>1,2 <span class="down" title="comparado com a média dos times">▼</span></td><td>1,9</td></tr>
+          <tr class="sub"><td>Smokes por round</td><td>0,62</td><td>0,69</td></tr>
+          <tr class="sub"><td>Flashes por round</td><td>0,12 <span class="down" title="comparado com a média dos times">▼</span></td><td>0,68</td></tr>
+          <tr class="sub"><td>Molotovs por round</td><td>0,38</td><td>0,42</td></tr>
+          <tr class="sub"><td>HEs por round</td><td>0,12</td><td>0,13</td></tr>
+          <tr><td>Inimigos cegados por flash</td><td>1,00</td><td>0,93</td></tr>
+          <tr><td>Flashes que cegam o próprio time (≥1s)</td><td>100%</td><td>28%</td></tr>
+          <tr><td>Kills com granada a cada 10 rounds</td><td>0,0 <span class="down" title="comparado com a média dos times">▼</span></td><td>0,1</td></tr>
+          <tr><td>Tempo mediano do lançamento (round)</td><td>0:19</td><td>0:24</td></tr>
+        </tbody>
+      </table>
+      <figure class="heat">
+        <svg viewBox="0 0 1024 1024" role="img" aria-label="Onde as granadas caem · Mirage TR">
+          <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
+<use class="h h1 one" href="#g-flash" x="513.0" y="469.0" width="16.0" height="16.0"><title>1× Flashes</title></use><use class="h h0 one" href="#g-smoke" x="498.0" y="584.0" width="16.0" height="16.0"><title>1× Smokes</title></use><use class="h h2 one" href="#g-molotov" x="659.0" y="743.0" width="16.0" height="16.0"><title>1× Molotovs</title></use><use class="h h0 one" href="#g-smoke" x="648.0" y="432.0" width="16.0" height="16.0"><title>1× Smokes</title></use><use class="h h3 one" href="#g-he" x="705.0" y="643.0" width="16.0" height="16.0"><title>1× HEs</title></use><use class="h h0 one" href="#g-smoke" x="397.0" y="466.0" width="16.0" height="16.0"><title>1× Smokes</title></use><use class="h h0 one" href="#g-smoke" x="459.0" y="822.0" width="16.0" height="16.0"><title>1× Smokes</title></use><use class="h h2 one" href="#g-molotov" x="482.0" y="699.0" width="16.0" height="16.0"><title>1× Molotovs</title></use><use class="h h0 one" href="#g-smoke" x="506.0" y="658.0" width="16.0" height="16.0"><title>1× Smokes</title></use><use class="h h2 one" href="#g-molotov" x="559.0" y="651.0" width="16.0" height="16.0"><title>1× Molotovs</title></use>        </svg>
+        <figcaption class="muted small">Onde as granadas caem (cada ponto é uma granada).</figcaption>
+      </figure>
+    </div>
+    <div class="sig-col">
+      <h3><span class="badge side-CT">CT</span> 12 rounds · 45 granadas</h3>
+      <div class="mix" title="Mix de granadas"><span class="mix-smoke" style="width: 24.4%">24%</span><span class="mix-flash" style="width: 20.0%">20%</span><span class="mix-molotov" style="width: 26.7%">27%</span><span class="mix-he" style="width: 28.9%">29%</span></div>
+      <div class="mix-legend muted small"><span><i class="dot-nade type-smoke"></i>Smokes</span><span><i class="dot-nade type-flash"></i>Flashes</span><span><i class="dot-nade type-molotov"></i>Molotovs</span><span><i class="dot-nade type-he"></i>HEs</span></div>
+      <table class="sig-table">
+        <thead><tr><th></th><th>jottAAA</th><th>Média dos jogadores</th></tr></thead>
+        <tbody>
+          <tr><td>Granadas por round</td><td>3,8 <span class="up" title="comparado com a média dos times">▲</span></td><td>2,3</td></tr>
+          <tr class="sub"><td>Smokes por round</td><td>0,92 <span class="up" title="comparado com a média dos times">▲</span></td><td>0,62</td></tr>
+          <tr class="sub"><td>Flashes por round</td><td>0,75 <span class="up" title="comparado com a média dos times">▲</span></td><td>0,51</td></tr>
+          <tr class="sub"><td>Molotovs por round</td><td>1,00 <span class="up" title="comparado com a média dos times">▲</span></td><td>0,58</td></tr>
+          <tr class="sub"><td>HEs por round</td><td>1,08 <span class="up" title="comparado com a média dos times">▲</span></td><td>0,54</td></tr>
+          <tr><td>Inimigos cegados por flash</td><td>1,00</td><td>1,08</td></tr>
+          <tr><td>Flashes que cegam o próprio time (≥1s)</td><td>33%</td><td>26%</td></tr>
+          <tr><td>Kills com granada a cada 10 rounds</td><td>1,7 <span class="up" title="comparado com a média dos times">▲</span></td><td>0,2</td></tr>
+          <tr><td>Tempo mediano do lançamento (round)</td><td>0:09</td><td>0:17</td></tr>
+        </tbody>
+      </table>
+      <figure class="heat">
+        <svg viewBox="0 0 1024 1024" role="img" aria-label="Onde as granadas caem · Mirage CT">
+          <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
+<use class="h h1 one" href="#g-flash" x="722.0" y="259.0" width="16.0" height="16.0"><title>1× Flashes</title></use><use class="h h0 one" href="#g-smoke" x="506.0" y="658.0" width="16.0" height="16.0"><title>1× Smokes</title></use><use class="h h2 one" href="#g-molotov" x="559.0" y="652.0" width="16.0" height="16.0"><title>1× Molotovs</title></use><use class="h h3 one" href="#g-he" x="523.0" y="456.0" width="16.0" height="16.0"><title>1× HEs</title></use><use class="h h1 one" href="#g-flash" x="772.0" y="595.0" width="16.0" height="16.0"><title>1× Flashes</title></use><use class="h h3 one" href="#g-he" x="722.0" y="666.0" width="16.0" height="16.0"><title>1× HEs</title></use><use class="h h1 one" href="#g-flash" x="749.0" y="671.0" width="16.0" height="16.0"><title>1× Flashes</title></use><use class="h h1 one" href="#g-flash" x="654.0" y="677.0" width="16.0" height="16.0"><title>1× Flashes</title></use><use class="h h2 one" href="#g-molotov" x="786.0" y="677.0" width="16.0" height="16.0"><title>1× Molotovs</title></use><use class="h h3 one" href="#g-he" x="505.0" y="523.0" width="16.0" height="16.0"><title>1× HEs</title></use><use class="h h2 one" href="#g-molotov" x="420.0" y="459.0" width="16.0" height="16.0"><title>1× Molotovs</title></use><use class="h h2 one" href="#g-molotov" x="445.0" y="374.0" width="16.0" height="16.0"><title>1× Molotovs</title></use><use class="h h3 one" href="#g-he" x="446.0" y="357.0" width="16.0" height="16.0"><title>1× HEs</title></use><use class="h h3 one" href="#g-he" x="657.0" y="429.0" width="16.0" height="16.0"><title>1× HEs</title></use><use class="h h2 one" href="#g-molotov" x="703.0" y="473.0" width="16.0" height="16.0"><title>1× Molotovs</title></use><use class="h h1 one" href="#g-flash" x="432.0" y="623.0" width="16.0" height="16.0"><title>1× Flashes</title></use><use class="h h2 one" href="#g-molotov" x="433.0" y="485.0" width="16.0" height="16.0"><title>1× Molotovs</title></use><use class="h h1 one" href="#g-flash" x="258.0" y="389.0" width="16.0" height="16.0"><title>1× Flashes</title></use><use class="h h1 one" href="#g-flash" x="475.0" y="491.0" width="16.0" height="16.0"><title>1× Flashes</title></use><use class="h h3" href="#g-he" x="720.5" y="641.5" width="23.0" height="23.0"><title>2× HEs</title></use><use class="h h1" href="#g-flash" x="684.5" y="635.5" width="23.0" height="23.0"><title>2× Flashes</title></use><use class="h h3" href="#g-he" x="702.5" y="628.5" width="23.0" height="23.0"><title>2× HEs</title></use><use class="h h3" href="#g-he" x="436.5" y="397.5" width="23.0" height="23.0"><title>2× HEs</title></use><use class="h h3" href="#g-he" x="398.5" y="422.5" width="23.0" height="23.0"><title>2× HEs</title></use><use class="h h2" href="#g-molotov" x="715.45" y="639.45" width="27.1" height="27.1"><title>3× Molotovs</title></use><text class="hn h2" x="739.298" y="644.328">3</text><use class="h h0" href="#g-smoke" x="711.45" y="638.45" width="27.1" height="27.1"><title>3× Smokes</title></use><text class="hn h0" x="735.298" y="643.328">3</text><use class="h h2" href="#g-molotov" x="730.45" y="463.45" width="27.1" height="27.1"><title>3× Molotovs</title></use><text class="hn h2" x="754.298" y="468.328">3</text><use class="h h0" href="#g-smoke" x="506.45" y="484.45" width="27.1" height="27.1"><title>3× Smokes</title></use><text class="hn h0" x="530.298" y="489.328">3</text><use class="h h0" href="#g-smoke" x="639.0" y="789.0" width="30.0" height="30.0"><title>4× Smokes</title></use><text class="hn h0" x="665.4" y="794.4">4</text>        </svg>
+        <figcaption class="muted small">Onde as granadas caem (cada ponto é uma granada).</figcaption>
+      </figure>
+    </div>
+    </div>
+  </div>
+  <div class="sig-map" data-sig-panel="ancient" hidden>
+    <div class="sig-cols">
+    <div class="sig-col">
+      <h3><span class="badge side-T">TR</span> 12 rounds · 20 granadas</h3>
+      <div class="mix" title="Mix de granadas"><span class="mix-smoke" style="width: 25.0%">25%</span><span class="mix-flash" style="width: 5.0%">5%</span><span class="mix-molotov" style="width: 45.0%">45%</span><span class="mix-he" style="width: 25.0%">25%</span></div>
+      <div class="mix-legend muted small"><span><i class="dot-nade type-smoke"></i>Smokes</span><span><i class="dot-nade type-flash"></i>Flashes</span><span><i class="dot-nade type-molotov"></i>Molotovs</span><span><i class="dot-nade type-he"></i>HEs</span></div>
+      <table class="sig-table">
+        <thead><tr><th></th><th>jottAAA</th><th>Média dos jogadores</th></tr></thead>
+        <tbody>
+          <tr><td>Granadas por round</td><td>1,7 <span class="down" title="comparado com a média dos times">▼</span></td><td>2,5</td></tr>
+          <tr class="sub"><td>Smokes por round</td><td>0,42 <span class="down" title="comparado com a média dos times">▼</span></td><td>0,77</td></tr>
+          <tr class="sub"><td>Flashes por round</td><td>0,08 <span class="down" title="comparado com a média dos times">▼</span></td><td>0,79</td></tr>
+          <tr class="sub"><td>Molotovs por round</td><td>0,75 <span class="up" title="comparado com a média dos times">▲</span></td><td>0,62</td></tr>
+          <tr class="sub"><td>HEs por round</td><td>0,42 <span class="up" title="comparado com a média dos times">▲</span></td><td>0,29</td></tr>
+          <tr><td>Inimigos cegados por flash</td><td>0,00 <span class="down" title="comparado com a média dos times">▼</span></td><td>0,92</td></tr>
+          <tr><td>Flashes que cegam o próprio time (≥1s)</td><td>0%</td><td>34%</td></tr>
+          <tr><td>Kills com granada a cada 10 rounds</td><td>0,0 <span class="down" title="comparado com a média dos times">▼</span></td><td>0,1</td></tr>
+          <tr><td>Tempo mediano do lançamento (round)</td><td>0:08</td><td>0:15</td></tr>
+        </tbody>
+      </table>
+      <figure class="heat">
+        <svg viewBox="0 0 1024 1024" role="img" aria-label="Onde as granadas caem · Ancient TR">
+          <image href="/static/radars/ancient.webp" x="0" y="0" width="1024" height="1024"/>
+<use class="h h0 one" href="#g-smoke" x="492.0" y="244.0" width="16.0" height="16.0"><title>1× Smokes</title></use><use class="h h3 one" href="#g-he" x="492.0" y="266.0" width="16.0" height="16.0"><title>1× HEs</title></use><use class="h h1 one" href="#g-flash" x="178.0" y="491.0" width="16.0" height="16.0"><title>1× Flashes</title></use><use class="h h3 one" href="#g-he" x="361.0" y="217.0" width="16.0" height="16.0"><title>1× HEs</title></use><use class="h h0 one" href="#g-smoke" x="481.0" y="388.0" width="16.0" height="16.0"><title>1× Smokes</title></use><use class="h h3 one" href="#g-he" x="447.0" y="600.0" width="16.0" height="16.0"><title>1× HEs</title></use><use class="h h0 one" href="#g-smoke" x="488.0" y="374.0" width="16.0" height="16.0"><title>1× Smokes</title></use><use class="h h3 one" href="#g-he" x="472.0" y="478.0" width="16.0" height="16.0"><title>1× HEs</title></use><use class="h h0 one" href="#g-smoke" x="627.0" y="577.0" width="16.0" height="16.0"><title>1× Smokes</title></use><use class="h h0 one" href="#g-smoke" x="781.0" y="565.0" width="16.0" height="16.0"><title>1× Smokes</title></use><use class="h h3 one" href="#g-he" x="475.0" y="463.0" width="16.0" height="16.0"><title>1× HEs</title></use><use class="h h2" href="#g-molotov" x="216.5" y="194.5" width="23.0" height="23.0"><title>2× Molotovs</title></use><use class="h h2" href="#g-molotov" x="485.45" y="245.45" width="27.1" height="27.1"><title>3× Molotovs</title></use><text class="hn h2" x="509.298" y="250.328">3</text><use class="h h2" href="#g-molotov" x="520.0" y="443.0" width="30.0" height="30.0"><title>4× Molotovs</title></use><text class="hn h2" x="546.4" y="448.4">4</text>        </svg>
+        <figcaption class="muted small">Onde as granadas caem (cada ponto é uma granada).</figcaption>
+      </figure>
+    </div>
+    <div class="sig-col">
+      <h3><span class="badge side-CT">CT</span> 8 rounds · 9 granadas</h3>
+      <div class="mix" title="Mix de granadas"><span class="mix-smoke" style="width: 33.3%">33%</span><span class="mix-flash" style="width: 11.1%">11%</span><span class="mix-molotov" style="width: 22.2%">22%</span><span class="mix-he" style="width: 33.3%">33%</span></div>
+      <div class="mix-legend muted small"><span><i class="dot-nade type-smoke"></i>Smokes</span><span><i class="dot-nade type-flash"></i>Flashes</span><span><i class="dot-nade type-molotov"></i>Molotovs</span><span><i class="dot-nade type-he"></i>HEs</span></div>
+      <table class="sig-table">
+        <thead><tr><th></th><th>jottAAA</th><th>Média dos jogadores</th></tr></thead>
+        <tbody>
+          <tr><td>Granadas por round</td><td>1,1 <span class="down" title="comparado com a média dos times">▼</span></td><td>2,4</td></tr>
+          <tr class="sub"><td>Smokes por round</td><td>0,38 <span class="down" title="comparado com a média dos times">▼</span></td><td>0,63</td></tr>
+          <tr class="sub"><td>Flashes por round</td><td>0,12 <span class="down" title="comparado com a média dos times">▼</span></td><td>0,60</td></tr>
+          <tr class="sub"><td>Molotovs por round</td><td>0,25 <span class="down" title="comparado com a média dos times">▼</span></td><td>0,56</td></tr>
+          <tr class="sub"><td>HEs por round</td><td>0,38 <span class="down" title="comparado com a média dos times">▼</span></td><td>0,59</td></tr>
+          <tr><td>Inimigos cegados por flash</td><td>1,00</td><td>1,00</td></tr>
+          <tr><td>Flashes que cegam o próprio time (≥1s)</td><td>0%</td><td>28%</td></tr>
+          <tr><td>Kills com granada a cada 10 rounds</td><td>0,0 <span class="down" title="comparado com a média dos times">▼</span></td><td>0,0</td></tr>
+          <tr><td>Tempo mediano do lançamento (round)</td><td>0:07</td><td>0:10</td></tr>
+        </tbody>
+      </table>
+      <figure class="heat">
+        <svg viewBox="0 0 1024 1024" role="img" aria-label="Onde as granadas caem · Ancient CT">
+          <image href="/static/radars/ancient.webp" x="0" y="0" width="1024" height="1024"/>
+<use class="h h3 one" href="#g-he" x="476.0" y="363.0" width="16.0" height="16.0"><title>1× HEs</title></use><use class="h h1 one" href="#g-flash" x="399.0" y="559.0" width="16.0" height="16.0"><title>1× Flashes</title></use><use class="h h0 one" href="#g-smoke" x="261.0" y="262.0" width="16.0" height="16.0"><title>1× Smokes</title></use><use class="h h0 one" href="#g-smoke" x="429.0" y="574.0" width="16.0" height="16.0"><title>1× Smokes</title></use><use class="h h0 one" href="#g-smoke" x="422.0" y="561.0" width="16.0" height="16.0"><title>1× Smokes</title></use><use class="h h2" href="#g-molotov" x="396.5" y="557.5" width="23.0" height="23.0"><title>2× Molotovs</title></use><use class="h h3" href="#g-he" x="391.5" y="555.5" width="23.0" height="23.0"><title>2× HEs</title></use>        </svg>
+        <figcaption class="muted small">Onde as granadas caem (cada ponto é uma granada).</figcaption>
+      </figure>
+    </div>
+    </div>
+  </div>
+  <div class="heat-toggles small">Mostrar no mapa: <label><input type="checkbox" data-heat="0" checked> Smokes</label><label><input type="checkbox" data-heat="1" checked> Flashes</label><label><input type="checkbox" data-heat="2" checked> Molotovs</label><label><input type="checkbox" data-heat="3" checked> HEs</label></div>
+</section><script>
+(function () {
+  var sec = document.getElementById("assinatura"); if (!sec) return;
+  sec.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-sig]"); if (!b) return;
+    sec.querySelectorAll("[data-sig]").forEach(function (x) { x.classList.toggle("on", x === b); });
+    sec.querySelectorAll("[data-sig-panel]").forEach(function (p) { p.hidden = p.dataset.sigPanel !== b.dataset.sig; });
+  });
+  sec.addEventListener("change", function (e) {
+    var c = e.target.closest("[data-heat]"); if (!c) return;
+    sec.classList.toggle("hide-h" + c.dataset.heat, !c.checked);
+  });
+})();
+</script>
+
+<div class="map-pick" data-map-pick role="group" aria-label="Mapas">
+  <span class="muted small">Mapas:</span>
+<label class="ov-tg"><input type="checkbox" data-mp="ancient" checked> Ancient <span class="muted">3</span></label><label class="ov-tg"><input type="checkbox" data-mp="mirage" checked> Mirage <span class="muted">9</span></label>  <button type="button" class="btn small" data-mp-all>Todos</button>
+</div>
+<section data-mp-group="ancient">
+  <h2 class="sec"><a href="/pt/ancient/">Ancient</a> <span class="muted">· 3 lineups</span></h2>
+  <div class="cards"><a class="card" href="/pt/ancient/smoke-top-mid-from-t-spawn-t/" data-id="smoke-top-mid-from-t-spawn-t"
+   data-type="smoke" data-side="T" data-area="TopofMid" data-map="ancient"
+   data-teams="eternal-fire falcons furia fut g2 heroic magic mouz parivision spirit" data-players="21zweih chr1zn dziugss heavygod hunter jottaaa lattykk martinezsa molodoy r1nkle regali sh1ro sunpayus teses torzsi"
+   data-count="43" data-eff="-1">
+  <svg class="radar" viewBox="176.4 315.2 640.4 640.4" role="img" aria-label="Trajetória: Smoke Top Mid (de Base TR)">
+  <image href="/static/radars/ancient.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="21.3"><text x="312.8" y="666.2">Fora</text><text x="482.6" y="519.8">Meio</text><text x="483.6" y="823.8">Base TR</text><text x="670.6" y="465.2">Entrada Lateral</text><text x="322.2" y="440.2">Corredor Lateral</text><text x="622.4" y="592.8">TR Superior</text><text x="615.2" y="798.6">Túnel</text><text x="486.0" y="407.8">Top Mid</text><text x="710.8" y="784.0">Água</text></g>
+  <circle class="land land-smoke" cx="487.4" cy="385.2" r="29.0"/>
+  <path class="traj traj-smoke" d="M505.8,885.6 L505.6,879.0 L505.4,872.4 L505.0,865.8 L504.8,859.2 L504.6,852.6 L504.4,846.0 L504.2,839.4 L504.0,832.8 L503.8,826.2 L503.4,819.6 L503.2,812.8 L503.0,806.2 L502.8,799.6 L502.6,793.0 L502.4,786.4 L502.2,779.8 L501.8,773.2 L501.6,766.6 L501.4,760.0 L501.2,753.4 L501.0,746.8 L500.8,740.2 L500.6,733.6 L500.2,727.0 L500.0,720.4 L499.8,713.8 L499.6,707.2 L499.4,700.6 L499.2,694.0 L499.0,687.4 L498.6,680.8 L498.4,674.2 L498.2,667.6 L498.0,661.0 L497.8,654.4 L497.6,647.8 L497.2,641.2 L497.0,634.6 L496.8,628.0 L496.6,621.4 L496.4,614.8 L496.2,608.2 L496.0,601.6 L495.6,594.8 L495.4,588.4 L495.2,581.6 L495.0,575.0 L494.8,568.4 L494.6,561.8 L494.4,555.2 L494.0,548.6 L493.8,542.0 L493.6,535.4 L493.4,528.8 L493.2,522.2 L493.0,515.6 L492.6,509.0 L492.4,502.4 L492.2,495.8 L492.0,489.2 L491.8,482.6 L491.6,476.0 L491.4,469.4 L491.0,462.8 L490.8,456.2 L490.6,449.6 L490.4,443.0 L490.2,436.4 L490.0,429.8 L489.8,425.8 L489.8,423.6 L489.6,421.4 L489.6,419.4 L489.6,417.2 L489.4,415.0 L489.4,413.0 L489.2,410.8 L489.2,408.6 L489.2,406.4 L489.0,404.4 L489.0,402.2 L489.0,400.0 L488.8,398.0 L488.8,395.8 L488.6,393.6 L488.6,391.6 L488.6,390.6 L488.6,389.6 L488.6,388.6 L488.6,387.6 L488.6,386.8 L488.4,386.4 L488.4,386.0 L488.4,385.8 L488.4,385.8"/>
+  <line class="aim" x1="505.6" y1="885.4" x2="504.5" y2="851.4"/>
+  <circle class="spot side-T" cx="505.6" cy="885.4" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">TR</span><span class="badge">jump throw</span><span class="badge video">▶ vídeo</span><span class="badge">5 variações</span></div>
+    <h3>Smoke Top Mid (de Base TR)</h3>
+    <p class="muted">1 uso</p>
+  </div>
+</a><a class="card" href="/pt/ancient/smoke-t-upper-from-t-spawn-t/" data-id="smoke-t-upper-from-t-spawn-t"
+   data-type="smoke" data-side="T" data-area="TSideUpper" data-map="ancient"
+   data-teams="eternal-fire falcons furia fut g2 heroic mouz parivision spirit" data-players="21zweih coolio heavygod hunter jottaaa karrigan m0nesy magixx mistem nilo r1nkle soulfly teses tn1r torzsi xelex xertion yekindar"
+   data-count="51" data-eff="-1">
+  <svg class="radar" viewBox="317.5 492.0 434.0 434.0" role="img" aria-label="Trajetória: Smoke TR Superior (de Base TR)">
+  <image href="/static/radars/ancient.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="14.5"><text x="483.6" y="823.8">Base TR</text><text x="622.4" y="592.8">TR Superior</text><text x="615.2" y="798.6">Túnel</text></g>
+  <circle class="land land-smoke" cx="623.7" cy="594.0" r="29.0"/>
+  <path class="traj traj-smoke" d="M445.4,856.0 L448.4,849.8 L451.4,843.4 L454.4,837.0 L457.6,830.8 L460.6,824.4 L463.6,818.2 L466.6,811.8 L469.6,805.6 L472.8,799.2 L475.8,792.8 L478.8,786.6 L481.8,780.2 L485.0,774.0 L488.0,767.6 L491.0,761.4 L494.0,755.0 L497.0,748.6 L500.2,742.4 L503.2,736.0 L506.2,729.8 L509.2,723.4 L512.4,717.2 L515.4,710.8 L518.4,704.4 L521.4,698.2 L524.6,691.8 L527.6,685.6 L530.6,679.2 L533.6,673.0 L536.6,666.6 L539.8,660.2 L542.8,654.0 L545.8,647.6 L548.8,641.4 L552.0,635.0 L555.0,628.8 L558.0,622.4 L561.0,616.0 L564.0,609.8 L567.2,603.4 L570.2,597.2 L573.2,590.8 L576.2,584.6 L579.4,578.2 L582.4,571.8 L585.4,565.6 L588.0,562.0 L589.4,565.2 L590.8,568.4 L592.0,571.8 L593.4,575.0 L594.8,578.2 L596.2,581.4 L597.6,584.6 L599.0,588.0 L600.4,591.2 L601.6,594.4 L603.0,597.6 L604.4,600.8 L605.8,604.2 L607.2,607.4 L608.6,610.6 L609.8,613.8 L611.2,617.0 L612.4,618.8 L613.0,617.2 L613.6,615.8 L614.2,614.4 L614.8,613.0 L615.4,611.4 L616.0,610.0 L616.8,608.6 L617.4,607.0 L618.0,605.6 L618.4,604.4 L618.8,603.8 L619.0,603.2 L619.2,602.4 L619.6,601.8 L619.8,601.2 L620.2,600.4 L620.4,599.8 L620.6,599.2 L621.0,598.6 L621.2,597.8 L621.6,597.2 L621.8,596.6 L622.0,595.8 L622.4,595.2 L622.6,594.6 L622.8,594.2 L623.0,593.8 L623.0,593.6 L623.2,593.4 L623.2,593.0 L623.4,592.8 L623.6,592.4 L623.6,592.2 L623.6,592.0 L623.8,592.0 L623.8,591.8 L623.8,591.8"/>
+  <line class="aim" x1="445.3" y1="856.0" x2="460.2" y2="825.5"/>
+  <circle class="spot side-T" cx="445.3" cy="856.0" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">TR</span><span class="badge">jump throw</span><span class="badge video">▶ vídeo</span><span class="badge">5 variações</span></div>
+    <h3>Smoke TR Superior (de Base TR)</h3>
+    <p class="muted">1 uso</p>
+  </div>
+</a><a class="card" href="/pt/ancient/molotov-house-from-mid-t/" data-id="molotov-house-from-mid-t"
+   data-type="molotov" data-side="T" data-area="House" data-map="ancient"
+   data-teams="eternal-fire falcons fut" data-players="jottaaa karrigan sunpayus"
+   data-count="3" data-eff="0.0">
+  <svg class="radar" viewBox="259.9 178.4 437.6 437.6" role="img" aria-label="Trajetória: Molotov Casa (de Meio)">
+  <image href="/static/radars/ancient.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="14.6"><text x="482.6" y="519.8">Meio</text><text x="322.2" y="440.2">Corredor Lateral</text><text x="499.4" y="282.8">Casa</text><text x="486.0" y="407.8">Top Mid</text></g>
+  <circle class="land land-molotov" cx="499.8" cy="254.2" r="24.0"/>
+  <path class="traj traj-molotov" d="M458.0,546.0 L459.6,534.6 L461.2,523.2 L462.8,511.8 L464.4,500.2 L465.8,488.8 L467.4,477.4 L469.0,466.0 L470.6,454.4 L472.2,443.0 L473.8,431.6 L475.4,420.2 L477.0,408.6 L478.6,397.2 L480.2,385.8 L481.8,374.4 L483.2,362.8 L484.8,351.4 L486.4,340.0 L488.0,328.6 L489.6,317.0 L491.2,305.6 L492.8,294.2 L494.4,282.8 L496.0,271.2 L497.6,259.8 L499.0,248.4 L500.0,250.6 L500.2,252.0"/>
+  <line class="aim" x1="457.2" y1="544.5" x2="461.9" y2="510.8"/>
+  <circle class="spot side-T" cx="457.2" cy="544.5" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-molotov">Molotov</span><span class="badge side-T">TR</span><span class="badge video">▶ vídeo</span></div>
+    <h3>Molotov Casa (de Meio)</h3>
+    <p class="muted">1 uso</p>
+  </div>
+</a></div>
+</section>
+<section data-mp-group="mirage">
+  <h2 class="sec"><a href="/pt/mirage/">Mirage</a> <span class="muted">· 9 lineups</span></h2>
+  <div class="cards"><a class="card" href="/pt/mirage/he-sniper-s-nest-ct/" data-id="he-sniper-s-nest-ct"
+   data-type="he" data-side="CT" data-area="SnipersNest" data-map="mirage"
+   data-teams="eternal-fire falcons furia fut legacy" data-players="dem0n dumau jottaaa kscerato kyousuke niko sunpayus"
+   data-count="11" data-eff="0.0">
+  <svg class="radar" viewBox="280.4 303.9 260 260" role="img" aria-label="Trajetória: HE Janela">
+  <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="8.7"><text x="494.2" y="400.2">L</text><text x="412.0" y="466.2">Janela</text><text x="418.0" y="383.6">Moscow 5</text></g>
+  <circle class="land land-he" cx="411.7" cy="434.1" r="14.0"/>
+  <path class="traj traj-he" d="M409.2,433.8 L409.4,433.8 L409.4,433.8 L409.4,433.8 L409.4,433.8 L409.4,433.8 L409.6,433.8 L409.6,433.8 L409.6,433.8 L409.6,433.8 L409.6,434.0 L409.8,434.0 L409.8,434.0 L409.8,434.0 L409.8,434.0 L409.8,434.0 L410.0,434.0 L410.0,434.0 L410.0,434.0 L410.0,434.0 L410.0,434.0 L410.2,434.0 L410.2,434.0 L410.2,434.0 L410.2,434.0 L410.2,434.0 L410.4,434.0"/>
+  <line class="aim" x1="409.3" y1="433.8" x2="443.3" y2="435.9"/>
+  <circle class="spot side-CT" cx="409.3" cy="433.8" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-he">HE</span><span class="badge side-CT">CT</span><span class="badge video">▶ vídeo</span></div>
+    <h3>HE Janela</h3>
+    <p class="muted">2 usos</p>
+  </div>
+</a><a class="card" href="/pt/mirage/smoke-sniper-s-nest-from-t-spawn-t/" data-id="smoke-sniper-s-nest-from-t-spawn-t"
+   data-type="smoke" data-side="T" data-area="SnipersNest" data-map="mirage"
+   data-teams="eternal-fire falcons furia fut g2 legacy magic mouz spirit vitality" data-players="apex art awwwww coolio dem0n donk dumau dziugss fallen flamez heavygod hunter jottaaa karrigan kscerato ksloks kyousuke latto lattykk m0nesy magixx masval matys mezii mistem molodoy nertz niko pr r1nkle regali ropz sfade8 sh1ro soulfly spinx sunpayus tenzy tn1r torzsi try xelex xertion xfl0ud yekindar zont1x zywoo"
+   data-count="149" data-eff="-1">
+  <svg class="radar" viewBox="323.8 117.6 647.2 647.2" role="img" aria-label="Trajetória: Smoke Janela (de Base TR)">
+  <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="21.6"><text x="889.2" y="404.0">Base TR</text><text x="542.6" y="477.4">Meio</text><text x="702.6" y="429.2">Top Mid</text><text x="494.2" y="400.2">L</text><text x="745.0" y="248.6">Entrada TV</text><text x="796.6" y="590.6">Entrada da Caverna</text><text x="463.2" y="297.2">Rato</text><text x="567.2" y="229.0">Saída do Rato</text><text x="517.4" y="558.4">Ligação</text><text x="447.4" y="625.4">Jungle</text><text x="720.8" y="659.8">Caverna</text><text x="412.0" y="466.2">Janela</text><text x="418.0" y="383.6">Moscow 5</text><text x="546.2" y="652.4">Cabecinha</text></g>
+  <circle class="land land-smoke" cx="407.1" cy="468.9" r="29.0"/>
+  <path class="traj traj-smoke" d="M901.0,413.4 L894.8,414.2 L888.8,414.8 L882.6,415.4 L876.6,416.0 L870.4,416.6 L864.4,417.4 L858.2,418.0 L852.2,418.6 L846.0,419.4 L840.0,420.0 L833.8,420.6 L827.8,421.2 L821.6,421.8 L815.6,422.6 L809.4,423.2 L803.4,423.8 L797.2,424.4 L791.2,425.2 L785.0,425.8 L779.0,426.4 L772.8,427.0 L766.8,427.8 L760.6,428.4 L754.6,429.0 L748.4,429.6 L742.4,430.4 L736.2,431.0 L730.2,431.6 L724.0,432.2 L718.0,433.0 L711.8,433.6 L705.8,434.2 L699.6,434.8 L693.6,435.6 L687.4,436.2 L681.4,436.8 L675.2,437.4 L669.2,438.2 L663.0,438.8 L657.0,439.4 L650.8,440.0 L644.8,440.8 L638.6,441.4 L632.6,442.0 L626.4,442.6 L620.4,443.4 L614.2,444.0 L608.2,444.6 L602.0,445.2 L596.0,446.0 L589.8,446.6 L583.8,447.2 L577.6,447.8 L571.6,448.6 L565.4,449.2 L559.4,449.8 L553.2,450.4 L547.2,451.2 L541.0,451.8 L535.0,452.4 L528.8,453.0 L522.8,453.8 L516.6,454.4 L510.6,455.0 L504.4,455.6 L498.4,456.4 L492.2,457.0 L486.2,457.6 L480.0,458.2 L474.0,459.0 L467.8,459.6 L461.8,460.2 L455.6,460.8 L449.6,461.6 L443.4,462.2 L437.4,462.8 L431.2,463.4 L425.2,464.2 L419.0,464.8 L416.6,465.0 L415.0,465.2 L413.2,465.4 L411.4,465.6 L409.6,465.8 L407.8,466.0 L406.2,466.2 L404.4,466.4 L402.6,466.6 L400.8,466.6 L399.0,466.8 L397.2,467.0 L395.6,467.2 L393.8,467.4 L394.4,467.6 L395.2,467.6 L396.0,467.8 L396.8,467.8 L397.6,467.8 L398.4,468.0 L399.2,468.0 L399.8,468.2 L400.6,468.2 L401.4,468.4 L402.2,468.4 L402.6,468.4 L403.0,468.4 L403.4,468.6 L403.6,468.6 L404.0,468.6 L404.4,468.6 L404.8,468.6 L405.2,468.6 L405.4,468.8 L405.8,468.8 L406.2,468.8 L406.2,468.8 L406.4,468.8 L406.6,468.8 L406.8,468.8 L407.0,468.8 L407.0,468.8 L407.0,469.0 L407.0,469.0"/>
+  <line class="aim" x1="901.0" y1="413.4" x2="867.2" y2="417.1"/>
+  <circle class="spot side-T" cx="901.0" cy="413.4" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">TR</span><span class="badge">jump throw</span><span class="badge video">▶ vídeo</span><span class="badge">8 variações</span></div>
+    <h3>Smoke Janela (de Base TR)</h3>
+    <p class="muted">1 uso</p>
+  </div>
+</a><a class="card" href="/pt/mirage/smoke-top-mid-from-t-spawn-t/" data-id="smoke-top-mid-from-t-spawn-t"
+   data-type="smoke" data-side="T" data-area="TopofMid" data-map="mirage"
+   data-teams="eternal-fire fut g2 legacy mouz spirit vitality" data-players="donk dumau dziugss heavygod jottaaa ksloks magixx mezii pr r1nkle regali sh1ro spinx tn1r torzsi xelex xertion zont1x"
+   data-count="49" data-eff="-1">
+  <svg class="radar" viewBox="576.6 177.6 420.6 420.6" role="img" aria-label="Trajetória: Smoke Top Mid (de Base TR)">
+  <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="14.0"><text x="889.2" y="404.0">Base TR</text><text x="702.6" y="429.2">Top Mid</text><text x="745.0" y="248.6">Entrada TV</text></g>
+  <circle class="land land-smoke" cx="653.7" cy="439.2" r="29.0"/>
+  <path class="traj traj-smoke" d="M927.2,336.6 L921.8,338.4 L916.6,340.4 L911.2,342.2 L905.8,344.2 L900.4,346.0 L895.2,348.0 L889.8,349.8 L884.4,351.8 L879.0,353.6 L873.8,355.6 L868.4,357.4 L863.0,359.4 L857.6,361.2 L852.4,363.2 L847.0,365.0 L841.6,367.0 L836.4,368.8 L831.0,370.8 L825.6,372.6 L820.2,374.6 L815.0,376.4 L809.6,378.4 L804.2,380.2 L798.8,382.2 L793.6,384.0 L788.2,386.0 L782.8,387.8 L777.4,389.8 L772.2,391.6 L766.8,393.6 L761.4,395.4 L756.0,397.4 L750.8,399.2 L745.4,401.2 L740.0,403.0 L734.6,405.0 L729.4,406.8 L724.0,408.8 L718.6,410.6 L713.2,412.6 L708.0,414.4 L702.6,416.4 L697.2,418.2 L692.0,420.2 L686.6,422.0 L681.2,424.0 L675.8,425.8 L670.6,427.8 L665.2,429.6 L659.8,431.6 L654.4,433.4 L649.2,435.4 L646.6,436.4 L647.2,436.6 L647.8,437.0 L648.4,437.2 L649.0,437.4 L649.6,437.8 L650.2,438.0 L650.8,438.2 L651.4,438.6 L652.0,438.6 L652.2,438.8 L652.4,439.0 L652.8,439.0 L653.0,439.2 L653.2,439.2 L653.2,439.4 L653.2,439.4 L653.0,439.4"/>
+  <line class="aim" x1="927.2" y1="336.5" x2="895.1" y2="347.7"/>
+  <circle class="spot side-T" cx="927.2" cy="336.5" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">TR</span><span class="badge video">▶ vídeo</span><span class="badge">5 variações</span></div>
+    <h3>Smoke Top Mid (de Base TR)</h3>
+    <p class="muted">1 uso</p>
+  </div>
+</a><a class="card" href="/pt/mirage/molotov-top-mid-from-sniper-s-nest-ct/" data-id="molotov-top-mid-from-sniper-s-nest-ct"
+   data-type="molotov" data-side="CT" data-area="TopofMid" data-map="mirage"
+   data-teams="eternal-fire falcons furia fut mouz spirit vitality" data-players="coolio jottaaa m0nesy molodoy regali ropz sh1ro sunpayus torzsi xertion yekindar zywoo"
+   data-count="22" data-eff="0.0">
+  <svg class="radar" viewBox="348.6 240.1 470.2 470.2" role="img" aria-label="Trajetória: Molotov Top Mid (de Janela)">
+  <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="15.7"><text x="542.6" y="477.4">Meio</text><text x="702.6" y="429.2">Top Mid</text><text x="494.2" y="400.2">L</text><text x="463.2" y="297.2">Rato</text><text x="517.4" y="558.4">Ligação</text><text x="447.4" y="625.4">Jungle</text><text x="412.0" y="466.2">Janela</text><text x="418.0" y="383.6">Moscow 5</text><text x="546.2" y="652.4">Cabecinha</text></g>
+  <circle class="land land-molotov" cx="737.1" cy="476.1" r="24.0"/>
+  <path class="traj traj-molotov" d="M418.6,474.2 L429.6,474.2 L440.8,474.2 L451.8,474.4 L462.8,474.4 L474.0,474.4 L485.0,474.6 L496.2,474.6 L507.2,474.6 L518.4,474.8 L529.4,474.8 L540.6,474.8 L551.6,475.0 L562.8,475.0 L573.8,475.0 L585.0,475.2 L596.0,475.2 L607.2,475.2 L618.2,475.4 L629.4,475.4 L640.4,475.4 L651.6,475.6 L662.6,475.6 L673.8,475.6 L684.8,475.8 L696.0,475.8 L707.0,475.8 L718.2,475.8 L729.2,476.0 L740.4,476.0 L748.8,476.0 L743.8,476.2 L738.8,476.2"/>
+  <line class="aim" x1="419.2" y1="474.5" x2="453.2" y2="474.5"/>
+  <circle class="spot side-CT" cx="419.2" cy="474.5" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-molotov">Molotov</span><span class="badge side-CT">CT</span><span class="badge video">▶ vídeo</span><span class="badge">3 variações</span></div>
+    <h3>Molotov Top Mid (de Janela)</h3>
+    <p class="muted">1 uso</p>
+  </div>
+</a><a class="card" href="/pt/mirage/smoke-a-site-from-palace-alley-t/" data-id="smoke-a-site-from-palace-alley-t"
+   data-type="smoke" data-side="T" data-area="BombsiteA" data-map="mirage"
+   data-teams="eternal-fire falcons furia legacy magic mouz" data-players="awwwww jottaaa kscerato soulfly spinx teses torzsi try xelex"
+   data-count="16" data-eff="-1">
+  <svg class="radar" viewBox="392.8 367.3 519.2 519.2" role="img" aria-label="Trajetória: Smoke Bomb A (de Entrada da Caverna)">
+  <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="17.3"><text x="561.4" y="724.2">Bomb A</text><text x="756.4" y="752.6">Palacio</text><text x="542.6" y="477.4">Meio</text><text x="702.6" y="429.2">Top Mid</text><text x="796.6" y="590.6">Entrada da Caverna</text><text x="517.4" y="558.4">Ligação</text><text x="720.8" y="659.8">Caverna</text><text x="546.2" y="652.4">Cabecinha</text><text x="640.2" y="757.4">Areia</text></g>
+  <circle class="land land-smoke" cx="514.4" cy="668.4" r="29.0"/>
+  <path class="traj traj-smoke" d="M842.0,585.4 L834.4,587.0 L826.8,588.4 L819.2,589.8 L811.4,591.4 L803.8,592.8 L796.2,594.2 L788.6,595.8 L781.0,597.2 L773.4,598.6 L765.6,600.2 L758.0,601.6 L750.4,603.0 L742.8,604.4 L735.2,606.0 L727.6,607.4 L719.8,608.8 L712.2,610.4 L704.6,611.8 L697.0,613.2 L689.4,614.8 L681.8,616.2 L674.2,617.6 L666.4,619.2 L658.8,620.6 L651.2,622.0 L643.6,623.4 L636.0,625.0 L628.4,626.4 L620.6,627.8 L613.0,629.4 L605.4,630.8 L597.8,632.2 L590.2,633.8 L582.6,635.2 L575.0,636.6 L567.2,638.2 L559.6,639.6 L552.0,641.0 L544.4,642.4 L536.8,644.0 L529.2,645.4 L521.4,646.8 L513.8,648.4 L506.2,649.8 L498.6,651.2 L491.0,652.8 L483.4,654.2 L475.8,655.6 L468.0,657.2 L463.4,658.0 L462.8,658.4 L464.2,658.6 L465.6,659.0 L467.0,659.2 L468.4,659.4 L469.8,659.8 L471.2,660.0 L472.6,660.4 L474.0,660.6 L475.4,660.8 L476.8,661.2 L478.2,661.4 L479.6,661.6 L481.0,662.0 L482.4,662.2 L483.8,662.4 L485.2,662.8 L486.6,663.0 L488.0,663.2 L489.4,663.6 L490.8,663.8 L492.2,664.0 L493.6,664.4 L495.2,664.6 L496.6,664.8 L498.0,665.2 L498.8,665.4 L499.4,665.4 L500.0,665.6 L500.6,665.6 L501.2,665.8 L502.0,666.0 L502.6,666.0 L503.2,666.2 L503.8,666.2 L504.4,666.4 L505.0,666.6 L505.6,666.6 L506.4,666.8 L507.0,666.8 L507.6,667.0 L508.2,667.2 L508.8,667.2 L509.4,667.4 L510.2,667.4 L510.8,667.6 L511.2,667.6 L511.4,667.8 L511.8,667.8 L512.0,667.8 L512.4,668.0 L512.6,668.0 L513.0,668.0 L513.2,668.0 L513.4,668.2 L513.8,668.2 L513.8,668.2 L514.0,668.2 L514.0,668.2 L514.2,668.2 L514.2,668.2 L514.4,668.2 L514.4,668.2"/>
+  <line class="aim" x1="842.0" y1="585.5" x2="808.6" y2="591.9"/>
+  <circle class="spot side-T" cx="842.0" cy="585.5" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">TR</span><span class="badge">jump throw</span><span class="badge video">▶ vídeo</span><span class="badge">2 variações</span></div>
+    <h3>Smoke Bomb A (de Entrada da Caverna)</h3>
+    <p class="muted">1 uso</p>
+  </div>
+</a><a class="card" href="/pt/mirage/molotov-t-ramp-from-ct-spawn-ct/" data-id="molotov-t-ramp-from-ct-spawn-ct"
+   data-type="molotov" data-side="CT" data-area="TRamp" data-map="mirage"
+   data-teams="eternal-fire falcons furia fut legacy spirit vitality" data-players="flamez jottaaa latto m0nesy regali sunpayus teses tn1r yekindar yuurih"
+   data-count="29" data-eff="0.0">
+  <svg class="radar" viewBox="397.5 521.7 392.9 392.9" role="img" aria-label="Trajetória: Molotov Caverna (de Base CT)">
+  <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="13.1"><text x="561.4" y="724.2">Bomb A</text><text x="447.4" y="625.4">Jungle</text><text x="720.8" y="659.8">Caverna</text><text x="546.2" y="652.4">Cabecinha</text><text x="640.2" y="757.4">Areia</text></g>
+  <circle class="land land-molotov" cx="720.3" cy="644.9" r="24.0"/>
+  <path class="traj traj-molotov" d="M468.8,809.0 L478.0,801.6 L487.2,794.4 L496.4,787.0 L505.6,779.6 L514.6,772.4 L523.8,765.0 L533.0,757.8 L542.2,750.4 L551.4,743.0 L560.4,735.8 L569.6,728.4 L578.8,721.2 L588.0,713.8 L597.2,706.4 L606.2,699.2 L615.4,691.8 L624.6,684.6 L633.8,677.2 L643.0,669.8 L652.0,662.6 L661.2,655.2 L670.4,648.0 L679.6,640.6 L688.8,633.2 L697.2,627.2 L701.4,630.6 L705.6,633.8 L709.6,637.2 L713.8,640.4 L716.8,642.8"/>
+  <line class="aim" x1="467.5" y1="808.8" x2="494.0" y2="787.6"/>
+  <circle class="spot side-CT" cx="467.5" cy="808.8" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-molotov">Molotov</span><span class="badge side-CT">CT</span><span class="badge video">▶ vídeo</span><span class="badge">4 variações</span></div>
+    <h3>Molotov Caverna (de Base CT)</h3>
+    <p class="muted">1 uso</p>
+  </div>
+</a><a class="card" href="/pt/mirage/molotov-stairs-from-palace-alley-t/" data-id="molotov-stairs-from-palace-alley-t"
+   data-type="molotov" data-side="T" data-area="Stairs" data-map="mirage"
+   data-teams="eternal-fire falcons furia magic mouz" data-players="awwwww jottaaa kscerato spinx teses torzsi"
+   data-count="11" data-eff="0.0">
+  <svg class="radar" viewBox="496.9 417.5 414.2 414.2" role="img" aria-label="Trajetória: Molotov Cabecinha (de Entrada da Caverna)">
+  <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="13.8"><text x="561.4" y="724.2">Bomb A</text><text x="756.4" y="752.6">Palacio</text><text x="542.6" y="477.4">Meio</text><text x="796.6" y="590.6">Entrada da Caverna</text><text x="720.8" y="659.8">Caverna</text><text x="546.2" y="652.4">Cabecinha</text><text x="640.2" y="757.4">Areia</text></g>
+  <circle class="land land-molotov" cx="566.9" cy="662.0" r="24.0"/>
+  <path class="traj traj-molotov" d="M841.0,586.2 L832.4,588.6 L823.8,591.0 L815.4,593.4 L806.8,595.8 L798.2,598.2 L789.6,600.6 L781.0,603.0 L772.6,605.4 L764.0,607.8 L755.4,610.2 L746.8,612.6 L738.2,615.0 L729.8,617.4 L721.2,619.8 L712.6,622.2 L704.0,624.6 L695.6,627.0 L687.0,629.4 L678.4,631.8 L669.8,634.2 L661.2,636.6 L652.8,639.0 L644.2,641.4 L635.6,643.8 L627.0,646.2 L618.4,648.6 L610.0,651.0 L601.4,653.4 L592.8,655.8 L584.2,658.2 L575.6,660.6 L567.2,663.0"/>
+  <line class="aim" x1="841.0" y1="586.2" x2="808.2" y2="595.2"/>
+  <circle class="spot side-T" cx="841.0" cy="586.2" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-molotov">Molotov</span><span class="badge side-T">TR</span><span class="badge">jump throw</span><span class="badge video">▶ vídeo</span></div>
+    <h3>Molotov Cabecinha (de Entrada da Caverna)</h3>
+    <p class="muted">1 uso</p>
+  </div>
+</a><a class="card" href="/pt/mirage/smoke-ct-spawn-from-palace-alley-t/" data-id="smoke-ct-spawn-from-palace-alley-t"
+   data-type="smoke" data-side="T" data-area="CTSpawn" data-map="mirage"
+   data-teams="eternal-fire fut g2 vitality" data-players="jottaaa r1nkle sunpayus zywoo"
+   data-count="7" data-eff="-1">
+  <svg class="radar" viewBox="396.8 421.9 534.8 534.8" role="img" aria-label="Trajetória: Smoke Base CT (de Entrada da Caverna)">
+  <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="17.8"><text x="561.4" y="724.2">Bomb A</text><text x="756.4" y="752.6">Palacio</text><text x="796.6" y="590.6">Entrada da Caverna</text><text x="517.4" y="558.4">Ligação</text><text x="720.8" y="659.8">Caverna</text><text x="546.2" y="652.4">Cabecinha</text><text x="640.2" y="757.4">Areia</text></g>
+  <circle class="land land-smoke" cx="466.9" cy="830.1" r="29.0"/>
+  <path class="traj traj-smoke" d="M861.6,546.8 L856.2,550.8 L850.6,554.8 L845.0,558.8 L839.6,562.8 L834.0,566.8 L828.4,570.8 L823.0,574.8 L817.4,578.8 L811.8,582.8 L806.4,586.8 L800.8,590.8 L795.2,594.8 L789.8,598.6 L784.2,602.6 L778.8,606.6 L773.2,610.6 L767.6,614.6 L762.2,618.6 L756.6,622.6 L751.0,626.6 L745.6,630.6 L740.0,634.6 L734.4,638.6 L729.0,642.6 L723.4,646.6 L717.8,650.6 L712.4,654.6 L706.8,658.6 L701.2,662.6 L695.8,666.6 L690.2,670.6 L684.6,674.6 L679.2,678.6 L673.6,682.6 L668.0,686.6 L662.6,690.6 L657.0,694.6 L651.4,698.6 L646.0,702.6 L640.4,706.6 L634.8,710.4 L629.4,714.4 L623.8,718.4 L618.2,722.4 L612.8,726.4 L607.2,730.4 L601.6,734.4 L596.2,738.4 L590.6,742.4 L585.2,746.4 L579.6,750.4 L574.0,754.4 L568.4,758.4 L563.0,762.4 L557.4,766.4 L552.0,770.4 L546.4,774.4 L540.8,778.4 L535.4,782.4 L529.8,786.4 L524.2,790.4 L518.8,794.4 L513.2,798.4 L507.6,802.4 L502.2,806.4 L496.6,810.4 L491.0,814.2 L488.2,816.4 L486.4,817.6 L484.6,819.0 L482.8,820.2 L481.0,821.6 L479.2,822.8 L477.4,824.2 L475.6,825.4 L473.8,826.8 L472.0,828.0 L470.2,829.4 L468.4,830.6 L466.8,831.8 L466.8,830.8 L467.0,830.2 L467.0,830.0 L467.0,830.0"/>
+  <line class="aim" x1="861.5" y1="547.0" x2="833.9" y2="566.9"/>
+  <circle class="spot side-T" cx="861.5" cy="547.0" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">TR</span><span class="badge">jump throw</span><span class="badge video">▶ vídeo</span></div>
+    <h3>Smoke Base CT (de Entrada da Caverna)</h3>
+    <p class="muted">1 uso</p>
+  </div>
+</a><a class="card" href="/pt/mirage/smoke-mid-from-a-site-ct/" data-id="smoke-mid-from-a-site-ct"
+   data-type="smoke" data-side="CT" data-area="Middle" data-map="mirage"
+   data-teams="eternal-fire mouz vitality" data-players="apex jottaaa regali xertion"
+   data-count="6" data-eff="-1">
+  <svg class="radar" viewBox="361.9 377.8 300.4 300.4" role="img" aria-label="Trajetória: Smoke Meio (de Bomb A)">
+  <image href="/static/radars/mirage.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="10.0"><text x="542.6" y="477.4">Meio</text><text x="517.4" y="558.4">Ligação</text><text x="447.4" y="625.4">Jungle</text><text x="412.0" y="466.2">Janela</text></g>
+  <circle class="land land-smoke" cx="518.6" cy="511.8" r="29.0"/>
+  <path class="traj traj-smoke" d="M504.0,608.2 L505.0,597.4 L506.0,586.6 L507.0,575.8 L508.0,565.2 L508.8,554.4 L509.8,543.6 L510.8,532.8 L511.8,522.2 L512.8,511.4 L513.8,500.6 L514.8,489.8 L515.6,479.2 L516.6,468.4 L517.6,457.6 L518.6,447.8 L518.8,452.6 L519.0,457.4 L519.2,462.2 L519.6,467.2 L519.8,472.0 L520.0,476.8 L520.2,478.8 L520.4,480.8 L520.4,482.8 L520.6,484.8 L520.8,487.0 L520.8,489.0 L521.0,491.0 L521.2,493.0 L521.4,495.0 L521.4,497.0 L521.6,499.2 L521.6,500.2 L521.8,501.2 L521.8,502.2 L521.8,503.0 L522.0,503.8 L522.0,504.4 L522.0,504.8 L522.0,504.8"/>
+  <line class="aim" x1="502.2" y1="607.0" x2="506.7" y2="573.3"/>
+  <circle class="spot side-CT" cx="502.2" cy="607.0" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-CT">CT</span><span class="badge video">▶ vídeo</span><span class="badge">2 variações</span></div>
+    <h3>Smoke Meio (de Bomb A)</h3>
+    <p class="muted">1 uso</p>
+  </div>
+</a></div>
+</section>
+<script>
+(function () { // back button: always to the previous page (home if there is none); placed right under the breadcrumbs
+  var b = document.getElementById("backBtn"); if (!b) return;
+  var c = document.querySelector("main.content .crumbs"); if (c) c.insertAdjacentElement("afterend", b);
+  b.addEventListener("click", function (e) { if (history.length > 1) { e.preventDefault(); history.back(); } });
+})();
+</script>
+  </main>
+</div>
+<footer class="foot">
+  <div class="foot-in">
+<nav class="foot-social" aria-label="Siga @pronadescs"><span class="muted">Siga @pronadescs</span>
+<a class="soc soc-youtube" href="https://www.youtube.com/@pronadescs" target="_blank" rel="noopener me" title="YouTube @pronadescs" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.7 15.1V8.9l5.8 3.1z"/></svg></a><a class="soc soc-instagram" href="https://www.instagram.com/pronadescs" target="_blank" rel="noopener me" title="Instagram @pronadescs" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor"/></svg></a><a class="soc soc-tiktok" href="https://www.tiktok.com/@pronadescs" target="_blank" rel="noopener me" title="TikTok @pronadescs" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.6 2h-3.4v13.4a3 3 0 1 1-2.6-3V9a6.4 6.4 0 1 0 6 6.4V8.6a8 8 0 0 0 4.4 1.4V6.6a4.6 4.6 0 0 1-4.4-4.6z"/></svg></a>    </nav>    <p>Dados extraídos das demos oficiais das partidas. Demos: <a href="https://www.hltv.org/" rel="noopener" target="_blank">HLTV.org</a>.</p>
+    <p>Projeto de fãs, gratuito. Não afiliado à Valve, HLTV, aos times ou aos organizadores dos torneios. Counter-Strike é marca da Valve Corporation.</p>
+    <p><a href="/pt/sobre/">Sobre e créditos</a> · atualizado em 2026-11-17</p>
+  </div>
+</footer>
+<script src="/static/app.js?v=7dbafbbb28" defer></script>
+<script src="/static/accounts.js?v=5336965d3d" defer></script>
+<script src="/static/video.js?v=58a69c88b1" defer></script>
+<script src="/static/react.js?v=ba1c25c1ad" defer></script>
+</body>
+</html>

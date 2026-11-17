@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Granadas de FL1T no CS2 · Pronades</title>
+<meta name="description" content="Granadas de FL1T: smokes, flashes e molotovs tiradas das demos, separadas por mapa, com vídeo e como jogar.">
+<link rel="canonical" href="https://pronades.com.br/pt/jogador/fl1t/">
+<link rel="alternate" hreflang="pt" href="https://pronades.com.br/pt/jogador/fl1t/">
+<link rel="alternate" hreflang="en" href="https://pronades.com.br/en/player/fl1t/">
+<link rel="alternate" hreflang="x-default" href="https://pronades.com.br/pt/jogador/fl1t/">
+<meta property="og:title" content="Granadas de FL1T no CS2">
+<meta property="og:description" content="Granadas de FL1T: smokes, flashes e molotovs tiradas das demos, separadas por mapa, com vídeo e como jogar.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://pronades.com.br/static/og-pt.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Pronades">
+<meta name="theme-color" content="#0b0f15">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&display=swap">
+<script>/* one address: www and the old workers.dev address go to the main domain */
+(function () { var h = location.hostname, main = "pronades.com.br";
+  if (h !== main && h !== "localhost" && h !== "127.0.0.1" && (h === "www." + main || /\.workers\.dev$/.test(h)))
+    location.replace("https://" + main + location.pathname + location.search + location.hash); })();</script>
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
+  if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
+<link rel="icon" href="/static/favicon.svg?v=714ec3503f" type="image/svg+xml">
+<link rel="stylesheet" href="/static/style.css?v=803fe059ab">
+<script>window.I18N = {"copied": "Copiado!", "dec": ",", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "open": "Abrir", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "report_fail": "N\u00e3o deu para enviar agora, tente mais tarde.", "report_limit": "Voc\u00ea j\u00e1 enviou v\u00e1rios reports hoje.", "report_thanks": "Obrigado! Vamos revisar.", "throws_in": "lan\u00e7a em {s}s", "v_back": "Voltar 2 segundos", "v_frame_back": "Quadro anterior", "v_frame_fwd": "Pr\u00f3ximo quadro", "v_fwd": "Avan\u00e7ar 2 segundos", "v_play": "Reproduzir / pausar"}; window.LANG = "pt";</script>
+</head>
+<body class="">
+<header class="top">
+  <div class="top-in">
+    <button class="menu-btn" id="menuBtn" aria-label="Mostrar ou ocultar o menu" aria-controls="side" aria-expanded="false">☰</button>
+    <a class="logo wordmark" href="/pt/" aria-label="Pronades">Pro<span>nades</span><img class="he-buddy" src="/static/brand/he-buddy.svg?v=714ec3503f" alt="" width="22" height="22"></a>
+    <div class="search">
+      <input id="q" type="search" placeholder="Buscar mapa, jogador, time, smoke…" autocomplete="off" aria-label="Buscar">
+      <div id="results" class="results" hidden></div>
+    </div>
+    <a class="premium-btn" href="/pt/modo-partida/" title="Modo partida"><span aria-hidden="true">📱</span><span class="pb-l">Modo partida</span></a>
+    <nav class="langs" aria-label="Idioma">
+<a href="/pt/jogador/fl1t/" hreflang="pt" lang="pt" aria-current="true" title="Português" aria-label="Português"><img class="lang-flag" src="/static/flags/br.svg?v=17969b5ac0" alt="Português" width="24" height="18"></a><a href="/en/player/fl1t/" hreflang="en" lang="en" title="English" aria-label="English"><img class="lang-flag" src="/static/flags/gb.svg?v=161ee20a0a" alt="English" width="24" height="18"></a>    </nav>
+    <a class="login-btn" id="loginBtn" href="/pt/conta/" data-account="conta" hidden>Entrar</a>
+    <div class="me-wrap">
+      <a class="me-btn" id="meBtn" href="/pt/conta/" hidden aria-label="Minha conta" aria-haspopup="menu" aria-expanded="false" aria-controls="meMenu"><img alt="" width="28" height="28" referrerpolicy="no-referrer" hidden><span>Conta</span><span class="me-caret" aria-hidden="true">▾</span></a>
+      <div class="me-menu" id="meMenu" role="menu" hidden>
+        <div class="me-head"><b id="meName"></b><span class="muted small" id="meMail"></span><span class="me-plan" id="mePlan" data-free="Plano Gratuito" data-premium="♛ Premium"></span></div>
+        <a role="menuitem" href="/pt/conta/">👤 Minha conta</a>
+        <a role="menuitem" href="/pt/minha-faceit/">◉ Minha FACEIT</a>
+        <a role="menuitem" href="/pt/minhas-taticas/">★ Minhas táticas</a>
+        <a role="menuitem" href="/pt/premium/">♛ Área Premium</a>
+        <a role="menuitem" href="https://prolineups-admin.cezolas.workers.dev" id="meAdmin" class="me-admin" target="_blank" rel="noopener" hidden>⚙ Painel Admin</a>
+        <div class="me-sep"></div>
+        <a role="menuitem" class="me-out" href="/auth/logout?lang=pt">⎋ Sair</a>
+      </div>
+    </div>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="Alternar modo claro/escuro" title="Alternar modo claro/escuro"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.6"/><g stroke-width="2.2" stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></g></svg></button>
+  </div>
+</header>
+<div class="layout">
+  <aside class="side" id="side" aria-label="Navegação">
+    <nav>
+      <a href="/pt/"><span class="nl">Início</span></a>
+      <a href="/pt/minha-faceit/"><span>◉ Minha FACEIT</span></a>
+      <a href="/pt/funcoes/"><span>👥 Funções</span></a>
+      <a href="/pt/analises/"><span>▤ Análises</span></a>
+      <details class="nav-g" data-k="maps">
+        <summary class="nav-h"><a href="/pt/mapas/">Mapas</a></summary>
+<a href="/pt/ancient/"><span class="nl">Ancient</span><span class="n">63</span></a><a href="/pt/anubis/"><span class="nl">Anubis</span><span class="n">20</span></a><a href="/pt/cache/"><span class="nl">Cache</span><span class="n">47</span></a><a href="/pt/dust2/"><span class="nl">Dust2</span><span class="n">53</span></a><a href="/pt/inferno/"><span class="nl">Inferno</span><span class="n">22</span></a><a href="/pt/mirage/"><span class="nl">Mirage</span><span class="n">80</span></a><a href="/pt/nuke/"><span class="nl">Nuke</span><span class="n">33</span></a>      </details>
+      <details class="nav-g" data-k="events">
+        <summary class="nav-h"><a href="/pt/torneios/">Torneios</a></summary>
+<a href="/pt/torneio/pgl-cluj-napoca-2027-closed-qualifier/"><span class="nl">PGL Cluj Napoca 2027 Closed Qualifier</span></a><a href="/pt/torneio/blast-rivals-2026-season-2/"><span class="nl">BLAST Rivals 2026 Season 2</span></a>      </details>
+      <details class="nav-g" data-k="players">
+        <summary class="nav-h"><a href="/pt/jogadores/">Jogadores</a></summary>
+<a href="/pt/jogador/21zweih/"><span class="nl"><span class="nav-flag"></span>21zweih <span class="role role-entry sm">Entry</span></span></a><a href="/pt/jogador/apex/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12"></span>apEX <span class="role role-support sm">Suporte</span></span></a><a href="/pt/jogador/art/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>art <span class="role role-support sm">Suporte</span></span></a><a href="/pt/jogador/awwwww/"><span class="nl"><span class="nav-flag"></span>AWwwww <span class="role role-rifler sm">Rifler</span></span></a><a href="/pt/jogador/brollan/"><span class="nl"><span class="nav-flag"></span>Brollan <span class="role role-entry sm">Entry</span></span></a><a href="/pt/jogador/chr1zn/"><span class="nl"><span class="nav-flag"></span>Chr1zN <span class="role role-lurker sm">Lurker</span></span></a><a href="/pt/jogador/coolio/"><span class="nl"><span class="nav-flag"></span>coolio <span class="role role-entry sm">Entry</span></span></a><a href="/pt/jogador/dem0n/"><span class="nl"><span class="nav-flag"></span>dem0n <span class="role role-rifler sm">Rifler</span></span></a><a href="/pt/jogador/donk/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12"></span>donk <span class="role role-rifler sm">Rifler</span></span></a><a href="/pt/jogador/dumau/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>dumau <span class="role role-entry sm">Entry</span></span></a><a href="/pt/jogador/dziugss/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/lt.svg" alt="Lituânia" title="Lituânia" width="16" height="12"></span>dziugss <span class="role role-lurker sm">Lurker</span></span></a><a href="/pt/jogador/fallen/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>FalleN <span class="role role-support sm">Suporte</span></span></a><a class="more" href="/pt/jogadores/">ver todos (60)</a>      </details>
+      <details class="nav-g" data-k="teams">
+        <summary class="nav-h"><a href="/pt/times/">Times</a></summary>
+<a href="/pt/time/eternal-fire/"><span class="nl"><span class="nav-flag"></span>Eternal Fire</span></a><a href="/pt/time/falcons/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/sa.svg" alt="Arábia Saudita" title="Arábia Saudita" width="16" height="12"></span>Falcons</span></a><a href="/pt/time/furia/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>FURIA</span></a><a href="/pt/time/fut/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/tr.svg" alt="Turquia" title="Turquia" width="16" height="12"></span>FUT</span></a><a href="/pt/time/g2/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"></span>G2</span></a><a href="/pt/time/heroic/"><span class="nl"><span class="nav-flag"></span>Heroic</span></a><a href="/pt/time/legacy/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>Legacy</span></a><a href="/pt/time/magic/"><span class="nl"><span class="nav-flag"></span>Magic</span></a><a href="/pt/time/mouz/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"></span>MOUZ</span></a><a href="/pt/time/parivision/"><span class="nl"><span class="nav-flag"></span>PARIVISION</span></a><a href="/pt/time/spirit/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12"></span>Spirit</span></a><a href="/pt/time/vitality/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12"></span>Vitality</span></a>      </details>
+      <details class="nav-g nav-premium" data-k="premium">
+        <summary class="nav-h"><a href="/pt/premium/">♛ Área Premium</a></summary>
+        <a href="/pt/comparar-minha-demo/"><span class="nl"><span class="nav-flag">⇄</span>Comparar minha demo</span></a>
+        <a href="/pt/plano-de-treino/"><span class="nl"><span class="nav-flag">🎯</span>Plano de treino</span></a>
+        <a href="/pt/taticas/"><span class="nl"><span class="nav-flag">♟</span>Táticas</span></a>
+        <a href="/pt/meta-grenades/"><span class="nl"><span class="nav-flag">🔥</span>Meta Grenades</span></a>
+      </details>
+      <div class="nav-sep"></div>
+      <a href="/pt/sobre/"><span class="nl">Sobre</span></a>
+      <a href="/pt/privacidade/"><span class="nl">Privacidade</span></a>
+      <button type="button" class="side-collapse" id="sideCollapse" aria-controls="side">« Recolher menu</button>
+    </nav>
+    <script>
+      /* sections start collapsed; the ones opened here are remembered, and the one holding this page opens */
+      (function () {
+        var o = []; try { o = JSON.parse(localStorage.getItem("navOpen") || "[]"); } catch (e) {}
+        document.querySelectorAll(".nav-g").forEach(function (d) {
+          if (o.indexOf(d.dataset.k) >= 0 || d.querySelector("[aria-current]")) d.open = true;
+          d.addEventListener("toggle", function () {
+            var s = []; document.querySelectorAll(".nav-g").forEach(function (x) { if (x.open) s.push(x.dataset.k); });
+            try { localStorage.setItem("navOpen", JSON.stringify(s)); } catch (e) {}
+          });
+        });
+      })();
+    </script>
+  </aside>
+  <div class="scrim" id="scrim" hidden></div>
+  <main class="content">
+<a class="back-btn" id="backBtn" href="/pt/">← Voltar</a><nav class="crumbs"><a href="/pt/">Início</a> › <a href="/pt/jogadores/">Jogadores</a> › FL1T</nav>
+<h1> Granadas de FL1T <span class="role role-rifler">Rifler</span></h1>
+<p class="muted">
+<span class="pl-team">PARIVISION</span> · 4 granadas em 1 mapa
+</p>
+<section class="perf-sec"><h2>Perfil de desempenho</h2>
+  <div class="perf-card">
+  <div class="perf-rating" title="Cada categoria vai de 0 a 100 e mostra onde o jogador fica entre todos os pros das nossas demos (100 = o melhor da base). Nota Pronades: 1,00 = jogador médio. Calculado direto das demos, sem dano/ADR."><span>Nota Pronades</span>
+    <b class="bad">0,76</b></div>
+  <div class="perf-row" title="Abates por round e rounds com 2+ abates"><span>Poder de fogo</span><b>11<small>/100</small></b>
+    <i class="perf-bar"><i style="width:11%" class="lo"></i></i></div>
+  <div class="perf-row" title="Vezes em que foi o primeiro TR a pisar no bomb, e quanto das suas mortes foram trocadas"><span>Entrada</span><b>29<small>/100</small></b>
+    <i class="perf-bar"><i style="width:29%" class="lo"></i></i></div>
+  <div class="perf-row" title="Abates que vingam um companheiro em até 5 s"><span>Trocas</span><b>2<small>/100</small></b>
+    <i class="perf-bar"><i style="width:2%" class="lo"></i></i></div>
+  <div class="perf-row" title="Primeiros abates do round e % de duelos de abertura vencidos"><span>Abertura</span><b>16<small>/100</small></b>
+    <i class="perf-bar"><i style="width:16%" class="lo"></i></i></div>
+  <div class="perf-row" title="Abates depois da 3ª morte do round e clutches vencidos"><span>Fim de round</span><b>9<small>/100</small></b>
+    <i class="perf-bar"><i style="width:9%" class="lo"></i></i></div>
+  <div class="perf-row" title="Abates com rifles de precisão (AWP, Scout, autos) por round"><span>AWP</span><b>0<small>/100</small></b>
+    <i class="perf-bar"><i style="width:0%" class="lo"></i></i></div>
+  <div class="perf-row" title="Granadas por round, inimigos cegados e abates com granada"><span>Utilitário</span><b>20<small>/100</small></b>
+    <i class="perf-bar"><i style="width:20%" class="lo"></i></i></div>
+<div class="muted small perf-based">40 rounds em 2 partidas</div></div>
+  <p class="muted small">Cada categoria vai de 0 a 100 e mostra onde o jogador fica entre todos os pros das nossas demos (100 = o melhor da base). Nota Pronades: 1,00 = jogador médio. Calculado direto das demos, sem dano/ADR.</p></section>
+<section class="ent-tac" id="tac-list">
+  <h2>Táticas</h2>
+  <p class="muted small">As entradas em que o jogador estava no time atacante e as execuções em que jogou pelo menos uma das granadas.</p>
+  <div class="ent-tac-cols">
+    <div><h3>Entradas no bomb <span class="muted small">(4)</span></h3>
+      <ul class="ent-tac-list">
+        <li><a href="/pt/ancient/jogadas/parivision-b/">▶  Entrada B da PARIVISION</a>
+          <span class="muted small">Ancient · jogou 8 de 8 rounds · round ganho em 50%</span></li>
+        <li><a href="/pt/ancient/jogadas/parivision-a/">▶  Entrada A da PARIVISION</a>
+          <span class="muted small">Ancient · jogou 3 de 3 rounds · round ganho em 67%</span></li>
+        <li><a href="/pt/cache/jogadas/parivision-a/">▶  Entrada A da PARIVISION</a>
+          <span class="muted small">Cache · jogou 2 de 2 rounds · round ganho em 100%</span></li>
+        <li><a href="/pt/cache/jogadas/parivision-b/">▶  Entrada B da PARIVISION</a>
+          <span class="muted small">Cache · jogou 1 de 1 rounds · round ganho em 0%</span></li>
+      </ul></div>
+    <div><h3>Execuções de granadas <span class="muted small">(1)</span></h3>
+      <ul class="ent-tac-list">
+        <li><a href="/pt/ancient/execucoes/t-9f63eb/">Execução: Meio + Casa</a>
+          <span class="muted small">Ancient · 4 granadas · 4× com ele · round ganho em 44%</span></li>
+      </ul></div>
+  </div>
+</section>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="g-smoke" viewBox="0 0 24 24">
+      <rect x="7" y="6" width="10" height="16" rx="2.5" fill="#c9d0d8" stroke="#111" stroke-width="1.6"/>
+      <rect x="7" y="11" width="10" height="3" fill="#7b8794"/>
+      <rect x="9" y="2.5" width="6" height="4" rx="1" fill="#9aa5b1" stroke="#111" stroke-width="1.4"/>
+      <path d="M15 4 h4 v3" fill="none" stroke="#111" stroke-width="1.4"/>
+    </symbol>
+    <symbol id="g-flash" viewBox="0 0 24 24">
+      <rect x="7" y="6" width="10" height="16" rx="2.5" fill="#f4f1e6" stroke="#111" stroke-width="1.6"/>
+      <path d="M13 9 l-3 5 h2.5 l-1.5 5 l4-6 h-2.5 z" fill="#f2c200" stroke="#111" stroke-width=".8"/>
+      <rect x="9" y="2.5" width="6" height="4" rx="1" fill="#b9b39d" stroke="#111" stroke-width="1.4"/>
+      <path d="M15 4 h4 v3" fill="none" stroke="#111" stroke-width="1.4"/>
+    </symbol>
+    <symbol id="g-molotov" viewBox="0 0 24 24">
+      <path d="M10 8 h4 v3 l2.5 3 v7.5 a1.5 1.5 0 0 1 -1.5 1.5 h-6 a1.5 1.5 0 0 1 -1.5 -1.5 v-7.5 l2.5 -3 z" fill="#8a5a2b" stroke="#111" stroke-width="1.5"/>
+      <rect x="8" y="15" width="8" height="4" fill="#d9c08a"/>
+      <path d="M12 1.5 c2.5 2 2.8 4 1.5 6 c-.3-1.2-1-1.8-1.6-2.2 c.2 1.3-.6 2-1.4 2.2 c-1-1.7-.6-3.8 1.5-6 z" fill="#ff8a1f" stroke="#7a2c00" stroke-width=".8"/>
+    </symbol>
+    <symbol id="g-he" viewBox="0 0 24 24">
+      <circle cx="12" cy="14" r="7.5" fill="#5b6b3a" stroke="#111" stroke-width="1.6"/>
+      <path d="M7 12 h10 M7 16 h10 M10 7.5 v13 M14 7.5 v13" stroke="#3d4a25" stroke-width="1"/>
+      <rect x="10" y="3.5" width="4" height="4" rx="1" fill="#9aa5b1" stroke="#111" stroke-width="1.3"/>
+      <path d="M14 5 h4 l-1 4" fill="none" stroke="#111" stroke-width="1.4"/>
+      <circle cx="12" cy="14" r="2.2" fill="#e0605a"/>
+    </symbol>
+  </defs>
+</svg><section class="sig" id="assinatura">
+  <h2>Assinatura de utilitária</h2>  <p class="muted">Todas as granadas que ele jogou nas partidas (não só as lineups publicadas), por mapa e lado, comparadas com a média dos jogadores no mesmo mapa e lado. ▲/▼ = 15% acima/abaixo da média.</p>
+  <div class="seg sig-maps" role="tablist"><button role="tab" data-sig="ancient" class="on">Ancient</button><button role="tab" data-sig="cache">Cache</button></div>
+  <div class="sig-map" data-sig-panel="ancient">
+    <div class="sig-cols">
+    <div class="sig-col">
+      <h3><span class="badge side-T">TR</span> 12 rounds · 27 granadas</h3>
+      <div class="mix" title="Mix de granadas"><span class="mix-smoke" style="width: 18.5%">18%</span><span class="mix-flash" style="width: 14.8%">15%</span><span class="mix-molotov" style="width: 48.1%">48%</span><span class="mix-he" style="width: 18.5%">18%</span></div>
+      <div class="mix-legend muted small"><span><i class="dot-nade type-smoke"></i>Smokes</span><span><i class="dot-nade type-flash"></i>Flashes</span><span><i class="dot-nade type-molotov"></i>Molotovs</span><span><i class="dot-nade type-he"></i>HEs</span></div>
+      <table class="sig-table">
+        <thead><tr><th></th><th>FL1T</th><th>Média dos jogadores</th></tr></thead>
+        <tbody>
+          <tr><td>Granadas por round</td><td>2,2</td><td>2,5</td></tr>
+          <tr class="sub"><td>Smokes por round</td><td>0,42 <span class="down" title="comparado com a média dos times">▼</span></td><td>0,77</td></tr>
+          <tr class="sub"><td>Flashes por round</td><td>0,33 <span class="down" title="comparado com a média dos times">▼</span></td><td>0,79</td></tr>
+          <tr class="sub"><td>Molotovs por round</td><td>1,08 <span class="up" title="comparado com a média dos times">▲</span></td><td>0,62</td></tr>
+          <tr class="sub"><td>HEs por round</td><td>0,42 <span class="up" title="comparado com a média dos times">▲</span></td><td>0,29</td></tr>
+          <tr><td>Inimigos cegados por flash</td><td>2,25 <span class="up" title="comparado com a média dos times">▲</span></td><td>0,92</td></tr>
+          <tr><td>Flashes que cegam o próprio time (≥1s)</td><td>75%</td><td>34%</td></tr>
+          <tr><td>Kills com granada a cada 10 rounds</td><td>0,0 <span class="down" title="comparado com a média dos times">▼</span></td><td>0,1</td></tr>
+          <tr><td>Tempo mediano do lançamento (round)</td><td>0:10</td><td>0:15</td></tr>
+        </tbody>
+      </table>
+      <figure class="heat">
+        <svg viewBox="0 0 1024 1024" role="img" aria-label="Onde as granadas caem · Ancient TR">
+          <image href="/static/radars/ancient.webp" x="0" y="0" width="1024" height="1024"/>
+<use class="h h0 one" href="#g-smoke" x="702.0" y="384.0" width="16.0" height="16.0"><title>1× Smokes</title></use><use class="h h0 one" href="#g-smoke" x="833.0" y="360.0" width="16.0" height="16.0"><title>1× Smokes</title></use><use class="h h2 one" href="#g-molotov" x="665.0" y="390.0" width="16.0" height="16.0"><title>1× Molotovs</title></use><use class="h h3 one" href="#g-he" x="386.0" y="557.0" width="16.0" height="16.0"><title>1× HEs</title></use><use class="h h0 one" href="#g-smoke" x="352.0" y="192.0" width="16.0" height="16.0"><title>1× Smokes</title></use><use class="h h1 one" href="#g-flash" x="852.0" y="579.0" width="16.0" height="16.0"><title>1× Flashes</title></use><use class="h h2 one" href="#g-molotov" x="827.0" y="454.0" width="16.0" height="16.0"><title>1× Molotovs</title></use><use class="h h0 one" href="#g-smoke" x="471.0" y="351.0" width="16.0" height="16.0"><title>1× Smokes</title></use><use class="h h3 one" href="#g-he" x="199.0" y="396.0" width="16.0" height="16.0"><title>1× HEs</title></use><use class="h h0 one" href="#g-smoke" x="482.0" y="346.0" width="16.0" height="16.0"><title>1× Smokes</title></use><use class="h h1 one" href="#g-flash" x="722.0" y="328.0" width="16.0" height="16.0"><title>1× Flashes</title></use><use class="h h1" href="#g-flash" x="418.5" y="607.5" width="23.0" height="23.0"><title>2× Flashes</title></use><use class="h h3" href="#g-he" x="355.45" y="592.45" width="27.1" height="27.1"><title>3× HEs</title></use><text class="hn h3" x="379.298" y="597.328">3</text><use class="h h2" href="#g-molotov" x="521.9" y="442.9" width="40.2" height="40.2"><title>11× Molotovs</title></use><text class="hn h2" x="557.276" y="450.136">11</text>        </svg>
+        <figcaption class="muted small">Onde as granadas caem (cada ponto é uma granada).</figcaption>
+      </figure>
+    </div>
+    <div class="sig-col">
+      <h3><span class="badge side-CT">CT</span> 10 rounds · 22 granadas</h3>
+      <div class="mix" title="Mix de granadas"><span class="mix-smoke" style="width: 18.2%">18%</span><span class="mix-flash" style="width: 18.2%">18%</span><span class="mix-molotov" style="width: 36.4%">36%</span><span class="mix-he" style="width: 27.3%">27%</span></div>
+      <div class="mix-legend muted small"><span><i class="dot-nade type-smoke"></i>Smokes</span><span><i class="dot-nade type-flash"></i>Flashes</span><span><i class="dot-nade type-molotov"></i>Molotovs</span><span><i class="dot-nade type-he"></i>HEs</span></div>
+      <table class="sig-table">
+        <thead><tr><th></th><th>FL1T</th><th>Média dos jogadores</th></tr></thead>
+        <tbody>
+          <tr><td>Granadas por round</td><td>2,2</td><td>2,4</td></tr>
+          <tr class="sub"><td>Smokes por round</td><td>0,40 <span class="down" title="comparado com a média dos times">▼</span></td><td>0,63</td></tr>
+          <tr class="sub"><td>Flashes por round</td><td>0,40 <span class="down" title="comparado com a média dos times">▼</span></td><td>0,60</td></tr>
+          <tr class="sub"><td>Molotovs por round</td><td>0,80 <span class="up" title="comparado com a média dos times">▲</span></td><td>0,56</td></tr>
+          <tr class="sub"><td>HEs por round</td><td>0,60</td><td>0,59</td></tr>
+          <tr><td>Inimigos cegados por flash</td><td>1,50 <span class="up" title="comparado com a média dos times">▲</span></td><td>1,00</td></tr>
+          <tr><td>Flashes que cegam o próprio time (≥1s)</td><td>25%</td><td>28%</td></tr>
+          <tr><td>Kills com granada a cada 10 rounds</td><td>0,0 <span class="down" title="comparado com a média dos times">▼</span></td><td>0,0</td></tr>
+          <tr><td>Tempo mediano do lançamento (round)</td><td>0:11</td><td>0:10</td></tr>
+        </tbody>
+      </table>
+      <figure class="heat">
+        <svg viewBox="0 0 1024 1024" role="img" aria-label="Onde as granadas caem · Ancient CT">
+          <image href="/static/radars/ancient.webp" x="0" y="0" width="1024" height="1024"/>
+<use class="h h0 one" href="#g-smoke" x="285.0" y="457.0" width="16.0" height="16.0"><title>1× Smokes</title></use><use class="h h2 one" href="#g-molotov" x="322.0" y="430.0" width="16.0" height="16.0"><title>1× Molotovs</title></use><use class="h h3 one" href="#g-he" x="397.0" y="455.0" width="16.0" height="16.0"><title>1× HEs</title></use><use class="h h0 one" href="#g-smoke" x="357.0" y="457.0" width="16.0" height="16.0"><title>1× Smokes</title></use><use class="h h1 one" href="#g-flash" x="811.0" y="297.0" width="16.0" height="16.0"><title>1× Flashes</title></use><use class="h h1 one" href="#g-flash" x="393.0" y="562.0" width="16.0" height="16.0"><title>1× Flashes</title></use><use class="h h0 one" href="#g-smoke" x="353.0" y="585.0" width="16.0" height="16.0"><title>1× Smokes</title></use><use class="h h3 one" href="#g-he" x="446.0" y="548.0" width="16.0" height="16.0"><title>1× HEs</title></use><use class="h h3 one" href="#g-he" x="400.0" y="560.0" width="16.0" height="16.0"><title>1× HEs</title></use><use class="h h1 one" href="#g-flash" x="348.0" y="628.0" width="16.0" height="16.0"><title>1× Flashes</title></use><use class="h h1 one" href="#g-flash" x="426.0" y="586.0" width="16.0" height="16.0"><title>1× Flashes</title></use><use class="h h3 one" href="#g-he" x="817.0" y="619.0" width="16.0" height="16.0"><title>1× HEs</title></use><use class="h h0 one" href="#g-smoke" x="316.0" y="387.0" width="16.0" height="16.0"><title>1× Smokes</title></use><use class="h h3" href="#g-he" x="341.5" y="617.5" width="23.0" height="23.0"><title>2× HEs</title></use><use class="h h2" href="#g-molotov" x="395.15" y="546.15" width="35.7" height="35.7"><title>7× Molotovs</title></use><text class="hn h2" x="426.566" y="552.576">7</text>        </svg>
+        <figcaption class="muted small">Onde as granadas caem (cada ponto é uma granada).</figcaption>
+      </figure>
+    </div>
+    </div>
+  </div>
+  <div class="sig-map" data-sig-panel="cache" hidden>
+    <div class="sig-cols">
+    <div class="sig-col">
+      <h3><span class="badge side-T">TR</span> 12 rounds · 15 granadas</h3>
+      <div class="mix" title="Mix de granadas"><span class="mix-smoke" style="width: 26.7%">27%</span><span class="mix-flash" style="width: 33.3%">33%</span><span class="mix-molotov" style="width: 20.0%">20%</span><span class="mix-he" style="width: 20.0%">20%</span></div>
+      <div class="mix-legend muted small"><span><i class="dot-nade type-smoke"></i>Smokes</span><span><i class="dot-nade type-flash"></i>Flashes</span><span><i class="dot-nade type-molotov"></i>Molotovs</span><span><i class="dot-nade type-he"></i>HEs</span></div>
+      <table class="sig-table">
+        <thead><tr><th></th><th>FL1T</th><th>Média dos jogadores</th></tr></thead>
+        <tbody>
+          <tr><td>Granadas por round</td><td>1,2 <span class="down" title="comparado com a média dos times">▼</span></td><td>2,0</td></tr>
+          <tr class="sub"><td>Smokes por round</td><td>0,33 <span class="down" title="comparado com a média dos times">▼</span></td><td>0,63</td></tr>
+          <tr class="sub"><td>Flashes por round</td><td>0,42 <span class="down" title="comparado com a média dos times">▼</span></td><td>0,62</td></tr>
+          <tr class="sub"><td>Molotovs por round</td><td>0,25 <span class="down" title="comparado com a média dos times">▼</span></td><td>0,51</td></tr>
+          <tr class="sub"><td>HEs por round</td><td>0,25</td><td>0,22</td></tr>
+          <tr><td>Inimigos cegados por flash</td><td>0,60 <span class="down" title="comparado com a média dos times">▼</span></td><td>0,85</td></tr>
+          <tr><td>Flashes que cegam o próprio time (≥1s)</td><td>40%</td><td>27%</td></tr>
+          <tr><td>Kills com granada a cada 10 rounds</td><td>0,0 <span class="down" title="comparado com a média dos times">▼</span></td><td>0,0</td></tr>
+          <tr><td>Tempo mediano do lançamento (round)</td><td>0:35</td><td>0:28</td></tr>
+        </tbody>
+      </table>
+      <figure class="heat">
+        <svg viewBox="0 0 1024 1024" role="img" aria-label="Onde as granadas caem · Cache TR">
+          <image href="/static/radars/cache.webp" x="0" y="0" width="1024" height="1024"/>
+<use class="h h1 one" href="#g-flash" x="392.0" y="707.0" width="16.0" height="16.0"><title>1× Flashes</title></use><use class="h h2 one" href="#g-molotov" x="201.0" y="379.0" width="16.0" height="16.0"><title>1× Molotovs</title></use><use class="h h1 one" href="#g-flash" x="495.0" y="534.0" width="16.0" height="16.0"><title>1× Flashes</title></use><use class="h h3 one" href="#g-he" x="514.0" y="540.0" width="16.0" height="16.0"><title>1× HEs</title></use><use class="h h0 one" href="#g-smoke" x="240.0" y="746.0" width="16.0" height="16.0"><title>1× Smokes</title></use><use class="h h2 one" href="#g-molotov" x="450.0" y="630.0" width="16.0" height="16.0"><title>1× Molotovs</title></use><use class="h h0 one" href="#g-smoke" x="271.0" y="601.0" width="16.0" height="16.0"><title>1× Smokes</title></use><use class="h h2 one" href="#g-molotov" x="372.0" y="591.0" width="16.0" height="16.0"><title>1× Molotovs</title></use><use class="h h1 one" href="#g-flash" x="297.0" y="501.0" width="16.0" height="16.0"><title>1× Flashes</title></use><use class="h h1" href="#g-flash" x="346.5" y="645.5" width="23.0" height="23.0"><title>2× Flashes</title></use><use class="h h0" href="#g-smoke" x="520.5" y="479.5" width="23.0" height="23.0"><title>2× Smokes</title></use><use class="h h3" href="#g-he" x="306.5" y="495.5" width="23.0" height="23.0"><title>2× HEs</title></use>        </svg>
+        <figcaption class="muted small">Onde as granadas caem (cada ponto é uma granada).</figcaption>
+      </figure>
+    </div>
+    <div class="sig-col">
+      <h3><span class="badge side-CT">CT</span> 6 rounds · 10 granadas</h3>
+      <div class="mix" title="Mix de granadas"><span class="mix-smoke" style="width: 50.0%">50%</span><span class="mix-flash" style="width: 10.0%">10%</span><span class="mix-molotov" style="width: 10.0%">10%</span><span class="mix-he" style="width: 30.0%">30%</span></div>
+      <div class="mix-legend muted small"><span><i class="dot-nade type-smoke"></i>Smokes</span><span><i class="dot-nade type-flash"></i>Flashes</span><span><i class="dot-nade type-molotov"></i>Molotovs</span><span><i class="dot-nade type-he"></i>HEs</span></div>
+      <table class="sig-table">
+        <thead><tr><th></th><th>FL1T</th><th>Média dos jogadores</th></tr></thead>
+        <tbody>
+          <tr><td>Granadas por round</td><td>1,7 <span class="down" title="comparado com a média dos times">▼</span></td><td>2,1</td></tr>
+          <tr class="sub"><td>Smokes por round</td><td>0,83 <span class="up" title="comparado com a média dos times">▲</span></td><td>0,69</td></tr>
+          <tr class="sub"><td>Flashes por round</td><td>0,17 <span class="down" title="comparado com a média dos times">▼</span></td><td>0,50</td></tr>
+          <tr class="sub"><td>Molotovs por round</td><td>0,17 <span class="down" title="comparado com a média dos times">▼</span></td><td>0,44</td></tr>
+          <tr class="sub"><td>HEs por round</td><td>0,50</td><td>0,49</td></tr>
+          <tr><td>Inimigos cegados por flash</td><td>0,00 <span class="down" title="comparado com a média dos times">▼</span></td><td>0,79</td></tr>
+          <tr><td>Flashes que cegam o próprio time (≥1s)</td><td>0%</td><td>22%</td></tr>
+          <tr><td>Kills com granada a cada 10 rounds</td><td>0,0 <span class="down" title="comparado com a média dos times">▼</span></td><td>0,1</td></tr>
+          <tr><td>Tempo mediano do lançamento (round)</td><td>0:08</td><td>0:23</td></tr>
+        </tbody>
+      </table>
+      <figure class="heat">
+        <svg viewBox="0 0 1024 1024" role="img" aria-label="Onde as granadas caem · Cache CT">
+          <image href="/static/radars/cache.webp" x="0" y="0" width="1024" height="1024"/>
+<use class="h h0 one" href="#g-smoke" x="461.0" y="271.0" width="16.0" height="16.0"><title>1× Smokes</title></use><use class="h h1 one" href="#g-flash" x="458.0" y="275.0" width="16.0" height="16.0"><title>1× Flashes</title></use><use class="h h2 one" href="#g-molotov" x="523.0" y="478.0" width="16.0" height="16.0"><title>1× Molotovs</title></use><use class="h h3 one" href="#g-he" x="433.0" y="693.0" width="16.0" height="16.0"><title>1× HEs</title></use><use class="h h3 one" href="#g-he" x="553.0" y="533.0" width="16.0" height="16.0"><title>1× HEs</title></use><use class="h h3 one" href="#g-he" x="327.0" y="182.0" width="16.0" height="16.0"><title>1× HEs</title></use><use class="h h0" href="#g-smoke" x="520.0" y="531.0" width="30.0" height="30.0"><title>4× Smokes</title></use><text class="hn h0" x="546.4" y="536.4">4</text>        </svg>
+        <figcaption class="muted small">Onde as granadas caem (cada ponto é uma granada).</figcaption>
+      </figure>
+    </div>
+    </div>
+  </div>
+  <div class="heat-toggles small">Mostrar no mapa: <label><input type="checkbox" data-heat="0" checked> Smokes</label><label><input type="checkbox" data-heat="1" checked> Flashes</label><label><input type="checkbox" data-heat="2" checked> Molotovs</label><label><input type="checkbox" data-heat="3" checked> HEs</label></div>
+</section><script>
+(function () {
+  var sec = document.getElementById("assinatura"); if (!sec) return;
+  sec.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-sig]"); if (!b) return;
+    sec.querySelectorAll("[data-sig]").forEach(function (x) { x.classList.toggle("on", x === b); });
+    sec.querySelectorAll("[data-sig-panel]").forEach(function (p) { p.hidden = p.dataset.sigPanel !== b.dataset.sig; });
+  });
+  sec.addEventListener("change", function (e) {
+    var c = e.target.closest("[data-heat]"); if (!c) return;
+    sec.classList.toggle("hide-h" + c.dataset.heat, !c.checked);
+  });
+})();
+</script>
+
+<section data-mp-group="ancient">
+  <h2 class="sec"><a href="/pt/ancient/">Ancient</a> <span class="muted">· 1 lineups</span></h2>
+  <div class="cards"><a class="card" href="/pt/ancient/molotov-mid-from-outside-t/" data-id="molotov-mid-from-outside-t"
+   data-type="molotov" data-side="T" data-area="Middle" data-map="ancient"
+   data-teams="eternal-fire furia fut g2 heroic magic mouz parivision spirit" data-players="donk dziugss fl1t heavygod hunter kscerato kvem masval nertz nilo spinx xelex xfl0ud zont1x"
+   data-count="21" data-eff="0.0">
+  <svg class="radar" viewBox="259.3 373.7 356.8 356.8" role="img" aria-label="Trajetória: Molotov Meio (de Fora)">
+  <image href="/static/radars/ancient.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="11.9"><text x="312.8" y="666.2">Fora</text><text x="482.6" y="519.8">Meio</text><text x="322.2" y="440.2">Corredor Lateral</text></g>
+  <circle class="land land-molotov" cx="546.1" cy="466.3" r="24.0"/>
+  <path class="traj traj-molotov" d="M329.4,653.6 L336.8,645.8 L344.2,638.2 L351.6,630.4 L359.0,622.8 L366.4,615.0 L373.8,607.4 L381.2,599.6 L388.6,591.8 L396.0,584.2 L403.4,576.4 L410.8,568.8 L418.2,561.0 L425.6,553.4 L433.0,545.6 L440.4,538.0 L447.8,530.2 L455.2,522.6 L462.6,514.8 L470.0,507.2 L477.4,499.4 L484.8,491.6 L492.2,484.0 L499.6,476.2 L507.0,468.6 L514.4,460.8 L521.8,453.2 L527.4,450.6 L531.2,453.8 L534.8,456.8 L538.4,460.0 L542.2,463.0 L545.8,466.2"/>
+  <line class="aim" x1="329.3" y1="653.2" x2="352.9" y2="628.8"/>
+  <circle class="spot side-T" cx="329.3" cy="653.2" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-molotov">Molotov</span><span class="badge side-T">TR</span><span class="badge video">▶ vídeo</span><span class="badge">5 variações</span></div>
+    <h3>Molotov Meio (de Fora)</h3>
+    <p class="muted">4 usos</p>
+  </div>
+</a></div>
+</section>
+<script>
+(function () { // back button: always to the previous page (home if there is none); placed right under the breadcrumbs
+  var b = document.getElementById("backBtn"); if (!b) return;
+  var c = document.querySelector("main.content .crumbs"); if (c) c.insertAdjacentElement("afterend", b);
+  b.addEventListener("click", function (e) { if (history.length > 1) { e.preventDefault(); history.back(); } });
+})();
+</script>
+  </main>
+</div>
+<footer class="foot">
+  <div class="foot-in">
+<nav class="foot-social" aria-label="Siga @pronadescs"><span class="muted">Siga @pronadescs</span>
+<a class="soc soc-youtube" href="https://www.youtube.com/@pronadescs" target="_blank" rel="noopener me" title="YouTube @pronadescs" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.7 15.1V8.9l5.8 3.1z"/></svg></a><a class="soc soc-instagram" href="https://www.instagram.com/pronadescs" target="_blank" rel="noopener me" title="Instagram @pronadescs" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor"/></svg></a><a class="soc soc-tiktok" href="https://www.tiktok.com/@pronadescs" target="_blank" rel="noopener me" title="TikTok @pronadescs" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.6 2h-3.4v13.4a3 3 0 1 1-2.6-3V9a6.4 6.4 0 1 0 6 6.4V8.6a8 8 0 0 0 4.4 1.4V6.6a4.6 4.6 0 0 1-4.4-4.6z"/></svg></a>    </nav>    <p>Dados extraídos das demos oficiais das partidas. Demos: <a href="https://www.hltv.org/" rel="noopener" target="_blank">HLTV.org</a>.</p>
+    <p>Projeto de fãs, gratuito. Não afiliado à Valve, HLTV, aos times ou aos organizadores dos torneios. Counter-Strike é marca da Valve Corporation.</p>
+    <p><a href="/pt/sobre/">Sobre e créditos</a> · atualizado em 2026-11-17</p>
+  </div>
+</footer>
+<script src="/static/app.js?v=7dbafbbb28" defer></script>
+<script src="/static/accounts.js?v=5336965d3d" defer></script>
+<script src="/static/video.js?v=58a69c88b1" defer></script>
+<script src="/static/react.js?v=ba1c25c1ad" defer></script>
+</body>
+</html>

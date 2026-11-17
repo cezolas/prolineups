@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Entrada A da PARIVISION · Cache · Pronades</title>
+<meta name="description" content="Entrada A da PARIVISION na Cache: 2 rounds em replay 2D, com as granadas usadas e por onde entram.">
+<link rel="canonical" href="https://pronades.com.br/pt/cache/jogadas/parivision-a/">
+<link rel="alternate" hreflang="pt" href="https://pronades.com.br/pt/cache/jogadas/parivision-a/">
+<link rel="alternate" hreflang="en" href="https://pronades.com.br/en/cache/plays/parivision-a/">
+<link rel="alternate" hreflang="x-default" href="https://pronades.com.br/pt/cache/jogadas/parivision-a/">
+<meta property="og:title" content="Entrada A da PARIVISION · Cache">
+<meta property="og:description" content="Entrada A da PARIVISION na Cache: 2 rounds em replay 2D, com as granadas usadas e por onde entram.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://pronades.com.br/static/og-pt.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Pronades">
+<meta name="theme-color" content="#0b0f15">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&display=swap">
+<script>/* one address: www and the old workers.dev address go to the main domain */
+(function () { var h = location.hostname, main = "pronades.com.br";
+  if (h !== main && h !== "localhost" && h !== "127.0.0.1" && (h === "www." + main || /\.workers\.dev$/.test(h)))
+    location.replace("https://" + main + location.pathname + location.search + location.hash); })();</script>
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
+  if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
+<link rel="icon" href="/static/favicon.svg?v=714ec3503f" type="image/svg+xml">
+<link rel="stylesheet" href="/static/style.css?v=803fe059ab">
+<script>window.I18N = {"copied": "Copiado!", "dec": ",", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "open": "Abrir", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "report_fail": "N\u00e3o deu para enviar agora, tente mais tarde.", "report_limit": "Voc\u00ea j\u00e1 enviou v\u00e1rios reports hoje.", "report_thanks": "Obrigado! Vamos revisar.", "throws_in": "lan\u00e7a em {s}s", "v_back": "Voltar 2 segundos", "v_frame_back": "Quadro anterior", "v_frame_fwd": "Pr\u00f3ximo quadro", "v_fwd": "Avan\u00e7ar 2 segundos", "v_play": "Reproduzir / pausar"}; window.LANG = "pt";</script>
+</head>
+<body class="">
+<header class="top">
+  <div class="top-in">
+    <button class="menu-btn" id="menuBtn" aria-label="Mostrar ou ocultar o menu" aria-controls="side" aria-expanded="false">☰</button>
+    <a class="logo wordmark" href="/pt/" aria-label="Pronades">Pro<span>nades</span><img class="he-buddy" src="/static/brand/he-buddy.svg?v=714ec3503f" alt="" width="22" height="22"></a>
+    <div class="search">
+      <input id="q" type="search" placeholder="Buscar mapa, jogador, time, smoke…" autocomplete="off" aria-label="Buscar">
+      <div id="results" class="results" hidden></div>
+    </div>
+    <a class="premium-btn" href="/pt/modo-partida/" title="Modo partida"><span aria-hidden="true">📱</span><span class="pb-l">Modo partida</span></a>
+    <nav class="langs" aria-label="Idioma">
+<a href="/pt/cache/jogadas/parivision-a/" hreflang="pt" lang="pt" aria-current="true" title="Português" aria-label="Português"><img class="lang-flag" src="/static/flags/br.svg?v=17969b5ac0" alt="Português" width="24" height="18"></a><a href="/en/cache/plays/parivision-a/" hreflang="en" lang="en" title="English" aria-label="English"><img class="lang-flag" src="/static/flags/gb.svg?v=161ee20a0a" alt="English" width="24" height="18"></a>    </nav>
+    <a class="login-btn" id="loginBtn" href="/pt/conta/" data-account="conta" hidden>Entrar</a>
+    <div class="me-wrap">
+      <a class="me-btn" id="meBtn" href="/pt/conta/" hidden aria-label="Minha conta" aria-haspopup="menu" aria-expanded="false" aria-controls="meMenu"><img alt="" width="28" height="28" referrerpolicy="no-referrer" hidden><span>Conta</span><span class="me-caret" aria-hidden="true">▾</span></a>
+      <div class="me-menu" id="meMenu" role="menu" hidden>
+        <div class="me-head"><b id="meName"></b><span class="muted small" id="meMail"></span><span class="me-plan" id="mePlan" data-free="Plano Gratuito" data-premium="♛ Premium"></span></div>
+        <a role="menuitem" href="/pt/conta/">👤 Minha conta</a>
+        <a role="menuitem" href="/pt/minha-faceit/">◉ Minha FACEIT</a>
+        <a role="menuitem" href="/pt/minhas-taticas/">★ Minhas táticas</a>
+        <a role="menuitem" href="/pt/premium/">♛ Área Premium</a>
+        <a role="menuitem" href="https://prolineups-admin.cezolas.workers.dev" id="meAdmin" class="me-admin" target="_blank" rel="noopener" hidden>⚙ Painel Admin</a>
+        <div class="me-sep"></div>
+        <a role="menuitem" class="me-out" href="/auth/logout?lang=pt">⎋ Sair</a>
+      </div>
+    </div>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="Alternar modo claro/escuro" title="Alternar modo claro/escuro"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.6"/><g stroke-width="2.2" stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></g></svg></button>
+  </div>
+</header>
+<div class="layout">
+  <aside class="side" id="side" aria-label="Navegação">
+    <nav>
+      <a href="/pt/"><span class="nl">Início</span></a>
+      <a href="/pt/minha-faceit/"><span>◉ Minha FACEIT</span></a>
+      <a href="/pt/funcoes/"><span>👥 Funções</span></a>
+      <a href="/pt/analises/"><span>▤ Análises</span></a>
+      <details class="nav-g" data-k="maps">
+        <summary class="nav-h"><a href="/pt/mapas/">Mapas</a></summary>
+<a href="/pt/ancient/"><span class="nl">Ancient</span><span class="n">63</span></a><a href="/pt/anubis/"><span class="nl">Anubis</span><span class="n">20</span></a><a href="/pt/cache/" aria-current="page"><span class="nl">Cache</span><span class="n">47</span></a><a href="/pt/dust2/"><span class="nl">Dust2</span><span class="n">53</span></a><a href="/pt/inferno/"><span class="nl">Inferno</span><span class="n">22</span></a><a href="/pt/mirage/"><span class="nl">Mirage</span><span class="n">80</span></a><a href="/pt/nuke/"><span class="nl">Nuke</span><span class="n">33</span></a>      </details>
+      <details class="nav-g" data-k="events">
+        <summary class="nav-h"><a href="/pt/torneios/">Torneios</a></summary>
+<a href="/pt/torneio/pgl-cluj-napoca-2027-closed-qualifier/"><span class="nl">PGL Cluj Napoca 2027 Closed Qualifier</span></a><a href="/pt/torneio/blast-rivals-2026-season-2/"><span class="nl">BLAST Rivals 2026 Season 2</span></a>      </details>
+      <details class="nav-g" data-k="players">
+        <summary class="nav-h"><a href="/pt/jogadores/">Jogadores</a></summary>
+<a href="/pt/jogador/21zweih/"><span class="nl"><span class="nav-flag"></span>21zweih <span class="role role-entry sm">Entry</span></span></a><a href="/pt/jogador/apex/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12"></span>apEX <span class="role role-support sm">Suporte</span></span></a><a href="/pt/jogador/art/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>art <span class="role role-support sm">Suporte</span></span></a><a href="/pt/jogador/awwwww/"><span class="nl"><span class="nav-flag"></span>AWwwww <span class="role role-rifler sm">Rifler</span></span></a><a href="/pt/jogador/brollan/"><span class="nl"><span class="nav-flag"></span>Brollan <span class="role role-entry sm">Entry</span></span></a><a href="/pt/jogador/chr1zn/"><span class="nl"><span class="nav-flag"></span>Chr1zN <span class="role role-lurker sm">Lurker</span></span></a><a href="/pt/jogador/coolio/"><span class="nl"><span class="nav-flag"></span>coolio <span class="role role-entry sm">Entry</span></span></a><a href="/pt/jogador/dem0n/"><span class="nl"><span class="nav-flag"></span>dem0n <span class="role role-rifler sm">Rifler</span></span></a><a href="/pt/jogador/donk/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12"></span>donk <span class="role role-rifler sm">Rifler</span></span></a><a href="/pt/jogador/dumau/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>dumau <span class="role role-entry sm">Entry</span></span></a><a href="/pt/jogador/dziugss/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/lt.svg" alt="Lituânia" title="Lituânia" width="16" height="12"></span>dziugss <span class="role role-lurker sm">Lurker</span></span></a><a href="/pt/jogador/fallen/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>FalleN <span class="role role-support sm">Suporte</span></span></a><a class="more" href="/pt/jogadores/">ver todos (60)</a>      </details>
+      <details class="nav-g" data-k="teams">
+        <summary class="nav-h"><a href="/pt/times/">Times</a></summary>
+<a href="/pt/time/eternal-fire/"><span class="nl"><span class="nav-flag"></span>Eternal Fire</span></a><a href="/pt/time/falcons/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/sa.svg" alt="Arábia Saudita" title="Arábia Saudita" width="16" height="12"></span>Falcons</span></a><a href="/pt/time/furia/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>FURIA</span></a><a href="/pt/time/fut/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/tr.svg" alt="Turquia" title="Turquia" width="16" height="12"></span>FUT</span></a><a href="/pt/time/g2/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"></span>G2</span></a><a href="/pt/time/heroic/"><span class="nl"><span class="nav-flag"></span>Heroic</span></a><a href="/pt/time/legacy/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>Legacy</span></a><a href="/pt/time/magic/"><span class="nl"><span class="nav-flag"></span>Magic</span></a><a href="/pt/time/mouz/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"></span>MOUZ</span></a><a href="/pt/time/parivision/"><span class="nl"><span class="nav-flag"></span>PARIVISION</span></a><a href="/pt/time/spirit/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12"></span>Spirit</span></a><a href="/pt/time/vitality/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12"></span>Vitality</span></a>      </details>
+      <details class="nav-g nav-premium" data-k="premium">
+        <summary class="nav-h"><a href="/pt/premium/">♛ Área Premium</a></summary>
+        <a href="/pt/comparar-minha-demo/"><span class="nl"><span class="nav-flag">⇄</span>Comparar minha demo</span></a>
+        <a href="/pt/plano-de-treino/"><span class="nl"><span class="nav-flag">🎯</span>Plano de treino</span></a>
+        <a href="/pt/taticas/"><span class="nl"><span class="nav-flag">♟</span>Táticas</span></a>
+        <a href="/pt/meta-grenades/"><span class="nl"><span class="nav-flag">🔥</span>Meta Grenades</span></a>
+      </details>
+      <div class="nav-sep"></div>
+      <a href="/pt/sobre/"><span class="nl">Sobre</span></a>
+      <a href="/pt/privacidade/"><span class="nl">Privacidade</span></a>
+      <button type="button" class="side-collapse" id="sideCollapse" aria-controls="side">« Recolher menu</button>
+    </nav>
+    <script>
+      /* sections start collapsed; the ones opened here are remembered, and the one holding this page opens */
+      (function () {
+        var o = []; try { o = JSON.parse(localStorage.getItem("navOpen") || "[]"); } catch (e) {}
+        document.querySelectorAll(".nav-g").forEach(function (d) {
+          if (o.indexOf(d.dataset.k) >= 0 || d.querySelector("[aria-current]")) d.open = true;
+          d.addEventListener("toggle", function () {
+            var s = []; document.querySelectorAll(".nav-g").forEach(function (x) { if (x.open) s.push(x.dataset.k); });
+            try { localStorage.setItem("navOpen", JSON.stringify(s)); } catch (e) {}
+          });
+        });
+      })();
+    </script>
+  </aside>
+  <div class="scrim" id="scrim" hidden></div>
+  <main class="content">
+<a class="back-btn" id="backBtn" href="/pt/">← Voltar</a><nav class="crumbs"><a href="/pt/">Início</a> › <a href="/pt/cache/">Cache</a> ›
+  <a href="/pt/cache/jogadas/">Jogadas</a> › Entrada A da PARIVISION</nav>
+<h1> Entrada A da PARIVISION <span class="muted h-sub">· Cache</span></h1>
+<p class="muted">2 rounds · round ganho em 100% · plant em média aos 1:50
+ · <a href="/pt/time/parivision/">PARIVISION</a></p>
+<div class="react" data-k="p:de_cache/parivision-a">
+  <button class="btn small like-btn" type="button" aria-pressed="false" data-act="like"><span aria-hidden="true">👍</span> <span class="like-n">Curtir</span></button>
+  <button class="btn small rep-btn" type="button" data-act="report">⚑ Reportar problema</button>
+  <form class="rep-form" hidden>
+    <div class="rep-title">O que está errado?</div>
+<label><input type="radio" name="reason" value="video" checked> Vídeo quebrado ou não carrega</label><label><input type="radio" name="reason" value="wrong"> A lineup não funciona / posição errada</label><label><input type="radio" name="reason" value="outdated"> Mapa mudou, ficou desatualizada</label><label><input type="radio" name="reason" value="other"> Outro problema</label>    <textarea name="note" maxlength="500" rows="2" placeholder="Detalhes (opcional)"></textarea>
+    <div class="rep-actions"><button class="btn small cta" type="submit">Enviar</button>
+      <button class="btn small" type="button" data-act="cancel">Cancelar</button></div>
+  </form>
+  <span class="muted small rep-msg" role="status" hidden></span>
+</div>
+<div class="warn-box removed-box" role="note" hidden>Esta jogada foi removida pela moderação e sai do site na próxima atualização.</div>
+
+<div class="play-grid">
+  <section class="play-view">
+    <div class="replay" id="play" data-plays='["heroic-vs-parivision-m2-cache-r5", "heroic-vs-parivision-m2-cache-r11"]' data-map="cache"
+         data-mapdef='{"pos_x": -2000.0, "pos_y": 3250.0, "radar_size": 1024, "scale": 5.5}'
+         data-labels='[["Bomb B", 342.7, 755.3], ["Meio", 407.1, 552.9], ["Bomb A", 353.1, 283.3], ["Garagem do meio", 599.3, 560.5], ["Base TR", 846.5, 595.6], ["Sagu\u00e3o B", 543.6, 751.3], ["Outside A", 601.1, 464.2], ["Garagem", 481.8, 335.8], ["Rua CT", 197.8, 563.5], ["TYard", 733.5, 542.2], ["Toyota", 208.9, 375.3], ["CT da A", 210.9, 726.7], ["Garagem da B", 443.6, 731.1], ["Azul", 530.9, 215.5], ["Fora B", 714.9, 716.4], ["Long A", 583.3, 358.0], ["Rua", 328.5, 455.3], ["T\u00f3xico", 513.8, 830.9], ["Xadrez", 379.8, 651.8], ["Liga/Janela", 270.7, 568.2], ["Base CT", 100.0, 479.8], ["Empilhadeira", 414.5, 345.5], ["\u00d4nibus", 130.7, 542.7], ["Useless", 566.5, 645.5], ["Porta Azul", 406.4, 215.6], ["P\u00e9zinho Lona", 510.7, 468.0], ["Metal", 364.7, 355.8], ["Quad", 311.5, 192.4], ["Lona", 508.4, 460.4], ["Trincheira", 293.8, 813.5], ["Heaven", 260.2, 698.0], ["Areia", 366.5, 600.7], ["Caminh\u00e3o", 718.2, 466.5], ["Esquina", 293.8, 378.7], ["Simple", 308.0, 711.3], ["Cubby", 458.5, 475.6], ["Escanteio", 364.4, 193.3], ["Toxic", 341.6, 362.0], ["Inferno", 250.2, 646.0], ["Mid Roof", 411.6, 606.5], ["Escada", 344.9, 397.5], ["Duto", 455.5, 641.8], ["P\u00e9zinho da A", 440.0, 241.6], ["Mid", 466.4, 467.3], ["Vermelho", 581.6, 519.8], ["Back Hall", 293.3, 656.5]]'>
+      <div class="play-canvas">
+        <canvas width="1024" height="1024" aria-label="Replay 2D do round"></canvas>
+        <div class="feed" data-out="feed" aria-live="polite"></div>
+      </div>
+      <div class="replay-bar">
+        <button class="btn" data-act="play" aria-label="Reproduzir ou pausar">▶</button>
+        <input type="range" min="0" max="1000" value="0" aria-label="Tempo">
+        <span class="muted small" data-out="time"></span>
+      </div>
+      <div class="replay-bar small">
+        <button class="btn small" data-act="start">Início do round</button>
+        <span class="seg"><button data-speed="1" class="on">1x</button><button data-speed="2">2x</button><button data-speed="4">4x</button></span>
+      </div>
+    </div>
+  </section>
+  <section class="play-rounds">
+    <figure class="play-pov" id="pov" hidden>
+      <video data-tools muted playsinline controls preload="none" aria-label="Vídeo em primeira pessoa da entrada"></video>
+      <figcaption class="muted small" data-pov-caption="A jogada na visão de cada atacante: {p}"></figcaption>
+    </figure>
+    <h2>Rounds</h2>
+    <div class="round-list">
+      <button class="round-item" data-play="heroic-vs-parivision-m2-cache-r5" data-clip="/media/heroic-vs-parivision-m2-cache/entry-r5.mp4" data-poster="/media/heroic-vs-parivision-m2-cache/entry-r5.jpg" data-pov="xiELO, FL1T, hobbit">
+        <span class="ri-top"><b>vs  Heroic</b> · Round 5
+          <span class="badge win">venceu</span><span class="badge video">▶ vídeo</span></span>
+        <span class="muted small"><span class="mref">Heroic vs PARIVISION <b>13–5</b> · mapa 2</span></span>
+        <span class="muted small">plant aos 0:55 de round · 16/11/2026</span>
+        <span class="ri-util"><span class="dot-nade type-smoke" title="21zweih · smoke"></span><span class="dot-nade type-smoke" title="xiELO · smoke"></span><span class="dot-nade type-smoke" title="FL1T · smoke"></span><span class="dot-nade type-molotov" title="xiELO · molotov"></span><span class="dot-nade type-flash" title="hobbit · flash"></span><span class="dot-nade type-flash" title="hobbit · flash"></span><span class="dot-nade type-flash" title="21zweih · flash"></span><span class="dot-nade type-molotov" title="Jame · molotov"></span><span class="dot-nade type-smoke" title="hobbit · smoke"></span><span class="dot-nade type-molotov" title="FL1T · molotov"></span></span>
+      </button>
+      <button class="round-item" data-play="heroic-vs-parivision-m2-cache-r11" data-clip="/media/heroic-vs-parivision-m2-cache/entry-r11.mp4" data-poster="/media/heroic-vs-parivision-m2-cache/entry-r11.jpg" data-pov="21zweih, hobbit, xiELO">
+        <span class="ri-top"><b>vs  Heroic</b> · Round 11
+          <span class="badge win">venceu</span><span class="badge video">▶ vídeo</span></span>
+        <span class="muted small"><span class="mref">Heroic vs PARIVISION <b>13–5</b> · mapa 2</span></span>
+        <span class="muted small">plant aos 1:50 de round · 16/11/2026</span>
+        <span class="ri-util"><span class="dot-nade type-smoke" title="xiELO · smoke"></span><span class="dot-nade type-smoke" title="21zweih · smoke"></span><span class="dot-nade type-flash" title="21zweih · flash"></span><span class="dot-nade type-molotov" title="21zweih · molotov"></span><span class="dot-nade type-smoke" title="hobbit · smoke"></span><span class="dot-nade type-molotov" title="hobbit · molotov"></span><span class="dot-nade type-molotov" title="FL1T · molotov"></span><span class="dot-nade type-smoke" title="FL1T · smoke"></span><span class="dot-nade type-molotov" title="hobbit · molotov"></span><span class="dot-nade type-molotov" title="21zweih · molotov"></span><span class="dot-nade type-flash" title="xiELO · flash"></span></span>
+      </button>
+    </div>
+  </section>
+</div>
+
+<section>
+  <h2>Partidas em que isso aconteceu</h2>
+  <ul class="mref-list"><li><span class="mref">Heroic vs PARIVISION <b>13–5</b> · <a href="/pt/torneio/pgl-cluj-napoca-2027-closed-qualifier/">PGL Cluj Napoca 2027 Closed Qualifier</a> · mapa 2 · 16/11/2026</span> <span class="muted small">· 2 rounds</span></li></ul>
+</section>
+<section>
+  <h2>Por onde entram</h2>
+  <p class="muted">Onde os jogadores do TR estavam 6 segundos antes do plant (somando todos os rounds).</p>
+  <div class="chips"><span class="chip">Rua <span class="muted">· 2</span></span><span class="chip">Garagem do meio <span class="muted">· 1</span></span><span class="chip">Duto <span class="muted">· 1</span></span><span class="chip">Empilhadeira <span class="muted">· 1</span></span></div>
+</section>
+
+<section>
+  <h2>Granadas usadas nessas entradas</h2>
+  <p class="muted">Lineups publicadas que o time jogou antes do plant nesses rounds.</p>
+  <div class="cards"><a class="card" href="/pt/cache/flash-mid-from-outside-a-t/" data-id="flash-mid-from-outside-a-t"
+   data-type="flash" data-side="T" data-area="Mid" data-map="cache"
+   data-teams="heroic mouz parivision" data-players="hobbit susp torzsi"
+   data-count="8" data-eff="0.75">
+  <svg class="radar" viewBox="336.7 350.9 297.8 297.8" role="img" aria-label="Trajetória: Flash Meio (de Outside A)">
+  <image href="/static/radars/cache.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="9.9"><text x="407.1" y="552.9">Meio</text><text x="599.3" y="560.5">Garagem do meio</text><text x="601.1" y="464.2">Outside A</text><text x="510.7" y="468.0">Pézinho Lona</text><text x="508.4" y="460.4">Lona</text><text x="458.5" y="475.6">Cubby</text><text x="411.6" y="606.5">Mid Roof</text><text x="466.4" y="467.3">Mid</text><text x="581.6" y="519.8">Vermelho</text></g>
+  <circle class="land land-flash" cx="407.0" cy="508.1" r="9.1"/>
+  <path class="traj traj-flash" d="M564.5,492.4 L558.4,492.9 L552.2,493.6 L546.2,494.2 L540.0,494.7 L533.8,495.3 L527.8,496.0 L521.6,496.5 L515.5,497.1 L509.3,497.6 L503.3,498.4 L497.1,498.9 L490.9,499.5 L484.9,500.0 L478.7,500.7 L472.5,501.3 L466.5,501.8 L460.4,502.4 L454.2,502.9 L448.0,503.6 L442.0,504.2 L435.8,504.7 L429.6,505.3 L423.6,506.0 L417.5,506.5 L411.3,507.1 L406.7,507.6"/>
+  <line class="aim" x1="563.2" y1="491.6" x2="529.4" y2="495.2"/>
+  <circle class="spot side-T" cx="563.2" cy="491.6" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-flash">Flash</span><span class="badge side-T">TR</span><span class="badge video">▶ vídeo</span><span class="badge">2 variações</span></div>
+    <h3>Flash Meio (de Outside A)</h3>
+<p class="eff">cega 0,8 inimigo(s) por 2,3s em média</p>
+    <p class="muted">8 usos · 3 times · round ganho 88%</p>
+  </div>
+</a><a class="card" href="/pt/cache/smoke-b-site-from-t-spawn-t/" data-id="smoke-b-site-from-t-spawn-t"
+   data-type="smoke" data-side="T" data-area="BombsiteB" data-map="cache"
+   data-teams="mouz parivision vitality" data-players="21zweih ropz spinx"
+   data-count="9" data-eff="-1">
+  <svg class="radar" viewBox="236.0 305.4 699.0 699.0" role="img" aria-label="Trajetória: Smoke Bomb B (de Base TR)">
+  <image href="/static/radars/cache.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="23.3"><text x="342.7" y="755.3">Bomb B</text><text x="407.1" y="552.9">Meio</text><text x="599.3" y="560.5">Garagem do meio</text><text x="846.5" y="595.6">Base TR</text><text x="543.6" y="751.3">Saguão B</text><text x="601.1" y="464.2">Outside A</text><text x="733.5" y="542.2">TYard</text><text x="443.6" y="731.1">Garagem da B</text><text x="714.9" y="716.4">Fora B</text><text x="328.5" y="455.3">Rua</text><text x="513.8" y="830.9">Tóxico</text><text x="379.8" y="651.8">Xadrez</text><text x="566.5" y="645.5">Useless</text><text x="510.7" y="468.0">Pézinho Lona</text><text x="508.4" y="460.4">Lona</text><text x="366.5" y="600.7">Areia</text><text x="718.2" y="466.5">Caminhão</text><text x="458.5" y="475.6">Cubby</text><text x="411.6" y="606.5">Mid Roof</text><text x="344.9" y="397.5">Escada</text><text x="455.5" y="641.8">Duto</text><text x="466.4" y="467.3">Mid</text><text x="581.6" y="519.8">Vermelho</text></g>
+  <circle class="land land-smoke" cx="403.8" cy="706.9" r="26.4"/>
+  <path class="traj traj-smoke" d="M864.9,602.9 L856.4,604.2 L848.0,605.5 L839.5,606.9 L831.1,608.2 L822.5,609.5 L814.2,610.9 L805.6,612.2 L797.3,613.5 L788.7,614.9 L780.4,616.2 L771.8,617.5 L763.5,618.7 L754.9,620.2 L746.5,621.5 L738.0,622.7 L729.6,624.2 L721.1,625.5 L712.7,626.7 L704.2,628.2 L695.8,629.5 L687.3,630.7 L678.9,632.2 L670.4,633.5 L661.8,634.7 L653.5,636.0 L644.9,637.5 L636.5,638.7 L628.0,640.0 L619.6,641.5 L611.1,642.7 L602.7,644.0 L594.2,645.5 L585.8,646.7 L577.3,648.0 L568.9,649.5 L560.4,650.7 L552.0,652.0 L543.5,653.3 L535.1,654.7 L526.5,656.0 L518.2,657.3 L509.6,658.7 L501.3,660.0 L492.7,661.3 L484.4,662.7 L475.8,664.0 L467.5,665.3 L458.9,666.5 L450.5,668.0 L442.0,669.3 L433.6,670.5 L425.1,672.0 L416.7,673.3 L408.2,674.5 L399.8,676.0 L391.3,677.3 L382.9,678.5 L374.4,680.0 L366.0,681.3 L357.5,682.5 L349.1,683.8 L340.5,685.3 L332.2,686.5 L323.6,687.8 L315.3,689.3 L306.7,690.5 L306.0,691.5 L309.8,692.0 L313.5,692.5 L317.3,693.3 L321.1,693.8 L324.9,694.4 L328.7,694.9 L332.5,695.6 L336.4,696.2 L340.2,696.7 L344.0,697.5 L347.8,698.0 L351.6,698.5 L355.5,699.3 L359.3,699.8 L363.1,700.4 L366.9,700.9 L370.5,701.6 L374.4,702.2 L378.2,702.7 L380.7,703.1 L381.8,703.3 L382.9,703.5 L384.0,703.6 L385.1,703.8 L386.0,704.0 L387.1,704.2 L388.2,704.4 L389.3,704.5 L390.2,704.7 L391.3,704.9 L392.4,704.9 L393.5,705.1 L394.5,705.3 L395.5,705.5 L396.5,705.6 L397.6,705.8 L398.7,706.0 L399.5,706.2 L400.0,706.2 L400.5,706.2 L400.9,706.4 L401.5,706.4 L401.8,706.5 L402.4,706.5 L402.9,706.5 L403.3,706.7 L403.5,706.7 L403.6,706.7 L404.0,706.7 L404.2,706.9 L404.2,706.9 L404.4,706.9 L404.4,706.9"/>
+  <line class="aim" x1="865.0" y1="602.9" x2="831.4" y2="608.1"/>
+  <circle class="spot side-T" cx="865.0" cy="602.9" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">TR</span><span class="badge">jump throw</span><span class="badge video">▶ vídeo</span><span class="badge">3 variações</span></div>
+    <h3>Smoke Bomb B (de Base TR)</h3>
+    <p class="muted">9 usos · 3 times · round ganho 67%</p>
+  </div>
+</a><a class="card" href="/pt/cache/molotov-mid-from-outside-a-t/" data-id="molotov-mid-from-outside-a-t"
+   data-type="molotov" data-side="T" data-area="Mid" data-map="cache"
+   data-teams="fut heroic mouz parivision vitality" data-players="brollan chr1zn dem0n hobbit mezii pr ropz spinx torzsi xertion xfl0ud xielo"
+   data-count="31" data-eff="0.0">
+  <svg class="radar" viewBox="235.5 271.5 462.0 462.0" role="img" aria-label="Trajetória: Molotov Meio (de Outside A)">
+  <image href="/static/radars/cache.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="15.4"><text x="407.1" y="552.9">Meio</text><text x="599.3" y="560.5">Garagem do meio</text><text x="601.1" y="464.2">Outside A</text><text x="481.8" y="335.8">Garagem</text><text x="583.3" y="358.0">Long A</text><text x="328.5" y="455.3">Rua</text><text x="379.8" y="651.8">Xadrez</text><text x="414.5" y="345.5">Empilhadeira</text><text x="566.5" y="645.5">Useless</text><text x="510.7" y="468.0">Pézinho Lona</text><text x="364.7" y="355.8">Metal</text><text x="508.4" y="460.4">Lona</text><text x="366.5" y="600.7">Areia</text><text x="293.8" y="378.7">Esquina</text><text x="458.5" y="475.6">Cubby</text><text x="341.6" y="362.0">Toxic</text><text x="411.6" y="606.5">Mid Roof</text><text x="344.9" y="397.5">Escada</text><text x="455.5" y="641.8">Duto</text><text x="466.4" y="467.3">Mid</text><text x="581.6" y="519.8">Vermelho</text><text x="293.3" y="656.5">Back Hall</text></g>
+  <circle class="land land-molotov" cx="318.2" cy="515.3" r="21.8"/>
+  <path class="traj traj-molotov" d="M627.5,489.6 L616.4,490.5 L605.3,491.3 L594.2,492.2 L583.1,493.1 L572.0,493.8 L560.9,494.7 L549.8,495.6 L538.7,496.4 L527.6,497.3 L516.4,498.2 L505.3,498.9 L494.2,499.8 L483.1,500.7 L472.0,501.5 L460.9,502.4 L449.8,503.1 L438.7,504.0 L427.6,504.9 L416.5,505.6 L405.5,506.5 L394.4,507.5 L383.3,508.2 L372.2,509.1 L361.1,510.0 L350.0,510.7 L338.9,511.6 L327.6,512.5 L316.5,513.3 L305.5,514.2 L307.8,514.5 L312.7,515.1 L317.8,515.5"/>
+  <line class="aim" x1="627.2" y1="489.6" x2="593.3" y2="492.2"/>
+  <circle class="spot side-T" cx="627.2" cy="489.6" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-molotov">Molotov</span><span class="badge side-T">TR</span><span class="badge">jump throw</span><span class="badge video">▶ vídeo</span><span class="badge">5 variações</span></div>
+    <h3>Molotov Meio (de Outside A)</h3>
+    <p class="muted">31 usos · 5 times · round ganho 45%</p>
+  </div>
+</a><a class="card" href="/pt/cache/smoke-connector-from-long-a-t/" data-id="smoke-connector-from-long-a-t"
+   data-type="smoke" data-side="T" data-area="Connector" data-map="cache"
+   data-teams="fut parivision spirit" data-players="hobbit tn1r xfl0ud"
+   data-count="9" data-eff="-1">
+  <svg class="radar" viewBox="208.3 261.3 462.3 462.3" role="img" aria-label="Trajetória: Smoke Liga/Janela (de Long A)">
+  <image href="/static/radars/cache.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="15.4"><text x="407.1" y="552.9">Meio</text><text x="599.3" y="560.5">Garagem do meio</text><text x="601.1" y="464.2">Outside A</text><text x="481.8" y="335.8">Garagem</text><text x="583.3" y="358.0">Long A</text><text x="328.5" y="455.3">Rua</text><text x="379.8" y="651.8">Xadrez</text><text x="270.7" y="568.2">Liga/Janela</text><text x="414.5" y="345.5">Empilhadeira</text><text x="566.5" y="645.5">Useless</text><text x="510.7" y="468.0">Pézinho Lona</text><text x="364.7" y="355.8">Metal</text><text x="508.4" y="460.4">Lona</text><text x="366.5" y="600.7">Areia</text><text x="293.8" y="378.7">Esquina</text><text x="458.5" y="475.6">Cubby</text><text x="341.6" y="362.0">Toxic</text><text x="411.6" y="606.5">Mid Roof</text><text x="344.9" y="397.5">Escada</text><text x="455.5" y="641.8">Duto</text><text x="466.4" y="467.3">Mid</text><text x="581.6" y="519.8">Vermelho</text><text x="293.3" y="656.5">Back Hall</text></g>
+  <circle class="land land-smoke" cx="278.3" cy="597.2" r="26.4"/>
+  <path class="traj traj-smoke" d="M600.5,379.8 L596.9,382.5 L593.3,385.3 L589.6,388.0 L586.0,390.7 L582.4,393.5 L578.7,396.2 L574.9,398.9 L571.3,401.6 L567.6,404.4 L564.0,407.1 L560.4,409.8 L556.7,412.5 L553.1,415.3 L549.5,418.0 L545.8,420.7 L542.2,423.5 L538.4,426.2 L534.7,428.9 L531.1,431.6 L527.5,434.4 L523.8,437.1 L520.2,439.8 L516.5,442.5 L512.9,445.3 L509.3,448.0 L505.5,450.7 L501.8,453.5 L498.2,456.2 L494.5,458.9 L490.9,461.6 L487.3,464.4 L483.6,467.1 L480.0,469.8 L476.4,472.7 L472.5,475.5 L468.9,478.2 L465.3,480.9 L461.6,483.6 L458.0,486.4 L454.4,489.1 L450.7,491.8 L447.1,494.5 L443.5,497.3 L439.6,500.0 L436.0,502.7 L432.4,505.5 L428.7,508.2 L425.1,510.9 L421.5,513.6 L417.8,516.4 L414.2,519.1 L410.5,521.8 L406.9,524.5 L403.1,527.3 L399.5,530.0 L395.8,532.7 L392.2,535.5 L388.5,538.2 L384.9,540.9 L381.3,543.6 L377.6,546.4 L374.0,549.1 L370.2,551.8 L366.5,554.5 L362.9,557.3 L359.3,560.0 L355.6,562.7 L352.0,565.5 L348.4,568.2 L344.7,570.9 L341.1,573.6 L337.3,576.4 L333.6,579.1 L330.0,581.8 L326.4,584.5 L322.7,587.3 L319.1,590.0 L315.5,592.7 L311.8,595.5 L308.2,598.2 L304.4,600.9 L300.7,603.6 L297.8,605.1 L296.2,603.8 L295.3,603.1 L294.5,602.5 L293.8,602.0 L293.1,601.5 L292.4,600.9 L291.6,600.4 L290.9,599.8 L290.2,599.3 L289.5,598.7 L288.7,598.2 L288.0,597.6 L287.3,597.1 L286.4,596.5 L285.6,596.0 L284.9,595.5 L284.2,594.9 L283.5,594.4 L282.7,593.8 L282.0,593.3 L281.8,592.9 L281.5,592.7 L281.1,592.5 L280.7,592.2 L280.4,592.0 L280.0,591.8 L279.8,591.5 L279.5,591.3 L279.3,591.1 L279.1,590.9 L278.9,590.9 L278.7,590.7 L278.5,590.7 L278.5,590.5 L278.5,590.5 L278.5,590.5"/>
+  <line class="aim" x1="600.3" y1="380.1" x2="573.1" y2="400.4"/>
+  <circle class="spot side-T" cx="600.3" cy="380.1" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-smoke">Smoke</span><span class="badge side-T">TR</span><span class="badge">jump throw</span><span class="badge video">▶ vídeo</span><span class="badge">2 variações</span></div>
+    <h3>Smoke Liga/Janela (de Long A)</h3>
+    <p class="muted">9 usos · 3 times · round ganho 33%</p>
+  </div>
+</a><a class="card" href="/pt/cache/molotov-vents-from-long-a-t/" data-id="molotov-vents-from-long-a-t"
+   data-type="molotov" data-side="T" data-area="Vents" data-map="cache"
+   data-teams="parivision" data-players="hobbit"
+   data-count="3" data-eff="0.0">
+  <svg class="radar" viewBox="333.3 319.1 387.6 387.6" role="img" aria-label="Trajetória: Molotov Duto (de Long A)">
+  <image href="/static/radars/cache.webp" x="0" y="0" width="1024" height="1024"/>
+  <g class="places" font-size="12.9"><text x="407.1" y="552.9">Meio</text><text x="599.3" y="560.5">Garagem do meio</text><text x="601.1" y="464.2">Outside A</text><text x="379.8" y="651.8">Xadrez</text><text x="566.5" y="645.5">Useless</text><text x="510.7" y="468.0">Pézinho Lona</text><text x="508.4" y="460.4">Lona</text><text x="458.5" y="475.6">Cubby</text><text x="411.6" y="606.5">Mid Roof</text><text x="455.5" y="641.8">Duto</text><text x="466.4" y="467.3">Mid</text><text x="581.6" y="519.8">Vermelho</text></g>
+  <circle class="land land-molotov" cx="457.5" cy="636.7" r="21.8"/>
+  <path class="traj traj-molotov" d="M596.7,389.1 L592.2,397.3 L587.6,405.3 L583.1,413.5 L578.5,421.5 L574.0,429.6 L569.5,437.6 L564.9,445.8 L560.4,453.8 L555.8,462.0 L551.3,470.2 L546.7,478.2 L542.2,486.4 L537.6,494.4 L533.1,502.5 L528.5,510.5 L524.0,518.7 L519.5,526.7 L514.9,534.9 L510.4,542.9 L505.8,551.1 L501.3,559.1 L496.7,567.3 L492.2,575.3 L487.6,583.5 L483.1,591.5 L478.5,599.6 L474.0,607.6 L469.5,615.8 L466.0,621.8 L464.2,625.1 L462.4,628.2 L460.5,631.5"/>
+  <line class="aim" x1="596.7" y1="389.1" x2="580.1" y2="418.8"/>
+  <circle class="spot side-T" cx="596.7" cy="389.1" r="7"/>
+</svg>
+  <div class="card-body">
+    <div class="card-badges"><span class="badge type-molotov">Molotov</span><span class="badge side-T">TR</span><span class="badge">jump throw</span><span class="badge video">▶ vídeo</span></div>
+    <h3>Molotov Duto (de Long A)</h3>
+    <p class="muted">3 usos · 1 time · round ganho 33%</p>
+  </div>
+</a></div>
+</section>
+<script>
+(function () { // back button: always to the previous page (home if there is none); placed right under the breadcrumbs
+  var b = document.getElementById("backBtn"); if (!b) return;
+  var c = document.querySelector("main.content .crumbs"); if (c) c.insertAdjacentElement("afterend", b);
+  b.addEventListener("click", function (e) { if (history.length > 1) { e.preventDefault(); history.back(); } });
+})();
+</script>
+  </main>
+</div>
+<footer class="foot">
+  <div class="foot-in">
+<nav class="foot-social" aria-label="Siga @pronadescs"><span class="muted">Siga @pronadescs</span>
+<a class="soc soc-youtube" href="https://www.youtube.com/@pronadescs" target="_blank" rel="noopener me" title="YouTube @pronadescs" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.7 15.1V8.9l5.8 3.1z"/></svg></a><a class="soc soc-instagram" href="https://www.instagram.com/pronadescs" target="_blank" rel="noopener me" title="Instagram @pronadescs" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor"/></svg></a><a class="soc soc-tiktok" href="https://www.tiktok.com/@pronadescs" target="_blank" rel="noopener me" title="TikTok @pronadescs" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.6 2h-3.4v13.4a3 3 0 1 1-2.6-3V9a6.4 6.4 0 1 0 6 6.4V8.6a8 8 0 0 0 4.4 1.4V6.6a4.6 4.6 0 0 1-4.4-4.6z"/></svg></a>    </nav>    <p>Dados extraídos das demos oficiais das partidas. Demos: <a href="https://www.hltv.org/" rel="noopener" target="_blank">HLTV.org</a>.</p>
+    <p>Projeto de fãs, gratuito. Não afiliado à Valve, HLTV, aos times ou aos organizadores dos torneios. Counter-Strike é marca da Valve Corporation.</p>
+    <p><a href="/pt/sobre/">Sobre e créditos</a> · atualizado em 2026-11-17</p>
+  </div>
+</footer>
+<script src="/static/app.js?v=7dbafbbb28" defer></script>
+<script src="/static/accounts.js?v=5336965d3d" defer></script>
+<script src="/static/video.js?v=58a69c88b1" defer></script>
+<script src="/static/react.js?v=ba1c25c1ad" defer></script>
+<script src="/static/jogada.js?v=5dfa8a6f81" defer></script></body>
+</html>

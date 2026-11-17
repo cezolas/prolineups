@@ -1087,3 +1087,18 @@ thead th[aria-sort="ascending"]::after { content: " ▲"; }
 
 /* "My tactics" star next to like / report */
 .react .fav-btn { margin-left: 0; font-size: 17px; line-height: 1; min-width: 36px; justify-content: center; }
+
+/* performance profile */
+.perf-sec { margin: 18px 0; }
+.perf-sec .perf-card { max-width: 420px; }
+.perf-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; margin: 8px 0 16px; }
+.perf-card { border: 1px solid var(--line); border-radius: 10px; background: var(--panel); padding: 10px 12px; }
+.perf-name { font-weight: 800; margin-bottom: 6px; }
+.perf-rating { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 6px; margin-bottom: 6px; border-bottom: 1px solid var(--line); font-weight: 700; }
+.perf-rating b { font-size: 20px; } .perf-rating b.good { color: #5fd068; } .perf-rating b.bad { color: #ff6b6b; }
+.perf-row { display: grid; grid-template-columns: 1fr auto; gap: 2px 8px; margin: 6px 0; font-size: 14px; }
+.perf-row b small { color: var(--muted); font-weight: 400; font-size: 11px; }
+.perf-bar { grid-column: 1 / -1; display: block; height: 6px; border-radius: 3px; background: var(--panel2); overflow: hidden; }
+.perf-bar i { display: block; height: 100%; background: var(--accent); border-radius: 3px; }
+.perf-bar i.hi { background: #5fd068; } .perf-bar i.lo { background: #8a8f98; }
+.perf-based { margin-top: 6px; }
