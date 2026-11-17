@@ -1084,3 +1084,6 @@ thead th[aria-sort="ascending"]::after { content: " ▲"; }
 .save-exe .btn.on { color: var(--accent); border-color: var(--accent); }
 .save-exe a[hidden] { display: none; }
 .exec-acts { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 4px 0; }
+
+/* "My tactics" star next to like / report */
+.react .fav-btn { margin-left: 0; font-size: 17px; line-height: 1; min-width: 36px; justify-content: center; }

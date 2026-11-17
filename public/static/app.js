@@ -190,7 +190,8 @@
     if (b) {
       const on = set.has(key(JSON.parse(b.dataset.fav).url));
       b.setAttribute("aria-pressed", String(on)); b.classList.toggle("on", on);
-      b.textContent = (on ? "★ " : "☆ ") + (on ? b.dataset.on : b.dataset.off);
+      b.textContent = on ? "★" : "☆";
+      b.title = on ? b.dataset.on : b.dataset.off; b.setAttribute("aria-label", b.title);
     }
     const list = document.getElementById("favList");
     if (list) {
