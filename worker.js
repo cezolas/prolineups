@@ -10,6 +10,7 @@
 //   /api/react?k=<key>      -> GET: likes of one grenade/tactic, whether this visitor liked it, whether the admin removed it
 //   /api/like               -> POST {k}: toggle this visitor's like (signed-in user, or an anonymous hash of the IP)
 //   /api/report             -> POST {k, url, reason, note, lang}: "this is broken" report (max 5 per visitor per day)
+//   /v/<net><code>[e]       -> short link of a social post: 302 to the grenade page with utm tags (codes in /dados/social.json)
 // Premium Area: compare-my-demo, training plan, tactics, Meta Grenades (tactics hub, team plays, executes and their replay data) are served
 // only to Premium users (KV "premium:<sub>", set in the online Admin); others go to /<lang>/premium/?from=<page>.
 // deploy.py routes exactly these paths through this Worker (assets.run_worker_first).
@@ -430,6 +431,27 @@ function errorPage(url) {
     { status: 500, headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-store" } });
 }
 
+// ---------------------------------------------------------------- short links (pipeline/shortlink.py)
+const NETS = { y: "youtube", i: "instagram", t: "tiktok", x: "x" };
+let SOCIAL = null, SOCIAL_AT = 0;
+async function shortLink(env, url) {
+  const m = url.pathname.match(/^\/v\/([yitx])([0-9a-z]{5})(e?)\/?$/);
+  const lang = m && m[3] ? "en" : "pt";
+  let path = `/${lang}/`;
+  if (m) {
+    if (!SOCIAL || Date.now() - SOCIAL_AT > 600000) {
+      const r = await env.ASSETS.fetch(new Request(new URL("/dados/social.json", url)));
+      SOCIAL = r.ok ? await r.json() : { items: [] };
+      SOCIAL_AT = Date.now();
+    }
+    const it = (SOCIAL.items || []).find(x => x.c === m[2]);
+    path = (it && it.lang && (it.lang[lang] || it.lang.pt) || {}).url || path;
+  }
+  const to = new URL(path, url);
+  to.search = `utm_source=${m ? NETS[m[1]] : "x"}&utm_medium=social&utm_campaign=lineup`;
+  return new Response(null, { status: 302, headers: { location: to.toString(), "cache-control": "public, max-age=600" } });
+}
+
 export default {
   async fetch(req, env) {
     const url = new URL(req.url);
@@ -438,6 +460,7 @@ export default {
       if (url.pathname === "/auth/google/callback") return await authCallback(req, env, url);
       if (url.pathname === "/auth/faceit") return await faceitStart(req, env, url);
       if (url.pathname === "/auth/faceit/callback") return await faceitCallback(req, env, url);
+      if (url.pathname.startsWith("/v/")) return await shortLink(env, url);
       if (url.pathname === "/auth/logout") {
         const lang = (url.searchParams.get("lang") || "pt").slice(0, 2);
         return new Response(null, { status: 302, headers: { location: `/${lang}/`, "set-cookie": setCookie(COOKIE, "", 0) } });

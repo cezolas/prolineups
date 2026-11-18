@@ -12,6 +12,7 @@
     "run_worker_first": [
       "/auth/*",
       "/api/*",
+      "/v/*",
       "/dados/jogadas/*",
       "/pt/comparar-minha-demo/*",
       "/pt/plano-de-treino/*",
