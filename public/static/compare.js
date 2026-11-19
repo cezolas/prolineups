@@ -124,7 +124,12 @@
       $("#cmpOut").dataset.roleSel = "1";
       $("#cmpOut").addEventListener("change", (e) => {
         if (e.target.id !== "cmRoleSel") return;
-        CMP_ROLE = e.target.value;
+        CMP_ROLE = e.target.value; CMP_PRO = null;
+        const sec = $("#cmpOut .cm-role"); if (sec) sec.outerHTML = roleBlock($("#cmpPlayer").value);
+      });
+      $("#cmpOut").addEventListener("click", (e) => {   // a pro's name: his column in the table (click again to remove)
+        const b = e.target.closest("[data-pro]"); if (!b) return;
+        CMP_PRO = CMP_PRO === b.dataset.pro ? null : b.dataset.pro;
         const sec = $("#cmpOut .cm-role"); if (sec) sec.outerHTML = roleBlock($("#cmpPlayer").value);
       });
     }
@@ -254,6 +259,7 @@
     return best;
   }
   let CMP_ROLE = null;   // the role chosen in the "compare with" filter (null = the guessed one)
+  let CMP_PRO = null;    // slug of the pro whose numbers are shown as an extra column
   function roleBlock(who) {
     const R = DATA.roles; if (!R) return "";
     const me = myFeatures(who), guess = guessRole(me); if (!guess) return "";
@@ -265,17 +271,20 @@
     const num = (v, n = 2) => (v == null ? "–" : v.toFixed(n).replace(".", S.dec));
     const units = v => (v == null ? "–" : Math.round(v));
     const cmp = (a, b) => { if (a == null || !b) return ""; const r = a / b; return r >= 1.15 ? ' <span class="up">▲</span>' : r <= 0.85 ? ' <span class="down">▼</span>' : ""; };
-    const row = (l, a, b, fmt, c) => `<tr><td>${esc(l)}</td><td><b>${fmt(a)}</b>${cmp(a, b)}</td><td>${fmt(b)}</td><td>${fmt(c)}</td></tr>`;
-    const pros = (p.players || []).map(x => x.slug ? `<a href="/${lang}/${S.player_path}/${x.slug}/">${esc(x.name)}</a>` : esc(x.name)).join(", ");
+    const pro = CMP_PRO && R.players ? R.players[CMP_PRO] : null;
+    const proVal = (k, t) => (pro ? (t ? (pro.per_type || {})[t] : pro[k]) : undefined);
+    const row = (l, a, b, fmt, c, pv) => `<tr><td>${esc(l)}</td><td><b>${fmt(a)}</b>${cmp(a, b)}</td><td>${fmt(b)}</td><td>${fmt(c)}</td>${pro ? `<td class="cm-pro">${fmt(pv)}</td>` : ""}</tr>`;
+    const pros = (p.players || []).map(x => x.slug && R.players && R.players[x.slug]
+      ? `<button type="button" class="pro-pick${x.slug === CMP_PRO ? " on" : ""}" data-pro="${esc(x.slug)}">${esc(x.name)}</button>` : esc(x.name)).join(" ");
     return `<section class="cm-role"><h2>${esc(S.role_h)}</h2>
       <p class="cm-role-name"><span class="role role-${guess}">${esc(R.names[guess])}</span> <span class="muted">${esc(S.role_why[guess] || "")}</span></p>
       <label class="fc-cmp">${esc(S.cmp_with)} <select id="cmRoleSel">${opts}</select></label>
-      <p class="muted small">${esc(S.role_pros.replace("{r}", name))} ${pros}</p>
-      <div class="table-wrap"><table class="uses an-table cm-table"><thead><tr><th></th><th>${esc(S.you)}</th><th>${esc(S.role_avg.replace("{r}", name))}</th><th>${esc(S.all_avg)}</th></tr></thead><tbody>
-        ${row(S.f_kpr, me.kpr, p.kpr, num, all.kpr)}${row("K/D", me.kd, p.kd, num, all.kd)}${row("HS%", me.hs, p.hs, pct, all.hs)}
-        ${row(S.f_open, me.open_t, p.open_t, pct, all.open_t)}${row(S.f_lurk, me.lurk, p.lurk, units, all.lurk)}${row(S.f_awp, me.awp, p.awp, pct, all.awp)}
-        ${row(S.r_per_round, me.util, p.util, num, all.util)}
-        ${["smoke", "flash", "molotov", "he"].map(t => row(`${S.types[t]} ${S.r_per_round_short}`, me.per_type[t], p.per_type[t], num, (all.per_type || {})[t])).join("")}
+      <p class="muted small">${esc(S.role_pros.replace("{r}", name))} <span class="pro-picks">${pros}</span> <span class="muted">${esc(S.pro_pick_help)}</span></p>
+      <div class="table-wrap"><table class="uses an-table cm-table"><thead><tr><th></th><th>${esc(S.you)}</th><th>${esc(S.role_avg.replace("{r}", name))}</th><th>${esc(S.all_avg)}</th>${pro ? `<th class="cm-pro">${esc(pro.name)} <a href="/${lang}/${S.player_path}/${CMP_PRO}/" title="${esc(S.pro_page)}">↗</a></th>` : ""}</tr></thead><tbody>
+        ${row(S.f_kpr, me.kpr, p.kpr, num, all.kpr, proVal("kpr"))}${row("K/D", me.kd, p.kd, num, all.kd, proVal("kd"))}${row("HS%", me.hs, p.hs, pct, all.hs, proVal("hs"))}
+        ${row(S.f_open, me.open_t, p.open_t, pct, all.open_t, proVal("open_t"))}${row(S.f_lurk, me.lurk, p.lurk, units, all.lurk, proVal("lurk"))}${row(S.f_awp, me.awp, p.awp, pct, all.awp, proVal("awp"))}
+        ${row(S.r_per_round, me.util, p.util, num, all.util, proVal("util"))}
+        ${["smoke", "flash", "molotov", "he"].map(t => row(`${S.types[t]} ${S.r_per_round_short}`, me.per_type[t], p.per_type[t], num, (all.per_type || {})[t], proVal(null, t))).join("")}
       </tbody></table></div>
       <p class="muted small">${esc(S.role_help)}</p></section>`;
   }

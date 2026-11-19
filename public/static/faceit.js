@@ -60,14 +60,17 @@
   let SEL = null;   // "all" or a role: which pros the rating and the bars compare with
   const popFor = (pop) => (SEL && SEL !== "all" && pop.by_role && pop.by_role[SEL] ? pop.by_role[SEL] : pop);
 
-  function card(pf, based) {
-    const r = pf.rating, cls = r >= 1.1 ? "good" : r < .9 ? "bad" : "";
-    return `<div class="perf-card"><div class="perf-rating" title="${esc(S.perf_help)}"><span>${esc(S.rating)}</span><b class="${cls}">${num(r)}</b></div>
-      ${Object.keys(CATS).map((c) => { const v = pf.cats[c];
-        return `<div class="perf-row" title="${esc(S.tips[c])}"><span>${esc(S.cats[c])}</span><b>${v}<small>/100</small></b>
-          <i class="perf-bar"><i style="width:${v}%" class="${v >= 70 ? "hi" : v < 30 ? "lo" : ""}"></i></i></div>`; }).join("")}
+  function card(pf, based, pro) {   // pro: {name, pf} = a chosen pro, shown next to you (value + marker on the bar)
+    const r = pf.rating, cls = (x) => (x >= 1.1 ? "good" : x < .9 ? "bad" : "");
+    return `<div class="perf-card${pro ? " vs" : ""}">
+      ${pro ? `<div class="perf-vs muted small"><span>${esc(S.you)}</span><span class="pro">${esc(pro.name)}</span></div>` : ""}
+      <div class="perf-rating" title="${esc(S.perf_help)}"><span>${esc(S.rating)}</span><span><b class="${cls(r)}">${num(r)}</b>${pro ? ` <b class="pro">${num(pro.pf.rating)}</b>` : ""}</span></div>
+      ${Object.keys(CATS).map((c) => { const v = pf.cats[c], pv = pro ? pro.pf.cats[c] : null;
+        return `<div class="perf-row" title="${esc(S.tips[c])}"><span>${esc(S.cats[c])}</span><b>${v}<small>/100</small>${pro ? ` <span class="pro">${pv}</span>` : ""}</b>
+          <i class="perf-bar"><i style="width:${v}%" class="${v >= 70 ? "hi" : v < 30 ? "lo" : ""}"></i>${pro ? `<em class="pro-mark" style="left:${pv}%"></em>` : ""}</i></div>`; }).join("")}
       <div class="muted small perf-based">${esc(based)}</div></div>`;
   }
+  let PRO = null;   // slug of the pro chosen to compare with (click on his name)
 
   fetch("/api/faceit").then(async (r) => {
     $("#fcLoading").hidden = true;
@@ -116,20 +119,30 @@
       const roles = Object.keys(pop.by_role || {});
       const opts = [["all", S.cmp_all], ...roles.map((r) => [r, S.cmp_role.replace("{r}", S.roles[r] || r)])]
         .map(([v, l]) => `<option value="${v}"${v === SEL ? " selected" : ""}>${esc(l)}${v === myRole ? " ★" : ""}</option>`).join("");
-      const rp = myRole && pop.roles && pop.roles.profiles[myRole];
-      const pros = rp ? (rp.players || []).map((x) => (x.slug ? `<a href="/${lang}/${S.player_path}/${x.slug}/">${esc(x.name)}</a>` : esc(x.name))).join(", ") : "";
+      const grp = SEL && SEL !== "all" ? SEL : myRole;   // the pros listed: the chosen group, or your likely role
+      const rp = grp && pop.roles && pop.roles.profiles[grp];
+      const pros = rp ? (rp.players || []).map((x) => (x.slug && (pop.pros || {})[x.slug]
+        ? `<button type="button" class="pro-pick${x.slug === PRO ? " on" : ""}" data-pro="${esc(x.slug)}">${esc(x.name)}</button>` : esc(x.name))).join(" ") : "";
+      const pr = PRO && (pop.pros || {})[PRO];
+      const proCard = pr ? { name: pr.name, pf: profile(popFor(pop), pr.m) } : null;
       const roleBox = myRole ? `<div class="fc-role"><h3>${esc(S.role_h)}: <span class="role role-${myRole}">${esc(S.roles[myRole] || myRole)}</span></h3>
         <p class="muted small">${esc((S.role_why || {})[myRole] || "")} ${esc(S.role_help)}</p>
-        ${pros ? `<p class="small">${esc(S.role_pros)} ${pros}</p>` : ""}</div>` : "";
+        </div>` : "";
+      const prosBox = pros ? `<p class="small pro-picks">${esc(grp === myRole ? S.role_pros : S.group_pros)} ${pros}
+        <span class="muted">${esc(S.pro_pick_help)}</span>${pr ? ` <a class="small" href="/${lang}/${S.player_path}/${PRO}/">${esc(S.pro_page)} ↗</a>` : ""}</p>` : "";
       perf = `<section class="perf-sec"><h2>${esc(S.perf_h)}</h2>${roleBox}
         <label class="fc-cmp">${esc(S.cmp_with)} <select id="fcCmp">${opts}</select></label>
-        ${card(profile(popFor(pop), m), S.perf_based.replace("{m}", ext.length).replace("{r}", m.rounds))}
+        ${prosBox}
+        ${card(profile(popFor(pop), m), S.perf_based.replace("{m}", ext.length).replace("{r}", m.rounds), proCard)}
         <p class="muted small">${esc(SEL === "all" ? S.perf_help : S.perf_role)}</p></section>`;
     } else if (pop && (f.matches || []).length) {
       perf = `<section class="perf-sec"><h2>${esc(S.perf_h)}</h2><p class="muted">${esc(S.no_perf)}</p></section>`;
     }
     $("#fcOutBox").innerHTML = head + kpis + perf + maps + ms;
     const sel = $("#fcCmp");
-    if (sel) sel.addEventListener("change", () => { SEL = sel.value; render(f, pop); });
+    if (sel) sel.addEventListener("change", () => { SEL = sel.value; PRO = null; render(f, pop); });
+    root.querySelectorAll("[data-pro]").forEach((b) => b.addEventListener("click", () => {
+      PRO = PRO === b.dataset.pro ? null : b.dataset.pro; render(f, pop);
+    }));
   }
 })();
