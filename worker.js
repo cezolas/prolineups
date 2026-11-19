@@ -7,6 +7,7 @@
 //   /auth/faceit            -> FACEIT sign-in (OAuth2 + PKCE); links to the signed-in account or creates a FACEIT one
 //   /auth/steam             -> Steam sign-in (OpenID 2.0, verified with Steam's check_authentication); links or creates
 //   /auth/steam/callback    -> optional secret STEAM_API_KEY: the Steam name and avatar (GetPlayerSummaries)
+//   /api/steam              -> GET: the user's CS2 lifetime stats from Steam (GetUserStatsForGame, cached 30 min)
 //   /auth/faceit/callback   -> exchange the code, read the FACEIT profile, set the session
 //   /api/faceit             -> GET: the user's FACEIT profile, lifetime + per-map stats and last matches (Data API, cached 10 min)
 //   /api/react?k=<key>      -> GET: likes of one grenade/tactic, whether this visitor liked it, whether the admin removed it
@@ -187,6 +188,39 @@ async function faceitCallback(req, env, url) {
   h.append("set-cookie", setCookie(FSTATE, "", 0));
   return new Response(null, { status: 302, headers: h });
 }
+// ---------------------------------------------------------------- "Minha Steam": CS2 stats of the linked Steam account
+// Steam keeps lifetime totals for the whole account (every mode together) and a summary of the last match. They only
+// come back when the profile's "Game details" are public; otherwise Steam answers 403 and the page explains how to open them.
+async function steamData(env, sid) {
+  const cacheKey = `scache:${sid}`;
+  const cached = await env.USERS.get(cacheKey, "json");
+  if (cached && cached.at > Date.now() - 30 * 60 * 1000) return cached.data;
+  const r = await fetch(`https://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v2/?appid=730&key=${env.STEAM_API_KEY}&steamid=${sid}`).catch(() => null);
+  if (!r) return { error: "unavailable" };
+  if (r.status === 403 || r.status === 400 || r.status === 401) return { error: "private" };
+  if (!r.ok) return { error: "unavailable" };
+  const j = await r.json().catch(() => null);
+  const st = {};
+  for (const x of ((j && j.playerstats && j.playerstats.stats) || [])) st[x.name] = x.value;
+  if (!st.total_kills) return { error: "private" };
+  const n = (k) => +st[k] || 0;
+  const maps = Object.keys(st).filter((k) => k.startsWith("total_rounds_map_de_")).map((k) => {
+    const m = k.replace("total_rounds_map_", "");
+    return { map: m, rounds: n(k), wins: n(`total_wins_map_${m}`) };
+  }).filter((m) => m.rounds >= 10).sort((a, b) => b.rounds - a.rounds);
+  const data = {
+    life: { kills: n("total_kills"), deaths: n("total_deaths"), rounds: n("total_rounds_played"), hs: n("total_kills_headshot"),
+            awp: n("total_kills_awp") + n("total_kills_ssg08") + n("total_kills_g3sg1") + n("total_kills_scar20"),
+            damage: n("total_damage_done"), mvps: n("total_mvps"), matches: n("total_matches_played"), wins: n("total_matches_won"),
+            hours: Math.round(n("total_time_played") / 3600), plants: n("total_planted_bombs"), defuses: n("total_defused_bombs") },
+    last: st.last_match_rounds ? { kills: n("last_match_kills"), deaths: n("last_match_deaths"), rounds: n("last_match_rounds"),
+            damage: n("last_match_damage"), mvps: n("last_match_mvps"), won: n("last_match_wins") > n("last_match_rounds") / 2 } : null,
+    maps,
+  };
+  try { await env.USERS.put(cacheKey, JSON.stringify({ at: Date.now(), data }), { expirationTtl: 3600 }); } catch (e) {}
+  return data;
+}
+
 // ---------------------------------------------------------------- Steam (OpenID 2.0: no app registration, no secret)
 const STEAM_OP = "https://steamcommunity.com/openid/login";
 const steamReady = (env) => !!(env.SESSION_SECRET && env.USERS);
@@ -404,7 +438,7 @@ async function api(req, env, url) {
       const u = await env.USERS.get(`user:${sub}`, "json");
       const extra = u && u.faceit ? [env.USERS.delete(`faceit:${u.faceit.id}`), env.USERS.delete(`fcache:${u.faceit.id}`)] : [];
       if (u && u.google && u.google.sub) extra.push(env.USERS.delete(`google:${u.google.sub}`));
-      if (u && u.steam && u.steam.id) extra.push(env.USERS.delete(`steam:${u.steam.id}`));
+      if (u && u.steam && u.steam.id) extra.push(env.USERS.delete(`steam:${u.steam.id}`), env.USERS.delete(`scache:${u.steam.id}`));
       if (env.DB) await env.DB.prepare("DELETE FROM events WHERE sub = ?").bind(sub).run().catch(() => {});
       await Promise.all([env.USERS.delete(`user:${sub}`), env.USERS.delete(`premium:${sub}`), ...extra, ...[...DATA_KEYS].map((k) => env.USERS.delete(`data:${sub}:${k}`))]);
       return json({ deleted: true }, 200, { "set-cookie": setCookie(COOKIE, "", 0) });
@@ -426,6 +460,15 @@ async function api(req, env, url) {
     try { const b = JSON.parse(raw); items = Array.isArray(b) ? b : [b]; } catch { return json({ error: "invalid json" }, 400); }
     for (const it of items.slice(0, 10)) await logEvent(env, req, sub, it && it.k, it && it.p, it && it.d, it && it.l);
     return new Response(null, { status: 204 });
+  }
+  if (url.pathname === "/api/steam") {
+    if (!sub) return json({ error: "not signed in", steam_login: steamReady(env) }, 401);
+    const u = await env.USERS.get(`user:${sub}`, "json");
+    if (!u || !u.steam || !u.steam.id) return json({ error: "steam not linked", steam_login: steamReady(env) }, 404);
+    if (!env.STEAM_API_KEY) return json({ error: "not configured" }, 503);
+    const d = await steamData(env, u.steam.id);
+    if (d.error) return json({ error: d.error, steam: { name: u.steam.name, picture: u.steam.picture } }, d.error === "private" ? 403 : 502);
+    return json({ steam: { name: u.steam.name, picture: u.steam.picture, id: u.steam.id, ...d } });
   }
   if (url.pathname === "/api/faceit") {
     if (!sub) return json({ error: "not signed in" }, 401);

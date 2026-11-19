@@ -1144,3 +1144,5 @@ thead th[aria-sort="ascending"]::after { content: " ▲"; }
 .rv-ctrl input[type=range] { flex: 1; }
 .rv-time { font-variant-numeric: tabular-nums; font-weight: 700; min-width: 42px; }
 @media (max-width: 760px) { .rv-wrap { grid-template-columns: 1fr; } .rv-feed { max-height: 260px; } }
+
+.st-warn { color: #f5c64a; max-width: 760px; }
