@@ -96,7 +96,7 @@
     const menu = document.getElementById("meMenu");
     if (!menu || !meBtn) return;
     const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v || ""; };
-    set("meName", u.name || (u.faceit && u.faceit.nickname) || "");
+    set("meName", u.name || (u.faceit && u.faceit.nickname) || (u.steam && (u.steam.name || "Steam")) || "");
     set("meMail", u.email || "");
     const plan = document.getElementById("mePlan");
     if (plan) { plan.textContent = u.premium ? plan.dataset.premium : plan.dataset.free; plan.classList.toggle("on", !!u.premium); }
@@ -125,7 +125,7 @@
     } else if (r.status === 401 && j.configured !== false && login) {
       login.hidden = false;
       login.href = `/${document.documentElement.lang.startsWith("pt") ? "pt" : "en"}/${login.dataset.account}/?next=${encodeURIComponent(location.pathname)}`;
-      PN.loginOptions = { google: j.google !== false, faceit: !!j.faceit_login };
+      PN.loginOptions = { google: j.google !== false, faceit: !!j.faceit_login, steam: !!j.steam_login };
       document.dispatchEvent(new CustomEvent("pn:me", { detail: null }));
     } else {
       document.dispatchEvent(new CustomEvent("pn:me", { detail: null }));

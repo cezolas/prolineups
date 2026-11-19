@@ -5,6 +5,8 @@
 //   /api/me                 -> GET: who is signed in (401 if nobody) · DELETE: delete the account and its data (LGPD)
 //   /api/data/<favs|plan>   -> GET/PUT: the user's saved favourites / training-plan progress (JSON, max 100 KB)
 //   /auth/faceit            -> FACEIT sign-in (OAuth2 + PKCE); links to the signed-in account or creates a FACEIT one
+//   /auth/steam             -> Steam sign-in (OpenID 2.0, verified with Steam's check_authentication); links or creates
+//   /auth/steam/callback    -> optional secret STEAM_API_KEY: the Steam name and avatar (GetPlayerSummaries)
 //   /auth/faceit/callback   -> exchange the code, read the FACEIT profile, set the session
 //   /api/faceit             -> GET: the user's FACEIT profile, lifetime + per-map stats and last matches (Data API, cached 10 min)
 //   /api/react?k=<key>      -> GET: likes of one grenade/tactic, whether this visitor liked it, whether the admin removed it
@@ -18,7 +20,7 @@
 // FACEIT_API_KEY; KV binding USERS.
 // Stored per user (KV): Google id (sub), name, e-mail, photo URL, created/last login, favourites, plan progress.
 
-const COOKIE = "pn_s", STATE = "pn_st", FSTATE = "pn_fst", DAY = 86400;
+const COOKIE = "pn_s", STATE = "pn_st", FSTATE = "pn_fst", SSTATE = "pn_sst", DAY = 86400;
 const SESSION_DAYS = 30, DATA_KEYS = new Set(["favs", "plan", "tactics"]), MAX_DATA = 100 * 1024;
 
 const json = (obj, status = 200, headers = {}) =>
@@ -185,6 +187,69 @@ async function faceitCallback(req, env, url) {
   h.append("set-cookie", setCookie(FSTATE, "", 0));
   return new Response(null, { status: 302, headers: h });
 }
+// ---------------------------------------------------------------- Steam (OpenID 2.0: no app registration, no secret)
+const STEAM_OP = "https://steamcommunity.com/openid/login";
+const steamReady = (env) => !!(env.SESSION_SECRET && env.USERS);
+async function steamStart(req, env, url) {
+  if (!steamReady(env)) return new Response("Login Steam ainda não configurado.", { status: 503 });
+  const state = b64url(crypto.getRandomValues(new Uint8Array(24)));
+  const next = safeNext(url.searchParams.get("next"));
+  const go = new URL(STEAM_OP);
+  go.search = new URLSearchParams({
+    "openid.ns": "http://specs.openid.net/auth/2.0", "openid.mode": "checkid_setup",
+    "openid.return_to": `${url.origin}/auth/steam/callback?st=${state}`, "openid.realm": url.origin,
+    "openid.identity": "http://specs.openid.net/auth/2.0/identifier_select",
+    "openid.claimed_id": "http://specs.openid.net/auth/2.0/identifier_select",
+  }).toString();
+  return new Response(null, { status: 302, headers: { location: go.toString(), "set-cookie": setCookie(SSTATE, `${state}|${next}`, 600) } });
+}
+async function steamCallback(req, env, url) {
+  if (!steamReady(env)) return new Response("Login Steam ainda não configurado.", { status: 503 });
+  const [state, next] = (cookies(req)[SSTATE] || "").split("|");
+  const p = url.searchParams;
+  const bad = () => new Response("Login inválido, tente de novo.", { status: 400 });
+  if (!state || !safeEqual(state, p.get("st") || "") || p.get("openid.mode") !== "id_res") return bad();
+  if (p.get("openid.op_endpoint") !== STEAM_OP || !(p.get("openid.return_to") || "").startsWith(`${url.origin}/auth/steam/callback?`)) return bad();
+  const m = (p.get("openid.claimed_id") || "").match(/^https:\/\/steamcommunity\.com\/openid\/id\/(\d{17})$/);
+  if (!m || p.get("openid.identity") !== p.get("openid.claimed_id")) return bad();
+  // Steam itself confirms the signed answer (this is what makes the SteamID trustworthy)
+  const body = new URLSearchParams();
+  for (const [k, v] of p) if (k.startsWith("openid.")) body.set(k, v);
+  body.set("openid.mode", "check_authentication");
+  const check = await fetch(STEAM_OP, { method: "POST", headers: { "content-type": "application/x-www-form-urlencoded" }, body })
+    .then((r) => r.text()).catch(() => "");
+  if (!/is_valid\s*:\s*true/.test(check)) return new Response("A Steam não confirmou o login.", { status: 400 });
+  const sid = m[1];
+  let prof = {};
+  if (env.STEAM_API_KEY) {   // name + avatar (optional: without the key the account shows the SteamID)
+    const j = await fetch(`https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v2/?key=${env.STEAM_API_KEY}&steamids=${sid}`)
+      .then((r) => r.json()).catch(() => ({}));
+    prof = ((j.response || {}).players || [])[0] || {};
+  }
+  const steam = { id: sid, name: prof.personaname || null, picture: prof.avatarfull || null, linked: new Date().toISOString() };
+  let sub = await readSession(env, req);
+  const signedIn = !!sub, now = new Date().toISOString();
+  const owner = (await env.USERS.get(`steam:${sid}`)) || ((await env.USERS.get(`user:steam:${sid}`)) ? `steam:${sid}` : null);
+  if (signedIn && owner && owner !== sub) return linkError(next, "steam");  // that Steam account is someone else's
+  if (!sub) sub = owner || `steam:${sid}`;
+  const key = `user:${sub}`;
+  const stored = await env.USERS.get(key, "json");
+  const old = stored || { sub, created: now, name: steam.name, email: null, picture: steam.picture };
+  const sameLink = !!(old.steam && old.steam.id === sid);
+  old.steam = { ...steam, name: steam.name || (old.steam && old.steam.name) || null, picture: steam.picture || (old.steam && old.steam.picture) || null,
+                linked: sameLink ? old.steam.linked : steam.linked };
+  if (!old.name && steam.name) old.name = steam.name;
+  if (!old.picture && steam.picture) old.picture = steam.picture;
+  old.last_login = now;
+  await softPut(env, key, JSON.stringify(old), !!stored && sameLink);
+  if (owner !== sub) await env.USERS.put(`steam:${sid}`, sub);  // SteamID -> account, so a later Steam sign-in finds it
+  await logEvent(env, req, sub, signedIn ? "steam_link" : "login", null, "steam");
+  const h = new Headers({ location: safeNext(next) });
+  h.append("set-cookie", setCookie(COOKIE, await makeSession(env, sub), SESSION_DAYS * DAY));
+  h.append("set-cookie", setCookie(SSTATE, "", 0));
+  return new Response(null, { status: 302, headers: h });
+}
+
 async function faceitData(env, fid) {
   const cacheKey = `fcache:${fid}`;
   const cached = await env.USERS.get(cacheKey, "json");
@@ -251,7 +316,7 @@ async function faceitData(env, fid) {
 }
 
 // ---------------------------------------------------------------- activity log (D1, signed-in users only)
-const LOG_KINDS = new Set(["page", "video", "copy", "download", "demo", "login", "faceit_link", "google_link", "matchmode", "share", "fav"]);
+const LOG_KINDS = new Set(["page", "video", "copy", "download", "demo", "login", "faceit_link", "google_link", "steam_link", "matchmode", "share", "fav"]);
 function device(req) {
   const ua = req.headers.get("user-agent") || "";
   return /iPad|Tablet/i.test(ua) ? "tablet" : /Mobi|Android|iPhone/i.test(ua) ? "mobile" : "desktop";
@@ -333,11 +398,13 @@ async function api(req, env, url) {
     if (r) return r;
   }
   if (url.pathname === "/api/me") {
-    if (!sub) return json({ error: "not signed in", configured: configured(env) || faceitReady(env), google: configured(env), faceit_login: faceitReady(env) }, 401);
+    if (!sub) return json({ error: "not signed in", configured: configured(env) || faceitReady(env) || steamReady(env), google: configured(env),
+                            faceit_login: faceitReady(env), steam_login: steamReady(env) }, 401);
     if (req.method === "DELETE") {  // LGPD: delete the account and everything stored for it
       const u = await env.USERS.get(`user:${sub}`, "json");
       const extra = u && u.faceit ? [env.USERS.delete(`faceit:${u.faceit.id}`), env.USERS.delete(`fcache:${u.faceit.id}`)] : [];
       if (u && u.google && u.google.sub) extra.push(env.USERS.delete(`google:${u.google.sub}`));
+      if (u && u.steam && u.steam.id) extra.push(env.USERS.delete(`steam:${u.steam.id}`));
       if (env.DB) await env.DB.prepare("DELETE FROM events WHERE sub = ?").bind(sub).run().catch(() => {});
       await Promise.all([env.USERS.delete(`user:${sub}`), env.USERS.delete(`premium:${sub}`), ...extra, ...[...DATA_KEYS].map((k) => env.USERS.delete(`data:${sub}:${k}`))]);
       return json({ deleted: true }, 200, { "set-cookie": setCookie(COOKIE, "", 0) });
@@ -346,7 +413,8 @@ async function api(req, env, url) {
     if (!u) return json({ error: "not signed in" }, 401, { "set-cookie": setCookie(COOKIE, "", 0) });
     return json({ user: { name: u.name, email: u.email, picture: u.picture, created: u.created,
                           faceit: u.faceit ? { nickname: u.faceit.nickname, picture: u.faceit.picture } : null,
-                          google: u.google ? { email: u.google.email } : (String(sub).startsWith("faceit:") ? null : { email: u.email }),
+                          steam: u.steam ? { id: u.steam.id, name: u.steam.name, picture: u.steam.picture } : null,
+                          google: u.google ? { email: u.google.email } : (/^(faceit|steam):/.test(String(sub)) ? null : { email: u.email }),
                           premium: await isPremium(env, sub), admin: await isAdmin(env, u) },
                   faceit_login: faceitReady(env) });
   }
@@ -465,6 +533,8 @@ export default {
       if (url.pathname === "/auth/google/callback") return await authCallback(req, env, url);
       if (url.pathname === "/auth/faceit") return await faceitStart(req, env, url);
       if (url.pathname === "/auth/faceit/callback") return await faceitCallback(req, env, url);
+      if (url.pathname === "/auth/steam") return await steamStart(req, env, url);
+      if (url.pathname === "/auth/steam/callback") return await steamCallback(req, env, url);
       if (url.pathname.startsWith("/v/")) return await shortLink(env, url);
       if (url.pathname === "/auth/logout") {
         const lang = (url.searchParams.get("lang") || "pt").slice(0, 2);

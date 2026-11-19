@@ -1123,3 +1123,7 @@ thead th[aria-sort="ascending"]::after { content: " ▲"; }
 .perf-bar { position: relative; }
 .perf-bar .pro-mark { position: absolute; top: -3px; width: 3px; height: 12px; margin-left: -1px; background: #fff; border-radius: 2px; box-shadow: 0 0 0 1px #000; }
 .perf-card.vs .perf-bar { overflow: visible; } .perf-card.vs .perf-bar > i:first-child { border-radius: 3px; }
+
+.steam-btn { background: #171a21; color: #fff; border-color: #2a475e; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; }
+.steam-btn:hover { background: #1b2838; border-color: #66c0f4; }
+.acc-prov.s { background: #171a21; color: #66c0f4; }
