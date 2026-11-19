@@ -169,7 +169,7 @@
   </section>
   <section id="view-social" hidden>
     <h2>Curadoria social</h2>
-    <div class="so-tabs" role="tablist"><button type="button" class="so-tab on" data-kind="grenade" role="tab">Granadas</button><button type="button" class="so-tab" data-kind="exec" role="tab">Táticas de pro</button></div>
+    <div class="so-tabs" role="tablist"><button type="button" class="so-tab on" data-kind="grenade" role="tab">Granadas</button><button type="button" class="so-tab" data-kind="combo" role="tab">Combos</button><button type="button" class="so-tab" data-kind="exec" role="tab">Táticas de pro</button></div>
     <div class="muted">Granadas com vídeo que podem virar Short / Reel / TikTok (vídeo ensinando + chamada para o site).
       <b>Aprovar</b> põe na fila: no PC, <code>python pipeline/social.py --approved</code> gera o vídeo 9:16 com legenda e o texto do post.
       Depois de postar, marque <b>Publicado</b> com os links. A ordem sugerida começa pelas Meta Grenades.</div>
@@ -467,8 +467,8 @@ function renderSocial() {
   const mine = SO.items.filter(x => (x.kind || "grenade") === SO.kind);
   for (const x of mine) c[(SO.dec[x.k] || {}).status || ""]++;
   $("soInfo").textContent = `${mine.length} candidatas · ${c[""]} para decidir · ${c.aprovado} na fila · ${c.publicado} publicadas`;
-  $("soType").hidden = SO.kind === "exec";
-  const st = $("soStatus").value, mp = $("soMap").value, ty = SO.kind === "exec" ? "" : $("soType").value;
+  $("soType").hidden = SO.kind !== "grenade";
+  const st = $("soStatus").value, mp = $("soMap").value, ty = SO.kind !== "grenade" ? "" : $("soType").value;
   const rows = mine.filter(x => ((SO.dec[x.k] || {}).status || "") === st && (!mp || x.map === mp) && (!ty || x.type === ty)).slice(0, 60);
   $("soList").innerHTML = rows.map(x => { const dd = SO.dec[x.k] || {}, nets = dd.nets || ["yt", "ig", "tt"];
     return `<div class="so-card" data-k="${esc(x.k)}">
@@ -477,6 +477,8 @@ function renderSocial() {
         <b><a href="https://pronades.com.br${esc(x.url)}" target="_blank" rel="noopener" style="color:inherit">${esc(x.title)}</a>${dd.title ? ` <span class="muted" style="font-weight:400">→ post: ${esc(dd.title)}</span>` : ""}</b>
         <div class="muted" style="font-size:12px">${x.kind === "exec"
           ? `${esc(x.map)} · tática ${esc(x.side)} · ${x.n_parts} granadas · vista ${x.uses}x · ${x.teams} times`
+          : x.kind === "combo"
+          ? `${esc(x.map)} · combo ${esc(x.side)} · ${(x.types || []).map(esc).join(" + ")} · ${x.uses} usos · ${x.teams} times${x.player ? ` · vídeo do ${esc(x.player)}` : ""}`
           : `${esc(x.map)} · ${esc(x.type)} · ${esc(x.side)} · ${x.uses} usos · ${x.teams} times${x.meta ? ` · <b style="color:#f5c64a">Meta #${x.meta}</b>` : ""}${x.player ? ` · vídeo do ${esc(x.player)}` : ""}`}</div>
         ${dd.status ? `<div style="font-size:12px;margin-top:2px"><span class="pill${dd.status === "publicado" ? " ok" : ""}">${SO_ST[dd.status]}</span> <span class="muted">${esc(dd.by || "")}</span></div>` : ""}
         <div class="so-nets">${Object.entries(NETS).map(([n, l]) => `<label><input type="checkbox" data-net="${n}"${nets.includes(n) ? " checked" : ""}> ${l}</label>`).join("")}</div>
