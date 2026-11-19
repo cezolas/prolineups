@@ -1109,3 +1109,5 @@ thead th[aria-sort="ascending"]::after { content: " ▲"; }
 .combo-line .me { font-weight: 700; }
 .an-table b.good { color: #5fd068; } .an-table b.bad { color: #ff6b6b; }
 #fcOutBox .perf-sec .perf-card { max-width: 420px; }
+.fc-role { margin: 6px 0 10px; } .fc-role h3 { margin: 0 0 4px; font-size: 16px; }
+.fc-cmp { display: inline-flex; gap: 8px; align-items: center; margin: 4px 0 10px; font-weight: 700; } .fc-cmp select { padding: 6px 8px; border-radius: 8px; background: var(--panel2); color: inherit; border: 1px solid var(--line); }

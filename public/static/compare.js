@@ -120,6 +120,14 @@
       return `<li class="cm none">${head}<div><b>${esc(S.none_t)}</b></div><div class="muted small">${esc(S.none_d)}</div></li>`;
     };
     const section = (k, title) => mine.some(x => x.m.kind === k) ? `<section><h2>${esc(title)} (${n(k)})</h2><ul class="cm-list">${mine.filter(x => x.m.kind === k).map(card).join("")}</ul></section>` : "";
+    if (!$("#cmpOut").dataset.roleSel) {   // "compare with": swap the role block only
+      $("#cmpOut").dataset.roleSel = "1";
+      $("#cmpOut").addEventListener("change", (e) => {
+        if (e.target.id !== "cmRoleSel") return;
+        CMP_ROLE = e.target.value;
+        const sec = $("#cmpOut .cm-role"); if (sec) sec.outerHTML = roleBlock($("#cmpPlayer").value);
+      });
+    }
     $("#cmpOut").innerHTML = roleBlock(who) + statsBlock(who) + heatBlock(mine) + `
       <div class="kpis">
         <div class="kpi"><div class="kpi-v">${mine.length}</div><div class="kpi-l">${esc(S.k_total)}</div></div>
@@ -245,10 +253,14 @@
     }
     return best;
   }
+  let CMP_ROLE = null;   // the role chosen in the "compare with" filter (null = the guessed one)
   function roleBlock(who) {
     const R = DATA.roles; if (!R) return "";
-    const me = myFeatures(who), role = guessRole(me); if (!role) return "";
+    const me = myFeatures(who), guess = guessRole(me); if (!guess) return "";
+    const role = CMP_ROLE && R.profiles[CMP_ROLE] ? CMP_ROLE : guess;
     const p = R.profiles[role], name = R.names[role], all = R.profiles.all || {};
+    const opts = Object.keys(R.profiles).filter(r => r !== "all").map(r =>
+      `<option value="${r}"${r === role ? " selected" : ""}>${esc(R.names[r] || r)}${r === guess ? " ★" : ""}</option>`).join("");
     const pct = v => (v == null ? "–" : Math.round(v * 100) + "%");
     const num = (v, n = 2) => (v == null ? "–" : v.toFixed(n).replace(".", S.dec));
     const units = v => (v == null ? "–" : Math.round(v));
@@ -256,7 +268,8 @@
     const row = (l, a, b, fmt, c) => `<tr><td>${esc(l)}</td><td><b>${fmt(a)}</b>${cmp(a, b)}</td><td>${fmt(b)}</td><td>${fmt(c)}</td></tr>`;
     const pros = (p.players || []).map(x => x.slug ? `<a href="/${lang}/${S.player_path}/${x.slug}/">${esc(x.name)}</a>` : esc(x.name)).join(", ");
     return `<section class="cm-role"><h2>${esc(S.role_h)}</h2>
-      <p class="cm-role-name"><span class="role role-${role}">${esc(name)}</span> <span class="muted">${esc(S.role_why[role] || "")}</span></p>
+      <p class="cm-role-name"><span class="role role-${guess}">${esc(R.names[guess])}</span> <span class="muted">${esc(S.role_why[guess] || "")}</span></p>
+      <label class="fc-cmp">${esc(S.cmp_with)} <select id="cmRoleSel">${opts}</select></label>
       <p class="muted small">${esc(S.role_pros.replace("{r}", name))} ${pros}</p>
       <div class="table-wrap"><table class="uses an-table cm-table"><thead><tr><th></th><th>${esc(S.you)}</th><th>${esc(S.role_avg.replace("{r}", name))}</th><th>${esc(S.all_avg)}</th></tr></thead><tbody>
         ${row(S.f_kpr, me.kpr, p.kpr, num, all.kpr)}${row("K/D", me.kd, p.kd, num, all.kd)}${row("HS%", me.hs, p.hs, pct, all.hs)}

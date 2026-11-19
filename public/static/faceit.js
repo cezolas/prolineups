@@ -40,6 +40,26 @@
     for (const [c, ws] of Object.entries(CATS)) cats[c] = Math.round(ws.reduce((a, [k, w]) => a + pct(pop, k, m[k]) * w, 0));
     return { rating, cats };
   }
+  // ---- likely role (same idea as "compare my demo", without positions: FACEIT has none)
+  function roleFeatures(ms) {
+    let k = 0, sk = 0, ec = 0, uc = 0, r = 0;
+    for (const m of ms) { k += m.k || 0; sk += m.x.sk; ec += m.x.ec; uc += m.x.uc; r += m.rounds; }
+    return { awp: k ? sk / k : 0, open_t: r ? ec / r : 0, util: r ? uc / r : 0 };
+  }
+  function guessRole(R, me) {
+    if (!R || !R.profiles) return null;
+    if (me.awp >= 0.25 && R.profiles.awp) return "awp";
+    let best = null, bestD = Infinity;
+    for (const role of ["entry", "lurker", "support", "rifler"]) {
+      const p = R.profiles[role]; if (!p) continue;
+      const dd = Math.hypot(...["open_t", "util"].map((f) => (me[f] - p[f]) / (R.spread[f] || 1)));
+      if (dd < bestD) { bestD = dd; best = role; }
+    }
+    return best;
+  }
+  let SEL = null;   // "all" or a role: which pros the rating and the bars compare with
+  const popFor = (pop) => (SEL && SEL !== "all" && pop.by_role && pop.by_role[SEL] ? pop.by_role[SEL] : pop);
+
   function card(pf, based) {
     const r = pf.rating, cls = r >= 1.1 ? "good" : r < .9 ? "bad" : "";
     return `<div class="perf-card"><div class="perf-rating" title="${esc(S.perf_help)}"><span>${esc(S.rating)}</span><b class="${cls}">${num(r)}</b></div>
@@ -60,7 +80,10 @@
 
   function render(f, pop) {
     const ext = (f.matches || []).filter((m) => m.x && m.rounds);
-    if (pop) for (const m of ext) m.rating = profile(pop, metrics([m])).rating;
+    const myRole = pop && ext.length ? guessRole(pop.roles, roleFeatures(ext)) : null;
+    if (SEL === null) SEL = "all";
+    const P = pop ? popFor(pop) : null;
+    for (const m of ext) m.rating = P ? profile(P, metrics([m])).rating : null;
     const L = f.lifetime || {};
     const recent = (L.recent || []).map((x) => `<span class="rr ${x === "1" ? "w" : "l"}">${x === "1" ? S.w : S.l}</span>`).join("");
     const head = `<div class="fc-head">
@@ -90,12 +113,23 @@
     let perf = "";
     if (pop && ext.length) {
       const m = metrics(ext);
-      perf = `<section class="perf-sec"><h2>${esc(S.perf_h)}</h2>
-        ${card(profile(pop, m), S.perf_based.replace("{m}", ext.length).replace("{r}", m.rounds))}
-        <p class="muted small">${esc(S.perf_help)}</p></section>`;
+      const roles = Object.keys(pop.by_role || {});
+      const opts = [["all", S.cmp_all], ...roles.map((r) => [r, S.cmp_role.replace("{r}", S.roles[r] || r)])]
+        .map(([v, l]) => `<option value="${v}"${v === SEL ? " selected" : ""}>${esc(l)}${v === myRole ? " ★" : ""}</option>`).join("");
+      const rp = myRole && pop.roles && pop.roles.profiles[myRole];
+      const pros = rp ? (rp.players || []).map((x) => (x.slug ? `<a href="/${lang}/${S.player_path}/${x.slug}/">${esc(x.name)}</a>` : esc(x.name))).join(", ") : "";
+      const roleBox = myRole ? `<div class="fc-role"><h3>${esc(S.role_h)}: <span class="role role-${myRole}">${esc(S.roles[myRole] || myRole)}</span></h3>
+        <p class="muted small">${esc((S.role_why || {})[myRole] || "")} ${esc(S.role_help)}</p>
+        ${pros ? `<p class="small">${esc(S.role_pros)} ${pros}</p>` : ""}</div>` : "";
+      perf = `<section class="perf-sec"><h2>${esc(S.perf_h)}</h2>${roleBox}
+        <label class="fc-cmp">${esc(S.cmp_with)} <select id="fcCmp">${opts}</select></label>
+        ${card(profile(popFor(pop), m), S.perf_based.replace("{m}", ext.length).replace("{r}", m.rounds))}
+        <p class="muted small">${esc(SEL === "all" ? S.perf_help : S.perf_role)}</p></section>`;
     } else if (pop && (f.matches || []).length) {
       perf = `<section class="perf-sec"><h2>${esc(S.perf_h)}</h2><p class="muted">${esc(S.no_perf)}</p></section>`;
     }
     $("#fcOutBox").innerHTML = head + kpis + perf + maps + ms;
+    const sel = $("#fcCmp");
+    if (sel) sel.addEventListener("change", () => { SEL = sel.value; render(f, pop); });
   }
 })();
