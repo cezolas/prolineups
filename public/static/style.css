@@ -1102,3 +1102,10 @@ thead th[aria-sort="ascending"]::after { content: " ▲"; }
 .perf-bar i { display: block; height: 100%; background: var(--accent); border-radius: 3px; }
 .perf-bar i.hi { background: #5fd068; } .perf-bar i.lo { background: #8a8f98; }
 .perf-based { margin-top: 6px; }
+
+/* grenade combos (several grenades from the same spot) */
+.badge.combo { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 800; }
+.combo-line { margin: 4px 0 10px; }
+.combo-line .me { font-weight: 700; }
+.an-table b.good { color: #5fd068; } .an-table b.bad { color: #ff6b6b; }
+#fcOutBox .perf-sec .perf-card { max-width: 420px; }

@@ -225,7 +225,12 @@ async function faceitData(env, fid) {
              won: myTeam ? (myTeam.team_stats || {})["Team Win"] === "1" : null,
              k: mine ? +mine.Kills : null, d: mine ? +mine.Deaths : null, a: mine ? +mine.Assists : null,
              kd: mine ? +mine["K/D Ratio"] : null, kr: mine ? +mine["K/R Ratio"] : null, hs: mine ? +mine["Headshots %"] : null,
-             adr: mine ? +(mine.ADR || mine["ADR"] || 0) || null : null, mvps: mine ? +mine.MVPs : null };
+             adr: mine ? +(mine.ADR || mine["ADR"] || 0) || null : null, mvps: mine ? +mine.MVPs : null,
+             x: mine && mine["Entry Count"] != null ? {   // extended stats: the "Nota Pronades" on the page
+               fk: +mine["First Kills"] || 0, ec: +mine["Entry Count"] || 0, ew: +mine["Entry Wins"] || 0,
+               c1: +mine["1v1Wins"] || 0, c2: +mine["1v2Wins"] || 0, sk: +mine["Sniper Kills"] || 0,
+               uc: +mine["Utility Count"] || 0, ef: +mine["Enemies Flashed"] || 0,
+               mk: (+mine["Double Kills"] || 0) + (+mine["Triple Kills"] || 0) + (+mine["Quadro Kills"] || 0) + (+mine["Penta Kills"] || 0) } : null };
   });
   const life = (stats && stats.lifetime) || {};
   const data = {
