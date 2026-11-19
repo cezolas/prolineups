@@ -6,6 +6,7 @@
   const $ = s => root.querySelector(s);
   const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   let DATA = null, FLIGHTS = [], MAP = null, EV = [], SAMPLES = [], FILE = "";
+  let WORKER = null;   // kept alive after the analysis: the 2D review (review.js) asks it for each round's positions
   const SAVE = "cmpLast";  // last analysed demo, kept in this browser so it is still there after leaving the page
   const dist = (a, b) => Math.hypot(a[0] - b[0], a[1] - b[1], (a[2] - b[2]) * 0.5);
   const clock = t => { const s = Math.floor(t / 64); return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`; };
@@ -16,7 +17,11 @@
   ["dragover", "dragenter"].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add("over"); }));
   ["dragleave", "drop"].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove("over"); }));
   drop.addEventListener("drop", e => { const f = e.dataTransfer.files[0]; if (f) read(f); });
-  $("#cmpPlayer").addEventListener("change", () => { try { localStorage.setItem("cmpPlayer", $("#cmpPlayer").value); } catch (e) {} render(); });
+  $("#cmpPlayer").addEventListener("change", () => {
+    try { localStorage.setItem("cmpPlayer", $("#cmpPlayer").value); } catch (e) {}
+    render();
+    if (window.PNReview) window.PNReview.player($("#cmpPlayer").value);
+  });
 
   (async function restore() {
     let saved = null;
@@ -30,6 +35,7 @@
     $("#cmpSaved").hidden = false;
     $("#cmpSavedName").textContent = FILE;
     players();
+    if (window.PNReview) window.PNReview.load({ worker: null });
   })();
   $("#cmpForget").addEventListener("click", () => {
     try { localStorage.removeItem(SAVE); } catch (e) {}
@@ -41,12 +47,14 @@
     $("#cmpOut").innerHTML = ""; $("#cmpPick").hidden = true;
     status(S.reading.replace("{mb}", Math.round(file.size / 1e6)));
     const buf = await file.arrayBuffer();
+    if (WORKER) { WORKER.terminate(); WORKER = null; }
     const w = new Worker(root.dataset.worker || "/static/compare-worker.js");
     w.onmessage = async e => {
       const d = e.data;
+      if (d.rid) return;   // an answer to the 2D review (review.js listens to those)
       if (d.stage) { status(S["stage_" + d.stage] || S.reading); return; }
-      w.terminate();
-      if (d.error) { status(d.error === "bz2" ? S.err_bz2 : S.err_parse.replace("{e}", d.error), true); return; }
+      if (d.error) { w.terminate(); status(d.error === "bz2" ? S.err_bz2 : S.err_parse.replace("{e}", d.error), true); return; }
+      WORKER = w;
       MAP = (d.header && d.header.map_name) || "";
       if (!DATA) DATA = await (await fetch(`/dados/comparar-${lang}.json`)).json();
       if (!DATA.maps[MAP]) { status(S.err_map.replace("{m}", MAP || "?"), true); return; }
@@ -56,6 +64,7 @@
       if (!FLIGHTS.length) { status(S.err_none, true); return; }
       status("");
       players();
+      if (window.PNReview) window.PNReview.load({ worker: w, events: EV, radar: DATA.maps[MAP].radar, player: $("#cmpPlayer").value });
     };
     w.onerror = () => status(S.err_parse.replace("{e}", "worker"), true);
     w.postMessage({ buf }, [buf]);

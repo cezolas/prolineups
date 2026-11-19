@@ -2,6 +2,7 @@
 /* global wasm_bindgen */
 importScripts("/static/vendor/demoparser2/demoparser2.js", "/static/vendor/fzstd/fzstd.js");
 let ready = null;
+let BYTES = null;   // the demo, kept for the 2D review (review.js asks for each round's positions)
 const init = () => (ready = ready || wasm_bindgen("/static/vendor/demoparser2/demoparser2_bg.wasm"));
 
 async function gunzip(buf) {
@@ -11,6 +12,15 @@ async function gunzip(buf) {
 }
 
 self.onmessage = async (e) => {
+  if (e.data.replay) {   // positions of the 10 players at these ticks (one round of the 2D review)
+    try {
+      const rows = wasm_bindgen.parseTicks(BYTES, ["X", "Y", "yaw", "team_num", "is_alive"], new Int32Array(e.data.replay))
+        .map((x) => (x instanceof Map ? Object.fromEntries(x) : x))
+        .map((r) => ({ tick: r.tick, name: r.name, X: r.X, Y: r.Y, yaw: r.yaw, team_num: r.team_num, is_alive: r.is_alive }));
+      self.postMessage({ rid: e.data.rid, replay: rows });
+    } catch (err) { self.postMessage({ rid: e.data.rid, replay: null, error: String(err && err.message || err) }); }
+    return;
+  }
   try {
     await init();
     let bytes = new Uint8Array(e.data.buf);
@@ -18,12 +28,14 @@ self.onmessage = async (e) => {
     // FACEIT now serves .dem.zst (Zstandard): decompress with fzstd (MIT, vendored)
     if (bytes[0] === 0x28 && bytes[1] === 0xb5 && bytes[2] === 0x2f && bytes[3] === 0xfd) { self.postMessage({ stage: "unzip" }); bytes = fzstd.decompress(bytes); }
     if (bytes[0] === 0x42 && bytes[1] === 0x5a && bytes[2] === 0x68) throw new Error("bz2");
+    BYTES = bytes;
     self.postMessage({ stage: "header" });
     const header = wasm_bindgen.parseHeader(bytes);
     self.postMessage({ stage: "grenades" });
     // events, not parseGrenades: the WASM binding of parseGrenades returns the player table, not the projectiles
     const ev = wasm_bindgen.parseEvents(bytes, ["grenade_thrown", "smokegrenade_detonate", "flashbang_detonate",
-      "hegrenade_detonate", "inferno_startburn", "player_death", "player_blind", "round_end", "round_freeze_end"], ["X", "Y", "Z", "team_num"], []);
+      "hegrenade_detonate", "inferno_startburn", "player_death", "player_blind", "round_end", "round_freeze_end",
+      "bomb_planted", "bomb_defused", "bomb_exploded", "round_announce_match_start", "begin_new_match"], ["X", "Y", "Z", "team_num"], []);
     const plain = x => (x instanceof Map ? Object.fromEntries(x) : x);
     const events = ev.map(plain);
     // some demos (e.g. FACEIT) have no grenade_thrown: rebuild it from weapon_fire of the grenade weapons
