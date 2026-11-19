@@ -69,6 +69,9 @@
   @media (max-width: 900px) { .shell { grid-template-columns: 1fr; } .grid { grid-template-columns: 1fr; } .mapbox { position: static; } }
 .pill { display:inline-block; padding:1px 8px; border-radius:10px; border:1px solid #556; font-size:12px; }
 .pill.ok { border-color:#3a8; color:#5c9; }
+.so-tabs { display: flex; gap: 6px; margin: 8px 0; }
+.so-tab { padding: 7px 14px; border: 1px solid #2a2f3a; border-radius: 8px; background: #151922; color: inherit; cursor: pointer; font-weight: 700; }
+.so-tab.on { background: #f5c64a; border-color: #f5c64a; color: #111; }
 .so-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); gap: 12px; margin-top: 10px; }
 .so-card { display: flex; gap: 12px; padding: 10px; border: 1px solid #2a2f3a; border-radius: 10px; background: #151922; }
 .so-card img { width: 96px; height: 170px; object-fit: cover; border-radius: 6px; background: #000; }
@@ -166,6 +169,7 @@
   </section>
   <section id="view-social" hidden>
     <h2>Curadoria social</h2>
+    <div class="so-tabs" role="tablist"><button type="button" class="so-tab on" data-kind="grenade" role="tab">Granadas</button><button type="button" class="so-tab" data-kind="exec" role="tab">Táticas de pro</button></div>
     <div class="muted">Granadas com vídeo que podem virar Short / Reel / TikTok (vídeo ensinando + chamada para o site).
       <b>Aprovar</b> põe na fila: no PC, <code>python pipeline/social.py --approved</code> gera o vídeo 9:16 com legenda e o texto do post.
       Depois de postar, marque <b>Publicado</b> com os links. A ordem sugerida começa pelas Meta Grenades.</div>
@@ -447,7 +451,7 @@ $("view-meta").addEventListener("click", async e => {
 });
 
 // ---------------------------------------------------------------- social media curation
-const SO = { items: [], dec: {} };
+const SO = { items: [], dec: {}, kind: "grenade" };
 const NETS = { yt: "YouTube", ig: "Instagram", tt: "TikTok" };
 const SO_ST = { aprovado: "Aprovado", publicado: "Publicado", pulado: "Pulado" };
 async function loadSocial() {
@@ -460,16 +464,20 @@ async function loadSocial() {
 }
 function renderSocial() {
   const c = { "": 0, aprovado: 0, publicado: 0, pulado: 0 };
-  for (const x of SO.items) c[(SO.dec[x.k] || {}).status || ""]++;
-  $("soInfo").textContent = `${SO.items.length} candidatas · ${c[""]} para decidir · ${c.aprovado} na fila · ${c.publicado} publicadas`;
-  const st = $("soStatus").value, mp = $("soMap").value, ty = $("soType").value;
-  const rows = SO.items.filter(x => ((SO.dec[x.k] || {}).status || "") === st && (!mp || x.map === mp) && (!ty || x.type === ty)).slice(0, 60);
+  const mine = SO.items.filter(x => (x.kind || "grenade") === SO.kind);
+  for (const x of mine) c[(SO.dec[x.k] || {}).status || ""]++;
+  $("soInfo").textContent = `${mine.length} candidatas · ${c[""]} para decidir · ${c.aprovado} na fila · ${c.publicado} publicadas`;
+  $("soType").hidden = SO.kind === "exec";
+  const st = $("soStatus").value, mp = $("soMap").value, ty = SO.kind === "exec" ? "" : $("soType").value;
+  const rows = mine.filter(x => ((SO.dec[x.k] || {}).status || "") === st && (!mp || x.map === mp) && (!ty || x.type === ty)).slice(0, 60);
   $("soList").innerHTML = rows.map(x => { const dd = SO.dec[x.k] || {}, nets = dd.nets || ["yt", "ig", "tt"];
     return `<div class="so-card" data-k="${esc(x.k)}">
       <a href="https://pronades.com.br/media/${esc(x.clip)}" target="_blank" rel="noopener" title="Ver o vídeo">${x.poster ? `<img src="https://pronades.com.br/media/${esc(x.poster)}" alt="" loading="lazy">` : ""}</a>
       <div class="so-body">
         <b><a href="https://pronades.com.br${esc(x.url)}" target="_blank" rel="noopener" style="color:inherit">${esc(x.title)}</a>${dd.title ? ` <span class="muted" style="font-weight:400">→ post: ${esc(dd.title)}</span>` : ""}</b>
-        <div class="muted" style="font-size:12px">${esc(x.map)} · ${esc(x.type)} · ${esc(x.side)} · ${x.uses} usos · ${x.teams} times${x.meta ? ` · <b style="color:#f5c64a">Meta #${x.meta}</b>` : ""}${x.player ? ` · vídeo do ${esc(x.player)}` : ""}</div>
+        <div class="muted" style="font-size:12px">${x.kind === "exec"
+          ? `${esc(x.map)} · tática ${esc(x.side)} · ${x.n_parts} granadas · vista ${x.uses}x · ${x.teams} times`
+          : `${esc(x.map)} · ${esc(x.type)} · ${esc(x.side)} · ${x.uses} usos · ${x.teams} times${x.meta ? ` · <b style="color:#f5c64a">Meta #${x.meta}</b>` : ""}${x.player ? ` · vídeo do ${esc(x.player)}` : ""}`}</div>
         ${dd.status ? `<div style="font-size:12px;margin-top:2px"><span class="pill${dd.status === "publicado" ? " ok" : ""}">${SO_ST[dd.status]}</span> <span class="muted">${esc(dd.by || "")}</span></div>` : ""}
         <div class="so-nets">${Object.entries(NETS).map(([n, l]) => `<label><input type="checkbox" data-net="${n}"${nets.includes(n) ? " checked" : ""}> ${l}</label>`).join("")}</div>
         <input data-title maxlength="100" value="${esc(dd.title || x.title)}" placeholder="Nome da postagem" aria-label="Nome da postagem" title="Nome da postagem (título do vídeo e do post)">
@@ -484,6 +492,11 @@ function renderSocial() {
       </div></div>`; }).join("") || '<div class="muted">Nada aqui.</div>';
 }
 ["soStatus", "soMap", "soType"].forEach(id => $(id).addEventListener("change", renderSocial));
+document.querySelectorAll(".so-tab").forEach(b => b.addEventListener("click", () => {
+  SO.kind = b.dataset.kind;
+  document.querySelectorAll(".so-tab").forEach(x => x.classList.toggle("on", x === b));
+  renderSocial();
+}));
 $("soReload").addEventListener("click", loadSocial);
 $("soList").addEventListener("click", async e => {
   const b = e.target.closest("button[data-so]"); if (!b) return;

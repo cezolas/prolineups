@@ -331,7 +331,7 @@ export default {
     }
     if (url.pathname === "/api/social" && request.method === "POST") {
       const b = await request.json().catch(() => ({}));
-      if (!/^g:[a-z0-9_]{2,40}\/[a-z0-9-]{1,120}$/.test(b.k || "")) return json({ error: "chave inválida" }, 400);
+      if (!/^[gx]:[a-z0-9_]{2,40}\/[a-z0-9-]{1,120}$/.test(b.k || "")) return json({ error: "chave inválida" }, 400);
       if (b.status != null && !["aprovado", "pulado", "publicado"].includes(b.status)) return json({ error: "status inválido" }, 400);
       const data = await readJSON(env, "social", { items: {} });
       data.items = data.items || {};
