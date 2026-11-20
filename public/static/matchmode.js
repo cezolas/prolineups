@@ -18,6 +18,20 @@
   // ------------------------------------------------------------------ exit goes back to the previous page
   $("mmExit").addEventListener("click", (e) => { if (history.length > 1 && document.referrer.includes(location.host)) { e.preventDefault(); history.back(); } });
 
+  // ------------------------------------------------------------------ "back" (page button or phone gesture) stays in the mode
+  // opening a grenade or an execute adds a history step; going back closes it (grenade -> radar, execute -> list) instead
+  // of leaving the page. Only from the mode's main screen does "back" leave.
+  const step = () => { try { history.pushState({ mm: 1 }, ""); } catch (e) {} };
+  function undo() {
+    if (st.sel) { st.sel = null; closeVideo(); render(); return true; }
+    if (st.exec) { st.exec = null; render(); return true; }
+    return false;
+  }
+  window.addEventListener("popstate", () => { undo(); });
+  // the mode's own buttons ("list", "whole map") close through history too, so no stale steps are left behind
+  const stepBack = () => { if (history.state && history.state.mm) { history.back(); return true; } return false; };
+  // (the page's "← Voltar" button already does history.back() — base.html — so it lands on these steps by itself)
+
   // ------------------------------------------------------------------ keep the screen on (Wake Lock API)
   let lock = null;
   const wake = $("mmWake");
@@ -46,7 +60,7 @@
     st.side = b.dataset.side; ls.set("mmSide", st.side); st.exec = null; st.sel = null; render();
   }));
   root.querySelectorAll("[data-tab]").forEach((b) => b.addEventListener("click", () => { st.tab = b.dataset.tab; st.exec = null; st.sel = null; render(); }));
-  $("mmFull").addEventListener("click", () => { st.sel = null; render(); });
+  $("mmFull").addEventListener("click", () => { if (!st.sel || !stepBack()) { st.sel = null; render(); } });
   $("mmVclose").addEventListener("click", closeVideo);
 
   function loadMap() {
@@ -89,7 +103,7 @@
     body.innerHTML = (st.tab === "execs" ? execHead() : "") + (items.length ? `<ol class="mm-list">${items.map((l, i) => row(l, i)).join("")}</ol>`
       : `<p class="muted">${esc(S.none)}</p>`) + (items.length ? `<p class="muted small mm-tip">${esc(S.tip)}</p>` : "");
     body.querySelectorAll("[data-id]").forEach((b) => b.addEventListener("click", () => select(b.dataset.id)));
-    const back = body.querySelector("[data-back]"); if (back) back.addEventListener("click", () => { st.exec = null; render(); });
+    const back = body.querySelector("[data-back]"); if (back) back.addEventListener("click", () => { if (!stepBack()) { st.exec = null; render(); } });
     body.scrollTop = 0;
   }
 
@@ -107,7 +121,7 @@
       <span class="mm-row-main"><b>${esc(e.a || "?")}</b><span class="muted small">${esc(S.seen.replace("{n}", e.seen))} · ${esc(S.win.replace("{p}", Math.round(e.w * 100)))}</span></span>
       <span class="mm-go">›</span></button></li>`).join("")}</ol>`;
   }
-  function bindExecs() { $("mmBody").querySelectorAll("[data-exec]").forEach((b) => b.addEventListener("click", () => { st.exec = b.dataset.exec; render(); })); }
+  function bindExecs() { $("mmBody").querySelectorAll("[data-exec]").forEach((b) => b.addEventListener("click", () => { st.exec = b.dataset.exec; step(); render(); })); }
   function execHead() {
     const e = M.execs.find((x) => x.id === st.exec);
     return `<div class="mm-head"><button type="button" class="mm-link" data-back>${esc(S.list)}</button>
@@ -135,7 +149,7 @@
   }
   function bindDetail(items) {
     const body = $("mmBody"), l = byId[st.sel];
-    body.querySelector("[data-list]").addEventListener("click", () => { st.sel = null; render(); });
+    body.querySelector("[data-list]").addEventListener("click", () => { if (!stepBack()) { st.sel = null; render(); } });
     body.querySelectorAll("[data-step]").forEach((b) => b.addEventListener("click", () => {
       const i = items.findIndex((x) => x.id === st.sel) + +b.dataset.step;
       if (items[i]) select(items[i].id);
@@ -151,6 +165,7 @@
 
   // tapping a grenade plays its video right away over the radar (no video: the radar zooms on where it's thrown)
   function select(id) {
+    if (!st.sel) step();   // one history step per opened grenade (switching grenades does not stack steps)
     st.sel = id; render();
     const l = byId[id];
     if (l && l.v) openVideo(l); else closeVideo();
