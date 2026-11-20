@@ -20,7 +20,9 @@
 //   GET/POST /api/meta          -> Meta Grenades adjustments { pin: [{k, title}], hide: [{k, title}] } (KV "meta");
 //        POST { k, title, list: "pin"|"hide"|null } puts a grenade in one list (null = back to automatic). Applied on the next export.
 //   GET  /api/social            -> social media candidates (the site's /dados/social.json) + curation decisions (KV "social")
-//   POST /api/social            -> { k, status: "aprovado"|"pulado"|"publicado"|null, title?, caption?, nets?, links? }
+//   POST /api/social            -> { k, status: "aprovado"|"pulado"|"publicado"|null, title?, caption?, nets?, links?, sched?, slot? }
+//        sched = when to post (Cronograma tab); pipeline/social_post.py --schedule pre-posts it (YouTube publishAt) and --due
+//        posts what is due (Instagram has no scheduling in its API).
 //        pipeline/social.py renders the approved ones (1080x1920 video with captions + post text) on the studio PC.
 //   POST /api/resolve           -> { url } -> the like/report key of a public page (read from the page itself)
 //   POST /api/remove            -> { k, title, restore? }  remove a grenade/tactic from the site (or put it back).
@@ -344,6 +346,14 @@ export default {
         data.items[b.k] = { ...old, status: b.status, nets, links, by: identity.email, at: new Date().toISOString(),
                             caption: typeof b.caption === "string" ? b.caption.slice(0, 2200) : (old.caption || ""),
                             title: typeof b.title === "string" ? b.title.trim().slice(0, 100) : (old.title || "") };
+        // Cronograma: when to post (ISO with offset, e.g. 2026-11-21T12:00:00-03:00); null/"" = no date
+        if (b.sched === null || b.sched === "") delete data.items[b.k].sched;
+        else if (typeof b.sched === "string") {
+          if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2})?([+-]\d{2}:\d{2}|Z)$/.test(b.sched) || isNaN(Date.parse(b.sched)))
+            return json({ error: "data inválida" }, 400);
+          data.items[b.k].sched = b.sched;
+          if (typeof b.slot === "string") data.items[b.k].slot = b.slot.slice(0, 20);
+        }
       }
       data.at = new Date().toISOString();
       await env.ADMIN.put("social", JSON.stringify(data));

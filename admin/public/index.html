@@ -71,6 +71,21 @@
 .pill.ok { border-color:#3a8; color:#5c9; }
 .so-tabs { display: flex; gap: 6px; margin: 8px 0; }
 .so-tab { padding: 7px 14px; border: 1px solid #2a2f3a; border-radius: 8px; background: #151922; color: inherit; cursor: pointer; font-weight: 700; }
+#view-social [hidden] { display: none !important; }
+.cron-day { border: 1px solid #2a2f3a; border-radius: 10px; padding: 10px 12px; margin: 10px 0; background: #11151d; }
+.cron-day h3 { margin: 0 0 8px; font-size: 15px; }
+.cron-day h3 .muted { font-weight: 400; }
+.cron-slot { display: grid; grid-template-columns: 48px 96px 1fr; gap: 10px; align-items: center; padding: 6px 0; border-top: 1px solid #1d222c; }
+.cron-day h3 + .cron-slot { border-top: 0; }
+.cron-slot img { width: 96px; height: 54px; object-fit: cover; border-radius: 6px; background: #000; display: block; }
+.cron-slot .when { font-weight: 700; }
+.cron-slot .cat { display: inline-block; font-size: 11px; padding: 1px 7px; border-radius: 99px; background: #232a36; margin-right: 6px; }
+.cron-slot.sug .cat { background: #3a3320; color: #f5c64a; }
+.cron-slot.on .cat { background: #f5c64a; color: #111; }
+.cron-slot .acts { margin-top: 4px; display: flex; gap: 6px; flex-wrap: wrap; }
+.cron-slot .acts button { padding: 3px 10px; font-size: 12px; }
+.cron-net { font-size: 12px; margin-right: 8px; }
+@media (max-width: 640px) { .cron-slot { grid-template-columns: 40px 1fr; } .cron-slot > a, .cron-slot > .noimg { display: none; } }
 .so-tab.on { background: #f5c64a; border-color: #f5c64a; color: #111; }
 .so-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); gap: 12px; margin-top: 10px; }
 .so-card { display: flex; gap: 12px; padding: 10px; border: 1px solid #2a2f3a; border-radius: 10px; background: #151922; }
@@ -169,7 +184,7 @@
   </section>
   <section id="view-social" hidden>
     <h2>Curadoria social</h2>
-    <div class="so-tabs" role="tablist"><button type="button" class="so-tab on" data-kind="grenade" role="tab">Granadas</button><button type="button" class="so-tab" data-kind="combo" role="tab">Combos</button><button type="button" class="so-tab" data-kind="exec" role="tab">Táticas de pro</button></div>
+    <div class="so-tabs" role="tablist"><button type="button" class="so-tab on" data-kind="grenade" role="tab">Granadas</button><button type="button" class="so-tab" data-kind="combo" role="tab">Combos</button><button type="button" class="so-tab" data-kind="exec" role="tab">Táticas de pro</button><button type="button" class="so-tab" data-kind="cron" role="tab">Cronograma</button></div>
     <div class="muted">Granadas com vídeo que podem virar Short / Reel / TikTok (vídeo ensinando + chamada para o site).
       <b>Aprovar</b> põe na fila: no PC, <code>python pipeline/social.py --approved</code> gera o vídeo 9:16 com legenda e o texto do post.
       Depois de postar, marque <b>Publicado</b> com os links. A ordem sugerida começa pelas Meta Grenades.</div>
@@ -181,6 +196,19 @@
       <span id="soInfo" class="muted"></span>
     </div>
     <div id="soList" class="so-list"></div>
+    <div id="cronView" hidden>
+      <div class="muted">Dois posts por dia (12h e 19h, horário de Brasília), cada dia com o seu tema. As vagas vazias já vêm com uma sugestão:
+        a granada mais usada pelos pros que ainda não foi postada, sem repetir o mapa do post anterior. <b>Agendar</b> aprova o post e marca o horário.
+        No PC, <code>python pipeline/social.py --approved</code> gera os vídeos e <code>python pipeline/social_post.py --schedule</code>
+        já deixa o YouTube agendado. O Instagram sai no horário com <code>social_post.py --due</code>; o TikTok fica agendado no TikTok Studio.</div>
+      <div class="bar">
+        <button id="cronMore" type="button">+1 semana</button>
+        <button id="cronLess" type="button">−1 semana</button>
+        <button id="cronAll" type="button">Agendar todas as sugestões</button>
+        <span id="cronInfo" class="muted"></span>
+      </div>
+      <div id="cronList"></div>
+    </div>
   </section>
   <section id="view-roadmap" hidden>
     <h2>Roadmap</h2>
@@ -463,6 +491,11 @@ async function loadSocial() {
   renderSocial();
 }
 function renderSocial() {
+  const cron = SO.kind === "cron";
+  $("cronView").hidden = !cron; $("soList").hidden = cron;
+  document.querySelector("#view-social > .bar").hidden = cron;
+  document.querySelector("#view-social > .muted").hidden = cron;
+  if (cron) return renderCron();
   const c = { "": 0, aprovado: 0, publicado: 0, pulado: 0 };
   const mine = SO.items.filter(x => (x.kind || "grenade") === SO.kind);
   for (const x of mine) c[(SO.dec[x.k] || {}).status || ""]++;
@@ -500,6 +533,95 @@ document.querySelectorAll(".so-tab").forEach(b => b.addEventListener("click", ()
   renderSocial();
 }));
 $("soReload").addEventListener("click", loadSocial);
+
+// ---------------------------------------------------------------- Cronograma (posting schedule)
+const CRON_TPL = { 1: ["smoke", "combo"], 2: ["molotov", "exec"], 3: ["smoke", "flash"], 4: ["he", "combo"],
+                   5: ["smoke", "exec"], 6: ["molotov", "smoke"], 0: ["combo", "smoke"] };   // 0 = domingo
+const CRON_TIMES = ["12:00", "19:00"];
+const CRON_CAT = { smoke: "Smoke", molotov: "Molotov", flash: "Flash", he: "HE", combo: "Combo", exec: "Tática de pro" };
+const WDAY = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
+const CRON = { skip: new Set(), weeks: 2 };
+try { CRON.weeks = Math.min(12, Math.max(1, +localStorage.getItem("pn_cron_weeks") || 2)); } catch {}
+const brDate = d => new Intl.DateTimeFormat("en-CA", { timeZone: "America/Sao_Paulo" }).format(d);   // YYYY-MM-DD
+const catOf = x => x.kind === "exec" ? "exec" : x.kind === "combo" ? "combo" : x.type;
+function cronSlots() {
+  const out = [], now = Date.now(), first = brDate(new Date());
+  for (let i = 0; i < CRON.weeks * 7; i++) {
+    const ymd = brDate(new Date(Date.parse(first + "T12:00:00-03:00") + i * 864e5));
+    const wd = new Date(ymd + "T12:00:00-03:00").getUTCDay();
+    CRON_TPL[wd].forEach((cat, j) => {
+      const iso = `${ymd}T${CRON_TIMES[j]}:00-03:00`;
+      out.push({ ymd, wd, cat, time: CRON_TIMES[j], iso, past: Date.parse(iso) < now });
+    });
+  }
+  return out;
+}
+function renderCron() {
+  const slots = cronSlots(), byTime = {};
+  for (const [k, d] of Object.entries(SO.dec)) if (d.sched) byTime[d.sched.slice(0, 16)] = k;
+  const used = new Set(Object.keys(SO.dec)), pool = {};
+  for (const x of SO.items) if (!used.has(x.k) && !CRON.skip.has(x.k)) (pool[catOf(x)] = pool[catOf(x)] || []).push(x);
+  for (const c in pool) pool[c].sort((a, b) => (a.meta || 99) - (b.meta || 99) || b.uses - a.uses);
+  let lastMap = "", nSug = 0, nOn = 0, html = "", curDay = "";
+  for (const sl of slots) {
+    const k = byTime[sl.iso.slice(0, 16)];
+    let x = k ? SO.items.find(i => i.k === k) : null, sug = false;
+    const dd = k ? SO.dec[k] : null;
+    if (!k && !sl.past) {
+      const list = pool[sl.cat] || [];
+      let i = list.findIndex(c => c.map !== lastMap); if (i < 0) i = 0;
+      x = list.splice(i, 1)[0] || null; sug = !!x;
+    }
+    if (!k && sl.past) continue;   // empty slots that already passed
+    if (sl.ymd !== curDay) {
+      html += (curDay ? "</div>" : "") + `<div class="cron-day"><h3>${WDAY[sl.wd]} <span class="muted">${sl.ymd.slice(8)}/${sl.ymd.slice(5, 7)}/${sl.ymd.slice(0, 4)}</span></h3>`;
+      curDay = sl.ymd;
+    }
+    if (x) lastMap = x.map;
+    if (sug) nSug++; else if (k) nOn++;
+    const nets = dd ? (dd.nets || ["yt", "ig", "tt"]) : [];
+    const live = dd && (dd.status === "publicado" || Date.parse(sl.iso) <= Date.now());
+    const st = nets.map(n => `<span class="cron-net">${NETS[n]}: ${(dd.links || {})[n] ? `<a href="${esc(dd.links[n])}" target="_blank" rel="noopener">${live ? "no ar" : "agendado"}</a>` : "aguardando"}</span>`).join("");
+    html += `<div class="cron-slot${sug ? " sug" : k ? " on" : ""}" data-iso="${sl.iso}" data-k="${x ? esc(x.k) : ""}">
+      <div class="when">${sl.time.replace(":00", "h")}</div>
+      ${x && x.poster ? `<a href="https://pronades.com.br/media/${esc(x.clip)}" target="_blank" rel="noopener" title="Ver o vídeo"><img src="https://pronades.com.br/media/${esc(x.poster)}" alt="" loading="lazy"></a>` : '<div class="noimg"></div>'}
+      <div><span class="cat">${CRON_CAT[sl.cat]}${sug ? " · sugestão" : k ? " · agendado" : ""}</span>
+        ${x ? `<b><a href="https://pronades.com.br${esc(x.url)}" target="_blank" rel="noopener" style="color:inherit">${esc((dd && dd.title) || x.title)}</a></b>
+          <div class="muted" style="font-size:12px">${esc(x.map)} · ${x.uses} usos · ${x.teams} times${x.player ? ` · vídeo do ${esc(x.player)}` : ""}${x.team ? ` · ${esc(x.team)}` : ""}</div>`
+          : '<span class="muted">sem candidatos nesta categoria</span>'}
+        ${st ? `<div>${st}</div>` : ""}
+        <div class="acts">${sug ? '<button data-cron="add">Agendar</button><button data-cron="other">Outra sugestão</button>'
+          : k && dd.status !== "publicado" ? '<button data-cron="del">Tirar do cronograma</button>' : ""}</div>
+      </div></div>`;
+  }
+  $("cronList").innerHTML = html + (curDay ? "</div>" : "");
+  $("cronInfo").textContent = `${CRON.weeks} semana(s) · ${nOn} agendado(s) · ${nSug} sugestão(ões)`;
+}
+async function cronSet(k, iso, on) {
+  const d = SO.dec[k] || {};
+  const body = on ? { k, status: "aprovado", sched: iso, slot: iso.slice(0, 16), nets: d.nets || ["yt", "ig", "tt"] }
+                  : { k, status: d.status || "aprovado", sched: "" };
+  const r = await api("/api/social", body);
+  if (r.item) SO.dec[k] = r.item; else delete SO.dec[k];
+}
+$("cronList").addEventListener("click", async e => {
+  const b = e.target.closest("button[data-cron]"); if (!b) return;
+  const row = b.closest(".cron-slot"), k = row.dataset.k;
+  if (b.dataset.cron === "other") { CRON.skip.add(k); return renderCron(); }
+  b.disabled = true;
+  try { await cronSet(k, row.dataset.iso, b.dataset.cron === "add"); } catch (err) { alert(err.message); }
+  renderCron();
+});
+$("cronAll").addEventListener("click", async () => {
+  const rows = [...document.querySelectorAll(".cron-slot.sug")];
+  if (!rows.length || !confirm(`Agendar as ${rows.length} sugestões?`)) return;
+  for (const r of rows) { try { await cronSet(r.dataset.k, r.dataset.iso, true); } catch (err) { alert(err.message); break; } }
+  renderCron();
+});
+const cronWeeks = n => { CRON.weeks = Math.min(12, Math.max(1, CRON.weeks + n)); try { localStorage.setItem("pn_cron_weeks", CRON.weeks); } catch {} renderCron(); };
+$("cronMore").addEventListener("click", () => cronWeeks(1));
+$("cronLess").addEventListener("click", () => cronWeeks(-1));
+
 $("soList").addEventListener("click", async e => {
   const b = e.target.closest("button[data-so]"); if (!b) return;
   const card = b.closest(".so-card"), k = card.dataset.k;
