@@ -72,6 +72,10 @@
 .so-tabs { display: flex; gap: 6px; margin: 8px 0; }
 .so-tab { padding: 7px 14px; border: 1px solid #2a2f3a; border-radius: 8px; background: #151922; color: inherit; cursor: pointer; font-weight: 700; }
 #view-social [hidden] { display: none !important; }
+.ex-parts { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0; }
+.ex-parts a { display: flex; gap: 6px; align-items: center; width: 210px; padding: 4px; border: 1px solid #2a2f3a; border-radius: 8px; color: inherit; text-decoration: none; font-size: 12px; line-height: 1.3; background: #151922; }
+.ex-parts a:hover { border-color: #f5c64a; }
+.ex-parts img { width: 54px; height: 72px; object-fit: cover; border-radius: 5px; background: #000; flex: none; }
 .cron-day { border: 1px solid #2a2f3a; border-radius: 10px; padding: 10px 12px; margin: 10px 0; background: #11151d; }
 .cron-day h3 { margin: 0 0 8px; font-size: 15px; }
 .cron-day h3 .muted { font-weight: 400; }
@@ -513,6 +517,7 @@ function renderSocial() {
           : x.kind === "combo"
           ? `${esc(x.map)} · combo ${esc(x.side)} · ${(x.types || []).map(esc).join(" + ")} · ${x.uses} usos · ${x.teams} times${x.player ? ` · vídeo do ${esc(x.player)}` : ""}`
           : `${esc(x.map)} · ${esc(x.type)} · ${esc(x.side)} · ${x.uses} usos · ${x.teams} times${x.meta ? ` · <b style="color:#f5c64a">Meta #${x.meta}</b>` : ""}${x.player ? ` · vídeo do ${esc(x.player)}` : ""}`}</div>
+        ${execParts(x)}
         ${dd.status ? `<div style="font-size:12px;margin-top:2px"><span class="pill${dd.status === "publicado" ? " ok" : ""}">${SO_ST[dd.status]}</span> <span class="muted">${esc(dd.by || "")}</span></div>` : ""}
         <div class="so-nets">${Object.entries(NETS).map(([n, l]) => `<label><input type="checkbox" data-net="${n}"${nets.includes(n) ? " checked" : ""}> ${l}</label>`).join("")}</div>
         <input data-title maxlength="100" value="${esc(dd.title || x.title)}" placeholder="Nome da postagem" aria-label="Nome da postagem" title="Nome da postagem (título do vídeo e do post)">
@@ -541,6 +546,14 @@ const CRON_TIMES = ["12:00", "19:00"];
 const CRON_CAT = { smoke: "Smoke", molotov: "Molotov", flash: "Flash", he: "HE", combo: "Combo", exec: "Tática de pro" };
 const WDAY = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
 const CRON = { skip: new Set(), weeks: 2 };
+const PART_T = { smoke: "Smoke", flash: "Flash", molotov: "Molotov", he: "HE", decoy: "Decoy" };
+// a pro tactic: one thumbnail per grenade (click = its video), with type, where it lands, who throws and when
+function execParts(x) {
+  if (!x.parts || !x.parts.length) return "";
+  return `<div class="ex-parts">${x.parts.map((p, i) => `<a href="https://pronades.com.br/media/${esc(p.clip)}" target="_blank" rel="noopener" title="Ver o vídeo">
+    <img src="https://pronades.com.br/media/${esc(p.clip.replace(/\.mp4$/, ".jpg"))}" alt="" loading="lazy">
+    <span><b>${i + 1}. ${PART_T[p.type] || esc(p.type)}</b> ${esc(p.area || "")}<br><span class="muted">${esc(p.player || "")}${p.at ? ` · +${String(p.at.toFixed(1)).replace(".", ",")}s` : ""}</span></span></a>`).join("")}</div>`;
+}
 try { CRON.weeks = Math.min(12, Math.max(1, +localStorage.getItem("pn_cron_weeks") || 2)); } catch {}
 const brDate = d => new Intl.DateTimeFormat("en-CA", { timeZone: "America/Sao_Paulo" }).format(d);   // YYYY-MM-DD
 const catOf = x => x.kind === "exec" ? "exec" : x.kind === "combo" ? "combo" : x.type;
@@ -589,6 +602,7 @@ function renderCron() {
         ${x ? `<b><a href="https://pronades.com.br${esc(x.url)}" target="_blank" rel="noopener" style="color:inherit">${esc((dd && dd.title) || x.title)}</a></b>
           <div class="muted" style="font-size:12px">${esc(x.map)} · ${x.uses} usos · ${x.teams} times${x.player ? ` · vídeo do ${esc(x.player)}` : ""}${x.team ? ` · ${esc(x.team)}` : ""}</div>`
           : '<span class="muted">sem candidatos nesta categoria</span>'}
+        ${x ? execParts(x) : ""}
         ${st ? `<div>${st}</div>` : ""}
         <div class="acts">${sug ? '<button data-cron="add">Agendar</button><button data-cron="other">Outra sugestão</button>'
           : k && dd.status !== "publicado" ? '<button data-cron="del">Tirar do cronograma</button>' : ""}</div>

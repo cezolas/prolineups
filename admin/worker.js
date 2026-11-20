@@ -328,7 +328,9 @@ export default {
     if (url.pathname === "/api/social" && request.method === "GET") {
       let cands = { items: [] };
       try { const r = await fetch("https://pronades.com.br/dados/social.json", { cf: { cacheTtl: 300 } }); if (r.ok) cands = await r.json(); } catch {}
-      const items = cands.items.map(({ lang, ...x }) => ({ ...x, title: lang.pt && lang.pt.title, url: lang.pt && lang.pt.url }));
+      const items = cands.items.map(({ lang, ...x }) => ({ ...x, title: lang.pt && lang.pt.title, url: lang.pt && lang.pt.url,
+        // tactics: every grenade (its own video, type, where it lands, who throws, when)
+        ...(lang.pt && lang.pt.parts ? { parts: lang.pt.parts.map(p => ({ clip: p.clip, type: p.type, area: p.area, player: p.player, at: p.at })) } : {}) }));
       return json({ built: cands.built, total: cands.total, items, decisions: (await readJSON(env, "social", { items: {} })).items || {} });
     }
     if (url.pathname === "/api/social" && request.method === "POST") {
