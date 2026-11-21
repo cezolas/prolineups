@@ -100,6 +100,15 @@
 .so-body input[data-title] { font-weight: 700; }
 .so-links { display: flex; gap: 6px; } .so-links input { flex: 1; min-width: 0; font-size: 12px; }
 .so-act { display: flex; gap: 6px; flex-wrap: wrap; }
+  .gw-f { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px 14px; margin: 10px 0; }
+  .gw-f label, .gw-wide { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--muted); }
+  .gw-wide { margin: 8px 0; }
+  .gw-wide textarea { font: inherit; font-size: 13px; background: var(--panel2); color: var(--text); border: 1px solid var(--line); border-radius: 6px; padding: 6px 9px; resize: vertical; }
+  #gwActs td input, #gwActs td select { width: 100%; }
+  #gwActs td.n input { width: 64px; }
+  .gw-box { border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; margin: 14px 0; background: var(--panel); }
+  .gw-draw { border: 1px solid var(--accent); border-radius: 10px; padding: 10px 12px; margin: 8px 0; }
+  .gw-draw.ann { box-shadow: inset 3px 0 0 var(--ok); }
 </style>
 </head>
 <body>
@@ -113,6 +122,7 @@
     <a href="#reports" data-view="reports">Reports e granadas</a>
     <a href="#meta" data-view="meta">Meta Grenades</a>
     <a href="#social" data-view="social">Curadoria social</a>
+    <a href="#sorteios" data-view="gw">Sorteios</a>
     <div class="h">Pessoas</div>
     <a href="#usuarios" data-view="users">Usuários e atividade</a>
     <div class="h">Histórico</div>
@@ -215,6 +225,35 @@
       </div>
       <div id="cronList"></div>
     </div>
+  </section>
+  <section id="view-gw" hidden>
+    <h2>Sorteios</h2>
+    <div class="muted">A página pública fica em <a href="https://pronades.com.br/pt/sorteios/" target="_blank" rel="noopener">pronades.com.br/pt/sorteios</a>.
+      Cada ação vale tickets. <b>Comentários</b> são conferidos sozinhos (no PC: <code>python pipeline/giveaway_sync.py</code>, algumas vezes por dia
+      e logo antes do sorteio). <b>Seguir / se inscrever</b> a pessoa marca "Já fiz", e você confere só no sorteado antes de anunciar.
+      Só aparece no site com status <b>Publicado</b>.</div>
+    <div class="bar"><select id="gwSel" aria-label="Sorteio"></select><button type="button" id="gwNew">+ Novo sorteio</button>
+      <button type="button" id="gwReload">Atualizar</button><span id="gwInfo" class="muted"></span></div>
+    <form id="gwForm" class="gw-box">
+      <div class="gw-f">
+        <label>Id (vai no link, não muda depois)<input name="id" required pattern="[a-z0-9-]{2,40}" placeholder="lancamento"></label>
+        <label>Status<select name="status"><option value="rascunho">Rascunho (só aqui)</option><option value="publicado">Publicado (no site)</option></select></label>
+        <label>Título<input name="title" maxlength="120" placeholder="Sorteio de Lançamento do Pronades"></label>
+        <label>Prêmio<input name="prize" maxlength="200" placeholder="Ex.: skin AK-47 | Redline (FT)"></label>
+        <label>Início das inscrições<input name="start" type="datetime-local" required></label>
+        <label>Fim das inscrições<input name="end" type="datetime-local" required></label>
+        <label>Data do sorteio (opcional)<input name="draw_at" type="datetime-local"></label>
+        <label>Imagem (link https, opcional)<input name="image" maxlength="300" placeholder="https://…"></label>
+      </div>
+      <label class="gw-wide">Descrição (aparece em cima)<textarea name="desc" rows="3" maxlength="1500"></textarea></label>
+      <h3 style="margin:12px 0 4px">Ações e tickets</h3>
+      <table><thead><tr><th style="width:190px">Tipo</th><th>Texto no site</th><th>Link (post, vídeo, perfil)</th><th>Tickets</th><th title="Só para comentários: quantos comentários contam, no máximo">Máx.</th><th></th></tr></thead>
+        <tbody id="gwActs"></tbody></table>
+      <div class="bar"><button type="button" id="gwAddAct">+ Ação</button></div>
+      <label class="gw-wide">Regulamento<textarea name="rules" rows="8" maxlength="6000"></textarea></label>
+      <div class="bar"><button type="submit">Salvar</button><button type="button" id="gwDel">Excluir</button><span id="gwMsg" class="muted"></span></div>
+    </form>
+    <div id="gwRun" class="gw-box"></div>
   </section>
   <section id="view-roadmap" hidden>
     <h2>Roadmap</h2>
@@ -389,11 +428,13 @@ cv.addEventListener("click", e => {
 
 // ---------------------------------------------------------------- views
 function showView() {
-  const v = location.hash === "#roadmap" ? "roadmap" : location.hash === "#usuarios" ? "users" : location.hash === "#reports" ? "reports" : location.hash === "#meta" ? "meta" : location.hash === "#social" ? "social" : "depara";
+  const v = location.hash === "#roadmap" ? "roadmap" : location.hash === "#usuarios" ? "users" : location.hash === "#reports" ? "reports" : location.hash === "#meta" ? "meta" : location.hash === "#social" ? "social" : location.hash === "#sorteios" ? "gw" : "depara";
   $("view-roadmap").hidden = v !== "roadmap"; $("view-depara").hidden = v !== "depara"; $("view-users").hidden = v !== "users";
   $("view-reports").hidden = v !== "reports";
   $("view-meta").hidden = v !== "meta";
   $("view-social").hidden = v !== "social";
+  $("view-gw").hidden = v !== "gw";
+  if (v === "gw") loadGw();
   if (v === "social") loadSocial();
   if (v === "meta") loadMeta();
   if (v === "reports") loadReports();
@@ -402,6 +443,112 @@ function showView() {
   if (v === "roadmap") loadRoadmap();
 }
 window.addEventListener("hashchange", showView);
+// ---------------------------------------------------------------- giveaways
+const GW = { events: [], cur: null };
+const GW_KIND = { ig_comment: "Comentar no post do IG", yt_comment: "Comentar no vídeo do YT", ig_follow: "Seguir no Instagram",
+                  yt_sub: "Inscrever-se no YouTube", tt_follow: "Seguir no TikTok", visit: "Outra (a pessoa marca)" };
+const GW_URL = { ig_follow: "https://www.instagram.com/pronadescs", yt_sub: "https://www.youtube.com/@pronadescs?sub_confirmation=1",
+                 tt_follow: "https://www.tiktok.com/@pronadescs" };
+const GW_RULES = `1. Quem pode participar: qualquer pessoa com conta no Pronades (Google, FACEIT ou Steam). Menores de 18 anos precisam da autorização de um responsável.
+2. Período: as inscrições valem do início ao fim indicados nesta página (horário de Brasília). Comentários fora desse período não contam.
+3. Tickets: cada ação vale os tickets indicados. Comentários são conferidos automaticamente pelo @ informado. Seguir e se inscrever são conferidos no sorteado.
+4. Uma inscrição por pessoa. Contas duplicadas, perfis falsos ou qualquer tentativa de fraude são desclassificados.
+5. Sorteio: aleatório, com chance proporcional aos tickets. Se o sorteado não tiver cumprido as ações, ou não responder em 72 horas após o contato, sorteamos outra pessoa.
+6. O ganhador é anunciado nesta página e nas redes do Pronades, e contatado por mensagem direta. Nunca pedimos senha, código ou pagamento para entregar o prêmio.
+7. Este sorteio não é patrocinado, administrado ou associado ao Instagram, YouTube, TikTok ou Valve.`;
+// datetime-local <-> ISO in Brasília time
+const gwToLocal = iso => iso ? new Date(Date.parse(iso) - 3 * 36e5).toISOString().slice(0, 16) : "";
+const gwToIso = v => v ? `${v}:00-03:00` : "";
+const gwWhen = iso => iso ? new Date(iso).toLocaleString("pt-BR", { dateStyle: "short", timeStyle: "short", timeZone: "America/Sao_Paulo" }) : "—";
+
+async function loadGw(keep) {
+  const { events } = await api("/api/gw");
+  GW.events = events;
+  const id = keep || (GW.cur && GW.cur.id) || (events[events.length - 1] || {}).id;
+  $("gwSel").innerHTML = events.map(e => `<option value="${esc(e.id)}">${esc(e.title || e.id)} · ${e.status}</option>`).join("") || '<option value="">(nenhum sorteio)</option>';
+  if (id && events.some(e => e.id === id)) $("gwSel").value = id;
+  gwShow(events.find(e => e.id === $("gwSel").value) || null);
+}
+function gwActRow(a = {}) {
+  const tr = document.createElement("tr");
+  tr.innerHTML = `<td><select data-k="kind">${Object.entries(GW_KIND).map(([k, v]) => `<option value="${k}"${a.kind === k ? " selected" : ""}>${v}</option>`).join("")}</select></td>
+    <td><input data-k="label" maxlength="120" value="${esc(a.label || "")}" placeholder="(texto padrão)"></td>
+    <td><input data-k="url" maxlength="300" value="${esc(a.url || "")}" placeholder="https://…"></td>
+    <td class="n"><input data-k="tickets" type="number" min="1" max="100" value="${a.tickets || 1}"></td>
+    <td class="n"><input data-k="max" type="number" min="1" max="100" value="${a.max || 1}"></td>
+    <td><button type="button" data-rm>✕</button><input type="hidden" data-k="id" value="${esc(a.id || "")}"></td>`;
+  tr.querySelector("[data-rm]").onclick = () => tr.remove();
+  const kind = tr.querySelector('[data-k="kind"]'), url = tr.querySelector('[data-k="url"]');
+  kind.onchange = () => { if (!url.value && GW_URL[kind.value]) url.value = GW_URL[kind.value]; };
+  $("gwActs").append(tr);
+}
+function gwShow(e) {
+  GW.cur = e;
+  const f = $("gwForm"), d = e || { status: "rascunho", rules: GW_RULES, actions: [
+    { kind: "ig_comment", tickets: 1, max: 1 }, { kind: "yt_comment", tickets: 1, max: 1 },
+    { kind: "ig_follow", url: GW_URL.ig_follow, tickets: 1 }, { kind: "yt_sub", url: GW_URL.yt_sub, tickets: 1 }] };
+  for (const k of ["id", "status", "title", "prize", "image", "desc", "rules"]) f.elements[k].value = d[k] || "";
+  for (const k of ["start", "end", "draw_at"]) f.elements[k].value = gwToLocal(d[k]);
+  f.elements.id.readOnly = !!e;
+  $("gwActs").innerHTML = ""; (d.actions || []).forEach(gwActRow);
+  $("gwMsg").textContent = e ? `salvo ${gwWhen(e.at)} por ${e.by || "?"}` : "novo sorteio (ainda não salvo)";
+  gwRun(e);
+}
+function gwRun(e) {
+  if (!e) { $("gwRun").innerHTML = '<span class="muted">Salve o sorteio para ver os participantes.</span>'; return; }
+  const rows = [...e.entries].sort((a, b) => b.tickets - a.tickets);
+  const total = rows.reduce((s, r) => s + r.tickets, 0), closed = Date.now() >= Date.parse(e.end);
+  const acts = e.actions || [];
+  const cell = (r, a) => (a.kind === "ig_comment" || a.kind === "yt_comment") ? (r.counts[a.id] ? `✓ ${r.counts[a.id]}` : "—") : (r.acts.includes(a.id) ? "marcou" : "—");
+  const draws = (e.draws || []).map(d => {
+    const ann = e.winner && ((d.ig && e.winner.ig === d.ig) || (!d.ig && e.winner.name && d.name.startsWith(e.winner.name)));
+    const checks = [d.ig ? `<a href="https://www.instagram.com/${esc(d.ig)}/" target="_blank" rel="noopener">perfil @${esc(d.ig)} no IG</a> (veja se segue o @pronadescs)` : "",
+                    d.yt ? `<a href="https://www.youtube.com/@${esc(d.yt)}" target="_blank" rel="noopener">canal @${esc(d.yt)}</a> (a inscrição só dá para ver se ele deixar as inscrições públicas; senão, peça um print)` : ""].filter(Boolean);
+    return `<div class="gw-draw${ann ? " ann" : ""}"><b>🎲 ${esc(d.name)}</b> ${d.ig ? "· @" + esc(d.ig) : ""} ${d.yt ? "· YT @" + esc(d.yt) : ""}
+      <span class="muted">· ${d.tickets} de ${d.total} tickets (${d.people} pessoas) · ${gwWhen(d.at)}</span>
+      <div class="muted" style="margin:4px 0">Antes de anunciar, confira: ${checks.join(" · ") || "as ações marcadas"}. Se não cumpriu, sorteie de novo.</div>
+      ${ann ? `<button type="button" data-ann="">Tirar do site</button> <span class="saved">anunciado no site</span>` : `<button type="button" data-ann="${esc(d.sub)}">Anunciar no site</button>`}</div>`;
+  }).join("");
+  $("gwRun").innerHTML = `<div class="bar" style="margin-top:0"><b>${rows.length} participantes · ${total} tickets</b>
+      <span class="muted">comentários conferidos: ${e.synced_at ? gwWhen(e.synced_at) : "nunca (rode giveaway_sync.py)"}</span>
+      <span class="muted">inscrições ${gwWhen(e.start)} → ${gwWhen(e.end)}</span>
+      <button type="button" id="gwDraw" ${closed ? "" : "disabled title=\"as inscrições ainda estão abertas\""}>${(e.draws || []).length ? "Sortear outra pessoa" : "Sortear"}</button></div>
+    ${draws}
+    <div class="tablewrap" style="max-height:480px"><table><thead><tr><th>Pessoa</th><th>Instagram</th><th>YouTube</th>${acts.map(a => `<th>${esc(a.label || GW_KIND[a.kind])}</th>`).join("")}<th>Tickets</th><th>Inscrição</th></tr></thead>
+    <tbody>${rows.map(r => `<tr><td>${esc(r.name)}</td><td>${r.ig ? "@" + esc(r.ig) : "—"}</td><td>${r.yt ? "@" + esc(r.yt) : "—"}</td>${acts.map(a => `<td class="num">${cell(r, a)}</td>`).join("")}
+      <td><b>${r.tickets}</b></td><td class="num">${gwWhen(new Date(r.ts).toISOString())}</td></tr>`).join("") || `<tr><td colspan="${acts.length + 5}" class="muted">Ninguém inscrito ainda.</td></tr>`}</tbody></table></div>`;
+  const dr = $("gwDraw");
+  if (dr) dr.onclick = async () => {
+    if (!confirm(`Sortear entre ${rows.filter(r => r.tickets > 0 && !(e.draws || []).some(d => d.sub === r.sub)).length} pessoas com tickets? Rode o giveaway_sync.py antes, para os comentários estarem em dia.`)) return;
+    try { await api("/api/gw/draw", { id: e.id }); await loadGw(e.id); } catch (err) { alert(err.message); }
+  };
+  $("gwRun").querySelectorAll("[data-ann]").forEach(b => b.onclick = async () => {
+    try { await api("/api/gw/announce", { id: e.id, sub: b.dataset.ann || null }); await loadGw(e.id); } catch (err) { alert(err.message); }
+  });
+}
+$("gwSel").onchange = () => gwShow(GW.events.find(e => e.id === $("gwSel").value) || null);
+$("gwNew").onclick = () => gwShow(null);
+$("gwReload").onclick = () => loadGw();
+$("gwAddAct").onclick = () => gwActRow({ kind: "visit", tickets: 1 });
+$("gwDel").onclick = async () => {
+  if (!GW.cur || !confirm(`Excluir o sorteio ${GW.cur.id}?`)) return;
+  try { await api("/api/gw", { delete: GW.cur.id }); GW.cur = null; await loadGw(); } catch (err) { alert(err.message); }
+};
+$("gwForm").onsubmit = async ev => {
+  ev.preventDefault();
+  const f = ev.target, ev_ = {};
+  for (const k of ["id", "status", "title", "prize", "image", "desc", "rules"]) ev_[k] = f.elements[k].value.trim();
+  for (const k of ["start", "end", "draw_at"]) ev_[k] = gwToIso(f.elements[k].value);
+  ev_.actions = [...$("gwActs").rows].map((tr, i) => {
+    const g = k => tr.querySelector(`[data-k="${k}"]`).value.trim();
+    return { id: g("id") || `${g("kind").replace("_", "-")}-${i + 1}`, kind: g("kind"), label: g("label"), url: g("url"), tickets: +g("tickets") || 1, max: +g("max") || 1 };
+  });
+  const miss = ev_.actions.find(a => (a.kind === "ig_comment" || a.kind === "yt_comment") && !a.url);
+  if (miss) { $("gwMsg").textContent = "cole o link do post/vídeo nas ações de comentário"; return; }
+  try { await api("/api/gw", { event: ev_ }); $("gwMsg").textContent = "salvo"; await loadGw(ev_.id); }
+  catch (err) { $("gwMsg").textContent = err.message; }
+};
+
 
 // ---------------------------------------------------------------- reports, likes, removals
 const RP_REASON = { video: "Vídeo quebrado", wrong: "Lineup não funciona", outdated: "Mapa mudou", other: "Outro" };

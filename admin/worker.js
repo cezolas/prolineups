@@ -12,6 +12,7 @@
 //   GET  /api/places/<map>      -> De-Para overrides of one map
 //   POST /api/places            -> { map, place, lang, display }   (empty display = back to default)
 //   GET  /api/audit             -> recent changes
+//   GET/POST /api/gw, POST /api/gw/draw, /api/gw/announce -> giveaways (config, entries with tickets, draw, winner)
 //   GET/POST /api/roadmap, POST /api/roadmap/<id>  -> ideas board (status, notes, priority, delete)
 //   GET  /api/export            -> all overrides (used by pipeline/admin_sync.py on the studio PC)
 //   GET  /api/reports           -> "report a problem" messages from the site (D1) + likes ranking + removed items
@@ -361,6 +362,103 @@ export default {
       await env.ADMIN.put("social", JSON.stringify(data));
       return json({ ok: true, item: data.items[b.k] || null });
     }
+    // ---- giveaways: config in USERS "gw:cfg" (read by the public site), entries in D1 gw_entries (written by the public site),
+    // verified comments in USERS "gw:<id>:comments" (written by pipeline/giveaway_sync.py). Same ticket rule as site/worker.js.
+    if (url.pathname.startsWith("/api/gw")) {
+      if (!env.USERS || !env.DB) return json({ error: "USERS/DB não ligados neste Worker" }, 503);
+      await env.DB.batch([
+        env.DB.prepare("CREATE TABLE IF NOT EXISTS gw_entries (gw TEXT NOT NULL, sub TEXT NOT NULL, ig TEXT, yt TEXT, acts TEXT NOT NULL DEFAULT '[]', ts INTEGER NOT NULL, upd INTEGER NOT NULL, PRIMARY KEY (gw, sub))"),
+        env.DB.prepare("CREATE UNIQUE INDEX IF NOT EXISTS gw_ig ON gw_entries (gw, ig) WHERE ig IS NOT NULL"),
+        env.DB.prepare("CREATE UNIQUE INDEX IF NOT EXISTS gw_yt ON gw_entries (gw, yt) WHERE yt IS NOT NULL"),
+      ]);
+      const cfg = (await env.USERS.get("gw:cfg", "json")) || { events: [] };
+      cfg.events = cfg.events || [];
+      const save = () => env.USERS.put("gw:cfg", JSON.stringify(cfg));
+      const log = async (what) => {
+        const audit = await readJSON(env, "audit", []);
+        audit.unshift({ at: new Date().toISOString(), by: identity.email, map: "-", place: what, lang: "-", display: "" });
+        await env.ADMIN.put("audit", JSON.stringify(audit.slice(0, 300)));
+      };
+      const CHECKED = new Set(["ig_comment", "yt_comment"]);
+      const tickets = (e, entry, comments) => (e.actions || []).reduce((sum, a) => {
+        const w = Math.max(1, a.tickets | 0), max = Math.max(1, a.max | 0);
+        if (CHECKED.has(a.kind)) {
+          const who = a.kind === "ig_comment" ? entry.ig : entry.yt;
+          return sum + (who ? Math.min(max, ((comments.c || {})[a.id] || {})[who] | 0) : 0) * w;
+        }
+        return sum + (JSON.parse(entry.acts || "[]").includes(a.id) ? w : 0);
+      }, 0);
+      async function entries(e) {
+        const comments = (await env.USERS.get(`gw:${e.id}:comments`, "json")) || {};
+        const rows = (await env.DB.prepare("SELECT * FROM gw_entries WHERE gw = ? ORDER BY ts").bind(e.id).all()).results || [];
+        const users = await Promise.all(rows.map(r => env.USERS.get(`user:${r.sub}`, "json").catch(() => null)));
+        return { comments, rows: rows.map((r, i) => ({ sub: r.sub, name: (users[i] && users[i].name) || "?", ig: r.ig, yt: r.yt,
+          acts: JSON.parse(r.acts || "[]"), ts: r.ts, tickets: tickets(e, r, comments),
+          counts: Object.fromEntries((e.actions || []).filter(a => CHECKED.has(a.kind)).map(a => [a.id, ((comments.c || {})[a.id] || {})[a.kind === "ig_comment" ? r.ig : r.yt] | 0])) })) };
+      }
+      const find = (id) => cfg.events.find(e => e.id === id);
+
+      if (url.pathname === "/api/gw" && request.method === "GET") {
+        const out = [];
+        for (const e of cfg.events) { const { comments, rows } = await entries(e); out.push({ ...e, synced_at: comments.at || null, entries: rows }); }
+        return json({ events: out });
+      }
+      const b = await request.json().catch(() => ({}));
+      if (url.pathname === "/api/gw" && request.method === "POST") {   // create / edit / delete one giveaway
+        if (b.delete) {
+          const n = await env.DB.prepare("SELECT COUNT(*) AS n FROM gw_entries WHERE gw = ?").bind(b.delete).first();
+          if (n.n) return json({ error: "este sorteio já tem participantes; mude para rascunho em vez de excluir" }, 409);
+          cfg.events = cfg.events.filter(e => e.id !== b.delete); await save(); return json({ ok: true });
+        }
+        const e = b.event || {};
+        const str = (v, n) => String(v || "").slice(0, n);
+        if (!/^[a-z0-9-]{2,40}$/.test(e.id || "")) return json({ error: "id: só letras minúsculas, números e hífen" }, 400);
+        for (const f of ["start", "end"]) if (isNaN(Date.parse(e[f]))) return json({ error: `data inválida (${f})` }, 400);
+        if (Date.parse(e.end) <= Date.parse(e.start)) return json({ error: "o fim precisa ser depois do início" }, 400);
+        const kinds = new Set(["ig_comment", "yt_comment", "ig_follow", "yt_sub", "tt_follow", "visit"]);
+        const actions = (Array.isArray(e.actions) ? e.actions : []).slice(0, 12).map((a, i) => ({
+          id: /^[a-z0-9-]{1,20}$/.test(a.id || "") ? a.id : `a${i + 1}`, kind: kinds.has(a.kind) ? a.kind : "visit",
+          label: str(a.label, 120), url: /^https:\/\//.test(a.url || "") ? str(a.url, 300) : "",
+          tickets: Math.min(100, Math.max(1, a.tickets | 0)), max: Math.min(100, Math.max(1, a.max | 0)) }));
+        if (new Set(actions.map(a => a.id)).size !== actions.length) return json({ error: "duas ações com o mesmo id" }, 400);
+        const old = find(e.id) || {};
+        const clean = { id: e.id, status: ["rascunho", "publicado"].includes(e.status) ? e.status : "rascunho",
+          title: str(e.title, 120), prize: str(e.prize, 200), desc: str(e.desc, 1500), rules: str(e.rules, 6000),
+          image: /^https:\/\//.test(e.image || "") ? str(e.image, 300) : "", start: e.start, end: e.end,
+          draw_at: isNaN(Date.parse(e.draw_at)) ? "" : e.draw_at, actions,
+          draws: old.draws || [], winner: old.winner || null, by: identity.email, at: new Date().toISOString() };
+        cfg.events = [...cfg.events.filter(x => x.id !== e.id), clean];
+        await save(); await log(`sorteio ${e.id} salvo`);
+        return json({ ok: true, event: clean });
+      }
+      if (url.pathname === "/api/gw/draw" && request.method === "POST") {   // weighted draw; skips anyone drawn before
+        const e = find(b.id);
+        if (!e) return json({ error: "sorteio não encontrado" }, 404);
+        if (Date.now() < Date.parse(e.end)) return json({ error: "as inscrições ainda estão abertas" }, 409);
+        const { rows } = await entries(e);
+        const before = new Set((e.draws || []).map(d => d.sub));
+        const pool = rows.filter(r => r.tickets > 0 && !before.has(r.sub));
+        const total = pool.reduce((s, r) => s + r.tickets, 0);
+        if (!total) return json({ error: "ninguém com tickets para sortear" }, 409);
+        const rnd = new Uint32Array(1); crypto.getRandomValues(rnd);
+        let pick = Math.floor(rnd[0] / 2 ** 32 * total), win = pool[0];
+        for (const r of pool) { if (pick < r.tickets) { win = r; break; } pick -= r.tickets; }
+        const d = { sub: win.sub, name: win.name, ig: win.ig, yt: win.yt, tickets: win.tickets, total, people: pool.length,
+                    at: new Date().toISOString(), by: identity.email };
+        e.draws = [...(e.draws || []), d]; await save(); await log(`sorteio ${e.id}: sorteado ${win.ig || win.name}`);
+        return json({ ok: true, draw: d });
+      }
+      if (url.pathname === "/api/gw/announce" && request.method === "POST") {   // show (or hide) the winner on the public page
+        const e = find(b.id);
+        if (!e) return json({ error: "sorteio não encontrado" }, 404);
+        const d = (e.draws || []).find(x => x.sub === b.sub);
+        e.winner = d ? { ig: d.ig || null, yt: d.yt || null, name: d.ig ? null : String(d.name || "").split(" ")[0], at: new Date().toISOString() } : null;
+        await save(); await log(`sorteio ${e.id}: ganhador ${d ? "anunciado" : "removido"}`);
+        return json({ ok: true, winner: e.winner });
+      }
+      return json({ error: "rota desconhecida" }, 404);
+    }
+
     if (url.pathname === "/api/meta" && request.method === "GET") return json(await readJSON(env, "meta", { pin: [], hide: [] }));
     if (url.pathname === "/api/meta" && request.method === "POST") {
       const b = await request.json().catch(() => ({}));

@@ -1146,3 +1146,33 @@ thead th[aria-sort="ascending"]::after { content: " ▲"; }
 @media (max-width: 760px) { .rv-wrap { grid-template-columns: 1fr; } .rv-feed { max-height: 260px; } }
 
 .st-warn { color: #f5c64a; max-width: 760px; }
+
+/* giveaways (/pt/sorteios/) */
+.gw-card { border: 1px solid var(--line); border-radius: 12px; background: var(--panel); overflow: hidden; margin: 18px 0; max-width: 760px; }
+.gw-img { display: block; width: 100%; max-height: 300px; object-fit: cover; }
+.gw-body { padding: 16px 18px; }
+.gw-body h2 { margin: 0 0 6px; }
+.gw-prize { font-size: 17px; margin-bottom: 8px; }
+.gw-meta { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; color: var(--muted); font-size: 13px; }
+.gw-badge { border: 1px solid var(--line); border-radius: 999px; padding: 2px 10px; }
+.gw-badge.on { color: var(--good); border-color: color-mix(in srgb, var(--good) 50%, transparent); }
+.gw-winner { margin: 10px 0; padding: 8px 12px; border-radius: 8px; background: color-mix(in srgb, var(--accent) 14%, transparent); }
+.gw-login { margin: 14px 0; padding: 12px 14px; border: 1px dashed var(--line); border-radius: 10px; }
+.gw-login p { margin: 4px 0 10px; }
+.gw-who { display: flex; flex-wrap: wrap; gap: 8px 14px; margin: 14px 0 0; }
+.gw-who label { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--muted); flex: 1 1 200px; }
+.gw-who input { background: var(--panel2); border: 1px solid var(--line); color: var(--text); border-radius: 8px; padding: 8px 10px; font: inherit; }
+.gw-who p { flex-basis: 100%; margin: 0; }
+.gw-body h3 { margin: 16px 0 6px; font-size: 15px; }
+.gw-acts { list-style: none; margin: 0; padding: 0; }
+.gw-acts li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; align-items: center; padding: 10px 0; border-top: 1px solid var(--line); }
+.gw-acts li.done .gw-a b::before { content: "✓ "; color: var(--good); }
+.gw-a { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.gw-st { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; font-size: 13px; }
+.gw-did { display: inline-flex; gap: 6px; align-items: center; cursor: pointer; }
+.gw-ok { color: var(--good); }
+.gw-bad { color: var(--bad); }
+.gw-total { margin: 12px 0 0; font-size: 16px; }
+.gw-save { margin: 12px 0 4px; }
+.gw-rules { margin: 12px 0; }
+.gw-rules summary { cursor: pointer; }

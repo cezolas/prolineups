@@ -13,6 +13,7 @@
 //   /api/react?k=<key>      -> GET: likes of one grenade/tactic, whether this visitor liked it, whether the admin removed it
 //   /api/like               -> POST {k}: toggle this visitor's like (signed-in user, or an anonymous hash of the IP)
 //   /api/report             -> POST {k, url, reason, note, lang}: "this is broken" report (max 5 per visitor per day)
+//   /api/gw                 -> GET: giveaways + this user's entry and tickets · POST {id, ig, yt, acts}: join / update the entry
 //   /v/<net><code>[e]       -> short link of a social post: 302 to the grenade page with utm tags (codes in /dados/social.json)
 // Premium Area: compare-my-demo, training plan, tactics, Meta Grenades (tactics hub, team plays, executes and their replay data) are served
 // only to Premium users (KV "premium:<sub>", set in the online Admin); others go to /<lang>/premium/?from=<page>.
@@ -425,12 +426,98 @@ async function reactApi(req, env, url, sub) {
   return null;
 }
 
+// ---------------------------------------------------------------- giveaways (sorteios)
+// Config: KV USERS "gw:cfg" = { events: [{ id, title, prize, desc, rules, image, start, end, draw_at, status, winner,
+//   actions: [{ id, kind, label, url, tickets, max }] }] }, edited in the online Admin.
+// kind: ig_comment / yt_comment are checked against KV "gw:<id>:comments" = { at, c: { <action id>: { <user>: n } } },
+// written by pipeline/giveaway_sync.py (the Instagram/YouTube tokens stay on the studio PC). Every other kind
+// (ig_follow, yt_sub, tt_follow, visit) is declared by the participant and checked on the winner before announcing.
+// Entries: D1 "gw_entries", one per account per giveaway; an @ can belong to only one account per giveaway.
+const GW_CHECKED = new Set(["ig_comment", "yt_comment"]);
+const GW_KINDS = new Set(["ig_comment", "yt_comment", "ig_follow", "yt_sub", "tt_follow", "visit"]);
+const GW_ID = /^[a-z0-9-]{2,40}$/;
+const IG_USER = /^[a-z0-9._]{1,30}$/, YT_USER = /^[a-z0-9._-]{3,30}$/;
+const cleanHandle = (s) => String(s || "").trim().toLowerCase().replace(/^https?:\/\/(www\.)?(instagram\.com|youtube\.com)\//, "").replace(/^@/, "").replace(/[/?#].*$/, "");
+let GW_SCHEMA = false;
+async function gwSchema(env) {
+  if (GW_SCHEMA) return;
+  await env.DB.batch([
+    env.DB.prepare("CREATE TABLE IF NOT EXISTS gw_entries (gw TEXT NOT NULL, sub TEXT NOT NULL, ig TEXT, yt TEXT, acts TEXT NOT NULL DEFAULT '[]', ts INTEGER NOT NULL, upd INTEGER NOT NULL, PRIMARY KEY (gw, sub))"),
+    env.DB.prepare("CREATE UNIQUE INDEX IF NOT EXISTS gw_ig ON gw_entries (gw, ig) WHERE ig IS NOT NULL"),
+    env.DB.prepare("CREATE UNIQUE INDEX IF NOT EXISTS gw_yt ON gw_entries (gw, yt) WHERE yt IS NOT NULL"),
+  ]);
+  GW_SCHEMA = true;
+}
+const gwOpen = (e, now = Date.now()) => e.status !== "rascunho" && Date.parse(e.start) <= now && now < Date.parse(e.end);
+// tickets of one entry: [{ id, n, ok, checked }] per action
+function gwTickets(e, entry, comments) {
+  const acts = new Set(entry ? JSON.parse(entry.acts || "[]") : []);
+  return (e.actions || []).map((a) => {
+    const w = Math.max(1, a.tickets | 0), max = Math.max(1, a.max | 0);
+    if (GW_CHECKED.has(a.kind)) {
+      const who = a.kind === "ig_comment" ? entry && entry.ig : entry && entry.yt;
+      const n = who ? Math.min(max, ((comments.c || {})[a.id] || {})[who] | 0) : 0;
+      return { id: a.id, n: n * w, ok: n > 0, checked: true, count: n };
+    }
+    return { id: a.id, n: acts.has(a.id) ? w : 0, ok: acts.has(a.id), checked: false };
+  });
+}
+async function gwApi(req, env, url, sub) {
+  if (!env.DB) return json({ error: "not configured" }, 503);
+  const cfg = (await env.USERS.get("gw:cfg", "json")) || { events: [] };
+  const events = (cfg.events || []).filter((e) => e.status !== "rascunho");
+  if (req.method === "GET") {
+    await gwSchema(env);
+    const out = [];
+    for (const e of events) {
+      const comments = (await env.USERS.get(`gw:${e.id}:comments`, "json")) || {};
+      const [cnt, mine] = await env.DB.batch([
+        env.DB.prepare("SELECT COUNT(*) AS n FROM gw_entries WHERE gw = ?").bind(e.id),
+        env.DB.prepare("SELECT * FROM gw_entries WHERE gw = ? AND sub = ?").bind(e.id, sub || ""),
+      ]);
+      const entry = mine.results[0] || null;
+      out.push({
+        id: e.id, title: e.title, prize: e.prize, desc: e.desc, rules: e.rules, image: e.image, start: e.start, end: e.end,
+        draw_at: e.draw_at, open: gwOpen(e), winner: e.winner || null, participants: cnt.results[0].n, synced_at: comments.at || null,
+        actions: (e.actions || []).map((a) => ({ id: a.id, kind: a.kind, label: a.label, url: a.url, tickets: Math.max(1, a.tickets | 0), max: Math.max(1, a.max | 0) })),
+        me: entry ? { ig: entry.ig, yt: entry.yt, tickets: gwTickets(e, entry, comments) } : null,
+      });
+    }
+    return json({ signed_in: !!sub, events: out });
+  }
+  if (req.method === "POST") {
+    if (!sub) return json({ error: "entre na sua conta para participar" }, 401);
+    const b = await readBody(req);
+    const e = b && events.find((x) => x.id === b.id);
+    if (!e) return json({ error: "sorteio não encontrado" }, 404);
+    if (!gwOpen(e)) return json({ error: "as inscrições deste sorteio estão fechadas" }, 409);
+    const ig = cleanHandle(b.ig) || null, yt = cleanHandle(b.yt) || null;
+    if (ig && !IG_USER.test(ig)) return json({ error: "@ do Instagram inválido" }, 400);
+    if (yt && !YT_USER.test(yt)) return json({ error: "@ do YouTube inválido" }, 400);
+    const valid = new Set((e.actions || []).filter((a) => !GW_CHECKED.has(a.kind)).map((a) => a.id));
+    const acts = [...new Set(Array.isArray(b.acts) ? b.acts : [])].filter((x) => valid.has(x));
+    await gwSchema(env);
+    const now = Date.now();
+    try {
+      await env.DB.prepare(`INSERT INTO gw_entries (gw, sub, ig, yt, acts, ts, upd) VALUES (?, ?, ?, ?, ?, ?, ?)
+        ON CONFLICT (gw, sub) DO UPDATE SET ig = excluded.ig, yt = excluded.yt, acts = excluded.acts, upd = excluded.upd`)
+        .bind(e.id, sub, ig, yt, JSON.stringify(acts), now, now).run();
+    } catch (err) {
+      if (/UNIQUE/i.test(String(err && err.message))) return json({ error: "esse @ já está inscrito por outra conta" }, 409);
+      throw err;
+    }
+    return json({ ok: true });
+  }
+  return json({ error: "method" }, 405);
+}
+
 async function api(req, env, url) {
   const sub = await readSession(env, req);
   if (["/api/react", "/api/like", "/api/report"].includes(url.pathname)) {
     const r = await reactApi(req, env, url, sub);
     if (r) return r;
   }
+  if (url.pathname === "/api/gw") return await gwApi(req, env, url, sub);
   if (url.pathname === "/api/me") {
     if (!sub) return json({ error: "not signed in", configured: configured(env) || faceitReady(env) || steamReady(env), google: configured(env),
                             faceit_login: faceitReady(env), steam_login: steamReady(env) }, 401);
@@ -440,6 +527,7 @@ async function api(req, env, url) {
       if (u && u.google && u.google.sub) extra.push(env.USERS.delete(`google:${u.google.sub}`));
       if (u && u.steam && u.steam.id) extra.push(env.USERS.delete(`steam:${u.steam.id}`), env.USERS.delete(`scache:${u.steam.id}`));
       if (env.DB) await env.DB.prepare("DELETE FROM events WHERE sub = ?").bind(sub).run().catch(() => {});
+      if (env.DB) await env.DB.prepare("DELETE FROM gw_entries WHERE sub = ?").bind(sub).run().catch(() => {});
       await Promise.all([env.USERS.delete(`user:${sub}`), env.USERS.delete(`premium:${sub}`), ...extra, ...[...DATA_KEYS].map((k) => env.USERS.delete(`data:${sub}:${k}`))]);
       return json({ deleted: true }, 200, { "set-cookie": setCookie(COOKIE, "", 0) });
     }
