@@ -201,8 +201,10 @@
     </div>
     <div id="soList" class="so-list"></div>
     <div id="cronView" hidden>
-      <div class="muted">Dois posts por dia (12h e 19h, horário de Brasília), cada dia com o seu tema. As vagas vazias já vêm com uma sugestão:
-        a granada mais usada pelos pros que ainda não foi postada, sem repetir o mapa do post anterior. <b>Agendar</b> aprova o post e marca o horário.
+      <div class="muted">Um mapa por dia: <b>12h</b> uma granada ou combo desse mapa (o tipo muda a cada semana) e <b>19h</b> uma tática de time nele
+        (horário de Brasília). Seg Dust2 · Ter Inferno · Qua Nuke · Qui Anubis · Sex Ancient · Sáb Cache · Dom Mirage.
+        As vagas vazias já vêm com a sugestão mais usada pelos pros que ainda não foi postada; se o mapa não tiver tática nova, entra um combo dele.
+        <b>Agendar</b> aprova o post e marca o horário.
         No PC, <code>python pipeline/social.py --approved</code> gera os vídeos e <code>python pipeline/social_post.py --schedule</code>
         já deixa o YouTube agendado. O Instagram sai no horário com <code>social_post.py --due</code>; o TikTok fica agendado no TikTok Studio.</div>
       <div class="bar">
@@ -540,8 +542,13 @@ document.querySelectorAll(".so-tab").forEach(b => b.addEventListener("click", ()
 $("soReload").addEventListener("click", loadSocial);
 
 // ---------------------------------------------------------------- Cronograma (posting schedule)
-const CRON_TPL = { 1: ["smoke", "combo"], 2: ["molotov", "exec"], 3: ["smoke", "flash"], 4: ["he", "combo"],
-                   5: ["smoke", "exec"], 6: ["molotov", "smoke"], 0: ["combo", "smoke"] };   // 0 = domingo
+// one map per day (user's idea, 2026-11-20): 12h a grenade/combo of that map, 19h a team tactic on it.
+// The maps with more tactics (Ancient, Cache, Mirage) get Friday to Sunday, when more people watch.
+const CRON_MAP = { 1: "Dust2", 2: "Inferno", 3: "Nuke", 4: "Anubis", 5: "Ancient", 6: "Cache", 0: "Mirage" };   // 0 = domingo
+const CRON_TPL = [["content", "Conteúdo"], ["exec", "Tática de time"]];
+// afternoon type: different each day of the week and, for each map, different each week; falls back to whatever the map still has
+const CRON_ROT = ["smoke", "molotov", "smoke", "combo", "smoke", "flash", "he"];   // 3 smokes a week, one of each other
+const CRON_FALL = { content: ["smoke", "combo", "molotov", "flash", "he"], exec: ["exec", "combo", "smoke", "molotov", "flash", "he"] };
 const CRON_TIMES = ["12:00", "19:00"];
 const CRON_CAT = { smoke: "Smoke", molotov: "Molotov", flash: "Flash", he: "HE", combo: "Combo", exec: "Tática de pro" };
 const WDAY = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
@@ -562,9 +569,11 @@ function cronSlots() {
   for (let i = 0; i < CRON.weeks * 7; i++) {
     const ymd = brDate(new Date(Date.parse(first + "T12:00:00-03:00") + i * 864e5));
     const wd = new Date(ymd + "T12:00:00-03:00").getUTCDay();
-    CRON_TPL[wd].forEach((cat, j) => {
+    const week = Math.floor((Date.parse(ymd + "T00:00:00Z") / 864e5 + 3) / 7);   // changes on Mondays
+    CRON_TPL.forEach(([slot], j) => {
       const iso = `${ymd}T${CRON_TIMES[j]}:00-03:00`;
-      out.push({ ymd, wd, cat, time: CRON_TIMES[j], iso, past: Date.parse(iso) < now });
+      const want = slot === "exec" ? CRON_FALL.exec : [CRON_ROT[(week + wd) % CRON_ROT.length], ...CRON_FALL.content];
+      out.push({ ymd, wd, slot, map: CRON_MAP[wd], want, time: CRON_TIMES[j], iso, past: Date.parse(iso) < now });
     });
   }
   return out;
@@ -573,24 +582,26 @@ function renderCron() {
   const slots = cronSlots(), byTime = {};
   for (const [k, d] of Object.entries(SO.dec)) if (d.sched) byTime[d.sched.slice(0, 16)] = k;
   const used = new Set(Object.keys(SO.dec)), pool = {};
-  for (const x of SO.items) if (!used.has(x.k) && !CRON.skip.has(x.k)) (pool[catOf(x)] = pool[catOf(x)] || []).push(x);
+  for (const x of SO.items) if (!used.has(x.k) && !CRON.skip.has(x.k)) {
+    const key = x.map + "|" + catOf(x);
+    (pool[key] = pool[key] || []).push(x);
+  }
   for (const c in pool) pool[c].sort((a, b) => (a.meta || 99) - (b.meta || 99) || b.uses - a.uses);
-  let lastMap = "", nSug = 0, nOn = 0, html = "", curDay = "";
+  let nSug = 0, nOn = 0, html = "", curDay = "";
   for (const sl of slots) {
     const k = byTime[sl.iso.slice(0, 16)];
     let x = k ? SO.items.find(i => i.k === k) : null, sug = false;
     const dd = k ? SO.dec[k] : null;
     if (!k && !sl.past) {
-      const list = pool[sl.cat] || [];
-      let i = list.findIndex(c => c.map !== lastMap); if (i < 0) i = 0;
-      x = list.splice(i, 1)[0] || null; sug = !!x;
+      for (const c of sl.want) { const list = pool[sl.map + "|" + c]; if (list && list.length) { x = list.shift(); break; } }
+      sug = !!x;
     }
+    const cat = x ? catOf(x) : sl.want[0], fallback = sug && sl.slot === "exec" && cat !== "exec";
     if (!k && sl.past) continue;   // empty slots that already passed
     if (sl.ymd !== curDay) {
-      html += (curDay ? "</div>" : "") + `<div class="cron-day"><h3>${WDAY[sl.wd]} <span class="muted">${sl.ymd.slice(8)}/${sl.ymd.slice(5, 7)}/${sl.ymd.slice(0, 4)}</span></h3>`;
+      html += (curDay ? "</div>" : "") + `<div class="cron-day"><h3>${WDAY[sl.wd]} · ${esc(sl.map)} <span class="muted">${sl.ymd.slice(8)}/${sl.ymd.slice(5, 7)}/${sl.ymd.slice(0, 4)}</span></h3>`;
       curDay = sl.ymd;
     }
-    if (x) lastMap = x.map;
     if (sug) nSug++; else if (k) nOn++;
     const nets = dd ? (dd.nets || ["yt", "ig", "tt"]) : [];
     const live = dd && (dd.status === "publicado" || Date.parse(sl.iso) <= Date.now());
@@ -598,10 +609,10 @@ function renderCron() {
     html += `<div class="cron-slot${sug ? " sug" : k ? " on" : ""}" data-iso="${sl.iso}" data-k="${x ? esc(x.k) : ""}">
       <div class="when">${sl.time.replace(":00", "h")}</div>
       ${x && x.poster ? `<a href="https://pronades.com.br/media/${esc(x.clip)}" target="_blank" rel="noopener" title="Ver o vídeo"><img src="https://pronades.com.br/media/${esc(x.poster)}" alt="" loading="lazy"></a>` : '<div class="noimg"></div>'}
-      <div><span class="cat">${CRON_CAT[sl.cat]}${sug ? " · sugestão" : k ? " · agendado" : ""}</span>
+      <div><span class="cat">${CRON_CAT[cat] || cat}${sug ? " · sugestão" : k ? " · agendado" : ""}</span>${fallback ? '<span class="muted" style="font-size:11px">sem tática nova deste mapa</span>' : ""}
         ${x ? `<b><a href="https://pronades.com.br${esc(x.url)}" target="_blank" rel="noopener" style="color:inherit">${esc((dd && dd.title) || x.title)}</a></b>
           <div class="muted" style="font-size:12px">${esc(x.map)} · ${x.uses} usos · ${x.teams} times${x.player ? ` · vídeo do ${esc(x.player)}` : ""}${x.team ? ` · ${esc(x.team)}` : ""}</div>`
-          : '<span class="muted">sem candidatos nesta categoria</span>'}
+          : `<span class="muted">nada novo da ${esc(sl.map)} para postar</span>`}
         ${x ? execParts(x) : ""}
         ${st ? `<div>${st}</div>` : ""}
         <div class="acts">${sug ? '<button data-cron="add">Agendar</button><button data-cron="other">Outra sugestão</button>'
