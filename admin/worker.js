@@ -434,7 +434,7 @@ export default {
       if (url.pathname === "/api/gw/draw" && request.method === "POST") {   // weighted draw; skips anyone drawn before
         const e = find(b.id);
         if (!e) return json({ error: "sorteio não encontrado" }, 404);
-        if (Date.now() < Date.parse(e.end)) return json({ error: "as inscrições ainda estão abertas" }, 409);
+        if (Date.now() < Date.parse(e.end) && e.status !== "rascunho") return json({ error: "as inscrições ainda estão abertas" }, 409);
         const { rows } = await entries(e);
         const before = new Set((e.draws || []).map(d => d.sub));
         const pool = rows.filter(r => r.tickets > 0 && !before.has(r.sub));
@@ -447,6 +447,15 @@ export default {
                     at: new Date().toISOString(), by: identity.email };
         e.draws = [...(e.draws || []), d]; await save(); await log(`sorteio ${e.id}: sorteado ${win.ig || win.name}`);
         return json({ ok: true, draw: d });
+      }
+      if (url.pathname === "/api/gw/clear" && request.method === "POST") {   // draft only: drop test entries, comments and draws
+        const e = find(b.id);
+        if (!e) return json({ error: "sorteio não encontrado" }, 404);
+        if (e.status !== "rascunho") return json({ error: "só dá para limpar um sorteio em rascunho" }, 409);
+        const n = await env.DB.prepare("DELETE FROM gw_entries WHERE gw = ?").bind(e.id).run();
+        await env.USERS.delete(`gw:${e.id}:comments`);
+        e.draws = []; e.winner = null; await save(); await log(`sorteio ${e.id}: inscrições de teste apagadas`);
+        return json({ ok: true, deleted: (n.meta && n.meta.changes) || 0 });
       }
       if (url.pathname === "/api/gw/announce" && request.method === "POST") {   // show (or hide) the winner on the public page
         const e = find(b.id);

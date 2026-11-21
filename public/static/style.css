@@ -1161,6 +1161,7 @@ thead th[aria-sort="ascending"]::after { content: " ▲"; }
 .ev-chip { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px;
   border: 1px solid var(--line); color: var(--muted); }
 .ev-open { color: var(--good); border-color: color-mix(in srgb, var(--good) 50%, transparent); }
+.ev-draft { color: var(--bad); border-color: color-mix(in srgb, var(--bad) 50%, transparent); border-style: dashed; }
 .ev-soon { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 50%, transparent); }
 .ev-prize { margin: 0; color: var(--muted); }
 .ev-prize b { color: var(--text); }

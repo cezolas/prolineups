@@ -497,7 +497,7 @@ function gwShow(e) {
 function gwRun(e) {
   if (!e) { $("gwRun").innerHTML = '<span class="muted">Salve o sorteio para ver os participantes.</span>'; return; }
   const rows = [...e.entries].sort((a, b) => b.tickets - a.tickets);
-  const total = rows.reduce((s, r) => s + r.tickets, 0), closed = Date.now() >= Date.parse(e.end);
+  const total = rows.reduce((s, r) => s + r.tickets, 0), draft = e.status === "rascunho", closed = draft || Date.now() >= Date.parse(e.end);
   const acts = e.actions || [];
   const cell = (r, a) => (a.kind === "ig_comment" || a.kind === "yt_comment") ? (r.counts[a.id] ? `✓ ${r.counts[a.id]}` : "—") : (r.acts.includes(a.id) ? "marcou" : "—");
   const draws = (e.draws || []).map(d => {
@@ -512,7 +512,9 @@ function gwRun(e) {
   $("gwRun").innerHTML = `<div class="bar" style="margin-top:0"><b>${rows.length} participantes · ${total} tickets</b>
       <span class="muted">comentários conferidos: ${e.synced_at ? gwWhen(e.synced_at) : "nunca (rode giveaway_sync.py)"}</span>
       <span class="muted">inscrições ${gwWhen(e.start)} → ${gwWhen(e.end)}</span>
-      <button type="button" id="gwDraw" ${closed ? "" : "disabled title=\"as inscrições ainda estão abertas\""}>${(e.draws || []).length ? "Sortear outra pessoa" : "Sortear"}</button></div>
+      <button type="button" id="gwDraw" ${closed ? "" : "disabled title=\"as inscrições ainda estão abertas\""}>${(e.draws || []).length ? "Sortear outra pessoa" : "Sortear"}${draft ? " (teste)" : ""}</button>
+      ${draft ? '<button type="button" id="gwClear" title="Apaga inscrições, comentários conferidos e sorteios de teste">Apagar inscrições de teste</button>' : ""}</div>
+    ${draft ? '<div class="muted" style="margin:-4px 0 8px">Rascunho: só contas de admin veem no site e podem se inscrever, para testar. Antes de publicar, apague as inscrições de teste.</div>' : ""}
     ${draws}
     <div class="tablewrap" style="max-height:480px"><table><thead><tr><th>Pessoa</th><th>Instagram</th><th>YouTube</th>${acts.map(a => `<th>${esc(a.label || GW_KIND[a.kind])}</th>`).join("")}<th>Tickets</th><th>Inscrição</th></tr></thead>
     <tbody>${rows.map(r => `<tr><td>${esc(r.name)}</td><td>${r.ig ? "@" + esc(r.ig) : "—"}</td><td>${r.yt ? "@" + esc(r.yt) : "—"}</td>${acts.map(a => `<td class="num">${cell(r, a)}</td>`).join("")}
@@ -521,6 +523,11 @@ function gwRun(e) {
   if (dr) dr.onclick = async () => {
     if (!confirm(`Sortear entre ${rows.filter(r => r.tickets > 0 && !(e.draws || []).some(d => d.sub === r.sub)).length} pessoas com tickets? Rode o giveaway_sync.py antes, para os comentários estarem em dia.`)) return;
     try { await api("/api/gw/draw", { id: e.id }); await loadGw(e.id); } catch (err) { alert(err.message); }
+  };
+  const cl = $("gwClear");
+  if (cl) cl.onclick = async () => {
+    if (!confirm(`Apagar as ${rows.length} inscrições de teste, os comentários conferidos e os sorteios deste rascunho?`)) return;
+    try { await api("/api/gw/clear", { id: e.id }); await loadGw(e.id); } catch (err) { alert(err.message); }
   };
   $("gwRun").querySelectorAll("[data-ann]").forEach(b => b.onclick = async () => {
     try { await api("/api/gw/announce", { id: e.id, sub: b.dataset.ann || null }); await loadGw(e.id); } catch (err) { alert(err.message); }

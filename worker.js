@@ -465,7 +465,11 @@ function gwTickets(e, entry, comments) {
 async function gwApi(req, env, url, sub) {
   if (!env.DB) return json({ error: "not configured" }, 503);
   const cfg = (await env.USERS.get("gw:cfg", "json")) || { events: [] };
-  const events = (cfg.events || []).filter((e) => e.status !== "rascunho");
+  // drafts are shown only to admins (to test the entry before publishing); for them a draft takes entries until its end
+  const u = sub ? await env.USERS.get(`user:${sub}`, "json") : null;
+  const admin = !!u && (await isAdmin(env, u));
+  const events = (cfg.events || []).filter((e) => e.status !== "rascunho" || admin);
+  const isOpen = (e) => e.status === "rascunho" ? Date.now() < Date.parse(e.end) : gwOpen(e);
   if (req.method === "GET") {
     await gwSchema(env);
     const out = [];
@@ -478,7 +482,7 @@ async function gwApi(req, env, url, sub) {
       const entry = mine.results[0] || null;
       out.push({
         id: e.id, title: e.title, prize: e.prize, desc: e.desc, rules: e.rules, image: e.image, start: e.start, end: e.end,
-        draw_at: e.draw_at, open: gwOpen(e), winner: e.winner || null, participants: cnt.results[0].n, synced_at: comments.at || null,
+        draw_at: e.draw_at, open: isOpen(e), draft: e.status === "rascunho", winner: e.winner || null, participants: cnt.results[0].n, synced_at: comments.at || null,
         actions: (e.actions || []).map((a) => ({ id: a.id, kind: a.kind, label: a.label, url: a.url, tickets: Math.max(1, a.tickets | 0), max: Math.max(1, a.max | 0) })),
         me: entry ? { ig: entry.ig, yt: entry.yt, tickets: gwTickets(e, entry, comments) } : null,
       });
@@ -490,7 +494,7 @@ async function gwApi(req, env, url, sub) {
     const b = await readBody(req);
     const e = b && events.find((x) => x.id === b.id);
     if (!e) return json({ error: "sorteio não encontrado" }, 404);
-    if (!gwOpen(e)) return json({ error: "as inscrições deste sorteio estão fechadas" }, 409);
+    if (!isOpen(e)) return json({ error: "as inscrições deste sorteio estão fechadas" }, 409);
     const ig = cleanHandle(b.ig) || null, yt = cleanHandle(b.yt) || null;
     if (ig && !IG_USER.test(ig)) return json({ error: "@ do Instagram inválido" }, 400);
     if (yt && !YT_USER.test(yt)) return json({ error: "@ do YouTube inválido" }, 400);
