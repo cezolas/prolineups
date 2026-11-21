@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eventos do Pronades · Pronades</title>
+<meta name="description" content="Sorteios e ações da comunidade Pronades: datas, regulamento e como participar.">
+<link rel="canonical" href="https://pronades.com.br/pt/eventos/">
+<link rel="alternate" hreflang="pt" href="https://pronades.com.br/pt/eventos/">
+<link rel="alternate" hreflang="en" href="https://pronades.com.br/en/events/">
+<link rel="alternate" hreflang="x-default" href="https://pronades.com.br/pt/eventos/">
+<meta property="og:title" content="Eventos do Pronades">
+<meta property="og:description" content="Sorteios e ações da comunidade Pronades: datas, regulamento e como participar.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://pronades.com.br/static/og-pt.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Pronades">
+<meta name="theme-color" content="#0b0f15">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&display=swap">
+<script>/* one address: www and the old workers.dev address go to the main domain */
+(function () { var h = location.hostname, main = "pronades.com.br";
+  if (h !== main && h !== "localhost" && h !== "127.0.0.1" && (h === "www." + main || /\.workers\.dev$/.test(h)))
+    location.replace("https://" + main + location.pathname + location.search + location.hash); })();</script>
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
+  if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
+<link rel="icon" href="/static/favicon.svg?v=714ec3503f" type="image/svg+xml">
+<link rel="stylesheet" href="/static/style.css?v=4145cc1bf4">
+<script>window.I18N = {"copied": "Copiado!", "dec": ",", "kinds": {"jogador": "jogador", "lineup": "lineup", "mapa": "mapa", "time": "time", "torneio": "torneio"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nada encontrado.", "open": "Abrir", "plant_after": "plant +{s}s", "plant_in": "plant em {s}s", "report_fail": "N\u00e3o deu para enviar agora, tente mais tarde.", "report_limit": "Voc\u00ea j\u00e1 enviou v\u00e1rios reports hoje.", "report_thanks": "Obrigado! Vamos revisar.", "throws_in": "lan\u00e7a em {s}s", "v_back": "Voltar 2 segundos", "v_frame_back": "Quadro anterior", "v_frame_fwd": "Pr\u00f3ximo quadro", "v_fwd": "Avan\u00e7ar 2 segundos", "v_play": "Reproduzir / pausar"}; window.LANG = "pt";</script>
+</head>
+<body class="">
+<header class="top">
+  <div class="top-in">
+    <button class="menu-btn" id="menuBtn" aria-label="Mostrar ou ocultar o menu" aria-controls="side" aria-expanded="false">☰</button>
+    <a class="logo wordmark" href="/pt/" aria-label="Pronades">Pro<span>nades</span><img class="he-buddy" src="/static/brand/he-buddy.svg?v=714ec3503f" alt="" width="22" height="22"></a>
+    <div class="search">
+      <input id="q" type="search" placeholder="Buscar mapa, jogador, time, smoke…" autocomplete="off" aria-label="Buscar">
+      <div id="results" class="results" hidden></div>
+    </div>
+    <a class="premium-btn" href="/pt/modo-partida/" title="Modo partida"><span aria-hidden="true">📱</span><span class="pb-l">Modo partida</span></a>
+    <nav class="langs" aria-label="Idioma">
+<a href="/pt/eventos/" hreflang="pt" lang="pt" aria-current="true" title="Português" aria-label="Português"><img class="lang-flag" src="/static/flags/br.svg?v=17969b5ac0" alt="Português" width="24" height="18"></a><a href="/en/events/" hreflang="en" lang="en" title="English" aria-label="English"><img class="lang-flag" src="/static/flags/gb.svg?v=161ee20a0a" alt="English" width="24" height="18"></a>    </nav>
+    <a class="login-btn" id="loginBtn" href="/pt/conta/" data-account="conta" hidden>Entrar</a>
+    <div class="me-wrap">
+      <a class="me-btn" id="meBtn" href="/pt/conta/" hidden aria-label="Minha conta" aria-haspopup="menu" aria-expanded="false" aria-controls="meMenu"><img alt="" width="28" height="28" referrerpolicy="no-referrer" hidden><span>Conta</span><span class="me-caret" aria-hidden="true">▾</span></a>
+      <div class="me-menu" id="meMenu" role="menu" hidden>
+        <div class="me-head"><b id="meName"></b><span class="muted small" id="meMail"></span><span class="me-plan" id="mePlan" data-free="Plano Gratuito" data-premium="♛ Premium"></span></div>
+        <a role="menuitem" href="/pt/conta/">👤 Minha conta</a>
+        <a role="menuitem" href="/pt/minha-faceit/">◉ Minha FACEIT</a>
+        <a role="menuitem" href="/pt/minha-steam/">◎ Minha Steam</a>
+        <a role="menuitem" href="/pt/minhas-taticas/">★ Minhas táticas</a>
+        <a role="menuitem" href="/pt/premium/">♛ Área Premium</a>
+        <a role="menuitem" href="https://prolineups-admin.cezolas.workers.dev" id="meAdmin" class="me-admin" target="_blank" rel="noopener" hidden>⚙ Painel Admin</a>
+        <div class="me-sep"></div>
+        <a role="menuitem" class="me-out" href="/auth/logout?lang=pt">⎋ Sair</a>
+      </div>
+    </div>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="Alternar modo claro/escuro" title="Alternar modo claro/escuro"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.6"/><g stroke-width="2.2" stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></g></svg></button>
+  </div>
+</header>
+<div class="layout">
+  <aside class="side" id="side" aria-label="Navegação">
+    <nav>
+      <a href="/pt/"><span class="nl">Início</span></a>
+      <a href="/pt/minha-faceit/"><span>◉ Minha FACEIT</span></a>
+      <a href="/pt/minha-steam/"><span>◎ Minha Steam</span></a>
+      <a href="/pt/funcoes/"><span>👥 Funções</span></a>
+      <a href="/pt/analises/"><span>▤ Análises</span></a>
+      <a class="nav-gw" href="/pt/eventos/" aria-current="page"><span>🎁 Eventos</span></a>
+      <details class="nav-g" data-k="maps">
+        <summary class="nav-h"><a href="/pt/mapas/">Mapas</a></summary>
+<a href="/pt/ancient/"><span class="nl">Ancient</span><span class="n">63</span></a><a href="/pt/anubis/"><span class="nl">Anubis</span><span class="n">20</span></a><a href="/pt/cache/"><span class="nl">Cache</span><span class="n">47</span></a><a href="/pt/dust2/"><span class="nl">Dust2</span><span class="n">53</span></a><a href="/pt/inferno/"><span class="nl">Inferno</span><span class="n">22</span></a><a href="/pt/mirage/"><span class="nl">Mirage</span><span class="n">80</span></a><a href="/pt/nuke/"><span class="nl">Nuke</span><span class="n">33</span></a>      </details>
+      <details class="nav-g" data-k="events">
+        <summary class="nav-h"><a href="/pt/torneios/">Torneios</a></summary>
+<a href="/pt/torneio/pgl-cluj-napoca-2027-closed-qualifier/"><span class="nl">PGL Cluj Napoca 2027 Closed Qualifier</span></a><a href="/pt/torneio/blast-rivals-2026-season-2/"><span class="nl">BLAST Rivals 2026 Season 2</span></a>      </details>
+      <details class="nav-g" data-k="players">
+        <summary class="nav-h"><a href="/pt/jogadores/">Jogadores</a></summary>
+<a href="/pt/jogador/21zweih/"><span class="nl"><span class="nav-flag"></span>21zweih <span class="role role-entry sm">Entry</span></span></a><a href="/pt/jogador/apex/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12"></span>apEX <span class="role role-support sm">Suporte</span></span></a><a href="/pt/jogador/art/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>art <span class="role role-support sm">Suporte</span></span></a><a href="/pt/jogador/awwwww/"><span class="nl"><span class="nav-flag"></span>AWwwww <span class="role role-rifler sm">Rifler</span></span></a><a href="/pt/jogador/brollan/"><span class="nl"><span class="nav-flag"></span>Brollan <span class="role role-entry sm">Entry</span></span></a><a href="/pt/jogador/chr1zn/"><span class="nl"><span class="nav-flag"></span>Chr1zN <span class="role role-lurker sm">Lurker</span></span></a><a href="/pt/jogador/coolio/"><span class="nl"><span class="nav-flag"></span>coolio <span class="role role-entry sm">Entry</span></span></a><a href="/pt/jogador/dem0n/"><span class="nl"><span class="nav-flag"></span>dem0n <span class="role role-rifler sm">Rifler</span></span></a><a href="/pt/jogador/donk/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12"></span>donk <span class="role role-rifler sm">Rifler</span></span></a><a href="/pt/jogador/dumau/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>dumau <span class="role role-entry sm">Entry</span></span></a><a href="/pt/jogador/dziugss/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/lt.svg" alt="Lituânia" title="Lituânia" width="16" height="12"></span>dziugss <span class="role role-lurker sm">Lurker</span></span></a><a href="/pt/jogador/fallen/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>FalleN <span class="role role-support sm">Suporte</span></span></a><a class="more" href="/pt/jogadores/">ver todos (60)</a>      </details>
+      <details class="nav-g" data-k="teams">
+        <summary class="nav-h"><a href="/pt/times/">Times</a></summary>
+<a href="/pt/time/eternal-fire/"><span class="nl"><span class="nav-flag"></span>Eternal Fire</span></a><a href="/pt/time/falcons/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/sa.svg" alt="Arábia Saudita" title="Arábia Saudita" width="16" height="12"></span>Falcons</span></a><a href="/pt/time/furia/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>FURIA</span></a><a href="/pt/time/fut/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/tr.svg" alt="Turquia" title="Turquia" width="16" height="12"></span>FUT</span></a><a href="/pt/time/g2/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"></span>G2</span></a><a href="/pt/time/heroic/"><span class="nl"><span class="nav-flag"></span>Heroic</span></a><a href="/pt/time/legacy/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/br.svg" alt="Brasil" title="Brasil" width="16" height="12"></span>Legacy</span></a><a href="/pt/time/magic/"><span class="nl"><span class="nav-flag"></span>Magic</span></a><a href="/pt/time/mouz/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/de.svg" alt="Alemanha" title="Alemanha" width="16" height="12"></span>MOUZ</span></a><a href="/pt/time/parivision/"><span class="nl"><span class="nav-flag"></span>PARIVISION</span></a><a href="/pt/time/spirit/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/ru.svg" alt="Rússia" title="Rússia" width="16" height="12"></span>Spirit</span></a><a href="/pt/time/vitality/"><span class="nl"><span class="nav-flag"><img class="flag" src="/static/flags/fr.svg" alt="França" title="França" width="16" height="12"></span>Vitality</span></a>      </details>
+      <details class="nav-g nav-premium" data-k="premium">
+        <summary class="nav-h"><a href="/pt/premium/">♛ Área Premium</a></summary>
+        <a href="/pt/comparar-minha-demo/"><span class="nl"><span class="nav-flag">⇄</span>Comparar minha demo</span></a>
+        <a href="/pt/plano-de-treino/"><span class="nl"><span class="nav-flag">🎯</span>Plano de treino</span></a>
+        <a href="/pt/taticas/"><span class="nl"><span class="nav-flag">♟</span>Táticas</span></a>
+        <a href="/pt/meta-grenades/"><span class="nl"><span class="nav-flag">🔥</span>Meta Grenades</span></a>
+      </details>
+      <div class="nav-sep"></div>
+      <a href="/pt/sobre/"><span class="nl">Sobre</span></a>
+      <a href="/pt/privacidade/"><span class="nl">Privacidade</span></a>
+      <button type="button" class="side-collapse" id="sideCollapse" aria-controls="side">« Recolher menu</button>
+    </nav>
+    <script>
+      /* sections start collapsed; the ones opened here are remembered, and the one holding this page opens.
+         Maps always starts collapsed (user's choice, 2026-11-21): the top bar already has the maps */
+      (function () {
+        var o = []; try { o = JSON.parse(localStorage.getItem("navOpen") || "[]"); } catch (e) {}
+        document.querySelectorAll(".nav-g").forEach(function (d) {
+          if (d.dataset.k !== "maps" && (o.indexOf(d.dataset.k) >= 0 || d.querySelector("[aria-current]"))) d.open = true;
+          d.addEventListener("toggle", function () {
+            var s = []; document.querySelectorAll(".nav-g").forEach(function (x) { if (x.open && x.dataset.k !== "maps") s.push(x.dataset.k); });
+            try { localStorage.setItem("navOpen", JSON.stringify(s)); } catch (e) {}
+          });
+        });
+      })();
+    </script>
+  </aside>
+  <div class="scrim" id="scrim" hidden></div>
+  <main class="content">
+<a class="back-btn" id="backBtn" href="/pt/">← Voltar</a><nav class="crumbs"><a href="/pt/">Início</a> › <a href="/pt/eventos/">Eventos</a><span id="gwCrumb"></span></nav>
+<div id="gwHead"><h1>Eventos do Pronades</h1>
+<p class="muted">Sorteios e ações da comunidade Pronades.</p></div>
+<div id="gw" data-i18n='{"actions_h": "Como ganhar tickets", "auto": "Conferido automaticamente", "auto_need_ig": "Informe seu @ do Instagram", "auto_need_yt": "Informe seu @ do YouTube", "auto_ok": "\u2713 {n} coment\u00e1rio(s) encontrado(s)", "auto_wait": "Ainda n\u00e3o encontrado. Conferimos algumas vezes por dia", "back": "\u2190 Todos os eventos", "closed": "Inscri\u00e7\u00f5es encerradas", "declared": "Conferido no dia do sorteio", "desc": "Sorteios e a\u00e7\u00f5es da comunidade Pronades: datas, regulamento e como participar.", "did": "J\u00e1 fiz", "draw_at": "Sorteio em {d}", "draw_l": "Sorteio", "end_l": "Encerramento", "ends": "Inscri\u00e7\u00f5es at\u00e9 {d}", "err": "N\u00e3o deu para salvar. Tente de novo.", "fine": "Este sorteio n\u00e3o \u00e9 patrocinado, administrado ou associado ao Instagram, YouTube ou TikTok. Antes de anunciar, conferimos se o sorteado cumpriu todas as a\u00e7\u00f5es; se n\u00e3o cumpriu, sorteamos outra pessoa.", "join": "Participar", "kind": {"ig_comment": "Comente no post do Instagram", "ig_follow": "Siga no Instagram", "tt_follow": "Siga no TikTok", "visit": "A\u00e7\u00e3o", "yt_comment": "Comente no v\u00eddeo do YouTube", "yt_sub": "Inscreva-se no YouTube"}, "lead": "Sorteios e a\u00e7\u00f5es da comunidade Pronades.", "login": "Entrar e participar", "login_h": "Entre para participar", "login_lead": "Use sua conta do Pronades (Google, FACEIT ou Steam). Assim cada pessoa tem uma inscri\u00e7\u00e3o s\u00f3.", "mine": "Seus tickets", "nav": "Eventos", "none": "Nenhum evento no momento. Siga o Pronades nas redes para saber do pr\u00f3ximo.", "open": "Abrir", "people": "{n} participantes", "per_comment": "{n} por coment\u00e1rio, at\u00e9 {m}", "prize": "Pr\u00eamio", "rules": "Regulamento", "rules_link": "Regulamento", "save": "Salvar minha inscri\u00e7\u00e3o", "saved": "Inscri\u00e7\u00e3o salva!", "see": "Ver evento", "st_closed": "Encerrado", "st_open": "Inscri\u00e7\u00f5es abertas", "st_soon": "Em breve", "start_l": "In\u00edcio", "starts": "Inscri\u00e7\u00f5es a partir de {d}", "synced": "Coment\u00e1rios conferidos em {d}", "ticket": "1 ticket", "tickets": "{n} tickets", "title": "Eventos do Pronades", "type_gw": "Sorteio", "winner": "Ganhador", "you_hint": "Usamos s\u00f3 para conferir seus coment\u00e1rios e avisar se voc\u00ea ganhar.", "you_ig": "Seu @ no Instagram", "you_yt": "Seu @ no YouTube"}' data-locale="pt-BR" data-next="/pt/eventos/" data-account="/pt/conta/" aria-live="polite">
+  <p class="muted">…</p>
+</div>
+<script>
+(function () { // back button: always to the previous page (home if there is none); placed right under the breadcrumbs
+  var b = document.getElementById("backBtn"); if (!b) return;
+  var c = document.querySelector("main.content .crumbs"); if (c) c.insertAdjacentElement("afterend", b);
+  b.addEventListener("click", function (e) { if (history.length > 1) { e.preventDefault(); history.back(); } });
+})();
+</script>
+  </main>
+</div>
+<footer class="foot">
+  <div class="foot-in">
+<nav class="foot-social" aria-label="Siga @pronadescs"><span class="muted">Siga @pronadescs</span>
+<a class="soc soc-youtube" href="https://www.youtube.com/@pronadescs" target="_blank" rel="noopener me" title="YouTube @pronadescs" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.7 15.1V8.9l5.8 3.1z"/></svg></a><a class="soc soc-instagram" href="https://www.instagram.com/pronadescs" target="_blank" rel="noopener me" title="Instagram @pronadescs" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor"/></svg></a><a class="soc soc-tiktok" href="https://www.tiktok.com/@pronadescs" target="_blank" rel="noopener me" title="TikTok @pronadescs" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.6 2h-3.4v13.4a3 3 0 1 1-2.6-3V9a6.4 6.4 0 1 0 6 6.4V8.6a8 8 0 0 0 4.4 1.4V6.6a4.6 4.6 0 0 1-4.4-4.6z"/></svg></a>    </nav>    <p>Dados extraídos das demos oficiais das partidas. Demos: <a href="https://www.hltv.org/" rel="noopener" target="_blank">HLTV.org</a>.</p>
+    <p>Projeto de fãs, gratuito. Não afiliado à Valve, HLTV, aos times ou aos organizadores dos torneios. Counter-Strike é marca da Valve Corporation.</p>
+    <p><a href="/pt/sobre/">Sobre e créditos</a> · atualizado em 2026-11-21</p>
+  </div>
+</footer>
+<script src="/static/app.js?v=7dbafbbb28" defer></script>
+<script src="/static/accounts.js?v=f84db4c60f" defer></script>
+<script src="/static/video.js?v=58a69c88b1" defer></script>
+<script src="/static/react.js?v=ba1c25c1ad" defer></script>
+<script>
+(function () {
+  // Events (giveaways). #<id> = one event (how to join), #<id>/regulamento = its rules. Data: /api/gw (site/worker.js).
+  var root = document.getElementById("gw"), head = document.getElementById("gwHead"), crumb = document.getElementById("gwCrumb");
+  var T = JSON.parse(root.dataset.i18n), loc = root.dataset.locale, DATA = null;
+  var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return "&#" + c.charCodeAt(0) + ";"; }); };
+  var day = function (d) { return new Date(d).toLocaleString(loc, { day: "2-digit", month: "short", year: "numeric", timeZone: "America/Sao_Paulo" }); };
+  var hour = function (d) { return new Date(d).toLocaleString(loc, { hour: "2-digit", minute: "2-digit", timeZone: "America/Sao_Paulo" }); };
+  var when = function (d) { return new Date(d).toLocaleString(loc, { day: "2-digit", month: "long", hour: "2-digit", minute: "2-digit", timeZone: "America/Sao_Paulo" }); };
+  var fmt = function (s, o) { return s.replace(/\{(\w)\}/g, function (_, k) { return o[k]; }); };
+  var tk = function (n) { return n === 1 ? T.ticket : fmt(T.tickets, { n: n }); };
+  var para = function (s) { return esc(s).split(/\n{2,}/).map(function (p) { return "<p>" + p.replace(/\n/g, "<br>") + "</p>"; }).join(""); };
+  var state = function (e) { return e.open ? "open" : Date.now() < Date.parse(e.start) ? "soon" : "closed"; };
+
+  function dates(e) {
+    var cell = function (l, d) { return '<div><span>' + l + '</span><b>' + esc(day(d)) + '</b><small>' + esc(hour(d)) + '</small></div>'; };
+    return '<div class="ev-dates">' + cell(T.start_l, e.start) + cell(T.end_l, e.end) + (e.draw_at ? cell(T.draw_l, e.draw_at) : "") + '</div>';
+  }
+  function chips(e) {
+    var s = state(e);
+    return '<div class="ev-chips"><span class="ev-chip">' + T.type_gw + '</span><span class="ev-chip ev-' + s + '">' +
+      (s === "open" ? T.st_open : s === "soon" ? T.st_soon : T.st_closed) + '</span></div>';
+  }
+  function winner(e) {
+    return e.winner ? '<div class="gw-winner">🏆 ' + T.winner + ': <b>' + esc(e.winner.ig ? "@" + e.winner.ig : e.winner.yt ? "@" + e.winner.yt : e.winner.name) + '</b></div>' : "";
+  }
+
+  // ---- list: one clean card per event
+  function card(e) {
+    var u = "#" + encodeURIComponent(e.id);
+    return '<article class="ev-card">' + (e.image ? '<a href="' + u + '"><img class="ev-img" src="' + esc(e.image) + '" alt=""></a>' : "") +
+      '<div class="ev-body">' + chips(e) + '<h2><a href="' + u + '">' + esc(e.title) + '</a></h2>' +
+      (e.prize ? '<p class="ev-prize">' + T.prize + ': <b>' + esc(e.prize) + '</b></p>' : "") + winner(e) + dates(e) +
+      '<div class="ev-btns"><a class="btn' + (e.open ? " cta" : "") + '" href="' + u + '">' + (e.open ? T.join : T.see) + '</a>' +
+      (e.rules ? '<a class="ev-rules-link" href="' + u + '/regulamento">' + T.rules_link + ' →</a>' : "") + '</div></div></article>';
+  }
+
+  // ---- one event: how to join + rules
+  function detail(e, signed) {
+    var me = e.me || { tickets: [] }, mine = {}, total = 0;
+    me.tickets.forEach(function (x) { mine[x.id] = x; total += x.n; });
+    var edit = signed && e.open;
+    var h = '<p><a href="#">' + T.back + '</a></p><article class="ev-one" data-id="' + esc(e.id) + '">';
+    if (e.image) h += '<img class="ev-img" src="' + esc(e.image) + '" alt="">';
+    h += '<div class="ev-body">' + chips(e) + '<h1>' + esc(e.title) + '</h1>';
+    if (e.prize) h += '<p class="ev-prize">' + T.prize + ': <b>' + esc(e.prize) + '</b></p>';
+    h += winner(e) + dates(e) + '<p class="muted small">' + esc(fmt(T.people, { n: e.participants })) +
+      (e.rules ? ' · <a href="#' + encodeURIComponent(e.id) + '/regulamento">' + T.rules_link + '</a>' : "") + '</p>';
+    if (e.desc) h += '<div class="gw-desc">' + para(e.desc) + '</div>';
+
+    if (!signed && e.open) h += '<div class="gw-login"><b>' + T.login_h + '</b><p class="muted small">' + T.login_lead + '</p>' +
+      '<a class="btn cta" href="' + root.dataset.account + '?next=' + encodeURIComponent(root.dataset.next) + '">' + T.login + '</a></div>';
+    var needIg = e.actions.some(function (a) { return a.kind === "ig_comment"; }), needYt = e.actions.some(function (a) { return a.kind === "yt_comment"; });
+    if (edit && (needIg || needYt)) {
+      h += '<div class="gw-who">';
+      if (needIg) h += '<label>' + T.you_ig + '<input name="ig" placeholder="@seu.usuario" autocomplete="off" maxlength="40" value="' + esc(me.ig ? "@" + me.ig : "") + '"></label>';
+      if (needYt) h += '<label>' + T.you_yt + '<input name="yt" placeholder="@seucanal" autocomplete="off" maxlength="40" value="' + esc(me.yt ? "@" + me.yt : "") + '"></label>';
+      h += '<p class="muted small">' + T.you_hint + '</p></div>';
+    }
+    h += '<h2 class="ev-h">' + T.actions_h + '</h2><ul class="gw-acts">';
+    e.actions.forEach(function (a) {
+      var m = mine[a.id] || {}, auto = a.kind === "ig_comment" || a.kind === "yt_comment";
+      var worth = auto && a.max > 1 ? fmt(T.per_comment, { n: tk(a.tickets), m: a.max }) : tk(a.tickets);
+      var st;
+      if (auto) st = m.ok ? '<span class="gw-ok">' + fmt(T.auto_ok, { n: m.count }) + '</span>'
+        : !e.open ? ""
+        : !signed ? '<span class="muted">' + T.auto + '</span>'
+        : (a.kind === "ig_comment" ? !me.ig : !me.yt) ? '<span class="muted">' + (a.kind === "ig_comment" ? T.auto_need_ig : T.auto_need_yt) + '</span>'
+        : '<span class="muted">' + T.auto_wait + '</span>';
+      else st = edit ? '<label class="gw-did"><input type="checkbox" name="act" value="' + esc(a.id) + '"' + (m.ok ? " checked" : "") + '> ' + T.did + '</label>'
+        : m.ok ? '<span class="gw-ok">✓ ' + T.did + '</span>' : "";
+      h += '<li class="' + (m.ok ? "done" : "") + '"><div class="gw-a"><b>' + esc(a.label || T.kind[a.kind] || T.kind.visit) + '</b>' +
+        '<span class="muted small">' + worth + ' · ' + (auto ? T.auto : T.declared) + '</span></div>' +
+        '<div class="gw-st">' + (a.url && e.open ? '<a class="btn small" href="' + esc(a.url) + '" target="_blank" rel="noopener">' + T.open + ' ↗</a>' : "") + st + '</div></li>';
+    });
+    h += '</ul>';
+    if (signed && (e.me || e.open)) h += '<div class="gw-total">' + T.mine + ': <b>' + total + '</b>' + (e.synced_at ? ' <span class="muted small">· ' + esc(fmt(T.synced, { d: when(e.synced_at) })) + '</span>' : "") + '</div>';
+    if (edit) h += '<div class="gw-save"><button class="btn cta" type="button" data-save>' + T.save + '</button> <span class="gw-msg small" role="status"></span></div>';
+    if (e.rules) h += '<section class="ev-rules" id="regulamento"><h2 class="ev-h">' + T.rules + '</h2>' + para(e.rules) + '</section>';
+    h += '<p class="muted small">' + T.fine + '</p></div></article>';
+    return h;
+  }
+
+  function render() {
+    if (!DATA) return;
+    var m = location.hash.slice(1).split("/"), id = decodeURIComponent(m[0] || "");
+    var e = id && DATA.events.find(function (x) { return x.id === id; });
+    head.hidden = !!e;
+    crumb.textContent = e ? " › " + e.title : "";
+    if (e) {
+      root.innerHTML = detail(e, DATA.signed_in);
+      document.title = e.title + " · " + T.nav;
+      var r = m[1] === "regulamento" && document.getElementById("regulamento");
+      if (r) r.scrollIntoView(); else window.scrollTo(0, 0);
+      return;
+    }
+    var evs = DATA.events.slice().sort(function (a, b) {
+      var o = { open: 0, soon: 1, closed: 2 }; return o[state(a)] - o[state(b)] || Date.parse(b.end) - Date.parse(a.end); });
+    root.innerHTML = evs.length ? '<div class="ev-list">' + evs.map(card).join("") + '</div>' : '<p class="muted">' + T.none + '</p>';
+  }
+  function load() {
+    return fetch("/api/gw", { credentials: "same-origin" }).then(function (r) { return r.json(); }).then(function (j) {
+      DATA = { signed_in: !!j.signed_in, events: j.events || [] }; render();
+    }).catch(function () { root.innerHTML = '<p class="muted">' + T.none + '</p>'; });
+  }
+  window.addEventListener("hashchange", render);
+  root.addEventListener("click", function (ev) {
+    var b = ev.target.closest("[data-save]");
+    if (!b) return;
+    var c = b.closest(".ev-one"), q = function (n) { var i = c.querySelector('[name="' + n + '"]'); return i ? i.value : ""; };
+    var msg = c.querySelector(".gw-msg");
+    b.disabled = true; msg.textContent = "…";
+    fetch("/api/gw", { method: "POST", credentials: "same-origin", headers: { "content-type": "application/json" },
+      body: JSON.stringify({ id: c.dataset.id, ig: q("ig"), yt: q("yt"),
+        acts: [].map.call(c.querySelectorAll('[name="act"]:checked'), function (i) { return i.value; }) }) })
+      .then(function (r) { return r.json().then(function (j) { return [r.ok, j]; }); })
+      .then(function (x) {
+        b.disabled = false;
+        if (!x[0]) { msg.textContent = x[1].error || T.err; msg.className = "gw-msg small gw-bad"; return; }
+        load().then(function () { var m = document.querySelector(".ev-one .gw-msg"); if (m) m.textContent = T.saved; });
+      }).catch(function () { b.disabled = false; msg.textContent = T.err; });
+  });
+  load();
+})();
+</script>
+</body>
+</html>

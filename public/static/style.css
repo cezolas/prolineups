@@ -1147,7 +1147,35 @@ thead th[aria-sort="ascending"]::after { content: " ▲"; }
 
 .st-warn { color: #f5c64a; max-width: 760px; }
 
-/* giveaways (/pt/sorteios/) */
+/* events (/pt/eventos/): list of clean cards + one event's page */
+.ev-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; margin: 18px 0; max-width: 1000px; }
+.ev-card, .ev-one { border: 1px solid var(--line); border-radius: 12px; background: var(--panel); overflow: hidden; display: flex; flex-direction: column; }
+.ev-one { max-width: 760px; margin: 6px 0 18px; }
+.ev-img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.ev-body { padding: 16px 18px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.ev-body h1, .ev-body h2 { margin: 0; text-transform: none; letter-spacing: 0; }
+.ev-card h2 { font-size: 19px; }
+.ev-card h2 a { color: var(--text); text-decoration: none; }
+.ev-card h2 a:hover { text-decoration: underline; }
+.ev-chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.ev-chip { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px;
+  border: 1px solid var(--line); color: var(--muted); }
+.ev-open { color: var(--good); border-color: color-mix(in srgb, var(--good) 50%, transparent); }
+.ev-soon { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 50%, transparent); }
+.ev-prize { margin: 0; color: var(--muted); }
+.ev-prize b { color: var(--text); }
+.ev-dates { display: grid; grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.ev-dates > div { display: flex; flex-direction: column; padding: 9px 12px; gap: 1px; }
+.ev-dates > div + div { border-left: 1px solid var(--line); }
+.ev-dates span { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.ev-dates b { font-size: 15px; }
+.ev-dates small { color: var(--muted); font-size: 12px; }
+.ev-btns { display: flex; align-items: center; gap: 14px; margin-top: auto; padding-top: 4px; flex-wrap: wrap; }
+.ev-rules-link { font-size: 14px; }
+.ev-h { font-size: 16px !important; margin-top: 8px !important; }
+.ev-rules p { margin: 6px 0; line-height: 1.55; }
+.ev-one .gw-acts, .ev-one .gw-who { margin-top: 0; }
+/* giveaway details inside an event */
 .gw-card { border: 1px solid var(--line); border-radius: 12px; background: var(--panel); overflow: hidden; margin: 18px 0; max-width: 760px; }
 .gw-img { display: block; width: 100%; max-height: 300px; object-fit: cover; }
 .gw-body { padding: 16px 18px; }

@@ -30,7 +30,7 @@
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
   if (localStorage.getItem("sideOff") && matchMedia("(min-width: 961px)").matches) document.documentElement.classList.add("side-off"); } catch (e) {}</script>
 <link rel="icon" href="/static/favicon.svg?v=714ec3503f" type="image/svg+xml">
-<link rel="stylesheet" href="/static/style.css?v=9351243f97">
+<link rel="stylesheet" href="/static/style.css?v=4145cc1bf4">
 <script>window.I18N = {"copied": "Copied!", "dec": ".", "kinds": {"jogador": "player", "lineup": "lineup", "mapa": "map", "time": "team", "torneio": "tournament"}, "lineup_1": "lineup", "lineup_n": "lineups", "no_results": "Nothing found.", "open": "Open", "plant_after": "plant +{s}s", "plant_in": "plant in {s}s", "report_fail": "Couldn\u0027t send it right now, try again later.", "report_limit": "You\u0027ve already sent several reports today.", "report_thanks": "Thanks! We\u0027ll take a look.", "throws_in": "throws in {s}s", "v_back": "Back 2 seconds", "v_frame_back": "Previous frame", "v_frame_fwd": "Next frame", "v_fwd": "Forward 2 seconds", "v_play": "Play / pause"}; window.LANG = "en";</script>
 </head>
 <body class="">
@@ -71,7 +71,7 @@
       <a href="/en/my-steam/"><span>◎ My Steam</span></a>
       <a href="/en/roles/"><span>👥 Roles</span></a>
       <a href="/en/analytics/"><span>▤ Analytics</span></a>
-      <a class="nav-gw" href="/en/giveaways/"><span>🎁 Giveaways</span></a>
+      <a class="nav-gw" href="/en/events/"><span>🎁 Events</span></a>
       <details class="nav-g" data-k="maps">
         <summary class="nav-h"><a href="/en/maps/">Maps</a></summary>
 <a href="/en/ancient/"><span class="nl">Ancient</span><span class="n">63</span></a><a href="/en/anubis/" aria-current="page"><span class="nl">Anubis</span><span class="n">20</span></a><a href="/en/cache/"><span class="nl">Cache</span><span class="n">47</span></a><a href="/en/dust2/"><span class="nl">Dust2</span><span class="n">53</span></a><a href="/en/inferno/"><span class="nl">Inferno</span><span class="n">22</span></a><a href="/en/mirage/"><span class="nl">Mirage</span><span class="n">80</span></a><a href="/en/nuke/"><span class="nl">Nuke</span><span class="n">33</span></a>      </details>
@@ -97,13 +97,14 @@
       <button type="button" class="side-collapse" id="sideCollapse" aria-controls="side">« Collapse menu</button>
     </nav>
     <script>
-      /* sections start collapsed; the ones opened here are remembered, and the one holding this page opens */
+      /* sections start collapsed; the ones opened here are remembered, and the one holding this page opens.
+         Maps always starts collapsed (user's choice, 2026-11-21): the top bar already has the maps */
       (function () {
         var o = []; try { o = JSON.parse(localStorage.getItem("navOpen") || "[]"); } catch (e) {}
         document.querySelectorAll(".nav-g").forEach(function (d) {
-          if (o.indexOf(d.dataset.k) >= 0 || d.querySelector("[aria-current]")) d.open = true;
+          if (d.dataset.k !== "maps" && (o.indexOf(d.dataset.k) >= 0 || d.querySelector("[aria-current]"))) d.open = true;
           d.addEventListener("toggle", function () {
-            var s = []; document.querySelectorAll(".nav-g").forEach(function (x) { if (x.open) s.push(x.dataset.k); });
+            var s = []; document.querySelectorAll(".nav-g").forEach(function (x) { if (x.open && x.dataset.k !== "maps") s.push(x.dataset.k); });
             try { localStorage.setItem("navOpen", JSON.stringify(s)); } catch (e) {}
           });
         });
